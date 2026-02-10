@@ -1,0 +1,314 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Aviation Green Theme */
+    --background: 0 0% 100%;
+    --foreground: 150 30% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 150 30% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 150 30% 10%;
+
+    /* Primary: Deep Aviation Green */
+    --primary: 145 70% 22%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary: Sky Blue */
+    --secondary: 200 80% 94%;
+    --secondary-foreground: 145 70% 22%;
+
+    --muted: 150 10% 96%;
+    --muted-foreground: 150 10% 45%;
+
+    /* Accent: Aviation Gold */
+    --accent: 45 100% 51%;
+    --accent-foreground: 150 30% 10%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 150 15% 90%;
+    --input: 150 15% 90%;
+    --ring: 145 70% 22%;
+
+    --radius: 0.75rem;
+
+    /* Custom Aviation Colors */
+    --aviation-green-light: 145 50% 35%;
+    --aviation-green-dark: 145 80% 15%;
+    --aviation-sky: 200 80% 60%;
+    --aviation-gold: 45 100% 51%;
+    --aviation-runway: 150 5% 20%;
+
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(145 70% 22%) 0%, hsl(145 80% 15%) 100%);
+    --gradient-sky: linear-gradient(180deg, hsl(200 80% 70%) 0%, hsl(200 60% 90%) 100%);
+    --gradient-gold: linear-gradient(135deg, hsl(45 100% 51%) 0%, hsl(38 100% 45%) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(150 20% 98%) 100%);
+
+    /* Shadows */
+    --shadow-card: 0 4px 20px -4px hsl(145 70% 22% / 0.1);
+    --shadow-hover: 0 12px 40px -8px hsl(145 70% 22% / 0.2);
+    --shadow-glow: 0 0 40px hsl(45 100% 51% / 0.3);
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 145 70% 22%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 150 20% 95%;
+    --sidebar-accent-foreground: 145 70% 22%;
+    --sidebar-border: 150 15% 90%;
+    --sidebar-ring: 145 70% 22%;
+  }
+
+  .dark {
+    --background: 150 30% 5%;
+    --foreground: 0 0% 98%;
+
+    --card: 150 25% 8%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 150 25% 8%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 145 60% 45%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 200 30% 15%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 150 20% 15%;
+    --muted-foreground: 150 10% 60%;
+
+    --accent: 45 100% 51%;
+    --accent-foreground: 150 30% 10%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 150 20% 18%;
+    --input: 150 20% 18%;
+    --ring: 145 60% 45%;
+
+    --sidebar-background: 150 25% 8%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 145 60% 45%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 150 20% 15%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 150 20% 18%;
+    --sidebar-ring: 145 60% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-poppins antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-poppins font-bold tracking-tight;
+  }
+}
+
+@layer components {
+  .aviation-gradient {
+    background: var(--gradient-hero);
+  }
+
+  .sky-gradient {
+    background: var(--gradient-sky);
+  }
+
+  .gold-gradient {
+    background: var(--gradient-gold);
+  }
+
+  .card-gradient {
+    background: var(--gradient-card);
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background: var(--gradient-hero);
+  }
+
+  .gold-text {
+    @apply bg-clip-text text-transparent;
+    background: var(--gradient-gold);
+  }
+
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+
+  .shadow-hover {
+    box-shadow: var(--shadow-hover);
+  }
+
+  .glow-gold {
+    box-shadow: var(--shadow-glow);
+  }
+
+  /* Airplane Animation */
+  @keyframes fly-across {
+    0% {
+      transform: translateX(-100%) translateY(0) rotate(-5deg);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    50% {
+      transform: translateX(50vw) translateY(-20px) rotate(0deg);
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(150vw) translateY(-40px) rotate(5deg);
+      opacity: 0;
+    }
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: 0 0 20px hsl(45 100% 51% / 0.3);
+    }
+    50% {
+      box-shadow: 0 0 40px hsl(45 100% 51% / 0.5);
+    }
+  }
+
+  @keyframes slide-up {
+    0% {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slide-in-right {
+    0% {
+      opacity: 0;
+      transform: translateX(30px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes counter-up {
+    0% {
+      opacity: 0;
+      transform: scale(0.5);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .animate-fly {
+    animation: fly-across 8s ease-in-out infinite;
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  .animate-slide-up {
+    animation: slide-up 0.6s ease-out forwards;
+  }
+
+  .animate-slide-in-right {
+    animation: slide-in-right 0.6s ease-out forwards;
+  }
+
+  .animate-counter {
+    animation: counter-up 0.5s ease-out forwards;
+  }
+
+  /* Scroll Animations */
+  .scroll-fade-up {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .scroll-fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Mega Menu Styles */
+  .mega-menu {
+    @apply absolute top-full left-0 w-full bg-background border-t border-border shadow-hover opacity-0 invisible transition-all duration-300;
+  }
+
+  .mega-menu.open {
+    @apply opacity-100 visible;
+  }
+
+  /* Aviation Button Styles */
+  .btn-aviation {
+    @apply relative overflow-hidden transition-all duration-300;
+  }
+
+  .btn-aviation::before {
+    @apply absolute inset-0 bg-white/20 translate-x-[-100%] skew-x-12 transition-transform duration-500;
+    content: '';
+  }
+
+  .btn-aviation:hover::before {
+    @apply translate-x-[100%];
+  }
+
+  /* Floating Button Pulse */
+  .floating-btn {
+    @apply fixed z-50 rounded-full shadow-lg transition-all duration-300 hover:scale-110;
+  }
+
+  .floating-btn::after {
+    @apply absolute inset-0 rounded-full animate-ping;
+    content: '';
+    background: inherit;
+    opacity: 0.3;
+  }
+}
+
+@layer utilities {
+  .stagger-1 { animation-delay: 0.1s; }
+  .stagger-2 { animation-delay: 0.2s; }
+  .stagger-3 { animation-delay: 0.3s; }
+  .stagger-4 { animation-delay: 0.4s; }
+  .stagger-5 { animation-delay: 0.5s; }
+}
