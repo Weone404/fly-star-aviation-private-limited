@@ -50,21 +50,22 @@ export function Footer() {
               </div>
             </Link>
             <p className="text-white/70 mb-6 max-w-sm">
-              Your trusted partner in aviation training and services. DGCA approved 
+              Your trusted partner in aviation training and services. DGCA approved
               institute dedicated to creating world-class pilots.
             </p>
             <div className="space-y-3">
-              <a href="tel:+919876543210" className="flex items-center gap-3 text-white/70 hover:text-accent transition-colors">
+              <a href="tel:+919953536199" className="flex items-center gap-3 text-white/70 hover:text-accent transition-colors">
                 <Phone className="h-5 w-5 text-accent" />
-                +91 98765 43210
+                +91 99535 36199
               </a>
               <a href="mailto:info@flyingstaraviator.com" className="flex items-center gap-3 text-white/70 hover:text-accent transition-colors">
                 <Mail className="h-5 w-5 text-accent" />
-                info@flyingstaraviator.com
+
               </a>
               <div className="flex items-start gap-3 text-white/70">
                 <MapPin className="h-5 w-5 text-accent flex-shrink-0 mt-0.5" />
-                <span>123 Aviation House, Aerocity<br />New Delhi - 110037</span>
+                <span>C-404, 3rd Floor, Near Ramphal Chowk
+                  <br />Sector-7, Dwarka, New Delhi - 110075</span>
               </div>
             </div>
           </div>
@@ -137,8 +138,8 @@ export function Footer() {
               ))}
             </div>
             <p className="text-white/50 text-sm text-center">
-              © {new Date().getFullYear()} Flying Star Aviator. All rights reserved. | 
-              <Link to="/privacy" className="hover:text-white ml-1">Privacy Policy</Link> | 
+              © {new Date().getFullYear()} Flying Star Aviator. All rights reserved. |
+              <Link to="/privacy" className="hover:text-white ml-1">Privacy Policy</Link> |
               <Link to="/terms" className="hover:text-white ml-1">Terms of Service</Link>
             </p>
           </div>
