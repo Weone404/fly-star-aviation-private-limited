@@ -6,7 +6,7 @@ export function FloatingButtons() {
     <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-4">
       {/* WhatsApp Button */}
       <motion.a
-        href="https://wa.me/919876543210?text=Hi, I'm interested in pilot training"
+        href="https://wa.me/919953536199?text=Hi, I'm interested in pilot training"
         target="_blank"
         rel="noopener noreferrer"
         className="w-14 h-14 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-lg hover:scale-110 transition-transform"
@@ -21,7 +21,7 @@ export function FloatingButtons() {
 
       {/* Call Button */}
       <motion.a
-        href="tel:+919876543210"
+        href="tel:+919953536199"
         className="w-14 h-14 rounded-full bg-primary text-primary-foreground flex items-center justify-center shadow-lg hover:scale-110 transition-transform"
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
