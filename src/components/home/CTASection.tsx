@@ -26,7 +26,7 @@ export function CTASection() {
             Start Your Aviation Journey Today
           </h2>
           <p className="text-muted-foreground text-lg mb-10 max-w-2xl mx-auto">
-            Join thousands of successful pilots who started their careers with us. 
+            Join thousands of successful pilots who started their careers with us.
             Get personalized guidance and find the right program for you.
           </p>
 
@@ -38,9 +38,9 @@ export function CTASection() {
               </Link>
             </Button>
             <Button variant="outline" size="xl" asChild>
-              <a href="tel:+919876543210">
+              <a href="tel:+919953536199">
                 <Phone className="h-5 w-5 mr-2" />
-                Call: +91 98765 43210
+                Call: +91 99535 36199
               </a>
             </Button>
           </div>
