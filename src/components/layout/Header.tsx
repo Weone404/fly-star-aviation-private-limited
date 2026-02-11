@@ -105,7 +105,7 @@ export function Header() {
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
             <Link to="/" className="flex items-center gap-3">
-              <div className="w-10 h-10 sm:w-20 sm:h-20 rounded-full overflow-hidden flex items-center justify-center">
+              <div className="w-12 h-12 md:w-28 md:h-28 rounded-full overflow-hidden flex items-center justify-center">
                 <img
                   src="/flying_logo.webp"
                   alt="Flying Star Logo"
@@ -113,6 +113,9 @@ export function Header() {
                 />
               </div>
             </Link>
+
+
+
 
 
 
