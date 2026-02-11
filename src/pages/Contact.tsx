@@ -8,9 +8,9 @@ import { Phone, Mail, MapPin, Clock, Send } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 const contactInfo = [
-  { icon: Phone, label: "Phone", value: "+91 98765 43210", href: "tel:+919876543210" },
+  { icon: Phone, label: "Phone", value: "+91 99535 36199", href: "tel:+919953536199" },
   { icon: Mail, label: "Email", value: "info@flyingstaraviator.com", href: "mailto:info@flyingstaraviator.com" },
-  { icon: MapPin, label: "Address", value: "123 Aviation House, Aerocity, New Delhi - 110037", href: "#" },
+  { icon: MapPin, label: "Address", value: "C-404, 3rd Floor, Near Ramphal Chowk Sector-7, Dwarka, New Delhi - 110075", href: "#" },
   { icon: Clock, label: "Working Hours", value: "Mon - Sat: 9:00 AM - 6:00 PM", href: "#" },
 ];
 
@@ -21,7 +21,7 @@ export default function ContactPage() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     // Simulate form submission
     setTimeout(() => {
       setIsSubmitting(false);
@@ -152,7 +152,7 @@ export default function ContactPage() {
                   <div className="text-center">
                     <MapPin className="h-12 w-12 text-primary mx-auto mb-4" />
                     <p className="text-muted-foreground">Interactive Map</p>
-                    <p className="text-sm text-muted-foreground">123 Aviation House, Aerocity, New Delhi</p>
+                    <p className="text-sm text-muted-foreground">C-404, 3rd Floor, Near Ramphal Chowk Sector-7, Dwarka, New Delhi - 110075</p>
                   </div>
                 </div>
               </div>
@@ -165,13 +165,13 @@ export default function ContactPage() {
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3">
                   <Button variant="outline-white" asChild className="flex-1">
-                    <a href="tel:+919876543210">
+                    <a href="tel:+919953536199">
                       <Phone className="h-4 w-4 mr-2" />
                       Call Now
                     </a>
                   </Button>
                   <Button variant="gold" asChild className="flex-1">
-                    <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer">
+                    <a href="https://wa.me/919953536199" target="_blank" rel="noopener noreferrer">
                       WhatsApp Us
                     </a>
                   </Button>
