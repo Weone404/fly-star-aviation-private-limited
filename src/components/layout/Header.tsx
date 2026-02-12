@@ -6,55 +6,70 @@ import { Button } from "@/components/ui/button";
 
 const navigation = [
   { name: "Home", href: "/" },
+
   {
-    name: "DGCA",
-    href: "/dgca",
+    name: "Courses",
+    href: "/courses",
     children: [
+      { name: "CPL – Commercial Pilot License", href: "/courses/cpl" },
+      { name: "ATPL – Airline Transport Pilot License", href: "/courses/atpl" },
+      { name: "Airline Preparation Classes", href: "/courses/airline-preparation" },
+      { name: "Cabin Crew Course", href: "/courses/cabin-crew" },
+      { name: "Airport Ground Staff Course", href: "/courses/ground-staff" },
+    ],
+  },
+
+  {
+    name: "Flying Training",
+    href: "/flying-training",
+    children: [
+      { name: "Pilot Training in India", href: "/pilot-training/india" },
+      { name: "Pilot Training in USA", href: "/pilot-training/usa" },
+      { name: "Pilot Training in New Zealand", href: "/pilot-training/new-zealand" },
+      { name: "Pilot Training in South Africa", href: "/pilot-training/south-africa" },
+      { name: "Pilot Training in Australia", href: "/pilot-training/australia" },
+      { name: "Pilot Training in Maldives", href: "/pilot-training/maldives" },
+      { name: "Pilot Training in Sri Lanka", href: "/pilot-training/sri-lanka" },
+      { name: "Guide to conversion", href: "/pilot-training/guide-to-conversion" },
+    ],
+  },
+
+
+  {
+    name: "Become a Pilot",
+    href: "/become-a-pilot",
+    children: [
+      { name: "Steps to become pilot", href: "/become-a-pilot/become-pilot" },
+      { name: "Commercial Pilot License", href: "/become-a-pilot/Commercial-Pilot-License" },
+      { name: "Airline Transport Pilot Licence", href: "/become-a-pilot/airline-transport-pilot-licence" },
       { name: "DGCA Computer Number", href: "/dgca/computer-number" },
-      { name: "Medical Class 1 & 2", href: "/dgca/medical" },
-      { name: "Ground Classes", href: "/dgca/ground-classes" },
-      { name: "DGCA Full Form", href: "/dgca/full-form" },
+      { name: "DGCA Medical Class 1 & 2", href: "/dgca/medical" },
+      { name: "DGCA Ground Classes", href: "/dgca/ground-classes" },
+      { name: "Radio Telephony (RTR)", href: "/dgca/rtr" },
+      { name: "Board Verification", href: "/dgca/board-verification" },
+      { name: "", href: "/dgca/full-form" },
     ],
   },
-  {
-    name: "Pilot Training",
-    href: "/pilot-training",
-    children: [
-      { name: "CPL - Commercial Pilot License", href: "/pilot-training/cpl" },
-      { name: "PPL - Private Pilot License", href: "/pilot-training/ppl" },
-      { name: "Eligibility Criteria", href: "/pilot-training/eligibility" },
-      { name: "Syllabus", href: "/pilot-training/syllabus" },
-      { name: "Admission Process", href: "/pilot-training/admission" },
-      { name: "Pilot Salary", href: "/pilot-training/salary" },
-    ],
-  },
+
   {
     name: "Services",
     href: "/services",
     children: [
-      { name: "Pilot Training", href: "/services/pilot-training" },
-      { name: "Chartered Services", href: "/services/chartered" },
-      { name: "Aircraft Sale & Purchase", href: "/services/aircraft-sale" },
-      { name: "Aviation Placement", href: "/services/placement" },
-      { name: "Aircraft Management", href: "/services/management" },
-      { name: "Aircraft Spare Parts", href: "/services/spare-parts" },
+      { name: "Aircraft Management", href: "/services/aircraft-management" },
+      { name: "Aircraft Sourcing & Sale", href: "/services/aircraft-sourcing-sale" },
+      { name: "Aviation Consultancy", href: "/services/aviation-consultancy" },
+      { name: "MRO Services", href: "/services/mro" },
+      { name: "Charter Services", href: "/services/charter-services" },
+      { name: "Livery & Painting", href: "/services/livery-painting" },
+      { name: "CAMO", href: "/services/camo" },
+      { name: "Components & Spares", href: "/services/components-spares" },
     ],
   },
-  {
-    name: "Locations",
-    href: "/locations",
-    children: [
-      { name: "Pilot Training in India", href: "/locations/india" },
-      { name: "Hyderabad", href: "/locations/hyderabad" },
-      { name: "Mumbai", href: "/locations/mumbai" },
-      { name: "Delhi", href: "/locations/delhi" },
-      { name: "Bangalore", href: "/locations/bangalore" },
-      { name: "Flying Schools in USA", href: "/locations/usa" },
-    ],
-  },
+
   { name: "About Us", href: "/about" },
   { name: "Contact", href: "/contact" },
 ];
+
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
