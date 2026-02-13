@@ -4,7 +4,18 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronDown, Phone, Plane } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const navigation = [
+type NavChild = {
+  name: string;
+  href: string;
+};
+
+type NavItem = {
+  name: string;
+  href: string;
+  children?: NavChild[];
+};
+
+const navigation: NavItem[] = [
   { name: "Home", href: "/" },
 
   {
@@ -34,20 +45,19 @@ const navigation = [
     ],
   },
 
-
   {
     name: "Become a Pilot",
     href: "/become-a-pilot",
     children: [
       { name: "Steps to become pilot", href: "/become-a-pilot/become-pilot" },
-      { name: "Commercial Pilot License", href: "/become-a-pilot/Commercial-Pilot-License" },
+      { name: "Commercial Pilot License", href: "/become-a-pilot/commercial-pilot-license" },
       { name: "Airline Transport Pilot Licence", href: "/become-a-pilot/airline-transport-pilot-licence" },
       { name: "DGCA Computer Number", href: "/dgca/computer-number" },
       { name: "DGCA Medical Class 1 & 2", href: "/dgca/medical" },
       { name: "DGCA Ground Classes", href: "/dgca/ground-classes" },
       { name: "Radio Telephony (RTR)", href: "/dgca/rtr" },
       { name: "Board Verification", href: "/dgca/board-verification" },
-      { name: "", href: "/dgca/full-form" },
+      { name: "DGCA Full Form", href: "/dgca/full-form" },
     ],
   },
 
@@ -70,11 +80,10 @@ const navigation = [
   { name: "Contact", href: "/contact" },
 ];
 
-
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState(null);
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const location = useLocation();
 
   useEffect(() => {
@@ -86,7 +95,7 @@ export function Header() {
   useEffect(() => {
     setIsMobileMenuOpen(false);
     setActiveDropdown(null);
-  }, [location]);
+  }, [location.pathname]);
 
   return (
     <>
@@ -122,7 +131,6 @@ export function Header() {
               </div>
             </Link>
 
-
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center gap-2">
               {navigation.map((item) => (
@@ -134,8 +142,7 @@ export function Header() {
                 >
                   <Link
                     to={item.href}
-                    className={`flex items-center gap-1 px-5 py-3 text-xl font-semibold transition-colors
-                      ${location.pathname === item.href ||
+                    className={`flex items-center gap-1 px-5 py-3 text-xl font-semibold transition-colors ${location.pathname === item.href ||
                         location.pathname.startsWith(item.href + "/")
                         ? "text-primary"
                         : "text-foreground"
@@ -145,7 +152,6 @@ export function Header() {
                     {item.children && <ChevronDown className="h-5 w-5" />}
                   </Link>
 
-                  {/* Dropdown */}
                   <AnimatePresence>
                     {item.children && activeDropdown === item.name && (
                       <motion.div
@@ -156,7 +162,7 @@ export function Header() {
                       >
                         {item.children.map((child) => (
                           <Link
-                            key={child.name}
+                            key={child.href}
                             to={child.href}
                             className="block px-4 py-3 text-lg font-medium rounded-lg hover:bg-secondary hover:text-primary"
                           >
@@ -205,11 +211,12 @@ export function Header() {
                     >
                       {item.name}
                     </Link>
+
                     {item.children && (
                       <div className="ml-4 space-y-1">
                         {item.children.map((child) => (
                           <Link
-                            key={child.name}
+                            key={child.href}
                             to={child.href}
                             className="block px-4 py-2 text-lg text-muted-foreground hover:text-primary"
                           >
@@ -220,6 +227,7 @@ export function Header() {
                     )}
                   </div>
                 ))}
+
                 <Button variant="aviation" size="lg" className="w-full mt-4">
                   Get Free Counselling
                 </Button>
