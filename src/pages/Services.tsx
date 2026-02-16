@@ -73,7 +73,7 @@ export default function ServicesPage() {
               Complete Aviation Solutions
             </h1>
             <p className="text-xl text-primary-foreground/80">
-              From pilot training to aircraft management, we provide comprehensive aviation 
+              From pilot training to aircraft management, we provide comprehensive aviation
               services to individuals and organizations across India.
             </p>
           </motion.div>
@@ -150,7 +150,7 @@ export default function ServicesPage() {
                 <Link to="/contact">Get Free Consultation</Link>
               </Button>
               <Button variant="outline" size="lg" asChild>
-                <a href="tel:+919876543210">Call: +91 98765 43210</a>
+                <a href="tel:+919953536199">Call: +91 9953536199</a>
               </Button>
             </div>
           </motion.div>

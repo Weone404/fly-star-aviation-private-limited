@@ -75,7 +75,7 @@ const trainingSteps = [
         step: 4,
         title: "Flying Training Hours",
         description:
-            "Complete required aircraft flying hours and simulator training at an approved FTO.",
+            "Complete required aircraft flying hours and simulator training at an   FTO.",
     },
     {
         step: 5,
@@ -179,7 +179,7 @@ export default function CPLCoursePage() {
         <Layout>
             <Helmet>
                 <title>Commercial Pilot License Course in India | CPL Training</title>
-                <meta name="description" content="Become a commercial pilot with DGCA-approved pilot training in India. Check CPL course fees, eligibility, syllabus & career opportunities. Apply now." />
+                <meta name="description" content="Become a commercial pilot with DGCA-  pilot training in India. Check CPL course fees, eligibility, syllabus & career opportunities. Apply now." />
             </Helmet>
             {/* Hero Section */}
             <section className="relative py-24 aviation-gradient text-primary-foreground">
@@ -746,7 +746,7 @@ export default function CPLCoursePage() {
                         </h2>
                         <p className="text-primary-foreground/80 text-lg mb-4">
                             A commercial pilot license is more than just a certification — it is the beginning of an exciting
-                            and rewarding profession. From structured commercial pilot training and DGCA-approved syllabus to
+                            and rewarding profession. From structured commercial pilot training and DGCA-  syllabus to
                             real flight experience, the cpl course prepares students for a successful future.
                         </p>
                         <p className="text-primary-foreground/80 text-lg mb-8">

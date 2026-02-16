@@ -44,7 +44,7 @@ const computerNumberUses = [
   {
     icon: Plane,
     title: "Flying School Registration",
-    description: "Register at any DGCA-approved flying training organization",
+    description: "Register at any DGCA-  flying training organization",
   },
 ];
 
@@ -281,7 +281,7 @@ export default function DGCAComputerNumberPage() {
                   "Appear for any DGCA ground theory exam",
                   "Apply for CPL or PPL",
                   "Track exam & academic records",
-                  "Register at DGCA-approved flying schools",
+                  "Register at DGCA-  flying schools",
                 ].map((item, i) => (
                   <li key={i} className="flex items-center gap-3 text-muted-foreground">
                     <CheckCircle className="h-5 w-5 text-primary flex-shrink-0" />
@@ -577,7 +577,7 @@ export default function DGCAComputerNumberPage() {
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-4">After Approval</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Once your application is approved, you'll receive the following
+              Once your application is  , you'll receive the following
             </p>
           </motion.div>
 

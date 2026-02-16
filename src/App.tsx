@@ -10,7 +10,14 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Services from "./pages/Services";
 import DGCA from "./pages/DGCA";
-import PilotTraining from "./pages/PilotTraining";
+import PilotTraining from "./pages/pilotTraining/PilotTraining";
+import India from "./pages/pilotTraining/india";
+import USA from "./pages/pilotTraining/usa";
+import NewZealand from "./pages/pilotTraining/new-zealand";
+import SouthAfrica from "./pages/pilotTraining/south-africa";
+import Australia from "./pages/pilotTraining/australia";
+
+
 import Locations from "./pages/Locations";
 import NotFound from "./pages/NotFound";
 import Cpl from "./pages/Courses/Cpl"; // ✅ ADD THIS
@@ -18,6 +25,11 @@ import Atpl from "./pages/Courses/Atpl";
 import AirlinePreparationPage from "./pages/Courses/airline-preparation";
 import CabinCrewPage from "./pages/Courses/cabin-crew";
 import GroundStaffPage from "./pages/Courses/ground-staff";
+import Rtr from "./pages/rtr";
+import Fullform from "./pages/dgca/full-form"
+import Medical from "./pages/dgca/medical";
+import Groundclasses from "./pages/dgca/ground-classes"
+
 
 
 import Airlinetransportpilotlicence from "./pages/BecomeAPilot/airline-transport-pilot-licence";
@@ -52,14 +64,29 @@ const App = () => (
             {/* DGCA */}
             <Route path="/dgca" element={<DGCA />} />
             <Route path="/dgca/:topic" element={<DGCA />} />
+            <Route path="/rtr" element={<Rtr />} />
+            <Route path="/dgca/full-form" element={<Fullform />} />
+            <Route path="/dgca/medical" element={<Medical />} />
+            <Route path="/dgca/ground-classes" element={<Groundclasses />} />
+
+
+
 
             {/* PILOT TRAINING */}
             <Route path="/pilot-training" element={<PilotTraining />} />
+            <Route path="/pilot-training/india" element={<India />} />
+            <Route path="/pilot-training/usa" element={<USA />} />
+            <Route path="/pilot-training/new-zealand" element={<NewZealand />} />
+            <Route path="/pilot-training/south-africa" element={<SouthAfrica />} />
+            <Route path="/pilot-training/australia" element={<Australia />} />
+
+
+
             <Route path="/pilot-training/:topic" element={<PilotTraining />} />
             <Route path="/become-a-pilot/airline-transport-pilot-licence" element={<Airlinetransportpilotlicence />} />
             <Route path="/become-a-pilot/commercial-pilot-licence" element={<Commercialpilotlicence />} />
             <Route path="/become-a-pilot/become-pilot" element={<Becomepilot />} />
-            {/* <Route path="/become-a-pilot" element={<becomepilot />} /> */}
+
 
 
 

@@ -172,7 +172,7 @@ const eligibilityCriteria = [
     "Minimum age 21 years",
     "Valid Indian CPL with multi-engine endorsement (or 500 hrs for Defence with 200 hrs as PIC)",
     "Minimum 1,500 total flying hours, of which at least 500 hrs as Pilot-in-Command",
-    "Successful Class-1 Medical Assessment by DGCA-approved doctors",
+    "Successful Class-1 Medical Assessment by DGCA-  doctors",
     "Pass DGCA theory tests in Navigation, Meteorology, Regulations, Radio Aids & Oral Comms",
     "Valid DGCA CPL and Class-1 Medical Assessment mandatory before applying",
 ];
@@ -189,7 +189,7 @@ const skillsRequired = [
 const admissionSteps = [
     "Hold a valid Commercial Pilot Licence (CPL) with multi-engine endorsement",
     "Accumulate minimum 1,500 total flight hours (500 as PIC)",
-    "Pass Class-1 Medical Assessment from a DGCA-approved doctor",
+    "Pass Class-1 Medical Assessment from a DGCA-  doctor",
     "Clear all DGCA ATPL theory examinations (Frozen ATPL)",
     "Complete the ATPL practical skill test with a DGCA examiner",
 ];
@@ -641,7 +641,7 @@ export default function ATPLCoursePage() {
                         <h2 className="text-3xl md:text-4xl font-bold mb-4">ATPL Course Fees in India</h2>
                         <p className="text-muted-foreground max-w-2xl mx-auto">
                             The total ATPL licence cost depends on flying hours, aircraft type, and training facilities. Below is a
-                            representative breakdown from a DGCA-approved Flying Training Organisation.
+                            representative breakdown from a DGCA-  Flying Training Organisation.
                         </p>
                     </motion.div>
 
@@ -897,7 +897,7 @@ export default function ATPLCoursePage() {
                         </h2>
                         <p className="text-muted-foreground text-lg mb-4">
                             Selecting the right ATPL training programme is crucial for building a successful aviation career. A
-                            well-structured course provides proper guidance, experienced instructors, DGCA-approved simulators, and
+                            well-structured course provides proper guidance, experienced instructors, DGCA-  simulators, and
                             quality flying facilities.
                         </p>
                         <p className="text-muted-foreground text-lg">
@@ -965,7 +965,7 @@ export default function ATPLCoursePage() {
                         <p className="text-primary-foreground/80 text-lg mb-4">
                             An Airline Transport Pilot License is more than a certification — it is your gateway to commanding
                             commercial aircraft, leading flight crews, and building a prestigious international career. From
-                            structured ATPL training and a DGCA-approved syllabus to real multi-engine flight experience, the ATPL
+                            structured ATPL training and a DGCA-  syllabus to real multi-engine flight experience, the ATPL
                             course prepares pilots for a successful future at the captain's seat.
                         </p>
                         <p className="text-primary-foreground/80 text-lg mb-8">

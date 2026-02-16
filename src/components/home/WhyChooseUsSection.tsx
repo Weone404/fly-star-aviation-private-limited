@@ -4,8 +4,8 @@ import { Award, Users, Plane, Clock, Shield, TrendingUp } from "lucide-react";
 const reasons = [
   {
     icon: Award,
-    title: "DGCA Approved",
-    description: "Officially recognized by the Directorate General of Civil Aviation as an approved training organization.",
+    title: "DGCA  ",
+    description: "Officially recognized by the Directorate General of Civil Aviation as an   training organization.",
   },
   {
     icon: Users,

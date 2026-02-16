@@ -48,7 +48,7 @@ export function HeroSection() {
             className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 mb-8 border border-white/20"
           >
             <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
-            <span className="text-sm font-medium text-white">DGCA Approved Training Institute</span>
+            <span className="text-sm font-medium text-white">DGCA   Training Institute</span>
           </motion.div>
 
           <motion.h1
@@ -68,7 +68,7 @@ export function HeroSection() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-lg md:text-xl text-white/80 mb-10 max-w-2xl"
           >
-            Transform your dreams into reality with India's premier aviation training academy. 
+            Transform your dreams into reality with India's premier aviation training academy.
             Expert instructors, world-class facilities, and guaranteed placement support.
           </motion.p>
 

@@ -27,7 +27,7 @@ const quickOverview = [
     { label: "Course Type", value: "Professional Pilot Course" },
     { label: "Duration", value: "18–24 Months" },
     { label: "Eligibility", value: "10+2 With Physics & Mathematics" },
-    { label: "License Type", value: "DGCA Approved CPL" },
+    { label: "License Type", value: "DGCA   CPL" },
     { label: "Training Mode", value: "Ground + Flying" },
     { label: "Career Outcome", value: "Airline Pilot / CPL Pilot" },
 ];
@@ -120,7 +120,7 @@ const admissionSteps = [
     {
         step: 2,
         title: "Apply for Commercial Pilot Licence Course",
-        description: "Submit your application to approved training academy",
+        description: "Submit your application to   training academy",
     },
     {
         step: 3,

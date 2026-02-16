@@ -33,7 +33,7 @@ const careerPaths = [
         icon: Plane,
         title: "Civil Aviation Route",
         description:
-            "Self-sponsored training at DGCA-approved Flying Training Organisation. Complete pathway from SPL to CPL.",
+            "Self-sponsored training at DGCA-  Flying Training Organisation. Complete pathway from SPL to CPL.",
         cost: "₹35 - 65 Lakhs",
         href: "/become-pilot/civil-aviation",
     },
@@ -77,7 +77,7 @@ const eligibilityChecklist = [
         items: [
             "Class 2 Medical: Initial screening requirement",
             "Class 1 Medical: Mandatory for holding CPL",
-            "Must be conducted by DGCA-approved medical examiner",
+            "Must be conducted by DGCA-  medical examiner",
         ],
     },
     {
@@ -121,7 +121,7 @@ const trainingRoadmap = [
     },
     {
         step: 5,
-        title: "Join DGCA-Approved FTO",
+        title: "Join DGCA-  FTO",
         description:
             "Enroll in a Flying Training Organisation for practical flight training. Complete Student Pilot License requirements.",
         duration: "Ongoing",
@@ -264,7 +264,7 @@ const faqs = [
     {
         question: "What are the different paths to becoming a pilot?",
         answer:
-            "There are three main paths: (1) Civil Aviation - Self-sponsored training at DGCA-approved FTO (₹35-65 lakhs), (2) Cadet Pilot Programs - Airline-sponsored training with employment letter of intent, (3) Indian Air Force - Join through NDA or AFCAT with fully government-funded training.",
+            "There are three main paths: (1) Civil Aviation - Self-sponsored training at DGCA-  FTO (₹35-65 lakhs), (2) Cadet Pilot Programs - Airline-sponsored training with employment letter of intent, (3) Indian Air Force - Join through NDA or AFCAT with fully government-funded training.",
     },
     {
         question: "What is the difference between SPL, PPL, and CPL?",
@@ -668,7 +668,7 @@ export default function BecomePilotPage() {
                             Top Flying Schools in India
                         </h2>
                         <p className="text-muted-foreground max-w-2xl mx-auto">
-                            Choose from India's premier DGCA-approved Flying Training Organisations. Each offers unique advantages
+                            Choose from India's premier DGCA-  Flying Training Organisations. Each offers unique advantages
                             in terms of location, fleet, weather, and training standards.
                         </p>
                     </motion.div>

@@ -146,15 +146,18 @@ export default function ContactPage() {
                 ))}
               </div>
 
-              {/* Map Placeholder */}
+              {/* Interactive Map */}
               <div className="rounded-2xl overflow-hidden border border-border h-80 bg-muted">
-                <div className="w-full h-full flex items-center justify-center bg-secondary">
-                  <div className="text-center">
-                    <MapPin className="h-12 w-12 text-primary mx-auto mb-4" />
-                    <p className="text-muted-foreground">Interactive Map</p>
-                    <p className="text-sm text-muted-foreground">C-404, 3rd Floor, Near Ramphal Chowk Sector-7, Dwarka, New Delhi - 110075</p>
-                  </div>
-                </div>
+                <iframe
+                  src="https://maps.google.com/maps?q=C705%2C%20Sector%207%2C%20Block%20C%2C%20Palam%20Extension%2C%20Dwarka%2C%20Delhi%2C%20110077&output=embed"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Location Map - C705, Sector 7, Block C, Palam Extension, Dwarka, Delhi, 110077"
+                ></iframe>
               </div>
 
               {/* Quick Connect */}

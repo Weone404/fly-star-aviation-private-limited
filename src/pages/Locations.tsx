@@ -7,8 +7,8 @@ import { MapPin, Phone, ArrowRight, ChevronRight } from "lucide-react";
 const locationData: Record<string, { name: string; description: string; highlights: string[]; centers: number }> = {
   india: {
     name: "Pilot Training in India",
-    description: "India offers excellent opportunities for pilot training with DGCA-approved flying schools, modern aircraft, and favorable weather conditions throughout the year.",
-    highlights: ["DGCA Approved Schools", "Year-round Flying Weather", "Cost-effective Training", "Strong Aviation Industry"],
+    description: "India offers excellent opportunities for pilot training with DGCA-  flying schools, modern aircraft, and favorable weather conditions throughout the year.",
+    highlights: ["DGCA   Schools", "Year-round Flying Weather", "Cost-effective Training", "Strong Aviation Industry"],
     centers: 16,
   },
   hyderabad: {

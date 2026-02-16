@@ -20,7 +20,7 @@ const navigation: NavItem[] = [
 
   {
     name: "Courses",
-    href: "/cpl",
+    href: "/Courses/cpl",
     children: [
       { name: "CPL – Commercial Pilot License", href: "/courses/cpl" },
       { name: "ATPL – Airline Transport Pilot License", href: "/courses/atpl" },
@@ -50,12 +50,12 @@ const navigation: NavItem[] = [
     href: "/become-a-pilot",
     children: [
       { name: "Steps to become pilot", href: "/become-a-pilot/become-pilot" },
-      { name: "Commercial Pilot License", href: "/become-a-pilot/commercial-pilot-license" },
+      { name: "Commercial Pilot License", href: "/become-a-pilot/commercial-pilot-licence" },
       { name: "Airline Transport Pilot Licence", href: "/become-a-pilot/airline-transport-pilot-licence" },
       { name: "DGCA Computer Number", href: "/dgca/computer-number" },
       { name: "DGCA Medical Class 1 & 2", href: "/dgca/medical" },
       { name: "DGCA Ground Classes", href: "/dgca/ground-classes" },
-      { name: "Radio Telephony (RTR)", href: "/dgca/rtr" },
+      { name: "Radio Telephony (RTR)", href: "/rtr" },
       { name: "Board Verification", href: "/dgca/board-verification" },
       { name: "DGCA Full Form", href: "/dgca/full-form" },
     ],

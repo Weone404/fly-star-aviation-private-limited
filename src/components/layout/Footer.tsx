@@ -50,7 +50,7 @@ export function Footer() {
               </div>
             </Link>
             <p className="text-white/70 mb-6 max-w-sm">
-              Your trusted partner in aviation training and services. DGCA approved
+              Your trusted partner in aviation training and services. DGCA
               institute dedicated to creating world-class pilots.
             </p>
             <div className="space-y-3">
