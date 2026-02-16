@@ -56,7 +56,7 @@ export function Footer() {
             <div className="space-y-3">
               <a href="tel:+919953536199" className="flex items-center gap-3 text-white/70 hover:text-accent transition-colors">
                 <Phone className="h-5 w-5 text-accent" />
-                +91 99535 36199
+                +91 99535 36199 , 9953566619
               </a>
               <a href="mailto:info@flyingstaraviator.com" className="flex items-center gap-3 text-white/70 hover:text-accent transition-colors">
                 <Mail className="h-5 w-5 text-accent" />
@@ -64,8 +64,8 @@ export function Footer() {
               </a>
               <div className="flex items-start gap-3 text-white/70">
                 <MapPin className="h-5 w-5 text-accent flex-shrink-0 mt-0.5" />
-                <span>C-404, 3rd Floor, Near Ramphal Chowk
-                  <br />Sector-7, Dwarka, New Delhi - 110075</span>
+                <span>C705, Sector 7, Block C,
+                  <br />Palam Extension, Dwarka, Delhi, 110077</span>
               </div>
             </div>
           </div>

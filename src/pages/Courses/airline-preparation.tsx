@@ -7,12 +7,15 @@ import {
     Plane,
     GraduationCap,
     BookOpen,
-    DollarSign,
+    Users,
+    Map,
+    Monitor,
     Briefcase,
-    TrendingUp,
+    ClipboardList,
     ArrowRight,
     ChevronRight,
     CheckCircle,
+    Star,
 } from "lucide-react";
 import {
     Accordion,
@@ -21,167 +24,185 @@ import {
     AccordionTrigger,
 } from "@/components/ui/accordion";
 
-const cplServices = [
-    {
-        icon: Plane,
-        title: "Commercial Pilot License",
-        description:
-            "A commercial pilot license is a professional certification that allows individuals to fly aircraft for commercial operations.",
-        href: "/cpl/overview",
-    },
+const courseModules = [
     {
         icon: BookOpen,
-        title: "Ground Classes",
+        title: "Theory & Practical Training",
         description:
-            "Comprehensive ground training covering all DGCA exam subjects — Air Navigation, Meteorology, Air Regulations, Technical General & Specific.",
-        href: "/cpl/ground-classes",
+            "Delve into aviation regulations, navigation procedures, and safety protocols with simulated flight scenarios for real-world application.",
+        href: "/airline-prep/theory",
     },
     {
-        icon: GraduationCap,
-        title: "CPL Course Fees",
+        icon: Plane,
+        title: "Airline Operations & Procedures",
         description:
-            "The total CPL licence cost depends on flying hours, aircraft type, and training facilities. Get a complete fee breakdown.",
-        href: "/cpl/fees",
+            "Gain a deep understanding of airline operations, standard operating procedures, and how to navigate all phases of a commercial flight.",
+        href: "/airline-prep/operations",
     },
     {
-        icon: TrendingUp,
-        title: "Career After CPL",
+        icon: Users,
+        title: "Crew Resource Management",
         description:
-            "Explore career options as an Airline First Officer, Charter Pilot, Cargo Pilot, Corporate Pilot, or Flight Instructor.",
-        href: "/cpl/careers",
+            "Develop essential teamwork and communication skills through CRM training for safe and efficient flight operations.",
+        href: "/airline-prep/crm",
+    },
+    {
+        icon: Map,
+        title: "Flight Planning & Navigation",
+        description:
+            "Master route optimisation, aviation chart reading, weather interpretation, and informed decision-making during flight planning.",
+        href: "/airline-prep/navigation",
+    },
+    {
+        icon: Monitor,
+        title: "Simulator Training",
+        description:
+            "Experience realistic flight scenarios in state-of-the-art simulators to hone skills, practise emergency procedures, and build confidence.",
+        href: "/airline-prep/simulator",
+    },
+    {
+        icon: ClipboardList,
+        title: "Interview & Assessment Prep",
+        description:
+            "Receive structured guidance on airline interviews, aptitude tests, and simulator assessments to excel in the selection process.",
+        href: "/airline-prep/interview",
     },
 ];
 
-const trainingSteps = [
+const courseHighlights = [
+    "Comprehensive airline operations training",
+    "State-of-the-art simulator sessions",
+    "CRM and cockpit communication skills",
+    "Expert-led interview preparation",
+    "Industry insights from aviation professionals",
+    "Flight planning and navigation mastery",
+    "Emergency procedures and safety training",
+    "DGCA-aligned curriculum standards",
+];
+
+const trainingComponents = [
     {
         step: 1,
-        title: "Admission",
+        title: "Theory & Ground Modules",
         description:
-            "Complete 10+2 with Physics and Mathematics, apply for the commercial pilot licence course.",
+            "Structured classroom sessions covering aviation regulations, navigation procedures, safety protocols, and airline standard operating procedures.",
     },
     {
         step: 2,
-        title: "Ground Training",
+        title: "CRM Workshop",
         description:
-            "Attend CPL ground classes covering Air Navigation, Meteorology, Air Regulations, Technical General and Technical Specific.",
+            "Interactive crew resource management sessions focused on effective communication, decision-making, and teamwork within a cockpit crew environment.",
     },
     {
         step: 3,
-        title: "DGCA Exams",
+        title: "Flight Planning Lab",
         description:
-            "Prepare for and clear all DGCA theory examinations to qualify for flying training.",
+            "Hands-on exercises in route optimisation, reading aviation charts, interpreting meteorological data, and building sound pre-flight decisions.",
     },
     {
         step: 4,
-        title: "Flying Training Hours",
+        title: "Simulator Training",
         description:
-            "Complete required aircraft flying hours and simulator training at an approved FTO.",
+            "Full-mission simulator sessions covering normal and emergency procedures in realistic airline scenarios to build confidence and competency.",
     },
     {
         step: 5,
-        title: "Skill Tests",
+        title: "Industry Insights Programme",
         description:
-            "Pass the final skill test conducted by a DGCA-authorised examiner.",
+            "Guest lectures by experienced airline captains and aviation professionals sharing current industry trends, regulations, and best practices.",
     },
     {
         step: 6,
-        title: "CPL License Issued",
+        title: "Interview & Assessment Readiness",
         description:
-            "Receive your Commercial Pilot License and begin your airline career path.",
+            "Dedicated modules on interview techniques, psychometric and aptitude tests, and simulator-based assessments used by major airlines.",
     },
 ];
 
 const courseOverview = [
-    { label: "Course Name", value: "Commercial Pilot License Course" },
-    { label: "Course Type", value: "Professional Pilot Course" },
-    { label: "Training Mode", value: "Ground + Flying" },
-    { label: "Eligibility", value: "10+2 with PCM" },
-    { label: "License", value: "CPL License" },
-    { label: "Career Outcome", value: "Commercial Pilot" },
+    { label: "Course Name", value: "Airline Preparation Course" },
+    { label: "Course Type", value: "Professional Pilot Programme" },
+    { label: "Training Mode", value: "Theory + Simulator + Practical" },
+    { label: "Eligibility", value: "CPL Holders / Final-Year Trainees" },
+    { label: "Focus Areas", value: "CRM, Operations, Navigation, Interviews" },
+    { label: "Career Outcome", value: "Airline First Officer" },
 ];
 
-const groundSubjects = [
-    { name: "Air Navigation", pass: "70%", papers: 1 },
-    { name: "Meteorology", pass: "70%", papers: 1 },
-    { name: "Air Regulations", pass: "70%", papers: 1 },
-    { name: "Technical General", pass: "70%", papers: 1 },
-    { name: "Technical Specific", pass: "70%", papers: 1 },
+const crmTopics = [
+    { name: "Effective Cockpit Communication", detail: "Core skill" },
+    { name: "Decision-Making Under Pressure", detail: "Core skill" },
+    { name: "Situational Awareness", detail: "Core skill" },
+    { name: "Leadership & Teamwork", detail: "Core skill" },
+    { name: "Threat & Error Management", detail: "Core skill" },
 ];
 
-const careerOptions = [
+const careerOutcomes = [
     { title: "Airline First Officer", icon: Plane },
-    { title: "Charter Pilot", icon: Plane },
-    { title: "Cargo Pilot", icon: Briefcase },
+    { title: "Regional Carrier Pilot", icon: Plane },
+    { title: "Cargo Operations Pilot", icon: Briefcase },
     { title: "Corporate Aviation Pilot", icon: Briefcase },
-    { title: "Flight Instructor", icon: GraduationCap },
+    { title: "Charter & Executive Pilot", icon: Plane },
+    { title: "Future Airline Captain", icon: GraduationCap },
 ];
 
-const salaryGrowth = [
-    { stage: "Fresh CPL holder", level: "Entry-level salary", icon: DollarSign },
-    { stage: "Mid-level pilot", level: "Higher monthly earnings", icon: TrendingUp },
-    { stage: "Captain", level: "Premium salary range", icon: TrendingUp },
+const industryInsights = [
+    {
+        stage: "Guest Lectures",
+        description: "Active airline captains share real-world operational experience",
+        icon: Star,
+    },
+    {
+        stage: "Regulatory Updates",
+        description: "Stay current with DGCA and international aviation regulations",
+        icon: ClipboardList,
+    },
+    {
+        stage: "Interview Simulations",
+        description: "Mock airline interviews with structured feedback sessions",
+        icon: Users,
+    },
 ];
 
 const faqs = [
     {
-        question: "What is a Commercial Pilot License?",
+        question: "What is the Airline Preparation Course?",
         answer:
-            "A commercial pilot license is a professional certification that allows individuals to fly aircraft for commercial operations. After completing a commercial pilot licence course, candidates can work with airlines, cargo companies, charter operators, and aviation organizations.",
+            "The Airline Preparation Course is a comprehensive programme designed to equip aspiring pilots with the knowledge, skills, and confidence required to excel in commercial aviation. It covers airline operations, crew resource management, flight planning, simulator training, industry insights, and interview preparation — giving graduates a competitive edge in airline recruitment.",
     },
     {
-        question: "What is the eligibility for a CPL course in India?",
+        question: "Who is this course designed for?",
         answer:
-            "Students must complete 10+2 with Physics and Mathematics, pass a medical fitness test, apply for the commercial pilot licence course, confirm admission in the CPL program, and then begin ground classes and flying training.",
+            "The course is tailored for CPL holders and final-year flying trainees who are preparing to enter the airline industry. It bridges the gap between completing pilot training and meeting the rigorous standards expected by commercial airlines during the selection process.",
     },
     {
-        question: "What does the commercial pilot license syllabus cover?",
+        question: "What is Crew Resource Management (CRM) and why is it important?",
         answer:
-            "The commercial pilot license syllabus covers Air Navigation, Meteorology, Air Regulations, Technical General, and Technical Specific. Students also attend CPL ground classes to prepare for DGCA theory exams and develop a strong understanding of aviation concepts.",
+            "Crew Resource Management (CRM) training develops essential teamwork and communication skills critical to airline operations. It focuses on effective cockpit communication, collaborative decision-making, situational awareness, and threat and error management — all of which are essential competencies assessed during airline selection and throughout a pilot's career.",
     },
     {
-        question: "How much does the CPL course cost?",
+        question: "Does the course include simulator training?",
         answer:
-            "The total CPL licence cost depends on several factors like flying hours, aircraft type, and training facilities. It includes flying training charges, ground classes, simulator training, exam and licensing fees, and study materials. The total commercial pilot fees can vary depending on the academy and training structure.",
+            "Yes. The Airline Preparation Course includes dedicated simulator sessions in state-of-the-art flight simulators. These sessions allow students to practise normal and emergency procedures in realistic airline scenarios, building confidence and technical proficiency in a safe, controlled environment.",
     },
     {
-        question: "What are the career options after completing a CPL course?",
+        question: "How does the course prepare me for airline interviews?",
         answer:
-            "After completing a commercial pilot license course in India, students can work as an Airline First Officer, Charter Pilot, Cargo Pilot, Corporate Aviation Pilot, or Flight Instructor. A CPL pilot can grow into a captain role with experience and flight hours.",
+            "The course includes specific modules on interview techniques, aptitude and psychometric tests, and simulator-based assessments used by leading airlines. Students participate in mock interviews and receive structured feedback, ensuring they are thoroughly prepared for the selection process at domestic and international carriers.",
     },
 ];
 
-const keyAdvantages = [
-    "Strong career growth in aviation",
-    "Opportunity to travel globally",
-    "High earning potential",
-    "Respected profession",
-    "Exciting and dynamic work environment",
-];
-
-const feesBreakdown = [
-    "Flying training charges",
-    "Ground classes",
-    "Simulator training",
-    "Exam and licensing fees",
-    "Study materials",
-];
-
-const admissionSteps = [
-    "Complete 10+2 with Physics and Mathematics",
-    "Apply for the commercial pilot licence course",
-    "Pass medical fitness test",
-    "Confirm admission in CPL program",
-    "Begin ground classes and flying training",
-];
-
-export default function CPLCoursePage() {
+export default function AirlinePreparationPage() {
     return (
         <Layout>
             <Helmet>
-                <title>Commercial Pilot License Course in India | CPL Training</title>
-                <meta name="description" content="Become a commercial pilot with DGCA-approved pilot training in India. Check CPL course fees, eligibility, syllabus & career opportunities. Apply now." />
+                <title>Airline Preparation Course in India | Pilot Interview & CRM Training</title>
+                <meta
+                    name="description"
+                    content="Prepare for your airline career with our comprehensive Airline Preparation Course. Covers CRM, flight planning, simulator training, and interview preparation for aspiring commercial pilots."
+                />
             </Helmet>
-            {/* Hero Section */}
+
+            {/* ── Hero Section ─────────────────────────────────────────── */}
             <section className="relative py-24 aviation-gradient text-primary-foreground">
                 <div className="container">
                     <motion.div
@@ -190,16 +211,15 @@ export default function CPLCoursePage() {
                         className="max-w-3xl"
                     >
                         <span className="inline-block text-sm font-semibold bg-white/20 px-4 py-2 rounded-full mb-4">
-                            Plane Commercial Pilot License Course in India - Complete Guide to Pilot Training & Career
+                            Airline Preparation Course — Bridge the Gap Between Training & Your First Airline Job
                         </span>
                         <h1 className="text-4xl md:text-6xl font-bold mb-6">
-                            Commercial Pilot License Course - Start Your Pilot Training Journey
+                            Airline Preparation Course — Launch Your Commercial Aviation Career
                         </h1>
                         <p className="text-xl text-primary-foreground/80 mb-8">
-                            Become a professional commercial pilot with a structured pilot course designed to give you
-                            world-class pilot training and real flying experience. Our commercial pilot course prepares
-                            students for a successful aviation career with complete ground training, flying practice, and
-                            career guidance.
+                            Prepare for a successful career in aviation with our comprehensive Airline Preparation Course.
+                            Meticulously designed to equip aspiring pilots with the knowledge, skills, and confidence
+                            required to excel in the dynamic world of commercial aviation.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4">
                             <Button variant="gold" size="lg" asChild>
@@ -209,7 +229,7 @@ export default function CPLCoursePage() {
                                 </Link>
                             </Button>
                             <Button variant="outline-white" size="lg" asChild>
-                                <Link to="/cpl/fees">Get CPL Course Fees</Link>
+                                <Link to="/airline-prep/fees">Get Course Fees</Link>
                             </Button>
                             <Button variant="outline-white" size="lg" asChild>
                                 <Link to="/contact">Talk to Counselor</Link>
@@ -219,7 +239,7 @@ export default function CPLCoursePage() {
                 </div>
             </section>
 
-            {/* What is CPL */}
+            {/* ── About the Course ─────────────────────────────────────── */}
             <section className="py-20 bg-background">
                 <div className="container">
                     <motion.div
@@ -229,12 +249,12 @@ export default function CPLCoursePage() {
                         className="text-center mb-16"
                     >
                         <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                            Understanding the Commercial Pilot License (CPL)
+                            About the Airline Preparation Course
                         </h2>
                         <p className="text-muted-foreground max-w-3xl mx-auto text-lg">
-                            A commercial pilot license is a professional certification that allows individuals to fly aircraft
-                            for commercial operations. After completing a commercial pilot licence course, candidates can work
-                            with airlines, cargo companies, charter operators, and aviation organizations.
+                            Our Airline Preparation Course is tailored to meet the rigorous standards set by the aviation
+                            industry, ensuring that graduates are well-prepared for the challenges of a professional pilot
+                            career. The course covers a wide range of topics, providing a holistic approach to pilot readiness.
                         </p>
                     </motion.div>
 
@@ -246,13 +266,14 @@ export default function CPLCoursePage() {
                             className="p-8 rounded-2xl border border-border bg-card"
                         >
                             <p className="text-muted-foreground mb-4">
-                                This pilot course is the most important step for students who want to build a long-term career
-                                in aviation. With proper commercial pilot training, students gain both theoretical knowledge and
-                                practical flying experience required to become skilled pilots.
+                                This course bridges the gap between completing your commercial pilot training and meeting the
+                                exacting expectations of airline recruiters. From mastering crew resource management to
+                                acing airline interview assessments, every module is purpose-built for career readiness.
                             </p>
                             <p className="text-muted-foreground">
-                                The commercial pilot license course in India follows DGCA guidelines and ensures students are
-                                trained according to industry safety standards.
+                                Participants benefit from industry-aligned curriculum, experienced aviation instructors,
+                                state-of-the-art simulator access, and hands-on preparation for the entire airline
+                                selection process.
                             </p>
                         </motion.div>
 
@@ -263,13 +284,13 @@ export default function CPLCoursePage() {
                             transition={{ delay: 0.1 }}
                         >
                             <div className="grid grid-cols-2 gap-4">
-                                {cplServices.map((service) => (
-                                    <Link to={service.href} key={service.title} className="block group">
+                                {courseModules.slice(0, 4).map((module) => (
+                                    <Link to={module.href} key={module.title} className="block group">
                                         <div className="h-full p-5 rounded-2xl border border-border bg-card hover:border-primary/50 hover:shadow-hover transition-all">
                                             <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-3 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                                                <service.icon className="h-5 w-5" />
+                                                <module.icon className="h-5 w-5" />
                                             </div>
-                                            <h3 className="text-sm font-bold mb-1">{service.title}</h3>
+                                            <h3 className="text-sm font-bold mb-1">{module.title}</h3>
                                             <div className="flex items-center text-primary text-xs font-semibold mt-2">
                                                 Learn More <ChevronRight className="h-3 w-3 ml-1" />
                                             </div>
@@ -282,7 +303,7 @@ export default function CPLCoursePage() {
                 </div>
             </section>
 
-            {/* Benefits Section */}
+            {/* ── Course Highlights ─────────────────────────────────────── */}
             <section className="py-20 bg-muted/30">
                 <div className="container">
                     <motion.div
@@ -292,42 +313,33 @@ export default function CPLCoursePage() {
                         className="text-center mb-16"
                     >
                         <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                            Benefits of Becoming a CPL Pilot
+                            Why Choose Our Airline Preparation Course?
                         </h2>
                         <p className="text-muted-foreground max-w-2xl mx-auto">
-                            Choosing a commercial pilot course opens doors to a high-growth profession. Aviation is expanding
-                            rapidly, creating a strong demand for trained pilots across domestic and international airlines.
+                            Designed in consultation with airline industry professionals, our course covers every
+                            competency airlines assess — from technical knowledge to interpersonal readiness.
                         </p>
                     </motion.div>
 
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
-                        {keyAdvantages.map((advantage, index) => (
+                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
+                        {courseHighlights.map((highlight, index) => (
                             <motion.div
-                                key={advantage}
+                                key={highlight}
                                 initial={{ opacity: 0, y: 30 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
-                                transition={{ delay: index * 0.1 }}
+                                transition={{ delay: index * 0.08 }}
                                 className="flex items-center gap-3 p-5 rounded-xl bg-card border border-border"
                             >
                                 <CheckCircle className="h-5 w-5 text-primary flex-shrink-0" />
-                                <span className="font-medium">{advantage}</span>
+                                <span className="font-medium text-sm">{highlight}</span>
                             </motion.div>
                         ))}
                     </div>
-
-                    <motion.p
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="text-center text-muted-foreground mt-8"
-                    >
-                        Completing a cpl course allows students to become a certified cpl pilot and explore multiple career opportunities.
-                    </motion.p>
                 </div>
             </section>
 
-            {/* Training Structure */}
+            {/* ── Course Modules ────────────────────────────────────────── */}
             <section className="py-20 bg-background">
                 <div className="container">
                     <motion.div
@@ -337,11 +349,50 @@ export default function CPLCoursePage() {
                         className="text-center mb-16"
                     >
                         <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                            Structure of Commercial Pilot Training
+                            What the Course Covers
                         </h2>
                         <p className="text-muted-foreground max-w-2xl mx-auto">
-                            Commercial pilot training in India includes both classroom learning and practical flying. A
-                            professional CPL pilot training program ensures that students are trained in all aspects of aviation.
+                            A wide range of topics delivered through theory, simulation, and practical sessions — providing
+                            a holistic approach to airline readiness.
+                        </p>
+                    </motion.div>
+
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {courseModules.map((module, index) => (
+                            <motion.div
+                                key={module.title}
+                                initial={{ opacity: 0, y: 30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: index * 0.1 }}
+                                className="p-6 rounded-xl bg-card border border-border hover:border-primary/50 hover:shadow-hover transition-all group"
+                            >
+                                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                                    <module.icon className="h-6 w-6" />
+                                </div>
+                                <h3 className="font-bold text-lg mb-2">{module.title}</h3>
+                                <p className="text-sm text-muted-foreground">{module.description}</p>
+                            </motion.div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* ── CRM Training ─────────────────────────────────────────── */}
+            <section className="py-20 bg-muted/30">
+                <div className="container">
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="text-center mb-16"
+                    >
+                        <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                            Crew Resource Management (CRM) Training
+                        </h2>
+                        <p className="text-muted-foreground max-w-2xl mx-auto">
+                            Understand the importance of effective communication and collaboration in ensuring safe and
+                            efficient flight operations. CRM is a core competency assessed by every major airline.
                         </p>
                     </motion.div>
 
@@ -352,14 +403,14 @@ export default function CPLCoursePage() {
                             viewport={{ once: true }}
                             className="p-8 rounded-2xl border border-border bg-card"
                         >
-                            <h3 className="text-xl font-bold mb-6">Training Includes</h3>
+                            <h3 className="text-xl font-bold mb-6">CRM Training Includes</h3>
                             <ul className="space-y-4">
                                 {[
-                                    "Ground theory classes",
-                                    "Flight simulator training",
-                                    "Aircraft flying hours",
-                                    "Safety and emergency handling",
-                                    "DGCA exam preparation",
+                                    "Effective cockpit communication",
+                                    "Collaborative decision-making",
+                                    "Threat and error management",
+                                    "Leadership within a crew environment",
+                                    "Situational awareness development",
                                 ].map((item, i) => (
                                     <li key={i} className="flex items-center gap-3 text-muted-foreground">
                                         <CheckCircle className="h-4 w-4 text-primary flex-shrink-0" />
@@ -368,7 +419,8 @@ export default function CPLCoursePage() {
                                 ))}
                             </ul>
                             <p className="text-sm text-muted-foreground mt-6">
-                                This complete commercial pilot training structure helps students gain confidence and technical knowledge.
+                                CRM skills are assessed at every stage of an airline career — from initial selection to
+                                recurrent training and command upgrade.
                             </p>
                         </motion.div>
 
@@ -377,28 +429,26 @@ export default function CPLCoursePage() {
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                         >
-                            <h3 className="text-xl font-bold mb-6">Subjects Covered in CPL Course</h3>
+                            <h3 className="text-xl font-bold mb-6">Key CRM Competencies Covered</h3>
                             <p className="text-muted-foreground mb-6">
-                                The commercial pilot license syllabus is designed to prepare students for real-world aviation operations.
+                                Our CRM curriculum aligns with international aviation safety standards and airline assessment criteria.
                             </p>
                             <div className="rounded-2xl border border-border overflow-hidden">
                                 <table className="w-full">
                                     <thead className="bg-primary text-primary-foreground">
                                         <tr>
-                                            <th className="px-4 py-3 text-left font-semibold text-sm">Subject</th>
-                                            <th className="px-4 py-3 text-center font-semibold text-sm">Papers</th>
-                                            <th className="px-4 py-3 text-center font-semibold text-sm">Pass %</th>
+                                            <th className="px-4 py-3 text-left font-semibold text-sm">Competency</th>
+                                            <th className="px-4 py-3 text-center font-semibold text-sm">Category</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {groundSubjects.map((subject, index) => (
-                                            <tr key={subject.name} className={index % 2 === 0 ? "bg-card" : "bg-muted/30"}>
-                                                <td className="px-4 py-3 text-sm">{subject.name}</td>
-                                                <td className="px-4 py-3 text-center text-sm">{subject.papers}</td>
+                                        {crmTopics.map((topic, index) => (
+                                            <tr key={topic.name} className={index % 2 === 0 ? "bg-card" : "bg-muted/30"}>
+                                                <td className="px-4 py-3 text-sm">{topic.name}</td>
                                                 <td className="px-4 py-3 text-center">
                                                     <span className="inline-flex items-center gap-1 text-primary font-medium text-sm">
                                                         <CheckCircle className="h-3 w-3" />
-                                                        {subject.pass}
+                                                        {topic.detail}
                                                     </span>
                                                 </td>
                                             </tr>
@@ -407,117 +457,15 @@ export default function CPLCoursePage() {
                                 </table>
                             </div>
                             <p className="text-sm text-muted-foreground mt-4">
-                                Students also attend cpl ground classes to prepare for DGCA theory exams and develop a strong understanding of aviation concepts.
+                                Students practise CRM skills through group exercises, simulator scenarios, and facilitated debriefs.
                             </p>
                         </motion.div>
                     </div>
                 </div>
             </section>
 
-            {/* Admission Process */}
-            <section className="py-20 bg-muted/30">
-                <div className="container">
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="text-center mb-16"
-                    >
-                        <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                            Step-by-Step Admission Guide
-                        </h2>
-                        <p className="text-muted-foreground max-w-2xl mx-auto">
-                            The Commercial Pilot License Admission Process is simple and structured. Students must meet
-                            academic and medical requirements before starting training.
-                        </p>
-                    </motion.div>
-
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto mb-8">
-                        {admissionSteps.map((step, index) => (
-                            <motion.div
-                                key={index}
-                                initial={{ opacity: 0, y: 30 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: index * 0.1 }}
-                                className="relative p-6 rounded-xl bg-card border border-border"
-                            >
-                                <div className="absolute -top-4 -left-4 w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold">
-                                    {index + 1}
-                                </div>
-                                <p className="text-sm text-muted-foreground pt-2">{step}</p>
-                            </motion.div>
-                        ))}
-                    </div>
-
-                    <motion.p
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        viewport={{ once: true }}
-                        className="text-center text-muted-foreground"
-                    >
-                        This process ensures students are prepared for professional pilot training.
-                    </motion.p>
-                </div>
-            </section>
-
-            {/* CPL Fees */}
+            {/* ── Training Journey ─────────────────────────────────────── */}
             <section className="py-20 bg-background">
-                <div className="container">
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="text-center mb-12"
-                    >
-                        <h2 className="text-3xl md:text-4xl font-bold mb-4">CPL Course Fees in India</h2>
-                        <p className="text-muted-foreground max-w-2xl mx-auto">
-                            One of the most common questions is about CPL course fees. The total cpl licence cost depends on
-                            several factors like flying hours, aircraft type, and training facilities.
-                        </p>
-                    </motion.div>
-
-                    <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                        <motion.div
-                            initial={{ opacity: 0, x: -30 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            className="p-8 rounded-2xl border border-border bg-card"
-                        >
-                            <h3 className="text-xl font-bold mb-6">CPL Licence Cost Includes</h3>
-                            <ul className="space-y-4">
-                                {feesBreakdown.map((item, i) => (
-                                    <li key={i} className="flex items-center gap-3 text-muted-foreground">
-                                        <CheckCircle className="h-4 w-4 text-primary flex-shrink-0" />
-                                        {item}
-                                    </li>
-                                ))}
-                            </ul>
-                        </motion.div>
-
-                        <motion.div
-                            initial={{ opacity: 0, x: 30 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            className="p-8 rounded-2xl bg-primary/5 border border-primary/20 flex flex-col justify-center"
-                        >
-                            <p className="text-muted-foreground mb-6">
-                                The total commercial pilot fees can vary depending on the academy and training structure.
-                                However, this investment leads to a high-value career in aviation.
-                            </p>
-                            <Button variant="gold" size="lg" asChild className="w-full">
-                                <Link to="/cpl/fees">
-                                    Get Detailed Fee Breakdown
-                                    <ArrowRight className="h-4 w-4 ml-2" />
-                                </Link>
-                            </Button>
-                        </motion.div>
-                    </div>
-                </div>
-            </section>
-
-            {/* Training Journey Steps */}
-            <section className="py-20 bg-muted/30">
                 <div className="container">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
@@ -527,12 +475,12 @@ export default function CPLCoursePage() {
                     >
                         <h2 className="text-3xl md:text-4xl font-bold mb-4">Step-by-Step Training Path</h2>
                         <p className="text-muted-foreground max-w-2xl mx-auto">
-                            This structured CPL pilot training helps students gradually develop knowledge, flying skills, and confidence.
+                            A structured progression that builds knowledge, practical skill, and airline-readiness at every stage.
                         </p>
                     </motion.div>
 
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {trainingSteps.map((item, index) => (
+                        {trainingComponents.map((item, index) => (
                             <motion.div
                                 key={item.step}
                                 initial={{ opacity: 0, y: 30 }}
@@ -552,58 +500,24 @@ export default function CPLCoursePage() {
                 </div>
             </section>
 
-            {/* Career Opportunities */}
-            <section className="py-20 bg-background">
+            {/* ── Industry Insights ─────────────────────────────────────── */}
+            <section className="py-20 bg-muted/30">
                 <div className="container">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="text-center mb-16"
+                        className="text-center mb-12"
                     >
-                        <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                            Jobs After Commercial Pilot Training
-                        </h2>
+                        <h2 className="text-3xl md:text-4xl font-bold mb-4">Industry Insights Programme</h2>
                         <p className="text-muted-foreground max-w-2xl mx-auto">
-                            After completing a commercial pilot license course in India, students can explore various career paths.
-                            A cpl pilot can grow into a captain role with experience and flight hours.
-                        </p>
-                    </motion.div>
-
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-                        {careerOptions.map((career, index) => (
-                            <motion.div
-                                key={career.title}
-                                initial={{ opacity: 0, y: 30 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: index * 0.1 }}
-                                className="p-6 rounded-xl bg-card border border-border hover:border-primary/50 hover:shadow-hover transition-all group"
-                            >
-                                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                                    <career.icon className="h-6 w-6" />
-                                </div>
-                                <h3 className="font-bold text-lg">{career.title}</h3>
-                            </motion.div>
-                        ))}
-                    </div>
-
-                    {/* Salary Growth */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="text-center mb-10"
-                    >
-                        <h2 className="text-3xl md:text-4xl font-bold mb-4">Salary After Commercial Pilot Training</h2>
-                        <p className="text-muted-foreground max-w-2xl mx-auto">
-                            The commercial pilot license salary depends on experience, airline, and aircraft type. With experience,
-                            pilots enjoy strong financial growth and international career opportunities.
+                            Benefit from guest lectures and insider knowledge from experienced airline professionals.
+                            Stay updated on industry trends, regulations, and best practices to enhance your readiness.
                         </p>
                     </motion.div>
 
                     <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-                        {salaryGrowth.map((item, index) => (
+                        {industryInsights.map((item, index) => (
                             <motion.div
                                 key={item.stage}
                                 initial={{ opacity: 0, y: 30 }}
@@ -619,14 +533,52 @@ export default function CPLCoursePage() {
                                     <item.icon className="h-6 w-6 text-primary" />
                                 </div>
                                 <h3 className="font-bold mb-2">{item.stage}</h3>
-                                <p className="text-sm text-muted-foreground">{item.level}</p>
+                                <p className="text-sm text-muted-foreground">{item.description}</p>
                             </motion.div>
                         ))}
                     </div>
                 </div>
             </section>
 
-            {/* Course Overview Table */}
+            {/* ── Career Outcomes ───────────────────────────────────────── */}
+            <section className="py-20 bg-background">
+                <div className="container">
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="text-center mb-16"
+                    >
+                        <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                            Career Opportunities After Airline Preparation
+                        </h2>
+                        <p className="text-muted-foreground max-w-2xl mx-auto">
+                            Graduates of our Airline Preparation Course are equipped to pursue roles across the full
+                            spectrum of commercial aviation operations.
+                        </p>
+                    </motion.div>
+
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+                        {careerOutcomes.map((career, index) => (
+                            <motion.div
+                                key={career.title}
+                                initial={{ opacity: 0, y: 30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: index * 0.1 }}
+                                className="p-6 rounded-xl bg-card border border-border hover:border-primary/50 hover:shadow-hover transition-all group"
+                            >
+                                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                                    <career.icon className="h-6 w-6" />
+                                </div>
+                                <h3 className="font-bold text-lg">{career.title}</h3>
+                            </motion.div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* ── Course Overview Table ─────────────────────────────────── */}
             <section className="py-20 bg-muted/30">
                 <div className="container">
                     <motion.div
@@ -666,7 +618,7 @@ export default function CPLCoursePage() {
                 </div>
             </section>
 
-            {/* Why Choose */}
+            {/* ── Why Right Preparation Matters ────────────────────────── */}
             <section className="py-20 bg-background">
                 <div className="container">
                     <motion.div
@@ -676,22 +628,23 @@ export default function CPLCoursePage() {
                         className="max-w-3xl mx-auto"
                     >
                         <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                            Importance of the Right Pilot Course
+                            Why the Right Preparation Makes All the Difference
                         </h2>
                         <p className="text-muted-foreground text-lg mb-4">
-                            Selecting the right pilot course is crucial for building a successful aviation career. A well-structured
-                            commercial pilot licence course provides proper guidance, experienced instructors, and quality training
-                            facilities.
+                            The transition from completing your pilot training to securing a position at an airline is
+                            highly competitive. Airlines assess candidates on technical knowledge, CRM competencies,
+                            simulator performance, and communication skills simultaneously.
                         </p>
                         <p className="text-muted-foreground text-lg">
-                            A strong foundation in pilot training helps students clear exams, gain flying experience, and secure
-                            aviation jobs faster.
+                            Our Airline Preparation Course ensures you walk into every assessment and interview with
+                            structured preparation, practised skills, and the confidence that comes from expert-guided
+                            readiness — significantly improving your selection prospects.
                         </p>
                     </motion.div>
                 </div>
             </section>
 
-            {/* FAQ */}
+            {/* ── FAQ ───────────────────────────────────────────────────── */}
             <section className="py-20 bg-muted/30">
                 <div className="container">
                     <motion.div
@@ -702,7 +655,7 @@ export default function CPLCoursePage() {
                     >
                         <h2 className="text-3xl md:text-4xl font-bold mb-4">Frequently Asked Questions</h2>
                         <p className="text-muted-foreground max-w-2xl mx-auto">
-                            Common questions about commercial pilot license course and pilot training in India.
+                            Common questions about our Airline Preparation Course and what to expect.
                         </p>
                     </motion.div>
 
@@ -732,7 +685,7 @@ export default function CPLCoursePage() {
                 </div>
             </section>
 
-            {/* Final CTA */}
+            {/* ── Final CTA ─────────────────────────────────────────────── */}
             <section className="py-20 aviation-gradient text-primary-foreground">
                 <div className="container">
                     <motion.div
@@ -742,18 +695,17 @@ export default function CPLCoursePage() {
                         className="max-w-3xl mx-auto text-center"
                     >
                         <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                            Build Your Aviation Career Today
+                            Take the Next Step Towards Your Airline Career
                         </h2>
                         <p className="text-primary-foreground/80 text-lg mb-4">
-                            A commercial pilot license is more than just a certification — it is the beginning of an exciting
-                            and rewarding profession. From structured commercial pilot training and DGCA-approved syllabus to
-                            real flight experience, the cpl course prepares students for a successful future.
+                            The Airline Preparation Course is more than training — it is your competitive advantage
+                            in the airline selection process. From CRM and simulator proficiency to polished interview
+                            performance, every module is designed to maximise your chances of success.
                         </p>
                         <p className="text-primary-foreground/80 text-lg mb-8">
-                            If you are passionate about aviation and dream of flying professionally, enrolling in a commercial
-                            pilot license course in India is the first step toward achieving your goal. With the right training,
-                            dedication, and guidance, you can become a confident and skilled commercial pilot and build a strong
-                            career in the aviation industry.
+                            If you are a CPL holder or final-year trainee ready to pursue your dream of flying for
+                            a commercial airline, enrol in our Airline Preparation Course today and take the most
+                            important step towards your first officer role.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <Button variant="gold" size="lg" asChild>
@@ -763,7 +715,7 @@ export default function CPLCoursePage() {
                                 </Link>
                             </Button>
                             <Button variant="outline-white" size="lg" asChild>
-                                <Link to="/cpl/fees">Get CPL Course Fees</Link>
+                                <Link to="/airline-prep/fees">Get Course Fees</Link>
                             </Button>
                             <Button variant="outline-white" size="lg" asChild>
                                 <a href="tel:+919876543210">Talk to Counselor</a>

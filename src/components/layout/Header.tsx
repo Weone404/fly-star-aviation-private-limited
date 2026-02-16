@@ -20,7 +20,7 @@ const navigation: NavItem[] = [
 
   {
     name: "Courses",
-    href: "/courses",
+    href: "/cpl",
     children: [
       { name: "CPL – Commercial Pilot License", href: "/courses/cpl" },
       { name: "ATPL – Airline Transport Pilot License", href: "/courses/atpl" },
@@ -143,9 +143,9 @@ export function Header() {
                   <Link
                     to={item.href}
                     className={`flex items-center gap-1 px-5 py-3 text-xl font-semibold transition-colors ${location.pathname === item.href ||
-                        location.pathname.startsWith(item.href + "/")
-                        ? "text-primary"
-                        : "text-foreground"
+                      location.pathname.startsWith(item.href + "/")
+                      ? "text-primary"
+                      : "text-foreground"
                       }`}
                   >
                     {item.name}

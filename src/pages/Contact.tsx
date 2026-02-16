@@ -8,9 +8,9 @@ import { Phone, Mail, MapPin, Clock, Send } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 const contactInfo = [
-  { icon: Phone, label: "Phone", value: "+91 99535 36199", href: "tel:+919953536199" },
+  { icon: Phone, label: "Phone", value: "+91 99535 36199 , 9953566619", href: "tel:+919953536199" },
   { icon: Mail, label: "Email", value: "info@flyingstaraviator.com", href: "mailto:info@flyingstaraviator.com" },
-  { icon: MapPin, label: "Address", value: "C-404, 3rd Floor, Near Ramphal Chowk Sector-7, Dwarka, New Delhi - 110075", href: "#" },
+  { icon: MapPin, label: "Address", value: "C705, Sector 7, Block C Palam Extension, Dwarka, Delhi, 110077", href: "#" },
   { icon: Clock, label: "Working Hours", value: "Mon - Sat: 9:00 AM - 6:00 PM", href: "#" },
 ];
 

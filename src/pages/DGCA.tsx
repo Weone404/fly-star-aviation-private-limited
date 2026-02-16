@@ -1,8 +1,23 @@
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet-async";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { BookOpen, FileText, Stethoscope, GraduationCap, ArrowRight, ChevronRight, CheckCircle } from "lucide-react";
+import {
+  FileText,
+  UserCheck,
+  Upload,
+  CheckCircle,
+  AlertCircle,
+  Clock,
+  Shield,
+  ArrowRight,
+  ChevronRight,
+  IdCard,
+  GraduationCap,
+  Plane,
+  BookOpen,
+} from "lucide-react";
 import {
   Accordion,
   AccordionContent,
@@ -10,78 +25,171 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
-const dgcaServices = [
+const computerNumberUses = [
   {
     icon: FileText,
-    title: "DGCA Computer Number",
-    description: "Get your unique DGCA computer number registration for all aviation examinations and licensing.",
-    href: "/dgca/computer-number",
-  },
-  {
-    icon: Stethoscope,
-    title: "Medical Class 1 & 2",
-    description: "Complete guidance for aviation medical examinations and certifications required for pilot licensing.",
-    href: "/dgca/medical",
-  },
-  {
-    icon: BookOpen,
-    title: "Ground Classes",
-    description: "Comprehensive ground training covering all DGCA exam subjects with expert instructors.",
-    href: "/dgca/ground-classes",
+    title: "DGCA Exam Registration",
+    description: "Required to appear for any DGCA ground theory examination",
   },
   {
     icon: GraduationCap,
-    title: "DGCA Full Form",
-    description: "Learn about the Directorate General of Civil Aviation and its role in Indian aviation.",
-    href: "/dgca/full-form",
+    title: "Apply for CPL or PPL",
+    description: "Essential for Commercial Pilot License and Private Pilot License applications",
+  },
+  {
+    icon: BookOpen,
+    title: "Academic Records",
+    description: "Track your exam results and academic progress with DGCA",
+  },
+  {
+    icon: Plane,
+    title: "Flying School Registration",
+    description: "Register at any DGCA-approved flying training organization",
   },
 ];
 
-const examSubjects = [
-  { name: "Air Navigation", pass: "70%", papers: 1 },
-  { name: "Aviation Meteorology", pass: "70%", papers: 1 },
-  { name: "Air Regulations", pass: "70%", papers: 1 },
-  { name: "Technical General", pass: "70%", papers: 1 },
-  { name: "Technical Specific", pass: "70%", papers: 1 },
-  { name: "RTR(A) - Radio Telephony", pass: "Practical", papers: 1 },
+const whoNeedsIt = [
+  { title: "Commercial Pilot (CPL)", icon: Plane },
+  { title: "Private Pilot (PPL)", icon: Plane },
+  { title: "Flight Instructor", icon: GraduationCap },
+  { title: "ATPL Holder", icon: Plane },
+  { title: "Foreign License Conversion", icon: IdCard },
+];
+
+const educationalDocs = [
+  "10th Mark Sheet (Physics & Maths required)",
+  "12th Mark Sheet (Physics & Maths required)",
+  "Class 10 Certificate (Date of Birth proof)",
+];
+
+const personalDocs = [
+  "Passport size photo (white background, recent)",
+  "Signature (black ink on white paper)",
+  "Aadhar Card or Passport copy",
+];
+
+const applicationSteps = [
+  {
+    step: 1,
+    title: "Visit Official Website",
+    description: "Go to https://pariksha.dgca.gov.in and navigate to Student Registration section.",
+    icon: FileText,
+  },
+  {
+    step: 2,
+    title: "Student Registration",
+    description: "Fill in your Name (must match certificates), Date of Birth, Email, Mobile number, and Education details.",
+    icon: UserCheck,
+    warning: "Any mismatch in details leads to rejection",
+  },
+  {
+    step: 3,
+    title: "Upload Documents",
+    description: "Upload clear scans with proper file names and within size limits. All files must be PDF/JPG and self-attested.",
+    icon: Upload,
+  },
+  {
+    step: 4,
+    title: "Submit Application",
+    description: "Review all details carefully and save your application number for future reference.",
+    icon: CheckCircle,
+  },
+  {
+    step: 5,
+    title: "DGCA Verification",
+    description: "Approval takes around 2–4 weeks. DGCA will verify all submitted documents.",
+    icon: Clock,
+  },
+  {
+    step: 6,
+    title: "Computer Number Issued",
+    description: "Receive your 10-digit Computer Number via email confirmation and get exam registration access.",
+    icon: Shield,
+  },
+];
+
+const documentRequirements = [
+  { name: "10th & 12th mark sheets", format: "PDF/JPG" },
+  { name: "Passport photo", format: "JPG (white background)" },
+  { name: "Signature", format: "JPG (black ink, 300 DPI)" },
+  { name: "Aadhar / Passport", format: "PDF/JPG" },
+  { name: "Class 10 certificate", format: "PDF/JPG" },
+];
+
+const bonusTips = [
+  {
+    category: "Photo Requirements",
+    tips: [
+      "White background only",
+      "No filters or editing",
+      "No shadows on face or background",
+      "Recent photograph (within 6 months)",
+    ],
+  },
+  {
+    category: "Signature Requirements",
+    tips: [
+      "Black ink on white paper",
+      "English language only",
+      "300 DPI scan quality",
+      "No digital signatures",
+    ],
+  },
 ];
 
 const faqs = [
   {
-    question: "What is DGCA?",
-    answer: "DGCA stands for Directorate General of Civil Aviation. It is the regulatory body for civil aviation in India, responsible for regulating air transport services, enforcing civil air regulations, and licensing of pilots and aircraft.",
+    question: "What is a DGCA Computer Number?",
+    answer:
+      "Computer Number is a unique identification number issued by DGCA to every student who wants to become a pilot in India. It's like a roll number for DGCA exams. Without getting a Computer Number, you cannot appear for any DGCA examination. This number is used throughout your aviation career at every stage.",
   },
   {
-    question: "How do I get a DGCA Computer Number?",
-    answer: "You can apply for a DGCA Computer Number online through the DGCA e-Governance portal. You need to submit your identity proof, address proof, and educational certificates. Our team can assist you with the complete registration process.",
+    question: "Who needs a DGCA Computer Number?",
+    answer:
+      "Anyone aspiring to become a Commercial Pilot (CPL), Private Pilot (PPL), Flight Instructor, ATPL Holder, or those applying for Foreign License Conversion needs a DGCA Computer Number. It's the first mandatory step in your pilot training journey.",
   },
   {
-    question: "What are the medical requirements for pilots?",
-    answer: "Pilots require either Class 1 or Class 2 medical certificates issued by DGCA-approved medical examiners. Class 1 is required for CPL holders while Class 2 is sufficient for PPL. The examination includes vision, hearing, cardiovascular, and general health assessments.",
+    question: "What documents are required to apply for Computer Number?",
+    answer:
+      "You need educational documents (10th & 12th mark sheets with Physics and Maths, Class 10 certificate for DOB proof) and personal documents (passport size photo with white background, signature in black ink, and Aadhar Card or Passport copy). All documents must be scanned and self-attested.",
   },
   {
-    question: "How many attempts are allowed for DGCA exams?",
-    answer: "There is no limit on the number of attempts for DGCA exams. However, each attempt requires payment of the examination fee. We recommend thorough preparation to clear exams in minimum attempts.",
+    question: "How long does DGCA verification take?",
+    answer:
+      "DGCA verification typically takes around 2 to 4 weeks after submission. If your application is rejected, DGCA will mention the reason, and you can fix the issue and re-upload the documents.",
   },
   {
-    question: "What is the validity of DGCA exam results?",
-    answer: "DGCA exam results are valid for 5 years from the date of passing. All subjects must be cleared within this 5-year window to qualify for the license.",
+    question: "What is the validity of Computer Number?",
+    answer:
+      "The Computer Number is valid for lifetime and will be used throughout your entire aviation career. You'll use it for exam registration, license applications, and tracking your academic records with DGCA.",
+  },
+  {
+    question: "What are common reasons for application rejection?",
+    answer:
+      "Most rejections happen due to incorrect photo (not white background, filters, shadows), signature issues (colored ink, low quality scan), name mismatch between certificates, or unclear document scans. Always double-check these details before submission.",
   },
 ];
 
-const steps = [
-  { step: 1, title: "Computer Number", description: "Register on DGCA portal and obtain your unique computer number" },
-  { step: 2, title: "Medical Examination", description: "Complete Class 1/2 medical examination from approved centers" },
-  { step: 3, title: "Ground Training", description: "Enroll in ground classes and prepare for written exams" },
-  { step: 4, title: "Written Exams", description: "Clear all DGCA written examinations" },
-  { step: 5, title: "Flight Training", description: "Complete required flying hours at approved FTO" },
-  { step: 6, title: "Skill Test", description: "Pass the final skill test to obtain your license" },
+const afterApproval = [
+  "10-digit Computer Number assigned",
+  "Email confirmation from DGCA",
+  "Access to DGCA exam registration portal",
+  "Ability to track academic records",
+  "Eligibility to register at flying schools",
 ];
 
-export default function DGCAPage() {
+export default function DGCAComputerNumberPage() {
   return (
     <Layout>
-      {/* Hero */}
+      <Helmet>
+        <title>DGCA Computer Number - Complete Guide for Pilot Aspirants</title>
+        <meta
+          name="description"
+          content="Get your DGCA Computer Number - the first step to become a pilot in India. Complete guide on application process, documents required, and approval timeline."
+        />
+      </Helmet>
+
+      {/* Hero Section */}
       <section className="relative py-24 aviation-gradient text-primary-foreground">
         <div className="container">
           <motion.div
@@ -90,20 +198,36 @@ export default function DGCAPage() {
             className="max-w-3xl"
           >
             <span className="inline-block text-sm font-semibold bg-white/20 px-4 py-2 rounded-full mb-4">
-              DGCA Preparation
+              Essential Guide for Aspiring Pilots
             </span>
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              Master Your DGCA Exams
+              DGCA Computer Number – Full Guide for Pilot Aspirants
             </h1>
-            <p className="text-xl text-primary-foreground/80">
-              Comprehensive preparation for all DGCA examinations with expert guidance, 
-              study materials, and a 95%+ success rate.
+            <p className="text-xl text-primary-foreground/80 mb-8">
+              If you're planning to become a pilot in India, the first thing you'll need to start your journey
+              is a Computer Number issued by the DGCA (Directorate General of Civil Aviation). This comprehensive
+              guide will walk you through everything you need to know.
             </p>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Button variant="gold" size="lg" asChild>
+                <a
+                  href="https://pariksha.dgca.gov.in"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Apply for Computer Number
+                  <ArrowRight className="h-4 w-4 ml-2" />
+                </a>
+              </Button>
+              <Button variant="outline-white" size="lg" asChild>
+                <Link to="/cpl">Learn About CPL Course</Link>
+              </Button>
+            </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Services Grid */}
+      {/* What is Computer Number */}
       <section className="py-20 bg-background">
         <div className="container">
           <motion.div
@@ -112,40 +236,90 @@ export default function DGCAPage() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">DGCA Services</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Everything you need for your DGCA journey, from registration to exam clearance.
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              What is a Computer Number?
+            </h2>
+            <p className="text-muted-foreground max-w-3xl mx-auto text-lg">
+              Computer Number is a Unique Number which is given by DGCA to every student who wants to become a
+              pilot in India.
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-6">
-            {dgcaServices.map((service, index) => (
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto mb-12">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="p-8 rounded-2xl border border-border bg-card"
+            >
+              <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-6">
+                <IdCard className="h-8 w-8 text-primary" />
+              </div>
+              <h3 className="text-xl font-bold mb-4">Simple Explanation</h3>
+              <p className="text-muted-foreground mb-4">
+                Think of it as your <strong>Roll Number for DGCA Exams</strong>. Without getting a Computer
+                Number, you cannot appear for any DGCA examination.
+              </p>
+              <div className="p-4 rounded-xl bg-primary/5 border border-primary/20">
+                <p className="text-sm font-medium text-primary flex items-start gap-2">
+                  <AlertCircle className="h-5 w-5 flex-shrink-0 mt-0.5" />
+                  This Computer Number is extremely important and has many uses throughout your pilot training
+                  journey and aviation career.
+                </p>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="p-8 rounded-2xl border border-border bg-card"
+            >
+              <h3 className="text-xl font-bold mb-6">Key Uses of Computer Number</h3>
+              <ul className="space-y-4">
+                {[
+                  "Appear for any DGCA ground theory exam",
+                  "Apply for CPL or PPL",
+                  "Track exam & academic records",
+                  "Register at DGCA-approved flying schools",
+                ].map((item, i) => (
+                  <li key={i} className="flex items-center gap-3 text-muted-foreground">
+                    <CheckCircle className="h-5 w-5 text-primary flex-shrink-0" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          </div>
+
+          {/* Computer Number Uses Cards */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto"
+          >
+            {computerNumberUses.map((use, index) => (
               <motion.div
-                key={service.title}
+                key={use.title}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
+                className="p-6 rounded-xl bg-card border border-border hover:border-primary/50 hover:shadow-hover transition-all group"
               >
-                <Link to={service.href} className="block group">
-                  <div className="h-full p-8 rounded-2xl border border-border bg-card hover:border-primary/50 hover:shadow-hover transition-all">
-                    <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                      <service.icon className="h-7 w-7" />
-                    </div>
-                    <h3 className="text-xl font-bold mb-3">{service.title}</h3>
-                    <p className="text-muted-foreground mb-4">{service.description}</p>
-                    <div className="flex items-center text-primary font-semibold">
-                      Learn More <ChevronRight className="h-4 w-4 ml-1" />
-                    </div>
-                  </div>
-                </Link>
+                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                  <use.icon className="h-6 w-6" />
+                </div>
+                <h3 className="font-bold mb-2">{use.title}</h3>
+                <p className="text-sm text-muted-foreground">{use.description}</p>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* Process Steps */}
+      {/* Who Needs It */}
       <section className="py-20 bg-muted/30">
         <div className="container">
           <motion.div
@@ -154,16 +328,148 @@ export default function DGCAPage() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Pilot License Journey</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Who Needs a Computer Number?</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Step-by-step process to obtain your pilot license in India.
+              Anyone aspiring to build a career in aviation needs this essential identification number
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6 max-w-5xl mx-auto">
+            {whoNeedsIt.map((career, index) => (
+              <motion.div
+                key={career.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="p-6 rounded-xl bg-card border border-border text-center hover:border-primary/50 hover:shadow-hover transition-all group"
+              >
+                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 mx-auto group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                  <career.icon className="h-6 w-6" />
+                </div>
+                <h3 className="font-bold text-sm">{career.title}</h3>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Documents Needed */}
+      <section className="py-20 bg-background">
+        <div className="container">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Documents Needed to Apply</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Before applying, ensure all documents are scanned and self-attested
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-12">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="p-8 rounded-2xl border border-border bg-card"
+            >
+              <h3 className="text-xl font-bold mb-6 flex items-center gap-3">
+                <GraduationCap className="h-6 w-6 text-primary" />
+                Educational Documents
+              </h3>
+              <ul className="space-y-4">
+                {educationalDocs.map((doc, i) => (
+                  <li key={i} className="flex items-start gap-3 text-muted-foreground">
+                    <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                    <span>{doc}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="p-8 rounded-2xl border border-border bg-card"
+            >
+              <h3 className="text-xl font-bold mb-6 flex items-center gap-3">
+                <IdCard className="h-6 w-6 text-primary" />
+                Personal Documents
+              </h3>
+              <ul className="space-y-4">
+                {personalDocs.map((doc, i) => (
+                  <li key={i} className="flex items-start gap-3 text-muted-foreground">
+                    <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                    <span>{doc}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          </div>
+
+          {/* Document Requirements Table */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="max-w-3xl mx-auto"
+          >
+            <h3 className="text-xl font-bold mb-6 text-center">Document Upload Requirements</h3>
+            <div className="rounded-2xl border border-border overflow-hidden">
+              <table className="w-full">
+                <thead className="bg-primary text-primary-foreground">
+                  <tr>
+                    <th className="px-6 py-4 text-left font-semibold">Document</th>
+                    <th className="px-6 py-4 text-left font-semibold">Format Required</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {documentRequirements.map((doc, index) => (
+                    <tr key={doc.name} className={index % 2 === 0 ? "bg-card" : "bg-muted/30"}>
+                      <td className="px-6 py-4 font-medium text-sm">{doc.name}</td>
+                      <td className="px-6 py-4 text-sm">
+                        <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary font-medium">
+                          <FileText className="h-3 w-3" />
+                          {doc.format}
+                        </span>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="text-sm text-muted-foreground text-center mt-4">
+              All files must be self-attested and within size limits specified on the portal
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Application Process */}
+      <section className="py-20 bg-muted/30">
+        <div className="container">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Step-by-Step Online Application Process
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Follow these simple steps to successfully apply for your DGCA Computer Number
             </p>
           </motion.div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {steps.map((item, index) => (
+            {applicationSteps.map((step, index) => (
               <motion.div
-                key={item.step}
+                key={step.step}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -171,17 +477,48 @@ export default function DGCAPage() {
                 className="relative p-6 rounded-xl bg-card border border-border"
               >
                 <div className="absolute -top-4 -left-4 w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold">
-                  {item.step}
+                  {step.step}
                 </div>
-                <h3 className="font-bold text-lg mb-2 pt-2">{item.title}</h3>
-                <p className="text-sm text-muted-foreground">{item.description}</p>
+                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 mt-2">
+                  <step.icon className="h-6 w-6 text-primary" />
+                </div>
+                <h3 className="font-bold text-lg mb-2">{step.title}</h3>
+                <p className="text-sm text-muted-foreground mb-3">{step.description}</p>
+                {step.warning && (
+                  <div className="p-3 rounded-lg bg-destructive/10 border border-destructive/20">
+                    <p className="text-xs font-medium text-destructive flex items-start gap-2">
+                      <AlertCircle className="h-4 w-4 flex-shrink-0 mt-0.5" />
+                      {step.warning}
+                    </p>
+                  </div>
+                )}
               </motion.div>
             ))}
           </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mt-12 p-6 rounded-xl bg-primary/5 border border-primary/20 max-w-3xl mx-auto"
+          >
+            <div className="flex items-start gap-4">
+              <div className="w-12 h-12 rounded-xl bg-destructive/10 flex items-center justify-center flex-shrink-0">
+                <AlertCircle className="h-6 w-6 text-destructive" />
+              </div>
+              <div>
+                <h4 className="font-bold text-lg mb-2">Application Rejected?</h4>
+                <p className="text-muted-foreground">
+                  DGCA will mention the reason for rejection. Simply fix the issue and re-upload the
+                  documents. Common issues include photo/signature quality, name mismatch, or unclear scans.
+                </p>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* Exam Subjects Table */}
+      {/* Bonus Tips */}
       <section className="py-20 bg-background">
         <div className="container">
           <motion.div
@@ -190,49 +527,108 @@ export default function DGCAPage() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">DGCA Exam Subjects</h2>
+            <span className="inline-block px-4 py-2 rounded-full bg-accent/10 text-accent font-bold text-sm mb-4">
+              BONUS TIPS
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Important Guidelines to Avoid Rejection</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Written examinations required for Commercial Pilot License (CPL).
+              Most delays happen due to photo & signature issues. Follow these tips carefully
             </p>
           </motion.div>
 
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {bonusTips.map((section, index) => (
+              <motion.div
+                key={section.category}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="p-8 rounded-2xl border-2 border-accent/20 bg-gradient-to-br from-accent/5 to-transparent"
+              >
+                <h3 className="text-xl font-bold mb-6 flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-lg bg-accent/20 flex items-center justify-center">
+                    <CheckCircle className="h-5 w-5 text-accent" />
+                  </div>
+                  {section.category}
+                </h3>
+                <ul className="space-y-3">
+                  {section.tips.map((tip, i) => (
+                    <li key={i} className="flex items-start gap-3">
+                      <ChevronRight className="h-5 w-5 text-accent flex-shrink-0 mt-0.5" />
+                      <span className="text-muted-foreground">{tip}</span>
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* After Approval */}
+      <section className="py-20 bg-muted/30">
+        <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="max-w-3xl mx-auto"
+            className="text-center mb-16"
           >
-            <div className="rounded-2xl border border-border overflow-hidden">
-              <table className="w-full">
-                <thead className="bg-primary text-primary-foreground">
-                  <tr>
-                    <th className="px-6 py-4 text-left font-semibold">Subject</th>
-                    <th className="px-6 py-4 text-center font-semibold">Papers</th>
-                    <th className="px-6 py-4 text-center font-semibold">Pass %</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {examSubjects.map((subject, index) => (
-                    <tr key={subject.name} className={index % 2 === 0 ? "bg-card" : "bg-muted/30"}>
-                      <td className="px-6 py-4">{subject.name}</td>
-                      <td className="px-6 py-4 text-center">{subject.papers}</td>
-                      <td className="px-6 py-4 text-center">
-                        <span className="inline-flex items-center gap-1 text-primary font-medium">
-                          <CheckCircle className="h-4 w-4" />
-                          {subject.pass}
-                        </span>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">After Approval</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Once your application is approved, you'll receive the following
+            </p>
           </motion.div>
+
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="p-8 rounded-2xl border border-border bg-card"
+            >
+              <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-6">
+                <Shield className="h-8 w-8 text-primary" />
+              </div>
+              <h3 className="text-xl font-bold mb-6">What You Get</h3>
+              <ul className="space-y-4">
+                {afterApproval.map((item, i) => (
+                  <li key={i} className="flex items-start gap-3 text-muted-foreground">
+                    <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="p-8 rounded-2xl bg-primary text-primary-foreground"
+            >
+              <h3 className="text-2xl font-bold mb-4">Computer Number Validity</h3>
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-16 h-16 rounded-2xl bg-white/10 flex items-center justify-center">
+                  <Clock className="h-8 w-8" />
+                </div>
+                <div>
+                  <p className="text-4xl font-bold">Lifetime</p>
+                  <p className="text-primary-foreground/80">Used throughout your aviation career</p>
+                </div>
+              </div>
+              <p className="text-primary-foreground/90">
+                Your Computer Number remains valid for your entire career and will be used at every stage - from
+                exam registration to license issuance and renewal.
+              </p>
+            </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* FAQ */}
-      <section className="py-20 bg-muted/30">
+      {/* FAQ Section */}
+      <section className="py-20 bg-background">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -242,7 +638,7 @@ export default function DGCAPage() {
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Frequently Asked Questions</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Common questions about DGCA exams and pilot licensing.
+              Common questions about DGCA Computer Number application and process
             </p>
           </motion.div>
 
@@ -272,7 +668,7 @@ export default function DGCAPage() {
         </div>
       </section>
 
-      {/* CTA */}
+      {/* Final CTA */}
       <section className="py-20 aviation-gradient text-primary-foreground">
         <div className="container">
           <motion.div
@@ -281,21 +677,28 @@ export default function DGCAPage() {
             viewport={{ once: true }}
             className="max-w-3xl mx-auto text-center"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              Start Your DGCA Preparation Today
-            </h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Start Your Pilot Journey?</h2>
             <p className="text-primary-foreground/80 text-lg mb-8">
-              Join our comprehensive ground school program and clear your DGCA exams with confidence.
+              Getting your DGCA Computer Number is the first official step toward becoming a professional pilot in
+              India. Don't worry about the technical terms — just follow this guide carefully, prepare your
+              documents properly, and submit your application. Your aviation career starts here!
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button variant="gold" size="lg" asChild>
-                <Link to="/contact">
-                  Enroll Now
+                <a
+                  href="https://pariksha.dgca.gov.in"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Apply for Computer Number
                   <ArrowRight className="h-4 w-4 ml-2" />
-                </Link>
+                </a>
               </Button>
               <Button variant="outline-white" size="lg" asChild>
-                <a href="tel:+919876543210">Call for Free Demo</a>
+                <Link to="/cpl">Explore CPL Course</Link>
+              </Button>
+              <Button variant="outline-white" size="lg" asChild>
+                <Link to="/contact">Talk to Counselor</Link>
               </Button>
             </div>
           </motion.div>
