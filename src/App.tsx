@@ -31,6 +31,17 @@ import Medical from "./pages/dgca/medical";
 import Groundclasses from "./pages/dgca/ground-classes"
 
 
+// services
+import Charterservices from "./pages/services/charter-services";
+import Aircraftmanagement from "./pages/services/aircraft-management";
+import Aircraftsourcing from "./pages/services/aircraft-sourcing-sale";
+import Aviationconsultancy from "./pages/services/aviation-consultancy";
+import Mro from "./pages/services/mro";
+import Liverypainting from "./pages/services/livery-painting";
+import Camo from "./pages/services/camo";
+import Componentsspares from "./pages/services/components-spares";
+
+
 
 import Airlinetransportpilotlicence from "./pages/BecomeAPilot/airline-transport-pilot-licence";
 import Commercialpilotlicence from "./pages/BecomeAPilot/commercial-pilot-license";
@@ -52,13 +63,22 @@ const App = () => (
 
             {/* SERVICES */}
             <Route path="/services" element={<Services />} />
-            <Route path="/services/:service" element={<Services />} />
+            <Route path="/services/charter-services" element={<Charterservices />} />
+            <Route path="/services/aircraft-management" element={<Aircraftmanagement />} />
+            <Route path="/services/aircraft-sourcing-sale" element={<Aircraftsourcing />} />
+            <Route path="/services/aviation-consultancy" element={<Aviationconsultancy />} />
+            <Route path="/services/mro" element={<Mro />} />
+            <Route path="/services/livery-painting" element={<Liverypainting />} />
+            <Route path="/services/camo" element={<Camo />} /> {/* ✅ FIX */}
+            <Route path="/services/components-spares" element={<Componentsspares />} /> {/* ✅ FIX */}
+
 
             {/* COURSES */}
             <Route path="/courses/cpl" element={<Cpl />} /> {/* ✅ FIX */}
             <Route path="/courses/atpl" element={<Atpl />} /> {/* ✅ FIX */}
             <Route path="/courses/cabin-crew" element={<CabinCrewPage />} /> {/* ✅ FIX */}
             <Route path="/courses/ground-staff" element={<GroundStaffPage />} /> {/* ✅ FIX */}
+
 
             <Route path="/courses/airline-preparation" element={<AirlinePreparationPage />} /> {/* ✅ FIX */}
             {/* DGCA */}

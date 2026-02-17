@@ -17,7 +17,6 @@ type NavItem = {
 
 const navigation: NavItem[] = [
   { name: "Home", href: "/" },
-
   {
     name: "Courses",
     href: "/Courses/cpl",
@@ -32,7 +31,7 @@ const navigation: NavItem[] = [
 
   {
     name: "Flying Training",
-    href: "/flying-training",
+    href: "/pilot-training/india",
     children: [
       { name: "Pilot Training in India", href: "/pilot-training/india" },
       { name: "Pilot Training in USA", href: "/pilot-training/usa" },
@@ -47,7 +46,7 @@ const navigation: NavItem[] = [
 
   {
     name: "Become a Pilot",
-    href: "/become-a-pilot",
+    href: "/become-a-pilot/become-pilot",
     children: [
       { name: "Steps to become pilot", href: "/become-a-pilot/become-pilot" },
       { name: "Commercial Pilot License", href: "/become-a-pilot/commercial-pilot-licence" },
@@ -63,7 +62,7 @@ const navigation: NavItem[] = [
 
   {
     name: "Services",
-    href: "/services",
+    href: "/services/aircraft-management",
     children: [
       { name: "Aircraft Management", href: "/services/aircraft-management" },
       { name: "Aircraft Sourcing & Sale", href: "/services/aircraft-sourcing-sale" },
