@@ -2,7 +2,7 @@ import { Layout } from "@/components/layout/Layout";
 import { HeroSection } from "@/components/home/HeroSection";
 import { ServicesSection } from "@/components/home/ServicesSection";
 import { WhyChooseUsSection } from "@/components/home/WhyChooseUsSection";
-import { IndiaMapSection } from "@/components/home/IndiaMapSection";
+import { WorldMapSection } from "@/components/home/WorldMapSection";
 import { TestimonialsSection } from "@/components/home/TestimonialsSection";
 import { PartnersSection } from "@/components/home/PartnersSection";
 import { CTASection } from "@/components/home/CTASection";
@@ -13,7 +13,7 @@ const Index = () => {
       <HeroSection />
       <ServicesSection />
       <WhyChooseUsSection />
-      <IndiaMapSection />
+      <WorldMapSection />
       <TestimonialsSection />
       <PartnersSection />
       <CTASection />
