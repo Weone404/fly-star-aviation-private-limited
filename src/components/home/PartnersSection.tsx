@@ -1,14 +1,19 @@
 import { motion } from "framer-motion";
+import airIndiaLogo from "../../../public/assets/air-india-logo.png";
+import airIndiaExpressLogo from "../../../public/assets/Air-india-express-logo.png";
+import indigoLogo from "../../../public/assets/indigo.png";
+import spicejetLogo from "../../../public/assets/SpiceJet-Logo.webp";
+import starAirLogo from "../../../public/assets/star-air-logo.webp";
 
 const partners = [
-  { name: "DGCA India", logo: "DGCA" },
-  { name: "Air India", logo: "Air India" },
-  { name: "IndiGo", logo: "IndiGo" },
-  { name: "Vistara", logo: "Vistara" },
-  { name: "SpiceJet", logo: "SpiceJet" },
-  { name: "GoAir", logo: "GoAir" },
-  { name: "AirAsia", logo: "AirAsia" },
-  { name: "IATA", logo: "IATA" },
+  { name: "Air India", logo: airIndiaLogo },
+  { name: "Air India Express", logo: airIndiaExpressLogo },
+  { name: "IndiGo", logo: indigoLogo },
+  { name: "SpiceJet", logo: spicejetLogo },
+  { name: "Star Air", logo: starAirLogo },
+  { name: "Fly Big", logo: "" },
+  { name: "Jet Airways", logo: "" },
+  { name: "Red Bird", logo: "" },
 ];
 
 export function PartnersSection() {
@@ -32,9 +37,13 @@ export function PartnersSection() {
             {[...partners, ...partners].map((partner, index) => (
               <div
                 key={`${partner.name}-${index}`}
-                className="flex-shrink-0 flex items-center justify-center bg-background rounded-xl px-8 py-4 shadow-card min-w-[160px]"
+                className="flex-shrink-0 flex items-center justify-center bg-background rounded-xl px-8 py-4 shadow-card min-w-[160px] h-20"
               >
-                <span className="font-bold text-lg text-muted-foreground">{partner.logo}</span>
+                {partner.logo ? (
+                  <img src={partner.logo} alt={partner.name} className="max-h-16 max-w-40 object-contain" />
+                ) : (
+                  <span className="font-bold text-lg text-muted-foreground text-center">{partner.name}</span>
+                )}
               </div>
             ))}
           </div>

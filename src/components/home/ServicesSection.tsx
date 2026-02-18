@@ -20,7 +20,7 @@ const services = [
   {
     icon: Briefcase,
     title: "Aviation Placement",
-    description: "Guaranteed job assistance with top airlines in India and abroad. 98% placement success rate.",
+    description: "Assistance for instructors, NSOP/government pilots, line training, cargo, and both domestic & international airlines.",
     href: "/services/placement",
     color: "from-accent to-yellow-400",
   },
@@ -81,7 +81,7 @@ export function ServicesSection() {
                 <div className="relative h-full bg-card rounded-2xl p-8 shadow-card hover:shadow-hover transition-all duration-300 border border-border group-hover:border-primary/30 overflow-hidden">
                   {/* Gradient accent */}
                   <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${service.color}`} />
-                  
+
                   {/* Icon */}
                   <div className={`inline-flex items-center justify-center w-14 h-14 rounded-xl bg-gradient-to-r ${service.color} mb-6 group-hover:scale-110 transition-transform duration-300`}>
                     <service.icon className="h-7 w-7 text-white" />

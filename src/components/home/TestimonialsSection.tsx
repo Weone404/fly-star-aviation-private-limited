@@ -1,13 +1,17 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
+import pilot1 from "../../../public/assets/pilot1.webp";
+import pilot2 from "../../../public/assets/pilot5.webp";
+import pilot3 from "../../../public/assets/pilot3.webp";
+import pilot4 from "../../../public/assets/pilot4.webp";
 
 const testimonials = [
   {
     id: 1,
     name: "Rajesh Kumar",
     role: "Commercial Pilot, IndiGo Airlines",
-    image: "https://i.pravatar.cc/150?img=11",
+    src: pilot1,
     quote: "Flying Star Aviator transformed my dream into reality. The training quality and placement support are exceptional. I'm now flying with IndiGo, thanks to their comprehensive CPL program.",
     rating: 5,
   },
@@ -15,7 +19,7 @@ const testimonials = [
     id: 2,
     name: "Priya Sharma",
     role: "First Officer, Air India",
-    image: "https://i.pravatar.cc/150?img=5",
+    src: pilot2,
     quote: "The instructors here are world-class. They don't just teach you to fly; they prepare you for a successful aviation career. The DGCA exam preparation was incredibly thorough.",
     rating: 5,
   },
@@ -23,7 +27,7 @@ const testimonials = [
     id: 3,
     name: "Amit Patel",
     role: "Pilot, Vistara",
-    image: "https://i.pravatar.cc/150?img=12",
+    src: pilot3,
     quote: "I tried multiple training schools before joining Flying Star. The difference in quality is remarkable. Their simulators and practical training gave me confidence from day one.",
     rating: 5,
   },
@@ -31,7 +35,7 @@ const testimonials = [
     id: 4,
     name: "Sneha Reddy",
     role: "CPL Trainee",
-    image: "https://i.pravatar.cc/150?img=9",
+    src: pilot4,
     quote: "Currently in my final phase of training, and I couldn't be happier with my choice. The support system here is amazing, and the fees structure is very reasonable for the quality offered.",
     rating: 5,
   },
@@ -87,7 +91,7 @@ export function TestimonialsSection() {
               <div className="flex flex-col md:flex-row items-center gap-8">
                 <div className="flex-shrink-0">
                   <img
-                    src={testimonials[currentIndex].image}
+                    src={testimonials[currentIndex].src}
                     alt={testimonials[currentIndex].name}
                     className="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover border-4 border-accent"
                   />
@@ -125,9 +129,8 @@ export function TestimonialsSection() {
                 <button
                   key={index}
                   onClick={() => setCurrentIndex(index)}
-                  className={`w-3 h-3 rounded-full transition-all ${
-                    index === currentIndex ? "bg-accent w-8" : "bg-white/40"
-                  }`}
+                  className={`w-3 h-3 rounded-full transition-all ${index === currentIndex ? "bg-accent w-8" : "bg-white/40"
+                    }`}
                 />
               ))}
             </div>
