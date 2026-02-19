@@ -27,28 +27,28 @@ const cplServices = [
         title: "Commercial Pilot License",
         description:
             "A commercial pilot license is a professional certification that allows individuals to fly aircraft for commercial operations.",
-        href: "/cpl/overview",
+        href: "/courses/cpl",
     },
     {
         icon: BookOpen,
         title: "Ground Classes",
         description:
             "Comprehensive ground training covering all DGCA exam subjects — Air Navigation, Meteorology, Air Regulations, Technical General & Specific.",
-        href: "/cpl/ground-classes",
+        href: "/dgca/ground-classes",
     },
     {
         icon: GraduationCap,
         title: "CPL Course Fees",
         description:
             "The total CPL licence cost depends on flying hours, aircraft type, and training facilities. Get a complete fee breakdown.",
-        href: "/cpl/fees",
+        href: "/courses/cpl",
     },
     {
         icon: TrendingUp,
         title: "Career After CPL",
         description:
             "Explore career options as an Airline First Officer, Charter Pilot, Cargo Pilot, Corporate Pilot, or Flight Instructor.",
-        href: "/cpl/careers",
+        href: "/about",
     },
 ];
 
@@ -117,9 +117,9 @@ const careerOptions = [
 ];
 
 const salaryGrowth = [
-    { stage: "Fresh CPL holder", level: "Entry-level salary", icon: DollarSign },
-    { stage: "Mid-level pilot", level: "Higher monthly earnings", icon: TrendingUp },
-    { stage: "Captain", level: "Premium salary range", icon: TrendingUp },
+    { stage: "Fresh CPL holder", level: "₹1.5Lakh to ₹2.5Lakh", icon: DollarSign },
+    { stage: "Mid-level pilot", level: "₹3.5Lakh to ₹8.5Lakh", icon: TrendingUp },
+    { stage: "Captain", level: "₹8Lakh to ∞", icon: TrendingUp },
 ];
 
 const faqs = [
@@ -190,7 +190,7 @@ export default function CPLCoursePage() {
                         className="max-w-3xl"
                     >
                         <span className="inline-block text-sm font-semibold bg-white/20 px-4 py-2 rounded-full mb-4">
-                            Plane Commercial Pilot License Course in India - Complete Guide to Pilot Training & Career
+                            Plan Commercial Pilot License Course in India - Complete Guide to Pilot Training & Career
                         </span>
                         <h1 className="text-4xl md:text-6xl font-bold mb-6">
                             Commercial Pilot License Course - Start Your Pilot Training Journey
@@ -203,7 +203,7 @@ export default function CPLCoursePage() {
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4">
                             <Button variant="gold" size="lg" asChild>
-                                <Link to="/apply">
+                                <Link to="/rtr">
                                     Apply Now
                                     <ArrowRight className="h-4 w-4 ml-2" />
                                 </Link>

@@ -7,7 +7,7 @@ const services = [
     icon: GraduationCap,
     title: "Pilot Training",
     description: "Comprehensive CPL & PPL training programs with experienced instructors and modern aircraft fleet.",
-    href: "/services/pilot-training",
+    href: "/become-a-pilot/become-pilot",
     color: "from-primary to-aviation-green-light",
   },
   {
@@ -35,14 +35,14 @@ const services = [
     icon: Building2,
     title: "Aircraft Sale & Purchase",
     description: "Expert consultation for buying, selling, and leasing aircraft with global network access.",
-    href: "/services/aircraft-sale",
+    href: "/services/aircraft-sourcing-sale",
     color: "from-aviation-runway to-gray-600",
   },
   {
     icon: Wrench,
     title: "Aircraft Management",
     description: "Complete aircraft management solutions including maintenance, operations, and crew management.",
-    href: "/services/management",
+    href: "/services/aircraft-management",
     color: "from-primary to-aviation-green-light",
   },
 ];
