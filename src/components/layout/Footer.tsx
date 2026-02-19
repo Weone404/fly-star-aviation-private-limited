@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { Plane, Phone, Mail, MapPin, Facebook, Twitter, Instagram, Linkedin, Youtube } from "lucide-react";
-
 const footerLinks = {
   quickLinks: [
     { name: "About Us", href: "/about" },
@@ -41,16 +40,18 @@ export function Footer() {
           {/* Brand Section */}
           <div className="lg:col-span-2">
             <Link to="/" className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 aviation-gradient rounded-full flex items-center justify-center">
-                <Plane className="h-6 w-6 text-primary-foreground" />
-              </div>
+              <img
+                src="/Logo.webp"
+                alt="Flying Star Logo"
+                className="w-12 h-12 rounded-full object-cover"
+              />
               <div className="flex flex-col">
-                <span className="font-bold text-xl">Flying Star</span>
+                <span className="font-bold text-xl">Flying Star private limited </span>
                 <span className="text-sm text-white/60 -mt-1">Aviator</span>
               </div>
             </Link>
             <p className="text-white/70 mb-6 max-w-sm">
-              Your trusted partner in aviation training and services. DGCA
+              Your trusted partner in aviation training and services. Pilot
               institute dedicated to creating world-class pilots.
             </p>
             <div className="space-y-3">

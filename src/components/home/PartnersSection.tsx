@@ -1,19 +1,14 @@
 import { motion } from "framer-motion";
-import airIndiaLogo from "../../../public/assets/air-india-logo.png";
-import airIndiaExpressLogo from "../../../public/assets/Air-india-express-logo.png";
-import indigoLogo from "../../../public/assets/indigo.png";
-import spicejetLogo from "../../../public/assets/SpiceJet-Logo.webp";
-import starAirLogo from "../../../public/assets/star-air-logo.webp";
 
 const partners = [
-  { name: "Air India", logo: airIndiaLogo },
-  { name: "Air India Express", logo: airIndiaExpressLogo },
-  { name: "IndiGo", logo: indigoLogo },
-  { name: "SpiceJet", logo: spicejetLogo },
-  { name: "Star Air", logo: starAirLogo },
-  { name: "Fly Big", logo: "" },
-  { name: "Jet Airways", logo: "" },
-  { name: "Red Bird", logo: "" },
+  { name: "Air India", logo: "/assets/air-india-logo.png" },
+  { name: "Air India Express", logo: "/assets/Air-india-express-logo.png" },
+  { name: "IndiGo", logo: "/assets/indigo.png" },
+  { name: "SpiceJet", logo: "/assets/SpiceJet-Logo.webp" },
+  { name: "Star Air", logo: "/assets/star-air-logo.webp" },
+  { name: "Fly Big", logo: "/assets/flybig_logo.webp" },
+  { name: "Jet Airways", logo: "/assets/jet_airways_logo.webp" },
+  { name: "Red Bird", logo: "/assets/redbird_logo.webp" },
 ];
 
 export function PartnersSection() {

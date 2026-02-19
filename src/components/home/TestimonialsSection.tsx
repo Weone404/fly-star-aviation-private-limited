@@ -1,17 +1,13 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
-import pilot1 from "../../../public/assets/pilot1.webp";
-import pilot2 from "../../../public/assets/pilot5.webp";
-import pilot3 from "../../../public/assets/pilot3.webp";
-import pilot4 from "../../../public/assets/pilot4.webp";
 
 const testimonials = [
   {
     id: 1,
     name: "Rajesh Kumar",
     role: "Commercial Pilot, IndiGo Airlines",
-    src: pilot1,
+    src: "/assets/pilot1.webp",
     quote: "Flying Star Aviator transformed my dream into reality. The training quality and placement support are exceptional. I'm now flying with IndiGo, thanks to their comprehensive CPL program.",
     rating: 5,
   },
@@ -19,7 +15,7 @@ const testimonials = [
     id: 2,
     name: "Priya Sharma",
     role: "First Officer, Air India",
-    src: pilot2,
+    src: "/assets/pilot5.webp",
     quote: "The instructors here are world-class. They don't just teach you to fly; they prepare you for a successful aviation career. The DGCA exam preparation was incredibly thorough.",
     rating: 5,
   },
@@ -27,7 +23,7 @@ const testimonials = [
     id: 3,
     name: "Amit Patel",
     role: "Pilot, Vistara",
-    src: pilot3,
+    src: "/assets/pilot3.webp",
     quote: "I tried multiple training schools before joining Flying Star. The difference in quality is remarkable. Their simulators and practical training gave me confidence from day one.",
     rating: 5,
   },
@@ -35,7 +31,7 @@ const testimonials = [
     id: 4,
     name: "Sneha Reddy",
     role: "CPL Trainee",
-    src: pilot4,
+    src: "/assets/pilot4.webp",
     quote: "Currently in my final phase of training, and I couldn't be happier with my choice. The support system here is amazing, and the fees structure is very reasonable for the quality offered.",
     rating: 5,
   },
