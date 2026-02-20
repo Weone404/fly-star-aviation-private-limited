@@ -10,8 +10,8 @@ const footerLinks = {
   services: [
     { name: "CPL Training", href: "/pilot-training/cpl" },
     { name: "PPL Training", href: "/pilot-training/ppl" },
-    { name: "Chartered Services", href: "/services/chartered" },
-    { name: "Aircraft Management", href: "/services/management" },
+    { name: "Chartered Services", href: "/services/charter-services" },
+    { name: "Aircraft Management", href: "/services/aircraft-management" },
   ],
   locations: [
     { name: "Delhi", href: "/locations/delhi" },
@@ -41,7 +41,7 @@ export function Footer() {
           <div className="lg:col-span-2">
             <Link to="/" className="flex items-center gap-3 mb-6">
               <img
-                src="/Logo.webp"
+                src="/flying_logo.webp"
                 alt="Flying Star Logo"
                 className="w-12 h-12 rounded-full object-cover"
               />

@@ -5,7 +5,7 @@ const reasons = [
   {
     icon: Award,
     title: "Pilot training   ",
-    description: "Officially recognized by the Directorate General of Civil Aviation as an   training organization.",
+    description: "Ceremonial activities, ground classes, and flying training.",
   },
   {
     icon: Users,

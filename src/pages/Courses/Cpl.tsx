@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useState, useEffect, useCallback } from "react";
 import { Helmet } from "react-helmet-async";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
@@ -13,6 +14,7 @@ import {
     ArrowRight,
     ChevronRight,
     CheckCircle,
+    ChevronLeft,
 } from "lucide-react";
 import {
     Accordion,
@@ -21,6 +23,147 @@ import {
     AccordionTrigger,
 } from "@/components/ui/accordion";
 
+// ─── Image Slider Data ────────────────────────────────────────────────────────
+const heroSlides = [
+    {
+        image: "https://images.unsplash.com/photo-1436891620584-47fd0e565afb?w=800&q=80",
+        caption: "Your First Step Toward the Cockpit",
+    },
+    {
+        image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80",
+        caption: "World-Class Flying Training",
+    },
+    {
+        image: "https://images.unsplash.com/photo-1559128010-7c1ad6e1b6a5?w=800&q=80",
+        caption: "Real Cross-Country Experience",
+    },
+    {
+        image: "https://images.unsplash.com/photo-1569154941061-e231b4725ef1?w=800&q=80",
+        caption: "CPL Certified & Career Ready",
+    },
+];
+
+// ─── Hero Image Slider Component ──────────────────────────────────────────────
+function HeroImageSlider() {
+    const [current, setCurrent] = useState(0);
+    const [fading, setFading] = useState(false);
+
+    const goTo = useCallback(
+        (index: number) => {
+            if (fading) return;
+            setFading(true);
+            setTimeout(() => {
+                setCurrent(index);
+                setFading(false);
+            }, 300);
+        },
+        [fading]
+    );
+
+    const prev = () => goTo((current - 1 + heroSlides.length) % heroSlides.length);
+    const next = () => goTo((current + 1) % heroSlides.length);
+
+    useEffect(() => {
+        const timer = setInterval(next, 4500);
+        return () => clearInterval(timer);
+    }, [current]);
+
+    return (
+        <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            className="hidden lg:flex flex-col items-center gap-4 flex-shrink-0"
+            style={{ width: "clamp(300px, 38vw, 500px)" }}
+        >
+            {/* Slider Card */}
+            <div
+                className="relative w-full rounded-2xl overflow-hidden shadow-2xl"
+                style={{ aspectRatio: "4/3" }}
+            >
+                {/* Image */}
+                <img
+                    key={current}
+                    src={heroSlides[current].image}
+                    alt={heroSlides[current].caption}
+                    className="w-full h-full object-cover"
+                    style={{
+                        opacity: fading ? 0 : 1,
+                        transition: "opacity 0.3s ease",
+                    }}
+                />
+
+                {/* Caption overlay */}
+                <div
+                    className="absolute bottom-0 left-0 right-0 px-5 pb-4 pt-10"
+                    style={{
+                        background: "linear-gradient(to top, rgba(0,0,0,0.65), transparent)",
+                    }}
+                >
+                    <div className="flex items-center gap-2 text-white text-sm font-semibold">
+                        <span
+                            className="inline-block rounded-full flex-shrink-0"
+                            style={{ width: 4, height: 18, background: "#f0b429" }}
+                        />
+                        {heroSlides[current].caption}
+                    </div>
+                </div>
+
+                {/* Prev Button */}
+                <button
+                    onClick={prev}
+                    className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full flex items-center justify-center text-white transition-colors"
+                    style={{ background: "rgba(255,255,255,0.2)", backdropFilter: "blur(6px)" }}
+                    onMouseEnter={(e) =>
+                        ((e.currentTarget as HTMLButtonElement).style.background = "rgba(255,255,255,0.4)")
+                    }
+                    onMouseLeave={(e) =>
+                        ((e.currentTarget as HTMLButtonElement).style.background = "rgba(255,255,255,0.2)")
+                    }
+                    aria-label="Previous slide"
+                >
+                    <ChevronLeft className="h-5 w-5" />
+                </button>
+
+                {/* Next Button */}
+                <button
+                    onClick={next}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full flex items-center justify-center text-white transition-colors"
+                    style={{ background: "rgba(255,255,255,0.2)", backdropFilter: "blur(6px)" }}
+                    onMouseEnter={(e) =>
+                        ((e.currentTarget as HTMLButtonElement).style.background = "rgba(255,255,255,0.4)")
+                    }
+                    onMouseLeave={(e) =>
+                        ((e.currentTarget as HTMLButtonElement).style.background = "rgba(255,255,255,0.2)")
+                    }
+                    aria-label="Next slide"
+                >
+                    <ChevronRight className="h-5 w-5" />
+                </button>
+            </div>
+
+            {/* Dot Indicators */}
+            <div className="flex items-center gap-2">
+                {heroSlides.map((_, i) => (
+                    <button
+                        key={i}
+                        onClick={() => goTo(i)}
+                        aria-label={`Go to slide ${i + 1}`}
+                        className="rounded-full border-none cursor-pointer transition-all duration-300"
+                        style={{
+                            width: i === current ? 24 : 8,
+                            height: 8,
+                            background: i === current ? "#f0b429" : "rgba(255,255,255,0.4)",
+                            padding: 0,
+                        }}
+                    />
+                ))}
+            </div>
+        </motion.div>
+    );
+}
+
+// ─── Page Data ────────────────────────────────────────────────────────────────
 const cplServices = [
     {
         icon: Plane,
@@ -75,7 +218,7 @@ const trainingSteps = [
         step: 4,
         title: "Flying Training Hours",
         description:
-            "Complete required aircraft flying hours and simulator training at an   FTO.",
+            "Complete required aircraft flying hours and simulator training at an FTO.",
     },
     {
         step: 5,
@@ -174,52 +317,66 @@ const admissionSteps = [
     "Begin ground classes and flying training",
 ];
 
+// ─── Page Component ───────────────────────────────────────────────────────────
 export default function CPLCoursePage() {
     return (
         <Layout>
             <Helmet>
                 <title>Commercial Pilot License Course in India | CPL Training</title>
-                <meta name="description" content="Become a commercial pilot with DGCA-  pilot training in India. Check CPL course fees, eligibility, syllabus & career opportunities. Apply now." />
+                <meta
+                    name="description"
+                    content="Become a commercial pilot with DGCA-approved pilot training in India. Check CPL course fees, eligibility, syllabus & career opportunities. Apply now."
+                />
             </Helmet>
-            {/* Hero Section */}
-            <section className="relative py-24 aviation-gradient text-primary-foreground">
+
+            {/* ── Hero Section ── */}
+            <section className="relative py-24 aviation-gradient text-primary-foreground overflow-hidden">
                 <div className="container">
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="max-w-3xl"
-                    >
-                        <span className="inline-block text-sm font-semibold bg-white/20 px-4 py-2 rounded-full mb-4">
-                            Plan Commercial Pilot License Course in India - Complete Guide to Pilot Training & Career
-                        </span>
-                        <h1 className="text-4xl md:text-6xl font-bold mb-6">
-                            Commercial Pilot License Course - Start Your Pilot Training Journey
-                        </h1>
-                        <p className="text-xl text-primary-foreground/80 mb-8">
-                            Become a professional commercial pilot with a structured pilot course designed to give you
-                            world-class pilot training and real flying experience. Our commercial pilot course prepares
-                            students for a successful aviation career with complete ground training, flying practice, and
-                            career guidance.
-                        </p>
-                        <div className="flex flex-col sm:flex-row gap-4">
-                            <Button variant="gold" size="lg" asChild>
-                                <Link to="/rtr">
-                                    Apply Now
-                                    <ArrowRight className="h-4 w-4 ml-2" />
-                                </Link>
-                            </Button>
-                            <Button variant="outline-white" size="lg" asChild>
-                                <Link to="/cpl/fees">Get CPL Course Fees</Link>
-                            </Button>
-                            <Button variant="outline-white" size="lg" asChild>
-                                <Link to="/contact">Talk to Counselor</Link>
-                            </Button>
-                        </div>
-                    </motion.div>
+                    {/* Two-column layout: content left, slider right */}
+                    <div className="flex flex-col lg:flex-row items-center gap-12">
+
+                        {/* Left: Text content */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            className="flex-1 max-w-2xl"
+                        >
+                            <span className="inline-block text-sm font-semibold bg-white/20 px-4 py-2 rounded-full mb-4">
+                                Plan Commercial Pilot License Course in India - Complete Guide to Pilot Training & Career
+                            </span>
+                            <h1 className="text-4xl md:text-6xl font-bold mb-6">
+                                Commercial Pilot License Course - Start Your Pilot Training Journey
+                            </h1>
+                            <p className="text-xl text-primary-foreground/80 mb-8">
+                                Become a professional commercial pilot with a structured pilot course designed to give you
+                                world-class pilot training and real flying experience. Our commercial pilot course prepares
+                                students for a successful aviation career with complete ground training, flying practice, and
+                                career guidance.
+                            </p>
+                            <div className="flex flex-col sm:flex-row gap-4">
+                                <Button variant="gold" size="lg" asChild>
+                                    <Link to="/rtr">
+                                        Apply Now
+                                        <ArrowRight className="h-4 w-4 ml-2" />
+                                    </Link>
+                                </Button>
+                                <Button variant="outline-white" size="lg" asChild>
+                                    <Link to="/cpl/fees">Get CPL Course Fees</Link>
+                                </Button>
+                                <Button variant="outline-white" size="lg" asChild>
+                                    <Link to="/contact">Talk to Counselor</Link>
+                                </Button>
+                            </div>
+                        </motion.div>
+
+                        {/* Right: Image Slider */}
+                        <HeroImageSlider />
+
+                    </div>
                 </div>
             </section>
 
-            {/* What is CPL */}
+            {/* ── What is CPL ── */}
             <section className="py-20 bg-background">
                 <div className="container">
                     <motion.div
@@ -282,7 +439,7 @@ export default function CPLCoursePage() {
                 </div>
             </section>
 
-            {/* Benefits Section */}
+            {/* ── Benefits ── */}
             <section className="py-20 bg-muted/30">
                 <div className="container">
                     <motion.div
@@ -327,7 +484,7 @@ export default function CPLCoursePage() {
                 </div>
             </section>
 
-            {/* Training Structure */}
+            {/* ── Training Structure ── */}
             <section className="py-20 bg-background">
                 <div className="container">
                     <motion.div
@@ -414,7 +571,7 @@ export default function CPLCoursePage() {
                 </div>
             </section>
 
-            {/* Admission Process */}
+            {/* ── Admission Process ── */}
             <section className="py-20 bg-muted/30">
                 <div className="container">
                     <motion.div
@@ -461,7 +618,7 @@ export default function CPLCoursePage() {
                 </div>
             </section>
 
-            {/* CPL Fees */}
+            {/* ── CPL Fees ── */}
             <section className="py-20 bg-background">
                 <div className="container">
                     <motion.div
@@ -516,7 +673,7 @@ export default function CPLCoursePage() {
                 </div>
             </section>
 
-            {/* Training Journey Steps */}
+            {/* ── Training Journey Steps ── */}
             <section className="py-20 bg-muted/30">
                 <div className="container">
                     <motion.div
@@ -552,7 +709,7 @@ export default function CPLCoursePage() {
                 </div>
             </section>
 
-            {/* Career Opportunities */}
+            {/* ── Career Opportunities ── */}
             <section className="py-20 bg-background">
                 <div className="container">
                     <motion.div
@@ -626,7 +783,7 @@ export default function CPLCoursePage() {
                 </div>
             </section>
 
-            {/* Course Overview Table */}
+            {/* ── Course Overview Table ── */}
             <section className="py-20 bg-muted/30">
                 <div className="container">
                     <motion.div
@@ -666,7 +823,7 @@ export default function CPLCoursePage() {
                 </div>
             </section>
 
-            {/* Why Choose */}
+            {/* ── Why Choose ── */}
             <section className="py-20 bg-background">
                 <div className="container">
                     <motion.div
@@ -691,7 +848,7 @@ export default function CPLCoursePage() {
                 </div>
             </section>
 
-            {/* FAQ */}
+            {/* ── FAQ ── */}
             <section className="py-20 bg-muted/30">
                 <div className="container">
                     <motion.div
@@ -732,7 +889,7 @@ export default function CPLCoursePage() {
                 </div>
             </section>
 
-            {/* Final CTA */}
+            {/* ── Final CTA ── */}
             <section className="py-20 aviation-gradient text-primary-foreground">
                 <div className="container">
                     <motion.div
@@ -746,7 +903,7 @@ export default function CPLCoursePage() {
                         </h2>
                         <p className="text-primary-foreground/80 text-lg mb-4">
                             A commercial pilot license is more than just a certification — it is the beginning of an exciting
-                            and rewarding profession. From structured commercial pilot training and DGCA-  syllabus to
+                            and rewarding profession. From structured commercial pilot training and DGCA-approved syllabus to
                             real flight experience, the cpl course prepares students for a successful future.
                         </p>
                         <p className="text-primary-foreground/80 text-lg mb-8">
