@@ -8,7 +8,7 @@ const testimonials = [
     name: "Rajesh Kumar",
     role: "Commercial Pilot, IndiGo Airlines",
     src: "/assets/pilot1.webp",
-    quote: "Flying Star Aviator transformed my dream into reality. The training quality and placement support are exceptional. I'm now flying with IndiGo, thanks to their comprehensive CPL program.",
+    quote: "fly star Aviator transformed my dream into reality. The training quality and placement support are exceptional. I'm now flying with IndiGo, thanks to their comprehensive CPL program.",
     rating: 5,
   },
   {
@@ -24,7 +24,7 @@ const testimonials = [
     name: "Amit Patel",
     role: "Pilot, Vistara",
     src: "/assets/pilot3.webp",
-    quote: "I tried multiple training schools before joining Flying Star. The difference in quality is remarkable. Their simulators and practical training gave me confidence from day one.",
+    quote: "I tried multiple training schools before joining fly star. The difference in quality is remarkable. Their simulators and practical training gave me confidence from day one.",
     rating: 5,
   },
   {

@@ -4,6 +4,7 @@ import { Helmet } from "react-helmet-async";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+
 import {
     Plane,
     GraduationCap,
@@ -26,20 +27,24 @@ import {
 // ─── Image Slider Data ────────────────────────────────────────────────────────
 const heroSlides = [
     {
-        image: "https://images.unsplash.com/photo-1436891620584-47fd0e565afb?w=800&q=80",
+        image: "/cpl-slider/slider1.jpeg",
         caption: "Your First Step Toward the Cockpit",
     },
     {
-        image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80",
+        image: "/cpl-slider/silder2.jpeg",
         caption: "World-Class Flying Training",
     },
     {
-        image: "https://images.unsplash.com/photo-1559128010-7c1ad6e1b6a5?w=800&q=80",
+        image: "/cpl-slider/slider3.jpeg",
         caption: "Real Cross-Country Experience",
     },
     {
-        image: "https://images.unsplash.com/photo-1569154941061-e231b4725ef1?w=800&q=80",
+        image: "/cpl-slider/slider4.jpeg",
         caption: "CPL Certified & Career Ready",
+    },
+    {
+        image: "/cpl-slider/slider5.jpeg",
+        caption: "Professional Flight Training",
     },
 ];
 
@@ -73,8 +78,8 @@ function HeroImageSlider() {
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="hidden lg:flex flex-col items-center gap-4 flex-shrink-0"
-            style={{ width: "clamp(300px, 38vw, 500px)" }}
+            className="hidden lg:flex flex-col items-center gap-4 flex-shrink-0 ml-auto"
+            style={{ width: "clamp(380px, 46vw, 600px)", marginRight: "-5rem" }}
         >
             {/* Slider Card */}
             <div
@@ -331,7 +336,7 @@ export default function CPLCoursePage() {
 
             {/* ── Hero Section ── */}
             <section className="relative py-24 aviation-gradient text-primary-foreground overflow-hidden">
-                <div className="container">
+                <div className="container !pr-0">
                     {/* Two-column layout: content left, slider right */}
                     <div className="flex flex-col lg:flex-row items-center gap-12">
 
