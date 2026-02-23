@@ -4,33 +4,33 @@ import { Award, Users, Plane, Clock, Shield, TrendingUp } from "lucide-react";
 const reasons = [
   {
     icon: Award,
-    title: "Pilot training   ",
-    description: "Ceremonial activities, ground classes, and flying training.",
+    title: "Pilot Training   ",
+    description: "Ceremonial events, ground classes, and flight training.",
   },
   {
     icon: Users,
     title: "Expert Instructors",
-    description: "Learn from experienced pilots and aviation professionals with thousands of flying hours.",
+    description: "Train with experienced pilots and aviation experts who have thousands of flying hours.",
   },
   {
     icon: Plane,
     title: "Modern Fleet",
-    description: "Train on well-maintained, modern aircraft equipped with the latest avionics and technology.",
+    description: "Train on well-maintained modern aircraft with the latest avionics and technology.",
   },
   {
     icon: Clock,
     title: "Flexible Programs",
-    description: "Choose from integrated or modular training paths that fit your schedule and budget.",
+    description: "Choose from integrated or modular training programs that suit your schedule and budget.",
   },
   {
     icon: Shield,
     title: "Safety First",
-    description: "Industry-leading safety standards and protocols ensuring the highest level of training safety.",
+    description: "Industry-leading safety standards and procedures to ensure the highest level of training safety.",
   },
   {
     icon: TrendingUp,
     title: "98% Placement",
-    description: "Outstanding placement record with top airlines in India and abroad through our network.",
+    description: "Outstanding placement record with top airlines in India and abroad.",
   },
 ];
 

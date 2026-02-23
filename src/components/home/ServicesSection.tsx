@@ -6,42 +6,42 @@ const services = [
   {
     icon: GraduationCap,
     title: "Pilot Training",
-    description: "Comprehensive CPL & PPL training programs with experienced instructors and modern aircraft fleet.",
+    description: "Complete CPL & PPL training courses with experienced trainers and state-of-the-art aircraft fleet.",
     href: "/become-a-pilot/become-pilot",
     color: "from-primary to-aviation-green-light",
   },
   {
     icon: Shield,
     title: "DGCA Exams",
-    description: "Expert coaching for all DGCA examinations with high success rates and personalized guidance.",
+    description: "Complete coaching for all DGCA exams with high success rates and personal attention.",
     href: "/dgca",
     color: "from-aviation-sky to-blue-400",
   },
   {
     icon: Briefcase,
     title: "Aviation Placement",
-    description: "Assistance for instructors, NSOP/government pilots, line training, cargo, and both domestic & international airlines.",
+    description: "Support for instructors, NSOP/govt pilots, line training, cargo, and domestic & international airlines.",
     href: "/services/placement",
     color: "from-accent to-yellow-400",
   },
   {
     icon: Plane,
     title: "Chartered Services",
-    description: "Premium charter flight services for corporate travel, special events, and emergency needs.",
+    description: "High-end charter flight services for business, events, and emergency requirements.",
     href: "/services/chartered",
     color: "from-primary to-aviation-green-light",
   },
   {
     icon: Building2,
     title: "Aircraft Sale & Purchase",
-    description: "Expert consultation for buying, selling, and leasing aircraft with global network access.",
+    description: "Professional advice on aircraft purchase, sale, and leasing for access to worldwide networks.",
     href: "/services/aircraft-sourcing-sale",
     color: "from-aviation-runway to-gray-600",
   },
   {
     icon: Wrench,
     title: "Aircraft Management",
-    description: "Complete aircraft management solutions including maintenance, operations, and crew management.",
+    description: "Comprehensive aircraft management services including maintenance, flight operations, and personnel management.",
     href: "/services/aircraft-management",
     color: "from-primary to-aviation-green-light",
   },
@@ -64,7 +64,7 @@ export function ServicesSection() {
             Complete Aviation Solutions
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-            From training to placement, we provide end-to-end aviation services to help you achieve your dreams.
+            From training to placement, we offer complete aviation solutions to help you fulfill your dreams.
           </p>
         </motion.div>
 

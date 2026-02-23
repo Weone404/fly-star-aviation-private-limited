@@ -57,8 +57,8 @@ export function HeroSection() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 text-white leading-tight"
           >
-            Your Gateway to a{" "}
-            <span className="text-accent">Professional Aviation</span>{" "}
+            Your Key to a{" "}
+            <span className="text-accent">Successful Aviation</span>{" "}
             Career
           </motion.h1>
 
@@ -68,8 +68,7 @@ export function HeroSection() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-lg md:text-xl text-white/80 mb-10 max-w-2xl"
           >
-            Transform your dreams into reality with India's premier aviation training academy.
-            Expert instructors, world-class facilities, and guaranteed placement support.
+            Turn your dreams into reality with the best aviation training academy in India. Experienced faculty, state-of-the-art infrastructure, and assured placement assistance.
           </motion.p>
 
           <motion.div
@@ -80,7 +79,7 @@ export function HeroSection() {
           >
             <Button variant="aviation" size="xl" asChild>
               <Link to="/pilot-training">
-                Start Pilot Training
+                Begin Pilot Training
                 <ArrowRight className="h-5 w-5 ml-2" />
               </Link>
             </Button>

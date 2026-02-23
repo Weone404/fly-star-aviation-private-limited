@@ -205,7 +205,7 @@ const trainingSteps = [
         step: 1,
         title: "Admission",
         description:
-            "Complete 10+2 with Physics and Mathematics, apply for the commercial pilot licence course.",
+            "Pass 10+2 with Physics and Mathematics and apply for the Commercial Pilot License course.",
     },
     {
         step: 2,
@@ -217,25 +217,25 @@ const trainingSteps = [
         step: 3,
         title: "DGCA Exams",
         description:
-            "Prepare for and clear all DGCA theory examinations to qualify for flying training.",
+            "Prepare and pass all the DGCA theory exams to be eligible for flying training.",
     },
     {
         step: 4,
         title: "Flying Training Hours",
         description:
-            "Complete required aircraft flying hours and simulator training at an FTO.",
+            "Attend aircraft flying hours and simulator training at an FTO.",
     },
     {
         step: 5,
         title: "Skill Tests",
         description:
-            "Pass the final skill test conducted by a DGCA-authorised examiner.",
+            "Pass the final skill test conducted by a DGCA-approved examiner.",
     },
     {
         step: 6,
         title: "CPL License Issued",
         description:
-            "Receive your Commercial Pilot License and begin your airline career path.",
+            "Get your Commercial Pilot License and start your airline career.",
     },
 ];
 
@@ -299,27 +299,27 @@ const faqs = [
 ];
 
 const keyAdvantages = [
-    "Strong career growth in aviation",
-    "Opportunity to travel globally",
-    "High earning potential",
-    "Respected profession",
-    "Exciting and dynamic work environment",
+    "Good career prospects in aviation",
+    "Ability to travel all over the world",
+    "High potential for earning money",
+    "Respected career",
+    "Dynamic work environment",
 ];
 
 const feesBreakdown = [
-    "Flying training charges",
+    "Cost of flying training",
     "Ground classes",
     "Simulator training",
-    "Exam and licensing fees",
-    "Study materials",
+    "Cost of exams and licensing",
+    "Learning materials",
 ];
 
 const admissionSteps = [
-    "Complete 10+2 with Physics and Mathematics",
-    "Apply for the commercial pilot licence course",
+    "Pass 10+2 with Physics and Mathematics",
+    "Apply for the commercial pilot license course",
     "Pass medical fitness test",
     "Confirm admission in CPL program",
-    "Begin ground classes and flying training",
+    "Start ground classes and flying training",
 ];
 
 // ─── Page Component ───────────────────────────────────────────────────────────
@@ -394,9 +394,8 @@ export default function CPLCoursePage() {
                             Understanding the Commercial Pilot License (CPL)
                         </h2>
                         <p className="text-muted-foreground max-w-3xl mx-auto text-lg">
-                            A commercial pilot license is a professional certification that allows individuals to fly aircraft
-                            for commercial operations. After completing a commercial pilot licence course, candidates can work
-                            with airlines, cargo companies, charter operators, and aviation organizations.
+                            A commercial pilot license is a professional license that enables a person to fly an aircraft for commercial purposes. After acquiring a commercial pilot license, one can join airlines, cargo carriers, charter airlines, and aviation companies.
+
                         </p>
                     </motion.div>
 
@@ -408,13 +407,10 @@ export default function CPLCoursePage() {
                             className="p-8 rounded-2xl border border-border bg-card"
                         >
                             <p className="text-muted-foreground mb-4">
-                                This pilot course is the most important step for students who want to build a long-term career
-                                in aviation. With proper commercial pilot training, students gain both theoretical knowledge and
-                                practical flying experience required to become skilled pilots.
+                                This pilot training program is the most critical step for students who are looking to establish a long-term career in the aviation industry. With effective commercial pilot training, students acquire both theoretical and practical knowledge to become expert pilots.
                             </p>
                             <p className="text-muted-foreground">
-                                The commercial pilot license course in India follows DGCA guidelines and ensures students are
-                                trained according to industry safety standards.
+                                The commercial pilot license course in India is designed as per DGCA norms to train students as per aviation safety standards.
                             </p>
                         </motion.div>
 
@@ -454,11 +450,10 @@ export default function CPLCoursePage() {
                         className="text-center mb-16"
                     >
                         <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                            Benefits of Becoming a CPL Pilot
+                            Advantages of Becoming a CPL Pilot
                         </h2>
                         <p className="text-muted-foreground max-w-2xl mx-auto">
-                            Choosing a commercial pilot course opens doors to a high-growth profession. Aviation is expanding
-                            rapidly, creating a strong demand for trained pilots across domestic and international airlines.
+                            By opting for a commercial pilot course, one can look forward to a high-growth career. The aviation industry is growing at a rapid pace, thereby creating a huge demand for trained pilots.
                         </p>
                     </motion.div>
 
@@ -484,7 +479,7 @@ export default function CPLCoursePage() {
                         viewport={{ once: true }}
                         className="text-center text-muted-foreground mt-8"
                     >
-                        Completing a cpl course allows students to become a certified cpl pilot and explore multiple career opportunities.
+                        By pursuing a cpl course, students can become certified cpl pilots and look forward to various career prospects.
                     </motion.p>
                 </div>
             </section>
@@ -499,11 +494,10 @@ export default function CPLCoursePage() {
                         className="text-center mb-16"
                     >
                         <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                            Structure of Commercial Pilot Training
+                            Commercial Pilot Training Structure
                         </h2>
                         <p className="text-muted-foreground max-w-2xl mx-auto">
-                            Commercial pilot training in India includes both classroom learning and practical flying. A
-                            professional CPL pilot training program ensures that students are trained in all aspects of aviation.
+                            Commercial pilot training in India is done both in class and in flying. A professional CPL pilot training course ensures that students are exposed to all aspects of aviation.
                         </p>
                     </motion.div>
 
@@ -520,7 +514,7 @@ export default function CPLCoursePage() {
                                     "Ground theory classes",
                                     "Flight simulator training",
                                     "Aircraft flying hours",
-                                    "Safety and emergency handling",
+                                    "Safety and emergency procedures",
                                     "DGCA exam preparation",
                                 ].map((item, i) => (
                                     <li key={i} className="flex items-center gap-3 text-muted-foreground">
@@ -530,7 +524,7 @@ export default function CPLCoursePage() {
                                 ))}
                             </ul>
                             <p className="text-sm text-muted-foreground mt-6">
-                                This complete commercial pilot training structure helps students gain confidence and technical knowledge.
+                                The comprehensive structure of commercial pilot training helps students build confidence and expertise.
                             </p>
                         </motion.div>
 
@@ -539,9 +533,9 @@ export default function CPLCoursePage() {
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                         >
-                            <h3 className="text-xl font-bold mb-6">Subjects Covered in CPL Course</h3>
+                            <h3 className="text-xl font-bold mb-6">Components of CPL Course</h3>
                             <p className="text-muted-foreground mb-6">
-                                The commercial pilot license syllabus is designed to prepare students for real-world aviation operations.
+                                The commercial pilot license course structure is designed to train students for practical aviation tasks.
                             </p>
                             <div className="rounded-2xl border border-border overflow-hidden">
                                 <table className="w-full">
@@ -569,7 +563,7 @@ export default function CPLCoursePage() {
                                 </table>
                             </div>
                             <p className="text-sm text-muted-foreground mt-4">
-                                Students also attend cpl ground classes to prepare for DGCA theory exams and develop a strong understanding of aviation concepts.
+                                Students also have cpl ground classes to prepare for DGCA theory papers and build a solid foundation of aviation concepts.
                             </p>
                         </motion.div>
                     </div>
@@ -589,8 +583,7 @@ export default function CPLCoursePage() {
                             Step-by-Step Admission Guide
                         </h2>
                         <p className="text-muted-foreground max-w-2xl mx-auto">
-                            The Commercial Pilot License Admission Process is simple and structured. Students must meet
-                            academic and medical requirements before starting training.
+                            The Commercial Pilot License Admission Process is easy and organized. Students need to fulfill certain criteria before beginning their training.
                         </p>
                     </motion.div>
 
@@ -634,8 +627,7 @@ export default function CPLCoursePage() {
                     >
                         <h2 className="text-3xl md:text-4xl font-bold mb-4">CPL Course Fees in India</h2>
                         <p className="text-muted-foreground max-w-2xl mx-auto">
-                            One of the most common questions is about CPL course fees. The total cpl licence cost depends on
-                            several factors like flying hours, aircraft type, and training facilities.
+                            Another question that is quite common is related to the CPL course fees. The overall cpl license fee is dependent on a number of factors such as flying hours, type of aircraft, and training infrastructure.
                         </p>
                     </motion.div>
 
@@ -664,8 +656,7 @@ export default function CPLCoursePage() {
                             className="p-8 rounded-2xl bg-primary/5 border border-primary/20 flex flex-col justify-center"
                         >
                             <p className="text-muted-foreground mb-6">
-                                The total commercial pilot fees can vary depending on the academy and training structure.
-                                However, this investment leads to a high-value career in aviation.
+                                The overall commercial pilot fees may differ from one academy to another. However, this investment results in a very lucrative career in aviation.
                             </p>
                             <Button variant="gold" size="lg" asChild className="w-full">
                                 <Link to="/cpl/fees">
@@ -687,9 +678,9 @@ export default function CPLCoursePage() {
                         viewport={{ once: true }}
                         className="text-center mb-16"
                     >
-                        <h2 className="text-3xl md:text-4xl font-bold mb-4">Step-by-Step Training Path</h2>
+                        <h2 className="text-3xl md:text-4xl font-bold mb-4">Step-by-Step Training Process</h2>
                         <p className="text-muted-foreground max-w-2xl mx-auto">
-                            This structured CPL pilot training helps students gradually develop knowledge, flying skills, and confidence.
+                            This step-by-step CPL pilot training program enables the students to develop their knowledge, flying skills, and confidence.
                         </p>
                     </motion.div>
 
@@ -724,11 +715,10 @@ export default function CPLCoursePage() {
                         className="text-center mb-16"
                     >
                         <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                            Jobs After Commercial Pilot Training
+                            Jobs After Completing Commercial Pilot Training
                         </h2>
                         <p className="text-muted-foreground max-w-2xl mx-auto">
-                            After completing a commercial pilot license course in India, students can explore various career paths.
-                            A cpl pilot can grow into a captain role with experience and flight hours.
+                            Students who complete a commercial pilot license course in India have many job opportunities. A cpl pilot can move on to become a captain after gaining experience and flight hours.
                         </p>
                     </motion.div>
 
@@ -841,13 +831,10 @@ export default function CPLCoursePage() {
                             Importance of the Right Pilot Course
                         </h2>
                         <p className="text-muted-foreground text-lg mb-4">
-                            Selecting the right pilot course is crucial for building a successful aviation career. A well-structured
-                            commercial pilot licence course provides proper guidance, experienced instructors, and quality training
-                            facilities.
+                            Choosing the right pilot course is very important in developing a successful career in aviation. The right pilot course helps in providing proper guidance and training facilities to the students.
                         </p>
                         <p className="text-muted-foreground text-lg">
-                            A strong foundation in pilot training helps students clear exams, gain flying experience, and secure
-                            aviation jobs faster.
+                            A proper foundation in pilot training helps students in passing exams, acquiring flying experience, and getting aviation jobs quickly.
                         </p>
                     </motion.div>
                 </div>
