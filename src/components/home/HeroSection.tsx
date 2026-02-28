@@ -85,7 +85,7 @@ export function HeroSection() {
             </Button>
             <Button variant="gold" size="xl" asChild>
               <Link to="/contact">
-                Talk to Counsellor
+                Discuss with Counsellor
               </Link>
             </Button>
           </motion.div>

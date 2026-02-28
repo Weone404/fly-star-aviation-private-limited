@@ -350,11 +350,7 @@ export default function PilotTrainingNewZealandPage() {
                             Commercial Pilot Training in New Zealand
                         </h1>
                         <p className="text-xl text-primary-foreground/80 mb-8">
-                            New Zealand is a leading destination for aspiring commercial pilots, known for its world-class
-                            flight academies, CAA-  training programs, and diverse flying environments. With structured
-                            courses, experienced instructors, and internationally recognized licences, it offers the perfect
-                            balance of quality education and practical flight experience. Its excellent weather and global DGCA
-                            conversion compatibility make New Zealand an ideal choice for pilot training.
+                            With FAA-approved training, modern aircraft fleets, year-round flying conditions, and experienced instructors, the USA provides you with everything you need to succeed in your aviation career. Start your journey towards your dream of becoming a professional pilot with globally recognized certification and seamless DGCA conversion.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4">
                             <Button variant="gold" size="lg" asChild>
@@ -893,18 +889,13 @@ export default function PilotTrainingNewZealandPage() {
                         </div>
                         <div className="p-8 rounded-2xl border border-border bg-card">
                             <p className="text-muted-foreground text-lg mb-4">
-                                Commercial Pilot Training program in New Zealand offers Indian students a clear pathway to
-                                obtain a CAA NZ Commercial Pilot Licence (CPL) with Multi-Engine Instrument Rating (MEIR),
-                                fully aligned with ICAO standards and suitable for DGCA licence conversion.
+                                Commercial Pilot Training program of New Zealand is designed for Indian students to successfully complete CAA NZ Commercial Pilot Licence (CPL) with Multi-Engine Instrument Rating (MEIR), which is ICAO compliant and easily convertible for DGCA license.
                             </p>
                             <p className="text-muted-foreground text-lg mb-4">
-                                Training is delivered through CAA-certified flight schools, ensuring high operational standards,
-                                structured learning, and world-class flying exposure in diverse weather and terrain.
+                                Training is conducted by CAA-approved flight schools that provide students with high standards of training, learning, and flying exposure under varying weather conditions.
                             </p>
                             <p className="text-muted-foreground text-lg">
-                                Graduates complete the program with a licence that is internationally recognised and easily
-                                convertible in India and other ICAO member states, opening opportunities for global airline
-                                careers with a strong professional foundation.
+                                Upon completion of the program, students are awarded a license that is globally recognized and easily convertible in India and other ICAO member states, which opens doors for global airline careers with a strong foundation.
                             </p>
                         </div>
                     </motion.div>
@@ -965,11 +956,8 @@ export default function PilotTrainingNewZealandPage() {
                             Start Your Pilot Journey in New Zealand Today
                         </h2>
                         <p className="text-primary-foreground/80 text-lg mb-8">
-                            With CAA-  training, diverse flying environments, excellent weather conditions, and
-                            experienced instructors, New Zealand offers everything you need to build a successful aviation
-                            career. Take the first step towards your dream of becoming a professional pilot with internationally
-                            recognized certification and seamless DGCA conversion. Work part-time while you train and
-                            experience the perfect balance of quality education and practical flight experience.
+                            With CAA training, varied flying environments, favorable weather conditions, and experienced instructors, New Zealand is your ideal destination for developing a rewarding career in aviation. Take your first step towards realizing your dream of becoming a professional pilot with internationally recognized certification and smooth conversion with DGCA. Work part-time while you study and get the best of quality education and flying experience.
+
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <Button variant="gold" size="lg" asChild>

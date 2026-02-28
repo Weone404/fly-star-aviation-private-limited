@@ -169,12 +169,12 @@ const keyAdvantages = [
 ];
 
 const eligibilityCriteria = [
-    "Minimum age 21 years",
-    "Valid Indian CPL with multi-engine endorsement (or 500 hrs for Defence with 200 hrs as PIC)",
-    "Minimum 1,500 total flying hours, of which at least 500 hrs as Pilot-in-Command",
-    "Successful Class-1 Medical Assessment by DGCA-  doctors",
-    "Pass DGCA theory tests in Navigation, Meteorology, Regulations, Radio Aids & Oral Comms",
-    "Valid DGCA CPL and Class-1 Medical Assessment mandatory before applying",
+    "Minimum Age: 21 years",
+    "Valid Indian CPL with Multi Engine Rating (or 500 hrs for Defence Candidates with 200 hrs as PIC)",
+    "Minimum 1,500 hrs Total Flying Hrs, of which minimum 500 hrs as PIC",
+    "Class-1 Medical Assessment by DGCA doctors",
+    "Pass DGCA Theory Exams for Navigation, Meteorology, Regulations, Radio Aids & Oral Comms",
+    "Valid DGCA CPL & Valid Class-1 Medical Assessment compulsory before applying",
 ];
 
 const skillsRequired = [
@@ -259,12 +259,10 @@ export default function ATPLCoursePage() {
                             ✈ Airline Transport Pilot License (ATPL) in India — Complete Guide to Pilot Certification & Career
                         </span>
                         <h1 className="text-4xl md:text-6xl font-bold mb-6">
-                            Airline Transport Pilot License (ATPL) — Reach the Pinnacle of Aviation
+                            Airline Transport Pilot License (ATPL) - The Pinnacle of Aviation Careers
                         </h1>
                         <p className="text-xl text-primary-foreground/80 mb-8">
-                            The ATPL is the highest pilot certification available. Command commercial airlines as Pilot-in-Command
-                            with India's most comprehensive guide to eligibility, syllabus, fees, and career prospects. Your journey
-                            to becoming an airline captain starts here.
+                            The Airline Transport Pilot License is the highest pilot certification. Fly Commercial Airline Aircraft as Pilot-in-Command with our most comprehensive guide to eligibility, syllabus, fees, and prospects. Your journey to becoming an Airline Captain begins here.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4">
                             <Button variant="gold" size="lg" asChild>
@@ -337,19 +335,14 @@ export default function ATPLCoursePage() {
                             className="p-8 rounded-2xl border border-border bg-card"
                         >
                             <p className="text-muted-foreground mb-4">
-                                The Airline Transport Pilot License (ATPL) is the highest level of certification available to aircraft
-                                pilots — referred to as an ATP certificate in the US. It enables a pilot to take charge of an airplane
-                                and is <strong className="text-foreground">mandatory to serve as Captain</strong> for any commercial airline.
+                                The Airline Transport Pilot License (ATPL) is the highest form of license that a pilot of an aircraft can acquire, referred to as an ATP Certificate in the US. This license gives a pilot the authority to take command of an airplane.
                             </p>
                             <p className="text-muted-foreground mb-4">
-                                ATPL training begins with theory classes — akin to ground school — resulting in an{" "}
-                                <strong className="text-foreground">ATPL Theory License or Frozen ATPL (FATPL)</strong>. This
-                                "unfreezes" into a full ATPL once the pilot accumulates 1,500 flying hours and passes the practical
-                                skill test.
+                                To acquire an Airline Transport Pilot License, a pilot must take a series of theory lessons that equate to a ground school, after which he or she is issued an{" "}
+                                <strong className="text-foreground">Airline Transport Pilot License Theory License or a Frozen Airline Transport Pilot License (FATPL)</strong>. This license is unfrozen to a full Airline Transport Pilot License after a pilot accumulates 1,500 flying hours and passes a skill test.
                             </p>
                             <p className="text-muted-foreground">
-                                ATPLs are <em>not</em> granted for single-engine aircraft. A valid DGCA CPL with multi-engine
-                                endorsement and a successful Class-1 Medical Assessment are mandatory prerequisites.
+                                ATPLs are <em>not</em> issued for single-engine aircraft; a valid DGCA CPL with a multi-engine endorsement, as well as a Class-1 medical assessment, is a prerequisite for acquiring this license.
                             </p>
                         </motion.div>
 
@@ -896,13 +889,10 @@ export default function ATPLCoursePage() {
                             Importance of the Right ATPL Training Programme
                         </h2>
                         <p className="text-muted-foreground text-lg mb-4">
-                            Selecting the right ATPL training programme is crucial for building a successful aviation career. A
-                            well-structured course provides proper guidance, experienced instructors, DGCA-  simulators, and
-                            quality flying facilities.
+                            The right ATPL training programme is of utmost importance in creating a successful aviation career. The right training programme would offer proper guidance, instructors, DGCA simulators, and flying facilities.
                         </p>
                         <p className="text-muted-foreground text-lg">
-                            A strong foundation in ATPL theory and practical training helps students clear all DGCA examinations,
-                            accumulate the required flight hours efficiently, and secure captain-level aviation jobs faster.
+                            The right foundation in the study of ATPL would help the student pass all the examinations conducted by the DGCA, gain the required flying hours, and get a job in the capacity of a captain in the aviation industry.
                         </p>
                     </motion.div>
                 </div>
@@ -963,15 +953,10 @@ export default function ATPLCoursePage() {
                             Achieve the Highest Pilot Certification in Aviation
                         </h2>
                         <p className="text-primary-foreground/80 text-lg mb-4">
-                            An Airline Transport Pilot License is more than a certification — it is your gateway to commanding
-                            commercial aircraft, leading flight crews, and building a prestigious international career. From
-                            structured ATPL training and a DGCA-  syllabus to real multi-engine flight experience, the ATPL
-                            course prepares pilots for a successful future at the captain's seat.
+                            The Airline Transport Pilot License is more than just an education – it is your key to flying commercial aircraft, leading flight crews, and pursuing an illustrious international flying career. With its structured ATPL training, adherence to the DGCA syllabus, as well as actual training in flying multi-engine aircraft, the ATPL course is your recipe for success as an airline captain.
                         </p>
                         <p className="text-primary-foreground/80 text-lg mb-8">
-                            If you are passionate about aviation and dream of flying professionally as a captain, enrolling in an
-                            ATPL programme in India is the definitive step toward achieving your goal. With the right training,
-                            dedication, and guidance, you can become a confident, certified airline captain.
+                            If you are an aviation enthusiast who wants to fly for a living as an airline captain, then joining an ATPL course in India is the definitive key to achieving your dream. With the right training, commitment, and mentorship, you will be well on your way to becoming a confident and certified airline captain.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <Button variant="gold" size="lg" asChild>

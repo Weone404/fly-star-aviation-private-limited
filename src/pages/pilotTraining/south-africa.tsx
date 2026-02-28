@@ -420,11 +420,7 @@ export default function PilotTrainingSouthAfricaPage() {
                             Commercial Pilot Training in South Africa
                         </h1>
                         <p className="text-xl text-primary-foreground/80 mb-8">
-                            Designed for aspiring Indian pilots, the South Africa program offers SACAA-  flight
-                            training covering PPL to CPL with Multi-Engine and Instrument Rating. Conducted at leading flight
-                            schools with modern aircraft, it provides internationally recognized training standards. Graduates
-                            earn a SACAA Commercial Pilot Licence, easily convertible to DGCA, ensuring strong global career
-                            opportunities.
+                            The course is specifically designed for aspiring pilots from India, providing training in SACAA approved flight training from PPL to CPL, Multi Engine Rating, and Instrument Rating at leading flight schools in South Africa, with internationally recognized training standards, resulting in a Commercial Pilot's License from SACAA, valid for DGCA also, giving the student a high prospect of a lucrative career in aviation.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4">
                             <Button variant="gold" size="lg" asChild>
@@ -966,19 +962,13 @@ export default function PilotTrainingSouthAfricaPage() {
                         </div>
                         <div className="p-8 rounded-2xl border border-border bg-card">
                             <p className="text-muted-foreground text-lg mb-4">
-                                Pilot training in South Africa offers Indian students a structured pathway to earn a
-                                DGCA-  Commercial Pilot Licence (CPL) and Multi-Engine Instrument Rating (MEIR) under
-                                the South African Civil Aviation Authority (SACAA).
+                                Pilot training in South Africa is available for Indian students with a pathway to obtain a DGCA-Commercial Pilot Licence (CPL) and Multi-Engine Instrument Rating (MEIR) under the South African Civil Aviation Authority (SACAA) license.
                             </p>
                             <p className="text-muted-foreground text-lg mb-4">
-                                Conducted at globally recognized flight schools, the program combines advanced instruction,
-                                diverse weather conditions, and modern aircraft operations. The training ensures compliance
-                                with both SACAA and DGCA standards, preparing students for licence conversion in India and
-                                global airline careers.
+                                The training is provided by globally recognized flight schools with advanced training, varying weather conditions, and flying with modern aircraft. It is conducted with training that adheres to SACAA and DGCA requirements, enabling students to convert their license upon return to India.
                             </p>
                             <p className="text-muted-foreground text-lg">
-                                With excellent flying conditions year-round, students gain the skills, confidence, and
-                                international exposure needed to excel as professional pilots.
+                                With favorable flying conditions throughout the year, students will be able to acquire flying skills and confidence to become successful pilots.
                             </p>
                         </div>
                     </motion.div>
@@ -1039,12 +1029,7 @@ export default function PilotTrainingSouthAfricaPage() {
                             Start Your Pilot Journey in South Africa Today
                         </h2>
                         <p className="text-primary-foreground/80 text-lg mb-8">
-                            With SACAA-  training, excellent weather conditions (300+ flying days per year), diverse
-                            flying environments, and cost-effective programs, South Africa offers everything you need to build
-                            a successful aviation career. Take the first step towards your dream of becoming a professional
-                            pilot with internationally recognized certification and seamless DGCA conversion. Experience
-                            modern training fleets and experienced instructors in one of the world's premier aviation training
-                            destinations.
+                            South Africa’s SACAA-approved training facilities, favorable weather conditions (300+ days a year), and affordable courses are the perfect combination for a thriving flying career. Begin your path to a dream job as a professional pilot with internationally recognized certification and DGCA conversion on offer. Enjoy state-of-the-art training equipment and expert instructors in one of the world’s premier pilot training locations.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <Button variant="gold" size="lg" asChild>

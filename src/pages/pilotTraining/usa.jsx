@@ -415,11 +415,7 @@ export default function PilotTrainingUSAPage() {
                             Commercial Pilot Training in USA
                         </h1>
                         <p className="text-xl text-primary-foreground/80 mb-8">
-                            The USA is the premier destination for international students aspiring to become commercial
-                            pilots. Boasting FAA-approved flight schools, modern aircraft fleets, and year-round flying
-                            conditions, it offers world-class pilot training and a clear pathway to DGCA license conversion.
-                            With structured courses, experienced instructors, and globally recognized certification, the USA
-                            remains the top choice for students aiming to launch a successful aviation career.
+                            The USA is the best destination for international students who want to pursue their dream of becoming a Commercial Pilot. The country offers world-class pilot training facilities and a smooth pathway for conversion of the DGCA license. The country has FAA-approved flight schools and favorable flying conditions throughout the year. The USA remains the best destination for students who want to pursue a successful career in aviation.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4">
                             <Button variant="gold" size="lg" asChild>
@@ -1005,20 +1001,10 @@ export default function PilotTrainingUSAPage() {
                         </div>
                         <div className="p-8 rounded-2xl border border-border bg-card">
                             <p className="text-muted-foreground text-lg mb-4">
-                                Our Commercial Pilot Training program in the USA offers Indian students a pathway to earn
-                                DGCA-approved Commercial Pilot Licenses (CPL) and Multi-Engine Instrument Ratings (MEIR),
-                                ensuring full compliance with Indian aviation regulations.
+                                License And Recognition
+                                Our Commercial Pilot Training program in the USA provides Indian students with an opportunity to earn DGCA approved Commercial Pilot Licenses (CPL) and Multi-Engine Instrument Ratings, thus complying with Indian aviation regulations. The training is conducted at FAA-approved flight schools that offer globally recognized standards and world-class flight experience. The students are thus equipped with licenses that are not only valid in India under the DGCA regime but are also valid globally under the FAA regime of the USA. The globally recognized qualification ensures that our students do not only gain valuable flight experience but are equipped with a qualification that opens doors to a variety of career options.
                             </p>
-                            <p className="text-muted-foreground text-lg mb-4">
-                                Training is conducted at FAA-certified flight schools, providing internationally recognized
-                                standards and world-class flight experience. Graduates leave fully prepared to operate
-                                commercially with airlines globally, benefiting from licenses that are valid both in India
-                                (DGCA) and internationally through the FAA (USA) framework.
-                            </p>
-                            <p className="text-muted-foreground text-lg">
-                                This dual recognition ensures that students gain not only practical flight experience but also
-                                a globally respected qualification, opening doors to diverse aviation career opportunities.
-                            </p>
+
                         </div>
                     </motion.div>
                 </div>
@@ -1078,10 +1064,7 @@ export default function PilotTrainingUSAPage() {
                             Start Your Pilot Journey in the USA Today
                         </h2>
                         <p className="text-primary-foreground/80 text-lg mb-8">
-                            With FAA-approved training, modern aircraft fleets, year-round flying conditions, and experienced
-                            instructors, the USA offers everything you need to build a successful aviation career. Take the
-                            first step towards your dream of becoming a professional pilot with globally recognized
-                            certification and seamless DGCA conversion.
+                            With FAA-approved training, modern aircraft fleets, year-round flying conditions, and experienced instructors, the USA provides you with everything you need to succeed in your aviation career. Start your journey towards your dream of becoming a professional pilot with globally recognized certification and seamless DGCA conversion.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <Button variant="gold" size="lg" asChild>

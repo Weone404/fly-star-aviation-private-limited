@@ -344,10 +344,7 @@ export default function PilotTrainingIndiaPage() {
                             Commercial Pilot Training in India
                         </h1>
                         <p className="text-xl text-primary-foreground/80 mb-8">
-                            India's aviation industry is growing rapidly, offering aspiring pilots a strong foundation
-                            through DGCA-  flight schools and structured Commercial Pilot Training programs. With
-                            modern training aircraft, advanced simulators, and increasing airline opportunities, India
-                            provides a comprehensive environment to begin your flying journey.
+                            The aviation industry in India is expanding at a rapid rate, providing aspiring pilots with a solid platform through the DGCA flight schools and the Commercial Pilot Training course. With the availability of modern aircraft and training equipment, India is an excellent place to start your flying journey.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4">
                             <Button variant="gold" size="lg" asChild>
@@ -849,21 +846,16 @@ export default function PilotTrainingIndiaPage() {
                         </div>
                         <div className="p-8 rounded-2xl border border-border bg-card">
                             <p className="text-muted-foreground text-lg mb-4">
-                                Commercial Pilot Training program in India provides aspiring pilots with a well-structured
-                                pathway to obtain a DGCA-  Commercial Pilot Licence (CPL) along with Multi-Engine
-                                and Instrument Ratings.
+                                The Commercial Pilot Training program in India offers aspiring pilots a clear roadmap to secure a DGCA-Commercial Pilot Licence (CPL) along with Multi-Engine and Instrument Ratings.
                             </p>
                             <p className="text-muted-foreground text-lg mb-4">
-                                Conducted at DGCA-certified Flying Training Organisations, the program combines extensive
-                                ground classes with practical flight experience in diverse weather and airspace conditions.
+                                The training is conducted in DGCA-approved Flying Training Organizations, where students receive intensive ground school training along with actual flying experience in different types of weather conditions.
                             </p>
                             <p className="text-muted-foreground text-lg mb-4">
-                                The training adheres to the highest national aviation standards, ensuring students develop
-                                strong technical and operational skills.
+                                The training is designed to meet the highest standards of national aviation regulations, providing students with quality knowledge.
                             </p>
                             <p className="text-muted-foreground text-lg">
-                                Upon completion, graduates earn a DGCA-recognised licence, qualifying them for airline
-                                careers within India and across global aviation networks.
+                                Upon completing the Commercial Pilot Training program, students are awarded a DGCA-approved license, opening up opportunities for airline careers in India as well as the rest of the world.
                             </p>
                         </div>
                     </motion.div>
@@ -924,9 +916,7 @@ export default function PilotTrainingIndiaPage() {
                             Start Your Pilot Journey Today
                         </h2>
                         <p className="text-primary-foreground/80 text-lg mb-8">
-                            With DGCA-  training, modern aircraft, experienced instructors, and excellent weather
-                            conditions, India offers everything you need to build a successful aviation career. Take the
-                            first step towards your dream of becoming a professional pilot.
+                            With the training facilities of DGCA, modern aircraft, experienced instructors, and excellent weather conditions, India provides everything you need to succeed in your aviation career. Start your journey today to achieve your dreams of becoming a professional pilot.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <Button variant="gold" size="lg" asChild>

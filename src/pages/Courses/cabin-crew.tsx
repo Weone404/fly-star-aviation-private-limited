@@ -147,14 +147,10 @@ export default function CabinCrewPage() {
                         </span>
                         <h1 className="text-4xl md:text-6xl font-bold mb-6">Cabin Crew</h1>
                         <p className="text-xl text-primary-foreground/80 mb-8">
-                            Are you an experienced or inexperienced Cabin Crew member dreaming of joining an airline that
-                            values your passion for aviation? We work with various esteemed airlines and might have the
-                            opportunity you have been waiting for!
+                            Are you an experienced or inexperienced Cabin Crew individual with dreams of joining an airline that appreciates your passion for aviation? We work with a variety of esteemed airlines and may have the opportunity you have been waiting for!
                         </p>
                         <p className="text-lg text-primary-foreground/80 mb-8">
-                            Our team is dedicated on finding the best possible match for you, and one of our top priorities
-                            is to offer permanent contracts to all our employees and to create predictability - by cooperating
-                            closely and building relations to all our employees.
+                            Our team is dedicated to ensuring that we provide you with the best possible match, and one of our main objectives is to provide permanent contracts to all our employees and create predictability by cooperating and developing relations with all our employees.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4">
                             <Button variant="gold" size="lg" asChild>
@@ -182,9 +178,7 @@ export default function CabinCrewPage() {
                     >
                         <h2 className="text-3xl md:text-4xl font-bold mb-4">Cabin Crew Opportunities</h2>
                         <p className="text-muted-foreground max-w-3xl mx-auto text-lg">
-                            Our partner airlines are scaling up more than ever! Our job in AAP Aviation is to be primed and
-                            ready to help the industry fill the high demand, and find the best opportunities for our Cabin Crew
-                            candidates.
+                            Our partner airlines are expanding more than ever! Our role at AAP Aviation is to be ready and primed to help the aviation industry meet the high demand by providing the best opportunities for our Cabin Crew applicants.
                         </p>
                     </motion.div>
 
@@ -276,8 +270,7 @@ export default function CabinCrewPage() {
                             Ready to Launch Your Career as a Cabin Crew Member?
                         </h2>
                         <p className="text-muted-foreground max-w-3xl mx-auto text-lg">
-                            Find everything you need to succeed: step-by-step guides, interview and assessment day tips, CV
-                            advice, and answers to the most common questions about the application process.
+                            We have everything you need to succeed, including step-by-step guides, interview and assessment day tips, CV advice, and answers to the most common questions about the application process.
                         </p>
                     </motion.div>
 
@@ -387,12 +380,10 @@ export default function CabinCrewPage() {
 
                             <div className="space-y-4 mb-8">
                                 <p className="text-muted-foreground">
-                                    The combination of our global reach and local knowledge enables us to constantly partner
-                                    with esteemed airlines around the globe.
+                                    With our global presence and local expertise, we are constantly working with prestigious airlines around the world.
                                 </p>
                                 <p className="text-muted-foreground">
-                                    Registering your candidate profile is incredibly easy. Simply leave your name and email and
-                                    we'll send you information about how you can set up your profile.
+                                    It is very simple to register your candidate profile with us. Simply fill in your name and email address and we will send you details of how to register your profile.
                                 </p>
                             </div>
 
@@ -494,9 +485,7 @@ export default function CabinCrewPage() {
                     >
                         <h2 className="text-3xl md:text-4xl font-bold mb-6">Start Your Cabin Crew Journey Today</h2>
                         <p className="text-primary-foreground/80 text-lg mb-8">
-                            Whether you're an experienced professional or just starting out, we're here to help you find the
-                            perfect cabin crew position with our partner airlines. With permanent contracts, dedicated support,
-                            and global opportunities, your aviation career starts here.
+                            Are you an experienced professional or just entering the industry? We are here to assist you in landing your ideal cabin crew job with our partner airlines. We offer permanent jobs and support, and our aviation careers start here.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <Button variant="gold" size="lg" asChild>

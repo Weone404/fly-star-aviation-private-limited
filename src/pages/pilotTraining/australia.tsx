@@ -347,11 +347,7 @@ export default function PilotTrainingAustraliaPage() {
                             Commercial Pilot Training in Australia
                         </h1>
                         <p className="text-xl text-primary-foreground/80 mb-8">
-                            Australia's aviation industry is renowned worldwide, offering international students high-quality
-                            flight training through its CASA-  academies and Diploma in Aviation programs. With modern
-                            aircraft, advanced simulators, excellent training infrastructure, and globally recognised licences,
-                            Australia provides the perfect environment for aspiring pilots to build a professional and
-                            successful flying career.
+                            The aviation industry in Australia is known all over the world for providing top-class flight training facilities for international students through its CASA-accredited academies and Diploma in Aviation courses. It is the ideal destination for flight trainees who want a successful flying career. With its state-of-the-art aircraft and simulators, Australia provides the best facilities for flight training.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4">
                             <Button variant="gold" size="lg" asChild>
@@ -894,15 +890,10 @@ export default function PilotTrainingAustraliaPage() {
                         </div>
                         <div className="p-8 rounded-2xl border border-border bg-card">
                             <p className="text-muted-foreground text-lg mb-4">
-                                Designed for aspiring Indian pilots, our Commercial Pilot Training program in Australia
-                                integrates CASA-  flight training with the Diploma in Aviation, providing both academic
-                                and practical expertise.
+                                The Commercial Pilot Training program in Australia has been designed for budding Indian pilots. The program combines CASA flight training and a Diploma in Aviation.
                             </p>
                             <p className="text-muted-foreground text-lg mb-4">
-                                Conducted at CASA-certified flight schools, the program ensures globally recognized standards,
-                                advanced aircraft experience, and exposure to diverse flying conditions. Graduates earn a
-                                Commercial Pilot Licence (CPL) with Multi-Engine Instrument Rating (MEIR), easily convertible
-                                to DGCA standards in India.
+                                The program is conducted in CASA-approved flight schools. This provides a Commercial Pilot Licence with a Multi-Engine Instrument Rating (MEIR), which can be easily adapted for a DGCA requirement in India. The CASA certification is recognized around the world. This gives budding pilots the confidence and recognition required for a successful career in the aviation industry.
                             </p>
                             <p className="text-muted-foreground text-lg">
                                 With internationally respected CASA credentials, students gain the skills, confidence, and

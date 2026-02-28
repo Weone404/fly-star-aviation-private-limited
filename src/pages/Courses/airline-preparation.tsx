@@ -217,9 +217,7 @@ export default function AirlinePreparationPage() {
                             Airline Preparation Course — Launch Your Commercial Aviation Career
                         </h1>
                         <p className="text-xl text-primary-foreground/80 mb-8">
-                            Prepare for a successful career in aviation with our comprehensive Airline Preparation Course.
-                            Meticulously designed to equip aspiring pilots with the knowledge, skills, and confidence
-                            required to excel in the dynamic world of commercial aviation.
+                            Kickstart your commercial aviation career with our highly effective Airline Preparation Course. Our course has been carefully designed to provide aspiring pilots with the required knowledge, skills, and confidence to succeed in the ever-evolving world of commercial aviation.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4">
                             <Button variant="gold" size="lg" asChild>
@@ -252,9 +250,7 @@ export default function AirlinePreparationPage() {
                             About the Airline Preparation Course
                         </h2>
                         <p className="text-muted-foreground max-w-3xl mx-auto text-lg">
-                            Our Airline Preparation Course is tailored to meet the rigorous standards set by the aviation
-                            industry, ensuring that graduates are well-prepared for the challenges of a professional pilot
-                            career. The course covers a wide range of topics, providing a holistic approach to pilot readiness.
+                            The Airline Preparation Course is designed in such a way that it meets the high standards set by the aviation industry. The course is comprehensive in its content, providing a holistic approach in the preparation of a pilot.
                         </p>
                     </motion.div>
 
@@ -266,14 +262,10 @@ export default function AirlinePreparationPage() {
                             className="p-8 rounded-2xl border border-border bg-card"
                         >
                             <p className="text-muted-foreground mb-4">
-                                This course bridges the gap between completing your commercial pilot training and meeting the
-                                exacting expectations of airline recruiters. From mastering crew resource management to
-                                acing airline interview assessments, every module is purpose-built for career readiness.
+                                This course closes the gap between the successful completion of your commercial pilot training and the exacting standards required by airline recruiters. Every module in this course has been designed to get you ready for the airline world.
                             </p>
                             <p className="text-muted-foreground">
-                                Participants benefit from industry-aligned curriculum, experienced aviation instructors,
-                                state-of-the-art simulator access, and hands-on preparation for the entire airline
-                                selection process.
+                                You will benefit from curriculum design, aviation instructors, access to simulator facilities, and hands-on training that prepares you for the entire airline selection process.
                             </p>
                         </motion.div>
 
@@ -631,14 +623,10 @@ export default function AirlinePreparationPage() {
                             Why the Right Preparation Makes All the Difference
                         </h2>
                         <p className="text-muted-foreground text-lg mb-4">
-                            The transition from completing your pilot training to securing a position at an airline is
-                            highly competitive. Airlines assess candidates on technical knowledge, CRM competencies,
-                            simulator performance, and communication skills simultaneously.
+                            The move from the completion of pilot training to the acquisition of an airline job is a competitive process, and airlines evaluate candidates in terms of knowledge, CRM skills, simulator, and communication skills at the same time.
                         </p>
                         <p className="text-muted-foreground text-lg">
-                            Our Airline Preparation Course ensures you walk into every assessment and interview with
-                            structured preparation, practised skills, and the confidence that comes from expert-guided
-                            readiness — significantly improving your selection prospects.
+                            The Airline Preparation Course will guarantee that you enter every assessment and interview with the right level of preparation, skills, and self-confidence, thereby increasing the chances of getting the job.
                         </p>
                     </motion.div>
                 </div>
@@ -698,14 +686,10 @@ export default function AirlinePreparationPage() {
                             Take the Next Step Towards Your Airline Career
                         </h2>
                         <p className="text-primary-foreground/80 text-lg mb-4">
-                            The Airline Preparation Course is more than training — it is your competitive advantage
-                            in the airline selection process. From CRM and simulator proficiency to polished interview
-                            performance, every module is designed to maximise your chances of success.
+                            The Airline Preparation Course is not just training, but your competitive advantage in the airline selection process. From your proficiency in CRM, simulators, to your interview skills, every module of the course is designed to ensure your success.
                         </p>
                         <p className="text-primary-foreground/80 text-lg mb-8">
-                            If you are a CPL holder or final-year trainee ready to pursue your dream of flying for
-                            a commercial airline, enrol in our Airline Preparation Course today and take the most
-                            important step towards your first officer role.
+                            If you are a holder of a CPL license or a trainee in your final year and are ready to take the next step towards your dream of flying for a commercial airline, then you are invited to join our Airline Preparation Course.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <Button variant="gold" size="lg" asChild>

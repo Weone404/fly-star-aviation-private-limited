@@ -224,9 +224,7 @@ export default function AirportGroundStaffCoursePage() {
                             Airport Ground Staff Course - Build Your Aviation Career
                         </h1>
                         <p className="text-xl text-primary-foreground/80 mb-8">
-                            Become a certified airport ground staff professional with our comprehensive 11-month certification course.
-                            Master passenger handling, baggage management, customer service, and airport operations. Join leading
-                            airlines in India and start your exciting aviation career.
+                            Take a step towards a rewarding aviation career as a certified airport ground staff professional. Our airport ground staff course is a comprehensive certification program designed for a duration of 11 months. Join top airlines in India and start your exciting aviation career.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4">
                             <Button variant="gold" size="lg" asChild>
@@ -259,9 +257,7 @@ export default function AirportGroundStaffCoursePage() {
                             Understanding Airport Ground Staff & Ground Crew
                         </h2>
                         <p className="text-muted-foreground max-w-3xl mx-auto text-lg">
-                            Ground staff play a crucial role in the aviation industry, serving as the backbone of airport operations.
-                            They ensure passengers have a smooth and pleasant experience from check-in to boarding, while ground crew
-                            members handle vital tasks including baggage handling, boarding assistance, and aircraft maintenance checks.
+                            The role of ground staff is of great importance in the aviation industry. Ground staff is considered the backbone of airport operations. Ground staff ensure that passengers have a smooth and pleasant experience, while ground crew handle other crucial operations like baggage handling, boarding, and maintenance checks.
                         </p>
                     </motion.div>
 
@@ -274,14 +270,10 @@ export default function AirportGroundStaffCoursePage() {
                         >
                             <h3 className="text-xl font-bold mb-4">Ground Staff Role</h3>
                             <p className="text-muted-foreground mb-4">
-                                Ground staff are responsible for ensuring that passengers have a smooth and pleasant experience from
-                                check-in to boarding. This involves checking baggage, providing information, assisting with boarding
-                                procedures, and ensuring safety protocols are followed.
+                                The role of ground staff is to ensure that passengers have a smooth and pleasant experience from check-in to boarding. Ground staff handle operations like checking baggage, giving information, and ensuring that safety protocols are followed.
                             </p>
                             <p className="text-muted-foreground">
-                                They also coordinate with other airport departments, including security and maintenance, to ensure
-                                timely and efficient operations. The number of aircraft and airports is increasing rapidly in India,
-                                creating huge demand for well-skilled ground staff.
+                                They work with other departments of the airport, including security and maintenance, to ensure smooth operations. There is a huge demand for well-skilled ground staff due to the increasing number of aircraft and airports in India.
                             </p>
                         </motion.div>
 
@@ -517,8 +509,8 @@ export default function AirportGroundStaffCoursePage() {
                     >
                         <h2 className="text-3xl md:text-4xl font-bold mb-4">Ground Staff Course Fee Structure</h2>
                         <p className="text-muted-foreground max-w-2xl mx-auto">
-                            Ground staff course fee is based on institute, location, infrastructure, and other facilities.
-                            The investment in your aviation career includes comprehensive training and placement support.
+                            The ground staff course fees vary depending on the institutes, location, and other facilities provided by the institutes to the students.
+
                         </p>
                     </motion.div>
 
@@ -535,7 +527,7 @@ export default function AirportGroundStaffCoursePage() {
                                     <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
                                     <div>
                                         <p className="font-semibold">Total Course Fee Range</p>
-                                        <p className="text-sm text-muted-foreground">INR 1,00,000 to INR 1,50,000</p>
+                                        <p className="text-sm text-muted-foreground">Between INR 1,00,000 to INR 1,50,000</p>
                                     </div>
                                 </div>
                                 <div className="flex items-start gap-3">
@@ -554,8 +546,7 @@ export default function AirportGroundStaffCoursePage() {
                                 </div>
                             </div>
                             <p className="text-sm text-muted-foreground">
-                                Faculty will help students learn faster in various activities and subjects, preparing them for
-                                successful careers in aviation.
+                                The students will be able to learn faster through the help of the faculty in various activities and subjects, leading to a successful career in aviation.
                             </p>
                         </motion.div>
 
@@ -769,19 +760,13 @@ export default function AirportGroundStaffCoursePage() {
                             Why Choose Airport Ground Staff Course?
                         </h2>
                         <p className="text-muted-foreground text-lg mb-4">
-                            The aviation industry in India is experiencing rapid growth with increasing number of aircraft and airports.
-                            This creates a massive demand for well-skilled ground staff who can handle the complex functioning at airports
-                            efficiently and professionally.
+                            The aviation industry in India is booming at a rapid rate due to an increase in the number of planes and airports. This creates a high demand for skilled airport ground staff who can handle the complex operations at airports professionally.
                         </p>
                         <p className="text-muted-foreground text-lg mb-4">
-                            Airport ground staff courses and aviation ground staff courses provide specialized training programs focused
-                            on customer service, baggage handling, and emergency protocols. Completing a diploma in airport ground staff
-                            training or airlines ground staff course significantly boosts your employability in this growing sector.
+                            Airport ground staff courses and aviation ground staff courses offer training programs that specialize in providing knowledge in customer handling, baggage handling, and emergency procedures. Completing a course in airport ground staff training or an airline ground staff course will enhance your chances of getting a job in the aviation industry.
                         </p>
                         <p className="text-muted-foreground text-lg">
-                            Obtaining an airport ground staff certificate improves job prospects and showcases your proficiency in airport
-                            operations. This certification increases your chances during airport ground staff hiring processes, highlighting
-                            your skills and readiness for the role.
+                            Earning an airport ground staff certificate will increase your chances of getting a job by demonstrating your expertise in handling airport operations. This will increase your chances during airport ground staff recruitment processes.
                         </p>
                     </motion.div>
                 </div>
@@ -841,14 +826,11 @@ export default function AirportGroundStaffCoursePage() {
                             Start Your Ground Staff Career Today
                         </h2>
                         <p className="text-primary-foreground/80 text-lg mb-4">
-                            The airport ground staff course is more than just a certification — it is your gateway to an exciting
-                            career in India's booming aviation industry. With comprehensive training in passenger handling, customer
-                            service, baggage management, and airport operations, you'll be equipped with all the skills needed to excel.
+                            It is not just a course; it is your ticket to a great and exciting career in the growing aviation industry of India. With our airport ground staff course, you will be provided with all the training that is necessary to succeed.
+
                         </p>
                         <p className="text-primary-foreground/80 text-lg mb-8">
-                            Join leading airlines like Air India, IndiGo, SpiceJet, and many more. With the right training from top
-                            ground staff institutes and dedication, you can build a rewarding career with competitive salaries ranging
-                            from 2 to 6 lakhs per annum. Take the first step toward your aviation dreams today!
+                            You will be able to join top airlines like Air India, IndiGo, SpiceJet, and many more. With proper training from top ground staff training institutes and hard work, you will be able to achieve a great career with salaries ranging from 2 to 6 lakhs per annum.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <Button variant="gold" size="lg" asChild>
