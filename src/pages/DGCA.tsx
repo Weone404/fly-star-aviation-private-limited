@@ -204,9 +204,7 @@ export default function DGCAComputerNumberPage() {
               DGCA Computer Number – Full Guide for Pilot Aspirants
             </h1>
             <p className="text-xl text-primary-foreground/80 mb-8">
-              If you're planning to become a pilot in India, the first thing you'll need to start your journey
-              is a Computer Number issued by the DGCA (Directorate General of Civil Aviation). This comprehensive
-              guide will walk you through everything you need to know.
+              Are you planning a career as a pilot in India? Well, the first step you need to take is getting a Computer Number from the DGCA (Directorate General of Civil Aviation), which is a must if you want to start your flying career.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button variant="gold" size="lg" asChild>
@@ -679,9 +677,7 @@ export default function DGCAComputerNumberPage() {
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Start Your Pilot Journey?</h2>
             <p className="text-primary-foreground/80 text-lg mb-8">
-              Getting your DGCA Computer Number is the first official step toward becoming a professional pilot in
-              India. Don't worry about the technical terms — just follow this guide carefully, prepare your
-              documents properly, and submit your application. Your aviation career starts here!
+              Your journey to becoming a professional pilot begins with obtaining your DGCA Computer Number. No need to worry about the technical jargon; all you have to do is follow the instructions in this post and prepare your documents well before applying. Your journey to the skies begins here!
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button variant="gold" size="lg" asChild>

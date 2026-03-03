@@ -210,11 +210,7 @@ export default function ComponentsAndSpares() {
                             maxWidth: "620px", marginBottom: "38px",
                             animation: "fadeUp 0.7s ease 0.35s forwards", opacity: 0,
                         }}>
-                            We maintain deep, long-standing relationships with a global ecosystem of
-                            leading parts suppliers, distributors, and OEMs — built over decades of
-                            aviation support. Whether you operate commercial, business, or defence
-                            platforms, our network delivers reliable, genuine parts with speed, wherever
-                            you are based.
+                            We have established strong, long-term relationships with a global ecosystem of leading parts suppliers, distributors, and OEMs. Our global ecosystem ensures that, no matter what type of commercial, business, or defense aircraft you operate, you can count on us to deliver the right parts, when you need them.
                         </p>
 
                         <div style={{ display: "flex", gap: "14px", flexWrap: "wrap", animation: "fadeUp 0.7s ease 0.45s forwards", opacity: 0 }}>
@@ -404,14 +400,10 @@ export default function ComponentsAndSpares() {
                                 Ready-to-Deploy Stock, Backed by Quality Assurance
                             </h2>
                             <p style={{ fontSize: "15px", color: "rgba(255,255,255,0.6)", lineHeight: 1.85, marginBottom: "20px" }}>
-                                We maintain a continuously refreshed inventory of high-demand aircraft
-                                components, consumables, and expendables — all sourced through authorised
-                                channels and backed by manufacturer warranties and competitive pricing.
+                                We have an evergreen supply of in-demand aircraft parts, consumables, and expendables in stock, procured through authorized sources and accompanied by manufacturer warranties and competitive price advantages.
                             </p>
                             <p style={{ fontSize: "15px", color: "rgba(255,255,255,0.6)", lineHeight: 1.85 }}>
-                                Our proprietary ERP and Warehouse Management Systems give us real-time
-                                visibility over stock levels, ensuring that when you need a part urgently,
-                                we can locate, pick, and ship with minimal delay.
+                                Our in-house developed Enterprise and Warehouse Management Systems enable us to have real-time monitoring of our in-stock levels, thereby ensuring prompt availability of the items you require in emergency situations.
                             </p>
                         </AnimatedSection>
 

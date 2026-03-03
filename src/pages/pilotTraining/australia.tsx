@@ -895,10 +895,7 @@ export default function PilotTrainingAustraliaPage() {
                             <p className="text-muted-foreground text-lg mb-4">
                                 The program is conducted in CASA-approved flight schools. This provides a Commercial Pilot Licence with a Multi-Engine Instrument Rating (MEIR), which can be easily adapted for a DGCA requirement in India. The CASA certification is recognized around the world. This gives budding pilots the confidence and recognition required for a successful career in the aviation industry.
                             </p>
-                            <p className="text-muted-foreground text-lg">
-                                With internationally respected CASA credentials, students gain the skills, confidence, and
-                                global eligibility to launch successful airline careers.
-                            </p>
+
                         </div>
                     </motion.div>
                 </div>

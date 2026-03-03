@@ -341,15 +341,10 @@ export default function DGCAMedicalGuidePage(): JSX.Element {
                             DGCA Class 2 & Class 1 Medical Guide
                         </h1>
                         <p className="text-xl text-primary-foreground/80 mb-6">
-                            Aspiring pilots in India are required to undergo specific medical assessments to ensure they
-                            meet the necessary mental and physical health standards for aviation. The Directorate General
-                            of Civil Aviation (DGCA) mandates two primary medical examinations — DGCA Class II and DGCA
-                            Class I medical certifications.
+                            Piloting in India requires aspiring pilots to undergo medical examinations to test their mental and physical fitness to operate an aircraft. The DGCA, or Directorate General of Civil Aviation, requires aspiring pilots to undergo two medical examinations, DGCA Class II and DGCA Class I medical certification.
                         </p>
                         <p className="text-lg text-primary-foreground/80 mb-8">
-                            Both assessments are critical to starting and progressing in a pilot's career. This
-                            comprehensive guide covers requirements, procedures, validity, and everything you need to know
-                            about DGCA medical certifications.
+                            Both medical examinations are essential for aspiring pilots to kick-start their careers in aviation. This is a comprehensive guide to help you understand everything you need to know about DGCA medical certification.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4">
                             <Button variant="gold" size="lg" asChild>
@@ -448,10 +443,7 @@ export default function DGCAMedicalGuidePage(): JSX.Element {
                         </h2>
                         <div className="space-y-4 text-lg text-muted-foreground mb-8">
                             <p>
-                                To become a licensed pilot in India, DGCA mandates medical certifications to verify that
-                                pilots meet stringent health standards. These examinations are designed to assess overall
-                                fitness, detect any medical conditions that could impair flying ability, and ensure the
-                                safety of passengers and crew.
+                                In order to become a licensed pilot, a medical examination is conducted by the DGCA to check if the pilot meets stringent health requirements. These medical examinations are conducted to check the fitness of the pilots and to ascertain if they are suffering from any medical condition that might affect their ability to fly.
                             </p>
                         </div>
 
@@ -559,9 +551,7 @@ export default function DGCAMedicalGuidePage(): JSX.Element {
                         </div>
                         <h2 className="text-3xl md:text-4xl font-bold mb-6">DGCA Class II Medical Examination</h2>
                         <p className="text-lg text-muted-foreground">
-                            The DGCA Class II medical examination is the entry-level certification for individuals
-                            aspiring to begin their pilot training. This certification is mandatory for obtaining a Student
-                            Pilot License (SPL) and enrolling in a DGCA-approved flight school.
+                            DGCA Class II Medical Examination is the basic qualification for those who wish to pursue a career in flying and start their flying training. This qualification is a must for the issue of a Student Pilot License (SPL) and admission to a DGCA-approved flying school.
                         </p>
                     </motion.div>
 
@@ -663,19 +653,13 @@ export default function DGCAMedicalGuidePage(): JSX.Element {
                         </h2>
                         <div className="space-y-4 text-primary-foreground/80 text-lg mb-8">
                             <p>
-                                DGCA medical certifications are crucial steps in your aviation career journey. Understanding
-                                the requirements, procedures, and validity periods helps you plan your pilot training
-                                timeline effectively.
+                                DGCA medical certifications are an essential milestone in your aviation career path. Understanding the requirements, procedures, and validity of medical certification helps you plan your pilot training schedule appropriately.
                             </p>
                             <p>
-                                Whether you're starting with Class II medical for your Student Pilot License or advancing to
-                                Class I medical for commercial operations, proper preparation ensures a smooth certification
-                                process.
+                                If you're looking to start your medical certification for your Student Pilot License with a Class II medical certification, or if you're looking to upgrade to a Class I medical certification for commercial flying operations, our expert guidance ensures your medical certification process is hassle-free.
                             </p>
                             <p>
-                                For detailed guidance on DGCA medical requirements and to find authorized medical examiners,
-                                consult with our experienced counselors who have helped thousands of aspiring pilots
-                                navigate the medical certification process successfully.
+                                To know more about DGCA medical requirements and get in touch with certified medical examiners, our expert counselors have helped thousands of students through the medical certification process.
                             </p>
                         </div>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">

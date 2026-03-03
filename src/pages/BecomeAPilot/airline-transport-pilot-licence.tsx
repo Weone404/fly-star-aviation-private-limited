@@ -281,14 +281,10 @@ export default function ATPLCourseDetailsPage() {
                             Airline Transport Pilot License (ATPL) Classes
                         </h1>
                         <p className="text-xl text-primary-foreground/80 mb-6">
-                            Airline Transport Pilot License (ATPL) classes are essential for pilots aiming for captain roles
-                            in commercial airlines. Our DGCA-  ground school covers comprehensive aviation theory to
-                            help CPL holders clear DGCA ATPL papers confidently and build command-level competence.
+                            Airline Transport Pilot License (ATPL) classes are necessary for pilots who wish to become captains in commercial flights. Our DGCA ground school provides in-depth knowledge in aviation theory to enable our students to clear DGCA ATPL exams with confidence and become commanders in the field.
                         </p>
                         <p className="text-lg text-primary-foreground/80 mb-8">
-                            With structured notes, mock exams, and one-on-one guidance, our ATPL program prepares you to fly
-                            as a captain anywhere in the world. The ATPL is the highest type of pilot license, recognized
-                            internationally.
+                            With our structured notes and one-on-one attention, our ATPL classes enable you to become a captain anywhere in the world. The Airline Transport Pilot License is the highest license for a pilot.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4">
                             <Button variant="gold" size="lg" asChild>
@@ -382,20 +378,13 @@ export default function ATPLCourseDetailsPage() {
                         </h2>
                         <div className="space-y-4 text-lg text-muted-foreground mb-8">
                             <p>
-                                The Airline Transport Pilot License (ATPL) is the highest level of aircraft pilot
-                                certification. It qualifies you to act as pilot-in-command (captain) on commercial aircraft
-                                carrying passengers for airlines worldwide.
+                                The Airline Transport Pilot License (ATPL) is the highest level of pilot certification, and it qualifies you for the position of pilot-in-command, also known as the captain, of a commercial airliner carrying passengers for airlines all over the world.
                             </p>
                             <p>
-                                The ATPL represents advanced mastery of aviation knowledge, including complex navigation
-                                systems, meteorology, aircraft performance, and operational regulations. After completing
-                                your ATPL ground classes and exams, you can command large commercial jets for major
-                                international airlines.
+                                The ATPL denotes a high level of understanding of aviation knowledge, including sophisticated navigation aids, weather, aircraft performance, and airline operations regulations. After completing your ATPL ground school, you can pilot big commercial jets for any airline in the world.
                             </p>
                             <p>
-                                This license is essential for career advancement beyond First Officer positions and opens
-                                doors to leadership roles in aviation including Training Captain, Check Pilot, and Chief
-                                Pilot positions.
+                                This license is a must if you want to advance beyond the position of First Officer and have your doors opened for senior roles such as Training Captain, Check Pilot, and Chief Pilot, among other senior roles in the aviation field.
                             </p>
                         </div>
 
@@ -432,9 +421,7 @@ export default function ATPLCourseDetailsPage() {
                             Why Pursue an Airline Transport Pilot License?
                         </h2>
                         <p className="text-lg text-muted-foreground mb-8">
-                            The ATPL is not just a license—it's your gateway to commanding the world's largest commercial
-                            aircraft and leading airline operations. This advanced certification demonstrates mastery of
-                            aviation theory and prepares you for the highest levels of responsibility in the cockpit.
+                            The ATPL is not merely a license, but rather a gateway to the world's largest commercial flying machines and the top jobs at the airlines. This license is the ultimate expression of knowledge in the principles of flight.
                         </p>
 
                         <h3 className="text-2xl font-bold mb-6">Benefits of ATPL Certification</h3>
@@ -901,18 +888,13 @@ export default function ATPLCourseDetailsPage() {
                         </h2>
                         <div className="space-y-4 text-primary-foreground/80 text-lg mb-8">
                             <p>
-                                The Airline Transport Pilot License represents the pinnacle of aviation achievement. With
-                                comprehensive ground classes, experienced instructors, and proven training methods, Golden
-                                Epaulettes Aviation prepares you to command commercial aircraft worldwide.
+                                The Airline Transport Pilot License is the highest level of aviation achievement. With our comprehensive ground classes, expert instructors, and successful training systems, Golden Epaulettes Aviation equips you to fly commercial aircraft anywhere in the world.
                             </p>
                             <p>
-                                Our DGCA-  ATPL program has achieved a 100% first-attempt pass rate across every
-                                batch, demonstrating the quality and effectiveness of our training approach.
+                                Our DGCA-ATPL program boasts a perfect record of a 100% pass rate on the very first attempt for each batch of students. This speaks for the quality and effectiveness of our training systems.
                             </p>
                             <p>
-                                Take the next step in your aviation career. Join thousands of successful pilots who have
-                                earned their ATPL with Golden Epaulettes Aviation and now command aircraft for major
-                                airlines around the globe.
+                                Take the next step in your aviation career. Thousands of successful pilots have earned their ATPL with Golden Epaulettes Aviation and are flying for major airlines around the world.
                             </p>
                         </div>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">

@@ -340,9 +340,7 @@ export default function RTRPage() {
                             RTR Full Form – Radio Telephony Restricted
                         </h1>
                         <p className="text-xl text-primary-foreground/80 mb-8">
-                            Complete guide covering RTR meaning, importance, types, eligibility, exam pattern, challenges,
-                            and preparation tips for 2026. Essential license for commercial pilots and air traffic controllers
-                            in India, issued by the WPC Wing of the Ministry of Communications.
+                            A comprehensive guide that covers all aspects of RTR, including its importance, types, eligibility, exam pattern, difficulties, and preparation tips, which are relevant for the year 2026. This is a vital license that is required by commercial pilots and air traffic controllers, which is granted by the WPC wing of the Ministry of Communications.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4">
                             <Button variant="gold" size="lg" asChild>
@@ -373,10 +371,7 @@ export default function RTRPage() {
                         </h2>
                         <div className="prose prose-lg max-w-none">
                             <p className="text-muted-foreground text-lg mb-4">
-                                In today's world of communication and technology, abbreviations are commonly used to simplify
-                                lengthy terms. One such important abbreviation is RTR, which holds different meanings depending
-                                on the field of use. However, in aviation and telecommunication, the most widely recognized full
-                                form of RTR is:
+                                In the present world of communication and technology, abbreviations are being used to replace lengthy terms. Among such abbreviations, RTR holds significant importance, and the full form of RTR varies according to the area of usage. However, the most common full form of RTR, as applied to the fields of aviation and telecommunication, is:
                             </p>
                             <div className="p-8 rounded-2xl border-2 border-primary bg-primary/5 text-center my-8">
                                 <p className="text-2xl md:text-3xl font-bold text-primary mb-2">
@@ -384,10 +379,7 @@ export default function RTRPage() {
                                 </p>
                             </div>
                             <p className="text-muted-foreground text-lg mb-4">
-                                RTR is an essential license issued by the <strong>Wireless Planning and Coordination (WPC) Wing</strong> of
-                                the Ministry of Communications, Government of India, under the Department of Telecommunications.
-                                It plays a significant role for pilots, air traffic controllers (ATCs), and other professionals
-                                involved in air-to-ground and ground-to-air communication.
+                                RTR license holds significant importance, as it is issued by the Wireless Planning and Coordination (WPC) Wing of the Ministry of Communications, Government of India, under the Department of Telecommunications.
                             </p>
                         </div>
                     </motion.div>
@@ -411,18 +403,14 @@ export default function RTRPage() {
                         </div>
                         <div className="p-8 rounded-2xl border border-border bg-card">
                             <p className="text-muted-foreground text-lg mb-4">
-                                <strong>RTR stands for Radio Telephony Restricted.</strong> It is a professional license that certifies
-                                an individual's ability to operate radio communication equipment in the aviation and maritime sectors.
+                                <strong>RTR stands for Radio Telephony Restricted.</strong>" This license verifies and authorizes an individual to use radio communication equipment in aviation and maritime industries.
                             </p>
                             <p className="text-muted-foreground text-lg mb-4">
-                                In aviation, RTR ensures that pilots and ATCs can communicate effectively using radio telephony,
-                                which is the standard method of exchanging vital information related to aircraft operations,
-                                navigation, and safety.
+                                In aviation, an RTR license verifies whether pilots and ATCs can communicate with each other using radio telephony. This is an essential method of communication for sharing critical information regarding flight operations and safety.
                             </p>
                             <div className="p-6 rounded-xl bg-primary/10 border-l-4 border-primary">
                                 <p className="text-lg font-semibold">
-                                    ⚠️ Without an RTR license, a pilot cannot legally operate an aircraft in controlled airspace,
-                                    as communication is a crucial part of aviation safety.
+                                    ⚠️ Without an RTR license, a pilot cannot legally fly an aircraft in controlled airspace. Communication is an essential aspect of aviation safety.
                                 </p>
                             </div>
                         </div>
@@ -501,18 +489,13 @@ export default function RTRPage() {
                         </h2>
                         <div className="p-8 rounded-2xl border border-border bg-card">
                             <p className="text-muted-foreground text-lg mb-4">
-                                Radio communication became a necessity during <strong>World War I and II</strong>, where aircraft and ships
-                                required reliable communication methods. After the development of civil aviation, countries started
-                                regulating radio frequencies and licensing radio operators.
+                                With the advent of World War I and II, radio communication became an essential aspect of the war, and aircraft and ships needed to have effective communication systems. After the emergence of civil aviation, countries began to control radio frequencies and issue radio operator licenses.
                             </p>
                             <p className="text-muted-foreground text-lg mb-4">
-                                In India, the <strong>Wireless Planning and Coordination (WPC) Wing</strong> under the Ministry of Communications
-                                took charge of monitoring and issuing radio licenses, including RTR.
+                                In India, the <strong>Wireless Planning and Coordination (WPC) Wing</strong> of the Ministry of Communications was responsible for monitoring and issuing radio licenses, including the RTR license.
                             </p>
                             <p className="text-muted-foreground text-lg">
-                                The RTR license evolved into a global requirement aligned with <strong>ICAO (International Civil Aviation
-                                    Organization)</strong> standards, ensuring standardized communication procedures across the aviation industry worldwide.
-                            </p>
+                                The RTR license was transformed into an international requirement in accordance with ICAO standards.</p>
                         </div>
                     </motion.div>
                 </div>
@@ -982,23 +965,18 @@ export default function RTRPage() {
                         </h2>
                         <div className="p-8 rounded-2xl border border-border bg-card space-y-4">
                             <p className="text-muted-foreground text-lg">
-                                The full form of <strong>RTR is Radio Telephony Restricted</strong>, a crucial license for aviation
-                                and maritime professionals. In aviation, it is mandatory for pilots and ATCs to legally operate
-                                aircraft communication systems.
+                                The full form of <strong>RTR is Radio Telephony Restricted</strong>,  It is an important license for aviation
+                                and maritime professionals. In aviation, RTR license is mandatory for pilots and ATCs to  lawfully use the communication equipment installed on the aircraft.
                             </p>
                             <p className="text-muted-foreground text-lg">
-                                Conducted by the WPC wing of the Ministry of Communications, the RTR exam ensures that candidates
-                                are competent in handling radio communication, emergency procedures, and aviation phraseology.
+                                Conducted by the Ministry of Communications, the RTR examination, conducted by the WPC wing, ensures that the candidates are qualified to use the radio communication equipment, emergency procedures, and aviation phraseology.
                             </p>
                             <p className="text-muted-foreground text-lg">
-                                Apart from aviation, RTR has different meanings in finance, technology, and business, but its
-                                significance in aviation is unmatched.
+                                In the context of finance, technology, and business, RTR has different meanings, but when compared to the importance of RTR in aviation, no other meaning can compete.
+
                             </p>
                             <p className="text-muted-foreground text-lg">
-                                For any aspiring commercial pilot in India, <strong>clearing RTR is one of the most important
-                                    milestones</strong> in the journey toward flying an aircraft. With proper preparation, practice,
-                                and guidance, one can successfully clear RTR and move closer to fulfilling the dream of becoming
-                                a pilot.
+                                For any aspiring commercial pilot, the RTR examination is one of the most significant achievements that can take the candidate closer to the dream of flying an aircraft. With proper guidance, one can successfully clear the RTR examination.
                             </p>
                         </div>
                     </motion.div>

@@ -95,56 +95,56 @@ const trainingRoadmap = [
         step: 1,
         title: "Register with DGCA",
         description:
-            "Apply for a unique Computer Number via the eGCA portal. This is required for all exams and is your trainee identification throughout the process.",
+            "Get a Computer Number through eGCA, which is a one-time requirement for all exams and is used to identify you as a trainee.",
         duration: "1-2 weeks",
     },
     {
         step: 2,
         title: "Ground School Training",
         description:
-            "Study theoretical subjects including Air Navigation, Aviation Meteorology, Air Regulations, Technical General, and Technical Specific.",
+            "Complete theoretical subjects like Air Navigation, Aviation Meteorology, Air Regulations, Technical General, and Technical Specific.",
         duration: "3-6 months",
     },
     {
         step: 3,
         title: "Clear DGCA Exams",
         description:
-            "Pass written and oral examinations for all theoretical subjects. These exams test your understanding of aviation fundamentals.",
+            "Complete written and oral exams for all theoretical subjects.",
         duration: "2-4 months",
     },
     {
         step: 4,
         title: "Radio Telephony (RTR) Exam",
         description:
-            "Clear the RTR exam conducted by the Wireless Planning and Coordination (WPC) wing for aviation communication.",
+            "Complete the RTR exam through the Wireless Planning and Coordination wing.",
         duration: "1 month",
     },
     {
         step: 5,
         title: "Join DGCA-  FTO",
         description:
-            "Enroll in a Flying Training Organisation for practical flight training. Complete Student Pilot License requirements.",
+            "Enroll in a Flying Training Organisation, complete the requirements for a Student Pilot License.",
         duration: "Ongoing",
     },
     {
         step: 6,
         title: "Accumulate Flight Hours",
         description:
-            "Complete minimum 200 flying hours including solo flights, cross-country navigation, instrument flying, and night flying.",
+            "Complete a minimum of 200 flight hours, including solo flights, cross-country flights, instrument flights, and night flights.",
         duration: "12-18 months",
     },
     {
         step: 7,
         title: "Obtain CPL License",
         description:
-            "Submit flying logs and exam results to DGCA via eGCA portal. Receive your Commercial Pilot License upon approval.",
+            "Submit all documents to DGCA through eGCA.",
         duration: "1-2 months",
     },
     {
         step: 8,
         title: "Type Rating & Employment",
         description:
-            "Get type rating for specific aircraft (A320/B737). Apply for First Officer positions or join airline cadet programs.",
+            "Get type ratings for aircraft types like A320 and B737.",
         duration: "2-3 months",
     },
 ];
@@ -296,9 +296,7 @@ export default function BecomePilotPage() {
                             How to Become a Pilot in India - Complete 2026 Guide
                         </h1>
                         <p className="text-xl text-primary-foreground/80 mb-8">
-                            Discover the structured roadmap to becoming a commercial pilot in India. Learn about eligibility criteria,
-                            DGCA requirements, training process, costs, and career opportunities. Whether you choose civil aviation,
-                            cadet programs, or the Air Force route, your dream of flying starts here.
+                            Learn how to become a commercial pilot in India. Read about the eligibility criteria, DGCA requirements, training process, and cost involved in becoming a commercial pilot in India. If you are interested in civil aviation, cadet programs, or the Air Force, your dream to become a pilot begins here.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4">
                             <Button variant="gold" size="lg" asChild>
@@ -799,16 +797,10 @@ export default function BecomePilotPage() {
                             Ready to Begin Your Pilot Journey?
                         </h2>
                         <p className="text-primary-foreground/80 text-lg mb-4">
-                            Becoming a pilot in India is a structured journey that combines education, rigorous training, and
-                            dedication. Whether you choose the civil aviation route with self-sponsored training, join airline
-                            cadet programs, or pursue the prestigious Indian Air Force path, each offers unique opportunities.
+                            To become a pilot in India, it is a well-structured process of education and training. Whether you prefer to become a Civil Aviation pilot with self-sponsored training, an airline cadet program, or the elite Indian Air Force program, each of these options provides a unique opportunity for you.
                         </p>
                         <p className="text-primary-foreground/80 text-lg mb-8">
-                            With the aviation industry experiencing high demand for pilots, this is the perfect time to start your
-                            training. Complete your 10+2 with Physics and Mathematics, ensure medical fitness, and register with
-                            DGCA to begin your 18-36 month journey to the cockpit. The investment ranges from ₹35-65 lakhs for
-                            civil aviation, but with starting salaries of ₹1.5-3.5 lakhs per month and rapid career progression
-                            to Captain positions earning ₹10+ lakhs monthly, aviation offers exceptional long-term returns.
+                            With the aviation industry in huge demand for pilots, this is an ideal time to start your aviation career. After completing your 10+2 with Physics and Mathematics, and becoming medically fit, you can start your aviation journey with DGCA. This journey to becoming a commercial pilot can take anywhere between 18-36 months. While the cost of becoming a commercial pilot in India ranges between ₹35-65 lakhs for Civil Aviation, with salaries of ₹1.5-3.5 lakhs per month and the opportunity to become a Captain with salaries of ₹10+ lakhs per month, aviation provides an incredible long-term return on your investment.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <Button variant="gold" size="lg" asChild>

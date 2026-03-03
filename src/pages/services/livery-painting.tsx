@@ -168,10 +168,7 @@ export default function AircraftLiveryPainting() {
                             fontSize: "16px", lineHeight: 1.85,
                             color: "rgba(255,255,255,0.6)", maxWidth: "620px", marginBottom: "38px",
                         }}>
-                            We transform aircraft exteriors into powerful visual statements. From
-                            full commercial airline repaints to bespoke business jet liveries, our
-                            dedicated painting facility and specialist team deliver world-class
-                            finishes — on time, every time.
+                            We specialize in transforming aircraft exteriors into visual statements. Whether it’s a full aircraft repaint for a commercial airliner or a custom paint scheme for a business aircraft, we offer a world-class painting facility and team, guaranteed to deliver on time, every time.
                         </p>
 
                         <div style={{ display: "flex", gap: "14px", flexWrap: "wrap" }}>
@@ -259,16 +256,10 @@ export default function AircraftLiveryPainting() {
                                 A Dedicated World-Class Painting Facility
                             </h2>
                             <p style={{ fontSize: "15px", color: "rgba(255,255,255,0.6)", lineHeight: 1.85, marginBottom: "18px" }}>
-                                Our 2,500 sqm EASA-certified narrow-body painting hangar is purpose-built
-                                for precision aircraft refinishing. Its geographic location and natural
-                                climate provide ideal painting conditions without the need for artificial
-                                temperature or humidity control systems.
+                                Our EASA-certified narrow-body painting hangar, covering an area of 2,500 sqm, is specially designed for precise aircraft refinishing. The location of this facility and the natural weather conditions offer an ideal environment for painting without the necessity of artificial control of temperature and humidity levels.
                             </p>
                             <p style={{ fontSize: "15px", color: "rgba(255,255,255,0.6)", lineHeight: 1.85, marginBottom: "24px" }}>
-                                The hangar is fitted with a purpose-designed air extraction system that
-                                promotes healthy airflow, captures paint particles, and treats volatile
-                                organic compounds through high-grade carbon-impregnated filters —
-                                keeping our environmental footprint to a minimum.
+                                This facility is equipped with a specially designed air extraction system to ensure good ventilation and to minimize our ecological footprint through the use of high-grade carbon-impregnated filters to deal with Volatile Organic Compounds.
                             </p>
                             {/* Environmental badge */}
                             <div style={{

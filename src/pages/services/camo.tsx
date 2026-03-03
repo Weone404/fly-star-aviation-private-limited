@@ -198,10 +198,7 @@ export default function CAMOServices() {
                             color: "rgba(255,255,255,0.6)", maxWidth: "600px", marginBottom: "38px",
                             animation: "fadeUp 0.7s ease 0.35s forwards", opacity: 0,
                         }}>
-                            As a DGCA-authorised Continuing Airworthiness Management Organisation,
-                            we lift the burden of technical, regulatory, and legal documentation
-                            from aircraft owners and operators — so you can focus on flying while
-                            we ensure your aircraft is always safe, certified, and ready.
+                            As a DGCA Authorised Continuing Airworthiness Management Organisation, we relieve you of the technical, regulatory, and legal complexities associated with documentation and allow you to focus on flying while we ensure your aircraft is safe, certified, and ready for flight
                         </p>
 
                         <div style={{ display: "flex", gap: "14px", flexWrap: "wrap", animation: "fadeUp 0.7s ease 0.45s forwards", opacity: 0 }}>
@@ -286,16 +283,10 @@ export default function CAMOServices() {
                                 Taking the Complexity Out of Airworthiness
                             </h2>
                             <p style={{ fontSize: "15px", color: "rgba(255,255,255,0.6)", lineHeight: 1.85, marginBottom: "18px" }}>
-                                Maintaining the continuing airworthiness of a business aircraft requires
-                                meticulous management of an ever-growing set of technical, regulatory, and
-                                legal obligations. One missed directive, one lapsed certificate, and your
-                                aircraft is grounded.
+                                Maintaining the continuing airworthiness of your business aircraft involves the meticulous management of increasingly complex technical, regulatory, and legal requirements. Fail to comply with just one directive, fail to renew just one certificate, and your aircraft is grounded.
                             </p>
                             <p style={{ fontSize: "15px", color: "rgba(255,255,255,0.6)", lineHeight: 1.85, marginBottom: "24px" }}>
-                                Our dedicated CAMO team handles the entire airworthiness management
-                                lifecycle on your behalf — from annual airworthiness reviews and AD
-                                incorporation to MRO liaison and 24/7 AOG support — keeping your aircraft
-                                in a peak, certified, flight-ready condition at all times.
+                                Our CAMO specialists can handle the complete airworthiness management process for you, providing complete support for annual airworthiness review, AD incorporation, liaison for maintenance and repair operations, and around-the-clock support for AOG situations, to keep your aircraft in peak condition and certified for flight at all times.
                             </p>
                             <div style={{
                                 display: "inline-flex", alignItems: "center", gap: "10px",
@@ -498,11 +489,7 @@ export default function CAMOServices() {
                                 Airworthiness Reviews That Give You Certainty
                             </h2>
                             <p style={{ fontSize: "15px", color: "rgba(255,255,255,0.6)", lineHeight: 1.85 }}>
-                                Our annual airworthiness review process is thorough, structured, and
-                                fully documented. Every aspect of your aircraft's maintenance status,
-                                certification, and regulatory compliance is examined to ensure your
-                                Airworthiness Review Certificate (ARC) is renewed without delay —
-                                and your aircraft remains cleared to fly.
+                                Our airworthiness review is a comprehensive and systematic annual review that is well documented. Your aircraft’s maintenance status, certification, and compliance are thoroughly reviewed to expedite the renewal of your Airworthiness Review Certificate, which ensures that your aircraft remains airworthy.
                             </p>
                         </AnimatedSection>
 

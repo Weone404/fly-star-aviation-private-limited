@@ -213,10 +213,7 @@ export default function MROServices() {
                             fontSize: "16px", lineHeight: 1.85,
                             color: "rgba(255,255,255,0.6)", maxWidth: "600px", marginBottom: "38px",
                         }}>
-                            We deliver end-to-end MRO solutions engineered to maintain airworthiness,
-                            maximise aircraft reliability, and keep your operations running without
-                            interruption — backed by over two decades of rotorcraft engineering expertise
-                            and our own CAR 145 certification.
+                            We offer complete MRO solutions that are designed to ensure airworthiness, maximize aircraft reliability, and support uninterrupted operations, all of which are underpinned by over two decades of rotorcraft engineering expertise and our own CAR 145 certification.
                         </p>
 
                         {/* CTAs */}
@@ -318,17 +315,13 @@ export default function MROServices() {
                                 fontSize: "15px", color: "rgba(255,255,255,0.6)",
                                 lineHeight: 1.85, marginBottom: "18px",
                             }}>
-                                With over 20 years of hands-on engineering experience, we stand among India's
-                                oldest and most respected rotorcraft maintenance organisations. Our CAR 145
-                                approval is a mark of technical excellence, regulatory discipline, and an
-                                unwavering commitment to airworthiness.
+                                We are one of India's oldest and most respected rotorcraft maintenance providers, with over 20 years of hands-on engineering expertise behind us. Our CAR 145 certification is a testament to our technical expertise, adherence to regulatory compliance, and dedication to airworthiness.
                             </p>
                             <p style={{
                                 fontSize: "15px", color: "rgba(255,255,255,0.6)",
                                 lineHeight: 1.85,
                             }}>
-                                Our engineering team works to precise, cost-optimised standards — reducing
-                                downtime and keeping your aircraft ready for every operation, every single day.
+                                Our engineers operate to exacting standards that are cost-effective and ensure your aircraft is airworthy for every operation, every single day.
                             </p>
                         </div>
 

@@ -311,14 +311,10 @@ export default function DGCAGroundClassesPage(): JSX.Element {
                             DGCA Ground Classes – Complete CPL Ground Training
                         </h1>
                         <p className="text-xl text-primary-foreground/80 mb-6">
-                            Preparing for DGCA exams is the most crucial step in becoming a commercial pilot. DGCA ground
-                            classes provide structured theoretical knowledge required to clear DGCA written examinations
-                            and progress toward a Commercial Pilot License (CPL).
+                            The most important step to become a commercial pilot is to prepare for the DGCA exams. DGCA ground classes offer theoretical knowledge to clear the DGCA written exams and move towards a Commercial Pilot's License.
                         </p>
                         <p className="text-lg text-primary-foreground/80 mb-8">
-                            Whether you are a beginner or already flying, enrolling in the right DGCA ground class can make
-                            a significant difference in your success. Our professional ground classes focus on strong
-                            conceptual understanding, exam-oriented preparation, and aviation fundamentals.
+                            You are a beginner, or are already a pilot, but need to find the right DGCA ground class to help you succeed. Our professional ground classes are designed to give you a strong conceptual understanding of the subject.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4">
                             <Button variant="gold" size="lg" asChild>
@@ -410,15 +406,10 @@ export default function DGCAGroundClassesPage(): JSX.Element {
                         <h2 className="text-3xl md:text-4xl font-bold mb-6">What Are DGCA Ground Classes?</h2>
                         <div className="space-y-4 text-lg text-muted-foreground mb-8">
                             <p>
-                                DGCA ground classes are classroom or online training programs designed to help aspiring
-                                pilots clear DGCA CPL theory exams conducted by the Directorate General of Civil Aviation
-                                (DGCA), India.
+                                DGCA ground classes are training sessions that are conducted to help students prepare and pass the DGCA CPL theory exams conducted by the Directorate General of Civil Aviation, India. These ground classes are conducted to provide students with a strong conceptual understanding and exam preparation, and they cover the basics of aviation. Professional CPL ground classes are conducted as per the latest DGCA syllabus and exam patterns.
                             </p>
-                            <p>
-                                These ground classes focus on strong conceptual understanding, exam-oriented preparation,
-                                and aviation fundamentals. Professional CPL ground classes are structured as per the latest
-                                DGCA syllabus and exam patterns.
-                            </p>
+
+
                         </div>
 
                         <div className="p-8 rounded-2xl bg-primary/5 border border-primary/20">
@@ -919,18 +910,13 @@ export default function DGCAGroundClassesPage(): JSX.Element {
                         </h2>
                         <div className="space-y-4 text-primary-foreground/80 text-lg mb-8">
                             <p>
-                                Strong theoretical foundations are key to becoming a professional pilot. Enrolling in the
-                                right DGCA ground classes ensures confident exam performance and smooth progress toward
-                                your CPL.
+                                Having the right theoretical knowledge is the key to becoming a professional pilot. Taking the right DGCA ground classes is the key to acing the exam with confidence and moving ahead with your CPL.
                             </p>
                             <p>
-                                Whether you choose DGCA ground classes online, offline training in Delhi, or a hybrid
-                                model, investing in quality ground training is the smartest first step in your aviation
-                                career.
+                                Whether you want to take the DGCA ground classes online or offline in Delhi, the right ground training is the smartest move you can make at the beginning of your pilot training.
                             </p>
                             <p>
-                                Join thousands of successful pilots who have cleared their DGCA exams on the first attempt
-                                and are now flying for major airlines across the world.
+                                Join thousands of other pilots who cleared the DGCA exam on the first attempt and are flying with the top airlines around the world.
                             </p>
                         </div>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">

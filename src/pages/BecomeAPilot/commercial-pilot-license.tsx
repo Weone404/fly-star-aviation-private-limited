@@ -206,14 +206,10 @@ export default function CPLCourseDetailsPage() {
                             Commercial Pilot License Course Details
                         </h1>
                         <p className="text-xl text-primary-foreground/80 mb-6">
-                            Becoming a commercial pilot is one of the most exciting and respected career choices in the world.
-                            With the rapid growth of aviation, the demand for skilled pilots is increasing every year.
+                            Becoming a commercial pilot is one of the most interesting and revered career aspirations in the world. The aviation industry is growing rapidly, and the requirement for pilots is increasing every year.
                         </p>
                         <p className="text-lg text-primary-foreground/80 mb-8">
-                            If you dream of flying professionally, enrolling in a commercial pilot license program is the first
-                            step toward turning that dream into reality. This page gives you complete information about the
-                            pilot course, training structure, eligibility, admission process, and important details like CPL
-                            course fees, syllabus, and career scope in India.
+                            If you have a dream of becoming a pilot, enrolling in a commercial pilot license program is the first step towards making your dream a reality. This page provides you with complete information about the pilot course, pilot training, eligibility, admission, and other relevant information regarding CPL course fees, CPL course syllabus, and CPL course career prospects in India.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4">
                             <Button variant="gold" size="lg" asChild>
@@ -282,14 +278,9 @@ export default function CPLCourseDetailsPage() {
                         <h2 className="text-3xl md:text-4xl font-bold mb-6">What is a Commercial Pilot License?</h2>
                         <div className="space-y-4 text-lg text-muted-foreground mb-8">
                             <p>
-                                A commercial pilot license (CPL) is a professional certification that allows you to fly
-                                aircraft for commercial purposes. After completing your commercial pilot course, you can work
-                                with airlines, charter companies, cargo operators, or aviation training institutes.
-                            </p>
+                                A commercial pilot license is a professional qualification that enables a candidate to fly aircraft for commercial use. Once a candidate completes a commercial pilot course, they can seek employment with airlines, air charter companies, cargo airlines, and training institutions.                            </p>
                             <p>
-                                The CPL license is recognized globally and is essential for anyone who wants to build a
-                                long-term career in aviation. With proper pilot training, candidates gain both theoretical
-                                knowledge and practical flying experience.
+                                The commercial pilot license is a recognized qualification worldwide and is a requirement for a candidate who wants to establish a long-term career in aviation. Once a candidate undergoes pilot training, they are equipped with theoretical and practical skills.
                             </p>
                         </div>
 
@@ -324,9 +315,7 @@ export default function CPLCourseDetailsPage() {
                     >
                         <h2 className="text-3xl md:text-4xl font-bold mb-6">Why Choose a Commercial Pilot Course?</h2>
                         <p className="text-lg text-muted-foreground mb-8">
-                            The aviation industry is growing rapidly, creating more opportunities for trained pilots. A
-                            well-structured commercial pilot course helps students build strong technical knowledge,
-                            confidence, and real flying experience.
+                            The aviation industry is expanding rapidly and providing more opportunities to become a commercial pilot. A good commercial pilot course enables students to gain sufficient technical knowledge and confidence.
                         </p>
 
                         <h3 className="text-2xl font-bold mb-6">Benefits of Becoming a CPL Pilot</h3>
@@ -367,9 +356,7 @@ export default function CPLCourseDetailsPage() {
                             Commercial Pilot Training in India – Course Overview
                         </h2>
                         <p className="text-muted-foreground max-w-3xl mx-auto text-lg">
-                            Commercial pilot training in India is designed according to DGCA guidelines and includes both
-                            ground training and flying hours. Students are trained through classroom sessions, simulator
-                            practice, and real aircraft flying.
+                            The commercial pilot training in India is conducted as per the guidelines of the DGCA. In the training, students are given ground training and are also provided with flight hours.
                         </p>
                     </motion.div>
 
@@ -720,12 +707,10 @@ export default function CPLCourseDetailsPage() {
                             Why Choose the Right Pilot Training Institute?
                         </h2>
                         <p className="text-lg text-muted-foreground mb-6">
-                            Choosing the right academy for your pilot course is very important. A good training institute
-                            provides quality education, experienced instructors, and proper flying exposure.
+                            It is very important to select the right academy for your pilot training. A good academy will provide you with proper education and exposure.
                         </p>
                         <p className="text-lg text-muted-foreground">
-                            A well-structured commercial pilot license course in India helps students gain confidence and
-                            prepares them for DGCA exams and airline careers.
+                            A well-structured commercial pilot license course in India will give confidence to the student and prepare them for the DGCA exam.
                         </p>
                     </motion.div>
                 </div>
@@ -786,18 +771,13 @@ export default function CPLCourseDetailsPage() {
                         </h2>
                         <div className="space-y-4 text-primary-foreground/80 text-lg mb-8">
                             <p>
-                                A commercial pilot licence course is the gateway to a high-growth and exciting career in
-                                aviation. From structured pilot training and strong technical knowledge to global job
-                                opportunities, this course prepares you for a lifetime profession.
+                                The commercial pilot license course is the key to a promising and exciting commercial pilot license job. It is a gateway to a lifetime career with immense scope and growth opportunities.
                             </p>
                             <p>
-                                Whether you are exploring the commercial pilot license course in India, learning about CPL
-                                course fees, or understanding the training structure, taking the first step today can bring you
-                                closer to your dream of flying.
+                                Whether you are looking for the commercial pilot license course in India, the fees structure for the CPL course, or the training structure for the commercial pilot license training, taking the first step today will bring you closer to your dreams.
                             </p>
                             <p>
-                                If you are passionate about aviation and ready to commit to your goal, the commercial pilot
-                                course can open the door to a successful and rewarding future in the skies.
+                                Whether you are passionate about a commercial pilot license job and ready to take the first step towards a commercial pilot license training, the commercial pilot license course is the key to a commercial pilot license job.
                             </p>
                         </div>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
