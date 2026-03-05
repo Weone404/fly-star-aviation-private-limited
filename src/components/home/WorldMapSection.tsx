@@ -17,6 +17,16 @@ const countries = [
     description: "New York, LA, Miami & more",
   },
   {
+    id: "Camada",
+    name: "Canda",
+    href: "/pilot-training/Canada",
+    x: 280,
+    y: 170,
+    trainingCenters: 8,
+    flag: "🇨🇦",
+    description: "British Columbia (BC): Vancouver, Victoria & more",
+  },
+  {
     id: "india",
     name: "India",
     href: "/pilot-training/india",
