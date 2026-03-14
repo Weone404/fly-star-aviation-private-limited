@@ -11,7 +11,7 @@ const licenses = [
     duration: "18-24 months",
     cost: "₹35-50 Lakhs",
     hours: "200 flying hours",
-    href: "/pilot-training/cpl",
+    href: "/Courses/Cpl",
     features: [
       "Fly commercial aircraft",
       "Employment eligibility",
@@ -26,7 +26,7 @@ const licenses = [
     duration: "6-12 months",
     cost: "₹10-15 Lakhs",
     hours: "40 flying hours",
-    href: "/pilot-training/ppl",
+    href: "/Courses/Atpl",
     features: [
       "Fly for personal use",
       "Foundation for CPL",
@@ -80,7 +80,7 @@ export default function PilotTrainingPage() {
               Become a Professional Pilot
             </h1>
             <p className="text-xl text-primary-foreground/80">
-              World-class training programs designed to launch your aviation career. 
+              World-class training programs designed to launch your aviation career.
               Train with experienced instructors on modern aircraft.
             </p>
           </motion.div>
@@ -110,11 +110,10 @@ export default function PilotTrainingPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className={`relative rounded-2xl border-2 p-8 ${
-                  license.popular
-                    ? "border-primary bg-primary/5"
-                    : "border-border bg-card"
-                }`}
+                className={`relative rounded-2xl border-2 p-8 ${license.popular
+                  ? "border-primary bg-primary/5"
+                  : "border-border bg-card"
+                  }`}
               >
                 {license.popular && (
                   <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-accent text-accent-foreground text-sm font-bold px-4 py-1 rounded-full">
@@ -191,7 +190,7 @@ export default function PilotTrainingPage() {
               </span>
               <h2 className="text-3xl md:text-4xl font-bold mb-6">Eligibility Criteria</h2>
               <p className="text-muted-foreground mb-8">
-                Before starting your pilot training, ensure you meet the following requirements 
+                Before starting your pilot training, ensure you meet the following requirements
                 set by DGCA for obtaining a pilot license in India.
               </p>
               <Button variant="aviation" asChild>

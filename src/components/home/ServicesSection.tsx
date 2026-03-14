@@ -21,7 +21,7 @@ const services = [
     icon: Briefcase,
     title: "Aviation Placement",
     description: "Support for instructors, NSOP/govt pilots, line training, cargo, and domestic & international airlines.",
-    href: "/services/placement",
+    href: "/courses/airline-preparation",
     color: "from-accent to-yellow-400",
   },
   {

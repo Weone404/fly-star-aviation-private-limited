@@ -691,7 +691,7 @@ export default function DGCAComputerNumberPage() {
                 </a>
               </Button>
               <Button variant="outline-white" size="lg" asChild>
-                <Link to="/cpl">Explore CPL Course</Link>
+                <Link to="/contact">Explore CPL Course</Link>
               </Button>
               <Button variant="outline-white" size="lg" asChild>
                 <Link to="/contact">Talk to Counselor</Link>
