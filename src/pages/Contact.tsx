@@ -375,17 +375,21 @@ _Sent via flyingstaraviator.com contact form_`;
               </div>
 
               {/* Google Map */}
-              <div className="rounded-2xl overflow-hidden border border-border h-72 bg-muted shadow-sm">
-                <iframe
-                  src="https://maps.google.com/maps?q=C705%2C%20Sector%207%2C%20Block%20C%2C%20Palam%20Extension%2C%20Dwarka%2C%20Delhi%2C%20110077&output=embed"
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  title="Flying Star Aviator Location"
-                />
+
+              <div className="rounded-2xl overflow-hidden border border-border h-72 bg-muted shadow-sm relative">
+
+                <a href="https://www.google.com/maps/place/Flying+Star+Aviator+Private+Limited+%7C+Best+Cadet+Pilot+Training+Institute+in+India+-+DGCA+CPL+Flight+Training+in+Delhi/@28.585233,77.0658253,728m/data=!3m2!1e3!4b1!4m6!3m5!1s0x390d1bfa2be4aefb:0x48a070e238521650!8m2!3d28.5852283!4d77.0684002!16s%2Fg%2F11h3mlfkx4"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block w-full h-full"
+                  aria-label="Open location in Google Maps"
+                >
+                  <img
+                    src="/map-preview.webp"
+                    alt="Flying Star Aviator Location - C705, Sector 7, Block C, Palam Extension, Dwarka, Delhi, 110077"
+                    className="w-full h-full object-cover hover:opacity-90 transition-opacity duration-200"
+                  />
+                </a>
               </div>
 
               {/* Quick Connect CTA */}
