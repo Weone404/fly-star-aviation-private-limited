@@ -64,7 +64,6 @@ export default function ContactPage() {
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
-    // Clear error on change
     if (errors[name]) {
       setErrors((prev) => ({ ...prev, [name]: "" }));
     }
@@ -82,7 +81,30 @@ export default function ContactPage() {
     return newErrors;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // ── Save to MongoDB via Express backend ──
+  const saveToMongoDB = async () => {
+    const { name, phone, email, interest, message } = formData;
+    try {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/contact`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name,
+          phone,
+          email,
+          interest,
+          message: message || "No additional message",
+        }),
+      });
+      const data = await res.json();
+      console.log("Saved to MongoDB:", data);
+    } catch (err) {
+      // Fail silently — WhatsApp will still open
+      console.error("MongoDB save failed:", err);
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const validationErrors = validate();
     if (Object.keys(validationErrors).length > 0) {
@@ -94,6 +116,10 @@ export default function ContactPage() {
 
     const { name, phone, email, interest, message } = formData;
 
+    // ── 1. Save to MongoDB via backend ──
+    await saveToMongoDB();
+
+    // ── 2. Build WhatsApp message ──
     const text = `🛩️ *New Enquiry - Flying Star Aviator*
 
 👤 *Name:* ${name}
@@ -134,7 +160,6 @@ _Sent via flyingstaraviator.com contact form_`;
     <Layout>
       {/* Hero */}
       <section className="relative py-24 aviation-gradient text-primary-foreground overflow-hidden">
-        {/* Decorative background circles */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute -top-16 -right-16 w-96 h-96 bg-white/5 rounded-full blur-3xl" />
           <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/5 rounded-full blur-2xl" />
@@ -375,10 +400,9 @@ _Sent via flyingstaraviator.com contact form_`;
               </div>
 
               {/* Google Map */}
-
               <div className="rounded-2xl overflow-hidden border border-border h-72 bg-muted shadow-sm relative">
-
-                <a href="https://www.google.com/maps/place/Flying+Star+Aviator+Private+Limited+%7C+Best+Cadet+Pilot+Training+Institute+in+India+-+DGCA+CPL+Flight+Training+in+Delhi/@28.585233,77.0658253,728m/data=!3m2!1e3!4b1!4m6!3m5!1s0x390d1bfa2be4aefb:0x48a070e238521650!8m2!3d28.5852283!4d77.0684002!16s%2Fg%2F11h3mlfkx4"
+                <a
+                  href="https://www.google.com/maps/place/Flying+Star+Aviator+Private+Limited+%7C+Best+Cadet+Pilot+Training+Institute+in+India+-+DGCA+CPL+Flight+Training+in+Delhi/@28.585233,77.0658253,728m/data=!3m2!1e3!4b1!4m6!3m5!1s0x390d1bfa2be4aefb:0x48a070e238521650!8m2!3d28.5852283!4d77.0684002!16s%2Fg%2F11h3mlfkx4"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block w-full h-full"
@@ -402,11 +426,7 @@ _Sent via flyingstaraviator.com contact form_`;
                   Our counselors are available right now to answer your queries.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3">
-                  <Button
-                    variant="outline-white"
-                    asChild
-                    className="flex-1"
-                  >
+                  <Button variant="outline-white" asChild className="flex-1">
                     <a href="tel:+919953536199">
                       <Phone className="h-4 w-4 mr-2" />
                       Call Now
