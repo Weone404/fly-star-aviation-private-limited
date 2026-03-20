@@ -8,7 +8,14 @@ const Contact = require("./models/Contact");
 const app = express();
 
 // ── Middleware ──
-app.use(cors({ origin: ["http://localhost:5173", "http://localhost:8080"] }));
+app.use(cors({
+    origin: [
+        "http://localhost:5173",
+        "http://localhost:8080",
+        "https://www.flystar.co.in", // ← live site
+        "https://flystar.co.in",     // ← without www just in case
+    ]
+}));
 app.use(express.json());
 
 // ── Connect to MongoDB Atlas ──
