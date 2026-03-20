@@ -28,7 +28,6 @@ const navigation: NavItem[] = [
       { name: "Airport Ground Staff Course", href: "/courses/ground-staff" },
     ],
   },
-
   {
     name: "Flying Training",
     href: "/pilot-training/india",
@@ -43,7 +42,6 @@ const navigation: NavItem[] = [
       { name: "Guide to conversion", href: "/pilot-training/guide-to-conversion" },
     ],
   },
-
   {
     name: "Become a Pilot",
     href: "/become-a-pilot/become-pilot",
@@ -59,7 +57,6 @@ const navigation: NavItem[] = [
       { name: "DGCA Full Form", href: "/dgca/full-form" },
     ],
   },
-
   {
     name: "Services",
     href: "/services/aircraft-management",
@@ -74,16 +71,78 @@ const navigation: NavItem[] = [
       { name: "Components & Spares", href: "/services/components-spares" },
     ],
   },
-
   { name: "About Us", href: "/about" },
   { name: "Contact", href: "/contact" },
 ];
+
+// ─── Header Schema: Organization + WebSite + BreadcrumbList ───────────────────
+const headerSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.flystar.co.in/#organization",
+      "name": "Flying Star Aviator Private Limited | Best Cadet Pilot Training Institute in India - DGCA CPL Flight Training in Delhi",
+      "alternateName": "Flying Star Aviators",
+      "description": "Best Cadet Pilot Training Institute in India offering DGCA CPL Flight Training in Delhi. Specializing in Commercial Pilot License training, ATPL ground classes and aviation career development.",
+      "url": "https://www.flystar.co.in/",
+      "logo": "https://www.flystar.co.in/flying_logo.webp",
+      "image": "https://lh3.googleusercontent.com/p/AF1QipMrTJvtIBhxipJYxisjbwA5m8a9THTO8Cox3Yim=s1360-w1360-h1020-rw",
+      "foundingDate": "2008",
+      "telephone": "+919953536199",
+      "sameAs": [
+        "https://maps.google.com/?cid=5225956059607335504",
+        "https://www.facebook.com/flystar.co.in/",
+        "https://www.instagram.com/flyingstaraviator/",
+        "https://www.youtube.com/channel/UCMgPrEdb_0Ckk7ibz7UExUA",
+        "https://yourstory.com/companies/flying-star-aviators",
+        "https://www.justdial.com/Delhi/Flying-Star-Aviation-Pvt-Ltd-Near-Ramphal-Chowk-Road-Palam-Extension-Dwarka-Sector-7-D-Ramphal-Chowk-Dwarka-Sector-7/011PXX11-XX11-190301143042-S5J4_BZDET"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.flystar.co.in/#website",
+      "url": "https://www.flystar.co.in/",
+      "name": "Flying Star Aviator",
+      "description": "Official website of Flying Star Aviator Private Limited - DGCA CPL Flight Training in Delhi",
+      "publisher": { "@id": "https://www.flystar.co.in/#organization" },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://www.flystar.co.in/?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.flystar.co.in/#breadcrumb",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.flystar.co.in/" },
+        { "@type": "ListItem", "position": 2, "name": "CPL Training", "item": "https://www.flystar.co.in/cpl-training" }
+      ]
+    }
+  ]
+};
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const location = useLocation();
+
+  // Inject Header Schema into <head>
+  useEffect(() => {
+    const existing = document.getElementById("flystar-header-schema");
+    if (!existing) {
+      const script = document.createElement("script");
+      script.type = "application/ld+json";
+      script.text = JSON.stringify(headerSchema);
+      script.id = "flystar-header-schema";
+      document.head.appendChild(script);
+    }
+    return () => {
+      document.getElementById("flystar-header-schema")?.remove();
+    };
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
@@ -142,9 +201,9 @@ export function Header() {
                   <Link
                     to={item.href}
                     className={`flex items-center gap-1 px-5 py-3 text-xl font-semibold transition-colors ${location.pathname === item.href ||
-                      location.pathname.startsWith(item.href + "/")
-                      ? "text-primary"
-                      : "text-foreground"
+                        location.pathname.startsWith(item.href + "/")
+                        ? "text-primary"
+                        : "text-foreground"
                       }`}
                   >
                     {item.name}
@@ -210,7 +269,6 @@ export function Header() {
                     >
                       {item.name}
                     </Link>
-
                     {item.children && (
                       <div className="ml-4 space-y-1">
                         {item.children.map((child) => (
@@ -226,7 +284,6 @@ export function Header() {
                     )}
                   </div>
                 ))}
-
                 <Button variant="aviation" size="lg" className="w-full mt-4">
                   Get Free Counselling
                 </Button>
