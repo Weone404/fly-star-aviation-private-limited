@@ -417,15 +417,6 @@ export default function ContactPopup(): JSX.Element {
       `}</style>
 
             {/* ── Demo backdrop ── */}
-            <div className="fsa-demo">
-                <p className="fsa-demo-brand">Flying Star Aviator</p>
-                <span className="fsa-demo-chip">✈ Contact Popup</span>
-                <p className={`fsa-demo-num ${countdown <= 5 ? "urgent" : ""}`}>{countdown}s</p>
-                <p className="fsa-demo-hint">popup appears every 15 seconds</p>
-                <button className="fsa-preview-btn" onClick={() => { setIsOpen(true); setSubmitted(false); }}>
-                    Preview Now
-                </button>
-            </div>
 
             {/* ── Popup ── */}
             {isOpen && (
