@@ -81,26 +81,30 @@ export default function ContactPage() {
     return newErrors;
   };
 
-  // ── Save to MongoDB via Express backend ──
+  // ── Save to MongoDB via Vercel API route ──
   const saveToMongoDB = async () => {
     const { name, phone, email, interest, message } = formData;
     try {
-      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/contact`, {
+      const res = await fetch("/api/contact", {  // ✅ relative URL — works on Vercel
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           name,
           phone,
           email,
-          interest,
+          interest: interest || "Not specified",
           message: message || "No additional message",
         }),
       });
       const data = await res.json();
-      console.log("Saved to MongoDB:", data);
+      if (data.success) {
+        console.log("✅ Saved to MongoDB:", data.message);
+      } else {
+        console.warn("⚠️ MongoDB save warning:", data.error);
+      }
     } catch (err) {
       // Fail silently — WhatsApp will still open
-      console.error("MongoDB save failed:", err);
+      console.error("❌ MongoDB save failed:", err);
     }
   };
 
@@ -116,7 +120,7 @@ export default function ContactPage() {
 
     const { name, phone, email, interest, message } = formData;
 
-    // ── 1. Save to MongoDB via backend ──
+    // ── 1. Save to MongoDB via Vercel API ──
     await saveToMongoDB();
 
     // ── 2. Build WhatsApp message ──
