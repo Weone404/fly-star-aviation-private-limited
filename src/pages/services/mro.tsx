@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Layout } from "@/components/layout/Layout";
+import { Link } from "react-router-dom";
 
 // ─── Data ────────────────────────────────────────────────────────────────────
 
@@ -132,7 +133,6 @@ export default function MROServices() {
                     background: "linear-gradient(135deg, hsl(145,80%,9%) 0%, hsl(145,65%,6%) 55%, hsl(200,55%,8%) 100%)",
                     borderBottom: "1px solid rgba(255,255,255,0.06)",
                 }}>
-                    {/* Decorative background */}
                     <div style={{ position: "absolute", inset: 0, pointerEvents: "none", overflow: "hidden" }}>
                         {[...Array(7)].map((_, i) => (
                             <div key={i} style={{
@@ -218,47 +218,51 @@ export default function MROServices() {
 
                         {/* CTAs */}
                         <div style={{ display: "flex", gap: "14px", flexWrap: "wrap" }}>
-                            <button
+                            <Link
+                                to="/contact"
                                 style={{
                                     padding: "15px 40px", borderRadius: "10px",
                                     background: "linear-gradient(135deg, hsl(145,70%,22%), hsl(145,80%,16%))",
                                     border: "1px solid hsl(145,70%,30%)",
                                     color: "#fff", fontSize: "14px", fontWeight: 700,
                                     letterSpacing: "0.5px", cursor: "pointer",
+                                    textDecoration: "none", display: "inline-block",
                                     boxShadow: "0 4px 24px rgba(0,0,0,0.35)",
                                     transition: "all 0.25s ease",
                                 }}
                                 onMouseEnter={(e) => {
-                                    (e.currentTarget as HTMLButtonElement).style.transform = "translateY(-2px)";
-                                    (e.currentTarget as HTMLButtonElement).style.boxShadow = "0 10px 32px rgba(0,0,0,0.45)";
+                                    (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(-2px)";
+                                    (e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 10px 32px rgba(0,0,0,0.45)";
                                 }}
                                 onMouseLeave={(e) => {
-                                    (e.currentTarget as HTMLButtonElement).style.transform = "translateY(0)";
-                                    (e.currentTarget as HTMLButtonElement).style.boxShadow = "0 4px 24px rgba(0,0,0,0.35)";
+                                    (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(0)";
+                                    (e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 4px 24px rgba(0,0,0,0.35)";
                                 }}
                             >
                                 Request MRO Support →
-                            </button>
-                            <button
+                            </Link>
+                            <Link
+                                to="/contact"
                                 style={{
                                     padding: "15px 28px", borderRadius: "10px",
                                     background: "transparent",
                                     border: "1px solid rgba(255,255,255,0.15)",
                                     color: "rgba(255,255,255,0.6)", fontSize: "14px",
                                     fontWeight: 500, cursor: "pointer",
+                                    textDecoration: "none", display: "inline-block",
                                     transition: "all 0.2s",
                                 }}
                                 onMouseEnter={(e) => {
-                                    (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(255,255,255,0.35)";
-                                    (e.currentTarget as HTMLButtonElement).style.color = "#fff";
+                                    (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(255,255,255,0.35)";
+                                    (e.currentTarget as HTMLAnchorElement).style.color = "#fff";
                                 }}
                                 onMouseLeave={(e) => {
-                                    (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(255,255,255,0.15)";
-                                    (e.currentTarget as HTMLButtonElement).style.color = "rgba(255,255,255,0.6)";
+                                    (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(255,255,255,0.15)";
+                                    (e.currentTarget as HTMLAnchorElement).style.color = "rgba(255,255,255,0.6)";
                                 }}
                             >
                                 View Capabilities
-                            </button>
+                            </Link>
                         </div>
                     </div>
                 </div>
@@ -325,7 +329,6 @@ export default function MROServices() {
                             </p>
                         </div>
 
-                        {/* Right: outcome cards */}
                         <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
                             {[
                                 {
@@ -427,7 +430,6 @@ export default function MROServices() {
                                             position: "relative", overflow: "hidden",
                                         }}
                                     >
-                                        {/* Top accent */}
                                         <div style={{
                                             position: "absolute", top: 0, left: "26px",
                                             width: isHov ? "46px" : "28px", height: "2px",
@@ -437,7 +439,6 @@ export default function MROServices() {
                                             transition: "width 0.3s, background 0.3s",
                                         }} />
 
-                                        {/* Step number watermark */}
                                         <div style={{
                                             position: "absolute", top: "18px", right: "20px",
                                             fontSize: "30px", fontWeight: 800,
@@ -447,7 +448,6 @@ export default function MROServices() {
                                             {String(i + 1).padStart(2, "0")}
                                         </div>
 
-                                        {/* Category tag */}
                                         <div style={{
                                             display: "inline-flex",
                                             background: "rgba(255,255,255,0.05)",
@@ -668,47 +668,51 @@ export default function MROServices() {
                             provide a tailored MRO plan to keep your operations flying.
                         </p>
                         <div style={{ display: "flex", gap: "14px", justifyContent: "center", flexWrap: "wrap" }}>
-                            <button
+                            <Link
+                                to="/contact"
                                 style={{
                                     padding: "16px 48px", borderRadius: "10px",
                                     background: "linear-gradient(135deg, hsl(145,70%,22%), hsl(145,80%,16%))",
                                     border: "1px solid hsl(145,70%,30%)",
                                     color: "#fff", fontSize: "15px", fontWeight: 700,
                                     cursor: "pointer", letterSpacing: "0.5px",
+                                    textDecoration: "none", display: "inline-block",
                                     boxShadow: "0 4px 24px rgba(0,0,0,0.4)",
                                     transition: "all 0.25s ease",
                                 }}
                                 onMouseEnter={(e) => {
-                                    (e.currentTarget as HTMLButtonElement).style.transform = "translateY(-2px)";
-                                    (e.currentTarget as HTMLButtonElement).style.boxShadow = "0 12px 36px rgba(0,0,0,0.5)";
+                                    (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(-2px)";
+                                    (e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 12px 36px rgba(0,0,0,0.5)";
                                 }}
                                 onMouseLeave={(e) => {
-                                    (e.currentTarget as HTMLButtonElement).style.transform = "translateY(0)";
-                                    (e.currentTarget as HTMLButtonElement).style.boxShadow = "0 4px 24px rgba(0,0,0,0.4)";
+                                    (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(0)";
+                                    (e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 4px 24px rgba(0,0,0,0.4)";
                                 }}
                             >
                                 Request MRO Support →
-                            </button>
-                            <button
+                            </Link>
+                            <Link
+                                to="/contact"
                                 style={{
                                     padding: "16px 32px", borderRadius: "10px",
                                     background: "transparent",
                                     border: "1px solid rgba(255,255,255,0.15)",
                                     color: "rgba(255,255,255,0.6)", fontSize: "15px",
                                     fontWeight: 500, cursor: "pointer",
+                                    textDecoration: "none", display: "inline-block",
                                     transition: "all 0.2s",
                                 }}
                                 onMouseEnter={(e) => {
-                                    (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(255,255,255,0.35)";
-                                    (e.currentTarget as HTMLButtonElement).style.color = "#fff";
+                                    (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(255,255,255,0.35)";
+                                    (e.currentTarget as HTMLAnchorElement).style.color = "#fff";
                                 }}
                                 onMouseLeave={(e) => {
-                                    (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(255,255,255,0.15)";
-                                    (e.currentTarget as HTMLButtonElement).style.color = "rgba(255,255,255,0.6)";
+                                    (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(255,255,255,0.15)";
+                                    (e.currentTarget as HTMLAnchorElement).style.color = "rgba(255,255,255,0.6)";
                                 }}
                             >
                                 View All Services
-                            </button>
+                            </Link>
                         </div>
                     </div>
                 </div>

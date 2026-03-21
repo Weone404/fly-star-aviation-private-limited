@@ -30,28 +30,28 @@ const groundStaffServices = [
         title: "Ground Staff Role",
         description:
             "Essential personnel ensuring smooth airport operations, passenger assistance, and flight coordination.",
-        href: "/ground-staff/overview",
+        href: "/contact",
     },
     {
         icon: Luggage,
         title: "Ground Crew Functions",
         description:
             "Baggage handling, boarding assistance, aircraft maintenance checks, and overall airport operations management.",
-        href: "/ground-staff/ground-crew",
+        href: "/contact",
     },
     {
         icon: BookOpen,
         title: "Course Subjects",
         description:
             "Aviation fundamentals, reservation systems, check-in procedures, security protocols, and customer service.",
-        href: "/ground-staff/subjects",
+        href: "/contact",
     },
     {
         icon: TrendingUp,
         title: "Career Opportunities",
         description:
             "Join leading airlines like Air India, IndiGo, SpiceJet, and more in various ground staff positions.",
-        href: "/ground-staff/careers",
+        href: "/contact",
     },
 ];
 
@@ -228,13 +228,13 @@ export default function AirportGroundStaffCoursePage() {
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4">
                             <Button variant="gold" size="lg" asChild>
-                                <Link to="/apply">
+                                <Link to="/contact">
                                     Apply Now
                                     <ArrowRight className="h-4 w-4 ml-2" />
                                 </Link>
                             </Button>
                             <Button variant="outline-white" size="lg" asChild>
-                                <Link to="/ground-staff/fees">Check Course Fees</Link>
+                                <Link to="/contact">Check Course Fees</Link>
                             </Button>
                             <Button variant="outline-white" size="lg" asChild>
                                 <Link to="/contact">Talk to Counselor</Link>
@@ -510,7 +510,6 @@ export default function AirportGroundStaffCoursePage() {
                         <h2 className="text-3xl md:text-4xl font-bold mb-4">Ground Staff Course Fee Structure</h2>
                         <p className="text-muted-foreground max-w-2xl mx-auto">
                             The ground staff course fees vary depending on the institutes, location, and other facilities provided by the institutes to the students.
-
                         </p>
                     </motion.div>
 
@@ -561,7 +560,7 @@ export default function AirportGroundStaffCoursePage() {
                                 quality. This investment opens doors to exciting career opportunities in India's growing aviation sector.
                             </p>
                             <Button variant="gold" size="lg" asChild className="w-full">
-                                <Link to="/ground-staff/fees">
+                                <Link to="/contact">
                                     Get Detailed Fee Breakdown
                                     <ArrowRight className="h-4 w-4 ml-2" />
                                 </Link>
@@ -827,20 +826,19 @@ export default function AirportGroundStaffCoursePage() {
                         </h2>
                         <p className="text-primary-foreground/80 text-lg mb-4">
                             It is not just a course; it is your ticket to a great and exciting career in the growing aviation industry of India. With our airport ground staff course, you will be provided with all the training that is necessary to succeed.
-
                         </p>
                         <p className="text-primary-foreground/80 text-lg mb-8">
                             You will be able to join top airlines like Air India, IndiGo, SpiceJet, and many more. With proper training from top ground staff training institutes and hard work, you will be able to achieve a great career with salaries ranging from 2 to 6 lakhs per annum.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <Button variant="gold" size="lg" asChild>
-                                <Link to="/apply">
+                                <Link to="/contact">
                                     Apply Now
                                     <ArrowRight className="h-4 w-4 ml-2" />
                                 </Link>
                             </Button>
                             <Button variant="outline-white" size="lg" asChild>
-                                <Link to="/ground-staff/fees">Check Course Fees</Link>
+                                <Link to="/contact">Check Course Fees</Link>
                             </Button>
                             <Button variant="outline-white" size="lg" asChild>
                                 <a href="tel:+919876543210">Talk to Counselor</a>

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Layout } from "@/components/layout/Layout";
+import { Link } from "react-router-dom";
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 interface Program {
@@ -503,55 +504,63 @@ export default function AircraftManagement() {
 
                     {/* CTA */}
                     <div style={{ display: "flex", gap: "14px", flexWrap: "wrap", alignItems: "center" }}>
-                        <button style={{
-                            padding: "14px 36px",
-                            borderRadius: "10px",
-                            background: "linear-gradient(135deg, hsl(145,70%,22%) 0%, hsl(145,80%,16%) 100%)",
-                            border: "1px solid hsl(145,70%,30%)",
-                            color: "#fff",
-                            fontSize: "14px", fontWeight: 700,
-                            letterSpacing: "0.5px",
-                            cursor: "pointer",
-                            transition: "all 0.25s ease",
-                            boxShadow: "0 4px 20px rgba(0,0,0,0.3)",
-                        }}
+                        <Link
+                            to="/contact"
+                            style={{
+                                padding: "14px 36px",
+                                borderRadius: "10px",
+                                background: "linear-gradient(135deg, hsl(145,70%,22%) 0%, hsl(145,80%,16%) 100%)",
+                                border: "1px solid hsl(145,70%,30%)",
+                                color: "#fff",
+                                fontSize: "14px", fontWeight: 700,
+                                letterSpacing: "0.5px",
+                                cursor: "pointer",
+                                textDecoration: "none",
+                                display: "inline-block",
+                                boxShadow: "0 4px 20px rgba(0,0,0,0.3)",
+                                transition: "all 0.25s ease",
+                            }}
                             onMouseEnter={(e) => {
-                                (e.currentTarget as HTMLButtonElement).style.background =
+                                (e.currentTarget as HTMLAnchorElement).style.background =
                                     "linear-gradient(135deg, hsl(145,70%,28%) 0%, hsl(145,80%,20%) 100%)";
-                                (e.currentTarget as HTMLButtonElement).style.transform = "translateY(-2px)";
-                                (e.currentTarget as HTMLButtonElement).style.boxShadow = "0 8px 30px rgba(0,0,0,0.4)";
+                                (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(-2px)";
+                                (e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 8px 30px rgba(0,0,0,0.4)";
                             }}
                             onMouseLeave={(e) => {
-                                (e.currentTarget as HTMLButtonElement).style.background =
+                                (e.currentTarget as HTMLAnchorElement).style.background =
                                     "linear-gradient(135deg, hsl(145,70%,22%) 0%, hsl(145,80%,16%) 100%)";
-                                (e.currentTarget as HTMLButtonElement).style.transform = "translateY(0)";
-                                (e.currentTarget as HTMLButtonElement).style.boxShadow = "0 4px 20px rgba(0,0,0,0.3)";
+                                (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(0)";
+                                (e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 4px 20px rgba(0,0,0,0.3)";
                             }}
                         >
                             {active.cta} →
-                        </button>
+                        </Link>
 
-                        <button style={{
-                            padding: "14px 28px",
-                            borderRadius: "10px",
-                            background: "transparent",
-                            border: "1px solid rgba(255,255,255,0.15)",
-                            color: "rgba(255,255,255,0.6)",
-                            fontSize: "14px", fontWeight: 500,
-                            cursor: "pointer",
-                            transition: "all 0.25s ease",
-                        }}
+                        <Link
+                            to="/contact"
+                            style={{
+                                padding: "14px 28px",
+                                borderRadius: "10px",
+                                background: "transparent",
+                                border: "1px solid rgba(255,255,255,0.15)",
+                                color: "rgba(255,255,255,0.6)",
+                                fontSize: "14px", fontWeight: 500,
+                                cursor: "pointer",
+                                textDecoration: "none",
+                                display: "inline-block",
+                                transition: "all 0.25s ease",
+                            }}
                             onMouseEnter={(e) => {
-                                (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(255,255,255,0.35)";
-                                (e.currentTarget as HTMLButtonElement).style.color = "#fff";
+                                (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(255,255,255,0.35)";
+                                (e.currentTarget as HTMLAnchorElement).style.color = "#fff";
                             }}
                             onMouseLeave={(e) => {
-                                (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(255,255,255,0.15)";
-                                (e.currentTarget as HTMLButtonElement).style.color = "rgba(255,255,255,0.6)";
+                                (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(255,255,255,0.15)";
+                                (e.currentTarget as HTMLAnchorElement).style.color = "rgba(255,255,255,0.6)";
                             }}
                         >
                             Speak With Us
-                        </button>
+                        </Link>
                     </div>
                 </div>
 

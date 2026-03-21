@@ -35,7 +35,7 @@ const careerPaths = [
         description:
             "Self-sponsored training at DGCA-  Flying Training Organisation. Complete pathway from SPL to CPL.",
         cost: "₹35 - 65 Lakhs",
-        href: "/become-pilot/civil-aviation",
+        href: "/contact",
     },
     {
         icon: Users,
@@ -43,7 +43,7 @@ const careerPaths = [
         description:
             "Structured programs by airlines like IndiGo and Air India with training and employment letter of intent.",
         cost: "Sponsored Training",
-        href: "/become-pilot/cadet-programs",
+        href: "/contact",
     },
     {
         icon: Shield,
@@ -51,7 +51,7 @@ const careerPaths = [
         description:
             "Join through NDA (after 12th) or AFCAT (after graduation). Government-funded training and prestigious career.",
         cost: "Fully Funded",
-        href: "/become-pilot/air-force",
+        href: "/contact",
     },
 ];
 
@@ -300,13 +300,13 @@ export default function BecomePilotPage() {
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4">
                             <Button variant="gold" size="lg" asChild>
-                                <Link to="/apply">
+                                <Link to="/contact">
                                     Start Your Journey
                                     <ArrowRight className="h-4 w-4 ml-2" />
                                 </Link>
                             </Button>
                             <Button variant="outline-white" size="lg" asChild>
-                                <Link to="/cpl">View CPL Course</Link>
+                                <Link to="/contact">View CPL Course</Link>
                             </Button>
                             <Button variant="outline-white" size="lg" asChild>
                                 <Link to="/contact">Talk to Counselor</Link>
@@ -804,13 +804,13 @@ export default function BecomePilotPage() {
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <Button variant="gold" size="lg" asChild>
-                                <Link to="/apply">
+                                <Link to="/contact">
                                     Apply for Training
                                     <ArrowRight className="h-4 w-4 ml-2" />
                                 </Link>
                             </Button>
                             <Button variant="outline-white" size="lg" asChild>
-                                <Link to="/cpl">View CPL Course Details</Link>
+                                <Link to="/contact">View CPL Course Details</Link>
                             </Button>
                             <Button variant="outline-white" size="lg" asChild>
                                 <a href="tel:+919876543210">Talk to Expert</a>

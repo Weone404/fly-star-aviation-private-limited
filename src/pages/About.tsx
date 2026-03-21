@@ -18,12 +18,12 @@ const timeline = [
   { year: "2024", title: "5000+ Alumni", description: "Proud network of 5000+ pilots flying with major airlines worldwide." },
 ];
 
-const team = [
-  { name: "Capt. Vikram Singh", role: "Founder & Chief Instructor", experience: "25+ years", image: "https://i.pravatar.cc/300?img=60" },
-  { name: "Capt. Anita Desai", role: "Director of Operations", experience: "20+ years", image: "https://i.pravatar.cc/300?img=47" },
-  { name: "Capt. Rajesh Malhotra", role: "Head - Ground Training", experience: "18+ years", image: "https://i.pravatar.cc/300?img=53" },
-  { name: "Capt. Meera Iyer", role: "Chief Flight Instructor", experience: "15+ years", image: "https://i.pravatar.cc/300?img=44" },
-];
+// const team = [
+//   { name: "Capt. Vikram Singh", role: "Founder & Chief Instructor", experience: "25+ years", image: "https://i.pravatar.cc/300?img=60" },
+//   { name: "Capt. Anita Desai", role: "Director of Operations", experience: "20+ years", image: "https://i.pravatar.cc/300?img=47" },
+//   { name: "Capt. Rajesh Malhotra", role: "Head - Ground Training", experience: "18+ years", image: "https://i.pravatar.cc/300?img=53" },
+//   { name: "Capt. Meera Iyer", role: "Chief Flight Instructor", experience: "15+ years", image: "https://i.pravatar.cc/300?img=44" },
+// ];
 
 export default function AboutPage() {
   return (
@@ -46,7 +46,7 @@ export default function AboutPage() {
               Shaping the Future of Indian Aviation
             </h1>
             <p className="text-xl text-primary-foreground/80">
-              For over 15 years, Flying Star Aviator has been at the forefront of aviation training, 
+              For over 15 years, Flying Star Aviator has been at the forefront of aviation training,
               creating skilled pilots who now fly with the world's leading airlines.
             </p>
           </motion.div>
@@ -68,8 +68,8 @@ export default function AboutPage() {
               </div>
               <h2 className="text-2xl font-bold mb-4">Our Mission</h2>
               <p className="text-muted-foreground leading-relaxed">
-                To provide world-class aviation training that transforms passionate individuals into 
-                skilled, confident, and professionally equipped pilots ready to excel in the global 
+                To provide world-class aviation training that transforms passionate individuals into
+                skilled, confident, and professionally equipped pilots ready to excel in the global
                 aviation industry.
               </p>
             </motion.div>
@@ -85,7 +85,7 @@ export default function AboutPage() {
               </div>
               <h2 className="text-2xl font-bold mb-4">Our Vision</h2>
               <p className="text-primary-foreground/80 leading-relaxed">
-                To be India's most trusted and innovative aviation training academy, recognized 
+                To be India's most trusted and innovative aviation training academy, recognized
                 globally for our excellence in pilot development and contribution to aviation safety.
               </p>
             </motion.div>
@@ -155,13 +155,12 @@ export default function AboutPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className={`relative pl-12 md:pl-0 pb-12 last:pb-0 ${
-                  index % 2 === 0 ? "md:pr-[52%]" : "md:pl-[52%]"
-                }`}
+                className={`relative pl-12 md:pl-0 pb-12 last:pb-0 ${index % 2 === 0 ? "md:pr-[52%]" : "md:pl-[52%]"
+                  }`}
               >
                 {/* Dot */}
                 <div className="absolute left-2 md:left-1/2 top-1 w-4 h-4 rounded-full bg-primary border-4 border-background md:-translate-x-2" />
-                
+
                 <div className="bg-card rounded-xl p-6 shadow-card">
                   <span className="inline-block text-sm font-bold text-accent bg-accent/10 px-3 py-1 rounded-full mb-2">
                     {item.year}
@@ -176,47 +175,7 @@ export default function AboutPage() {
       </section>
 
       {/* Leadership Team */}
-      <section className="py-20 bg-muted/30">
-        <div className="container">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Leadership Team</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Meet the experienced aviators who guide our mission.
-            </p>
-          </motion.div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {team.map((member, index) => (
-              <motion.div
-                key={member.name}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="text-center group"
-              >
-                <div className="relative mb-4 overflow-hidden rounded-2xl">
-                  <img
-                    src={member.image}
-                    alt={member.name}
-                    className="w-full aspect-square object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-primary/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                    <span className="text-primary-foreground font-semibold">{member.experience}</span>
-                  </div>
-                </div>
-                <h3 className="font-bold text-lg">{member.name}</h3>
-                <p className="text-muted-foreground text-sm">{member.role}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Stats */}
       <section className="py-16 aviation-gradient text-primary-foreground">

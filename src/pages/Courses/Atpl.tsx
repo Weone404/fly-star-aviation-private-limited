@@ -32,28 +32,28 @@ const atplServices = [
         title: "ATPL Overview",
         description:
             "The highest pilot certification, mandatory for all airline captains flying multi-crew commercial aircraft in India.",
-        href: "/atpl/overview",
+        href: "/contact",
     },
     {
         icon: BookOpen,
         title: "Ground Theory Classes",
         description:
             "Comprehensive DGCA ground training covering Air Navigation, Meteorology, Air Regulations, Radio Aids & Instruments.",
-        href: "/atpl/ground-classes",
+        href: "/contact",
     },
     {
         icon: DollarSign,
         title: "ATPL Course Fees",
         description:
             "Detailed breakdown of registration, flight training, simulator, and accommodation costs for ATPL in India.",
-        href: "/atpl/fees",
+        href: "/contact",
     },
     {
         icon: TrendingUp,
         title: "Career After ATPL",
         description:
             "Explore career paths as Airline Captain, Cargo Pilot, Charter Pilot, Corporate Pilot, and international roles.",
-        href: "/atpl/careers",
+        href: "/contact",
     },
 ];
 
@@ -266,13 +266,13 @@ export default function ATPLCoursePage() {
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4">
                             <Button variant="gold" size="lg" asChild>
-                                <Link to="/atpl/apply">
+                                <Link to="/contact">
                                     Apply Now
                                     <ArrowRight className="h-4 w-4 ml-2" />
                                 </Link>
                             </Button>
                             <Button variant="outline-white" size="lg" asChild>
-                                <Link to="/atpl/fees">Get ATPL Course Fees</Link>
+                                <Link to="/contact">Get ATPL Course Fees</Link>
                             </Button>
                             <Button variant="outline-white" size="lg" asChild>
                                 <Link to="/contact">Talk to Counselor</Link>
@@ -693,7 +693,7 @@ export default function ATPLCoursePage() {
                                     up to <strong className="text-foreground">₹1,50,000/month</strong> and growing rapidly with experience.
                                 </p>
                                 <Button variant="gold" size="lg" asChild className="w-full">
-                                    <Link to="/atpl/fees">
+                                    <Link to="/contact">
                                         Get Detailed Fee Breakdown
                                         <ArrowRight className="h-4 w-4 ml-2" />
                                     </Link>
@@ -960,13 +960,13 @@ export default function ATPLCoursePage() {
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <Button variant="gold" size="lg" asChild>
-                                <Link to="/atpl/apply">
+                                <Link to="/contact">
                                     Apply Now
                                     <ArrowRight className="h-4 w-4 ml-2" />
                                 </Link>
                             </Button>
                             <Button variant="outline-white" size="lg" asChild>
-                                <Link to="/atpl/fees">Get ATPL Course Fees</Link>
+                                <Link to="/contact">Get ATPL Course Fees</Link>
                             </Button>
                             <Button variant="outline-white" size="lg" asChild>
                                 <a href="tel:+919876543210">Talk to Counselor</a>

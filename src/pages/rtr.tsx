@@ -344,7 +344,7 @@ export default function RTRPage() {
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4">
                             <Button variant="gold" size="lg" asChild>
-                                <Link to="/apply">
+                                <Link to="/contact">
                                     Start Your Journey
                                     <ArrowRight className="h-4 w-4 ml-2" />
                                 </Link>
@@ -965,15 +965,14 @@ export default function RTRPage() {
                         </h2>
                         <div className="p-8 rounded-2xl border border-border bg-card space-y-4">
                             <p className="text-muted-foreground text-lg">
-                                The full form of <strong>RTR is Radio Telephony Restricted</strong>,  It is an important license for aviation
-                                and maritime professionals. In aviation, RTR license is mandatory for pilots and ATCs to  lawfully use the communication equipment installed on the aircraft.
+                                The full form of <strong>RTR is Radio Telephony Restricted</strong>, It is an important license for aviation
+                                and maritime professionals. In aviation, RTR license is mandatory for pilots and ATCs to lawfully use the communication equipment installed on the aircraft.
                             </p>
                             <p className="text-muted-foreground text-lg">
                                 Conducted by the Ministry of Communications, the RTR examination, conducted by the WPC wing, ensures that the candidates are qualified to use the radio communication equipment, emergency procedures, and aviation phraseology.
                             </p>
                             <p className="text-muted-foreground text-lg">
                                 In the context of finance, technology, and business, RTR has different meanings, but when compared to the importance of RTR in aviation, no other meaning can compete.
-
                             </p>
                             <p className="text-muted-foreground text-lg">
                                 For any aspiring commercial pilot, the RTR examination is one of the most significant achievements that can take the candidate closer to the dream of flying an aircraft. With proper guidance, one can successfully clear the RTR examination.
@@ -1001,7 +1000,7 @@ export default function RTRPage() {
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <Button variant="gold" size="lg" asChild>
-                                <Link to="/apply">
+                                <Link to="/contact">
                                     Apply Now
                                     <ArrowRight className="h-4 w-4 ml-2" />
                                 </Link>

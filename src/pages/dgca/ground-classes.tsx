@@ -318,7 +318,7 @@ export default function DGCAGroundClassesPage(): JSX.Element {
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4">
                             <Button variant="gold" size="lg" asChild>
-                                <Link to="/apply">
+                                <Link to="/contact">
                                     Enroll in Ground Classes
                                     <ArrowRight className="h-4 w-4 ml-2" />
                                 </Link>
@@ -408,8 +408,6 @@ export default function DGCAGroundClassesPage(): JSX.Element {
                             <p>
                                 DGCA ground classes are training sessions that are conducted to help students prepare and pass the DGCA CPL theory exams conducted by the Directorate General of Civil Aviation, India. These ground classes are conducted to provide students with a strong conceptual understanding and exam preparation, and they cover the basics of aviation. Professional CPL ground classes are conducted as per the latest DGCA syllabus and exam patterns.
                             </p>
-
-
                         </div>
 
                         <div className="p-8 rounded-2xl bg-primary/5 border border-primary/20">
@@ -921,13 +919,13 @@ export default function DGCAGroundClassesPage(): JSX.Element {
                         </div>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <Button variant="gold" size="lg" asChild>
-                                <Link to="/apply">
+                                <Link to="/contact">
                                     Enroll in Ground Classes
                                     <ArrowRight className="h-4 w-4 ml-2" />
                                 </Link>
                             </Button>
                             <Button variant="outline-white" size="lg" asChild>
-                                <Link to="/ground-classes/fees">Get Fee Details</Link>
+                                <Link to="/contact">Get Fee Details</Link>
                             </Button>
                             <Button variant="outline-white" size="lg" asChild>
                                 <Link to="/contact">Find Classes Near Me</Link>

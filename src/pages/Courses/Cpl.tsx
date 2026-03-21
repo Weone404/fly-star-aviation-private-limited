@@ -366,7 +366,7 @@ export default function CPLCoursePage() {
                                     </Link>
                                 </Button>
                                 <Button variant="outline-white" size="lg" asChild>
-                                    <Link to="/cpl/fees">Get CPL Course Fees</Link>
+                                    <Link to="/contact">Get CPL Course Fees</Link>
                                 </Button>
                                 <Button variant="outline-white" size="lg" asChild>
                                     <Link to="/contact">Talk to Counselor</Link>
@@ -659,7 +659,7 @@ export default function CPLCoursePage() {
                                 The overall commercial pilot fees may differ from one academy to another. However, this investment results in a very lucrative career in aviation.
                             </p>
                             <Button variant="gold" size="lg" asChild className="w-full">
-                                <Link to="/cpl/fees">
+                                <Link to="/contact">
                                     Get Detailed Fee Breakdown
                                     <ArrowRight className="h-4 w-4 ml-2" />
                                 </Link>
@@ -912,7 +912,7 @@ export default function CPLCoursePage() {
                                 </Link>
                             </Button>
                             <Button variant="outline-white" size="lg" asChild>
-                                <Link to="/cpl/fees">Get CPL Course Fees</Link>
+                                <Link to="/contact">Get CPL Course Fees</Link>
                             </Button>
                             <Button variant="outline-white" size="lg" asChild>
                                 <a href="tel:+919876543210">Talk to Counselor</a>

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Layout } from "@/components/layout/Layout";
+import { Link } from "react-router-dom";
 
 // ─── Data ────────────────────────────────────────────────────────────────────
 
@@ -168,19 +169,19 @@ const relatedServices = [
         title: "Pilot Training",
         desc: "Customized crew training programs tailored to operational needs.",
         icon: "🎓",
-        href: "#",
+        href: "/contact",
     },
     {
         title: "Charter Services",
         desc: "Government-approved private charter aircraft with expert pilots.",
         icon: "🛩️",
-        href: "#",
+        href: "/contact",
     },
     {
         title: "Aviation Placement",
         desc: "Career assistance and placement support for aviation professionals.",
         icon: "🧭",
-        href: "#",
+        href: "/contact",
     },
 ];
 
@@ -267,13 +268,11 @@ function AircraftCard({ ac }: { ac: typeof aircraftOptions[0] }) {
                         display: "block",
                     }}
                 />
-                {/* Gradient overlay on image */}
                 <div style={{
                     position: "absolute",
                     inset: 0,
                     background: "linear-gradient(to top, rgba(8,25,14,0.9) 0%, rgba(0,0,0,0.15) 60%)",
                 }} />
-                {/* Category badge */}
                 <div style={{
                     position: "absolute",
                     top: "10px",
@@ -293,7 +292,6 @@ function AircraftCard({ ac }: { ac: typeof aircraftOptions[0] }) {
 
             {/* Card Body */}
             <div style={{ padding: "18px 20px", flex: 1, display: "flex", flexDirection: "column", gap: "10px" }}>
-                {/* Name */}
                 <div style={{
                     fontSize: "15px", fontWeight: 700,
                     color: hovered ? "#fff" : "rgba(255,255,255,0.85)",
@@ -302,7 +300,6 @@ function AircraftCard({ ac }: { ac: typeof aircraftOptions[0] }) {
                     {ac.name}
                 </div>
 
-                {/* Default state summary line */}
                 <div style={{
                     display: "flex", alignItems: "center", gap: "8px",
                     opacity: hovered ? 0 : 1,
@@ -316,7 +313,6 @@ function AircraftCard({ ac }: { ac: typeof aircraftOptions[0] }) {
                     </span>
                 </div>
 
-                {/* Specs grid - shown on hover */}
                 <div style={{
                     display: "grid",
                     gridTemplateColumns: "1fr 1fr",
@@ -348,7 +344,6 @@ function AircraftCard({ ac }: { ac: typeof aircraftOptions[0] }) {
                     ))}
                 </div>
 
-                {/* Description - shown on hover */}
                 <div style={{
                     fontSize: "12px",
                     color: "rgba(255,255,255,0.55)",
@@ -361,7 +356,6 @@ function AircraftCard({ ac }: { ac: typeof aircraftOptions[0] }) {
                     {ac.specs}
                 </div>
 
-                {/* More Info Button - shown on hover */}
                 <div style={{
                     opacity: hovered ? 1 : 0,
                     maxHeight: hovered ? "50px" : "0",
@@ -370,10 +364,8 @@ function AircraftCard({ ac }: { ac: typeof aircraftOptions[0] }) {
                     marginTop: "auto",
                     paddingTop: "4px",
                 }}>
-                    <a
-                        href="https://www.flystar.co.in/services/charter-services"
-                        target="_blank"
-                        rel="noopener noreferrer"
+                    <Link
+                        to="/contact"
                         style={{
                             display: "flex",
                             alignItems: "center",
@@ -402,7 +394,7 @@ function AircraftCard({ ac }: { ac: typeof aircraftOptions[0] }) {
                         }}
                     >
                         Click here for more info →
-                    </a>
+                    </Link>
                 </div>
             </div>
         </div>
@@ -493,46 +485,51 @@ export default function AircraftSalePurchase() {
                         </p>
 
                         <div style={{ display: "flex", gap: "14px", flexWrap: "wrap" }}>
-                            <button
+                            <Link
+                                to="/contact"
                                 style={{
                                     padding: "15px 40px", borderRadius: "10px",
                                     background: "linear-gradient(135deg, hsl(145,70%,22%), hsl(145,80%,16%))",
                                     border: "1px solid hsl(145,70%,30%)",
                                     color: "#fff", fontSize: "14px", fontWeight: 700,
                                     letterSpacing: "0.5px", cursor: "pointer",
+                                    textDecoration: "none", display: "inline-block",
                                     boxShadow: "0 4px 24px rgba(0,0,0,0.35)",
                                     transition: "all 0.25s ease",
                                 }}
                                 onMouseEnter={(e) => {
-                                    (e.currentTarget as HTMLButtonElement).style.transform = "translateY(-2px)";
-                                    (e.currentTarget as HTMLButtonElement).style.boxShadow = "0 10px 32px rgba(0,0,0,0.45)";
+                                    (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(-2px)";
+                                    (e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 10px 32px rgba(0,0,0,0.45)";
                                 }}
                                 onMouseLeave={(e) => {
-                                    (e.currentTarget as HTMLButtonElement).style.transform = "translateY(0)";
-                                    (e.currentTarget as HTMLButtonElement).style.boxShadow = "0 4px 24px rgba(0,0,0,0.35)";
+                                    (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(0)";
+                                    (e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 4px 24px rgba(0,0,0,0.35)";
                                 }}
                             >
                                 Enquire Now →
-                            </button>
-                            <button style={{
-                                padding: "15px 28px", borderRadius: "10px",
-                                background: "transparent",
-                                border: "1px solid rgba(255,255,255,0.15)",
-                                color: "rgba(255,255,255,0.6)", fontSize: "14px",
-                                fontWeight: 500, cursor: "pointer",
-                                transition: "all 0.2s",
-                            }}
+                            </Link>
+                            <Link
+                                to="/contact"
+                                style={{
+                                    padding: "15px 28px", borderRadius: "10px",
+                                    background: "transparent",
+                                    border: "1px solid rgba(255,255,255,0.15)",
+                                    color: "rgba(255,255,255,0.6)", fontSize: "14px",
+                                    fontWeight: 500, cursor: "pointer",
+                                    textDecoration: "none", display: "inline-block",
+                                    transition: "all 0.2s",
+                                }}
                                 onMouseEnter={(e) => {
-                                    (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(255,255,255,0.35)";
-                                    (e.currentTarget as HTMLButtonElement).style.color = "#fff";
+                                    (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(255,255,255,0.35)";
+                                    (e.currentTarget as HTMLAnchorElement).style.color = "#fff";
                                 }}
                                 onMouseLeave={(e) => {
-                                    (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(255,255,255,0.15)";
-                                    (e.currentTarget as HTMLButtonElement).style.color = "rgba(255,255,255,0.6)";
+                                    (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(255,255,255,0.15)";
+                                    (e.currentTarget as HTMLAnchorElement).style.color = "rgba(255,255,255,0.6)";
                                 }}
                             >
                                 View Fleet Options
-                            </button>
+                            </Link>
                         </div>
                     </div>
                 </div>
@@ -728,7 +725,7 @@ export default function AircraftSalePurchase() {
                     </div>
                 </div>
 
-                {/* ── What We Assist With (summary) ── */}
+                {/* ── What We Assist With ── */}
                 <div style={{
                     padding: "56px 6%",
                     background: "hsl(150,28%,6%)",
@@ -850,14 +847,14 @@ export default function AircraftSalePurchase() {
                                         </div>
                                     </div>
 
-                                    <a href={service.href} style={{
+                                    <Link to={service.href} style={{
                                         display: "inline-flex", alignItems: "center", gap: "6px",
                                         color: "hsl(45,100%,60%)", fontSize: "13px", fontWeight: 600,
                                         textDecoration: "none", marginTop: "auto",
                                     }}>
                                         Learn More
                                         <span style={{ fontSize: "16px", lineHeight: 1 }}>→</span>
-                                    </a>
+                                    </Link>
                                 </div>
                             ))}
                         </div>
@@ -896,26 +893,30 @@ export default function AircraftSalePurchase() {
                         Speak with our advisory team today and take the first step toward your
                         ideal aircraft acquisition.
                     </p>
-                    <button style={{
-                        padding: "16px 48px", borderRadius: "10px",
-                        background: "linear-gradient(135deg, hsl(145,70%,22%), hsl(145,80%,16%))",
-                        border: "1px solid hsl(145,70%,30%)",
-                        color: "#fff", fontSize: "15px", fontWeight: 700,
-                        letterSpacing: "0.5px", cursor: "pointer",
-                        boxShadow: "0 4px 24px rgba(0,0,0,0.4)",
-                        transition: "all 0.25s ease",
-                    }}
+                    <Link
+                        to="/contact"
+                        style={{
+                            display: "inline-block",
+                            padding: "16px 48px", borderRadius: "10px",
+                            background: "linear-gradient(135deg, hsl(145,70%,22%), hsl(145,80%,16%))",
+                            border: "1px solid hsl(145,70%,30%)",
+                            color: "#fff", fontSize: "15px", fontWeight: 700,
+                            letterSpacing: "0.5px", cursor: "pointer",
+                            textDecoration: "none",
+                            boxShadow: "0 4px 24px rgba(0,0,0,0.4)",
+                            transition: "all 0.25s ease",
+                        }}
                         onMouseEnter={(e) => {
-                            (e.currentTarget as HTMLButtonElement).style.transform = "translateY(-2px)";
-                            (e.currentTarget as HTMLButtonElement).style.boxShadow = "0 12px 36px rgba(0,0,0,0.5)";
+                            (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(-2px)";
+                            (e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 12px 36px rgba(0,0,0,0.5)";
                         }}
                         onMouseLeave={(e) => {
-                            (e.currentTarget as HTMLButtonElement).style.transform = "translateY(0)";
-                            (e.currentTarget as HTMLButtonElement).style.boxShadow = "0 4px 24px rgba(0,0,0,0.4)";
+                            (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(0)";
+                            (e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 4px 24px rgba(0,0,0,0.4)";
                         }}
                     >
                         Enquire Now →
-                    </button>
+                    </Link>
                 </div>
 
             </div>

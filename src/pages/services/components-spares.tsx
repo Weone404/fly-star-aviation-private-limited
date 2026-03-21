@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Layout } from "@/components/layout/Layout";
+import { Link } from "react-router-dom";
 
 // ─── Animation Hook ───────────────────────────────────────────────────────────
 function useInView(threshold = 0.12) {
@@ -132,7 +133,6 @@ export default function ComponentsAndSpares() {
                     background: "linear-gradient(135deg, hsl(145,80%,9%) 0%, hsl(145,65%,6%) 55%, hsl(200,55%,8%) 100%)",
                     borderBottom: "1px solid rgba(255,255,255,0.06)",
                 }}>
-                    {/* Decorative background */}
                     <div style={{ position: "absolute", inset: 0, pointerEvents: "none", overflow: "hidden" }}>
                         {[...Array(7)].map((_, i) => (
                             <div key={i} style={{
@@ -214,42 +214,47 @@ export default function ComponentsAndSpares() {
                         </p>
 
                         <div style={{ display: "flex", gap: "14px", flexWrap: "wrap", animation: "fadeUp 0.7s ease 0.45s forwards", opacity: 0 }}>
-                            <button
+                            <Link
+                                to="/contact"
                                 style={{
                                     padding: "15px 40px", borderRadius: "10px",
                                     background: "linear-gradient(135deg, hsl(145,70%,22%), hsl(145,80%,16%))",
                                     border: "1px solid hsl(145,70%,30%)", color: "#fff",
                                     fontSize: "14px", fontWeight: 700, cursor: "pointer",
+                                    textDecoration: "none", display: "inline-block",
                                     boxShadow: "0 4px 24px rgba(0,0,0,0.35)", transition: "all 0.25s ease", letterSpacing: "0.5px",
                                 }}
                                 onMouseEnter={(e) => {
-                                    (e.currentTarget as HTMLButtonElement).style.transform = "translateY(-2px)";
-                                    (e.currentTarget as HTMLButtonElement).style.boxShadow = "0 10px 32px rgba(0,0,0,0.45)";
+                                    (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(-2px)";
+                                    (e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 10px 32px rgba(0,0,0,0.45)";
                                 }}
                                 onMouseLeave={(e) => {
-                                    (e.currentTarget as HTMLButtonElement).style.transform = "translateY(0)";
-                                    (e.currentTarget as HTMLButtonElement).style.boxShadow = "0 4px 24px rgba(0,0,0,0.35)";
+                                    (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(0)";
+                                    (e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 4px 24px rgba(0,0,0,0.35)";
                                 }}
                             >
                                 Request Parts →
-                            </button>
-                            <button
+                            </Link>
+                            <Link
+                                to="/contact"
                                 style={{
                                     padding: "15px 28px", borderRadius: "10px", background: "transparent",
                                     border: "1px solid rgba(255,255,255,0.15)", color: "rgba(255,255,255,0.6)",
-                                    fontSize: "14px", fontWeight: 500, cursor: "pointer", transition: "all 0.2s",
+                                    fontSize: "14px", fontWeight: 500, cursor: "pointer",
+                                    textDecoration: "none", display: "inline-block",
+                                    transition: "all 0.2s",
                                 }}
                                 onMouseEnter={(e) => {
-                                    (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(255,255,255,0.35)";
-                                    (e.currentTarget as HTMLButtonElement).style.color = "#fff";
+                                    (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(255,255,255,0.35)";
+                                    (e.currentTarget as HTMLAnchorElement).style.color = "#fff";
                                 }}
                                 onMouseLeave={(e) => {
-                                    (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(255,255,255,0.15)";
-                                    (e.currentTarget as HTMLButtonElement).style.color = "rgba(255,255,255,0.6)";
+                                    (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(255,255,255,0.15)";
+                                    (e.currentTarget as HTMLAnchorElement).style.color = "rgba(255,255,255,0.6)";
                                 }}
                             >
                                 AOG Helpdesk
-                            </button>
+                            </Link>
                         </div>
                     </div>
                 </div>
@@ -533,24 +538,27 @@ export default function ComponentsAndSpares() {
                                 protecting your operational schedule.
                             </div>
                         </div>
-                        <button style={{
-                            padding: "13px 28px", borderRadius: "10px",
-                            background: "hsl(145,70%,22%)", border: "1px solid hsl(145,70%,32%)",
-                            color: "#fff", fontSize: "13px", fontWeight: 700,
-                            cursor: "pointer", whiteSpace: "nowrap",
-                            transition: "all 0.2s ease", flexShrink: 0,
-                        }}
+                        <Link
+                            to="/contact"
+                            style={{
+                                padding: "13px 28px", borderRadius: "10px",
+                                background: "hsl(145,70%,22%)", border: "1px solid hsl(145,70%,32%)",
+                                color: "#fff", fontSize: "13px", fontWeight: 700,
+                                cursor: "pointer", whiteSpace: "nowrap",
+                                textDecoration: "none", display: "inline-block",
+                                transition: "all 0.2s ease", flexShrink: 0,
+                            }}
                             onMouseEnter={(e) => {
-                                (e.currentTarget as HTMLButtonElement).style.background = "hsl(145,70%,28%)";
-                                (e.currentTarget as HTMLButtonElement).style.transform = "translateY(-1px)";
+                                (e.currentTarget as HTMLAnchorElement).style.background = "hsl(145,70%,28%)";
+                                (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(-1px)";
                             }}
                             onMouseLeave={(e) => {
-                                (e.currentTarget as HTMLButtonElement).style.background = "hsl(145,70%,22%)";
-                                (e.currentTarget as HTMLButtonElement).style.transform = "translateY(0)";
+                                (e.currentTarget as HTMLAnchorElement).style.background = "hsl(145,70%,22%)";
+                                (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(0)";
                             }}
                         >
                             Contact AOG Desk →
-                        </button>
+                        </Link>
                     </div>
                 </AnimatedSection>
 
@@ -591,43 +599,48 @@ export default function ComponentsAndSpares() {
                                 deliver what you need — fast, genuine, and cost-effective.
                             </p>
                             <div style={{ display: "flex", gap: "14px", justifyContent: "center", flexWrap: "wrap" }}>
-                                <button
+                                <Link
+                                    to="/contact"
                                     style={{
                                         padding: "16px 48px", borderRadius: "10px",
                                         background: "linear-gradient(135deg, hsl(145,70%,22%), hsl(145,80%,16%))",
                                         border: "1px solid hsl(145,70%,30%)",
                                         color: "#fff", fontSize: "15px", fontWeight: 700,
                                         cursor: "pointer", letterSpacing: "0.5px",
+                                        textDecoration: "none", display: "inline-block",
                                         boxShadow: "0 4px 24px rgba(0,0,0,0.4)", transition: "all 0.25s ease",
                                     }}
                                     onMouseEnter={(e) => {
-                                        (e.currentTarget as HTMLButtonElement).style.transform = "translateY(-2px)";
-                                        (e.currentTarget as HTMLButtonElement).style.boxShadow = "0 12px 36px rgba(0,0,0,0.5)";
+                                        (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(-2px)";
+                                        (e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 12px 36px rgba(0,0,0,0.5)";
                                     }}
                                     onMouseLeave={(e) => {
-                                        (e.currentTarget as HTMLButtonElement).style.transform = "translateY(0)";
-                                        (e.currentTarget as HTMLButtonElement).style.boxShadow = "0 4px 24px rgba(0,0,0,0.4)";
+                                        (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(0)";
+                                        (e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 4px 24px rgba(0,0,0,0.4)";
                                     }}
                                 >
                                     Request Parts →
-                                </button>
-                                <button
+                                </Link>
+                                <Link
+                                    to="/contact"
                                     style={{
                                         padding: "16px 32px", borderRadius: "10px", background: "transparent",
                                         border: "1px solid rgba(255,255,255,0.15)", color: "rgba(255,255,255,0.6)",
-                                        fontSize: "15px", fontWeight: 500, cursor: "pointer", transition: "all 0.2s",
+                                        fontSize: "15px", fontWeight: 500, cursor: "pointer",
+                                        textDecoration: "none", display: "inline-block",
+                                        transition: "all 0.2s",
                                     }}
                                     onMouseEnter={(e) => {
-                                        (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(255,255,255,0.35)";
-                                        (e.currentTarget as HTMLButtonElement).style.color = "#fff";
+                                        (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(255,255,255,0.35)";
+                                        (e.currentTarget as HTMLAnchorElement).style.color = "#fff";
                                     }}
                                     onMouseLeave={(e) => {
-                                        (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(255,255,255,0.15)";
-                                        (e.currentTarget as HTMLButtonElement).style.color = "rgba(255,255,255,0.6)";
+                                        (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(255,255,255,0.15)";
+                                        (e.currentTarget as HTMLAnchorElement).style.color = "rgba(255,255,255,0.6)";
                                     }}
                                 >
                                     View All Services
-                                </button>
+                                </Link>
                             </div>
                         </div>
                     </div>

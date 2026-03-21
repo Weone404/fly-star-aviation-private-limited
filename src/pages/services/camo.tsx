@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Layout } from "@/components/layout/Layout";
+import { Link } from "react-router-dom";
 
 // ─── Animation Hook ───────────────────────────────────────────────────────────
 function useInView(threshold = 0.15) {
@@ -97,7 +98,6 @@ export default function CAMOServices() {
     const [count, setCount] = useState(0);
     const heroRef = useRef<HTMLDivElement>(null);
 
-    // Animated counter for a touch of life in the hero
     useEffect(() => {
         const target = 15;
         let start = 0;
@@ -125,7 +125,6 @@ export default function CAMOServices() {
                         borderBottom: "1px solid rgba(255,255,255,0.06)",
                     }}
                 >
-                    {/* Animated background grid */}
                     <div style={{ position: "absolute", inset: 0, pointerEvents: "none", overflow: "hidden" }}>
                         {[...Array(7)].map((_, i) => (
                             <div key={i} style={{
@@ -135,7 +134,6 @@ export default function CAMOServices() {
                                 transform: "skewX(-12deg)",
                             }} />
                         ))}
-                        {/* Pulsing gold bottom line */}
                         <div style={{
                             position: "absolute", bottom: 0, left: 0, right: 0, height: "3px",
                             background: "linear-gradient(to right, transparent, hsl(145,70%,25%), hsl(45,100%,51%), hsl(145,70%,25%), transparent)",
@@ -202,44 +200,49 @@ export default function CAMOServices() {
                         </p>
 
                         <div style={{ display: "flex", gap: "14px", flexWrap: "wrap", animation: "fadeUp 0.7s ease 0.45s forwards", opacity: 0 }}>
-                            <button
+                            <Link
+                                to="/contact"
                                 style={{
                                     padding: "15px 40px", borderRadius: "10px",
                                     background: "linear-gradient(135deg, hsl(145,70%,22%), hsl(145,80%,16%))",
                                     border: "1px solid hsl(145,70%,30%)",
                                     color: "#fff", fontSize: "14px", fontWeight: 700,
-                                    cursor: "pointer", boxShadow: "0 4px 24px rgba(0,0,0,0.35)",
+                                    cursor: "pointer", textDecoration: "none", display: "inline-block",
+                                    boxShadow: "0 4px 24px rgba(0,0,0,0.35)",
                                     transition: "all 0.25s ease", letterSpacing: "0.5px",
                                 }}
                                 onMouseEnter={(e) => {
-                                    (e.currentTarget as HTMLButtonElement).style.transform = "translateY(-2px)";
-                                    (e.currentTarget as HTMLButtonElement).style.boxShadow = "0 10px 32px rgba(0,0,0,0.45)";
+                                    (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(-2px)";
+                                    (e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 10px 32px rgba(0,0,0,0.45)";
                                 }}
                                 onMouseLeave={(e) => {
-                                    (e.currentTarget as HTMLButtonElement).style.transform = "translateY(0)";
-                                    (e.currentTarget as HTMLButtonElement).style.boxShadow = "0 4px 24px rgba(0,0,0,0.35)";
+                                    (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(0)";
+                                    (e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 4px 24px rgba(0,0,0,0.35)";
                                 }}
                             >
                                 Speak With Us →
-                            </button>
-                            <button
+                            </Link>
+                            <Link
+                                to="/contact"
                                 style={{
                                     padding: "15px 28px", borderRadius: "10px",
                                     background: "transparent", border: "1px solid rgba(255,255,255,0.15)",
                                     color: "rgba(255,255,255,0.6)", fontSize: "14px",
-                                    fontWeight: 500, cursor: "pointer", transition: "all 0.2s",
+                                    fontWeight: 500, cursor: "pointer",
+                                    textDecoration: "none", display: "inline-block",
+                                    transition: "all 0.2s",
                                 }}
                                 onMouseEnter={(e) => {
-                                    (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(255,255,255,0.35)";
-                                    (e.currentTarget as HTMLButtonElement).style.color = "#fff";
+                                    (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(255,255,255,0.35)";
+                                    (e.currentTarget as HTMLAnchorElement).style.color = "#fff";
                                 }}
                                 onMouseLeave={(e) => {
-                                    (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(255,255,255,0.15)";
-                                    (e.currentTarget as HTMLButtonElement).style.color = "rgba(255,255,255,0.6)";
+                                    (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(255,255,255,0.15)";
+                                    (e.currentTarget as HTMLAnchorElement).style.color = "rgba(255,255,255,0.6)";
                                 }}
                             >
                                 View All Services
-                            </button>
+                            </Link>
                         </div>
                     </div>
                 </div>
@@ -374,7 +377,6 @@ export default function CAMOServices() {
                                                 boxShadow: isHov ? "0 12px 32px rgba(0,0,0,0.3)" : "none",
                                             }}
                                         >
-                                            {/* Animated top accent */}
                                             <div style={{
                                                 position: "absolute", top: 0, left: "22px",
                                                 width: isHov ? "44px" : "24px", height: "2px",
@@ -384,7 +386,6 @@ export default function CAMOServices() {
                                                 transition: "width 0.35s ease, background 0.35s ease",
                                             }} />
 
-                                            {/* Watermark number */}
                                             <div style={{
                                                 position: "absolute", top: "14px", right: "16px",
                                                 fontSize: "28px", fontWeight: 800,
@@ -455,24 +456,27 @@ export default function CAMOServices() {
                                 back in the air as quickly as possible.
                             </div>
                         </div>
-                        <button style={{
-                            padding: "13px 28px", borderRadius: "10px",
-                            background: "hsl(145,70%,22%)", border: "1px solid hsl(145,70%,32%)",
-                            color: "#fff", fontSize: "13px", fontWeight: 700,
-                            cursor: "pointer", whiteSpace: "nowrap",
-                            transition: "all 0.2s ease", flexShrink: 0,
-                        }}
+                        <Link
+                            to="/contact"
+                            style={{
+                                padding: "13px 28px", borderRadius: "10px",
+                                background: "hsl(145,70%,22%)", border: "1px solid hsl(145,70%,32%)",
+                                color: "#fff", fontSize: "13px", fontWeight: 700,
+                                cursor: "pointer", whiteSpace: "nowrap",
+                                textDecoration: "none", display: "inline-block",
+                                transition: "all 0.2s ease", flexShrink: 0,
+                            }}
                             onMouseEnter={(e) => {
-                                (e.currentTarget as HTMLButtonElement).style.background = "hsl(145,70%,28%)";
-                                (e.currentTarget as HTMLButtonElement).style.transform = "translateY(-1px)";
+                                (e.currentTarget as HTMLAnchorElement).style.background = "hsl(145,70%,28%)";
+                                (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(-1px)";
                             }}
                             onMouseLeave={(e) => {
-                                (e.currentTarget as HTMLButtonElement).style.background = "hsl(145,70%,22%)";
-                                (e.currentTarget as HTMLButtonElement).style.transform = "translateY(0)";
+                                (e.currentTarget as HTMLAnchorElement).style.background = "hsl(145,70%,22%)";
+                                (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(0)";
                             }}
                         >
                             Contact AOG Desk →
-                        </button>
+                        </Link>
                     </div>
                 </AnimatedSection>
 
@@ -489,7 +493,7 @@ export default function CAMOServices() {
                                 Airworthiness Reviews That Give You Certainty
                             </h2>
                             <p style={{ fontSize: "15px", color: "rgba(255,255,255,0.6)", lineHeight: 1.85 }}>
-                                Our airworthiness review is a comprehensive and systematic annual review that is well documented. Your aircraft’s maintenance status, certification, and compliance are thoroughly reviewed to expedite the renewal of your Airworthiness Review Certificate, which ensures that your aircraft remains airworthy.
+                                Our airworthiness review is a comprehensive and systematic annual review that is well documented. Your aircraft's maintenance status, certification, and compliance are thoroughly reviewed to expedite the renewal of your Airworthiness Review Certificate, which ensures that your aircraft remains airworthy.
                             </p>
                         </AnimatedSection>
 
@@ -565,44 +569,49 @@ export default function CAMOServices() {
                                 obligations so you never have to worry about compliance again.
                             </p>
                             <div style={{ display: "flex", gap: "14px", justifyContent: "center", flexWrap: "wrap" }}>
-                                <button
+                                <Link
+                                    to="/contact"
                                     style={{
                                         padding: "16px 48px", borderRadius: "10px",
                                         background: "linear-gradient(135deg, hsl(145,70%,22%), hsl(145,80%,16%))",
                                         border: "1px solid hsl(145,70%,30%)",
                                         color: "#fff", fontSize: "15px", fontWeight: 700,
                                         cursor: "pointer", letterSpacing: "0.5px",
+                                        textDecoration: "none", display: "inline-block",
                                         boxShadow: "0 4px 24px rgba(0,0,0,0.4)", transition: "all 0.25s ease",
                                     }}
                                     onMouseEnter={(e) => {
-                                        (e.currentTarget as HTMLButtonElement).style.transform = "translateY(-2px)";
-                                        (e.currentTarget as HTMLButtonElement).style.boxShadow = "0 12px 36px rgba(0,0,0,0.5)";
+                                        (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(-2px)";
+                                        (e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 12px 36px rgba(0,0,0,0.5)";
                                     }}
                                     onMouseLeave={(e) => {
-                                        (e.currentTarget as HTMLButtonElement).style.transform = "translateY(0)";
-                                        (e.currentTarget as HTMLButtonElement).style.boxShadow = "0 4px 24px rgba(0,0,0,0.4)";
+                                        (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(0)";
+                                        (e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 4px 24px rgba(0,0,0,0.4)";
                                     }}
                                 >
                                     Speak With Us →
-                                </button>
-                                <button
+                                </Link>
+                                <Link
+                                    to="/contact"
                                     style={{
                                         padding: "16px 32px", borderRadius: "10px",
                                         background: "transparent", border: "1px solid rgba(255,255,255,0.15)",
                                         color: "rgba(255,255,255,0.6)", fontSize: "15px",
-                                        fontWeight: 500, cursor: "pointer", transition: "all 0.2s",
+                                        fontWeight: 500, cursor: "pointer",
+                                        textDecoration: "none", display: "inline-block",
+                                        transition: "all 0.2s",
                                     }}
                                     onMouseEnter={(e) => {
-                                        (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(255,255,255,0.35)";
-                                        (e.currentTarget as HTMLButtonElement).style.color = "#fff";
+                                        (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(255,255,255,0.35)";
+                                        (e.currentTarget as HTMLAnchorElement).style.color = "#fff";
                                     }}
                                     onMouseLeave={(e) => {
-                                        (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(255,255,255,0.15)";
-                                        (e.currentTarget as HTMLButtonElement).style.color = "rgba(255,255,255,0.6)";
+                                        (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(255,255,255,0.15)";
+                                        (e.currentTarget as HTMLAnchorElement).style.color = "rgba(255,255,255,0.6)";
                                     }}
                                 >
                                     View All Services
-                                </button>
+                                </Link>
                             </div>
                         </div>
                     </div>

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Layout } from "@/components/layout/Layout";
+import { Link } from "react-router-dom";
 
 // ─── Data ────────────────────────────────────────────────────────────────────
 
@@ -190,7 +191,6 @@ export default function AviationConsultancy() {
                             </span>
                         </h1>
 
-                        {/* Tagline */}
                         <p style={{
                             fontSize: "13px", fontWeight: 600, letterSpacing: "3px",
                             textTransform: "uppercase",
@@ -211,47 +211,51 @@ export default function AviationConsultancy() {
 
                         {/* CTAs */}
                         <div style={{ display: "flex", gap: "14px", flexWrap: "wrap" }}>
-                            <button
+                            <Link
+                                to="/contact"
                                 style={{
                                     padding: "15px 40px", borderRadius: "10px",
                                     background: "linear-gradient(135deg, hsl(145,70%,22%), hsl(145,80%,16%))",
                                     border: "1px solid hsl(145,70%,30%)",
                                     color: "#fff", fontSize: "14px", fontWeight: 700,
                                     letterSpacing: "0.5px", cursor: "pointer",
+                                    textDecoration: "none", display: "inline-block",
                                     boxShadow: "0 4px 24px rgba(0,0,0,0.35)",
                                     transition: "all 0.25s ease",
                                 }}
                                 onMouseEnter={(e) => {
-                                    (e.currentTarget as HTMLButtonElement).style.transform = "translateY(-2px)";
-                                    (e.currentTarget as HTMLButtonElement).style.boxShadow = "0 10px 32px rgba(0,0,0,0.45)";
+                                    (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(-2px)";
+                                    (e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 10px 32px rgba(0,0,0,0.45)";
                                 }}
                                 onMouseLeave={(e) => {
-                                    (e.currentTarget as HTMLButtonElement).style.transform = "translateY(0)";
-                                    (e.currentTarget as HTMLButtonElement).style.boxShadow = "0 4px 24px rgba(0,0,0,0.35)";
+                                    (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(0)";
+                                    (e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 4px 24px rgba(0,0,0,0.35)";
                                 }}
                             >
                                 Speak With Us →
-                            </button>
-                            <button
+                            </Link>
+                            <Link
+                                to="/contact"
                                 style={{
                                     padding: "15px 28px", borderRadius: "10px",
                                     background: "transparent",
                                     border: "1px solid rgba(255,255,255,0.15)",
                                     color: "rgba(255,255,255,0.6)", fontSize: "14px",
                                     fontWeight: 500, cursor: "pointer",
+                                    textDecoration: "none", display: "inline-block",
                                     transition: "all 0.2s",
                                 }}
                                 onMouseEnter={(e) => {
-                                    (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(255,255,255,0.35)";
-                                    (e.currentTarget as HTMLButtonElement).style.color = "#fff";
+                                    (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(255,255,255,0.35)";
+                                    (e.currentTarget as HTMLAnchorElement).style.color = "#fff";
                                 }}
                                 onMouseLeave={(e) => {
-                                    (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(255,255,255,0.15)";
-                                    (e.currentTarget as HTMLButtonElement).style.color = "rgba(255,255,255,0.6)";
+                                    (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(255,255,255,0.15)";
+                                    (e.currentTarget as HTMLAnchorElement).style.color = "rgba(255,255,255,0.6)";
                                 }}
                             >
                                 Our Services
-                            </button>
+                            </Link>
                         </div>
                     </div>
                 </div>
@@ -304,7 +308,6 @@ export default function AviationConsultancy() {
                         gap: "60px",
                         alignItems: "center",
                     }}>
-                        {/* Left text */}
                         <div>
                             <GoldDivider label="Our Expertise" />
                             <h2 style={{
@@ -332,7 +335,6 @@ export default function AviationConsultancy() {
                             </p>
                         </div>
 
-                        {/* Right: highlight cards */}
                         <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
                             {[
                                 {
@@ -439,7 +441,6 @@ export default function AviationConsultancy() {
                                             overflow: "hidden",
                                         }}
                                     >
-                                        {/* Top accent line */}
                                         <div style={{
                                             position: "absolute", top: 0, left: "26px",
                                             width: isHov ? "44px" : "28px", height: "2px",
@@ -449,7 +450,6 @@ export default function AviationConsultancy() {
                                             transition: "width 0.3s, background 0.3s",
                                         }} />
 
-                                        {/* Step number */}
                                         <div style={{
                                             position: "absolute", top: "20px", right: "22px",
                                             fontSize: "28px", fontWeight: 800,
@@ -564,9 +564,7 @@ export default function AviationConsultancy() {
                                         width: "32px", height: "2px",
                                         background: "linear-gradient(to right, hsl(145,70%,35%), hsl(45,100%,51%))",
                                     }} />
-                                    <div style={{
-                                        fontSize: "28px", marginBottom: "14px",
-                                    }}>
+                                    <div style={{ fontSize: "28px", marginBottom: "14px" }}>
                                         {segment.icon}
                                     </div>
                                     <div style={{
@@ -648,47 +646,51 @@ export default function AviationConsultancy() {
                             from your very first question to full aircraft induction.
                         </p>
                         <div style={{ display: "flex", gap: "14px", justifyContent: "center", flexWrap: "wrap" }}>
-                            <button
+                            <Link
+                                to="/contact"
                                 style={{
                                     padding: "16px 48px", borderRadius: "10px",
                                     background: "linear-gradient(135deg, hsl(145,70%,22%), hsl(145,80%,16%))",
                                     border: "1px solid hsl(145,70%,30%)",
                                     color: "#fff", fontSize: "15px", fontWeight: 700,
                                     letterSpacing: "0.5px", cursor: "pointer",
+                                    textDecoration: "none", display: "inline-block",
                                     boxShadow: "0 4px 24px rgba(0,0,0,0.4)",
                                     transition: "all 0.25s ease",
                                 }}
                                 onMouseEnter={(e) => {
-                                    (e.currentTarget as HTMLButtonElement).style.transform = "translateY(-2px)";
-                                    (e.currentTarget as HTMLButtonElement).style.boxShadow = "0 12px 36px rgba(0,0,0,0.5)";
+                                    (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(-2px)";
+                                    (e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 12px 36px rgba(0,0,0,0.5)";
                                 }}
                                 onMouseLeave={(e) => {
-                                    (e.currentTarget as HTMLButtonElement).style.transform = "translateY(0)";
-                                    (e.currentTarget as HTMLButtonElement).style.boxShadow = "0 4px 24px rgba(0,0,0,0.4)";
+                                    (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(0)";
+                                    (e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 4px 24px rgba(0,0,0,0.4)";
                                 }}
                             >
                                 Speak With Us →
-                            </button>
-                            <button
+                            </Link>
+                            <Link
+                                to="/contact"
                                 style={{
                                     padding: "16px 32px", borderRadius: "10px",
                                     background: "transparent",
                                     border: "1px solid rgba(255,255,255,0.15)",
                                     color: "rgba(255,255,255,0.6)", fontSize: "15px",
                                     fontWeight: 500, cursor: "pointer",
+                                    textDecoration: "none", display: "inline-block",
                                     transition: "all 0.2s",
                                 }}
                                 onMouseEnter={(e) => {
-                                    (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(255,255,255,0.35)";
-                                    (e.currentTarget as HTMLButtonElement).style.color = "#fff";
+                                    (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(255,255,255,0.35)";
+                                    (e.currentTarget as HTMLAnchorElement).style.color = "#fff";
                                 }}
                                 onMouseLeave={(e) => {
-                                    (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(255,255,255,0.15)";
-                                    (e.currentTarget as HTMLButtonElement).style.color = "rgba(255,255,255,0.6)";
+                                    (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(255,255,255,0.15)";
+                                    (e.currentTarget as HTMLAnchorElement).style.color = "rgba(255,255,255,0.6)";
                                 }}
                             >
                                 View All Services
-                            </button>
+                            </Link>
                         </div>
                     </div>
                 </div>

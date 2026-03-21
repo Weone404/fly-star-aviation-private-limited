@@ -30,42 +30,42 @@ const courseModules = [
         title: "Theory & Practical Training",
         description:
             "Delve into aviation regulations, navigation procedures, and safety protocols with simulated flight scenarios for real-world application.",
-        href: "/airline-prep/theory",
+        href: "/contact",
     },
     {
         icon: Plane,
         title: "Airline Operations & Procedures",
         description:
             "Gain a deep understanding of airline operations, standard operating procedures, and how to navigate all phases of a commercial flight.",
-        href: "/airline-prep/operations",
+        href: "/contact",
     },
     {
         icon: Users,
         title: "Crew Resource Management",
         description:
             "Develop essential teamwork and communication skills through CRM training for safe and efficient flight operations.",
-        href: "/airline-prep/crm",
+        href: "/contact",
     },
     {
         icon: Map,
         title: "Flight Planning & Navigation",
         description:
             "Master route optimisation, aviation chart reading, weather interpretation, and informed decision-making during flight planning.",
-        href: "/airline-prep/navigation",
+        href: "/contact",
     },
     {
         icon: Monitor,
         title: "Simulator Training",
         description:
             "Experience realistic flight scenarios in state-of-the-art simulators to hone skills, practise emergency procedures, and build confidence.",
-        href: "/airline-prep/simulator",
+        href: "/contact",
     },
     {
         icon: ClipboardList,
         title: "Interview & Assessment Prep",
         description:
             "Receive structured guidance on airline interviews, aptitude tests, and simulator assessments to excel in the selection process.",
-        href: "/airline-prep/interview",
+        href: "/contact",
     },
 ];
 
@@ -221,13 +221,13 @@ export default function AirlinePreparationPage() {
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4">
                             <Button variant="gold" size="lg" asChild>
-                                <Link to="/apply">
+                                <Link to="/contact">
                                     Apply Now
                                     <ArrowRight className="h-4 w-4 ml-2" />
                                 </Link>
                             </Button>
                             <Button variant="outline-white" size="lg" asChild>
-                                <Link to="/airline-prep/fees">Get Course Fees</Link>
+                                <Link to="/contact">Get Course Fees</Link>
                             </Button>
                             <Button variant="outline-white" size="lg" asChild>
                                 <Link to="/contact">Talk to Counselor</Link>
@@ -693,13 +693,13 @@ export default function AirlinePreparationPage() {
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <Button variant="gold" size="lg" asChild>
-                                <Link to="/apply">
+                                <Link to="/contact">
                                     Apply Now
                                     <ArrowRight className="h-4 w-4 ml-2" />
                                 </Link>
                             </Button>
                             <Button variant="outline-white" size="lg" asChild>
-                                <Link to="/airline-prep/fees">Get Course Fees</Link>
+                                <Link to="/contact">Get Course Fees</Link>
                             </Button>
                             <Button variant="outline-white" size="lg" asChild>
                                 <a href="tel:+919876543210">Talk to Counselor</a>

@@ -31,19 +31,19 @@ const cabinCrewServices = [
         icon: Plane,
         title: "Etihad Cabin Crew",
         description: "Open Application",
-        href: "/cabin-crew/etihad",
+        href: "/contact",
     },
     {
         icon: Plane,
         title: "SAS Air Steward",
         description: "Copenhagen",
-        href: "/cabin-crew/sas-copenhagen",
+        href: "/contact",
     },
     {
         icon: Plane,
         title: "SAS Cabin Crew",
         description: "Stockholm - Open Application",
-        href: "/cabin-crew/sas-stockholm",
+        href: "/contact",
     },
 ];
 
@@ -52,31 +52,31 @@ const resourceHub = [
         icon: FileText,
         title: "How to Become a Cabin Crew",
         description: "Step-by-step guide to starting your aviation journey",
-        href: "/resources/become-cabin-crew",
+        href: "/contact",
     },
     {
         icon: Briefcase,
         title: "CV Help",
         description: "What airlines look for in your application",
-        href: "/resources/cv-help",
+        href: "/contact",
     },
     {
         icon: MessageSquare,
         title: "Interview Prep",
         description: "Tips for your individual interview",
-        href: "/resources/interview-prep",
+        href: "/contact",
     },
     {
         icon: ClipboardList,
         title: "Assessment Day",
         description: "How to shine in group exercises",
-        href: "/resources/assessment-day",
+        href: "/contact",
     },
     {
         icon: HelpCircle,
         title: "Frequently Asked Questions",
         description: "Get answers to the most common questions",
-        href: "/resources/faq",
+        href: "/contact",
     },
 ];
 
@@ -154,13 +154,13 @@ export default function CabinCrewPage() {
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4">
                             <Button variant="gold" size="lg" asChild>
-                                <Link to="/apply">
+                                <Link to="/contact">
                                     Apply for a Cabin Crew Job
                                     <ArrowRight className="h-4 w-4 ml-2" />
                                 </Link>
                             </Button>
                             <Button variant="outline-white" size="lg" asChild>
-                                <Link to="/register">Create a Profile</Link>
+                                <Link to="/contact">Create a Profile</Link>
                             </Button>
                         </div>
                     </motion.div>
@@ -214,7 +214,7 @@ export default function CabinCrewPage() {
                         className="text-center"
                     >
                         <Button variant="gold" size="lg" asChild>
-                            <Link to="/cabin-crew/all">
+                            <Link to="/contact">
                                 Check All Cabin Crew Opportunities Here
                                 <ArrowRight className="h-4 w-4 ml-2" />
                             </Link>
@@ -388,7 +388,7 @@ export default function CabinCrewPage() {
                             </div>
 
                             <Button variant="gold" size="lg" asChild className="w-full">
-                                <Link to="/register">
+                                <Link to="/contact">
                                     Register Your Candidate Profile Here
                                     <ArrowRight className="h-4 w-4 ml-2" />
                                 </Link>
@@ -489,13 +489,13 @@ export default function CabinCrewPage() {
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <Button variant="gold" size="lg" asChild>
-                                <Link to="/apply">
+                                <Link to="/contact">
                                     Apply Now
                                     <ArrowRight className="h-4 w-4 ml-2" />
                                 </Link>
                             </Button>
                             <Button variant="outline-white" size="lg" asChild>
-                                <Link to="/register">Create Your Profile</Link>
+                                <Link to="/contact">Create Your Profile</Link>
                             </Button>
                             <Button variant="outline-white" size="lg" asChild>
                                 <Link to="/contact">Contact Us</Link>
