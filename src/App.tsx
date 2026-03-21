@@ -6,6 +6,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 
 import ContactPopup from '../src/pages/Contactpopup';
+import SpecialOfferBanner from "./pages/Specialofferbanner";
+import Sitemap from "./pages/sitemap";
 
 
 import Index from "./pages/Index";
@@ -115,11 +117,14 @@ const App = () => (
 
             {/* LOCATIONS */}
             <Route path="/locations" element={<Locations />} />
+            <Route path="/Sitemap" element={<Sitemap />} />
+
             <Route path="/locations/:location" element={<Locations />} />
 
             {/* 404 */}
             <Route path="*" element={<NotFound />} />
           </Routes>
+          <SpecialOfferBanner />
           <ContactPopup />
         </BrowserRouter>
       </TooltipProvider>

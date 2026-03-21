@@ -14,13 +14,16 @@ const footerLinks = {
     { name: "PPL Training", href: "/pilot-training/ppl" },
     { name: "Chartered Services", href: "/services/charter-services" },
     { name: "Aircraft Management", href: "/services/aircraft-management" },
+    { name: "Sitemap", href: "/sitemap" },
+
+
   ],
-  locations: [
-    { name: "Delhi", href: "/locations/delhi" },
-    { name: "Mumbai", href: "/locations/mumbai" },
-    { name: "Bangalore", href: "/locations/bangalore" },
-    { name: "Hyderabad", href: "/locations/hyderabad" },
-  ],
+  // locations: [
+  //   { name: "Delhi", href: "/locations/delhi" },
+  //   { name: "Mumbai", href: "/locations/mumbai" },
+  //   { name: "Bangalore", href: "/locations/bangalore" },
+  //   { name: "Hyderabad", href: "/locations/hyderabad" },
+  // ],
 };
 
 const socialLinks = [
@@ -253,7 +256,7 @@ export function Footer() {
           </div>
 
           {/* Locations */}
-          <div>
+          {/* <div>
             <h4 className="font-semibold text-lg mb-4 text-accent">Locations</h4>
             <ul className="space-y-3">
               {footerLinks.locations.map((link) => (
@@ -264,7 +267,7 @@ export function Footer() {
                 </li>
               ))}
             </ul>
-          </div>
+          </div> */}
         </div>
 
         {/* Social Links & Copyright */}

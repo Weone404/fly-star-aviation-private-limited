@@ -22,7 +22,7 @@ type FormErrors = Partial<Record<keyof FormData, string>>;
 // ─── Data ─────────────────────────────────────────────────────────────────────
 const contactInfo: ContactInfoItem[] = [
     { icon: Phone, label: "Phone", value: "+91 99535 36199, 9953566619", href: "tel:+919953536199" },
-    { icon: Mail, label: "Email", value: "info@flyingstaraviator.com", href: "mailto:info@flyingstaraviator.com" },
+    { icon: Mail, label: "Email", value: "flyingstaraviator@gmail.com", href: "mailto:flyingstaraviator@gmail.com" },
     { icon: MapPin, label: "Address", value: "C705, Sector 7, Block C Palam Extension, Dwarka, Delhi 110077", href: "#" },
     { icon: Clock, label: "Working Hours", value: "Mon - Sat: 9:00 AM - 6:00 PM", href: "#" },
 ];
@@ -38,7 +38,7 @@ const interestOptions: string[] = [
 // ─── Component ────────────────────────────────────────────────────────────────
 export default function ContactPopup(): JSX.Element {
     const [isOpen, setIsOpen] = useState<boolean>(false);
-    const [countdown, setCountdown] = useState<number>(15);
+    const [countdown, setCountdown] = useState<number>(10);
     const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
     const [submitted, setSubmitted] = useState<boolean>(false);
     const [focused, setFocused] = useState<keyof FormData | null>(null);
@@ -50,11 +50,11 @@ export default function ContactPopup(): JSX.Element {
     const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
     const countdownRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
-    // ── 15-second cycle ──────────────────────────────────────────────────────
+    // ── 10-second cycle ──────────────────────────────────────────────────────
     const startTimer = (): void => {
         if (timerRef.current) clearTimeout(timerRef.current);
         if (countdownRef.current) clearInterval(countdownRef.current);
-        setCountdown(15);
+        setCountdown(10);
 
         countdownRef.current = setInterval(() => {
             setCountdown(p => {
@@ -66,7 +66,7 @@ export default function ContactPopup(): JSX.Element {
         timerRef.current = setTimeout(() => {
             setIsOpen(true);
             setSubmitted(false);
-        }, 15000);
+        }, 10000);
     };
 
     useEffect(() => {
@@ -113,7 +113,7 @@ export default function ContactPopup(): JSX.Element {
             const data = await res.json();
             console.log("Saved to MongoDB:", data);
         } catch (err) {
-            console.error("MongoDB save failed:", err); // Fail silently — WhatsApp still opens
+            console.error("MongoDB save failed:", err);
         }
     };
 
@@ -415,8 +415,6 @@ export default function ContactPopup(): JSX.Element {
           .fsa-row { grid-template-columns: 1fr; }
         }
       `}</style>
-
-            {/* ── Demo backdrop ── */}
 
             {/* ── Popup ── */}
             {isOpen && (
