@@ -99,10 +99,13 @@ export default function ContactPopup(): JSX.Element {
         return e;
     };
 
-    // ── Save to MongoDB via Express backend ──────────────────────────────────
+    // ── Save to MongoDB via Vercel API route ─────────────────────────────────
+    // ✅ FIX: Changed from `${import.meta.env.VITE_API_URL}/api/contact`
+    //         to a relative URL "/api/contact" — same as the Contact page.
+    //         The env variable was undefined/empty, causing the fetch to fail silently.
     const saveToMongoDB = async (): Promise<void> => {
         try {
-            const res = await fetch(`${import.meta.env.VITE_API_URL}/api/contact`, {
+            const res = await fetch("/api/contact", {  // ✅ relative URL — works on Vercel
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
@@ -111,9 +114,13 @@ export default function ContactPopup(): JSX.Element {
                 }),
             });
             const data = await res.json();
-            console.log("Saved to MongoDB:", data);
+            if (data.success) {
+                console.log("✅ Saved to MongoDB:", data.message);
+            } else {
+                console.warn("⚠️ MongoDB save warning:", data.error);
+            }
         } catch (err) {
-            console.error("MongoDB save failed:", err);
+            console.error("❌ MongoDB save failed:", err);
         }
     };
 

@@ -4,42 +4,48 @@ import { Button } from "@/components/ui/button";
 import { Link, useParams } from "react-router-dom";
 import { MapPin, Phone, ArrowRight, ChevronRight } from "lucide-react";
 
-const locationData: Record<string, { name: string; description: string; highlights: string[]; centers: number }> = {
+const locationData: Record<string, { name: string; description: string; highlights: string[]; centers: number; image: string }> = {
   india: {
     name: "Pilot Training in India",
-    description: "India offers excellent opportunities for pilot training with DGCA-  flying schools, modern aircraft, and favorable weather conditions throughout the year.",
-    highlights: ["DGCA   Schools", "Year-round Flying Weather", "Cost-effective Training", "Strong Aviation Industry"],
+    description: "India offers excellent opportunities for pilot training with DGCA-approved flying schools, modern aircraft, and favorable weather conditions throughout the year.",
+    highlights: ["DGCA Approved Schools", "Year-round Flying Weather", "Cost-effective Training", "Strong Aviation Industry"],
     centers: 16,
+    image: "/flying_logo.webp",
   },
   hyderabad: {
     name: "Pilot Training in Hyderabad",
     description: "Hyderabad is emerging as a major aviation hub in South India with excellent infrastructure and growing airline operations.",
     highlights: ["Rajiv Gandhi International Airport", "Multiple FTOs", "Good Weather", "IT Hub Connectivity"],
     centers: 2,
+    image: "/hyderabad.webp",
   },
   mumbai: {
     name: "Pilot Training in Mumbai",
     description: "Mumbai, India's financial capital, offers access to major airline headquarters and excellent networking opportunities for aspiring pilots.",
     highlights: ["Major Airline HQs", "International Hub", "Networking Hub", "Career Opportunities"],
     centers: 2,
+    image: "/Mumbai.webp",
   },
   delhi: {
     name: "Pilot Training in Delhi",
     description: "Delhi NCR region provides access to India's busiest airport and serves as the headquarters for many leading airlines.",
     highlights: ["Busiest Airport", "DGCA Headquarters", "Central Location", "Multiple Airlines"],
     centers: 3,
+    image: "/Delhi.webp",
   },
   bangalore: {
     name: "Pilot Training in Bangalore",
     description: "Bangalore offers a thriving aviation ecosystem with multiple training schools and pleasant weather conditions.",
     highlights: ["HAL Heritage", "Pleasant Climate", "Tech Hub", "Growing Sector"],
     centers: 4,
+    image: "/Bangalore.webp",
   },
   usa: {
     name: "Flying Schools in USA",
     description: "Training in the USA offers exposure to advanced aviation systems, FAA certification, and international experience valued by global airlines.",
     highlights: ["FAA Certification", "Advanced Aircraft", "International Exposure", "Global Recognition"],
     centers: 8,
+    image: "/usa.webp",
   },
 };
 
@@ -72,9 +78,19 @@ export default function LocationsPage() {
           </div>
         </div>
 
-        {/* Hero */}
-        <section className="relative py-24 aviation-gradient text-primary-foreground">
-          <div className="container">
+        {/* Hero with background image */}
+        <section className="relative py-24 text-primary-foreground overflow-hidden">
+          {/* Background Image */}
+          <div className="absolute inset-0 z-0">
+            <img
+              src={currentLocation.image}
+              alt={currentLocation.name}
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-primary/70" />
+          </div>
+
+          <div className="container relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -189,16 +205,27 @@ export default function LocationsPage() {
                   transition={{ delay: index * 0.1 }}
                 >
                   <Link to={`/locations/${loc.id}`} className="block group">
-                    <div className="relative h-64 rounded-2xl overflow-hidden bg-gradient-to-br from-primary to-aviation-green-light mb-4">
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <MapPin className="h-20 w-20 text-white/30" />
-                      </div>
-                      <div className="absolute inset-0 bg-primary/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    {/* Card image */}
+                    <div className="relative h-64 rounded-2xl overflow-hidden mb-4">
+                      <img
+                        src={data.image}
+                        alt={data.name}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      />
+                      {/* Gradient overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+                      {/* Hover overlay */}
+                      <div className="absolute inset-0 bg-primary/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                         <span className="text-white font-bold text-xl">Explore →</span>
                       </div>
+                      {/* Centers badge */}
+                      <div className="absolute bottom-3 left-3 flex items-center gap-1 bg-black/50 backdrop-blur-sm text-white text-xs px-2 py-1 rounded-full">
+                        <MapPin className="h-3 w-3" />
+                        <span>{data.centers} Training Centers</span>
+                      </div>
                     </div>
+
                     <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">{data.name}</h3>
-                    <p className="text-sm text-muted-foreground mb-2">{data.centers} Training Centers</p>
                     <p className="text-muted-foreground text-sm line-clamp-2">{data.description}</p>
                   </Link>
                 </motion.div>

@@ -15,15 +15,7 @@ const footerLinks = {
     { name: "Chartered Services", href: "/services/charter-services" },
     { name: "Aircraft Management", href: "/services/aircraft-management" },
     { name: "Sitemap", href: "/sitemap" },
-
-
   ],
-  // locations: [
-  //   { name: "Delhi", href: "/locations/delhi" },
-  //   { name: "Mumbai", href: "/locations/mumbai" },
-  //   { name: "Bangalore", href: "/locations/bangalore" },
-  //   { name: "Hyderabad", href: "/locations/hyderabad" },
-  // ],
 };
 
 const socialLinks = [
@@ -178,7 +170,8 @@ export function Footer() {
       <div className="h-3 bg-runway-pattern opacity-40" />
 
       <div className="container py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 lg:gap-12">
+
           {/* Brand Section */}
           <div className="lg:col-span-2">
             <Link to="/" className="flex items-center gap-3 mb-6">
@@ -211,20 +204,6 @@ export function Footer() {
                   <br />Palam Extension, Dwarka, Delhi, 110077</span>
               </div>
             </div>
-
-            {/* Google Maps Embed */}
-            <div className="mt-6 rounded-lg overflow-hidden w-full">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14013.949592847395!2d77.0683977!3d28.5851516!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d1bfa2be4aefb%3A0x48a070e238521650!2sFlying%20Star%20Aviator%20Private%20Limited%20%7C%20Best%20Cadet%20Pilot%20Training%20Institute%20in%20India%20-%20DGCA%20CPL%20Flight%20Training%20in%20Delhi!5e0!3m2!1sen!2sin!4v1772702645906!5m2!1sen!2sin"
-                width="100%"
-                height="220"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Flying Star Aviator Location"
-              />
-            </div>
           </div>
 
           {/* Quick Links */}
@@ -255,19 +234,23 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Locations */}
-          {/* <div>
-            <h4 className="font-semibold text-lg mb-4 text-accent">Locations</h4>
-            <ul className="space-y-3">
-              {footerLinks.locations.map((link) => (
-                <li key={link.name}>
-                  <Link to={link.href} className="text-white/70 hover:text-white hover:pl-2 transition-all">
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div> */}
+          {/* Map */}
+          <div className="lg:col-span-2">
+            <h4 className="font-semibold text-lg mb-4 text-accent">Our Location</h4>
+            <div className="rounded-lg overflow-hidden w-full">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14013.949592847395!2d77.0683977!3d28.5851516!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d1bfa2be4aefb%3A0x48a070e238521650!2sFlying%20Star%20Aviator%20Private%20Limited%20%7C%20Best%20Cadet%20Pilot%20Training%20Institute%20in%20India%20-%20DGCA%20CPL%20Flight%20Training%20in%20Delhi!5e0!3m2!1sen!2sin!4v1772702645906!5m2!1sen!2sin"
+                width="100%"
+                height="250"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Flying Star Aviator Location"
+              />
+            </div>
+          </div>
+
         </div>
 
         {/* Social Links & Copyright */}
