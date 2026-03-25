@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { GraduationCap, Plane, Shield, Briefcase, Wrench, Building2 } from "lucide-react";
 import { Link } from "react-router-dom";
-
+import Passresultsslider from "../layout/Passresultsslider"
 const services = [
   {
     icon: GraduationCap,
@@ -107,6 +107,7 @@ export function ServicesSection() {
           ))}
         </div>
       </div>
+      <Passresultsslider />
     </section>
   );
 }
