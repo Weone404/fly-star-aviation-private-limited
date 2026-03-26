@@ -256,19 +256,9 @@ const CSS = `
 
   /* ── Controls ── */
   .prs-controls {
-    display: flex; align-items: center; justify-content: space-between;
+    display: flex; align-items: center; justify-content: center;
     width: 90%; margin: 34px auto 0; padding: 0 4px;
   }
-  .prs-dots { display: flex; align-items: center; gap: 5px; }
-  .prs-dot {
-    height: 4px; border-radius: 999px;
-    background: rgba(10,45,26,0.14);
-    cursor: pointer; border: none; padding: 0;
-    transition: width 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.3s ease;
-    width: 18px;
-  }
-  .prs-dot.active { width: 42px; background: #d4a017; }
-  .prs-dot:hover:not(.active) { background: rgba(10,45,26,0.3); }
 
   .prs-arrows { display: flex; gap: 10px; }
   .prs-arrow {
@@ -292,14 +282,6 @@ const CSS = `
   }
   .prs-arrow:active { transform: scale(0.95); }
   .prs-arrow svg { pointer-events: none; }
-
-  .prs-slide-count {
-    font-family: 'Syne', sans-serif;
-    font-size: 0.73rem; font-weight: 700;
-    color: rgba(10,45,26,0.35); letter-spacing: 1px;
-    min-width: 58px; text-align: center;
-  }
-  .prs-slide-count strong { color: #0a2d1a; font-size: 0.88rem; }
 
   @media (max-width: 900px) { .prs-counter { display: none; } }
   @media (max-width: 768px) {
@@ -364,8 +346,6 @@ export default function PassResultsSlider() {
     if (Math.abs(delta) > 40) delta > 0 ? next() : prev();
     setDragStart(null);
   };
-
-  const DOT_COUNT = Math.min(total, 8);
 
   return (
     <>
@@ -439,33 +419,8 @@ export default function PassResultsSlider() {
             </div>
           </div>
 
-          {/* ── Controls ── */}
+          {/* ── Controls (arrows only) ── */}
           <div className="prs-controls">
-            <div className="prs-dots">
-              {Array.from({ length: DOT_COUNT }).map((_, i) => {
-                const step = Math.max(1, Math.floor(maxIndex / (DOT_COUNT - 1)));
-                const target = i === DOT_COUNT - 1 ? maxIndex : i * step;
-                const isActive =
-                  i === DOT_COUNT - 1
-                    ? current === maxIndex
-                    : current >= target && current < target + step;
-                return (
-                  <button
-                    key={i}
-                    className={`prs-dot${isActive ? ' active' : ''}`}
-                    onClick={() => goTo(target)}
-                    aria-label={`Go to slide group ${i + 1}`}
-                  />
-                );
-              })}
-            </div>
-
-            <div className="prs-slide-count">
-              <strong>{String(current + 1).padStart(2, '0')}</strong>
-              {' / '}
-              {String(maxIndex + 1).padStart(2, '0')}
-            </div>
-
             <div className="prs-arrows">
               <button className="prs-arrow" onClick={prev} aria-label="Previous">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
