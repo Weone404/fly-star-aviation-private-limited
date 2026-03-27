@@ -65,6 +65,7 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/contact-us" element={<Contact />} />
 
             {/* SERVICES */}
             <Route path="/services" element={<Services />} />
@@ -81,8 +82,24 @@ const App = () => (
             {/* COURSES */}
             <Route path="/courses/cpl" element={<Cpl />} /> {/* ✅ FIX */}
             <Route path="/courses/atpl" element={<Atpl />} /> {/* ✅ FIX */}
+            <Route path="/air-transport-pilots-license-atpl" element={<Atpl />} />
+            <Route path="/best-atpl-classes-in-india" element={<Atpl />} />
             <Route path="/courses/cabin-crew" element={<CabinCrewPage />} /> {/* ✅ FIX */}
             <Route path="/courses/ground-staff" element={<GroundStaffPage />} /> {/* ✅ FIX */}
+            <Route path="/commercial-pilot-training" element={<Cpl />} /> {/* ✅ FIX */}
+            <Route path="/best-cpl-ground-classes" element={<Cpl />} />
+            <Route path="/commercial-pilot-training-in-dwarka" element={<Cpl />} />
+            <Route path="/courses-and-careers" element={<Cpl />} />
+            <Route path="/pilot-course" element={<AirlinePreparationPage />} />  */
+            <Route path="/top-aviation-courses-and-careers-after-12th" element={<AirlinePreparationPage />} />  */
+            <Route path="/careers" element={<AirlinePreparationPage />} />  */
+            <Route path="/commercial-pilot-training-cpl" element={<Cpl />} />
+
+
+
+
+
+
 
 
             <Route path="/courses/airline-preparation" element={<AirlinePreparationPage />} /> {/* ✅ FIX */}
@@ -93,6 +110,9 @@ const App = () => (
             <Route path="/dgca/full-form" element={<Fullform />} />
             <Route path="/dgca/medical" element={<Medical />} />
             <Route path="/dgca/ground-classes" element={<Groundclasses />} />
+            <Route path="/dgca-ground-classes-training-classes" element={<Groundclasses />} />
+            <Route path="/cpl-atpl-ground-classes-2" element={<Groundclasses />} />
+
 
 
 
@@ -104,6 +124,8 @@ const App = () => (
             <Route path="/pilot-training/new-zealand" element={<NewZealand />} />
             <Route path="/pilot-training/south-africa" element={<SouthAfrica />} />
             <Route path="/pilot-training/australia" element={<Australia />} />
+            <Route path="/training-in-australia" element={<Australia />} />
+            <Route path="/training-in-south-africa" element={<SouthAfrica />} />
 
 
 
@@ -111,6 +133,14 @@ const App = () => (
             <Route path="/become-a-pilot/airline-transport-pilot-licence" element={<Airlinetransportpilotlicence />} />
             <Route path="/become-a-pilot/commercial-pilot-licence" element={<Commercialpilotlicence />} />
             <Route path="/become-a-pilot/become-pilot" element={<Becomepilot />} />
+            <Route path="/how-to-become-a-pilot" element={<Becomepilot />} />
+            <Route path="/how-to-become-a-pilot-in-india-after-12th" element={<Becomepilot />} /> {/* ✅ FIX */}
+            <Route path="/guide-on-how-to-become-a-pilot" element={<Becomepilot />} /> {/* ✅ FIX */}
+            <Route path="/training-in-india/" element={<PilotTraining />} />
+            <Route path="/how-to-become-a-pilot-in-india/" element={<Becomepilot />} />
+
+
+
 
 
 

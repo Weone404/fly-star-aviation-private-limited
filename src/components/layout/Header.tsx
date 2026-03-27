@@ -16,7 +16,7 @@ type NavItem = {
 };
 
 const navigation: NavItem[] = [
-  { name: "Home", href: "/" },
+
   {
     name: "Courses",
     href: "/Courses/cpl",
@@ -71,7 +71,7 @@ const navigation: NavItem[] = [
       { name: "Components & Spares", href: "/services/components-spares" },
     ],
   },
-  { name: "About Us", href: "/about" },
+
   { name: "Contact", href: "/contact" },
 ];
 
@@ -201,9 +201,9 @@ export function Header() {
                   <Link
                     to={item.href}
                     className={`flex items-center gap-1 px-5 py-3 text-xl font-semibold transition-colors ${location.pathname === item.href ||
-                        location.pathname.startsWith(item.href + "/")
-                        ? "text-primary"
-                        : "text-foreground"
+                      location.pathname.startsWith(item.href + "/")
+                      ? "text-primary"
+                      : "text-foreground"
                       }`}
                   >
                     {item.name}
