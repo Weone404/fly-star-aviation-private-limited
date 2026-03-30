@@ -45,6 +45,8 @@ import Mro from "./pages/services/mro";
 import Liverypainting from "./pages/services/livery-painting";
 import Camo from "./pages/services/camo";
 import Componentsspares from "./pages/services/components-spares";
+import Airindiapilotinterviewpage from "./pages/Courses/Air-india-pilot-interview";
+import IndigoPilotInterviewPage from "./pages/Courses/Indigo-pilot-interview";
 
 
 
@@ -94,13 +96,8 @@ const App = () => (
             <Route path="/top-aviation-courses-and-careers-after-12th" element={<AirlinePreparationPage />} />  */
             <Route path="/careers" element={<AirlinePreparationPage />} />  */
             <Route path="/commercial-pilot-training-cpl" element={<Cpl />} />
-
-
-
-
-
-
-
+            <Route path="/courses/Air-india-pilot-interview" element={<Airindiapilotinterviewpage />} />
+            <Route path="/courses/Indigo-pilot-interview" element={<IndigoPilotInterviewPage />} />
 
             <Route path="/courses/airline-preparation" element={<AirlinePreparationPage />} /> {/* ✅ FIX */}
             {/* DGCA */}
@@ -113,10 +110,6 @@ const App = () => (
             <Route path="/dgca-ground-classes-training-classes" element={<Groundclasses />} />
             <Route path="/cpl-atpl-ground-classes-2" element={<Groundclasses />} />
 
-
-
-
-
             {/* PILOT TRAINING */}
             <Route path="/pilot-training" element={<PilotTraining />} />
             <Route path="/pilot-training/india" element={<India />} />
@@ -127,8 +120,6 @@ const App = () => (
             <Route path="/training-in-australia" element={<Australia />} />
             <Route path="/training-in-south-africa" element={<SouthAfrica />} />
 
-
-
             <Route path="/pilot-training/:topic" element={<PilotTraining />} />
             <Route path="/become-a-pilot/airline-transport-pilot-licence" element={<Airlinetransportpilotlicence />} />
             <Route path="/become-a-pilot/commercial-pilot-licence" element={<Commercialpilotlicence />} />
@@ -138,12 +129,6 @@ const App = () => (
             <Route path="/guide-on-how-to-become-a-pilot" element={<Becomepilot />} /> {/* ✅ FIX */}
             <Route path="/training-in-india/" element={<PilotTraining />} />
             <Route path="/how-to-become-a-pilot-in-india/" element={<Becomepilot />} />
-
-
-
-
-
-
 
             {/* LOCATIONS */}
             <Route path="/locations" element={<Locations />} />

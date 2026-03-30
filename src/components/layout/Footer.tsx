@@ -8,6 +8,7 @@ const footerLinks = {
     { name: "Pilot Training", href: "/pilot-training" },
     { name: "DGCA Exams", href: "/dgca" },
     { name: "Contact Us", href: "/contact" },
+    { name: "Home", href: "/" },
   ],
   services: [
     { name: "CPL Training", href: "/pilot-training/cpl" },

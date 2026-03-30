@@ -26,6 +26,9 @@ const navigation: NavItem[] = [
       { name: "Airline Preparation Classes", href: "/courses/airline-preparation" },
       { name: "Cabin Crew Course", href: "/courses/cabin-crew" },
       { name: "Airport Ground Staff Course", href: "/courses/ground-staff" },
+      { name: "Adapt test Air India", href: "/courses/Air-india-pilot-interview" },
+      { name: "Adapt test IndiGo", href: "/courses/Indigo-pilot-interview" },
+
     ],
   },
   {
