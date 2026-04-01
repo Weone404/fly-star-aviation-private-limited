@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import heroImage from "@/assets/hero-aircraft.jpg";
 
+
 export function HeroSection() {
   return (
     <section className="relative min-h-[90vh] overflow-hidden">
@@ -116,7 +117,7 @@ export function HeroSection() {
           </motion.div>
         </div>
       </div>
-
+      
       {/* Bottom Wave */}
       <div className="absolute bottom-0 left-0 right-0 z-10">
         <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full">

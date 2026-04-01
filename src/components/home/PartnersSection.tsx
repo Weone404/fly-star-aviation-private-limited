@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
 
+
+
 const partners = [
   { name: "Air India", logo: "/assets/air-india-logo.png" },
   { name: "Air India Express", logo: "/assets/Air-india-express-logo.png" },
@@ -44,6 +46,7 @@ export function PartnersSection() {
           </div>
         </div>
       </div>
+
 
       <style>{`
         @keyframes marquee {
