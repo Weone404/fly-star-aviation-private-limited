@@ -1,10 +1,10 @@
-import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 import { Award, Users, Plane, Clock, Shield, TrendingUp } from "lucide-react";
 
 const reasons = [
   {
     icon: Award,
-    title: "Pilot Training   ",
+    title: "Pilot Training",
     description: "Ceremonial events, ground classes, and flight training.",
   },
   {
@@ -34,14 +34,38 @@ const reasons = [
   },
 ];
 
+// One shared observer watches the grid — triggers all cards at once via CSS stagger
+function useInView(threshold = 0.1) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setVisible(true); observer.disconnect(); } },
+      { threshold }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [threshold]);
+  return { ref, visible };
+}
+
 export function WhyChooseUsSection() {
+  const header = useInView();
+  const grid = useInView(0.05);
+
   return (
     <section className="py-20 bg-muted/30">
       <div className="container">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+        {/* Header */}
+        <div
+          ref={header.ref}
+          style={{
+            opacity: header.visible ? 1 : 0,
+            transform: header.visible ? "translateY(0)" : "translateY(30px)",
+            transition: "opacity 0.5s ease, transform 0.5s ease",
+          }}
           className="text-center mb-16"
         >
           <span className="inline-block text-sm font-semibold text-accent bg-accent/10 px-4 py-2 rounded-full mb-4">
@@ -53,26 +77,35 @@ export function WhyChooseUsSection() {
           <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
             We've been shaping successful aviation careers for over 15 years with our commitment to excellence.
           </p>
-        </motion.div>
+        </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Grid — single observer, CSS stagger per card */}
+        <div
+          ref={grid.ref}
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+        >
           {reasons.map((reason, index) => (
-            <motion.div
+            <div
               key={reason.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
               className="group"
+              style={{
+                opacity: grid.visible ? 1 : 0,
+                transform: grid.visible ? "translateY(0)" : "translateY(30px)",
+                transition: `opacity 0.5s ease ${index * 80}ms, transform 0.5s ease ${index * 80}ms`,
+              }}
             >
-              <div className="h-full p-8 rounded-2xl bg-card border border-border hover:border-primary/30 hover:shadow-hover transition-all duration-300">
-                <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary group-hover:scale-110 transition-all duration-300">
-                  <reason.icon className="h-7 w-7 text-primary group-hover:text-primary-foreground transition-colors" />
+              <div className="h-full p-8 rounded-2xl bg-card border border-border hover:border-primary/30 hover:shadow-hover transition-shadow duration-300">
+                {/* Icon box — CSS-only hover, no JS */}
+                <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6 transition-all duration-300 group-hover:bg-primary group-hover:scale-110">
+                  <reason.icon
+                    className="h-7 w-7 text-primary transition-colors duration-300 group-hover:text-primary-foreground"
+                    aria-hidden="true"
+                  />
                 </div>
-                <h3 className="text-xl font-bold mb-3">{reason.title}</h3>
+                <h3 className="text-xl font-bold mb-3">{reason.title.trim()}</h3>
                 <p className="text-muted-foreground leading-relaxed">{reason.description}</p>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

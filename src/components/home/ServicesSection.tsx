@@ -1,7 +1,8 @@
-import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 import { GraduationCap, Plane, Shield, Briefcase, Wrench, Building2 } from "lucide-react";
 import { Link } from "react-router-dom";
-import Passresultsslider from "../layout/Passresultsslider"
+import Passresultsslider from "../layout/Passresultsslider";
+
 const services = [
   {
     icon: GraduationCap,
@@ -47,14 +48,45 @@ const services = [
   },
 ];
 
+// Single reusable hook — replaces all motion.div instances
+function useFadeInView(threshold = 0.15) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setVisible(true); observer.disconnect(); } },
+      { threshold }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [threshold]);
+  return { ref, visible };
+}
+
+// Arrow SVG extracted as a constant — not recreated on every render
+const ArrowIcon = (
+  <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+  </svg>
+);
+
 export function ServicesSection() {
+  const header = useFadeInView();
+  const grid = useFadeInView(0.05);
+
   return (
     <section className="py-20 bg-background">
       <div className="container">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+        {/* Header */}
+        <div
+          ref={header.ref}
+          style={{
+            opacity: header.visible ? 1 : 0,
+            transform: header.visible ? "translateY(0)" : "translateY(30px)",
+            transition: "opacity 0.5s ease, transform 0.5s ease",
+          }}
           className="text-center mb-16"
         >
           <span className="inline-block text-sm font-semibold text-accent bg-accent/10 px-4 py-2 rounded-full mb-4">
@@ -66,28 +98,34 @@ export function ServicesSection() {
           <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
             From training to placement, we offer complete aviation solutions to help you fulfill your dreams.
           </p>
-        </motion.div>
+        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Cards grid — staggered via CSS animation-delay, no JS per card */}
+        <div
+          ref={grid.ref}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+        >
           {services.map((service, index) => (
-            <motion.div
+            <div
               key={service.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
+              style={{
+                opacity: grid.visible ? 1 : 0,
+                transform: grid.visible ? "translateY(0)" : "translateY(30px)",
+                // CSS stagger — no JS timers, runs on compositor
+                transition: `opacity 0.5s ease ${index * 80}ms, transform 0.5s ease ${index * 80}ms`,
+              }}
             >
-              <Link to={service.href} className="block group">
-                <div className="relative h-full bg-card rounded-2xl p-8 shadow-card hover:shadow-hover transition-all duration-300 border border-border group-hover:border-primary/30 overflow-hidden">
-                  {/* Gradient accent */}
-                  <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${service.color}`} />
+              <Link to={service.href} className="block group h-full">
+                <div className="relative h-full bg-card rounded-2xl p-8 shadow-card hover:shadow-hover transition-shadow duration-300 border border-border hover:border-primary/30 overflow-hidden">
+                  {/* Gradient accent bar */}
+                  <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${service.color}`} aria-hidden="true" />
 
-                  {/* Icon */}
-                  <div className={`inline-flex items-center justify-center w-14 h-14 rounded-xl bg-gradient-to-r ${service.color} mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                    <service.icon className="h-7 w-7 text-white" />
+                  {/* Icon — scale via CSS, not JS */}
+                  <div className={`inline-flex items-center justify-center w-14 h-14 rounded-xl bg-gradient-to-r ${service.color} mb-6 transition-transform duration-300 group-hover:scale-110`}>
+                    <service.icon className="h-7 w-7 text-white" aria-hidden="true" />
                   </div>
 
-                  <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">
+                  <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors duration-200">
                     {service.title}
                   </h3>
                   <p className="text-muted-foreground leading-relaxed">
@@ -95,18 +133,17 @@ export function ServicesSection() {
                   </p>
 
                   {/* Hover arrow */}
-                  <div className="mt-6 flex items-center text-primary font-semibold opacity-0 group-hover:opacity-100 transition-opacity">
+                  <div className="mt-6 flex items-center text-primary font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-200">
                     Learn more
-                    <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
+                    {ArrowIcon}
                   </div>
                 </div>
               </Link>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
+
       <Passresultsslider />
     </section>
   );
