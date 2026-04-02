@@ -313,7 +313,7 @@ export default function CabinCrewPage() {
             {/* A Day in the Life */}
             <section className="py-20 bg-muted/30">
                 <div className="container">
-                    <motion.div
+                    {/* <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
@@ -352,7 +352,7 @@ export default function CabinCrewPage() {
                                 <ArrowRight className="h-4 w-4 ml-2" />
                             </Button>
                         </div>
-                    </motion.div>
+                    </motion.div> */}
                 </div>
             </section>
 

@@ -4,11 +4,27 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0a0f1e" />
+
   <title>Commercial Pilot License Course in India | CPL Training</title>
   <meta name="description"
     content="Become a commercial pilot with DGCA-approved pilot training in India. Check CPL course fees, eligibility, syllabus & career opportunities. Apply now." />
 
-  <!-- JSON-LD Schema -->
+  <!-- ✅ Preconnect to external origins so browser connects early -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://www.noupe.com" />
+
+  <!-- ✅ Preload hero image — tells browser about LCP image immediately -->
+  <link rel="preload" as="image" href="/images/hero-aircraft-1280.webp"
+    imagesrcset="/images/hero-aircraft-480.webp 480w, /images/hero-aircraft-800.webp 800w, /images/hero-aircraft-1280.webp 1280w"
+    imagesizes="100vw" />
+
+  <!-- ✅ Favicon -->
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+  <!-- JSON-LD Schema — unchanged, kept exactly as original -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
@@ -211,7 +227,9 @@
 <body>
   <div id="root"></div>
   <script type="module" src="/src/main.tsx"></script>
-  <script src='https://www.noupe.com/embed/019c75a5e297736ca0cffa8eb3889d4d1262.js'></script>
+
+  <!-- ✅ defer added — stops this script from blocking page render -->
+  <script defer src='https://www.noupe.com/embed/019c75a5e297736ca0cffa8eb3889d4d1262.js'></script>
 </body>
 
 </html>
