@@ -1,25 +1,88 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback, memo, createContext, useContext } from "react";
 import { Layout } from "@/components/layout/Layout";
 import { Link } from "react-router-dom";
 
-// ─── Animation Hook ───────────────────────────────────────────────────────────
-function useInView(threshold = 0.15) {
+// ─── Shared IntersectionObserver ──────────────────────────────────────────────
+// One observer for the whole page instead of one per AnimatedSection.
+
+type ObserverCallback = (isIntersecting: boolean) => void;
+
+const observerCallbacks = new Map<Element, ObserverCallback>();
+let sharedObserver: IntersectionObserver | null = null;
+
+function getSharedObserver(): IntersectionObserver {
+    if (!sharedObserver) {
+        sharedObserver = new IntersectionObserver(
+            (entries) => {
+                for (const entry of entries) {
+                    const cb = observerCallbacks.get(entry.target);
+                    if (cb) {
+                        cb(entry.isIntersecting);
+                        if (entry.isIntersecting) {
+                            // Once visible, stop watching this element
+                            sharedObserver!.unobserve(entry.target);
+                            observerCallbacks.delete(entry.target);
+                        }
+                    }
+                }
+            },
+            { threshold: 0.12 }
+        );
+    }
+    return sharedObserver;
+}
+
+function useInView() {
     const ref = useRef<HTMLDivElement>(null);
     const [visible, setVisible] = useState(false);
+
     useEffect(() => {
         const el = ref.current;
         if (!el) return;
-        const observer = new IntersectionObserver(
-            ([entry]) => { if (entry.isIntersecting) { setVisible(true); observer.disconnect(); } },
-            { threshold }
-        );
-        observer.observe(el);
-        return () => observer.disconnect();
-    }, [threshold]);
+        const obs = getSharedObserver();
+        observerCallbacks.set(el, setVisible);
+        obs.observe(el);
+        return () => {
+            obs.unobserve(el);
+            observerCallbacks.delete(el);
+        };
+    }, []);
+
     return { ref, visible };
 }
 
-// ─── Data ─────────────────────────────────────────────────────────────────────
+// ─── Animated Section ─────────────────────────────────────────────────────────
+// Memoised so it only re-renders when its own visibility changes.
+
+const AnimatedSection = memo(function AnimatedSection({
+    children,
+    delay = 0,
+    style = {},
+}: {
+    children: React.ReactNode;
+    delay?: number;
+    style?: React.CSSProperties;
+}) {
+    const { ref, visible } = useInView();
+    return (
+        <div
+            ref={ref}
+            style={{
+                opacity: visible ? 1 : 0,
+                transform: visible ? "translateY(0)" : "translateY(28px)",
+                transition: `opacity 0.65s ease ${delay}s, transform 0.65s ease ${delay}s`,
+                willChange: "opacity, transform",
+                ...style,
+            }}
+        >
+            {children}
+        </div>
+    );
+});
+
+// ─── Static data (module-level, zero re-creation cost) ───────────────────────
+
+const HERO_LINES = Array.from({ length: 7 }, (_, i) => i); // replaces inline [...Array(7)]
 
 const camoServices = [
     { icon: "📅", title: "Maintenance Planning & Coordination", desc: "We plan and coordinate all maintenance activities on behalf of the owner or operator, ensuring nothing is missed and every event is optimally scheduled." },
@@ -39,6 +102,9 @@ const camoServices = [
     { icon: "📊", title: "Continuous Reporting", desc: "Regular, structured reporting on the airworthiness status of your aircraft, giving you full visibility at all times." },
 ];
 
+// Pre-compute clamped delays so nothing runs in render
+const SERVICE_DELAYS = camoServices.map((_, i) => Math.min(i * 0.05, 0.5));
+
 const stats = [
     { value: "DGCA", label: "Authorised CAMO", sub: "Certified Continuing Airworthiness body" },
     { value: "24/7", label: "AOG Response", sub: "365 days per year, no exceptions" },
@@ -53,7 +119,179 @@ const whyPoints = [
     { icon: "💼", title: "Operator-Focused Approach", desc: "We work around your operations — not the other way. Our processes are designed to minimise disruption to your schedule." },
 ];
 
+const reviewItems = [
+    "Full review of maintenance records and task completion",
+    "Verification of all AD and SB incorporation status",
+    "Confirmation of ARC validity and timely renewal",
+    "Weight and balance documentation check",
+    "Modification and repair status compliance review",
+    "Submission of renewal paperwork to the regulator",
+];
+
 const breadcrumbs = ["Home", "Our Services", "CAMO Services"];
+
+// ─── Shared hover styles (CSS class approach avoids JS style mutations) ────────
+// Applied via a <style> tag so hover logic lives in CSS, not JS event handlers.
+// This removes all the onMouseEnter/Leave DOM style manipulation from JSX.
+
+const GLOBAL_CSS = `
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-14px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes pulseGold {
+    0%, 100% { opacity: 0.8; }
+    50%       { opacity: 1; filter: brightness(1.3); }
+  }
+  @keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 0 rgba(255,200,50,0); }
+    50%       { box-shadow: 0 0 24px rgba(255,200,50,0.08); }
+  }
+  @keyframes slowSpin {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to   { transform: translate(-50%, -50%) rotate(360deg); }
+  }
+
+  .camo-btn-primary {
+    padding: 15px 40px; border-radius: 10px;
+    background: linear-gradient(135deg, hsl(145,70%,22%), hsl(145,80%,16%));
+    border: 1px solid hsl(145,70%,30%);
+    color: #fff; font-size: 14px; font-weight: 700;
+    text-decoration: none; display: inline-block;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.35);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    letter-spacing: 0.5px;
+  }
+  .camo-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 32px rgba(0,0,0,0.45);
+  }
+
+  .camo-btn-ghost {
+    padding: 15px 28px; border-radius: 10px;
+    background: transparent; border: 1px solid rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.6); font-size: 14px;
+    font-weight: 500; text-decoration: none; display: inline-block;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .camo-btn-ghost:hover { border-color: rgba(255,255,255,0.35); color: #fff; }
+
+  .camo-btn-primary-lg {
+    padding: 16px 48px; border-radius: 10px;
+    background: linear-gradient(135deg, hsl(145,70%,22%), hsl(145,80%,16%));
+    border: 1px solid hsl(145,70%,30%);
+    color: #fff; font-size: 15px; font-weight: 700;
+    text-decoration: none; display: inline-block;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    letter-spacing: 0.5px;
+  }
+  .camo-btn-primary-lg:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 36px rgba(0,0,0,0.5);
+  }
+
+  .camo-btn-ghost-lg {
+    padding: 16px 32px; border-radius: 10px;
+    background: transparent; border: 1px solid rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.6); font-size: 15px;
+    font-weight: 500; text-decoration: none; display: inline-block;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .camo-btn-ghost-lg:hover { border-color: rgba(255,255,255,0.35); color: #fff; }
+
+  .camo-aog-btn {
+    padding: 13px 28px; border-radius: 10px;
+    background: hsl(145,70%,22%); border: 1px solid hsl(145,70%,32%);
+    color: #fff; font-size: 13px; font-weight: 700;
+    white-space: nowrap; text-decoration: none; display: inline-block;
+    transition: background 0.2s ease, transform 0.2s ease; flex-shrink: 0;
+  }
+  .camo-aog-btn:hover { background: hsl(145,70%,28%); transform: translateY(-1px); }
+
+  /* Why-point cards: hover via CSS only */
+  .why-card {
+    display: flex; gap: 16px;
+    background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 12px; padding: 18px 20px;
+    transition: border-color 0.2s, background 0.2s, transform 0.2s;
+  }
+  .why-card:hover {
+    border-color: hsl(145,70%,28%);
+    background: rgba(30,80,45,0.18);
+    transform: translateX(6px);
+  }
+
+  /* Review-item rows */
+  .review-item {
+    display: flex; align-items: flex-start; gap: 12px;
+    padding: 13px 16px;
+    background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 10px;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .review-item:hover {
+    border-color: hsl(145,70%,28%);
+    background: rgba(30,80,45,0.12);
+  }
+
+  /* Service cards — hover managed in CSS, not React state */
+  .svc-card {
+    background: linear-gradient(160deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 14px; padding: 24px 22px;
+    transition: background 0.28s ease, border-color 0.28s ease,
+                transform 0.28s ease, box-shadow 0.28s ease;
+    position: relative; overflow: hidden; cursor: default;
+    will-change: transform;
+  }
+  .svc-card:hover {
+    background: linear-gradient(135deg, rgba(30,80,45,0.45), rgba(10,30,18,0.5));
+    border-color: hsl(45,100%,42%);
+    transform: translateY(-5px) scale(1.01);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.3);
+  }
+
+  .svc-card-bar {
+    position: absolute; top: 0; left: 22px;
+    width: 24px; height: 2px;
+    background: hsl(145,70%,28%);
+    transition: width 0.35s ease, background 0.35s ease;
+  }
+  .svc-card:hover .svc-card-bar {
+    width: 44px;
+    background: linear-gradient(to right, hsl(145,70%,38%), hsl(45,100%,55%));
+  }
+
+  .svc-card-icon {
+    width: 42px; height: 42px; border-radius: 12px;
+    background: rgba(255,255,255,0.06);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; margin-bottom: 14px;
+    transition: background 0.25s, transform 0.25s;
+  }
+  .svc-card:hover .svc-card-icon {
+    background: hsl(145,70%,22%);
+    transform: rotate(-5deg) scale(1.1);
+  }
+
+  .svc-card-title {
+    font-size: 14px; font-weight: 700; margin-bottom: 8px;
+    color: rgba(255,255,255,0.88);
+    transition: color 0.2s;
+  }
+  .svc-card:hover .svc-card-title { color: #fff; }
+
+  .svc-card-desc {
+    font-size: 12px; color: rgba(255,255,255,0.42);
+    line-height: 1.65; transition: color 0.2s;
+  }
+  .svc-card:hover .svc-card-desc { color: rgba(255,255,255,0.65); }
+`;
 
 // ─── Sub-components ───────────────────────────────────────────────────────────
 
@@ -68,20 +306,6 @@ function GoldDivider({ label = "FLY SPACE CAMO" }: { label?: string }) {
     );
 }
 
-function AnimatedSection({ children, delay = 0, style = {} }: { children: React.ReactNode; delay?: number; style?: React.CSSProperties }) {
-    const { ref, visible } = useInView();
-    return (
-        <div ref={ref} style={{
-            opacity: visible ? 1 : 0,
-            transform: visible ? "translateY(0)" : "translateY(28px)",
-            transition: `opacity 0.65s ease ${delay}s, transform 0.65s ease ${delay}s`,
-            ...style,
-        }}>
-            {children}
-        </div>
-    );
-}
-
 function CheckIcon() {
     return (
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style={{ flexShrink: 0, marginTop: "2px" }}>
@@ -91,42 +315,101 @@ function CheckIcon() {
     );
 }
 
+// Service card is fully memoised — no parent state touches it anymore.
+const ServiceCard = memo(function ServiceCard({
+    svc, index, delay,
+}: { svc: typeof camoServices[0]; index: number; delay: number }) {
+    return (
+        <AnimatedSection delay={delay}>
+            <div className="svc-card">
+                <div className="svc-card-bar" />
+                <div style={{
+                    position: "absolute", top: "14px", right: "16px",
+                    fontSize: "28px", fontWeight: 800,
+                    color: "rgba(255,255,255,0.04)", lineHeight: 1,
+                }}>
+                    {String(index + 1).padStart(2, "0")}
+                </div>
+                <div className="svc-card-icon">{svc.icon}</div>
+                <div className="svc-card-title">{svc.title}</div>
+                <div className="svc-card-desc">{svc.desc}</div>
+            </div>
+        </AnimatedSection>
+    );
+});
+
+const WhyCard = memo(function WhyCard({ pt, delay }: { pt: typeof whyPoints[0]; delay: number }) {
+    return (
+        <AnimatedSection delay={delay}>
+            <div className="why-card">
+                <div style={{
+                    width: "44px", height: "44px", borderRadius: "12px",
+                    background: "hsl(145,70%,22%)",
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                    fontSize: "20px", flexShrink: 0,
+                }}>
+                    {pt.icon}
+                </div>
+                <div>
+                    <div style={{ fontSize: "14px", fontWeight: 700, marginBottom: "5px" }}>{pt.title}</div>
+                    <div style={{ fontSize: "13px", color: "rgba(255,255,255,0.5)", lineHeight: 1.6 }}>{pt.desc}</div>
+                </div>
+            </div>
+        </AnimatedSection>
+    );
+});
+
+const ReviewItem = memo(function ReviewItem({ item, delay }: { item: string; delay: number }) {
+    return (
+        <AnimatedSection delay={delay}>
+            <div className="review-item">
+                <CheckIcon />
+                <span style={{ fontSize: "13px", color: "rgba(255,255,255,0.7)", lineHeight: 1.55 }}>{item}</span>
+            </div>
+        </AnimatedSection>
+    );
+});
+
 // ─── Main Component ───────────────────────────────────────────────────────────
 
 export default function CAMOServices() {
-    const [hoveredService, setHoveredService] = useState<string | null>(null);
+    // Counter animation — RAF-based, avoids rapid setState ticks
     const [count, setCount] = useState(0);
-    const heroRef = useRef<HTMLDivElement>(null);
-
     useEffect(() => {
-        const target = 15;
-        let start = 0;
-        const step = () => {
-            start += 1;
-            setCount(start);
-            if (start < target) setTimeout(step, 60);
-        };
-        const t = setTimeout(step, 600);
-        return () => clearTimeout(t);
+        const TARGET = 15;
+        let current = 0;
+        let raf: number;
+        let last = performance.now();
+        const INTERVAL_MS = 60;
+
+        function tick(now: number) {
+            if (now - last >= INTERVAL_MS) {
+                last = now;
+                current += 1;
+                setCount(current);
+            }
+            if (current < TARGET) raf = requestAnimationFrame(tick);
+        }
+
+        const t = setTimeout(() => { raf = requestAnimationFrame(tick); }, 600);
+        return () => { clearTimeout(t); cancelAnimationFrame(raf); };
     }, []);
 
     return (
         <Layout>
+            {/* Inject global CSS once */}
+            <style>{GLOBAL_CSS}</style>
+
             <div style={{ fontFamily: "'Poppins', sans-serif", background: "hsl(150,30%,5%)", minHeight: "100vh", color: "#fff" }}>
 
                 {/* ── Hero ── */}
-                <div
-                    ref={heroRef}
-                    style={{
-                        position: "relative",
-                        padding: "80px 6% 76px",
-                        overflow: "hidden",
-                        background: "linear-gradient(135deg, hsl(145,80%,9%) 0%, hsl(145,65%,6%) 55%, hsl(200,55%,8%) 100%)",
-                        borderBottom: "1px solid rgba(255,255,255,0.06)",
-                    }}
-                >
+                <div style={{
+                    position: "relative", padding: "80px 6% 76px", overflow: "hidden",
+                    background: "linear-gradient(135deg, hsl(145,80%,9%) 0%, hsl(145,65%,6%) 55%, hsl(200,55%,8%) 100%)",
+                    borderBottom: "1px solid rgba(255,255,255,0.06)",
+                }}>
                     <div style={{ position: "absolute", inset: 0, pointerEvents: "none", overflow: "hidden" }}>
-                        {[...Array(7)].map((_, i) => (
+                        {HERO_LINES.map((i) => (
                             <div key={i} style={{
                                 position: "absolute", top: 0, bottom: 0,
                                 left: `${6 + i * 14}%`, width: "1px",
@@ -156,7 +439,6 @@ export default function CAMOServices() {
                             ))}
                         </div>
 
-                        {/* Eyebrow */}
                         <div style={{
                             display: "inline-flex", alignItems: "center", gap: "8px",
                             background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)",
@@ -200,49 +482,8 @@ export default function CAMOServices() {
                         </p>
 
                         <div style={{ display: "flex", gap: "14px", flexWrap: "wrap", animation: "fadeUp 0.7s ease 0.45s forwards", opacity: 0 }}>
-                            <Link
-                                to="/contact"
-                                style={{
-                                    padding: "15px 40px", borderRadius: "10px",
-                                    background: "linear-gradient(135deg, hsl(145,70%,22%), hsl(145,80%,16%))",
-                                    border: "1px solid hsl(145,70%,30%)",
-                                    color: "#fff", fontSize: "14px", fontWeight: 700,
-                                    cursor: "pointer", textDecoration: "none", display: "inline-block",
-                                    boxShadow: "0 4px 24px rgba(0,0,0,0.35)",
-                                    transition: "all 0.25s ease", letterSpacing: "0.5px",
-                                }}
-                                onMouseEnter={(e) => {
-                                    (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(-2px)";
-                                    (e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 10px 32px rgba(0,0,0,0.45)";
-                                }}
-                                onMouseLeave={(e) => {
-                                    (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(0)";
-                                    (e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 4px 24px rgba(0,0,0,0.35)";
-                                }}
-                            >
-                                Speak With Us →
-                            </Link>
-                            <Link
-                                to="/contact"
-                                style={{
-                                    padding: "15px 28px", borderRadius: "10px",
-                                    background: "transparent", border: "1px solid rgba(255,255,255,0.15)",
-                                    color: "rgba(255,255,255,0.6)", fontSize: "14px",
-                                    fontWeight: 500, cursor: "pointer",
-                                    textDecoration: "none", display: "inline-block",
-                                    transition: "all 0.2s",
-                                }}
-                                onMouseEnter={(e) => {
-                                    (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(255,255,255,0.35)";
-                                    (e.currentTarget as HTMLAnchorElement).style.color = "#fff";
-                                }}
-                                onMouseLeave={(e) => {
-                                    (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(255,255,255,0.15)";
-                                    (e.currentTarget as HTMLAnchorElement).style.color = "rgba(255,255,255,0.6)";
-                                }}
-                            >
-                                View All Services
-                            </Link>
+                            <Link to="/contact" className="camo-btn-primary">Speak With Us →</Link>
+                            <Link to="/contact" className="camo-btn-ghost">View All Services</Link>
                         </div>
                     </div>
                 </div>
@@ -306,38 +547,7 @@ export default function CAMOServices() {
 
                         <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
                             {whyPoints.map((pt, i) => (
-                                <AnimatedSection key={pt.title} delay={i * 0.1}>
-                                    <div style={{
-                                        display: "flex", gap: "16px",
-                                        background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.07)",
-                                        borderRadius: "12px", padding: "18px 20px",
-                                        transition: "border-color 0.2s, background 0.2s, transform 0.2s",
-                                    }}
-                                        onMouseEnter={(e) => {
-                                            (e.currentTarget as HTMLDivElement).style.borderColor = "hsl(145,70%,28%)";
-                                            (e.currentTarget as HTMLDivElement).style.background = "rgba(30,80,45,0.18)";
-                                            (e.currentTarget as HTMLDivElement).style.transform = "translateX(6px)";
-                                        }}
-                                        onMouseLeave={(e) => {
-                                            (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(255,255,255,0.07)";
-                                            (e.currentTarget as HTMLDivElement).style.background = "rgba(255,255,255,0.03)";
-                                            (e.currentTarget as HTMLDivElement).style.transform = "translateX(0)";
-                                        }}
-                                    >
-                                        <div style={{
-                                            width: "44px", height: "44px", borderRadius: "12px",
-                                            background: "hsl(145,70%,22%)",
-                                            display: "flex", alignItems: "center", justifyContent: "center",
-                                            fontSize: "20px", flexShrink: 0,
-                                        }}>
-                                            {pt.icon}
-                                        </div>
-                                        <div>
-                                            <div style={{ fontSize: "14px", fontWeight: 700, marginBottom: "5px" }}>{pt.title}</div>
-                                            <div style={{ fontSize: "13px", color: "rgba(255,255,255,0.5)", lineHeight: 1.6 }}>{pt.desc}</div>
-                                        </div>
-                                    </div>
-                                </AnimatedSection>
+                                <WhyCard key={pt.title} pt={pt} delay={i * 0.1} />
                             ))}
                         </div>
                     </div>
@@ -357,71 +567,11 @@ export default function CAMOServices() {
                             </p>
                         </AnimatedSection>
 
+                        {/* Grid — no React hover state; all hover via CSS classes */}
                         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(290px, 1fr))", gap: "18px" }}>
-                            {camoServices.map((svc, i) => {
-                                const isHov = hoveredService === svc.title;
-                                return (
-                                    <AnimatedSection key={svc.title} delay={Math.min(i * 0.05, 0.5)}>
-                                        <div
-                                            onMouseEnter={() => setHoveredService(svc.title)}
-                                            onMouseLeave={() => setHoveredService(null)}
-                                            style={{
-                                                background: isHov
-                                                    ? "linear-gradient(135deg, rgba(30,80,45,0.45), rgba(10,30,18,0.5))"
-                                                    : "linear-gradient(160deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%)",
-                                                border: isHov ? "1px solid hsl(45,100%,42%)" : "1px solid rgba(255,255,255,0.08)",
-                                                borderRadius: "14px", padding: "24px 22px",
-                                                transition: "all 0.28s ease",
-                                                transform: isHov ? "translateY(-5px) scale(1.01)" : "translateY(0) scale(1)",
-                                                position: "relative", overflow: "hidden", cursor: "default",
-                                                boxShadow: isHov ? "0 12px 32px rgba(0,0,0,0.3)" : "none",
-                                            }}
-                                        >
-                                            <div style={{
-                                                position: "absolute", top: 0, left: "22px",
-                                                width: isHov ? "44px" : "24px", height: "2px",
-                                                background: isHov
-                                                    ? "linear-gradient(to right, hsl(145,70%,38%), hsl(45,100%,55%))"
-                                                    : "hsl(145,70%,28%)",
-                                                transition: "width 0.35s ease, background 0.35s ease",
-                                            }} />
-
-                                            <div style={{
-                                                position: "absolute", top: "14px", right: "16px",
-                                                fontSize: "28px", fontWeight: 800,
-                                                color: "rgba(255,255,255,0.04)", lineHeight: 1,
-                                            }}>
-                                                {String(i + 1).padStart(2, "0")}
-                                            </div>
-
-                                            <div style={{
-                                                width: "42px", height: "42px", borderRadius: "12px",
-                                                background: isHov ? "hsl(145,70%,22%)" : "rgba(255,255,255,0.06)",
-                                                display: "flex", alignItems: "center", justifyContent: "center",
-                                                fontSize: "18px", marginBottom: "14px",
-                                                transition: "background 0.25s, transform 0.25s",
-                                                transform: isHov ? "rotate(-5deg) scale(1.1)" : "rotate(0) scale(1)",
-                                            }}>
-                                                {svc.icon}
-                                            </div>
-
-                                            <div style={{
-                                                fontSize: "14px", fontWeight: 700, marginBottom: "8px",
-                                                color: isHov ? "#fff" : "rgba(255,255,255,0.88)", transition: "color 0.2s",
-                                            }}>
-                                                {svc.title}
-                                            </div>
-                                            <div style={{
-                                                fontSize: "12px",
-                                                color: isHov ? "rgba(255,255,255,0.65)" : "rgba(255,255,255,0.42)",
-                                                lineHeight: 1.65, transition: "color 0.2s",
-                                            }}>
-                                                {svc.desc}
-                                            </div>
-                                        </div>
-                                    </AnimatedSection>
-                                );
-                            })}
+                            {camoServices.map((svc, i) => (
+                                <ServiceCard key={svc.title} svc={svc} index={i} delay={SERVICE_DELAYS[i]} />
+                            ))}
                         </div>
                     </div>
                 </div>
@@ -429,8 +579,7 @@ export default function CAMOServices() {
                 {/* ── AOG Highlight ── */}
                 <AnimatedSection>
                     <div style={{
-                        margin: "0 6%",
-                        marginTop: "56px", marginBottom: "56px",
+                        margin: "56px 6%",
                         background: "linear-gradient(135deg, rgba(30,80,45,0.3) 0%, rgba(10,30,18,0.4) 100%)",
                         border: "1px solid hsl(145,70%,25%)",
                         borderLeft: "4px solid hsl(45,100%,51%)",
@@ -456,27 +605,7 @@ export default function CAMOServices() {
                                 back in the air as quickly as possible.
                             </div>
                         </div>
-                        <Link
-                            to="/contact"
-                            style={{
-                                padding: "13px 28px", borderRadius: "10px",
-                                background: "hsl(145,70%,22%)", border: "1px solid hsl(145,70%,32%)",
-                                color: "#fff", fontSize: "13px", fontWeight: 700,
-                                cursor: "pointer", whiteSpace: "nowrap",
-                                textDecoration: "none", display: "inline-block",
-                                transition: "all 0.2s ease", flexShrink: 0,
-                            }}
-                            onMouseEnter={(e) => {
-                                (e.currentTarget as HTMLAnchorElement).style.background = "hsl(145,70%,28%)";
-                                (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(-1px)";
-                            }}
-                            onMouseLeave={(e) => {
-                                (e.currentTarget as HTMLAnchorElement).style.background = "hsl(145,70%,22%)";
-                                (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(0)";
-                            }}
-                        >
-                            Contact AOG Desk →
-                        </Link>
+                        <Link to="/contact" className="camo-aog-btn">Contact AOG Desk →</Link>
                     </div>
                 </AnimatedSection>
 
@@ -498,35 +627,8 @@ export default function CAMOServices() {
                         </AnimatedSection>
 
                         <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-                            {[
-                                "Full review of maintenance records and task completion",
-                                "Verification of all AD and SB incorporation status",
-                                "Confirmation of ARC validity and timely renewal",
-                                "Weight and balance documentation check",
-                                "Modification and repair status compliance review",
-                                "Submission of renewal paperwork to the regulator",
-                            ].map((item, i) => (
-                                <AnimatedSection key={item} delay={i * 0.08}>
-                                    <div style={{
-                                        display: "flex", alignItems: "flex-start", gap: "12px",
-                                        padding: "13px 16px",
-                                        background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.06)",
-                                        borderRadius: "10px",
-                                        transition: "border-color 0.2s, background 0.2s",
-                                    }}
-                                        onMouseEnter={(e) => {
-                                            (e.currentTarget as HTMLDivElement).style.borderColor = "hsl(145,70%,28%)";
-                                            (e.currentTarget as HTMLDivElement).style.background = "rgba(30,80,45,0.12)";
-                                        }}
-                                        onMouseLeave={(e) => {
-                                            (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(255,255,255,0.06)";
-                                            (e.currentTarget as HTMLDivElement).style.background = "rgba(255,255,255,0.03)";
-                                        }}
-                                    >
-                                        <CheckIcon />
-                                        <span style={{ fontSize: "13px", color: "rgba(255,255,255,0.7)", lineHeight: 1.55 }}>{item}</span>
-                                    </div>
-                                </AnimatedSection>
+                            {reviewItems.map((item, i) => (
+                                <ReviewItem key={item} item={item} delay={i * 0.08} />
                             ))}
                         </div>
                     </div>
@@ -569,77 +671,12 @@ export default function CAMOServices() {
                                 obligations so you never have to worry about compliance again.
                             </p>
                             <div style={{ display: "flex", gap: "14px", justifyContent: "center", flexWrap: "wrap" }}>
-                                <Link
-                                    to="/contact"
-                                    style={{
-                                        padding: "16px 48px", borderRadius: "10px",
-                                        background: "linear-gradient(135deg, hsl(145,70%,22%), hsl(145,80%,16%))",
-                                        border: "1px solid hsl(145,70%,30%)",
-                                        color: "#fff", fontSize: "15px", fontWeight: 700,
-                                        cursor: "pointer", letterSpacing: "0.5px",
-                                        textDecoration: "none", display: "inline-block",
-                                        boxShadow: "0 4px 24px rgba(0,0,0,0.4)", transition: "all 0.25s ease",
-                                    }}
-                                    onMouseEnter={(e) => {
-                                        (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(-2px)";
-                                        (e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 12px 36px rgba(0,0,0,0.5)";
-                                    }}
-                                    onMouseLeave={(e) => {
-                                        (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(0)";
-                                        (e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 4px 24px rgba(0,0,0,0.4)";
-                                    }}
-                                >
-                                    Speak With Us →
-                                </Link>
-                                <Link
-                                    to="/contact"
-                                    style={{
-                                        padding: "16px 32px", borderRadius: "10px",
-                                        background: "transparent", border: "1px solid rgba(255,255,255,0.15)",
-                                        color: "rgba(255,255,255,0.6)", fontSize: "15px",
-                                        fontWeight: 500, cursor: "pointer",
-                                        textDecoration: "none", display: "inline-block",
-                                        transition: "all 0.2s",
-                                    }}
-                                    onMouseEnter={(e) => {
-                                        (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(255,255,255,0.35)";
-                                        (e.currentTarget as HTMLAnchorElement).style.color = "#fff";
-                                    }}
-                                    onMouseLeave={(e) => {
-                                        (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(255,255,255,0.15)";
-                                        (e.currentTarget as HTMLAnchorElement).style.color = "rgba(255,255,255,0.6)";
-                                    }}
-                                >
-                                    View All Services
-                                </Link>
+                                <Link to="/contact" className="camo-btn-primary-lg">Speak With Us →</Link>
+                                <Link to="/contact" className="camo-btn-ghost-lg">View All Services</Link>
                             </div>
                         </div>
                     </div>
                 </AnimatedSection>
-
-                {/* ── Global Keyframes ── */}
-                <style>{`
-          @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(24px); }
-            to   { opacity: 1; transform: translateY(0); }
-          }
-          @keyframes fadeDown {
-            from { opacity: 0; transform: translateY(-14px); }
-            to   { opacity: 1; transform: translateY(0); }
-          }
-          @keyframes pulseGold {
-            0%, 100% { opacity: 0.8; }
-            50%       { opacity: 1; filter: brightness(1.3); }
-          }
-          @keyframes pulseGlow {
-            0%, 100% { box-shadow: 0 0 0 rgba(255,200,50,0); }
-            50%       { box-shadow: 0 0 24px rgba(255,200,50,0.08); }
-          }
-          @keyframes slowSpin {
-            from { transform: translate(-50%, -50%) rotate(0deg); }
-            to   { transform: translate(-50%, -50%) rotate(360deg); }
-          }
-        `}</style>
 
             </div>
         </Layout>

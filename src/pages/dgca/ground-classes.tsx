@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet-async";
 import { Layout } from "@/components/layout/Layout";
@@ -24,54 +25,22 @@ import {
     Building,
     MapPin,
     Star,
-    Zap,
     Brain,
     FileCheck,
     Trophy,
     LucideIcon,
 } from "lucide-react";
 
-interface OverviewRow {
-    label: string;
-    value: string;
-}
+// ─── Types ────────────────────────────────────────────────────────────────────
+interface OverviewRow { label: string; value: string }
+interface Subject { icon: LucideIcon; name: string; description: string }
+interface Benefit { icon: LucideIcon; title: string; description: string }
+interface ComparisonRow { aspect: string; online: string; offline: string }
+interface WhoShouldJoin { category: string; description: string; icon: LucideIcon }
+interface SelectionFactor { factor: string; description: string; icon: LucideIcon }
+interface SkillCovered { skill: string; description: string; icon: LucideIcon }
 
-interface Subject {
-    icon: LucideIcon;
-    name: string;
-    description: string;
-}
-
-interface Benefit {
-    icon: LucideIcon;
-    title: string;
-    description: string;
-}
-
-interface ComparisonRow {
-    aspect: string;
-    online: string;
-    offline: string;
-}
-
-interface WhoShouldJoin {
-    category: string;
-    description: string;
-    icon: LucideIcon;
-}
-
-interface SelectionFactor {
-    factor: string;
-    description: string;
-    icon: LucideIcon;
-}
-
-interface SkillCovered {
-    skill: string;
-    description: string;
-    icon: LucideIcon;
-}
-
+// ─── Static data (module scope — zero re-creation cost) ───────────────────────
 const quickOverview: OverviewRow[] = [
     { label: "Course Name", value: "DGCA Ground Classes for CPL" },
     { label: "Purpose", value: "CPL Theory Exam Preparation" },
@@ -83,186 +52,54 @@ const quickOverview: OverviewRow[] = [
 ];
 
 const cplSubjects: Subject[] = [
-    {
-        icon: Compass,
-        name: "Air Navigation",
-        description: "Navigation principles, charts, flight planning, and dead reckoning techniques",
-    },
-    {
-        icon: Cloud,
-        name: "Aviation Meteorology",
-        description: "Weather patterns, atmospheric conditions, and meteorological decision-making",
-    },
-    {
-        icon: Shield,
-        name: "Air Regulations",
-        description: "Aviation laws, DGCA regulations, licensing requirements, and safety protocols",
-    },
-    {
-        icon: Wrench,
-        name: "Technical General",
-        description: "Aircraft systems, engines, instruments, and general aviation mechanics",
-    },
-    {
-        icon: Award,
-        name: "Technical Specific",
-        description: "Specific aircraft type systems and operational procedures",
-    },
-    {
-        icon: Radio,
-        name: "Radio Telephony Restricted (RTR)",
-        description: "Aviation communication procedures and radio telephony protocols",
-    },
+    { icon: Compass, name: "Air Navigation", description: "Navigation principles, charts, flight planning, and dead reckoning techniques" },
+    { icon: Cloud, name: "Aviation Meteorology", description: "Weather patterns, atmospheric conditions, and meteorological decision-making" },
+    { icon: Shield, name: "Air Regulations", description: "Aviation laws, DGCA regulations, licensing requirements, and safety protocols" },
+    { icon: Wrench, name: "Technical General", description: "Aircraft systems, engines, instruments, and general aviation mechanics" },
+    { icon: Award, name: "Technical Specific", description: "Specific aircraft type systems and operational procedures" },
+    { icon: Radio, name: "Radio Telephony Restricted (RTR)", description: "Aviation communication procedures and radio telephony protocols" },
 ];
 
 const trainingBenefits: Benefit[] = [
-    {
-        icon: TrendingUp,
-        title: "Higher DGCA Exam Pass Rate",
-        description: "Structured training leads to better exam performance and first-attempt success",
-    },
-    {
-        icon: Target,
-        title: "Structured Study Plan",
-        description: "Organized curriculum covering all topics systematically with proper revision",
-    },
-    {
-        icon: Users,
-        title: "Experienced Instructors",
-        description: "Learn from aviation professionals with flying and teaching experience",
-    },
-    {
-        icon: FileCheck,
-        title: "Real DGCA Exam Practice",
-        description: "Access to previous year questions and mock tests matching actual exam patterns",
-    },
-    {
-        icon: Clock,
-        title: "Faster CPL Completion",
-        description: "Efficient preparation reduces overall time to complete your Commercial Pilot License",
-    },
-    {
-        icon: DollarSign,
-        title: "Cost Savings",
-        description: "Clear exams on first attempt, avoiding re-exam fees and training delays",
-    },
+    { icon: TrendingUp, title: "Higher DGCA Exam Pass Rate", description: "Structured training leads to better exam performance and first-attempt success" },
+    { icon: Target, title: "Structured Study Plan", description: "Organized curriculum covering all topics systematically with proper revision" },
+    { icon: Users, title: "Experienced Instructors", description: "Learn from aviation professionals with flying and teaching experience" },
+    { icon: FileCheck, title: "Real DGCA Exam Practice", description: "Access to previous year questions and mock tests matching actual exam patterns" },
+    { icon: Clock, title: "Faster CPL Completion", description: "Efficient preparation reduces overall time to complete your Commercial Pilot License" },
+    { icon: DollarSign, title: "Cost Savings", description: "Clear exams on first attempt, avoiding re-exam fees and training delays" },
 ];
 
 const onlineVsOffline: ComparisonRow[] = [
-    {
-        aspect: "Learning Format",
-        online: "Live & Recorded Lectures",
-        offline: "Face-to-Face Classroom",
-    },
-    {
-        aspect: "Schedule",
-        online: "Flexible Study Timing",
-        offline: "Fixed Class Routine",
-    },
-    {
-        aspect: "Study Material",
-        online: "Digital Resources & E-Books",
-        offline: "Physical Books & Notes",
-    },
-    {
-        aspect: "Interaction",
-        online: "Virtual Q&A Sessions",
-        offline: "Direct Instructor Access",
-    },
-    {
-        aspect: "Location",
-        online: "Learn from Anywhere",
-        offline: "Institute Premises",
-    },
-    {
-        aspect: "Peer Learning",
-        online: "Online Study Groups",
-        offline: "Classroom Collaboration",
-    },
-    {
-        aspect: "Cost",
-        online: "Generally Lower Fees",
-        offline: "Higher Investment",
-    },
+    { aspect: "Learning Format", online: "Live & Recorded Lectures", offline: "Face-to-Face Classroom" },
+    { aspect: "Schedule", online: "Flexible Study Timing", offline: "Fixed Class Routine" },
+    { aspect: "Study Material", online: "Digital Resources & E-Books", offline: "Physical Books & Notes" },
+    { aspect: "Interaction", online: "Virtual Q&A Sessions", offline: "Direct Instructor Access" },
+    { aspect: "Location", online: "Learn from Anywhere", offline: "Institute Premises" },
+    { aspect: "Peer Learning", online: "Online Study Groups", offline: "Classroom Collaboration" },
+    { aspect: "Cost", online: "Generally Lower Fees", offline: "Higher Investment" },
 ];
 
 const whoShouldJoin: WhoShouldJoin[] = [
-    {
-        category: "10+2 Students",
-        description: "Students who have completed 10+2 with Physics and Mathematics, planning to pursue CPL",
-        icon: GraduationCap,
-    },
-    {
-        category: "Flying Students",
-        description: "Current flight training students preparing for DGCA theory examinations",
-        icon: Target,
-    },
-    {
-        category: "Foreign License Holders",
-        description: "Pilots with foreign licenses converting to DGCA Commercial Pilot License",
-        icon: Globe,
-    },
-    {
-        category: "Working Professionals",
-        description: "Professionals pursuing pilot training while managing career commitments",
-        icon: Users,
-    },
+    { category: "10+2 Students", description: "Students who have completed 10+2 with Physics and Mathematics, planning to pursue CPL", icon: GraduationCap },
+    { category: "Flying Students", description: "Current flight training students preparing for DGCA theory examinations", icon: Target },
+    { category: "Foreign License Holders", description: "Pilots with foreign licenses converting to DGCA Commercial Pilot License", icon: Globe },
+    { category: "Working Professionals", description: "Professionals pursuing pilot training while managing career commitments", icon: Users },
 ];
 
 const selectionFactors: SelectionFactor[] = [
-    {
-        factor: "DGCA Exam Success Rate",
-        description: "Check the institute's track record of students clearing DGCA exams on first attempt",
-        icon: Trophy,
-    },
-    {
-        factor: "Instructor Experience",
-        description: "Verify that instructors have both flying experience and teaching expertise",
-        icon: Award,
-    },
-    {
-        factor: "Updated DGCA Syllabus",
-        description: "Ensure training follows the latest DGCA curriculum and exam patterns",
-        icon: FileCheck,
-    },
-    {
-        factor: "Mock Tests & Revision",
-        description: "Availability of regular mock exams and comprehensive revision support",
-        icon: Brain,
-    },
-    {
-        factor: "Online/Offline Flexibility",
-        description: "Choose institutes offering both online and offline training options",
-        icon: MonitorPlay,
-    },
+    { factor: "DGCA Exam Success Rate", description: "Check the institute's track record of students clearing DGCA exams on first attempt", icon: Trophy },
+    { factor: "Instructor Experience", description: "Verify that instructors have both flying experience and teaching expertise", icon: Award },
+    { factor: "Updated DGCA Syllabus", description: "Ensure training follows the latest DGCA curriculum and exam patterns", icon: FileCheck },
+    { factor: "Mock Tests & Revision", description: "Availability of regular mock exams and comprehensive revision support", icon: Brain },
+    { factor: "Online/Offline Flexibility", description: "Choose institutes offering both online and offline training options", icon: MonitorPlay },
 ];
 
 const skillsCovered: SkillCovered[] = [
-    {
-        skill: "Aviation Decision-Making",
-        description: "Critical thinking and judgment skills for safe flight operations",
-        icon: Brain,
-    },
-    {
-        skill: "Weather Interpretation",
-        description: "Analyzing meteorological data and making informed flight decisions",
-        icon: Cloud,
-    },
-    {
-        skill: "Flight Planning",
-        description: "Route planning, fuel calculations, and operational planning skills",
-        icon: Compass,
-    },
-    {
-        skill: "Aircraft Systems Understanding",
-        description: "Deep knowledge of aircraft mechanics and operational systems",
-        icon: Wrench,
-    },
-    {
-        skill: "Airline Interview Preparation",
-        description: "Technical knowledge and confidence for airline selection processes",
-        icon: Users,
-    },
+    { skill: "Aviation Decision-Making", description: "Critical thinking and judgment skills for safe flight operations", icon: Brain },
+    { skill: "Weather Interpretation", description: "Analyzing meteorological data and making informed flight decisions", icon: Cloud },
+    { skill: "Flight Planning", description: "Route planning, fuel calculations, and operational planning skills", icon: Compass },
+    { skill: "Aircraft Systems Understanding", description: "Deep knowledge of aircraft mechanics and operational systems", icon: Wrench },
+    { skill: "Airline Interview Preparation", description: "Technical knowledge and confidence for airline selection processes", icon: Users },
 ];
 
 const whyGroundTrainingMatters: string[] = [
@@ -285,6 +122,113 @@ const preparationTips: string[] = [
     "Stay updated with latest DGCA circulars and regulations",
 ];
 
+const onlineFeatures = [
+    "Live and recorded lectures",
+    "Flexible study schedule",
+    "Access to digital study material",
+    "Learn from anywhere in India",
+] as const;
+
+const offlineFeatures = [
+    "Face-to-face classroom interaction",
+    "Structured discipline and routine",
+    "Direct instructor guidance",
+    "Peer learning opportunities",
+] as const;
+
+// ─── Shared animation variants (module scope — single allocation) ─────────────
+const fadeUp = { hidden: { opacity: 0, y: 30 }, show: { opacity: 1, y: 0 } };
+const fadeLeft = { hidden: { opacity: 0, x: -30 }, show: { opacity: 1, x: 0 } };
+const fadeRight = { hidden: { opacity: 0, x: 30 }, show: { opacity: 1, x: 0 } };
+const viewport = { once: true, margin: "-50px" } as const;
+const delay = (i: number) => ({ delay: i * 0.1 });
+
+// ─── Memoized sub-components ──────────────────────────────────────────────────
+
+/** Generic icon card used by subjects, benefits, skills */
+const IconCard = memo(({ icon: Icon, heading, body, index }: {
+    icon: LucideIcon; heading: string; body: string; index: number;
+}) => (
+    <motion.div
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="show"
+        viewport={viewport}
+        transition={delay(index)}
+        className="p-6 rounded-xl bg-card border border-border hover:border-primary/50 hover:shadow-hover transition-all"
+    >
+        <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
+            <Icon className="h-6 w-6 text-primary" />
+        </div>
+        <h4 className="font-bold mb-2">{heading}</h4>
+        <p className="text-sm text-muted-foreground">{body}</p>
+    </motion.div>
+));
+IconCard.displayName = "IconCard";
+
+/** Icon card with left-aligned icon + text (who should join, selection factors) */
+const IconRowCard = memo(({ icon: Icon, heading, body, index }: {
+    icon: LucideIcon; heading: string; body: string; index: number;
+}) => (
+    <motion.div
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="show"
+        viewport={viewport}
+        transition={delay(index)}
+        className="p-6 rounded-xl bg-card border border-border hover:border-primary/50 transition-all"
+    >
+        <div className="flex items-start gap-4">
+            <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                <Icon className="h-6 w-6 text-primary" />
+            </div>
+            <div>
+                <h4 className="font-bold mb-2">{heading}</h4>
+                <p className="text-sm text-muted-foreground">{body}</p>
+            </div>
+        </div>
+    </motion.div>
+));
+IconRowCard.displayName = "IconRowCard";
+
+/** Bullet point card (reasons + tips) */
+const BulletCard = memo(({ text, icon: Icon, index }: {
+    text: string; icon: LucideIcon; index: number;
+}) => (
+    <motion.div
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="show"
+        viewport={viewport}
+        transition={delay(index)}
+        className="flex items-start gap-3 p-5 rounded-xl bg-card border border-border"
+    >
+        <Icon className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+        <span className="text-muted-foreground">{text}</span>
+    </motion.div>
+));
+BulletCard.displayName = "BulletCard";
+
+/** Section heading — reusable pattern */
+const SectionHeading = memo(({ title, subtitle, center = true }: {
+    title: string; subtitle?: string; center?: boolean;
+}) => (
+    <motion.div
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="show"
+        viewport={viewport}
+        className={`mb-12 ${center ? "text-center" : ""}`}
+    >
+        <h2 className="text-3xl md:text-4xl font-bold mb-4">{title}</h2>
+        {subtitle && (
+            <p className={`text-muted-foreground max-w-3xl ${center ? "mx-auto" : ""}`}>{subtitle}</p>
+        )}
+    </motion.div>
+));
+SectionHeading.displayName = "SectionHeading";
+
+// ─── Page ─────────────────────────────────────────────────────────────────────
 export default function DGCAGroundClassesPage(): JSX.Element {
     return (
         <Layout>
@@ -296,12 +240,13 @@ export default function DGCAGroundClassesPage(): JSX.Element {
                 />
             </Helmet>
 
-            {/* Hero Section */}
+            {/* ── Hero ── */}
             <section className="relative py-24 aviation-gradient text-primary-foreground">
                 <div className="container">
                     <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
+                        variants={fadeUp}
+                        initial="hidden"
+                        animate="show"
                         className="max-w-4xl"
                     >
                         <span className="inline-block text-sm font-semibold bg-white/20 px-4 py-2 rounded-full mb-4">
@@ -330,46 +275,34 @@ export default function DGCAGroundClassesPage(): JSX.Element {
 
                         {/* Quick Stats */}
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12 pt-12 border-t border-white/20">
-                            <div>
-                                <div className="text-3xl md:text-4xl font-bold mb-1">6</div>
-                                <div className="text-primary-foreground/70 text-sm">DGCA Subjects</div>
-                            </div>
-                            <div>
-                                <div className="text-3xl md:text-4xl font-bold mb-1">100%</div>
-                                <div className="text-primary-foreground/70 text-sm">Pass Rate</div>
-                            </div>
-                            <div>
-                                <div className="text-3xl md:text-4xl font-bold mb-1">Both</div>
-                                <div className="text-primary-foreground/70 text-sm">Online & Offline</div>
-                            </div>
-                            <div>
-                                <div className="text-3xl md:text-4xl font-bold mb-1">DGCA</div>
-                                <div className="text-primary-foreground/70 text-sm">Approved</div>
-                            </div>
+                            {[
+                                { val: "6", label: "DGCA Subjects" },
+                                { val: "100%", label: "Pass Rate" },
+                                { val: "Both", label: "Online & Offline" },
+                                { val: "DGCA", label: "Approved" },
+                            ].map(({ val, label }) => (
+                                <div key={label}>
+                                    <div className="text-3xl md:text-4xl font-bold mb-1">{val}</div>
+                                    <div className="text-primary-foreground/70 text-sm">{label}</div>
+                                </div>
+                            ))}
                         </div>
                     </motion.div>
                 </div>
             </section>
 
-            {/* Quick Overview */}
+            {/* ── Quick Overview Table ── */}
             <section className="py-20 bg-background">
                 <div className="container">
+                    <SectionHeading
+                        title="Quick Course Overview"
+                        subtitle="Essential information about DGCA Ground Classes for CPL"
+                    />
                     <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="text-center mb-12"
-                    >
-                        <h2 className="text-3xl md:text-4xl font-bold mb-4">Quick Course Overview</h2>
-                        <p className="text-muted-foreground max-w-2xl mx-auto">
-                            Essential information about DGCA Ground Classes for CPL
-                        </p>
-                    </motion.div>
-
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
+                        variants={fadeUp}
+                        initial="hidden"
+                        whileInView="show"
+                        viewport={viewport}
                         className="max-w-4xl mx-auto"
                     >
                         <div className="rounded-2xl border border-border overflow-hidden shadow-card">
@@ -381,8 +314,8 @@ export default function DGCAGroundClassesPage(): JSX.Element {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {quickOverview.map((row, index) => (
-                                        <tr key={row.label} className={index % 2 === 0 ? "bg-card" : "bg-muted/30"}>
+                                    {quickOverview.map((row, i) => (
+                                        <tr key={row.label} className={i % 2 === 0 ? "bg-card" : "bg-muted/30"}>
                                             <td className="px-6 py-4 font-semibold text-sm">{row.label}</td>
                                             <td className="px-6 py-4 text-muted-foreground text-sm">{row.value}</td>
                                         </tr>
@@ -394,22 +327,20 @@ export default function DGCAGroundClassesPage(): JSX.Element {
                 </div>
             </section>
 
-            {/* What Are DGCA Ground Classes */}
+            {/* ── What Are DGCA Ground Classes ── */}
             <section className="py-20 bg-muted/30">
                 <div className="container">
                     <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
+                        variants={fadeUp}
+                        initial="hidden"
+                        whileInView="show"
+                        viewport={viewport}
                         className="max-w-4xl mx-auto"
                     >
                         <h2 className="text-3xl md:text-4xl font-bold mb-6">What Are DGCA Ground Classes?</h2>
-                        <div className="space-y-4 text-lg text-muted-foreground mb-8">
-                            <p>
-                                DGCA ground classes are training sessions that are conducted to help students prepare and pass the DGCA CPL theory exams conducted by the Directorate General of Civil Aviation, India. These ground classes are conducted to provide students with a strong conceptual understanding and exam preparation, and they cover the basics of aviation. Professional CPL ground classes are conducted as per the latest DGCA syllabus and exam patterns.
-                            </p>
-                        </div>
-
+                        <p className="text-muted-foreground text-lg mb-8">
+                            DGCA ground classes are training sessions that are conducted to help students prepare and pass the DGCA CPL theory exams conducted by the Directorate General of Civil Aviation, India. These ground classes are conducted to provide students with a strong conceptual understanding and exam preparation, and they cover the basics of aviation. Professional CPL ground classes are conducted as per the latest DGCA syllabus and exam patterns.
+                        </p>
                         <div className="p-8 rounded-2xl bg-primary/5 border border-primary/20">
                             <div className="flex items-start gap-4">
                                 <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
@@ -429,184 +360,81 @@ export default function DGCAGroundClassesPage(): JSX.Element {
                 </div>
             </section>
 
-            {/* CPL Subjects */}
+            {/* ── CPL Subjects ── */}
             <section className="py-20 bg-background">
                 <div className="container">
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="text-center mb-12"
-                    >
-                        <h2 className="text-3xl md:text-4xl font-bold mb-4">DGCA Ground Class Subjects (CPL)</h2>
-                        <p className="text-muted-foreground max-w-3xl mx-auto text-lg">
-                            All ground classes for CPL cover mandatory DGCA subjects structured as per the latest DGCA
-                            syllabus and exam patterns
-                        </p>
-                    </motion.div>
-
-                    <div className="max-w-5xl mx-auto">
-                        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                            {cplSubjects.map((subject, index) => (
-                                <motion.div
-                                    key={subject.name}
-                                    initial={{ opacity: 0, y: 30 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: index * 0.1 }}
-                                    className="p-6 rounded-xl bg-card border border-border hover:border-primary/50 hover:shadow-hover transition-all"
-                                >
-                                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
-                                        <subject.icon className="h-6 w-6 text-primary" />
-                                    </div>
-                                    <h4 className="font-bold mb-2">{subject.name}</h4>
-                                    <p className="text-sm text-muted-foreground">{subject.description}</p>
-                                </motion.div>
-                            ))}
-                        </div>
+                    <SectionHeading
+                        title="DGCA Ground Class Subjects (CPL)"
+                        subtitle="All ground classes for CPL cover mandatory DGCA subjects structured as per the latest DGCA syllabus and exam patterns"
+                    />
+                    <div className="max-w-5xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {cplSubjects.map((s, i) => (
+                            <IconCard key={s.name} icon={s.icon} heading={s.name} body={s.description} index={i} />
+                        ))}
                     </div>
                 </div>
             </section>
 
-            {/* Why Ground Training Is Important */}
+            {/* ── Why Ground Training Is Important ── */}
             <section className="py-20 bg-muted/30">
                 <div className="container">
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="max-w-4xl mx-auto"
-                    >
-                        <h2 className="text-3xl md:text-4xl font-bold mb-6 text-center">
-                            Why DGCA Ground Training Is Important
-                        </h2>
-                        <p className="text-lg text-muted-foreground mb-8 text-center">
-                            Quality ground training is essential because DGCA exams are concept-based and require strong
-                            fundamentals
-                        </p>
-
-                        <div className="grid md:grid-cols-2 gap-4">
-                            {whyGroundTrainingMatters.map((reason, index) => (
-                                <motion.div
-                                    key={index}
-                                    initial={{ opacity: 0, y: 30 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: index * 0.1 }}
-                                    className="flex items-start gap-3 p-5 rounded-xl bg-card border border-border"
-                                >
-                                    <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                                    <span className="text-muted-foreground">{reason}</span>
-                                </motion.div>
-                            ))}
-                        </div>
-                    </motion.div>
-                </div>
-            </section>
-
-            {/* Benefits of DGCA Ground Classes */}
-            <section className="py-20 bg-background">
-                <div className="container">
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="text-center mb-12"
-                    >
-                        <h2 className="text-3xl md:text-4xl font-bold mb-4">Benefits of DGCA Ground Classes</h2>
-                        <p className="text-muted-foreground max-w-3xl mx-auto">
-                            Professional ground training provides comprehensive advantages for your aviation career
-                        </p>
-                    </motion.div>
-
-                    <div className="max-w-6xl mx-auto">
-                        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                            {trainingBenefits.map((benefit, index) => (
-                                <motion.div
-                                    key={benefit.title}
-                                    initial={{ opacity: 0, y: 30 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: index * 0.1 }}
-                                    className="p-6 rounded-xl bg-card border border-border hover:border-primary/50 hover:shadow-hover transition-all"
-                                >
-                                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
-                                        <benefit.icon className="h-6 w-6 text-primary" />
-                                    </div>
-                                    <h4 className="font-bold mb-2">{benefit.title}</h4>
-                                    <p className="text-sm text-muted-foreground">{benefit.description}</p>
-                                </motion.div>
-                            ))}
-                        </div>
+                    <SectionHeading
+                        title="Why DGCA Ground Training Is Important"
+                        subtitle="Quality ground training is essential because DGCA exams are concept-based and require strong fundamentals"
+                    />
+                    <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-4">
+                        {whyGroundTrainingMatters.map((reason, i) => (
+                            <BulletCard key={reason} text={reason} icon={CheckCircle} index={i} />
+                        ))}
                     </div>
                 </div>
             </section>
 
-            {/* Who Should Join */}
+            {/* ── Benefits ── */}
+            <section className="py-20 bg-background">
+                <div className="container">
+                    <SectionHeading
+                        title="Benefits of DGCA Ground Classes"
+                        subtitle="Professional ground training provides comprehensive advantages for your aviation career"
+                    />
+                    <div className="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {trainingBenefits.map((b, i) => (
+                            <IconCard key={b.title} icon={b.icon} heading={b.title} body={b.description} index={i} />
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* ── Who Should Join ── */}
             <section className="py-20 bg-muted/30">
                 <div className="container">
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="text-center mb-12"
-                    >
-                        <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                            Ground Classes for DGCA Exams – Who Should Join?
-                        </h2>
-                        <p className="text-muted-foreground max-w-2xl mx-auto">
-                            DGCA ground classes are ideal for various categories of aviation aspirants
-                        </p>
-                    </motion.div>
-
-                    <div className="max-w-5xl mx-auto">
-                        <div className="grid md:grid-cols-2 gap-6">
-                            {whoShouldJoin.map((item, index) => (
-                                <motion.div
-                                    key={item.category}
-                                    initial={{ opacity: 0, y: 30 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: index * 0.1 }}
-                                    className="p-6 rounded-xl bg-card border border-border hover:border-primary/50 transition-all"
-                                >
-                                    <div className="flex items-start gap-4">
-                                        <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-                                            <item.icon className="h-6 w-6 text-primary" />
-                                        </div>
-                                        <div>
-                                            <h4 className="font-bold mb-2">{item.category}</h4>
-                                            <p className="text-sm text-muted-foreground">{item.description}</p>
-                                        </div>
-                                    </div>
-                                </motion.div>
-                            ))}
-                        </div>
+                    <SectionHeading
+                        title="Ground Classes for DGCA Exams – Who Should Join?"
+                        subtitle="DGCA ground classes are ideal for various categories of aviation aspirants"
+                    />
+                    <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-6">
+                        {whoShouldJoin.map((item, i) => (
+                            <IconRowCard key={item.category} icon={item.icon} heading={item.category} body={item.description} index={i} />
+                        ))}
                     </div>
                 </div>
             </section>
 
-            {/* Online vs Offline */}
+            {/* ── Online vs Offline ── */}
             <section className="py-20 bg-background">
                 <div className="container">
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="text-center mb-12"
-                    >
-                        <h2 className="text-3xl md:text-4xl font-bold mb-4">Online vs Offline DGCA Ground Classes</h2>
-                        <p className="text-muted-foreground max-w-2xl mx-auto">
-                            Choose the learning format that best suits your schedule and learning style
-                        </p>
-                    </motion.div>
+                    <SectionHeading
+                        title="Online vs Offline DGCA Ground Classes"
+                        subtitle="Choose the learning format that best suits your schedule and learning style"
+                    />
 
                     <div className="max-w-4xl mx-auto mb-12">
                         <div className="grid md:grid-cols-2 gap-6 mb-8">
                             <motion.div
-                                initial={{ opacity: 0, x: -30 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true }}
+                                variants={fadeLeft}
+                                initial="hidden"
+                                whileInView="show"
+                                viewport={viewport}
                                 className="p-8 rounded-2xl bg-card border border-border"
                             >
                                 <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
@@ -614,29 +442,20 @@ export default function DGCAGroundClassesPage(): JSX.Element {
                                 </div>
                                 <h3 className="text-xl font-bold mb-3">DGCA Ground Classes Online</h3>
                                 <ul className="space-y-2">
-                                    <li className="flex items-center gap-2 text-muted-foreground">
-                                        <CheckCircle className="h-4 w-4 text-primary flex-shrink-0" />
-                                        <span className="text-sm">Live and recorded lectures</span>
-                                    </li>
-                                    <li className="flex items-center gap-2 text-muted-foreground">
-                                        <CheckCircle className="h-4 w-4 text-primary flex-shrink-0" />
-                                        <span className="text-sm">Flexible study schedule</span>
-                                    </li>
-                                    <li className="flex items-center gap-2 text-muted-foreground">
-                                        <CheckCircle className="h-4 w-4 text-primary flex-shrink-0" />
-                                        <span className="text-sm">Access to digital study material</span>
-                                    </li>
-                                    <li className="flex items-center gap-2 text-muted-foreground">
-                                        <CheckCircle className="h-4 w-4 text-primary flex-shrink-0" />
-                                        <span className="text-sm">Learn from anywhere in India</span>
-                                    </li>
+                                    {onlineFeatures.map((f) => (
+                                        <li key={f} className="flex items-center gap-2 text-muted-foreground">
+                                            <CheckCircle className="h-4 w-4 text-primary flex-shrink-0" />
+                                            <span className="text-sm">{f}</span>
+                                        </li>
+                                    ))}
                                 </ul>
                             </motion.div>
 
                             <motion.div
-                                initial={{ opacity: 0, x: 30 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true }}
+                                variants={fadeRight}
+                                initial="hidden"
+                                whileInView="show"
+                                viewport={viewport}
                                 className="p-8 rounded-2xl bg-card border border-border"
                             >
                                 <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
@@ -644,22 +463,12 @@ export default function DGCAGroundClassesPage(): JSX.Element {
                                 </div>
                                 <h3 className="text-xl font-bold mb-3">Offline DGCA Ground Classes</h3>
                                 <ul className="space-y-2">
-                                    <li className="flex items-center gap-2 text-muted-foreground">
-                                        <CheckCircle className="h-4 w-4 text-primary flex-shrink-0" />
-                                        <span className="text-sm">Face-to-face classroom interaction</span>
-                                    </li>
-                                    <li className="flex items-center gap-2 text-muted-foreground">
-                                        <CheckCircle className="h-4 w-4 text-primary flex-shrink-0" />
-                                        <span className="text-sm">Structured discipline and routine</span>
-                                    </li>
-                                    <li className="flex items-center gap-2 text-muted-foreground">
-                                        <CheckCircle className="h-4 w-4 text-primary flex-shrink-0" />
-                                        <span className="text-sm">Direct instructor guidance</span>
-                                    </li>
-                                    <li className="flex items-center gap-2 text-muted-foreground">
-                                        <CheckCircle className="h-4 w-4 text-primary flex-shrink-0" />
-                                        <span className="text-sm">Peer learning opportunities</span>
-                                    </li>
+                                    {offlineFeatures.map((f) => (
+                                        <li key={f} className="flex items-center gap-2 text-muted-foreground">
+                                            <CheckCircle className="h-4 w-4 text-primary flex-shrink-0" />
+                                            <span className="text-sm">{f}</span>
+                                        </li>
+                                    ))}
                                 </ul>
                             </motion.div>
                         </div>
@@ -667,9 +476,10 @@ export default function DGCAGroundClassesPage(): JSX.Element {
 
                     {/* Comparison Table */}
                     <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
+                        variants={fadeUp}
+                        initial="hidden"
+                        whileInView="show"
+                        viewport={viewport}
                         className="max-w-5xl mx-auto"
                     >
                         <h3 className="text-2xl font-bold mb-6 text-center">Detailed Comparison</h3>
@@ -683,8 +493,8 @@ export default function DGCAGroundClassesPage(): JSX.Element {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {onlineVsOffline.map((row, index) => (
-                                        <tr key={row.aspect} className={index % 2 === 0 ? "bg-card" : "bg-muted/30"}>
+                                    {onlineVsOffline.map((row, i) => (
+                                        <tr key={row.aspect} className={i % 2 === 0 ? "bg-card" : "bg-muted/30"}>
                                             <td className="px-6 py-4 font-semibold text-sm">{row.aspect}</td>
                                             <td className="px-6 py-4 text-muted-foreground text-sm">{row.online}</td>
                                             <td className="px-6 py-4 text-muted-foreground text-sm">{row.offline}</td>
@@ -697,157 +507,98 @@ export default function DGCAGroundClassesPage(): JSX.Element {
                 </div>
             </section>
 
-            {/* DGCA Ground Classes Fees */}
+            {/* ── Fees ── */}
             <section className="py-20 bg-muted/30">
                 <div className="container">
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="max-w-4xl mx-auto"
-                    >
-                        <h2 className="text-3xl md:text-4xl font-bold mb-6 text-center">DGCA Ground Classes Fees</h2>
-                        <p className="text-lg text-muted-foreground mb-8 text-center">
-                            DGCA ground classes fees depend on location, faculty quality, and training format
-                        </p>
-
-                        <div className="grid md:grid-cols-2 gap-6">
-                            <motion.div
-                                initial={{ opacity: 0, y: 30 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                className="p-8 rounded-2xl border border-border bg-card"
-                            >
-                                <DollarSign className="h-12 w-12 text-primary mb-4" />
-                                <h3 className="text-xl font-bold mb-4">Approximate Fee Range</h3>
-                                <ul className="space-y-3">
-                                    <li className="flex items-start gap-3">
-                                        <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                                        <div>
-                                            <span className="font-semibold">Full CPL Ground Classes:</span>
-                                            <span className="text-muted-foreground"> ₹1.5 – 3.5 Lakhs</span>
-                                        </div>
-                                    </li>
-                                    <li className="flex items-start gap-3">
-                                        <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                                        <span className="text-muted-foreground">Subject-wise enrollment available</span>
-                                    </li>
-                                    <li className="flex items-start gap-3">
-                                        <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                                        <span className="text-muted-foreground">Online classes generally cost less</span>
-                                    </li>
-                                </ul>
-                            </motion.div>
-
-                            <motion.div
-                                initial={{ opacity: 0, y: 30 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: 0.1 }}
-                                className="p-8 rounded-2xl bg-primary/5 border border-primary/20"
-                            >
-                                <MapPin className="h-12 w-12 text-primary mb-4" />
-                                <h3 className="text-xl font-bold mb-4">Find Classes Near You</h3>
-                                <p className="text-muted-foreground mb-4">
-                                    Students often search for "DGCA ground classes near me" or "CPL ground classes near
-                                    me" when comparing options.
-                                </p>
-                                <p className="text-muted-foreground">
-                                    Cities like Delhi are major hubs for offline DGCA ground training. Reputed institutes
-                                    now offer hybrid models to support students across India.
-                                </p>
-                            </motion.div>
-                        </div>
-                    </motion.div>
-                </div>
-            </section>
-
-            {/* How to Choose Best Ground Classes */}
-            <section className="py-20 bg-background">
-                <div className="container">
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="text-center mb-12"
-                    >
-                        <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                            Best Ground Classes for DGCA Exams – How to Choose
-                        </h2>
-                        <p className="text-muted-foreground max-w-3xl mx-auto">
-                            When selecting the best DGCA ground classes, consider these essential factors
-                        </p>
-                    </motion.div>
-
-                    <div className="max-w-5xl mx-auto">
-                        <div className="grid md:grid-cols-2 gap-6">
-                            {selectionFactors.map((factor, index) => (
-                                <motion.div
-                                    key={factor.factor}
-                                    initial={{ opacity: 0, y: 30 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: index * 0.1 }}
-                                    className="p-6 rounded-xl bg-card border border-border hover:border-primary/50 transition-all"
-                                >
-                                    <div className="flex items-start gap-4">
-                                        <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-                                            <factor.icon className="h-6 w-6 text-primary" />
-                                        </div>
-                                        <div>
-                                            <h4 className="font-bold mb-2">{factor.factor}</h4>
-                                            <p className="text-sm text-muted-foreground">{factor.description}</p>
-                                        </div>
+                    <SectionHeading
+                        title="DGCA Ground Classes Fees"
+                        subtitle="DGCA ground classes fees depend on location, faculty quality, and training format"
+                    />
+                    <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-6">
+                        <motion.div
+                            variants={fadeUp}
+                            initial="hidden"
+                            whileInView="show"
+                            viewport={viewport}
+                            className="p-8 rounded-2xl border border-border bg-card"
+                        >
+                            <DollarSign className="h-12 w-12 text-primary mb-4" />
+                            <h3 className="text-xl font-bold mb-4">Approximate Fee Range</h3>
+                            <ul className="space-y-3">
+                                <li className="flex items-start gap-3">
+                                    <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                                    <div>
+                                        <span className="font-semibold">Full CPL Ground Classes:</span>
+                                        <span className="text-muted-foreground"> ₹1.5 – 3.5 Lakhs</span>
                                     </div>
-                                </motion.div>
-                            ))}
-                        </div>
+                                </li>
+                                <li className="flex items-start gap-3">
+                                    <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                                    <span className="text-muted-foreground">Subject-wise enrollment available</span>
+                                </li>
+                                <li className="flex items-start gap-3">
+                                    <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                                    <span className="text-muted-foreground">Online classes generally cost less</span>
+                                </li>
+                            </ul>
+                        </motion.div>
+
+                        <motion.div
+                            variants={fadeUp}
+                            initial="hidden"
+                            whileInView="show"
+                            viewport={viewport}
+                            transition={{ delay: 0.1 }}
+                            className="p-8 rounded-2xl bg-primary/5 border border-primary/20"
+                        >
+                            <MapPin className="h-12 w-12 text-primary mb-4" />
+                            <h3 className="text-xl font-bold mb-4">Find Classes Near You</h3>
+                            <p className="text-muted-foreground mb-4">
+                                Students often search for "DGCA ground classes near me" or "CPL ground classes near
+                                me" when comparing options.
+                            </p>
+                            <p className="text-muted-foreground">
+                                Cities like Delhi are major hubs for offline DGCA ground training. Reputed institutes
+                                now offer hybrid models to support students across India.
+                            </p>
+                        </motion.div>
                     </div>
                 </div>
             </section>
 
-            {/* What You Learn */}
+            {/* ── How to Choose ── */}
+            <section className="py-20 bg-background">
+                <div className="container">
+                    <SectionHeading
+                        title="Best Ground Classes for DGCA Exams – How to Choose"
+                        subtitle="When selecting the best DGCA ground classes, consider these essential factors"
+                    />
+                    <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-6">
+                        {selectionFactors.map((f, i) => (
+                            <IconRowCard key={f.factor} icon={f.icon} heading={f.factor} body={f.description} index={i} />
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* ── What You Learn ── */}
             <section className="py-20 bg-muted/30">
                 <div className="container">
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="text-center mb-12"
-                    >
-                        <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                            Ground Classes for Pilots – What You Learn
-                        </h2>
-                        <p className="text-muted-foreground max-w-3xl mx-auto text-lg">
-                            Professional ground classes for pilots go beyond exam preparation to develop comprehensive
-                            aviation skills
-                        </p>
-                    </motion.div>
-
+                    <SectionHeading
+                        title="Ground Classes for Pilots – What You Learn"
+                        subtitle="Professional ground classes for pilots go beyond exam preparation to develop comprehensive aviation skills"
+                    />
                     <div className="max-w-5xl mx-auto">
                         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                            {skillsCovered.map((skill, index) => (
-                                <motion.div
-                                    key={skill.skill}
-                                    initial={{ opacity: 0, y: 30 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: index * 0.1 }}
-                                    className="p-6 rounded-xl bg-card border border-border hover:border-primary/50 hover:shadow-hover transition-all"
-                                >
-                                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
-                                        <skill.icon className="h-6 w-6 text-primary" />
-                                    </div>
-                                    <h4 className="font-bold mb-2">{skill.skill}</h4>
-                                    <p className="text-sm text-muted-foreground">{skill.description}</p>
-                                </motion.div>
+                            {skillsCovered.map((s, i) => (
+                                <IconCard key={s.skill} icon={s.icon} heading={s.skill} body={s.description} index={i} />
                             ))}
                         </div>
-
                         <motion.div
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
+                            variants={fadeUp}
+                            initial="hidden"
+                            whileInView="show"
+                            viewport={viewport}
                             className="mt-8 p-6 rounded-xl bg-primary/5 border border-primary/20 text-center"
                         >
                             <p className="text-muted-foreground">
@@ -859,63 +610,38 @@ export default function DGCAGroundClassesPage(): JSX.Element {
                 </div>
             </section>
 
-            {/* Preparation Tips */}
+            {/* ── Preparation Tips ── */}
             <section className="py-20 bg-background">
                 <div className="container">
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="max-w-4xl mx-auto"
-                    >
-                        <h2 className="text-3xl md:text-4xl font-bold mb-6 text-center">
-                            Ground Training Success Tips
-                        </h2>
-                        <p className="text-lg text-muted-foreground mb-8 text-center">
-                            Follow these guidelines to maximize your DGCA ground training experience
-                        </p>
-
-                        <div className="grid md:grid-cols-2 gap-4">
-                            {preparationTips.map((tip, index) => (
-                                <motion.div
-                                    key={index}
-                                    initial={{ opacity: 0, y: 30 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: index * 0.1 }}
-                                    className="flex items-start gap-3 p-5 rounded-xl bg-card border border-border"
-                                >
-                                    <Star className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                                    <span className="text-muted-foreground">{tip}</span>
-                                </motion.div>
-                            ))}
-                        </div>
-                    </motion.div>
+                    <SectionHeading
+                        title="Ground Training Success Tips"
+                        subtitle="Follow these guidelines to maximize your DGCA ground training experience"
+                    />
+                    <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-4">
+                        {preparationTips.map((tip, i) => (
+                            <BulletCard key={tip} text={tip} icon={Star} index={i} />
+                        ))}
+                    </div>
                 </div>
             </section>
 
-            {/* Final CTA */}
+            {/* ── Final CTA ── */}
             <section className="py-20 aviation-gradient text-primary-foreground">
                 <div className="container">
                     <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
+                        variants={fadeUp}
+                        initial="hidden"
+                        whileInView="show"
+                        viewport={viewport}
                         className="max-w-3xl mx-auto text-center"
                     >
                         <h2 className="text-3xl md:text-4xl font-bold mb-6">
                             Start Your Pilot Journey with the Right Ground Classes
                         </h2>
                         <div className="space-y-4 text-primary-foreground/80 text-lg mb-8">
-                            <p>
-                                Having the right theoretical knowledge is the key to becoming a professional pilot. Taking the right DGCA ground classes is the key to acing the exam with confidence and moving ahead with your CPL.
-                            </p>
-                            <p>
-                                Whether you want to take the DGCA ground classes online or offline in Delhi, the right ground training is the smartest move you can make at the beginning of your pilot training.
-                            </p>
-                            <p>
-                                Join thousands of other pilots who cleared the DGCA exam on the first attempt and are flying with the top airlines around the world.
-                            </p>
+                            <p>Having the right theoretical knowledge is the key to becoming a professional pilot. Taking the right DGCA ground classes is the key to acing the exam with confidence and moving ahead with your CPL.</p>
+                            <p>Whether you want to take the DGCA ground classes online or offline in Delhi, the right ground training is the smartest move you can make at the beginning of your pilot training.</p>
+                            <p>Join thousands of other pilots who cleared the DGCA exam on the first attempt and are flying with the top airlines around the world.</p>
                         </div>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <Button variant="gold" size="lg" asChild>
@@ -935,11 +661,15 @@ export default function DGCAGroundClassesPage(): JSX.Element {
                         <div className="mt-12 pt-12 border-t border-white/20">
                             <p className="text-primary-foreground/70 text-sm mb-4">Popular Searches</p>
                             <div className="flex flex-wrap gap-3 justify-center text-sm">
-                                <span className="px-3 py-1 bg-white/10 rounded-full">DGCA ground classes near me</span>
-                                <span className="px-3 py-1 bg-white/10 rounded-full">CPL ground classes near me</span>
-                                <span className="px-3 py-1 bg-white/10 rounded-full">Ground classes for CPL in Delhi</span>
-                                <span className="px-3 py-1 bg-white/10 rounded-full">DGCA ground classes online</span>
-                                <span className="px-3 py-1 bg-white/10 rounded-full">Online ground classes for CPL</span>
+                                {[
+                                    "DGCA ground classes near me",
+                                    "CPL ground classes near me",
+                                    "Ground classes for CPL in Delhi",
+                                    "DGCA ground classes online",
+                                    "Online ground classes for CPL",
+                                ].map((tag) => (
+                                    <span key={tag} className="px-3 py-1 bg-white/10 rounded-full">{tag}</span>
+                                ))}
                             </div>
                         </div>
                     </motion.div>

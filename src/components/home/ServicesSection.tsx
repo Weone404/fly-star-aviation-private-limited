@@ -48,26 +48,42 @@ const services = [
   },
 ];
 
-// Single reusable hook — replaces all motion.div instances
-function useFadeInView(threshold = 0.15) {
+function useFadeInView(threshold = 0.1) {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
+
   useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setVisible(true);
+      return;
+    }
     const el = ref.current;
     if (!el) return;
     const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) { setVisible(true); observer.disconnect(); } },
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          observer.disconnect();
+        }
+      },
       { threshold }
     );
     observer.observe(el);
     return () => observer.disconnect();
   }, [threshold]);
+
   return { ref, visible };
 }
 
-// Arrow SVG extracted as a constant — not recreated on every render
+// Extracted constant — not recreated on every render
 const ArrowIcon = (
-  <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+  <svg
+    className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+    aria-hidden="true"
+  >
     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
   </svg>
 );
@@ -77,63 +93,75 @@ export function ServicesSection() {
   const grid = useFadeInView(0.05);
 
   return (
-    <section className="py-20 bg-background">
-      <div className="container">
+    <section className="py-12 md:py-20 bg-background">
+      <div className="container px-4 sm:px-6">
+
         {/* Header */}
         <div
           ref={header.ref}
           style={{
             opacity: header.visible ? 1 : 0,
-            transform: header.visible ? "translateY(0)" : "translateY(30px)",
+            transform: header.visible ? "translateY(0)" : "translateY(20px)",
             transition: "opacity 0.5s ease, transform 0.5s ease",
           }}
-          className="text-center mb-16"
+          className="text-center mb-10 md:mb-16"
         >
           <span className="inline-block text-sm font-semibold text-accent bg-accent/10 px-4 py-2 rounded-full mb-4">
             Our Services
           </span>
-          <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-foreground mb-3 md:mb-4">
             Complete Aviation Solutions
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-            From training to placement, we offer complete aviation solutions to help you fulfill your dreams.
+          <p className="text-muted-foreground max-w-2xl mx-auto text-base md:text-lg">
+            From training to placement, we offer complete aviation solutions to
+            help you fulfill your dreams.
           </p>
         </div>
 
-        {/* Cards grid — staggered via CSS animation-delay, no JS per card */}
+        {/* Cards grid */}
         <div
           ref={grid.ref}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8"
         >
           {services.map((service, index) => (
             <div
               key={service.title}
               style={{
                 opacity: grid.visible ? 1 : 0,
-                transform: grid.visible ? "translateY(0)" : "translateY(30px)",
-                // CSS stagger — no JS timers, runs on compositor
-                transition: `opacity 0.5s ease ${index * 80}ms, transform 0.5s ease ${index * 80}ms`,
+                transform: grid.visible ? "translateY(0)" : "translateY(20px)",
+                // Clamp stagger delay — long delays feel broken on mobile
+                transition: `opacity 0.5s ease ${Math.min(index * 80, 320)}ms, transform 0.5s ease ${Math.min(index * 80, 320)}ms`,
               }}
             >
               <Link to={service.href} className="block group h-full">
-                <div className="relative h-full bg-card rounded-2xl p-8 shadow-card hover:shadow-hover transition-shadow duration-300 border border-border hover:border-primary/30 overflow-hidden">
-                  {/* Gradient accent bar */}
-                  <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${service.color}`} aria-hidden="true" />
+                <div className="relative h-full bg-card rounded-2xl p-5 md:p-8 shadow-card border border-border
+                                hover:shadow-hover hover:border-primary/30 transition-shadow duration-300
+                                active:scale-[0.98] transition-transform overflow-hidden">
 
-                  {/* Icon — scale via CSS, not JS */}
-                  <div className={`inline-flex items-center justify-center w-14 h-14 rounded-xl bg-gradient-to-r ${service.color} mb-6 transition-transform duration-300 group-hover:scale-110`}>
-                    <service.icon className="h-7 w-7 text-white" aria-hidden="true" />
+                  {/* Gradient accent bar */}
+                  <div
+                    className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${service.color}`}
+                    aria-hidden="true"
+                  />
+
+                  {/* Icon */}
+                  <div
+                    className={`inline-flex items-center justify-center w-12 h-12 md:w-14 md:h-14 rounded-xl bg-gradient-to-r ${service.color} mb-4 md:mb-6
+                                transition-transform duration-300 group-hover:scale-110`}
+                  >
+                    <service.icon className="h-6 w-6 md:h-7 md:w-7 text-white" aria-hidden="true" />
                   </div>
 
-                  <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors duration-200">
+                  <h3 className="text-lg md:text-xl font-bold mb-2 md:mb-3 group-hover:text-primary transition-colors duration-200">
                     {service.title}
                   </h3>
-                  <p className="text-muted-foreground leading-relaxed">
+                  <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
                     {service.description}
                   </p>
 
-                  {/* Hover arrow */}
-                  <div className="mt-6 flex items-center text-primary font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                  {/* "Learn more" — always visible on mobile (no hover), hidden then revealed on desktop */}
+                  <div className="mt-4 md:mt-6 flex items-center text-primary font-semibold
+                                  opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-200">
                     Learn more
                     {ArrowIcon}
                   </div>

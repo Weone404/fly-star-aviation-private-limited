@@ -27,23 +27,23 @@ import {
 // ─── Image Slider Data ────────────────────────────────────────────────────────
 const heroSlides = [
     {
-        image: "/cpl-slider/slider1.jpeg",
+        image: "/cpl-slider/slider1.webp",
         caption: "Your First Step Toward the Cockpit",
     },
     {
-        image: "/cpl-slider/silder2.jpeg",
+        image: "/cpl-slider/silder2.webp",
         caption: "World-Class Flying Training",
     },
     {
-        image: "/cpl-slider/slider3.jpeg",
+        image: "/cpl-slider/slider3.webp",
         caption: "Real Cross-Country Experience",
     },
     {
-        image: "/cpl-slider/slider4.jpeg",
+        image: "/cpl-slider/slider4.webp",
         caption: "CPL Certified & Career Ready",
     },
     {
-        image: "/cpl-slider/slider5.jpeg",
+        image: "/cpl-slider/slider5.webp",
         caption: "Professional Flight Training",
     },
 ];

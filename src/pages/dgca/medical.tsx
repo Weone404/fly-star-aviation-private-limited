@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { lazy, Suspense, memo } from "react";
 import { Helmet } from "react-helmet-async";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
@@ -25,48 +25,70 @@ import {
     LucideIcon,
 } from "lucide-react";
 
-interface OverviewRow {
-    label: string;
-    value: string;
+// ─── Lazy-load framer-motion so it doesn't block the initial paint ───────────
+const MotionDiv = lazy(() =>
+    import("framer-motion").then((m) => ({ default: m.motion.div }))
+);
+
+// Thin wrapper: falls back to a plain div while the bundle loads, so the
+// page is interactive immediately and layout never shifts.
+function FadeIn({
+    children,
+    className,
+    delay = 0,
+    x = 0,
+    once = true,
+}: {
+    children: React.ReactNode;
+    className?: string;
+    delay?: number;
+    x?: number;
+    once?: boolean;
+}) {
+    return (
+        <Suspense fallback={<div className={className}>{children}</div>}>
+            <MotionDiv
+                initial={{ opacity: 0, y: x === 0 ? 30 : 0, x }}
+                whileInView={{ opacity: 1, y: 0, x: 0 }}
+                animate={undefined}
+                viewport={{ once, amount: 0.1 }}
+                transition={{ duration: 0.45, delay, ease: "easeOut" }}
+                className={className}
+            >
+                {children}
+            </MotionDiv>
+        </Suspense>
+    );
 }
 
-interface MedicalComparison {
-    aspect: string;
-    classII: string;
-    classI: string;
+// Hero uses animate (not whileInView) – keep it separate so the rest of the
+// bundle doesn't block the hero render.
+function HeroMotion({ children, className }: { children: React.ReactNode; className?: string }) {
+    return (
+        <Suspense fallback={<div className={className}>{children}</div>}>
+            <MotionDiv
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
+                className={className}
+            >
+                {children}
+            </MotionDiv>
+        </Suspense>
+    );
 }
 
+// ─── Static data (defined once at module level – zero re-creation cost) ──────
+
+interface OverviewRow { label: string; value: string }
+interface MedicalComparison { aspect: string; classII: string; classI: string }
 interface ClassIIRequirement {
-    icon: LucideIcon;
-    category: string;
-    details: string;
-    tests: string[];
+    icon: LucideIcon; category: string; details: string; tests: string[];
 }
-
-interface ClassIAdvancedTest {
-    icon: LucideIcon;
-    test: string;
-    description: string;
-}
-
-interface MedicalStep {
-    step: number;
-    title: string;
-    description: string;
-    icon: LucideIcon;
-}
-
-interface ImportantConsideration {
-    title: string;
-    description: string;
-    icon: LucideIcon;
-}
-
-interface ValidityRule {
-    age: string;
-    classII: string;
-    classI: string;
-}
+interface ClassIAdvancedTest { icon: LucideIcon; test: string; description: string }
+interface MedicalStep { step: number; title: string; description: string; icon: LucideIcon }
+interface ImportantConsideration { title: string; description: string; icon: LucideIcon }
+interface ValidityRule { age: string; classII: string; classI: string }
 
 const quickOverview: OverviewRow[] = [
     { label: "Medical Types", value: "Class II & Class I" },
@@ -79,174 +101,46 @@ const quickOverview: OverviewRow[] = [
 ];
 
 const medicalComparison: MedicalComparison[] = [
-    {
-        aspect: "Purpose",
-        classII: "Student Pilot License (SPL), Private Flying",
-        classI: "Commercial Pilot License (CPL), Professional Flying"
-    },
-    {
-        aspect: "Complexity",
-        classII: "Basic Medical Assessment",
-        classI: "Comprehensive Medical Examination"
-    },
-    {
-        aspect: "Vision Standards",
-        classII: "Standard eyesight (with/without correction)",
-        classI: "Stricter vision requirements"
-    },
-    {
-        aspect: "Testing Depth",
-        classII: "General fitness evaluation",
-        classI: "Advanced tests (ECG, X-ray, blood work)"
-    },
-    {
-        aspect: "Validity (Under 40)",
-        classII: "5 Years",
-        classI: "1 Year"
-    },
-    {
-        aspect: "Career Stage",
-        classII: "Entry Level - Flight Training",
-        classI: "Professional - Commercial Operations"
-    },
+    { aspect: "Purpose", classII: "Student Pilot License (SPL), Private Flying", classI: "Commercial Pilot License (CPL), Professional Flying" },
+    { aspect: "Complexity", classII: "Basic Medical Assessment", classI: "Comprehensive Medical Examination" },
+    { aspect: "Vision Standards", classII: "Standard eyesight (with/without correction)", classI: "Stricter vision requirements" },
+    { aspect: "Testing Depth", classII: "General fitness evaluation", classI: "Advanced tests (ECG, X-ray, blood work)" },
+    { aspect: "Validity (Under 40)", classII: "5 Years", classI: "1 Year" },
+    { aspect: "Career Stage", classII: "Entry Level - Flight Training", classI: "Professional - Commercial Operations" },
 ];
 
 const classIIRequirements: ClassIIRequirement[] = [
-    {
-        icon: Eye,
-        category: "Vision Requirements",
-        details: "Acceptable eyesight with or without corrective lenses",
-        tests: ["Visual acuity test", "Color vision assessment", "Depth perception"]
-    },
-    {
-        icon: Ear,
-        category: "Hearing Requirements",
-        details: "Standard hearing ability for effective communication",
-        tests: ["Pure tone audiometry", "Speech discrimination", "Ear examination"]
-    },
-    {
-        icon: Heart,
-        category: "Physical Requirements",
-        details: "Basic physical health to ensure general fitness",
-        tests: ["Blood pressure", "General physical examination", "Height & weight assessment"]
-    },
-    {
-        icon: Brain,
-        category: "Mental Fitness",
-        details: "Psychological stability for flight training",
-        tests: ["Mental health assessment", "Cognitive function", "Stress evaluation"]
-    },
+    { icon: Eye, category: "Vision Requirements", details: "Acceptable eyesight with or without corrective lenses", tests: ["Visual acuity test", "Color vision assessment", "Depth perception"] },
+    { icon: Ear, category: "Hearing Requirements", details: "Standard hearing ability for effective communication", tests: ["Pure tone audiometry", "Speech discrimination", "Ear examination"] },
+    { icon: Heart, category: "Physical Requirements", details: "Basic physical health to ensure general fitness", tests: ["Blood pressure", "General physical examination", "Height & weight assessment"] },
+    { icon: Brain, category: "Mental Fitness", details: "Psychological stability for flight training", tests: ["Mental health assessment", "Cognitive function", "Stress evaluation"] },
 ];
 
 const classIAdvancedTests: ClassIAdvancedTest[] = [
-    {
-        icon: Activity,
-        test: "Electrocardiogram (ECG)",
-        description: "Comprehensive heart function analysis",
-    },
-    {
-        icon: Stethoscope,
-        test: "Blood Tests",
-        description: "Complete blood count, glucose, lipid profile",
-    },
-    {
-        icon: FileCheck,
-        test: "Chest X-Ray",
-        description: "Lung and thoracic cavity assessment",
-    },
-    {
-        icon: Ear,
-        test: "Audiometry",
-        description: "Detailed hearing threshold evaluation",
-    },
-    {
-        icon: Eye,
-        test: "Ophthalmology Assessment",
-        description: "Advanced eye examination including fundoscopy",
-    },
-    {
-        icon: Brain,
-        test: "Psychological Evaluation",
-        description: "In-depth mental health and cognitive assessment",
-    },
+    { icon: Activity, test: "Electrocardiogram (ECG)", description: "Comprehensive heart function analysis" },
+    { icon: Stethoscope, test: "Blood Tests", description: "Complete blood count, glucose, lipid profile" },
+    { icon: FileCheck, test: "Chest X-Ray", description: "Lung and thoracic cavity assessment" },
+    { icon: Ear, test: "Audiometry", description: "Detailed hearing threshold evaluation" },
+    { icon: Eye, test: "Ophthalmology Assessment", description: "Advanced eye examination including fundoscopy" },
+    { icon: Brain, test: "Psychological Evaluation", description: "In-depth mental health and cognitive assessment" },
 ];
 
 const classIISteps: MedicalStep[] = [
-    {
-        step: 1,
-        title: "Register on eGCA Portal",
-        description: "Create account and register for DGCA Class II medical examination",
-        icon: FileText,
-    },
-    {
-        step: 2,
-        title: "Select Medical Examiner",
-        description: "Choose a DGCA-approved medical examiner or center",
-        icon: Users,
-    },
-    {
-        step: 3,
-        title: "Undergo Medical Tests",
-        description: "Complete all required physical and vision examinations",
-        icon: Stethoscope,
-    },
-    {
-        step: 4,
-        title: "Submit Medical Reports",
-        description: "Provide all test results to the approved doctor",
-        icon: ClipboardList,
-    },
-    {
-        step: 5,
-        title: "Receive Certificate",
-        description: "Get your DGCA Class II medical certificate",
-        icon: Award,
-    },
+    { step: 1, title: "Register on eGCA Portal", description: "Create account and register for DGCA Class II medical examination", icon: FileText },
+    { step: 2, title: "Select Medical Examiner", description: "Choose a DGCA-approved medical examiner or center", icon: Users },
+    { step: 3, title: "Undergo Medical Tests", description: "Complete all required physical and vision examinations", icon: Stethoscope },
+    { step: 4, title: "Submit Medical Reports", description: "Provide all test results to the approved doctor", icon: ClipboardList },
+    { step: 5, title: "Receive Certificate", description: "Get your DGCA Class II medical certificate", icon: Award },
 ];
 
 const classISteps: MedicalStep[] = [
-    {
-        step: 1,
-        title: "Complete Class II Medical",
-        description: "Ensure your Class II medical is valid before applying",
-        icon: Shield,
-    },
-    {
-        step: 2,
-        title: "Register for Class I",
-        description: "Apply through eGCA portal for advanced medical",
-        icon: FileText,
-    },
-    {
-        step: 3,
-        title: "Choose Approved Center",
-        description: "Select DGCA-authorized Class I medical facility",
-        icon: Users,
-    },
-    {
-        step: 4,
-        title: "Comprehensive Testing",
-        description: "Undergo ECG, blood tests, X-ray, and all assessments",
-        icon: Activity,
-    },
-    {
-        step: 5,
-        title: "Specialist Consultations",
-        description: "Complete ophthalmology and other specialist exams",
-        icon: Eye,
-    },
-    {
-        step: 6,
-        title: "Final Assessment",
-        description: "Medical examiner reviews all reports",
-        icon: ClipboardList,
-    },
-    {
-        step: 7,
-        title: "Obtain Class I Certificate",
-        description: "Receive your commercial pilot medical certification",
-        icon: Award,
-    },
+    { step: 1, title: "Complete Class II Medical", description: "Ensure your Class II medical is valid before applying", icon: Shield },
+    { step: 2, title: "Register for Class I", description: "Apply through eGCA portal for advanced medical", icon: FileText },
+    { step: 3, title: "Choose Approved Center", description: "Select DGCA-authorized Class I medical facility", icon: Users },
+    { step: 4, title: "Comprehensive Testing", description: "Undergo ECG, blood tests, X-ray, and all assessments", icon: Activity },
+    { step: 5, title: "Specialist Consultations", description: "Complete ophthalmology and other specialist exams", icon: Eye },
+    { step: 6, title: "Final Assessment", description: "Medical examiner reviews all reports", icon: ClipboardList },
+    { step: 7, title: "Obtain Class I Certificate", description: "Receive your commercial pilot medical certification", icon: Award },
 ];
 
 const whoNeedsClassII: string[] = [
@@ -264,44 +158,16 @@ const whoNeedsClassI: string[] = [
 ];
 
 const importantConsiderations: ImportantConsideration[] = [
-    {
-        title: "Medical Standards are Strict",
-        description: "DGCA maintains stringent health standards to ensure passenger and crew safety",
-        icon: Shield,
-    },
-    {
-        title: "Early Preparation Matters",
-        description: "Start your medical assessment early to address any potential issues",
-        icon: Clock,
-    },
-    {
-        title: "Choose Authorized Centers",
-        description: "Only DGCA-approved medical examiners can issue valid certificates",
-        icon: UserCheck,
-    },
-    {
-        title: "Maintain Valid Certification",
-        description: "Renew your medical before expiry to avoid training interruptions",
-        icon: AlertCircle,
-    },
+    { title: "Medical Standards are Strict", description: "DGCA maintains stringent health standards to ensure passenger and crew safety", icon: Shield },
+    { title: "Early Preparation Matters", description: "Start your medical assessment early to address any potential issues", icon: Clock },
+    { title: "Choose Authorized Centers", description: "Only DGCA-approved medical examiners can issue valid certificates", icon: UserCheck },
+    { title: "Maintain Valid Certification", description: "Renew your medical before expiry to avoid training interruptions", icon: AlertCircle },
 ];
 
 const validityRules: ValidityRule[] = [
-    {
-        age: "Under 40 Years",
-        classII: "Valid for 5 Years",
-        classI: "Valid for 1 Year",
-    },
-    {
-        age: "40-50 Years",
-        classII: "Valid for 2 Years",
-        classI: "Valid for 6 Months",
-    },
-    {
-        age: "Over 50 Years",
-        classII: "Valid for 1 Year",
-        classI: "Valid for 6 Months",
-    },
+    { age: "Under 40 Years", classII: "Valid for 5 Years", classI: "Valid for 1 Year" },
+    { age: "40-50 Years", classII: "Valid for 2 Years", classI: "Valid for 6 Months" },
+    { age: "Over 50 Years", classII: "Valid for 1 Year", classI: "Valid for 6 Months" },
 ];
 
 const preparationTips: string[] = [
@@ -315,6 +181,81 @@ const preparationTips: string[] = [
     "Arrive on time with all required documents",
 ];
 
+// ─── Memoised sub-components (prevent unnecessary re-renders) ─────────────────
+
+const OverviewTableRow = memo(function OverviewTableRow({
+    row, even,
+}: { row: OverviewRow; even: boolean }) {
+    return (
+        <tr className={even ? "bg-card" : "bg-muted/30"}>
+            <td className="px-6 py-4 font-semibold text-sm">{row.label}</td>
+            <td className="px-6 py-4 text-muted-foreground text-sm">{row.value}</td>
+        </tr>
+    );
+});
+
+const ComparisonRow = memo(function ComparisonRow({
+    row, even,
+}: { row: MedicalComparison; even: boolean }) {
+    return (
+        <tr className={even ? "bg-card" : "bg-muted/30"}>
+            <td className="px-6 py-4 font-semibold text-sm">{row.aspect}</td>
+            <td className="px-6 py-4 text-muted-foreground text-sm">{row.classII}</td>
+            <td className="px-6 py-4 text-muted-foreground text-sm">{row.classI}</td>
+        </tr>
+    );
+});
+
+const RequirementCard = memo(function RequirementCard({
+    req, delay,
+}: { req: ClassIIRequirement; delay: number }) {
+    const Icon = req.icon;
+    return (
+        <FadeIn
+            delay={delay}
+            className="p-6 rounded-xl bg-card border border-border hover:border-primary/50 transition-colors"
+        // CSS will-change hint via inline style to unlock GPU compositing
+        >
+            <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
+                <Icon className="h-6 w-6 text-primary" />
+            </div>
+            <h4 className="font-bold mb-2">{req.category}</h4>
+            <p className="text-sm text-muted-foreground mb-4">{req.details}</p>
+            <div className="space-y-1">
+                {req.tests.map((test) => (
+                    <div key={test} className="flex items-center gap-2 text-xs text-muted-foreground">
+                        <span className="w-1 h-1 rounded-full bg-primary" />
+                        {test}
+                    </div>
+                ))}
+            </div>
+        </FadeIn>
+    );
+});
+
+const StepCard = memo(function StepCard({
+    item, delay,
+}: { item: MedicalStep; delay: number }) {
+    const Icon = item.icon;
+    return (
+        <FadeIn
+            delay={delay}
+            className="relative p-6 rounded-xl bg-card border border-border hover:border-primary/50 transition-colors"
+        >
+            <div className="absolute -top-4 -left-4 w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold text-lg shadow-lg">
+                {item.step}
+            </div>
+            <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-3">
+                <Icon className="h-6 w-6 text-primary" />
+            </div>
+            <h4 className="font-bold mb-2">{item.title}</h4>
+            <p className="text-sm text-muted-foreground">{item.description}</p>
+        </FadeIn>
+    );
+});
+
+// ─── Page component ───────────────────────────────────────────────────────────
+
 export default function DGCAMedicalGuidePage(): JSX.Element {
     return (
         <Layout>
@@ -326,14 +267,10 @@ export default function DGCAMedicalGuidePage(): JSX.Element {
                 />
             </Helmet>
 
-            {/* Hero Section */}
+            {/* ── Hero ── */}
             <section className="relative py-24 aviation-gradient text-primary-foreground">
                 <div className="container">
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="max-w-4xl"
-                    >
+                    <HeroMotion className="max-w-4xl">
                         <span className="inline-block text-sm font-semibold bg-white/20 px-4 py-2 rounded-full mb-4">
                             Essential Medical Guide
                         </span>
@@ -341,10 +278,15 @@ export default function DGCAMedicalGuidePage(): JSX.Element {
                             DGCA Class 2 & Class 1 Medical Guide
                         </h1>
                         <p className="text-xl text-primary-foreground/80 mb-6">
-                            Piloting in India requires aspiring pilots to undergo medical examinations to test their mental and physical fitness to operate an aircraft. The DGCA, or Directorate General of Civil Aviation, requires aspiring pilots to undergo two medical examinations, DGCA Class II and DGCA Class I medical certification.
+                            Piloting in India requires aspiring pilots to undergo medical examinations to test their
+                            mental and physical fitness to operate an aircraft. The DGCA, or Directorate General of
+                            Civil Aviation, requires aspiring pilots to undergo two medical examinations, DGCA Class II
+                            and DGCA Class I medical certification.
                         </p>
                         <p className="text-lg text-primary-foreground/80 mb-8">
-                            Both medical examinations are essential for aspiring pilots to kick-start their careers in aviation. This is a comprehensive guide to help you understand everything you need to know about DGCA medical certification.
+                            Both medical examinations are essential for aspiring pilots to kick-start their careers in
+                            aviation. This is a comprehensive guide to help you understand everything you need to know
+                            about DGCA medical certification.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4">
                             <Button variant="gold" size="lg" asChild>
@@ -358,55 +300,37 @@ export default function DGCAMedicalGuidePage(): JSX.Element {
                             </Button>
                         </div>
 
-                        {/* Quick Stats */}
+                        {/* Quick Stats – static, no animation needed */}
                         <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mt-12 pt-12 border-t border-white/20">
-                            <div>
-                                <div className="flex items-center gap-2 mb-2">
-                                    <Shield className="h-5 w-5" />
-                                    <div className="text-2xl font-bold">2 Types</div>
+                            {[
+                                { Icon: Shield, value: "2 Types", label: "Medical Certifications" },
+                                { Icon: UserCheck, value: "DGCA", label: "Approved Centers" },
+                                { Icon: CheckCircle, value: "100%", label: "Safety Standards" },
+                            ].map(({ Icon, value, label }) => (
+                                <div key={label}>
+                                    <div className="flex items-center gap-2 mb-2">
+                                        <Icon className="h-5 w-5" />
+                                        <div className="text-2xl font-bold">{value}</div>
+                                    </div>
+                                    <div className="text-primary-foreground/70 text-sm">{label}</div>
                                 </div>
-                                <div className="text-primary-foreground/70 text-sm">Medical Certifications</div>
-                            </div>
-                            <div>
-                                <div className="flex items-center gap-2 mb-2">
-                                    <UserCheck className="h-5 w-5" />
-                                    <div className="text-2xl font-bold">DGCA</div>
-                                </div>
-                                <div className="text-primary-foreground/70 text-sm">Approved Centers</div>
-                            </div>
-                            <div>
-                                <div className="flex items-center gap-2 mb-2">
-                                    <CheckCircle className="h-5 w-5" />
-                                    <div className="text-2xl font-bold">100%</div>
-                                </div>
-                                <div className="text-primary-foreground/70 text-sm">Safety Standards</div>
-                            </div>
+                            ))}
                         </div>
-                    </motion.div>
+                    </HeroMotion>
                 </div>
             </section>
 
-            {/* Quick Overview */}
+            {/* ── Quick Overview ── */}
             <section className="py-20 bg-background">
                 <div className="container">
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="text-center mb-12"
-                    >
+                    <FadeIn className="text-center mb-12">
                         <h2 className="text-3xl md:text-4xl font-bold mb-4">Quick Medical Overview</h2>
                         <p className="text-muted-foreground max-w-2xl mx-auto">
                             Essential information about DGCA medical certifications
                         </p>
-                    </motion.div>
+                    </FadeIn>
 
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="max-w-4xl mx-auto"
-                    >
+                    <FadeIn className="max-w-4xl mx-auto">
                         <div className="rounded-2xl border border-border overflow-hidden shadow-card">
                             <table className="w-full">
                                 <thead className="bg-primary text-primary-foreground">
@@ -416,42 +340,33 @@ export default function DGCAMedicalGuidePage(): JSX.Element {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {quickOverview.map((row, index) => (
-                                        <tr key={row.label} className={index % 2 === 0 ? "bg-card" : "bg-muted/30"}>
-                                            <td className="px-6 py-4 font-semibold text-sm">{row.label}</td>
-                                            <td className="px-6 py-4 text-muted-foreground text-sm">{row.value}</td>
-                                        </tr>
+                                    {quickOverview.map((row, i) => (
+                                        <OverviewTableRow key={row.label} row={row} even={i % 2 === 0} />
                                     ))}
                                 </tbody>
                             </table>
                         </div>
-                    </motion.div>
+                    </FadeIn>
                 </div>
             </section>
 
-            {/* Overview Section */}
+            {/* ── Overview Section ── */}
             <section className="py-20 bg-muted/30">
                 <div className="container">
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="max-w-4xl mx-auto"
-                    >
+                    <FadeIn className="max-w-4xl mx-auto">
                         <h2 className="text-3xl md:text-4xl font-bold mb-6">
                             Overview of DGCA Medical Examinations
                         </h2>
-                        <div className="space-y-4 text-lg text-muted-foreground mb-8">
-                            <p>
-                                In order to become a licensed pilot, a medical examination is conducted by the DGCA to check if the pilot meets stringent health requirements. These medical examinations are conducted to check the fitness of the pilots and to ascertain if they are suffering from any medical condition that might affect their ability to fly.
-                            </p>
-                        </div>
+                        <p className="text-lg text-muted-foreground mb-8">
+                            In order to become a licensed pilot, a medical examination is conducted by the DGCA to
+                            check if the pilot meets stringent health requirements. These medical examinations are
+                            conducted to check the fitness of the pilots and to ascertain if they are suffering from
+                            any medical condition that might affect their ability to fly.
+                        </p>
 
                         <div className="grid md:grid-cols-2 gap-6">
-                            <motion.div
-                                initial={{ opacity: 0, x: -30 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true }}
+                            <FadeIn
+                                x={-30}
                                 className="p-8 rounded-2xl bg-card border border-border hover:border-primary/50 transition-all"
                             >
                                 <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
@@ -466,12 +381,10 @@ export default function DGCAMedicalGuidePage(): JSX.Element {
                                     <Zap className="h-4 w-4" />
                                     Entry Level Assessment
                                 </div>
-                            </motion.div>
+                            </FadeIn>
 
-                            <motion.div
-                                initial={{ opacity: 0, x: 30 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true }}
+                            <FadeIn
+                                x={30}
                                 className="p-8 rounded-2xl bg-card border border-border hover:border-primary/50 transition-all"
                             >
                                 <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
@@ -486,33 +399,23 @@ export default function DGCAMedicalGuidePage(): JSX.Element {
                                     <Shield className="h-4 w-4" />
                                     Professional Standards
                                 </div>
-                            </motion.div>
+                            </FadeIn>
                         </div>
-                    </motion.div>
+                    </FadeIn>
                 </div>
             </section>
 
-            {/* Comparison Table */}
+            {/* ── Comparison Table ── */}
             <section className="py-20 bg-background">
                 <div className="container">
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="text-center mb-12"
-                    >
+                    <FadeIn className="text-center mb-12">
                         <h2 className="text-3xl md:text-4xl font-bold mb-4">Class II vs Class I Medical</h2>
                         <p className="text-muted-foreground max-w-2xl mx-auto">
                             Key differences between the two medical certifications
                         </p>
-                    </motion.div>
+                    </FadeIn>
 
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="max-w-5xl mx-auto"
-                    >
+                    <FadeIn className="max-w-5xl mx-auto">
                         <div className="rounded-2xl border border-border overflow-hidden shadow-card">
                             <table className="w-full">
                                 <thead className="bg-primary text-primary-foreground">
@@ -523,54 +426,44 @@ export default function DGCAMedicalGuidePage(): JSX.Element {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {medicalComparison.map((row, index) => (
-                                        <tr key={row.aspect} className={index % 2 === 0 ? "bg-card" : "bg-muted/30"}>
-                                            <td className="px-6 py-4 font-semibold text-sm">{row.aspect}</td>
-                                            <td className="px-6 py-4 text-muted-foreground text-sm">{row.classII}</td>
-                                            <td className="px-6 py-4 text-muted-foreground text-sm">{row.classI}</td>
-                                        </tr>
+                                    {medicalComparison.map((row, i) => (
+                                        <ComparisonRow key={row.aspect} row={row} even={i % 2 === 0} />
                                     ))}
                                 </tbody>
                             </table>
                         </div>
-                    </motion.div>
+                    </FadeIn>
                 </div>
             </section>
 
-            {/* Class II Medical Section */}
+            {/* ── Class II Section ── */}
             <section className="py-20 bg-muted/30">
                 <div className="container">
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="max-w-4xl mx-auto mb-12"
-                    >
+                    <FadeIn className="max-w-4xl mx-auto mb-12">
                         <div className="inline-block bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-semibold mb-4">
                             Entry Level Certification
                         </div>
                         <h2 className="text-3xl md:text-4xl font-bold mb-6">DGCA Class II Medical Examination</h2>
                         <p className="text-lg text-muted-foreground">
-                            DGCA Class II Medical Examination is the basic qualification for those who wish to pursue a career in flying and start their flying training. This qualification is a must for the issue of a Student Pilot License (SPL) and admission to a DGCA-approved flying school.
+                            DGCA Class II Medical Examination is the basic qualification for those who wish to pursue a
+                            career in flying and start their flying training. This qualification is a must for the issue
+                            of a Student Pilot License (SPL) and admission to a DGCA-approved flying school.
                         </p>
-                    </motion.div>
+                    </FadeIn>
 
                     {/* Who Needs Class II */}
                     <div className="max-w-4xl mx-auto mb-12">
                         <h3 className="text-2xl font-bold mb-6">Who Needs a Class II Medical Certificate?</h3>
                         <div className="grid md:grid-cols-2 gap-4">
-                            {whoNeedsClassII.map((need, index) => (
-                                <motion.div
+                            {whoNeedsClassII.map((need, i) => (
+                                <FadeIn
                                     key={need}
-                                    initial={{ opacity: 0, y: 30 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: index * 0.1 }}
+                                    delay={i * 0.08}
                                     className="flex items-start gap-3 p-5 rounded-xl bg-card border border-border"
                                 >
                                     <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
                                     <span className="text-muted-foreground">{need}</span>
-                                </motion.div>
+                                </FadeIn>
                             ))}
                         </div>
                     </div>
@@ -579,29 +472,8 @@ export default function DGCAMedicalGuidePage(): JSX.Element {
                     <div className="max-w-5xl mx-auto mb-12">
                         <h3 className="text-2xl font-bold mb-8 text-center">Class II Medical Standards</h3>
                         <div className="grid md:grid-cols-2 gap-6">
-                            {classIIRequirements.map((req, index) => (
-                                <motion.div
-                                    key={req.category}
-                                    initial={{ opacity: 0, y: 30 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: index * 0.1 }}
-                                    className="p-6 rounded-xl bg-card border border-border hover:border-primary/50 transition-all"
-                                >
-                                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
-                                        <req.icon className="h-6 w-6 text-primary" />
-                                    </div>
-                                    <h4 className="font-bold mb-2">{req.category}</h4>
-                                    <p className="text-sm text-muted-foreground mb-4">{req.details}</p>
-                                    <div className="space-y-1">
-                                        {req.tests.map((test, i) => (
-                                            <div key={i} className="flex items-center gap-2 text-xs text-muted-foreground">
-                                                <span className="w-1 h-1 rounded-full bg-primary"></span>
-                                                {test}
-                                            </div>
-                                        ))}
-                                    </div>
-                                </motion.div>
+                            {classIIRequirements.map((req, i) => (
+                                <RequirementCard key={req.category} req={req} delay={i * 0.08} />
                             ))}
                         </div>
                     </div>
@@ -612,54 +484,37 @@ export default function DGCAMedicalGuidePage(): JSX.Element {
                             Steps to Obtain a Class II Medical Certificate
                         </h3>
                         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                            {classIISteps.map((item, index) => (
-                                <motion.div
-                                    key={item.step}
-                                    initial={{ opacity: 0, y: 30 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: index * 0.1 }}
-                                    className="relative p-6 rounded-xl bg-card border border-border hover:border-primary/50 transition-colors"
-                                >
-                                    <div className="absolute -top-4 -left-4 w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold text-lg shadow-lg">
-                                        {item.step}
-                                    </div>
-                                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-3">
-                                        <item.icon className="h-6 w-6 text-primary" />
-                                    </div>
-                                    <h4 className="font-bold mb-2">{item.title}</h4>
-                                    <p className="text-sm text-muted-foreground">{item.description}</p>
-                                </motion.div>
+                            {classIISteps.map((item, i) => (
+                                <StepCard key={item.step} item={item} delay={i * 0.08} />
                             ))}
                         </div>
                     </div>
                 </div>
             </section>
 
-            {/* Class I Medical Section - Continue with remaining sections */}
-            {/* ... */}
-
-            {/* Final CTA */}
+            {/* ── Final CTA ── */}
             <section className="py-20 aviation-gradient text-primary-foreground">
                 <div className="container">
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="max-w-3xl mx-auto text-center"
-                    >
+                    <FadeIn className="max-w-3xl mx-auto text-center">
                         <h2 className="text-3xl md:text-4xl font-bold mb-6">
                             Ready to Start Your Medical Certification?
                         </h2>
                         <div className="space-y-4 text-primary-foreground/80 text-lg mb-8">
                             <p>
-                                DGCA medical certifications are an essential milestone in your aviation career path. Understanding the requirements, procedures, and validity of medical certification helps you plan your pilot training schedule appropriately.
+                                DGCA medical certifications are an essential milestone in your aviation career path.
+                                Understanding the requirements, procedures, and validity of medical certification helps
+                                you plan your pilot training schedule appropriately.
                             </p>
                             <p>
-                                If you're looking to start your medical certification for your Student Pilot License with a Class II medical certification, or if you're looking to upgrade to a Class I medical certification for commercial flying operations, our expert guidance ensures your medical certification process is hassle-free.
+                                If you're looking to start your medical certification for your Student Pilot License
+                                with a Class II medical certification, or if you're looking to upgrade to a Class I
+                                medical certification for commercial flying operations, our expert guidance ensures
+                                your medical certification process is hassle-free.
                             </p>
                             <p>
-                                To know more about DGCA medical requirements and get in touch with certified medical examiners, our expert counselors have helped thousands of students through the medical certification process.
+                                To know more about DGCA medical requirements and get in touch with certified medical
+                                examiners, our expert counselors have helped thousands of students through the medical
+                                certification process.
                             </p>
                         </div>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -679,11 +534,11 @@ export default function DGCAMedicalGuidePage(): JSX.Element {
                                 For More Information on DGCA Medical Centers
                             </p>
                             <p className="text-primary-foreground/80">
-                                Candidates should consult DGCA-approved medical examiners or authorized medical centers for
-                                the most current requirements and detailed medical examination procedures.
+                                Candidates should consult DGCA-approved medical examiners or authorized medical centers
+                                for the most current requirements and detailed medical examination procedures.
                             </p>
                         </div>
-                    </motion.div>
+                    </FadeIn>
                 </div>
             </section>
         </Layout>
