@@ -15,6 +15,14 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preconnect" href="https://www.noupe.com" />
 
+  <!-- ✅ Load Google Fonts non-blocking (fixes render blocking) -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+    as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript>
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" />
+  </noscript>
+
   <!-- ✅ Preload hero image — tells browser about LCP image immediately -->
   <link rel="preload" as="image" href="/images/hero-aircraft-1280.webp"
     imagesrcset="/images/hero-aircraft-480.webp 480w, /images/hero-aircraft-800.webp 800w, /images/hero-aircraft-1280.webp 1280w"
