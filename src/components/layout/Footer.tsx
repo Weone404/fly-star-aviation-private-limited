@@ -16,6 +16,8 @@ const footerLinks = {
     { name: "Chartered Services", href: "/services/charter-services" },
     { name: "Aircraft Management", href: "/services/aircraft-management" },
     { name: "Sitemap", href: "/sitemap" },
+    { name: "Blog", href: "/Blogs" },
+
   ],
 };
 

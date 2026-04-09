@@ -6,21 +6,17 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 
-// ✅ QueryClient moved OUTSIDE component so it's never recreated on re-renders
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      staleTime: 60 * 1000, // cache queries for 1 minute
+      staleTime: 60 * 1000,
     },
   },
 });
 
-// ✅ Index is kept eager — it's the homepage and must load instantly
 import Index from "./pages/Index";
 
-// ✅ Everything else is lazy loaded — users only download what they visit
-
-// Popups — lazy + delayed mount
+// Popups
 const ContactPopup = lazy(() => import('../src/pages/Contactpopup'));
 const SpecialOfferBanner = lazy(() => import("./pages/Specialofferbanner"));
 
@@ -71,13 +67,16 @@ const Airlinetransportpilotlicence = lazy(() => import("./pages/BecomeAPilot/air
 const Commercialpilotlicence = lazy(() => import("./pages/BecomeAPilot/commercial-pilot-license"));
 const Becomepilot = lazy(() => import("./pages/BecomeAPilot/become-pilot"));
 
-// ✅ Minimal fallback — blank screen matching background, no layout shift
+// ✅ Blog pages
+const Blogs = lazy(() => import("./pages/Blogs"));
+const BlogDetail = lazy(() => import("./pages/BlogDetail"));
+const AdminBlog = lazy(() => import("./pages/AdminBlog"));
+
 function PageLoader() {
   return <div style={{ minHeight: "100vh", background: "var(--background, #fff)" }} />;
 }
 
 const App = () => {
-  // ✅ Delay mounting of popups/banners by 3s — doesn't affect LCP at all
   const [showExtras, setShowExtras] = useState(false);
 
   useEffect(() => {
@@ -92,7 +91,6 @@ const App = () => {
           <Toaster />
           <Sonner />
           <BrowserRouter>
-            {/* ✅ Suspense wraps all routes — lazy pages show PageLoader while loading */}
             <Suspense fallback={<PageLoader />}>
               <Routes>
                 <Route path="/" element={<Index />} />
@@ -168,11 +166,15 @@ const App = () => {
                 {/* SITEMAP */}
                 <Route path="/Sitemap" element={<Sitemap />} />
 
+                {/* BLOGS ✅ */}
+                <Route path="/blogs" element={<Blogs />} />
+                <Route path="/blogs/:id" element={<BlogDetail />} />
+                <Route path="/admin/blog" element={<AdminBlog />} />
+
                 {/* 404 */}
                 <Route path="*" element={<NotFound />} />
               </Routes>
 
-              {/* ✅ Popups delayed by 3s — won't impact LCP or TTI scores */}
               {showExtras && (
                 <>
                   <SpecialOfferBanner />
