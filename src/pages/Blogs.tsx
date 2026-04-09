@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { Header } from '@/components/layout/Header'
+import { Footer } from '@/components/layout/Footer'
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000'
 
@@ -37,6 +39,7 @@ export default function Blogs() {
 
     return (
         <div className="min-h-screen bg-background">
+            <Header />
 
             {/* ── Hero ── */}
             <div className="aviation-gradient pt-24 pb-16 px-4 text-center relative overflow-hidden">
@@ -44,6 +47,7 @@ export default function Blogs() {
                 <div className="absolute top-8 left-0 w-full pointer-events-none">
                     <span className="animate-fly text-3xl inline-block">✈️</span>
                 </div>
+
 
                 <div className="max-w-3xl mx-auto relative z-10">
                     <span className="inline-block bg-white/10 text-amber-400 border border-amber-400/30 text-xs font-semibold tracking-widest uppercase px-4 py-2 rounded-full mb-4">
@@ -229,7 +233,7 @@ export default function Blogs() {
                     </a>
                 </div>
             </div>
-
+            <Footer />
         </div>
     )
 }
