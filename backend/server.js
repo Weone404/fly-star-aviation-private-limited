@@ -37,6 +37,7 @@ app.use(cors({
         "https://www.flystar.co.in",
         "https://flystar.co.in",
         "https://fly-star-aviation-private-limited.onrender.com",
+        "fly-star-aviation-private-limited.vercel.app", // 👈 replace with your actual Vercel URL
     ]
 }));
 app.use(express.json());
@@ -165,20 +166,109 @@ app.post("/api/blogs", (req, res) => {
     });
 });
 
-// ── Health check ──
-app.get("/", (req, res) => res.send("🚀 Flying Star Aviator API is running"));
+// ── GET /api/meta ──
+// ── GET /api/meta ──
+app.get("/api/meta", (req, res) => {
+    const metaTags = {
+        "/": {
+            title: "Flying Star Aviator | Best Pilot Training Institute in India",
+            description: "Join Flying Star Aviator — India's best DGCA-approved CPL & ATPL ground classes in Delhi. Start your pilot career today.",
+        },
+        "/about": {
+            title: "About Us | Flying Star Aviator Private Limited",
+            description: "Learn about Flying Star Aviator, Delhi's leading aviation training institute since 2008.",
+        },
+        "/blogs": {
+            title: "Aviation Blogs | Flying Star Aviator",
+            description: "Read the latest aviation news, DGCA updates, CPL guides and pilot career tips from Flying Star Aviator.",
+        },
+        "/contact": {
+            title: "Contact Us | Flying Star Aviator",
+            description: "Get in touch with Flying Star Aviator. Visit us in Dwarka, Delhi or call +91 9953536199.",
+        },
+        "/courses/cpl": {
+            title: "CPL Ground Classes in Delhi | Flying Star Aviator",
+            description: "Best DGCA CPL ground classes in Delhi. Air Navigation, Meteorology, Air Regulations & more. Enroll now.",
+        },
+        "/courses/atpl": {
+            title: "ATPL Ground Training | Flying Star Aviator",
+            description: "Airline Transport Pilot License ground training for pilots advancing their aviation career.",
+        },
+        "/courses/cabin-crew": {
+            title: "Cabin Crew Course | Flying Star Aviator",
+            description: "Professional cabin crew training program. Start your airline career with Flying Star Aviator.",
+        },
+        "/courses/ground-staff": {
+            title: "Ground Staff Course | Flying Star Aviator",
+            description: "Aviation ground staff training for a rewarding career at airports across India.",
+        },
+        "/pilot-training": {
+            title: "Pilot Training | Flying Star Aviator",
+            description: "Complete pilot training guidance for India, USA, Australia, New Zealand & South Africa.",
+        },
+        "/pilot-training/india": {
+            title: "Pilot Training in India | Flying Star Aviator",
+            description: "Guide to becoming a commercial pilot in India with DGCA-approved flight training.",
+        },
+        "/pilot-training/usa": {
+            title: "Pilot Training in USA | Flying Star Aviator",
+            description: "Complete guide to pilot training in the USA for Indian students. FAA approved programs.",
+        },
+        "/pilot-training/australia": {
+            title: "Pilot Training in Australia | Flying Star Aviator",
+            description: "Explore CASA-approved pilot training programs in Australia for aspiring commercial pilots.",
+        },
+        "/pilot-training/new-zealand": {
+            title: "Pilot Training in New Zealand | Flying Star Aviator",
+            description: "Pilot training options in New Zealand for Indian students seeking an international aviation career.",
+        },
+        "/pilot-training/south-africa": {
+            title: "Pilot Training in South Africa | Flying Star Aviator",
+            description: "Affordable pilot training in South Africa. Explore options with Flying Star Aviator.",
+        },
+        "/dgca": {
+            title: "DGCA Exam Preparation | Flying Star Aviator",
+            description: "Crack your DGCA exams with Flying Star Aviator's expert-led ground classes in Delhi.",
+        },
+        "/dgca/ground-classes": {
+            title: "DGCA Ground Classes in Delhi | Flying Star Aviator",
+            description: "Top DGCA CPL & ATPL ground classes in Dwarka, Delhi. Expert faculty, high pass rates.",
+        },
+        "/dgca/medical": {
+            title: "DGCA Medical Requirements | Flying Star Aviator",
+            description: "Complete guide to DGCA Class 1 & Class 2 medical requirements for pilot license in India.",
+        },
+        "/become-a-pilot/become-pilot": {
+            title: "How to Become a Pilot in India | Flying Star Aviator",
+            description: "Step-by-step guide to becoming a commercial pilot in India after 12th. Eligibility, fees & process.",
+        },
+        "/become-a-pilot/commercial-pilot-licence": {
+            title: "Commercial Pilot Licence (CPL) | Flying Star Aviator",
+            description: "Everything you need to know about getting a CPL in India. Training, exams, cost & career scope.",
+        },
+        "/become-a-pilot/airline-transport-pilot-licence": {
+            title: "Airline Transport Pilot Licence (ATPL) | Flying Star Aviator",
+            description: "Guide to obtaining an ATPL in India. Requirements, training and career opportunities.",
+        },
+        "/services": {
+            title: "Aviation Services | Flying Star Aviator",
+            description: "Flying Star Aviator offers charter services, aircraft management, MRO, CAMO and more.",
+        },
+        "/locations": {
+            title: "Our Locations | Flying Star Aviator",
+            description: "Find Flying Star Aviator training centers and offices across India.",
+        },
+        "/rtr": {
+            title: "RTR(A) Training | Flying Star Aviator",
+            description: "Radio Telephony Restricted (Aeronautical) exam preparation with Flying Star Aviator.",
+        },
+    };
 
-// ── Start Server ──
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-    console.log(`🚀 Server running on http://localhost:${PORT}`);
+    const pagePath = req.query.path || "/";
+    const meta = metaTags[pagePath] || {
+        title: "Flying Star Aviator | Best Pilot Training in India",
+        description: "Flying Star Aviator — DGCA-approved CPL & ATPL ground classes in Delhi since 2008.",
+    };
 
-    // Keep Render backend alive — ping every 14 minutes
-    setInterval(() => {
-        https.get("https://fly-star-aviation-private-limited.onrender.com/", () => {
-            console.log("✅ Keep-alive ping sent");
-        }).on("error", () => {
-            console.log("⚠️ Keep-alive ping failed");
-        });
-    }, 14 * 60 * 1000);
+    res.json(meta);
 });
