@@ -37,7 +37,7 @@ app.use(cors({
         "https://www.flystar.co.in",
         "https://flystar.co.in",
         "https://fly-star-aviation-private-limited.onrender.com",
-        "fly-star-aviation-private-limited.vercel.app", // 👈 replace with your actual Vercel URL
+        "https://fly-star-aviation-private-limited.vercel.app", // 👈 replace with your actual Vercel URL
     ]
 }));
 app.use(express.json());
@@ -174,7 +174,7 @@ app.get("/api/meta", (req, res) => {
             title: "Flying Star Aviator | Best Pilot Training Institute in India",
             description: "Join Flying Star Aviator — India's best DGCA-approved CPL & ATPL ground classes in Delhi. Start your pilot career today.",
         },
-        "/pages/About": {
+        "/about": {
             title: "About Us | Flying Star Aviator Private Limited",
             description: "Learn about Flying Star Aviator, Delhi's leading aviation training institute since 2008.",
         },
