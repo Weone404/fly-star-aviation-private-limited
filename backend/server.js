@@ -37,7 +37,7 @@ app.use(cors({
         "https://www.flystar.co.in",
         "https://flystar.co.in",
         "https://fly-star-aviation-private-limited.onrender.com",
-        "https://fly-star-aviation-private-limited.vercel.app", // 👈 replace with your actual Vercel URL
+        "https://fly-star-aviation-private-limited.vercel.app",
     ]
 }));
 app.use(express.json());
@@ -167,7 +167,6 @@ app.post("/api/blogs", (req, res) => {
 });
 
 // ── GET /api/meta ──
-// ── GET /api/meta ──
 app.get("/api/meta", (req, res) => {
     const metaTags = {
         "/": {
@@ -271,4 +270,22 @@ app.get("/api/meta", (req, res) => {
     };
 
     res.json(meta);
+});
+
+// ── Health check ──
+app.get("/", (req, res) => res.send("🚀 Flying Star Aviator API is running"));
+
+// ── Start Server ──  ✅ Added "0.0.0.0" to fix Render port binding
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, "0.0.0.0", () => {
+    console.log(`🚀 Server running on http://localhost:${PORT}`);
+
+    // Keep Render backend alive — ping every 14 minutes
+    setInterval(() => {
+        https.get("https://fly-star-aviation-private-limited.onrender.com/", () => {
+            console.log("✅ Keep-alive ping sent");
+        }).on("error", () => {
+            console.log("⚠️ Keep-alive ping failed");
+        });
+    }, 14 * 60 * 1000);
 });
