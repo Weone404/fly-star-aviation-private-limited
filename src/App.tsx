@@ -3,7 +3,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import { useMeta } from "./hooks/useMeta";
 
@@ -17,11 +17,9 @@ const queryClient = new QueryClient({
 
 import Index from "./pages/Index";
 
-// Popups
 const ContactPopup = lazy(() => import('../src/pages/Contactpopup'));
 const SpecialOfferBanner = lazy(() => import("./pages/Specialofferbanner"));
 
-// Core pages
 const About = lazy(() => import("./pages/About"));
 const Contact = lazy(() => import("./pages/Contact"));
 const Services = lazy(() => import("./pages/Services"));
@@ -29,14 +27,12 @@ const Locations = lazy(() => import("./pages/Locations"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const Sitemap = lazy(() => import("./pages/sitemap"));
 
-// DGCA
 const DGCA = lazy(() => import("./pages/DGCA"));
 const Rtr = lazy(() => import("./pages/rtr"));
 const Fullform = lazy(() => import("./pages/dgca/full-form"));
 const Medical = lazy(() => import("./pages/dgca/medical"));
 const Groundclasses = lazy(() => import("./pages/dgca/ground-classes"));
 
-// Pilot Training
 const PilotTraining = lazy(() => import("./pages/pilotTraining/PilotTraining"));
 const India = lazy(() => import("./pages/pilotTraining/india"));
 const USA = lazy(() => import("./pages/pilotTraining/usa"));
@@ -44,7 +40,6 @@ const NewZealand = lazy(() => import("./pages/pilotTraining/new-zealand"));
 const SouthAfrica = lazy(() => import("./pages/pilotTraining/south-africa"));
 const Australia = lazy(() => import("./pages/pilotTraining/australia"));
 
-// Courses
 const Cpl = lazy(() => import("./pages/Courses/Cpl"));
 const Atpl = lazy(() => import("./pages/Courses/Atpl"));
 const AirlinePreparationPage = lazy(() => import("./pages/Courses/airline-preparation"));
@@ -53,7 +48,6 @@ const GroundStaffPage = lazy(() => import("./pages/Courses/ground-staff"));
 const Airindiapilotinterviewpage = lazy(() => import("./pages/Courses/Air-india-pilot-interview"));
 const IndigoPilotInterviewPage = lazy(() => import("./pages/Courses/Indigo-pilot-interview"));
 
-// Services
 const Charterservices = lazy(() => import("./pages/services/charter-services"));
 const Aircraftmanagement = lazy(() => import("./pages/services/aircraft-management"));
 const Aircraftsourcing = lazy(() => import("./pages/services/aircraft-sourcing-sale"));
@@ -63,21 +57,35 @@ const Liverypainting = lazy(() => import("./pages/services/livery-painting"));
 const Camo = lazy(() => import("./pages/services/camo"));
 const Componentsspares = lazy(() => import("./pages/services/components-spares"));
 
-// Become a Pilot
 const Airlinetransportpilotlicence = lazy(() => import("./pages/BecomeAPilot/airline-transport-pilot-licence"));
 const Commercialpilotlicence = lazy(() => import("./pages/BecomeAPilot/commercial-pilot-license"));
 const Becomepilot = lazy(() => import("./pages/BecomeAPilot/become-pilot"));
 
-// ✅ Blog pages
 const Blogs = lazy(() => import("./pages/Blogs"));
 const BlogDetail = lazy(() => import("./pages/BlogDetail"));
 const AdminBlog = lazy(() => import("./pages/AdminBlog"));
+const AdminLogin = lazy(() => import("./pages/admin/login/page"));
+
+// ─── Protected Route ──────────────────────────────────────────────────────────
+function ProtectedRoute({ children }: { children: React.ReactNode }) {
+  const location = useLocation();
+  const isLoggedIn =
+    typeof window !== "undefined" &&
+    sessionStorage.getItem("weone_admin") === "true";
+
+  if (!isLoggedIn) {
+    // Pass current location so login can redirect back after success
+    return <Navigate to="/admin/login" state={{ from: location }} replace />;
+  }
+
+  return <>{children}</>;
+}
+// ─────────────────────────────────────────────────────────────────────────────
 
 function PageLoader() {
   return <div style={{ minHeight: "100vh", background: "var(--background, #fff)" }} />;
 }
 
-// ✅ Inner component so useMeta can access router context
 function AppInner() {
   useMeta();
   const [showExtras, setShowExtras] = useState(false);
@@ -163,10 +171,20 @@ function AppInner() {
         {/* SITEMAP */}
         <Route path="/Sitemap" element={<Sitemap />} />
 
-        {/* BLOGS ✅ */}
+        {/* BLOGS */}
         <Route path="/blogs" element={<Blogs />} />
         <Route path="/blogs/:id" element={<BlogDetail />} />
-        <Route path="/admin/blog" element={<AdminBlog />} />
+
+        {/* ADMIN */}
+        <Route path="/admin/login" element={<AdminLogin />} />
+        <Route
+          path="/admin/blog"
+          element={
+            <ProtectedRoute>
+              <AdminBlog />
+            </ProtectedRoute>
+          }
+        />
 
         {/* 404 */}
         <Route path="*" element={<NotFound />} />
