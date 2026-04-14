@@ -174,7 +174,7 @@ app.get("/api/meta", (req, res) => {
             title: "Flying Star Aviator | Best Pilot Training Institute in India",
             description: "Join Flying Star Aviator — India's best DGCA-approved CPL & ATPL ground classes in Delhi. Start your pilot career today.",
         },
-        "/about": {
+        "/pages/About": {
             title: "About Us | Flying Star Aviator Private Limited",
             description: "Learn about Flying Star Aviator, Delhi's leading aviation training institute since 2008.",
         },
