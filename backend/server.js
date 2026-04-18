@@ -18,18 +18,18 @@ cloudinary.config({
     secure: true,
 });
 
+// ── MongoDB Native Client (for blogs) ─────────────────────────────────────────
 const mongoClient = new MongoClient(process.env.MONGODB_URI);
 
-// ── Connect MongoDB Native Client once at startup ──
 let db;
 mongoClient.connect()
     .then(() => {
-        db = mongoClient.db("weoneaviation");
-        console.log("✅ MongoDB Native Client Connected");
+        db = mongoClient.db("flystarDB");   // ✅ flystar database — separate from WeOne
+        console.log("✅ MongoDB Native Client Connected → flystar DB");
     })
     .catch(err => console.error("❌ MongoDB Native Client Error:", err));
 
-// ── Middleware ──
+// ── Middleware ────────────────────────────────────────────────────────────────
 app.use(cors({
     origin: [
         "http://localhost:5173",
@@ -42,13 +42,17 @@ app.use(cors({
 }));
 app.use(express.json());
 
-// ── Connect Mongoose ──
+// ── Mongoose (for contacts) ───────────────────────────────────────────────────
 mongoose
     .connect(process.env.MONGODB_URI)
-    .then(() => console.log("✅ MongoDB Connected"))
-    .catch((err) => console.error("❌ MongoDB Connection Error:", err));
+    .then(() => console.log("✅ Mongoose Connected"))
+    .catch((err) => console.error("❌ Mongoose Connection Error:", err));
 
-// ── POST /api/contact ──
+// ════════════════════════════════════════════════════════════════════════════
+// CONTACT ROUTES
+// ════════════════════════════════════════════════════════════════════════════
+
+// ── POST /api/contact ─────────────────────────────────────────────────────────
 app.post("/api/contact", async (req, res) => {
     try {
         const { name, email, phone, interest, message } = req.body;
@@ -73,7 +77,7 @@ app.post("/api/contact", async (req, res) => {
     }
 });
 
-// ── GET /api/contacts ──
+// ── GET /api/contacts ─────────────────────────────────────────────────────────
 app.get("/api/contacts", async (req, res) => {
     try {
         const contacts = await Contact.find().sort({ createdAt: -1 });
@@ -83,14 +87,18 @@ app.get("/api/contacts", async (req, res) => {
     }
 });
 
-// ── GET /api/blogs ──
+// ════════════════════════════════════════════════════════════════════════════
+// BLOG ROUTES — all stored in flystar DB → blogs collection
+// ════════════════════════════════════════════════════════════════════════════
+
+// ── GET /api/blogs — fetch all blogs ─────────────────────────────────────────
 app.get("/api/blogs", async (req, res) => {
     try {
         const blogs = await db.collection("blogs").find({}).sort({ createdAt: -1 }).toArray();
         const serialized = blogs.map(b => ({
             ...b,
             _id: b._id.toString(),
-            createdAt: b.createdAt.toString()
+            createdAt: b.createdAt ? b.createdAt.toString() : new Date().toString(),
         }));
         return res.status(200).json(serialized);
     } catch (e) {
@@ -98,7 +106,7 @@ app.get("/api/blogs", async (req, res) => {
     }
 });
 
-// ── GET /api/blogs/:id ──
+// ── GET /api/blogs/:id — fetch single blog ────────────────────────────────────
 app.get("/api/blogs/:id", async (req, res) => {
     try {
         const blog = await db.collection("blogs").findOne({ _id: new ObjectId(req.params.id) });
@@ -106,14 +114,14 @@ app.get("/api/blogs/:id", async (req, res) => {
         return res.status(200).json({
             ...blog,
             _id: blog._id.toString(),
-            createdAt: blog.createdAt.toString()
+            createdAt: blog.createdAt ? blog.createdAt.toString() : new Date().toString(),
         });
     } catch (e) {
         return res.status(500).json({ success: false, message: e.message });
     }
 });
 
-// ── POST /api/blogs ──
+// ── POST /api/blogs — create new blog ────────────────────────────────────────
 app.post("/api/blogs", (req, res) => {
     const form = formidable({
         keepExtensions: true,
@@ -139,7 +147,7 @@ app.post("/api/blogs", (req, res) => {
             const file = Array.isArray(files.coverImage) ? files.coverImage[0] : files.coverImage;
             try {
                 const uploaded = await cloudinary.uploader.upload(file.filepath, {
-                    folder: "weoneaviation/blogs",
+                    folder: "flystar/blogs",   // ✅ flystar cloudinary folder
                 });
                 coverImage = uploaded.secure_url;
             } catch (uploadErr) {
@@ -166,7 +174,83 @@ app.post("/api/blogs", (req, res) => {
     });
 });
 
-// ── GET /api/meta ──
+// ── PUT /api/blogs/:id — update existing blog ─────────────────────────────────
+app.put("/api/blogs/:id", (req, res) => {
+    const form = formidable({
+        keepExtensions: true,
+        maxFileSize: 5 * 1024 * 1024,
+    });
+
+    form.parse(req, async (err, fields, files) => {
+        if (err) {
+            return res.status(500).json({ success: false, message: "File upload failed" });
+        }
+
+        const title = Array.isArray(fields.title) ? fields.title[0] : fields.title;
+        const excerpt = Array.isArray(fields.excerpt) ? fields.excerpt[0] : fields.excerpt;
+        const content = Array.isArray(fields.content) ? fields.content[0] : fields.content;
+        const category = Array.isArray(fields.category) ? fields.category[0] : fields.category;
+
+        if (!title || !content) {
+            return res.status(400).json({ success: false, message: "Title and content are required" });
+        }
+
+        // Build update object — only replace image if a new one was uploaded
+        const update = {
+            title,
+            excerpt: excerpt || "",
+            content,
+            category: category || "Blog",
+            updatedAt: new Date(),
+        };
+
+        if (files.coverImage) {
+            const file = Array.isArray(files.coverImage) ? files.coverImage[0] : files.coverImage;
+            try {
+                const uploaded = await cloudinary.uploader.upload(file.filepath, {
+                    folder: "flystar/blogs",
+                });
+                update.coverImage = uploaded.secure_url;
+            } catch (uploadErr) {
+                return res.status(500).json({ success: false, message: `Image upload failed: ${uploadErr.message}` });
+            }
+        }
+
+        try {
+            const result = await db.collection("blogs").updateOne(
+                { _id: new ObjectId(req.params.id) },
+                { $set: update }
+            );
+            if (result.matchedCount === 0) {
+                return res.status(404).json({ success: false, message: "Blog not found" });
+            }
+            return res.status(200).json({ success: true, message: "Blog updated" });
+        } catch (e) {
+            return res.status(500).json({ success: false, message: e.message });
+        }
+    });
+});
+
+// ── DELETE /api/blogs/:id — delete blog ──────────────────────────────────────
+app.delete("/api/blogs/:id", async (req, res) => {
+    try {
+        const result = await db.collection("blogs").deleteOne({
+            _id: new ObjectId(req.params.id)
+        });
+        if (result.deletedCount === 0) {
+            return res.status(404).json({ success: false, message: "Blog not found" });
+        }
+        return res.status(200).json({ success: true, message: "Blog deleted" });
+    } catch (e) {
+        return res.status(500).json({ success: false, message: e.message });
+    }
+});
+
+// ════════════════════════════════════════════════════════════════════════════
+// META & HEALTH
+// ════════════════════════════════════════════════════════════════════════════
+
+// ── GET /api/meta ─────────────────────────────────────────────────────────────
 app.get("/api/meta", (req, res) => {
     const metaTags = {
         "/": {
@@ -272,10 +356,10 @@ app.get("/api/meta", (req, res) => {
     res.json(meta);
 });
 
-// ── Health check ──
+// ── Health check ──────────────────────────────────────────────────────────────
 app.get("/", (req, res) => res.send("🚀 Flying Star Aviator API is running"));
 
-// ── Start Server ──  ✅ Added "0.0.0.0" to fix Render port binding
+// ── Start Server ──────────────────────────────────────────────────────────────
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, "0.0.0.0", () => {
     console.log(`🚀 Server running on http://localhost:${PORT}`);
