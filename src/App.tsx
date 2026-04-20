@@ -74,7 +74,6 @@ function ProtectedRoute({ children }: { children: React.ReactNode }) {
     sessionStorage.getItem("weone_admin") === "true";
 
   if (!isLoggedIn) {
-    // Pass current location so login can redirect back after success
     return <Navigate to="/admin/login" state={{ from: location }} replace />;
   }
 
@@ -89,6 +88,11 @@ function PageLoader() {
 function AppInner() {
   useMeta();
   const [showExtras, setShowExtras] = useState(false);
+  const location = useLocation();
+
+  // ── Suppress popups on blogs and admin pages ──────────────────────────────
+  const suppressPopups = /^\/(blogs|admin)(\/|$)/.test(location.pathname);
+  // ─────────────────────────────────────────────────────────────────────────
 
   useEffect(() => {
     const t = setTimeout(() => setShowExtras(true), 3000);
@@ -190,7 +194,8 @@ function AppInner() {
         <Route path="*" element={<NotFound />} />
       </Routes>
 
-      {showExtras && (
+      {/* ── Popups hidden on /blogs and /admin routes ── */}
+      {showExtras && !suppressPopups && (
         <>
           <SpecialOfferBanner />
           <ContactPopup />
