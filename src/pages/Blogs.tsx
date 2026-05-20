@@ -14,28 +14,38 @@ const hardcoded = [
     { _id: '6', title: 'How to Become a Pilot After 12th Science – Step-by-Step', excerpt: 'A complete roadmap for 12th PCM students aspiring to become commercial pilots. Colleges, entrance exams, fees, and timelines.', category: 'After 12th', createdAt: 'Nov 15, 2026', coverImage: 'https://images.unsplash.com/photo-1585995028913-16e7a4c9c1d3?w=800&q=80' },
 ]
 
-const CATEGORIES = ['All', 'CPL Guide', 'DGCA', 'Career', 'Medical', 'Training', 'After 12th']
-
 export default function Blogs() {
-    const [blogs, setBlogs] = useState<any[]>([])
-    const [loading, setLoading] = useState(true)
-    const [activeFilter, setActiveFilter] = useState('All')
+    const [blogs, setBlogs] = useState<any[]>(hardcoded) // ✅ default to hardcoded immediately
+    const [loading, setLoading] = useState(false) // ✅ no loading flash for hardcoded
     const [search, setSearch] = useState('')
 
     useEffect(() => {
         fetch(`${API_URL}/api/blogs`)
-            .then(res => res.json())
-            .then(data => { setBlogs([...data, ...hardcoded]); setLoading(false) })
-            .catch(() => { setBlogs(hardcoded); setLoading(false) })
+            .then(res => {
+                if (!res.ok) throw new Error('API error')
+                return res.json()
+            })
+            .then(data => {
+                // ✅ guard: only merge if data is a real array
+                const apiBlogs = Array.isArray(data) ? data : []
+                if (apiBlogs.length > 0) {
+                    // avoid duplicate _ids with hardcoded
+                    const hardcodedIds = new Set(hardcoded.map(b => b._id))
+                    const fresh = apiBlogs.filter((b: any) => !hardcodedIds.has(b._id))
+                    setBlogs([...fresh, ...hardcoded])
+                }
+            })
+            .catch(() => {
+                // hardcoded already set as default, nothing to do
+            })
+            .finally(() => setLoading(false))
     }, [])
 
-    const filtered = blogs.filter(b => {
-        const matchCat = activeFilter === 'All' || b.category === activeFilter
-        const matchSearch = !search || b.title.toLowerCase().includes(search.toLowerCase()) || (b.excerpt || '').toLowerCase().includes(search.toLowerCase())
-        return matchCat && matchSearch
-    })
-
-    const [featured, ...rest] = filtered
+    const filtered = blogs.filter(b =>
+        !search ||
+        b.title.toLowerCase().includes(search.toLowerCase()) ||
+        (b.excerpt || '').toLowerCase().includes(search.toLowerCase())
+    )
 
     return (
         <div className="min-h-screen bg-background">
@@ -43,11 +53,9 @@ export default function Blogs() {
 
             {/* ── Hero ── */}
             <div className="aviation-gradient pt-24 pb-16 px-4 text-center relative overflow-hidden">
-                {/* Animated plane */}
                 <div className="absolute top-8 left-0 w-full pointer-events-none">
                     <span className="animate-fly text-3xl inline-block">✈️</span>
                 </div>
-
 
                 <div className="max-w-3xl mx-auto relative z-10">
                     <span className="inline-block bg-white/10 text-amber-400 border border-amber-400/30 text-xs font-semibold tracking-widest uppercase px-4 py-2 rounded-full mb-4">
@@ -83,7 +91,6 @@ export default function Blogs() {
                         { num: '100%', label: 'Free' },
                     ].map(s => (
                         <div key={s.label} className="text-center">
-                            {/* ✅ FIX 1: was "gold-text" which broke as a gradient box */}
                             <div className="text-xl font-bold text-amber-400">{s.num}</div>
                             <div className="text-xs text-white/50 uppercase tracking-widest mt-0.5">{s.label}</div>
                         </div>
@@ -95,26 +102,11 @@ export default function Blogs() {
             <div className="bg-muted py-16 px-4">
                 <div className="max-w-7xl mx-auto">
 
-                    {/* Section Header + Filters */}
-                    <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-10">
+                    {/* Section Header */}
+                    <div className="mb-10">
                         <h2 className="text-2xl font-bold text-foreground">
-                            {/* ✅ FIX 2: was "text-gradient" which broke as a gradient box */}
                             Latest <span className="text-[hsl(145,70%,35%)]">Articles</span>
                         </h2>
-                        <div className="flex flex-wrap gap-2">
-                            {CATEGORIES.map(cat => (
-                                <button
-                                    key={cat}
-                                    onClick={() => setActiveFilter(cat)}
-                                    className={`px-4 py-1.5 rounded-full text-xs font-semibold border transition-all duration-200 ${activeFilter === cat
-                                        ? 'bg-[hsl(145,70%,22%)] text-white border-[hsl(145,70%,22%)]'
-                                        : 'bg-white text-muted-foreground border-border hover:border-[hsl(145,70%,22%)] hover:text-[hsl(145,70%,22%)]'
-                                        }`}
-                                >
-                                    {cat}
-                                </button>
-                            ))}
-                        </div>
                     </div>
 
                     {loading ? (
@@ -125,89 +117,51 @@ export default function Blogs() {
                     ) : filtered.length === 0 ? (
                         <div className="text-center py-24 text-muted-foreground">
                             <div className="text-5xl mb-4">✈️</div>
-                            <p>No articles found. Try a different search or filter.</p>
+                            <p>No articles found. Try a different search.</p>
                         </div>
                     ) : (
-                        <>
-                            {/* Featured Blog */}
-                            {featured && (
-                                <Link to={`/blogs/${featured._id}`} className="block mb-12 group">
-                                    <div className="bg-white rounded-2xl overflow-hidden grid md:grid-cols-2 border border-border shadow-card hover:shadow-hover transition-all duration-300">
-                                        <div className="relative min-h-[280px] bg-[hsl(145,70%,22%)] overflow-hidden">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                            {filtered.map((blog) => (
+                                <Link
+                                    to={`/blogs/${blog._id}`}
+                                    key={blog._id}
+                                    className="block group" // ✅ removed scroll-fade-up that was hiding cards
+                                >
+                                    <div className="bg-white rounded-2xl overflow-hidden border border-border shadow-card hover:shadow-hover transition-all duration-300 hover:-translate-y-1 flex flex-col h-full">
+                                        {/* Image */}
+                                        <div className="relative h-48 overflow-hidden bg-[hsl(145,70%,22%)]">
                                             <img
-                                                src={featured.coverImage}
-                                                alt={featured.title}
-                                                className="w-full h-full object-cover absolute inset-0 group-hover:scale-105 transition-transform duration-500"
+                                                src={blog.coverImage || 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=800'}
+                                                alt={blog.title}
+                                                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                                             />
-                                            <div className="absolute inset-0 bg-gradient-to-t from-[hsl(145,80%,15%)]/60 to-transparent" />
-                                            <span className="absolute top-4 left-4 gold-gradient text-[hsl(145,80%,15%)] text-xs font-bold px-3 py-1.5 rounded-full">
-                                                ⭐ Featured
+                                            <div className="absolute inset-0 bg-gradient-to-t from-[hsl(145,80%,15%)]/40 to-transparent" />
+                                            <span className="absolute top-3 left-3 gold-gradient text-[hsl(145,80%,15%)] text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wide">
+                                                {blog.category}
                                             </span>
                                         </div>
-                                        <div className="p-10 flex flex-col justify-center">
-                                            <span className="inline-block bg-[hsl(145,70%,22%)]/10 text-[hsl(145,70%,22%)] text-xs font-semibold px-3 py-1 rounded-full mb-3 w-fit">
-                                                {featured.category}
-                                            </span>
-                                            <h3 className="text-2xl font-bold text-foreground leading-snug mb-3 group-hover:text-[hsl(145,70%,22%)] transition-colors">
-                                                {featured.title}
+
+                                        {/* Body */}
+                                        <div className="p-5 flex flex-col flex-1">
+                                            <h3 className="text-sm font-bold text-foreground leading-snug mb-2 group-hover:text-[hsl(145,70%,22%)] transition-colors line-clamp-2">
+                                                {blog.title}
                                             </h3>
-                                            <div className="flex gap-4 text-xs text-muted-foreground mb-4">
-                                                <span>📅 {featured.createdAt ? new Date(featured.createdAt).toDateString() : ''}</span>
-                                                <span>⏱ 5 min read</span>
-                                            </div>
-                                            <p className="text-muted-foreground text-sm leading-relaxed mb-6">{featured.excerpt}</p>
-                                            <div className="inline-flex items-center gap-2 aviation-gradient text-white px-6 py-2.5 rounded-xl text-sm font-semibold w-fit btn-aviation">
-                                                Read Article →
+                                            <p className="text-xs text-muted-foreground leading-relaxed flex-1 mb-4 line-clamp-3">
+                                                {blog.excerpt}
+                                            </p>
+                                            <div className="flex items-center justify-between pt-3 border-t border-border">
+                                                <span className="text-xs text-muted-foreground">
+                                                    📅 {blog.createdAt ? new Date(blog.createdAt).toDateString() : ''}
+                                                </span>
+                                                <span className="text-xs font-semibold text-[hsl(145,70%,22%)] group-hover:text-amber-500 transition-colors">
+                                                    Read →
+                                                </span>
                                             </div>
                                         </div>
                                     </div>
                                 </Link>
-                            )}
-
-                            {/* Blog Grid */}
-                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                                {rest.map((blog, i) => (
-                                    <Link
-                                        to={`/blogs/${blog._id}`}
-                                        key={blog._id}
-                                        className={`block group scroll-fade-up stagger-${Math.min(i + 1, 5)}`}
-                                    >
-                                        <div className="bg-white rounded-2xl overflow-hidden border border-border shadow-card hover:shadow-hover transition-all duration-300 hover:-translate-y-1 flex flex-col h-full">
-                                            {/* Image */}
-                                            <div className="relative h-48 overflow-hidden bg-[hsl(145,70%,22%)]">
-                                                <img
-                                                    src={blog.coverImage || 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=800'}
-                                                    alt={blog.title}
-                                                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                                                />
-                                                <div className="absolute inset-0 bg-gradient-to-t from-[hsl(145,80%,15%)]/40 to-transparent" />
-                                                <span className="absolute top-3 left-3 gold-gradient text-[hsl(145,80%,15%)] text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wide">
-                                                    {blog.category}
-                                                </span>
-                                            </div>
-
-                                            {/* Body */}
-                                            <div className="p-5 flex flex-col flex-1">
-                                                <h3 className="text-sm font-bold text-foreground leading-snug mb-2 group-hover:text-[hsl(145,70%,22%)] transition-colors line-clamp-2">
-                                                    {blog.title}
-                                                </h3>
-                                                <p className="text-xs text-muted-foreground leading-relaxed flex-1 mb-4 line-clamp-3">
-                                                    {blog.excerpt}
-                                                </p>
-                                                <div className="flex items-center justify-between pt-3 border-t border-border">
-                                                    <span className="text-xs text-muted-foreground">
-                                                        📅 {blog.createdAt ? new Date(blog.createdAt).toDateString() : ''}
-                                                    </span>
-                                                    <span className="text-xs font-semibold text-[hsl(145,70%,22%)] group-hover:text-amber-500 transition-colors">
-                                                        Read →
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </Link>
-                                ))}
-                            </div>
-                        </>
+                            ))}
+                        </div>
                     )}
                 </div>
             </div>
@@ -224,6 +178,7 @@ export default function Blogs() {
                         Get free expert guidance from our airline pilot mentors
                     </p>
 
+
                     <a href="https://wa.me/919355611996"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -233,7 +188,8 @@ export default function Blogs() {
                     </a>
                 </div>
             </div>
+
             <Footer />
-        </div>
+        </div >
     )
 }
