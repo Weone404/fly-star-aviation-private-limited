@@ -3,6 +3,8 @@ import { useLocation } from "react-router-dom";
 
 const BACKEND_URL = "https://fly-star-aviation-private-limited.onrender.com";
 
+import { GLOBAL_KEYWORDS } from "@/lib/seoKeywords";
+
 export function useMeta() {
   const location = useLocation();
 
@@ -19,6 +21,14 @@ export function useMeta() {
           document.head.appendChild(desc);
         }
         desc.setAttribute("content", meta.description);
+
+        let keywords = document.querySelector('meta[name="keywords"]');
+        if (!keywords) {
+          keywords = document.createElement("meta");
+          keywords.setAttribute("name", "keywords");
+          document.head.appendChild(keywords);
+        }
+        keywords.setAttribute("content", GLOBAL_KEYWORDS.join(", "));
       })
       .catch(() => {});
   }, [location.pathname]);

@@ -59,7 +59,6 @@ export function HeroSection() {
           src={heroImage}
           alt="Commercial aircraft flying through clouds"
           className="w-full h-full object-cover object-center"
-          fetchPriority="high"
           loading="eager"
           decoding="async"
           width={1920}

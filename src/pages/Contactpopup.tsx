@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import { Phone, Mail, MapPin, Clock, Send, CheckCircle, MessageCircle, X, LucideIcon } from "lucide-react";
 
 // ─── Types ───────────────────────────────────────────────────────────────────
@@ -38,7 +38,6 @@ const interestOptions: string[] = [
 // ─── Component ────────────────────────────────────────────────────────────────
 export default function ContactPopup(): JSX.Element {
     const [isOpen, setIsOpen] = useState<boolean>(false);
-    const [countdown, setCountdown] = useState<number>(10);
     const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
     const [submitted, setSubmitted] = useState<boolean>(false);
     const [focused, setFocused] = useState<keyof FormData | null>(null);
@@ -47,37 +46,7 @@ export default function ContactPopup(): JSX.Element {
     });
     const [errors, setErrors] = useState<FormErrors>({});
 
-    const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-    const countdownRef = useRef<ReturnType<typeof setInterval> | null>(null);
-
-    // ── 10-second cycle ──────────────────────────────────────────────────────
-    const startTimer = (): void => {
-        if (timerRef.current) clearTimeout(timerRef.current);
-        if (countdownRef.current) clearInterval(countdownRef.current);
-        setCountdown(10);
-
-        countdownRef.current = setInterval(() => {
-            setCountdown(p => {
-                if (p <= 1) { clearInterval(countdownRef.current!); return 0; }
-                return p - 1;
-            });
-        }, 1000);
-
-        timerRef.current = setTimeout(() => {
-            setIsOpen(true);
-            setSubmitted(false);
-        }, 10000);
-    };
-
-    useEffect(() => {
-        startTimer();
-        return () => {
-            if (timerRef.current) clearTimeout(timerRef.current);
-            if (countdownRef.current) clearInterval(countdownRef.current);
-        };
-    }, []);
-
-    const handleClose = (): void => { setIsOpen(false); startTimer(); };
+    const handleClose = (): void => { setIsOpen(false); };
 
     const handleChange = (
         e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>

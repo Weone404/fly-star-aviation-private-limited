@@ -12,7 +12,6 @@
   <!-- ✅ Preconnect to external origins so browser connects early -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preconnect" href="https://www.noupe.com" />
 
   <!-- ✅ Load Google Fonts non-blocking (fixes render blocking) -->
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
@@ -254,13 +253,6 @@
   }
   </script>
 
-  <style>
-    [id^="noupe-embed"],
-    [class*="noupe"] {
-      transform: scale(0.90) !important;
-      transform-origin: bottom right !important;
-    }
-  </style>
 </head>
 
 <body>
@@ -272,9 +264,6 @@
 
   <div id="root"></div>
   <script type="module" src="/src/main.tsx"></script>
-
-  <!-- ✅ defer added — stops this script from blocking page render -->
-  <script defer src='https://www.noupe.com/embed/019c75a5e297736ca0cffa8eb3889d4d1262.js'></script>
 </body>
 
 </html>
