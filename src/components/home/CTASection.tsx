@@ -102,7 +102,7 @@ export function CTASection() {
           </h2>
 
           <p className="text-muted-foreground text-base md:text-lg mb-6 md:mb-10 max-w-2xl mx-auto">
-            Join thousands of successful pilots who started their careers with
+            Join thousands of <a href="https://www.weoneaviation.in/" className="text-accent underline">successful pilots</a> who started their careers with
             us. Get personalized guidance and find the right program for you.
           </p>
 

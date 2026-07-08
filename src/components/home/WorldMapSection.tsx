@@ -139,7 +139,7 @@ export function WorldMapSection() {
           </h2>
           <p style={{ color: "#94a3b8", maxWidth: "580px", margin: "0 auto", fontSize: "17px", lineHeight: 1.7 }}>
             From the skies of India to New Zealand and beyond — we bring world-class aviation
-            education to aspiring pilots on every continent.
+            education to aspiring <a href="https://www.weoneaviation.com/" style={{ color: "#38bdf8", textDecoration: "underline" }}>pilots</a> on every continent.
           </p>
         </motion.div>
 
