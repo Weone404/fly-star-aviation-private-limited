@@ -88,7 +88,7 @@ export function WhyChooseUsSection() {
             Why Choose Us
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-foreground mb-3 md:mb-4">
-            India's Most Trusted Aviation Academy
+            India's Most Trusted <a href="https://www.weoneaviation.in/" className="text-primary hover:text-primary/80">Aviation Academy</a>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-base md:text-lg">
             We've been shaping successful aviation careers for over 15 years
