@@ -1,5 +1,23 @@
 import { useState, useEffect, useRef, useCallback } from "react";
-import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
+import {
+  ChevronLeft,
+  ChevronRight,
+  Quote,
+  Compass,
+  FileCheck2,
+  GraduationCap,
+  Plane,
+  ClipboardList,
+  HeartPulse,
+  Users,
+  BookOpen,
+  ListChecks,
+  FileText,
+  Globe,
+  BadgeCheck,
+  AlertCircle,
+  PhoneCall,
+} from "lucide-react";
 
 const testimonials = [
   {
@@ -57,6 +75,72 @@ const StarRow = (
     ))}
   </div>
 );
+
+/**
+ * Shared scroll-reveal hook, matching the fade/slide-up pattern
+ * already used for the testimonials header.
+ */
+function useRevealOnScroll<T extends HTMLElement>() {
+  const ref = useRef<T>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setVisible(true);
+      return;
+    }
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  return { ref, visible };
+}
+
+function RevealHeader({
+  eyebrow,
+  title,
+  description,
+}: {
+  eyebrow: string;
+  title: string;
+  description?: string;
+}) {
+  const { ref, visible } = useRevealOnScroll<HTMLDivElement>();
+  return (
+    <div
+      ref={ref}
+      style={{
+        opacity: visible ? 1 : 0,
+        transform: visible ? "translateY(0)" : "translateY(20px)",
+        transition: "opacity 0.5s ease, transform 0.5s ease",
+      }}
+      className="text-center mb-10 md:mb-16"
+    >
+      <span className="inline-block text-sm font-semibold bg-accent/10 text-accent px-4 py-2 rounded-full mb-4">
+        {eyebrow}
+      </span>
+      <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-3 md:mb-4 text-foreground">
+        {title}
+      </h2>
+      {description && (
+        <p className="text-muted-foreground max-w-2xl mx-auto text-base md:text-lg">
+          {description}
+        </p>
+      )}
+    </div>
+  );
+}
 
 export function TestimonialsSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -269,6 +353,220 @@ export function TestimonialsSection() {
           {/* Swipe hint — touch devices only */}
           <p className="text-center text-xs text-primary-foreground/50 mt-3 md:hidden">
             Swipe to navigate
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* CPL Training                                                        */
+/* ------------------------------------------------------------------ */
+
+const cplJourney = [
+  { icon: Compass, label: "Career counselling" },
+  { icon: FileCheck2, label: "DGCA examination preparation" },
+  { icon: GraduationCap, label: "Ground school training" },
+  { icon: Plane, label: "Flying school guidance" },
+  { icon: ClipboardList, label: "Documentation assistance" },
+  { icon: HeartPulse, label: "Medical guidance" },
+  { icon: Users, label: "Airline interview preparation" },
+];
+
+export function CPLTrainingSection() {
+  return (
+    <section className="py-12 md:py-20 bg-background overflow-hidden">
+      <div className="container px-4 sm:px-6">
+        <RevealHeader
+          eyebrow="CPL Program"
+          title="Commercial Pilot License (CPL) Training"
+        />
+
+        <div className="max-w-4xl mx-auto">
+          <p className="text-base md:text-lg leading-relaxed text-muted-foreground text-center md:text-left">
+            A <strong className="text-foreground font-semibold">Commercial Pilot License</strong> is
+            the certification required to work as a professional pilot with airlines, charter
+            companies, cargo operators, and corporate aviation organizations.
+          </p>
+          <p className="text-base md:text-lg leading-relaxed text-muted-foreground mt-4 text-center md:text-left">
+            At Flystar Aviation Academy, we prepare students for every phase of the CPL journey,
+            including:
+          </p>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 md:gap-4 mt-8">
+            {cplJourney.map(({ icon: Icon, label }) => (
+              <div
+                key={label}
+                className="flex flex-col items-center text-center gap-3 rounded-2xl border border-border bg-card p-4 md:p-6 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all"
+              >
+                <span className="w-11 h-11 md:w-12 md:h-12 rounded-full bg-accent/10 flex items-center justify-center">
+                  <Icon className="h-5 w-5 md:h-6 md:w-6 text-accent" aria-hidden="true" />
+                </span>
+                <span className="text-sm md:text-base font-medium text-foreground leading-snug">
+                  {label}
+                </span>
+              </div>
+            ))}
+          </div>
+
+          <p className="text-base md:text-lg leading-relaxed text-muted-foreground mt-8 text-center md:text-left">
+            Our goal is to ensure that students are not only ready to obtain their license but are
+            also prepared to begin successful careers in aviation.
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* DGCA Ground Classes                                                  */
+/* ------------------------------------------------------------------ */
+
+const dgcaSubjects = [
+  "Air Navigation",
+  "Air Regulations",
+  "Aviation Meteorology",
+  "Technical General",
+  "Technical Specific",
+  "Flight Planning",
+  "Performance",
+  "Human Performance and Limitations",
+  "Aircraft Systems",
+  "Operational Procedures",
+];
+
+export function DGCAGroundClassesSection() {
+  return (
+    <section className="py-12 md:py-20 aviation-gradient text-primary-foreground overflow-hidden">
+      <div className="container px-4 sm:px-6">
+        <RevealHeaderInverted
+          eyebrow="Ground School"
+          title="DGCA Ground Classes Designed for Success"
+          description={
+            <>
+              Strong theoretical knowledge is the foundation of every successful pilot. Our{" "}
+              <strong className="font-semibold">DGCA Ground Classes</strong> are designed to help
+              students understand aviation concepts rather than simply memorize information.
+            </>
+          }
+        />
+
+        <div className="max-w-4xl mx-auto">
+          <h3 className="text-center text-sm font-semibold tracking-wide uppercase text-accent mb-6">
+            Subjects Covered
+          </h3>
+
+          <div className="bg-white/10 backdrop-blur-sm rounded-2xl md:rounded-3xl p-5 sm:p-8 md:p-10">
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4">
+              {dgcaSubjects.map((subject) => (
+                <li key={subject} className="flex items-start gap-3">
+                  <BookOpen
+                    className="h-5 w-5 text-accent flex-shrink-0 mt-0.5"
+                    aria-hidden="true"
+                  />
+                  <span className="text-sm md:text-base">{subject}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <p className="text-primary-foreground/80 text-base md:text-lg leading-relaxed mt-8 text-center md:text-left">
+            Every class includes concept-based explanations, practical examples, revision
+            sessions, doubt-solving classes, and regular mock examinations to help students build
+            confidence before appearing for DGCA exams.
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* Header variant for use on the dark aviation-gradient background,
+   matching the testimonials header treatment exactly. */
+function RevealHeaderInverted({
+  eyebrow,
+  title,
+  description,
+}: {
+  eyebrow: string;
+  title: string;
+  description?: React.ReactNode;
+}) {
+  const { ref, visible } = useRevealOnScroll<HTMLDivElement>();
+  return (
+    <div
+      ref={ref}
+      style={{
+        opacity: visible ? 1 : 0,
+        transform: visible ? "translateY(0)" : "translateY(20px)",
+        transition: "opacity 0.5s ease, transform 0.5s ease",
+      }}
+      className="text-center mb-10 md:mb-16"
+    >
+      <span className="inline-block text-sm font-semibold bg-white/20 px-4 py-2 rounded-full mb-4">
+        {eyebrow}
+      </span>
+      <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-3 md:mb-4">{title}</h2>
+      {description && (
+        <p className="text-primary-foreground/80 max-w-2xl mx-auto text-base md:text-lg">
+          {description}
+        </p>
+      )}
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* DGCA Computer Number Assistance                                     */
+/* ------------------------------------------------------------------ */
+
+const computerNumberSteps = [
+  { icon: ListChecks, label: "Eligibility verification" },
+  { icon: FileText, label: "Required documents" },
+  { icon: Globe, label: "Online application process" },
+  { icon: BadgeCheck, label: "Certificate verification" },
+  { icon: AlertCircle, label: "Common application mistakes" },
+  { icon: PhoneCall, label: "Follow-up guidance" },
+];
+
+export function DGCAComputerNumberSection() {
+  return (
+    <section className="py-12 md:py-20 bg-background overflow-hidden">
+      <div className="container px-4 sm:px-6">
+        <RevealHeader
+          eyebrow="Getting Started"
+          title="DGCA Computer Number Assistance"
+        />
+
+        <div className="max-w-4xl mx-auto">
+          <p className="text-base md:text-lg leading-relaxed text-muted-foreground text-center md:text-left">
+            Obtaining a <strong className="text-foreground font-semibold">DGCA Computer Number</strong>{" "}
+            is one of the first official steps in becoming a pilot. However, many students face
+            delays due to documentation errors or a lack of clarity about the application
+            process.
+          </p>
+          <p className="text-base md:text-lg leading-relaxed text-muted-foreground mt-4 text-center md:text-left">
+            Our experts assist students with:
+          </p>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4 mt-8">
+            {computerNumberSteps.map(({ icon: Icon, label }) => (
+              <div
+                key={label}
+                className="flex items-center gap-4 rounded-2xl border border-border bg-card p-4 md:p-5 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all"
+              >
+                <span className="w-11 h-11 md:w-12 md:h-12 rounded-full bg-accent/10 flex items-center justify-center flex-shrink-0">
+                  <Icon className="h-5 w-5 md:h-6 md:w-6 text-accent" aria-hidden="true" />
+                </span>
+                <span className="text-sm md:text-base font-medium text-foreground">{label}</span>
+              </div>
+            ))}
+          </div>
+
+          <p className="text-base md:text-lg leading-relaxed text-muted-foreground mt-8 text-center md:text-left">
+            This helps students complete the process efficiently and avoid unnecessary delays.
           </p>
         </div>
       </div>

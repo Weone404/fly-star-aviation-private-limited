@@ -91,30 +91,31 @@ export function HeroSection() {
         <div className="max-w-3xl w-full">
 
           {/* Badge */}
-          <div
-            {...badge}
-            className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-3 py-1.5 md:px-4 md:py-2 mb-6 md:mb-8 border border-white/20"
-          >
-            <span className="w-2 h-2 rounded-full bg-accent animate-pulse shrink-0" />
-            <span className="text-xs md:text-sm font-medium text-white">
-              DGCA Training Institute
-            </span>
-          </div>
+         
+<div
+  {...badge}
+  className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-3 py-1.5 md:px-4 md:py-2 mb-6 md:mb-8 border border-white/20"
+>
+  <span className="w-2 h-2 rounded-full bg-accent animate-pulse shrink-0" />
+  <span className="text-xs md:text-sm font-medium text-white">
+    Best Pilot Training Institute in India
+  </span>
+</div>
 
-          {/* h1 — never animated; scales gracefully across breakpoints */}
-          <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-4 md:mb-6 text-white leading-tight">
-            Your Key to a{" "}
-            <span className="text-accent">Successful Aviation</span>{" "}
-            Career
-          </h1>
+{/* h1 */}
+<h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-4 md:mb-6 text-white leading-tight">
+  Your Journey to Becoming a{" "}
+  <span className="text-accent">Commercial Pilot</span>{" "}
+  Starts Here
+</h1>
 
-          <div {...para}>
-            <p className="text-base md:text-xl text-white/80 mb-8 md:mb-10 max-w-2xl">
-              Turn your dreams into reality with the best aviation training
-              academy in India. Experienced faculty, state-of-the-art
-              infrastructure, and assured placement assistance.
-            </p>
-          </div>
+<div {...para}>
+  <p className="text-base md:text-xl text-white/80 mb-8 md:mb-10 max-w-2xl">
+    Dreaming of flying for leading airlines? At Flystar Aviation Academy, we help
+    aspiring pilots transform their passion for flying into a successful profession
+    through industry-focused CPL training, DGCA Ground Classes, and expert mentorship.
+  </p>
+</div>
 
           {/* CTA buttons — full-width stacked on mobile, inline from sm */}
           <div

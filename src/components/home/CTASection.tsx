@@ -94,17 +94,18 @@ export function CTASection() {
           className="max-w-4xl mx-auto text-center"
         >
           <span className="inline-block text-sm font-semibold text-accent bg-accent/10 px-4 py-2 rounded-full mb-4">
-            Ready to Take Off?
-          </span>
+  Ready to Begin Your Aviation Journey?
+</span>
 
           <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-foreground mb-4 md:mb-6">
-            Start Your Aviation Journey Today
-          </h2>
-
-          <p className="text-muted-foreground text-base md:text-lg mb-6 md:mb-10 max-w-2xl mx-auto">
-            Join thousands of <a href="https://www.weoneaviation.in/" className="text-accent underline">successful pilots</a> who started their careers with
-            us. Get personalized guidance and find the right program for you.
-          </p>
+  Your Aviation Career Begins with the Right Foundation
+</h2>
+          
+<p className="text-muted-foreground text-base md:text-lg mb-6 md:mb-10 max-w-2xl mx-auto">
+  Schedule your free career counselling session today and discover the right path
+  toward earning your Commercial Pilot License, preparing for DGCA Ground Classes,
+  and building a rewarding career in aviation.
+</p>
 
           {/* Full-width buttons on mobile for larger tap targets */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
