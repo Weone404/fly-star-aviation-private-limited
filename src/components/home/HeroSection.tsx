@@ -104,9 +104,9 @@ export function HeroSection() {
 
 {/* h1 */}
 <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-4 md:mb-6 text-white leading-tight">
-  Your Journey to Becoming a{" "}
-  <span className="text-accent">Commercial Pilot</span>{" "}
-  Starts Here
+  Best Pilot Training Institute in India for{" "}
+  <span className="text-accent">DGCA Ground Classes </span>{" "}
+   & Commercial Pilot License (CPL)
 </h1>
 
 <div {...para}>

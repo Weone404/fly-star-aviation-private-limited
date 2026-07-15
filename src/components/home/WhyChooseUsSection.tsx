@@ -232,9 +232,324 @@ export function WhyChooseUsSection() {
   );
 }
 
-/* ------------------------------------------------------------------ */
+/* ================================================================== */
+/* Pilot Training in India Section                                     */
+/* ================================================================== */
+
+export function PilotTrainingInIndiaSection() {
+  const header = useInView();
+  const content = useInView(0.05);
+
+  return (
+    <section className="py-12 md:py-20 bg-background">
+      <div className="container px-4 sm:px-6">
+
+        {/* Header */}
+        <div
+          ref={header.ref}
+          style={{
+            opacity: header.visible ? 1 : 0,
+            transform: header.visible ? "translateY(0)" : "translateY(20px)",
+            transition: "opacity 0.5s ease, transform 0.5s ease",
+          }}
+          className="text-center mb-10 md:mb-16"
+        >
+          <span className="inline-block text-sm font-semibold text-accent bg-accent/10 px-4 py-2 rounded-full mb-4">
+            India's Aviation Industry
+          </span>
+          <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-foreground mb-3 md:mb-4">
+            Pilot Training in India
+          </h2>
+        </div>
+
+        {/* Content */}
+        <div
+          ref={content.ref}
+          style={{
+            opacity: content.visible ? 1 : 0,
+            transform: content.visible ? "translateY(0)" : "translateY(20px)",
+            transition: "opacity 0.5s ease 80ms, transform 0.5s ease 80ms",
+          }}
+          className="max-w-4xl mx-auto"
+        >
+          <div className="rounded-2xl bg-card border border-border p-5 md:p-8 shadow-card">
+            <p className="text-sm md:text-base text-muted-foreground leading-relaxed mb-6">
+              India has become one of the world's fastest-growing aviation markets. With increasing passenger demand, airline expansion, and fleet growth, the need for Commercial Pilot Training and structured Pilot Training in India continues to rise.
+            </p>
+
+            <p className="text-sm md:text-base text-muted-foreground leading-relaxed mb-6">
+              Choosing the right Pilot Training Institute or Aviation Academy involves more than selecting a Pilot Course. Students comparing a Commercial Pilot Course often need clarity on How to Become a Pilot, Pilot Eligibility, CPL Eligibility, and the overall pathway to Become a Pilot with confidence.
+            </p>
+
+            <h3 className="text-lg md:text-xl font-bold mb-4">Students evaluating Commercial Pilot License (CPL) pathways should consider:</h3>
+
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 mb-6">
+              {[
+                "Faculty expertise",
+                "Commercial Pilot Course structure",
+                "DGCA Ground Classes and DGCA Ground School quality",
+                "DGCA Coaching for DGCA Exams",
+                "DGCA Computer Number assistance",
+                "Private Pilot License (PPL) progression",
+                "RTR(A) and Flying School guidance",
+                "Flight Training planning for an Airline Career",
+                "Aviation Career Guidance and transparency in counselling",
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-2.5">
+                  <CheckCircle2
+                    className="h-5 w-5 text-primary flex-shrink-0 mt-0.5"
+                    aria-hidden="true"
+                  />
+                  <span className="text-sm md:text-base text-foreground">{item}</span>
+                </li>
+              ))}
+            </ul>
+
+            <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+              At Flystar Aviation Academy, we help students evaluate these factors so they can move from DGCA Ground Classes to Flight Training with a clear plan for a long-term Airline Career.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ================================================================== */
+/* Choosing the Right Flying School Section                             */
+/* ================================================================== */
+
+export function ChoosingRightFlyingSchoolSection() {
+  const header = useInView();
+  const content = useInView(0.05);
+
+  return (
+    <section className="py-12 md:py-20 bg-muted/30">
+      <div className="container px-4 sm:px-6">
+
+        {/* Header */}
+        <div
+          ref={header.ref}
+          style={{
+            opacity: header.visible ? 1 : 0,
+            transform: header.visible ? "translateY(0)" : "translateY(20px)",
+            transition: "opacity 0.5s ease, transform 0.5s ease",
+          }}
+          className="text-center mb-10 md:mb-16"
+        >
+          <span className="inline-block text-sm font-semibold text-accent bg-accent/10 px-4 py-2 rounded-full mb-4">
+            Flying School Selection
+          </span>
+          <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-foreground mb-3 md:mb-4">
+            Choosing the Right Flying School
+          </h2>
+        </div>
+
+        {/* Content */}
+        <div
+          ref={content.ref}
+          style={{
+            opacity: content.visible ? 1 : 0,
+            transform: content.visible ? "translateY(0)" : "translateY(20px)",
+            transition: "opacity 0.5s ease 80ms, transform 0.5s ease 80ms",
+          }}
+          className="max-w-4xl mx-auto"
+        >
+          <div className="rounded-2xl bg-card border border-border p-5 md:p-8 shadow-card">
+            <p className="text-sm md:text-base text-muted-foreground leading-relaxed mb-6">
+              Selecting a flying school is one of the most important decisions in your aviation journey. Different schools may vary in training methods, aircraft availability, instructor experience, weather conditions, and training timelines.
+            </p>
+
+            <h3 className="text-lg md:text-xl font-bold mb-4">Our counselling team helps students compare flying schools based on factors such as:</h3>
+
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 mb-6">
+              {[
+                "DGCA approval",
+                "Fleet quality",
+                "Instructor-to-student ratio",
+                "Training environment",
+                "Flight hour availability",
+                "Safety standards",
+                "Student support",
+                "Overall value",
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-2.5">
+                  <CheckCircle2
+                    className="h-5 w-5 text-primary flex-shrink-0 mt-0.5"
+                    aria-hidden="true"
+                  />
+                  <span className="text-sm md:text-base text-foreground">{item}</span>
+                </li>
+              ))}
+            </ul>
+
+            <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+              This personalized guidance helps students choose a training path that suits their objectives and budget.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ================================================================== */
+/* Why Students Trust Flystar Section                                  */
+/* ================================================================== */
+
+export function WhyStudentsTrustFlystarSection() {
+  const header = useInView();
+  const content = useInView(0.05);
+
+  return (
+    <section className="py-12 md:py-20 bg-background">
+      <div className="container px-4 sm:px-6">
+
+        {/* Header */}
+        <div
+          ref={header.ref}
+          style={{
+            opacity: header.visible ? 1 : 0,
+            transform: header.visible ? "translateY(0)" : "translateY(20px)",
+            transition: "opacity 0.5s ease, transform 0.5s ease",
+          }}
+          className="text-center mb-10 md:mb-16"
+        >
+          <span className="inline-block text-sm font-semibold text-accent bg-accent/10 px-4 py-2 rounded-full mb-4">
+            Trust & Quality
+          </span>
+          <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-foreground mb-3 md:mb-4">
+            Why Students Trust Flystar Aviation Academy
+          </h2>
+          <p className="text-muted-foreground max-w-2xl mx-auto text-base md:text-lg">
+            Thousands of aspiring pilots choose Flystar because of our commitment to quality education and student success.
+          </p>
+        </div>
+
+        {/* Content */}
+        <div
+          ref={content.ref}
+          style={{
+            opacity: content.visible ? 1 : 0,
+            transform: content.visible ? "translateY(0)" : "translateY(20px)",
+            transition: "opacity 0.5s ease 80ms, transform 0.5s ease 80ms",
+          }}
+          className="max-w-4xl mx-auto"
+        >
+          <div className="rounded-2xl bg-card border border-border p-5 md:p-8 shadow-card">
+            <h3 className="text-lg md:text-xl font-bold mb-6">Our Approach</h3>
+
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 mb-8">
+              {[
+                "Personalized career counselling",
+                "Updated DGCA syllabus",
+                "Experienced aviation faculty",
+                "Regular assessments",
+                "One-on-one mentoring",
+                "Practical learning methods",
+                "Career-focused training",
+                "Ethical and transparent guidance",
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-2.5">
+                  <CheckCircle2
+                    className="h-5 w-5 text-primary flex-shrink-0 mt-0.5"
+                    aria-hidden="true"
+                  />
+                  <span className="text-sm md:text-base text-foreground">{item}</span>
+                </li>
+              ))}
+            </ul>
+
+            <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+              We believe every student deserves clear information, expert mentorship, and continuous support throughout their aviation journey.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ================================================================== */
+/* Learn Beyond the Classroom Section                                  */
+/* ================================================================== */
+
+export function LearnBeyondClassroomSection() {
+  const header = useInView();
+  const content = useInView(0.05);
+
+  return (
+    <section className="py-12 md:py-20 bg-muted/30">
+      <div className="container px-4 sm:px-6">
+
+        {/* Header */}
+        <div
+          ref={header.ref}
+          style={{
+            opacity: header.visible ? 1 : 0,
+            transform: header.visible ? "translateY(0)" : "translateY(20px)",
+            transition: "opacity 0.5s ease, transform 0.5s ease",
+          }}
+          className="text-center mb-10 md:mb-16"
+        >
+          <span className="inline-block text-sm font-semibold text-accent bg-accent/10 px-4 py-2 rounded-full mb-4">
+            Practical Learning
+          </span>
+          <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-foreground mb-3 md:mb-4">
+            Learn Beyond the Classroom
+          </h2>
+        </div>
+
+        {/* Content */}
+        <div
+          ref={content.ref}
+          style={{
+            opacity: content.visible ? 1 : 0,
+            transform: content.visible ? "translateY(0)" : "translateY(20px)",
+            transition: "opacity 0.5s ease 80ms, transform 0.5s ease 80ms",
+          }}
+          className="max-w-4xl mx-auto"
+        >
+          <div className="rounded-2xl bg-card border border-border p-5 md:p-8 shadow-card">
+            <p className="text-sm md:text-base text-muted-foreground leading-relaxed mb-6">
+              Modern pilot training is not limited to textbooks. At Flystar, students are encouraged to develop the knowledge, discipline, and professional mindset required in today's aviation industry.
+            </p>
+
+            <h3 className="text-lg md:text-xl font-bold mb-4">Our learning approach includes:</h3>
+
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 mb-6">
+              {[
+                "Scenario-based discussions",
+                "Aviation case studies",
+                "Flight planning exercises",
+                "Navigation problem-solving",
+                "Weather analysis",
+                "Airline interview preparation",
+                "Soft skills and communication development",
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-2.5">
+                  <CheckCircle2
+                    className="h-5 w-5 text-primary flex-shrink-0 mt-0.5"
+                    aria-hidden="true"
+                  />
+                  <span className="text-sm md:text-base text-foreground">{item}</span>
+                </li>
+              ))}
+            </ul>
+
+            <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+              This practical approach helps students apply theoretical concepts to real aviation situations.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ================================================================== */
 /* Complete Pilot Training Solutions Under One Roof                     */
-/* ------------------------------------------------------------------ */
+/* ================================================================== */
 
 export function CompletePilotTrainingSection() {
   const header = useInView();

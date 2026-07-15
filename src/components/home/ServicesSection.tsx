@@ -11,6 +11,7 @@ import {
   BookOpenCheck,
   CheckCircle2,
   ChevronDown,
+  Radio,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import Passresultsslider from "../layout/Passresultsslider";
@@ -99,6 +100,111 @@ const ArrowIcon = (
     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
   </svg>
 );
+
+/* ================================================================== */
+/* Intro: Your Journey to Becoming a Commercial Pilot Starts Here     */
+/* ================================================================== */
+
+export function JourneyIntroSection() {
+  const header = useFadeInView();
+  const panel = useFadeInView(0.05);
+
+  const leadParagraph =
+    "Dreaming of flying for leading airlines? Every successful aviation career begins with the right guidance, structured learning, and professional training. At Flystar Aviation Academy, we help aspiring pilots transform their passion for flying into a successful profession through industry-focused pilot training and expert mentorship.";
+
+  const bodyParagraphs = [
+    "Whether you are exploring how to become a pilot after 12th, searching for the best Commercial Pilot License (CPL) course, looking for DGCA Ground Classes, or need guidance on obtaining your DGCA Computer Number, Flystar provides complete support at every stage of your aviation journey.",
+    "We believe becoming a pilot is more than clearing examinations—it requires the right knowledge, disciplined preparation, practical understanding, and career planning. Our experienced aviation instructors and counselors work closely with every student to ensure they understand the complete pilot training pathway, from eligibility and licensing to airline career opportunities.",
+    "With a student-first approach, updated training methods, and a curriculum aligned with DGCA requirements, Flystar has become a trusted destination for future pilots across India.",
+  ];
+
+  const highlights = [
+    { icon: GraduationCap, label: "How to Become a Pilot After 12th" },
+    { icon: Shield, label: "Commercial Pilot License (CPL)" },
+    { icon: BookOpenCheck, label: "DGCA Ground Classes" },
+    { icon: Briefcase, label: "DGCA Computer Number Guidance" },
+  ];
+
+  return (
+    <section className="py-12 md:py-20 bg-background">
+      <div className="container px-4 sm:px-6">
+
+        {/* Header */}
+        <div
+          ref={header.ref}
+          style={{
+            opacity: header.visible ? 1 : 0,
+            transform: header.visible ? "translateY(0)" : "translateY(20px)",
+            transition: "opacity 0.5s ease, transform 0.5s ease",
+          }}
+          className="text-center max-w-3xl mx-auto mb-8 md:mb-12"
+        >
+          <span className="inline-block text-sm font-semibold text-accent bg-accent/10 px-4 py-2 rounded-full mb-4">
+            Your Journey
+          </span>
+          <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-foreground mb-3 md:mb-4">
+            Your Journey to Becoming a Commercial Pilot Starts Here
+          </h2>
+          <p className="text-muted-foreground text-base md:text-lg leading-relaxed">
+            {leadParagraph}
+          </p>
+        </div>
+
+        {/* Panel — accent-bar card matching the rest of the page */}
+        <div
+          ref={panel.ref}
+          style={{
+            opacity: panel.visible ? 1 : 0,
+            transform: panel.visible ? "translateY(0)" : "translateY(20px)",
+            transition: "opacity 0.5s ease 80ms, transform 0.5s ease 80ms",
+          }}
+          className="max-w-4xl mx-auto"
+        >
+          <div className="relative bg-card rounded-2xl p-5 md:p-8 shadow-card border border-border overflow-hidden">
+
+            {/* Gradient accent bar */}
+            <div
+              className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary to-aviation-green-light"
+              aria-hidden="true"
+            />
+
+            {/* Icon */}
+            <div className="inline-flex items-center justify-center w-12 h-12 md:w-14 md:h-14 rounded-xl bg-gradient-to-r from-primary to-aviation-green-light mb-4 md:mb-6">
+              <Plane className="h-6 w-6 md:h-7 md:w-7 text-white" aria-hidden="true" />
+            </div>
+
+            {/* Body paragraphs */}
+            <div className="space-y-4 mb-6 md:mb-8">
+              {bodyParagraphs.map((para) => (
+                <p
+                  key={para}
+                  className="text-sm md:text-base text-muted-foreground leading-relaxed"
+                >
+                  {para}
+                </p>
+              ))}
+            </div>
+
+            {/* Highlight chips */}
+            <div className="flex flex-wrap gap-2.5 md:gap-3">
+              {highlights.map(({ icon: Icon, label }) => (
+                <span
+                  key={label}
+                  className="inline-flex items-center gap-2 rounded-full border border-border bg-muted/50
+                             px-3.5 py-2 text-xs md:text-sm font-semibold text-foreground
+                             hover:border-primary/30 hover:bg-primary/5 transition-colors duration-200"
+                >
+                  <Icon className="h-4 w-4 text-primary flex-shrink-0" aria-hidden="true" />
+                  {label}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
 
 export function ServicesSection() {
   const header = useFadeInView();
@@ -189,10 +295,335 @@ export function ServicesSection() {
   );
 }
 
-/* ------------------------------------------------------------------ */
+/* ================================================================== */
+/* Detailed Service Information Section                              */
+/* ================================================================== */
+
+type ServiceDetail = {
+  icon: typeof GraduationCap;
+  title: string;
+  subtitle: string;
+  description: string;
+  items?: string[];
+  closing?: string;
+  color: string;
+};
+
+const serviceDetails: ServiceDetail[] = [
+  {
+    icon: GraduationCap,
+    title: "Commercial Pilot License (CPL) Training",
+    subtitle: "Your Path to Professional Aviation",
+    description:
+      "A Commercial Pilot License is the certification required to work as a professional pilot with airlines, charter companies, cargo operators, and corporate aviation organizations.",
+    items: [
+      "Career counselling",
+      "DGCA examination preparation",
+      "Ground school training",
+      "Flying school guidance",
+      "Documentation assistance",
+      "Medical guidance",
+      "Airline interview preparation",
+    ],
+    closing:
+      "Our goal is to ensure that students are not only ready to obtain their license but are also prepared to begin successful careers in aviation.",
+    color: "from-primary to-aviation-green-light",
+  },
+  {
+    icon: Shield,
+    title: "DGCA Ground Classes Designed for Success",
+    subtitle: "Master Aviation Theory with Confidence",
+    description:
+      "Strong theoretical knowledge is the foundation of every successful pilot. Our DGCA Ground Classes are designed to help students understand aviation concepts rather than simply memorize information.",
+    items: [
+      "Air Navigation",
+      "Air Regulations",
+      "Aviation Meteorology",
+      "Technical General",
+      "Technical Specific",
+      "Flight Planning",
+      "Performance",
+      "Human Performance and Limitations",
+      "Aircraft Systems",
+      "Operational Procedures",
+    ],
+    closing:
+      "Every class includes concept-based explanations, practical examples, revision sessions, doubt-solving classes, and regular mock examinations to help students build confidence before appearing for DGCA exams.",
+    color: "from-aviation-sky to-blue-400",
+  },
+  {
+    icon: Briefcase,
+    title: "DGCA Computer Number Assistance",
+    subtitle: "Complete First-Step Support",
+    description:
+      "Obtaining a DGCA Computer Number is one of the first official steps in becoming a pilot. However, many students face delays due to documentation errors or a lack of clarity about the application process.",
+    items: [
+      "Eligibility verification",
+      "Required documents",
+      "Online application process",
+      "Certificate verification",
+      "Common application mistakes",
+      "Follow-up guidance",
+    ],
+    closing:
+      "This helps students complete the process efficiently and avoid unnecessary delays.",
+    color: "from-accent to-yellow-400",
+  },
+  {
+    icon: Plane,
+    title: "Private Pilot License (PPL)",
+    subtitle: "Start Your Flying Journey",
+    description:
+      "A Private Pilot License (PPL) is an excellent option for students who wish to experience flying before pursuing a commercial aviation career. It also provides a strong foundation for those planning to progress toward a Commercial Pilot License.",
+    closing:
+      "With proper guidance, students can understand the differences between PPL and CPL, choose the right training route, and plan their aviation journey with confidence.",
+    color: "from-primary to-aviation-green-light",
+  },
+  {
+    icon: Radio,
+    title: "RTR(A) Classes",
+    subtitle: "Master Aviation Communication",
+    description:
+      "Clear and professional communication is essential in aviation. The Radio Telephony Restricted (Aeronautical) examination evaluates a pilot's ability to communicate effectively with Air Traffic Control.",
+    items: [
+      "Aviation communication procedures",
+      "Standard phraseology",
+      "Radio communication practice",
+      "Viva preparation",
+      "Mock interviews",
+      "Practical communication exercises",
+    ],
+    closing:
+      "By combining theory with simulated communication scenarios, students develop the confidence required for real-world aviation environments.",
+    color: "from-aviation-sky to-blue-400",
+  },
+];
+
+export function ServiceDetailsSection() {
+  const header = useFadeInView();
+  const grid = useFadeInView(0.05);
+
+  return (
+    <section className="py-12 md:py-20 bg-muted/30">
+      <div className="container px-4 sm:px-6">
+
+        {/* Header */}
+        <div
+          ref={header.ref}
+          style={{
+            opacity: header.visible ? 1 : 0,
+            transform: header.visible ? "translateY(0)" : "translateY(20px)",
+            transition: "opacity 0.5s ease, transform 0.5s ease",
+          }}
+          className="text-center mb-10 md:mb-16"
+        >
+          <span className="inline-block text-sm font-semibold text-accent bg-accent/10 px-4 py-2 rounded-full mb-4">
+            Detailed Services
+          </span>
+          <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-foreground mb-3 md:mb-4">
+            Our Training Programs In-Depth
+          </h2>
+          <p className="text-muted-foreground max-w-2xl mx-auto text-base md:text-lg">
+            Explore comprehensive details about each of our specialized training programs designed to guide you through every stage of your aviation career.
+          </p>
+        </div>
+
+        {/* Service Detail Cards */}
+        <div
+          ref={grid.ref}
+          className="max-w-5xl mx-auto space-y-4 md:space-y-6"
+        >
+          {serviceDetails.map((service, index) => {
+            const Icon = service.icon;
+            return (
+              <div
+                key={service.title}
+                style={{
+                  opacity: grid.visible ? 1 : 0,
+                  transform: grid.visible ? "translateY(0)" : "translateY(20px)",
+                  transition: `opacity 0.5s ease ${Math.min(index * 80, 400)}ms, transform 0.5s ease ${Math.min(index * 80, 400)}ms`,
+                }}
+                className="group relative rounded-2xl bg-card border border-border p-5 md:p-8 shadow-card
+                           hover:shadow-hover hover:border-primary/30 transition-all duration-300 overflow-hidden"
+              >
+                {/* Gradient accent bar */}
+                <div
+                  className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${service.color}`}
+                  aria-hidden="true"
+                />
+
+                {/* Header with icon */}
+                <div className="flex flex-col sm:flex-row gap-4 md:gap-6 mb-4 md:mb-6">
+                  <div
+                    className={`inline-flex items-center justify-center w-12 h-12 md:w-14 md:h-14 rounded-xl bg-gradient-to-r ${service.color} flex-shrink-0
+                                transition-transform duration-300 group-hover:scale-110`}
+                  >
+                    <Icon className="h-6 w-6 md:h-7 md:w-7 text-white" aria-hidden="true" />
+                  </div>
+
+                  <div className="flex-1">
+                    <h3 className="text-lg md:text-xl font-bold text-foreground mb-1">
+                      {service.title}
+                    </h3>
+                    <p className="text-sm md:text-base text-accent font-semibold">
+                      {service.subtitle}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Description */}
+                <p className="text-sm md:text-base text-muted-foreground leading-relaxed mb-4 md:mb-6">
+                  {service.description}
+                </p>
+
+                {/* Items list */}
+                {service.items && service.items.length > 0 && (
+                  <div className="mb-4 md:mb-6">
+                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2.5">
+                      {service.items.map((item) => (
+                        <li key={item} className="flex items-start gap-2.5">
+                          <CheckCircle2
+                            className="h-5 w-5 text-primary flex-shrink-0 mt-0.5"
+                            aria-hidden="true"
+                          />
+                          <span className="text-sm md:text-base text-foreground">
+                            {item}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {/* Closing */}
+                {service.closing && (
+                  <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+                    {service.closing}
+                  </p>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ================================================================== */
+/* Step 1: Meet the Basic Eligibility Section                        */
+/* ================================================================== */
+
+export function StepByStepPathwaySection() {
+  const header = useFadeInView();
+  const panel = useFadeInView(0.05);
+
+  const stepBlock = {
+    eyebrow: "Your Journey",
+    title: "Step 1: Meet the Basic Eligibility",
+    paragraphs: [
+      "To pursue a Commercial Pilot License (CPL), students generally need to complete several foundational requirements. Our team will guide you through each requirement and help you plan your journey.",
+      "If you have not studied Physics or Mathematics in Class 12, there are alternative pathways such as NIOS to meet the eligibility criteria. Our career counselors can guide you through the available options and help you choose the right path based on your academic background.",
+    ],
+    listHeading: "Basic Eligibility Requirements:",
+    listItems: [
+      "Complete 10+2 (or equivalent) with Physics and Mathematics",
+      "Meet the DGCA medical fitness requirements",
+      "Obtain a DGCA Computer Number",
+      "Clear the required DGCA examinations",
+      "Complete the required flying hours at a DGCA-approved flying school",
+    ],
+    closing:
+      "Every student's journey is unique. Our counselors are here to help you understand these requirements and chart the best path forward.",
+    icon: CheckCircle2,
+    color: "from-primary to-aviation-green-light",
+  };
+
+  return (
+    <section className="py-12 md:py-20 bg-background">
+      <div className="container px-4 sm:px-6">
+
+        {/* Header */}
+        <div
+          ref={header.ref}
+          style={{
+            opacity: header.visible ? 1 : 0,
+            transform: header.visible ? "translateY(0)" : "translateY(20px)",
+            transition: "opacity 0.5s ease, transform 0.5s ease",
+          }}
+          className="text-center mb-10 md:mb-16"
+        >
+          <span className="inline-block text-sm font-semibold text-accent bg-accent/10 px-4 py-2 rounded-full mb-4">
+            {stepBlock.eyebrow}
+          </span>
+          <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-foreground mb-3 md:mb-4">
+            {stepBlock.title}
+          </h2>
+          {stepBlock.paragraphs.map((para) => (
+            <p
+              key={para}
+              className="text-muted-foreground max-w-2xl mx-auto text-base md:text-lg mt-4 first:mt-0"
+            >
+              {para}
+            </p>
+          ))}
+        </div>
+
+        {/* Panel */}
+        <div
+          ref={panel.ref}
+          style={{
+            opacity: panel.visible ? 1 : 0,
+            transform: panel.visible ? "translateY(0)" : "translateY(20px)",
+            transition: "opacity 0.5s ease 80ms, transform 0.5s ease 80ms",
+          }}
+          className="max-w-4xl mx-auto"
+        >
+          <div className="relative bg-card rounded-2xl p-5 md:p-8 shadow-card border border-border overflow-hidden">
+
+            {/* Gradient accent bar */}
+            <div
+              className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${stepBlock.color}`}
+              aria-hidden="true"
+            />
+
+            {/* Icon */}
+            <div
+              className={`inline-flex items-center justify-center w-12 h-12 md:w-14 md:h-14 rounded-xl bg-gradient-to-r ${stepBlock.color} mb-4 md:mb-6`}
+            >
+              <stepBlock.icon className="h-6 w-6 md:h-7 md:w-7 text-white" aria-hidden="true" />
+            </div>
+
+            <h3 className="text-lg md:text-xl font-bold mb-4 md:mb-6">{stepBlock.listHeading}</h3>
+
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 mb-6 md:mb-8">
+              {stepBlock.listItems.map((item) => (
+                <li key={item} className="flex items-start gap-2.5">
+                  <CheckCircle2
+                    className="h-5 w-5 text-primary flex-shrink-0 mt-0.5"
+                    aria-hidden="true"
+                  />
+                  <span className="text-sm md:text-base text-foreground leading-relaxed">
+                    {item}
+                  </span>
+                </li>
+              ))}
+            </ul>
+
+            <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+              {stepBlock.closing}
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ================================================================== */
 /* Shared "content block" — intro copy + a checklist, in the same      */
 /* accent-bar card language as the services cards above.               */
-/* ------------------------------------------------------------------ */
+/* ================================================================== */
 
 type ContentBlock = {
   eyebrow: string;
@@ -370,9 +801,9 @@ export function LearnWithConfidenceSection() {
   return <ContentBlockSection block={contentBlocks[2]} bgClass="bg-background" />;
 }
 
-/* ------------------------------------------------------------------ */
+/* ================================================================== */
 /* Frequently Asked Questions                                          */
-/* ------------------------------------------------------------------ */
+/* ================================================================== */
 
 const faqs = [
   {

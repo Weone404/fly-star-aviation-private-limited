@@ -1,7 +1,10 @@
 import { Layout } from "@/components/layout/Layout";
 import { HeroSection } from "@/components/home/HeroSection";
-import { ServicesSection } from "@/components/home/ServicesSection";
-import { WhyChooseUsSection } from "@/components/home/WhyChooseUsSection";
+import { JourneyIntroSection, ServicesSection, StepByStepPathwaySection, ServiceDetailsSection } from "@/components/home/ServicesSection";
+import {
+  WhyChooseUsSection,
+  PilotTrainingInIndiaSection,
+} from "@/components/home/WhyChooseUsSection";
 import { WorldMapSection } from "@/components/home/WorldMapSection";
 import { TestimonialsSection } from "@/components/home/TestimonialsSection";
 import { PartnersSection } from "@/components/home/PartnersSection";
@@ -68,8 +71,12 @@ const Index = () => {
         <script type="application/ld+json">{JSON.stringify(HOME_SCHEMA)}</script>
       </Helmet>
       <HeroSection />
+      <JourneyIntroSection />
       <ServicesSection />
+      <StepByStepPathwaySection />
+      <ServiceDetailsSection />
       <WhyChooseUsSection />
+      <PilotTrainingInIndiaSection />
       <WorldMapSection />
       <TestimonialsSection />
       <PartnersSection />
