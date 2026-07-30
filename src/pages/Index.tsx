@@ -54,20 +54,7 @@ const Index = () => {
   return (
     <Layout>
       <Helmet>
-        <title>Flying Star Aviator | DGCA-Approved Pilot Training in India</title>
-        <meta
-          name="description"
-          content="DGCA-approved pilot training in Delhi for CPL and ATPL aspirants. Learn with expert instructors, structured classes, and career-focused support."
-        />
-        <link rel="canonical" href="https://www.flystar.co.in/" />
-        <meta property="og:title" content="Flying Star Aviator | DGCA-Approved Pilot Training in India" />
-        <meta
-          property="og:description"
-          content="Join Flying Star Aviator for DGCA-approved CPL and ATPL training in Delhi with expert guidance and practical preparation."
-        />
-        <meta property="og:url" content="https://www.flystar.co.in/" />
-        <meta property="og:type" content="website" />
-        <meta name="twitter:card" content="summary_large_image" />
+        {/* Title, description, canonical and OG are set centrally by useMeta. */}
         <script type="application/ld+json">{JSON.stringify(HOME_SCHEMA)}</script>
       </Helmet>
       <HeroSection />

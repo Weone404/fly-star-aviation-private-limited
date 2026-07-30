@@ -2,6 +2,7 @@ import { memo } from "react";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet-async";
 import { Layout } from "@/components/layout/Layout";
+import { CitableAnswer } from "@/components/CitableAnswer";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import {
@@ -324,6 +325,16 @@ export default function DGCAPage() {
                     </motion.div>
                 </div>
             </section>
+
+            <CitableAnswer
+                heading="What is the full form of DGCA?"
+                answer="DGCA stands for the Directorate General of Civil Aviation. It is India's statutory regulatory body for civil aviation, functioning under the Ministry of Civil Aviation and headquartered in New Delhi. DGCA is responsible for issuing all pilot licences in India — Student Pilot Licence (SPL), Private Pilot Licence (PPL), Commercial Pilot Licence (CPL) and Airline Transport Pilot Licence (ATPL) — as well as certifying aircraft airworthiness, approving and monitoring flying training organisations, and enforcing safety standards aligned with the International Civil Aviation Organization (ICAO). For aspiring pilots, DGCA sets and conducts the theory examinations — Air Navigation, Aviation Meteorology, Air Regulations and Technical General — that must be passed to earn a CPL, along with the RTR(A) radio-telephony requirement. In short, no pilot can fly commercially in India without meeting DGCA's licensing and examination requirements."
+                faqs={[
+                    { q: "What does DGCA regulate?", a: "DGCA regulates pilot licensing, aircraft airworthiness certification, approval of flying and aviation training organisations, and overall civil aviation safety in India." },
+                    { q: "Under which ministry does DGCA operate?", a: "DGCA operates under the Ministry of Civil Aviation, Government of India, and aligns its standards with ICAO." },
+                ]}
+                lastUpdated="2026-07-30"
+            />
 
             {/* ── Introduction ── */}
             <section className="py-20 bg-background">

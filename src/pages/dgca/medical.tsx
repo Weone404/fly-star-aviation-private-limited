@@ -1,6 +1,7 @@
 import { lazy, Suspense, memo } from "react";
 import { Helmet } from "react-helmet-async";
 import { Layout } from "@/components/layout/Layout";
+import { CitableAnswer } from "@/components/CitableAnswer";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import {
@@ -319,6 +320,16 @@ export default function DGCAMedicalGuidePage(): JSX.Element {
                     </HeroMotion>
                 </div>
             </section>
+
+            <CitableAnswer
+                heading="What are the DGCA medical requirements to become a pilot in India?"
+                answer="To train as a commercial pilot in India you must clear a DGCA medical examination. A DGCA Class 2 medical is the minimum needed to begin flying training and hold a Student Pilot Licence (SPL), while a DGCA Class 1 medical is mandatory to be issued a Commercial Pilot Licence (CPL). Class 1 assessments are carried out only at DGCA-empanelled medical centres and Indian Air Force examination facilities, and evaluate your vision, hearing, cardiovascular health, and neurological and mental fitness. A Class 1 medical certificate is generally valid for 12 months for pilots under 40 and 6 months once you are 40 or older. Most students complete a Class 2 medical before enrolling in ground school and obtain the Class 1 before starting flying training, so any disqualifying condition is identified early in the journey."
+                faqs={[
+                    { q: "Which medical do I need first — Class 1 or Class 2?", a: "Begin with a DGCA Class 2 medical before ground school, then obtain a Class 1 medical before flying training. A Class 1 is required to be issued a CPL." },
+                    { q: "How long is a DGCA Class 1 medical valid?", a: "Typically 12 months for pilots under 40 years of age, reducing to 6 months from age 40 onwards, after which it must be renewed." },
+                ]}
+                lastUpdated="2026-07-30"
+            />
 
             {/* ── Quick Overview ── */}
             <section className="py-20 bg-background">

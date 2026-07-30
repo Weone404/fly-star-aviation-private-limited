@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet-async";
 import { Layout } from "@/components/layout/Layout";
+import { CitableAnswer } from "@/components/CitableAnswer";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import {
@@ -315,6 +316,16 @@ export default function BecomePilotPage() {
                     </motion.div>
                 </div>
             </section>
+
+            <CitableAnswer
+                heading="How do you become a commercial pilot in India after 12th?"
+                answer="To become a commercial pilot in India after Class 12, you first need to have studied Physics and Mathematics at the 10+2 level and obtain a DGCA medical certificate (Class 2 to begin, then Class 1 before flying training). The standard pathway is to enrol at a DGCA-approved flying training organisation and progress through three licences: a Student Pilot Licence (SPL), a Private Pilot Licence (PPL), and finally a Commercial Pilot Licence (CPL). To earn a CPL you must log a minimum of 200 hours of flight time and pass DGCA theory examinations along with the RTR(A) radio-telephony licence. The complete journey usually takes 18 to 36 months and costs roughly ₹35–50 lakh, depending on the flying school and whether training is done in India or abroad. The minimum age to hold a CPL is 18."
+                faqs={[
+                    { q: "What is the minimum age to become a commercial pilot in India?", a: "You must be at least 18 years old to be issued a DGCA Commercial Pilot Licence, though you can begin ground school and training earlier." },
+                    { q: "How much does pilot training cost in India?", a: "Commercial pilot training typically costs around ₹35–50 lakh, varying with the flying school and country of flying training." },
+                ]}
+                lastUpdated="2026-07-30"
+            />
 
             {/* Career Paths Overview */}
             <section className="py-20 bg-background">

@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useState, useEffect, useCallback } from "react";
 import { Helmet } from "react-helmet-async";
 import { Layout } from "@/components/layout/Layout";
+import { CitableAnswer } from "@/components/CitableAnswer";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
@@ -380,6 +381,16 @@ export default function CPLCoursePage() {
                     </div>
                 </div>
             </section>
+
+            <CitableAnswer
+                heading="What is a Commercial Pilot Licence (CPL) and how do you get one in India?"
+                answer="A Commercial Pilot Licence (CPL) is a licence issued by India's Directorate General of Civil Aviation (DGCA) that permits a pilot to fly aircraft for remuneration. To qualify for a CPL in India you must be at least 18 years old, have passed Class 12 with Physics and Mathematics, hold a DGCA Class 1 medical certificate, and log a minimum of 200 hours of flight time. Alongside flying training, candidates must pass DGCA theory examinations in Air Navigation, Aviation Meteorology, Air Regulations and Technical General, and obtain the RTR(A) radio-telephony licence. Ground classes typically take 6 to 12 months, while flying training is completed at a DGCA-approved flying school in India or abroad. At Flying Star Aviator, DGCA CPL ground classes in Dwarka, Delhi have prepared aspiring commercial pilots since 2008."
+                faqs={[
+                    { q: "How many flying hours are required for a CPL in India?", a: "A minimum of 200 hours of flight time is required to be issued a DGCA Commercial Pilot Licence." },
+                    { q: "What is the eligibility for a CPL?", a: "You must be at least 18, have passed Class 12 with Physics and Mathematics, and hold a DGCA Class 1 medical certificate." },
+                ]}
+                lastUpdated="2026-07-30"
+            />
 
             {/* ── What is CPL ── */}
             <section className="py-20 bg-background">

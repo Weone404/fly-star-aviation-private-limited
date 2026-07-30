@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin, Facebook, Twitter, Instagram, Linkedin, Youtube } from "lucide-react";
 import { KEYWORD_LINKS } from "@/lib/seoKeywords";
@@ -160,144 +159,11 @@ const socialLinks = [
   { name: "YouTube", icon: Youtube, href: "https://www.youtube.com/channel/UCMgPrEdb_0Ckk7ibz7UExUA" },
 ];
 
-// ─── Footer Schema: Place + EducationalOrganization + Services + Courses ──────
-const footerSchema = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Place",
-      "@id": "https://www.flystar.co.in/#place",
-      "name": "Flying Star Aviator Private Limited | Best Cadet Pilot Training Institute in India - DGCA CPL Flight Training in Delhi",
-      "image": "https://lh3.googleusercontent.com/p/AF1QipMrTJvtIBhxipJYxisjbwA5m8a9THTO8Cox3Yim=s1360-w1360-h1020-rw",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "C705, Sector 7, Block C, Palam Extension, Dwarka",
-        "addressLocality": "New Delhi",
-        "addressRegion": "Delhi",
-        "postalCode": "110077",
-        "addressCountry": "IN"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 28.5852283,
-        "longitude": 77.0684002
-      },
-      "hasMap": "https://maps.google.com/?cid=5225956059607335504"
-    },
-    {
-      "@type": "EducationalOrganization",
-      "@id": "https://www.flystar.co.in/#localbusiness",
-      "name": "Flying Star Aviator Private Limited | Best Cadet Pilot Training Institute in India - DGCA CPL Flight Training in Delhi",
-      "url": "https://www.flystar.co.in/",
-      "logo": "https://www.flystar.co.in/flying_logo.webp",
-      "image": "https://lh3.googleusercontent.com/p/AF1QipMrTJvtIBhxipJYxisjbwA5m8a9THTO8Cox3Yim=s1360-w1360-h1020-rw",
-      "telephone": "+919953536199",
-      "priceRange": "$$$",
-      "currenciesAccepted": "INR",
-      "paymentAccepted": "Cash, Credit Card, Bank Transfer",
-      "foundingDate": "2008",
-      "areaServed": { "@type": "Country", "name": "India" },
-      "knowsAbout": [
-        "Commercial Pilot License Training",
-        "DGCA Exam Preparation",
-        "Aviation Ground Classes",
-        "Cadet Pilot Program",
-        "ATPL Training",
-        "Airline Interview Coaching",
-        "RTR(A) Training",
-        "Type Rating Guidance"
-      ],
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "C705, Sector 7, Block C, Palam Extension, Dwarka",
-        "addressLocality": "New Delhi",
-        "addressRegion": "Delhi",
-        "postalCode": "110077",
-        "addressCountry": "IN"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 28.5852283,
-        "longitude": 77.0684002
-      },
-      "openingHoursSpecification": [
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-          "opens": "10:00",
-          "closes": "18:00"
-        }
-      ],
-      "contactPoint": [
-        {
-          "@type": "ContactPoint",
-          "telephone": "+919953536199",
-          "contactType": "customer service",
-          "areaServed": "IN",
-          "availableLanguage": ["English", "Hindi"]
-        }
-      ],
-      "location": { "@id": "https://www.flystar.co.in/#place" },
-      "parentOrganization": { "@id": "https://www.flystar.co.in/#organization" }
-    },
-    {
-      "@type": "Service",
-      "@id": "https://www.flystar.co.in/#service-cpl",
-      "name": "Commercial Pilot License Training",
-      "description": "Comprehensive DGCA CPL ground classes and flight training guidance for aspiring commercial pilots in India.",
-      "provider": { "@id": "https://www.flystar.co.in/#localbusiness" },
-      "areaServed": { "@type": "Country", "name": "India" },
-      "serviceType": "Aviation Training"
-    },
-    {
-      "@type": "Service",
-      "@id": "https://www.flystar.co.in/#service-cadet",
-      "name": "Cadet Pilot Program",
-      "description": "Structured cadet pilot program guiding students from zero to airline-ready commercial pilots.",
-      "provider": { "@id": "https://www.flystar.co.in/#localbusiness" },
-      "areaServed": { "@type": "Country", "name": "India" },
-      "serviceType": "Aviation Training"
-    },
-    {
-      "@type": "Course",
-      "@id": "https://www.flystar.co.in/#course-cpl",
-      "name": "DGCA Commercial Pilot License Training",
-      "description": "DGCA-approved CPL ground classes covering Air Navigation, Meteorology, Air Regulations and Technical General.",
-      "provider": { "@id": "https://www.flystar.co.in/#organization" },
-      "educationalLevel": "Professional",
-      "hasCourseInstance": {
-        "@type": "CourseInstance",
-        "courseMode": ["OnSite", "Online"],
-        "inLanguage": ["en", "hi"]
-      }
-    },
-    {
-      "@type": "Course",
-      "@id": "https://www.flystar.co.in/#course-atpl",
-      "name": "ATPL Ground Training",
-      "description": "Airline Transport Pilot License ground training program for pilots seeking airline career advancement.",
-      "provider": { "@id": "https://www.flystar.co.in/#organization" },
-      "educationalLevel": "Advanced Professional"
-    }
-  ]
-};
+// Site-wide business/Place schema now lives statically in index.html; per-page
+// schema is injected by useSchema. The old footer-injected @graph was removed
+// to avoid duplicate structured data on every route.
 
 export function Footer() {
-  // Inject Footer Schema into <head>
-  useEffect(() => {
-    const existing = document.getElementById("flystar-footer-schema");
-    if (!existing) {
-      const script = document.createElement("script");
-      script.type = "application/ld+json";
-      script.text = JSON.stringify(footerSchema);
-      script.id = "flystar-footer-schema";
-      document.head.appendChild(script);
-    }
-    return () => {
-      document.getElementById("flystar-footer-schema")?.remove();
-    };
-  }, []);
-
   return (
     <footer className="bg-aviation-runway text-white">
       {/* Runway Strip */}
