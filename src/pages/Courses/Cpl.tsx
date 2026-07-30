@@ -3,6 +3,7 @@ import { useState, useEffect, useCallback } from "react";
 import { Helmet } from "react-helmet-async";
 import { Layout } from "@/components/layout/Layout";
 import { CitableAnswer } from "@/components/CitableAnswer";
+import { CitableTable } from "@/components/CitableTable";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
@@ -392,6 +393,26 @@ export default function CPLCoursePage() {
                 sources={[
                     { label: "DGCA (Directorate General of Civil Aviation)", url: "https://www.dgca.gov.in" },
                     { label: "ICAO Annex 1 — Personnel Licensing", url: "https://www.icao.int" },
+                ]}
+                lastUpdated="2026-07-30"
+            />
+
+            <CitableTable
+                heading="CPL cost in India (2026): typical fee breakdown"
+                intro="The total cost of a Commercial Pilot Licence (CPL) in India is driven mainly by flying hours, since the 200 hours of flight time are charged per hour. Ground classes, examinations and licensing are a smaller share. The table below shows indicative 2026 ranges — actual figures vary by flying school, aircraft type, location and fuel prices."
+                columns={["Component", "Indicative cost (₹)", "Notes"]}
+                rows={[
+                    ["DGCA CPL ground classes", "₹1,00,000 – ₹2,50,000", "Air Navigation, Meteorology, Air Regulations, Technical General"],
+                    ["Flying training (200 hrs)", "₹28,00,000 – ₹45,00,000", "Largest cost; per-hour rate depends on the flying school & aircraft"],
+                    ["DGCA exams & licence fees", "₹25,000 – ₹75,000", "Exam attempts, computer number, licence issue"],
+                    ["Class 1 medical", "₹8,000 – ₹15,000", "At a DGCA-empanelled medical centre"],
+                    ["RTR(A) licence", "₹15,000 – ₹40,000", "Radio-telephony training + WPC exam"],
+                    ["Type rating (optional)", "₹15,00,000 – ₹35,00,000", "Usually after CPL, for a specific airliner (e.g. A320/B737)"],
+                    ["Total CPL (typical)", "₹35,00,000 – ₹50,00,000", "Excluding type rating; higher if trained abroad"],
+                ]}
+                note="Figures are indicative industry ranges for 2026 and are not a quotation. Contact Flying Star Aviator for current ground-class fees and school-specific flying costs."
+                sources={[
+                    { label: "DGCA (Directorate General of Civil Aviation)", url: "https://www.dgca.gov.in" },
                 ]}
                 lastUpdated="2026-07-30"
             />

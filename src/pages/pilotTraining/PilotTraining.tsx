@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
+import { CitableTable } from "@/components/CitableTable";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Plane, Clock, IndianRupee, CheckCircle, ArrowRight, GraduationCap } from "lucide-react";
@@ -86,6 +87,24 @@ export default function PilotTrainingPage() {
           </motion.div>
         </div>
       </section>
+
+      <CitableTable
+        heading="Pilot training: India vs USA vs South Africa (cost & duration)"
+        intro="Indian students often compare doing their Commercial Pilot Licence (CPL) in India against popular overseas options. The main trade-offs are cost, weather/flying-hour throughput, and whether a DGCA conversion is needed on return. The table below summarises indicative 2026 figures; all foreign licences require a DGCA conversion (exams + skill test) to fly commercially in India."
+        columns={["Country", "Licensing authority", "Typical duration", "Indicative total cost", "Key notes"]}
+        rows={[
+          ["India", "DGCA", "18 – 36 months", "₹35 – 50 lakh", "Train at home; no licence conversion; weather can slow flying hours"],
+          ["USA", "FAA", "12 – 18 months", "₹60 – 85 lakh", "Fast hour-building & fleet; DGCA conversion required on return"],
+          ["South Africa", "SACAA", "12 – 18 months", "₹25 – 40 lakh", "Lower cost & good weather; DGCA conversion required on return"],
+        ]}
+        note="Figures are indicative 2026 ranges (including flying training) and vary by school, aircraft and exchange rate — not a quotation. A foreign CPL must be converted to a DGCA CPL to fly commercially in India."
+        sources={[
+          { label: "DGCA (India)", url: "https://www.dgca.gov.in" },
+          { label: "FAA (USA)", url: "https://www.faa.gov" },
+          { label: "SACAA (South Africa)", url: "https://www.caa.co.za" },
+        ]}
+        lastUpdated="2026-07-30"
+      />
 
       {/* License Cards */}
       <section className="py-20 bg-background">
