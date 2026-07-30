@@ -30,7 +30,7 @@ const DIST = join(ROOT, "dist");
 const PORT = Number(process.env.PRERENDER_PORT || 4180);
 const ORIGIN = `http://localhost:${PORT}`;
 
-function findChromium() {
+function findLocalChromium() {
   if (process.env.PUPPETEER_EXECUTABLE_PATH) return process.env.PUPPETEER_EXECUTABLE_PATH;
 
   // Playwright cache (macOS/Linux)
@@ -60,6 +60,38 @@ function findChromium() {
   ];
   for (const c of system) if (existsSync(c)) return c;
   return null;
+}
+
+/**
+ * Resolve a launch config. Prefers a local Chromium (dev machines); falls back
+ * to @sparticuz/chromium — a Chromium built for minimal serverless Linux
+ * (Vercel/Lambda) that runs without extra system libraries. Returns null if no
+ * browser can be provisioned.
+ */
+async function resolveLauncher() {
+  const local = findLocalChromium();
+  if (local) {
+    return {
+      source: local,
+      executablePath: local,
+      args: ["--no-sandbox", "--disable-setuid-sandbox"],
+      headless: true,
+    };
+  }
+  try {
+    const chromium = (await import("@sparticuz/chromium")).default;
+    chromium.setGraphicsMode = false; // no WebGL needed for prerender; saves memory
+    const executablePath = await chromium.executablePath();
+    if (!executablePath) return null;
+    return {
+      source: "@sparticuz/chromium",
+      executablePath,
+      args: chromium.args,
+      headless: chromium.headless,
+    };
+  } catch {
+    return null;
+  }
 }
 
 function routesFromSitemap() {
@@ -93,14 +125,15 @@ async function waitForPreview(url, tries = 40) {
 }
 
 async function main() {
-  const executablePath = findChromium();
-  if (!executablePath) {
-    console.error(
-      "\n[prerender] No Chromium found. Set PUPPETEER_EXECUTABLE_PATH or run `npx playwright install chromium`.\n"
+  const launcher = await resolveLauncher();
+  if (!launcher) {
+    console.warn(
+      "\n[prerender] No Chromium available (no local browser and @sparticuz/chromium failed). " +
+        "Skipping prerender — the SPA build still deploys normally.\n"
     );
-    process.exit(1);
+    return; // graceful: do not fail the build
   }
-  console.log(`[prerender] Using Chromium: ${executablePath}`);
+  console.log(`[prerender] Using Chromium: ${launcher.source}`);
 
   // Render "/" LAST. Writing dist/index.html early would turn the home
   // snapshot into the SPA-fallback shell for every later route, leaking
@@ -126,9 +159,9 @@ async function main() {
   }
 
   const browser = await puppeteer.launch({
-    executablePath,
-    headless: true,
-    args: ["--no-sandbox", "--disable-setuid-sandbox"],
+    executablePath: launcher.executablePath,
+    headless: launcher.headless,
+    args: launcher.args,
   });
 
   let ok = 0;

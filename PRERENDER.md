@@ -31,22 +31,35 @@ npm run prerender         # prerender only (expects an existing dist/)
 `scripts/prerender.mjs` looks for Chromium in this order:
 
 1. `PUPPETEER_EXECUTABLE_PATH` env var
-2. A Playwright-managed Chromium (`~/.cache/ms-playwright` / `~/Library/Caches/ms-playwright`)
+2. A Playwright-managed Chromium (`~/.cache/ms-playwright` / `~/Library/Caches/ms-playwright`) — used on dev machines
 3. System Chrome/Chromium
+4. **`@sparticuz/chromium`** — a Chromium built for minimal serverless Linux
+   (Vercel/Lambda) that runs without extra system libraries. Used automatically
+   in CI when no local browser is found.
 
 ## Deploying on Vercel
 
-Set the **Build Command** to install a browser, then build + prerender:
+**No dashboard changes are needed.** `vercel.json` sets:
 
 ```
-npx playwright install chromium && npm run build:prerender
+"buildCommand": "vite build && (node scripts/prerender.mjs || true)"
 ```
 
-(Output directory stays `dist`.) Alternatively, set `PUPPETEER_EXECUTABLE_PATH`
-to a Chromium binary available in the build image.
+So every deploy runs `vite build`, then prerenders all sitemap routes using the
+bundled `@sparticuz/chromium`. The `|| true` makes prerender **best-effort**: if
+the browser can't start for any reason, the build still succeeds and ships the
+working SPA (no prerendered HTML that deploy) — never a broken deploy.
 
-If the browser can't be provisioned in CI, the site still deploys as a working
-SPA — you just lose the prerendered HTML for that deploy.
+> If a stale Build Command is set in the Vercel dashboard, clear it so the
+> `vercel.json` `buildCommand` takes effect.
+
+After a deploy, confirm prerendering is live:
+
+```
+curl -s https://www.flystar.co.in/services/mro | grep -i "<title>"
+```
+
+It should show the **MRO** page title, not the homepage title.
 
 ## When you add a new route
 
