@@ -328,6 +328,10 @@ export default function DGCAMedicalGuidePage(): JSX.Element {
                     { q: "Which medical do I need first — Class 1 or Class 2?", a: "Begin with a DGCA Class 2 medical before ground school, then obtain a Class 1 medical before flying training. A Class 1 is required to be issued a CPL." },
                     { q: "How long is a DGCA Class 1 medical valid?", a: "Typically 12 months for pilots under 40 years of age, reducing to 6 months from age 40 onwards, after which it must be renewed." },
                 ]}
+                sources={[
+                    { label: "DGCA (Directorate General of Civil Aviation)", url: "https://www.dgca.gov.in" },
+                    { label: "ICAO Annex 1 — Personnel Licensing", url: "https://www.icao.int" },
+                ]}
                 lastUpdated="2026-07-30"
             />
 

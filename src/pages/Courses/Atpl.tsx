@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
+import { CitableAnswer } from "@/components/CitableAnswer";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import {
@@ -281,6 +282,20 @@ export default function ATPLCoursePage() {
                     </motion.div>
                 </div>
             </section>
+
+            <CitableAnswer
+                heading="What is an ATPL and how is it different from a CPL in India?"
+                answer="An Airline Transport Pilot Licence (ATPL) is the highest grade of pilot licence issued by India's DGCA, and it is required to act as Pilot-in-Command (Captain) of a multi-crew commercial aircraft. Where a Commercial Pilot Licence (CPL) needs 200 hours of flight time, an ATPL requires a minimum of 1,500 hours of total flight time, including specified hours of cross-country, night and instrument flying. Candidates must be at least 21 years old, already hold a CPL with a multi-engine instrument rating, and pass the DGCA ATPL theory examinations. In practice most pilots first fly as First Officers on a CPL with frozen ATPL theory, accumulate the 1,500 hours on the job, and then convert to a full ATPL. Flying Star Aviator runs DGCA ATPL ground classes in Dwarka, Delhi to prepare pilots for the theory examinations."
+                faqs={[
+                    { q: "How many flying hours are required for an ATPL in India?", a: "A minimum of 1,500 hours of total flight time is required for a DGCA ATPL, versus 200 hours for a CPL." },
+                    { q: "What is the minimum age for an ATPL?", a: "You must be at least 21 years old and already hold a CPL with a multi-engine instrument rating to be issued a DGCA ATPL." },
+                ]}
+                sources={[
+                    { label: "DGCA (Directorate General of Civil Aviation)", url: "https://www.dgca.gov.in" },
+                    { label: "ICAO Annex 1 — Personnel Licensing", url: "https://www.icao.int" },
+                ]}
+                lastUpdated="2026-07-30"
+            />
 
             {/* ── Stats Strip ────────────────────────────────────────── */}
             <section className="py-0 bg-card border-t-4 border-accent shadow-hover">

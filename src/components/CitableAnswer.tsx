@@ -12,10 +12,17 @@ interface QA {
   a: string;
 }
 
+interface Source {
+  label: string;
+  url: string;
+}
+
 interface CitableAnswerProps {
   heading: string;
   answer: string;
   faqs?: QA[];
+  /** Authoritative sources shown as citations (boosts AI-answer visibility). */
+  sources?: Source[];
   /** ISO date, e.g. "2026-07-30" */
   lastUpdated: string;
 }
@@ -31,7 +38,7 @@ function formatDate(iso: string): string {
   return `${MONTHS[m - 1]} ${d}, ${y}`;
 }
 
-export function CitableAnswer({ heading, answer, faqs, lastUpdated }: CitableAnswerProps) {
+export function CitableAnswer({ heading, answer, faqs, sources, lastUpdated }: CitableAnswerProps) {
   return (
     <section className="py-14 bg-background border-b border-border/50">
       <div className="container mx-auto px-4 max-w-3xl">
@@ -49,7 +56,26 @@ export function CitableAnswer({ heading, answer, faqs, lastUpdated }: CitableAns
           </div>
         )}
 
-        <p className="mt-8 text-sm text-muted-foreground/70">
+        {sources && sources.length > 0 && (
+          <p className="mt-6 text-sm text-muted-foreground">
+            <span className="font-semibold text-foreground">Sources: </span>
+            {sources.map((s, i) => (
+              <span key={s.url}>
+                {i > 0 && ", "}
+                <a
+                  href={s.url}
+                  target="_blank"
+                  rel="noopener nofollow"
+                  className="underline hover:text-primary"
+                >
+                  {s.label}
+                </a>
+              </span>
+            ))}
+          </p>
+        )}
+
+        <p className="mt-4 text-sm text-muted-foreground/70">
           Last updated:{" "}
           <time dateTime={lastUpdated}>{formatDate(lastUpdated)}</time>
         </p>

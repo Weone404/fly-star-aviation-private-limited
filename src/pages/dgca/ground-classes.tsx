@@ -2,6 +2,7 @@ import { memo } from "react";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet-async";
 import { Layout } from "@/components/layout/Layout";
+import { CitableAnswer } from "@/components/CitableAnswer";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import {
@@ -290,6 +291,19 @@ export default function DGCAGroundClassesPage(): JSX.Element {
                     </motion.div>
                 </div>
             </section>
+
+            <CitableAnswer
+                heading="What subjects are covered in DGCA ground classes?"
+                answer="DGCA ground classes prepare pilots for the theory examinations required to obtain a Commercial Pilot Licence (CPL) or Airline Transport Pilot Licence (ATPL) in India. For the CPL, the DGCA examination consists of four written papers: Air Navigation, Aviation Meteorology, Air Regulations, and Technical General (with Technical Specific for the aircraft type). Candidates must also clear the RTR(A) radio-telephony examination conducted by the WPC Wing. The DGCA pass mark for each paper is 70%. Each subject can be attempted and cleared separately, and passes are valid for a defined period during which the remaining papers must be completed. Flying Star Aviator's DGCA ground classes in Dwarka, Delhi cover all four CPL subjects with structured lessons, question banks, and mock tests aligned to the current DGCA syllabus."
+                faqs={[
+                    { q: "How many subjects are there in the DGCA CPL exam?", a: "Four written papers — Air Navigation, Aviation Meteorology, Air Regulations, and Technical General — plus the RTR(A) radio-telephony examination." },
+                    { q: "What is the passing mark for DGCA exams?", a: "The DGCA pass mark is 70% for each paper; subjects can be cleared individually." },
+                ]}
+                sources={[
+                    { label: "DGCA (Directorate General of Civil Aviation)", url: "https://www.dgca.gov.in" },
+                ]}
+                lastUpdated="2026-07-30"
+            />
 
             {/* ── Quick Overview Table ── */}
             <section className="py-20 bg-background">

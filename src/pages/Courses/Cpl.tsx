@@ -389,6 +389,10 @@ export default function CPLCoursePage() {
                     { q: "How many flying hours are required for a CPL in India?", a: "A minimum of 200 hours of flight time is required to be issued a DGCA Commercial Pilot Licence." },
                     { q: "What is the eligibility for a CPL?", a: "You must be at least 18, have passed Class 12 with Physics and Mathematics, and hold a DGCA Class 1 medical certificate." },
                 ]}
+                sources={[
+                    { label: "DGCA (Directorate General of Civil Aviation)", url: "https://www.dgca.gov.in" },
+                    { label: "ICAO Annex 1 — Personnel Licensing", url: "https://www.icao.int" },
+                ]}
                 lastUpdated="2026-07-30"
             />
 

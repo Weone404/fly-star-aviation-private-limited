@@ -324,6 +324,9 @@ export default function BecomePilotPage() {
                     { q: "What is the minimum age to become a commercial pilot in India?", a: "You must be at least 18 years old to be issued a DGCA Commercial Pilot Licence, though you can begin ground school and training earlier." },
                     { q: "How much does pilot training cost in India?", a: "Commercial pilot training typically costs around ₹35–50 lakh, varying with the flying school and country of flying training." },
                 ]}
+                sources={[
+                    { label: "DGCA (Directorate General of Civil Aviation)", url: "https://www.dgca.gov.in" },
+                ]}
                 lastUpdated="2026-07-30"
             />
 
