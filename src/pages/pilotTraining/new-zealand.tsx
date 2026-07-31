@@ -1,5 +1,4 @@
-import { motion } from "framer-motion";
-import { Helmet } from "react-helmet-async";
+﻿import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -142,7 +141,7 @@ const trainingStages = [
         ],
     },
     {
-        stage: "Private Pilot Licence – PPL",
+        stage: "Private Pilot Licence â€“ PPL",
         duration: "5 Months",
         flyingHours: "0-70 hrs",
         highlights: [
@@ -215,7 +214,7 @@ const stepByStepGuide = [
     {
         step: 8,
         title: "Flight Training",
-        description: "Follow the structured PPL→hour-building→CPL (and optional IR/ME) progression with dual instruction, solo flights, cross-countries and simulator sessions.",
+        description: "Follow the structured PPLâ†’hour-buildingâ†’CPL (and optional IR/ME) progression with dual instruction, solo flights, cross-countries and simulator sessions.",
     },
     {
         step: 9,
@@ -327,13 +326,13 @@ const faqs = [
 export default function PilotTrainingNewZealandPage() {
     return (
         <Layout>
-            <Helmet>
+            
                 <title>Pilot Training New Zealand | CAA-  Commercial Pilot Training</title>
                 <meta
                     name="description"
                     content="Train in New Zealand with CAA-  flight schools. 12-14 months CPL training, 220-240 flying hours, diverse flying environments. DGCA license conversion available. Apply now."
                 />
-            </Helmet>
+            
 
             {/* Hero Section */}
             <section className="relative py-24 aviation-gradient text-primary-foreground">
@@ -976,3 +975,4 @@ export default function PilotTrainingNewZealandPage() {
         </Layout>
     );
 }
+

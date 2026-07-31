@@ -1,5 +1,4 @@
-import { motion } from "framer-motion";
-import { Helmet } from "react-helmet-async";
+﻿import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -204,10 +203,10 @@ const admissionProcess = [
 export default function AirportGroundStaffCoursePage() {
     return (
         <Layout>
-            <Helmet>
+            
                 <title>Airport Ground Staff Course in India | Aviation Ground Staff Training</title>
                 <meta name="description" content="Join the airport ground staff course - 11 months certification program. Learn passenger handling, baggage management, customer service. Salary 2-6 LPA. Apply now." />
-            </Helmet>
+            
 
             {/* Hero Section */}
             <section className="relative py-24 aviation-gradient text-primary-foreground">
@@ -665,7 +664,7 @@ export default function AirportGroundStaffCoursePage() {
                                     <DollarSign className="h-8 w-8 text-primary" />
                                 </div>
                                 <h3 className="text-2xl font-bold mb-4">Average Salary Range</h3>
-                                <p className="text-3xl font-bold text-primary mb-4">₹2 - 6 Lakhs</p>
+                                <p className="text-3xl font-bold text-primary mb-4">â‚¹2 - 6 Lakhs</p>
                                 <p className="text-muted-foreground">Per annum</p>
                             </motion.div>
 

@@ -1,4 +1,4 @@
-import { Layout } from "@/components/layout/Layout";
+﻿import { Layout } from "@/components/layout/Layout";
 import { HeroSection } from "@/components/home/HeroSection";
 import { JourneyIntroSection, ServicesSection, StepByStepPathwaySection, ServiceDetailsSection } from "@/components/home/ServicesSection";
 import {
@@ -9,7 +9,6 @@ import { WorldMapSection } from "@/components/home/WorldMapSection";
 import { TestimonialsSection } from "@/components/home/TestimonialsSection";
 import { PartnersSection } from "@/components/home/PartnersSection";
 import { CTASection } from "@/components/home/CTASection";
-import { Helmet } from "react-helmet-async";
 
 const HOME_SCHEMA = {
   "@context": "https://schema.org",
@@ -53,10 +52,10 @@ const HOME_SCHEMA = {
 const Index = () => {
   return (
     <Layout>
-      <Helmet>
+      
         {/* Title, description, canonical and OG are set centrally by useMeta. */}
         <script type="application/ld+json">{JSON.stringify(HOME_SCHEMA)}</script>
-      </Helmet>
+      
       <HeroSection />
       <JourneyIntroSection />
       <ServicesSection />

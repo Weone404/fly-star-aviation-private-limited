@@ -35,9 +35,9 @@ export function useMeta() {
     setMeta('meta[property="og:description"]', "content", ogDescription || description);
     setMeta('meta[property="og:url"]', "content", canonical);
     setMeta('meta[property="og:type"]', "content", "website");
-    setMeta('meta[property="og:image"]', "content", ogImage || "https://www.flystar.co.in/assets/og-default.jpg");
+    setMeta('meta[property="og:image"]', "content", ogImage || "/hero-aircraft.jpg");
     setMeta('meta[name="twitter:card"]', "content", "summary_large_image");
-    setMeta('meta[name="twitter:image"]', "content", twitterImage || ogImage || "https://www.flystar.co.in/assets/og-default.jpg");
+    setMeta('meta[name="twitter:image"]', "content", twitterImage || ogImage || "/hero-aircraft.jpg");
 
     const canonicalLink = document.head.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
     if (canonicalLink) {

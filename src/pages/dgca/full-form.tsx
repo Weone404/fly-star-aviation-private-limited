@@ -1,6 +1,5 @@
-import { memo } from "react";
+﻿import { memo } from "react";
 import { motion } from "framer-motion";
-import { Helmet } from "react-helmet-async";
 import { Layout } from "@/components/layout/Layout";
 import { CitableAnswer } from "@/components/CitableAnswer";
 import { Button } from "@/components/ui/button";
@@ -33,7 +32,7 @@ import {
     AccordionTrigger,
 } from "@/components/ui/accordion";
 
-// ─── Static data (module scope — never recreated) ─────────────────────────────
+// â”€â”€â”€ Static data (module scope â€” never recreated) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 const dgcaHighlights = [
     { icon: Shield, title: "Top Regulatory Authority", description: "India's supreme aviation safety and regulatory organization" },
@@ -111,7 +110,7 @@ const faqs = [
     { question: "What is the main role of DGCA in Indian aviation?", answer: "DGCA ensures that flying in India is safe, structured, and follows international norms. It regulates all aspects of civil aviation including pilot licensing, aircraft certification, aviation institute monitoring, safety standards, and incident investigation." },
     { question: "When was DGCA established?", answer: "DGCA was founded in 1971 and has since played a critical role in growing Indian aviation from approving flying schools to ensuring aircraft safety before takeoff." },
     { question: "Where is DGCA headquarters located?", answer: "DGCA's headquarters is located in New Delhi, just across from Safdarjung Airport. It also operates regional offices in major cities like Mumbai, Kolkata, Chennai, and Hyderabad." },
-    { question: "Can I become a pilot without DGCA approval?", answer: "No, you cannot become a legal pilot in India without DGCA approval. All pilot licenses in India — CPL, PPL, SPL, ATPL — are issued by DGCA after candidates fulfill exam and flying hour requirements. Without DGCA = No legal pilot license in India." },
+    { question: "Can I become a pilot without DGCA approval?", answer: "No, you cannot become a legal pilot in India without DGCA approval. All pilot licenses in India â€” CPL, PPL, SPL, ATPL â€” are issued by DGCA after candidates fulfill exam and flying hour requirements. Without DGCA = No legal pilot license in India." },
     { question: "What types of pilot licenses does DGCA issue?", answer: "DGCA issues several types of pilot licenses including Commercial Pilot License (CPL), Private Pilot License (PPL), Student Pilot License (SPL), and Airline Transport Pilot License (ATPL). Each license has specific requirements and flying hour criteria." },
     { question: "Does DGCA approve flying schools?", answer: "Yes, DGCA must approve all aviation academies and flying schools in India. No aviation academy can operate without DGCA permission. Schools must have DGCA-approved instructors, meet training standards, and ensure their aircraft meet national and international standards." },
     { question: "Can DGCA handle passenger complaints?", answer: "Yes, DGCA is the authority that can hold airlines accountable for passenger complaints. If you have complaints about flight delays or airline service, DGCA is the body that addresses these issues and enforces passenger rights." },
@@ -119,7 +118,7 @@ const faqs = [
     { question: "How is DGCA connected to international aviation standards?", answer: "DGCA works closely with ICAO (International Civil Aviation Organization) to ensure India stays aligned with global aviation standards. This is especially important as India is becoming one of the world's fastest-growing aviation markets." },
 ];
 
-// ─── Shared animation variants (module scope — never recreated) ───────────────
+// â”€â”€â”€ Shared animation variants (module scope â€” never recreated) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 const fadeUp = { hidden: { opacity: 0, y: 30 }, show: { opacity: 1, y: 0 } };
 const viewport = { once: true, margin: "-50px" } as const;
@@ -127,7 +126,7 @@ const viewport = { once: true, margin: "-50px" } as const;
 // Staggered children helper
 const staggerDelay = (i: number) => ({ delay: i * 0.1 });
 
-// ─── Memoized sub-components ──────────────────────────────────────────────────
+// â”€â”€â”€ Memoized sub-components â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 /** Reusable icon box */
 const IconBox = memo(({ icon: Icon, className = "" }: { icon: React.ElementType; className?: string }) => (
@@ -255,7 +254,7 @@ const ImportanceCard = memo(({ item, delay }: { item: typeof dgcaImportance[0]; 
 ));
 ImportanceCard.displayName = "ImportanceCard";
 
-/** Section heading — shared pattern across page */
+/** Section heading â€” shared pattern across page */
 const SectionHeading = memo(({ title, subtitle, icon: Icon }: {
     title: string;
     subtitle?: string;
@@ -275,20 +274,20 @@ const SectionHeading = memo(({ title, subtitle, icon: Icon }: {
 ));
 SectionHeading.displayName = "SectionHeading";
 
-// ─── Page ─────────────────────────────────────────────────────────────────────
+// â”€â”€â”€ Page â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 export default function DGCAPage() {
     return (
         <Layout>
-            <Helmet>
+            
                 <title>DGCA Full Form - Directorate General of Civil Aviation | Role & Functions</title>
                 <meta
                     name="description"
                     content="Complete guide to DGCA (Directorate General of Civil Aviation) - India's top aviation regulatory authority. Learn about DGCA's role, functions, importance, and impact on Indian aviation industry."
                 />
-            </Helmet>
+            
 
-            {/* ── Hero ── */}
+            {/* â”€â”€ Hero â”€â”€ */}
             <section className="relative py-24 aviation-gradient text-primary-foreground">
                 <div className="container">
                     <motion.div
@@ -301,10 +300,10 @@ export default function DGCAPage() {
                             DGCA - INDIA'S AVIATION AUTHORITY
                         </span>
                         <h1 className="text-4xl md:text-6xl font-bold mb-6">
-                            DGCA Full Form – What is DGCA in Aviation?
+                            DGCA Full Form â€“ What is DGCA in Aviation?
                         </h1>
                         <p className="text-xl text-primary-foreground/80 mb-4">
-                            Directorate General of Civil Aviation (DGCA) – Role, Importance & Functions in Indian Aviation
+                            Directorate General of Civil Aviation (DGCA) â€“ Role, Importance & Functions in Indian Aviation
                         </p>
                         <p className="text-lg text-primary-foreground/70 mb-8">
                             When you take flight, have you ever thought about who is behind the flight safety, rules, and
@@ -328,7 +327,7 @@ export default function DGCAPage() {
 
             <CitableAnswer
                 heading="What is the full form of DGCA?"
-                answer="DGCA stands for the Directorate General of Civil Aviation. It is India's statutory regulatory body for civil aviation, functioning under the Ministry of Civil Aviation and headquartered in New Delhi. DGCA is responsible for issuing all pilot licences in India — Student Pilot Licence (SPL), Private Pilot Licence (PPL), Commercial Pilot Licence (CPL) and Airline Transport Pilot Licence (ATPL) — as well as certifying aircraft airworthiness, approving and monitoring flying training organisations, and enforcing safety standards aligned with the International Civil Aviation Organization (ICAO). For aspiring pilots, DGCA sets and conducts the theory examinations — Air Navigation, Aviation Meteorology, Air Regulations and Technical General — that must be passed to earn a CPL, along with the RTR(A) radio-telephony requirement. In short, no pilot can fly commercially in India without meeting DGCA's licensing and examination requirements."
+                answer="DGCA stands for the Directorate General of Civil Aviation. It is India's statutory regulatory body for civil aviation, functioning under the Ministry of Civil Aviation and headquartered in New Delhi. DGCA is responsible for issuing all pilot licences in India â€” Student Pilot Licence (SPL), Private Pilot Licence (PPL), Commercial Pilot Licence (CPL) and Airline Transport Pilot Licence (ATPL) â€” as well as certifying aircraft airworthiness, approving and monitoring flying training organisations, and enforcing safety standards aligned with the International Civil Aviation Organization (ICAO). For aspiring pilots, DGCA sets and conducts the theory examinations â€” Air Navigation, Aviation Meteorology, Air Regulations and Technical General â€” that must be passed to earn a CPL, along with the RTR(A) radio-telephony requirement. In short, no pilot can fly commercially in India without meeting DGCA's licensing and examination requirements."
                 faqs={[
                     { q: "What does DGCA regulate?", a: "DGCA regulates pilot licensing, aircraft airworthiness certification, approval of flying and aviation training organisations, and overall civil aviation safety in India." },
                     { q: "Under which ministry does DGCA operate?", a: "DGCA operates under the Ministry of Civil Aviation, Government of India, and aligns its standards with ICAO." },
@@ -340,7 +339,7 @@ export default function DGCAPage() {
                 lastUpdated="2026-07-30"
             />
 
-            {/* ── Introduction ── */}
+            {/* â”€â”€ Introduction â”€â”€ */}
             <section className="py-20 bg-background">
                 <div className="container">
                     <motion.div
@@ -365,7 +364,7 @@ export default function DGCAPage() {
                 </div>
             </section>
 
-            {/* ── What is DGCA ── */}
+            {/* â”€â”€ What is DGCA â”€â”€ */}
             <section className="py-20 bg-muted/30">
                 <div className="container">
                     <motion.div
@@ -386,18 +385,18 @@ export default function DGCAPage() {
                                 and follows international norms.
                             </p>
                             <p className="text-muted-foreground text-lg mb-4">
-                                Founded back in <strong>1971</strong>, DGCA has played a critical role in growing Indian aviation — from
+                                Founded back in <strong>1971</strong>, DGCA has played a critical role in growing Indian aviation â€” from
                                 approving flying schools to making sure your plane is safe to fly before takeoff.
                             </p>
                             <div className="p-6 rounded-xl bg-primary/10 border-l-4 border-primary mt-6">
-                                <p className="text-lg font-semibold">🎯 DGCA in Aviation = Directorate General Of Civil Aviation</p>
+                                <p className="text-lg font-semibold">ðŸŽ¯ DGCA in Aviation = Directorate General Of Civil Aviation</p>
                             </div>
                         </div>
                     </motion.div>
                 </div>
             </section>
 
-            {/* ── DGCA Highlights ── */}
+            {/* â”€â”€ DGCA Highlights â”€â”€ */}
             <section className="py-20 bg-background">
                 <div className="container">
                     <SectionHeading
@@ -412,12 +411,12 @@ export default function DGCAPage() {
                 </div>
             </section>
 
-            {/* ── DGCA Functions ── */}
+            {/* â”€â”€ DGCA Functions â”€â”€ */}
             <section className="py-20 bg-muted/30">
                 <div className="container">
                     <SectionHeading
                         title="What Does DGCA Do?"
-                        subtitle="You might be surprised to know that DGCA is involved in almost every aspect of flying — not just what happens in the cockpit. Let's break down their main functions:"
+                        subtitle="You might be surprised to know that DGCA is involved in almost every aspect of flying â€” not just what happens in the cockpit. Let's break down their main functions:"
                     />
                     <div className="space-y-6 max-w-6xl mx-auto">
                         {dgcaFunctions.map((func, i) => (
@@ -427,12 +426,12 @@ export default function DGCAPage() {
                 </div>
             </section>
 
-            {/* ── DGCA Offices ── */}
+            {/* â”€â”€ DGCA Offices â”€â”€ */}
             <section className="py-20 bg-background">
                 <div className="container">
                     <SectionHeading
                         title="Where is DGCA Located?"
-                        subtitle="DGCA's headquarters is located in New Delhi, just across from Safdarjung Airport — one of India's historic aviation sites. It operates regional offices in major cities to keep local aviation activities in check."
+                        subtitle="DGCA's headquarters is located in New Delhi, just across from Safdarjung Airport â€” one of India's historic aviation sites. It operates regional offices in major cities to keep local aviation activities in check."
                         icon={MapPin}
                     />
                     <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6 max-w-6xl mx-auto">
@@ -443,7 +442,7 @@ export default function DGCAPage() {
                 </div>
             </section>
 
-            {/* ── Pilot Career Steps ── */}
+            {/* â”€â”€ Pilot Career Steps â”€â”€ */}
             <section className="py-20 bg-muted/30">
                 <div className="container">
                     <SectionHeading
@@ -469,12 +468,12 @@ export default function DGCAPage() {
                 </div>
             </section>
 
-            {/* ── Why DGCA is Important ── */}
+            {/* â”€â”€ Why DGCA is Important â”€â”€ */}
             <section className="py-20 bg-background">
                 <div className="container">
                     <SectionHeading
                         title="Why DGCA is So Important"
-                        subtitle="You might think of DGCA as just a government office — but its role is far more impactful. It doesn't just make rules; it makes sure everyone follows them to ensure your flight is safe every time you board an aircraft."
+                        subtitle="You might think of DGCA as just a government office â€” but its role is far more impactful. It doesn't just make rules; it makes sure everyone follows them to ensure your flight is safe every time you board an aircraft."
                     />
                     <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
                         {dgcaImportance.map((item, i) => (
@@ -502,7 +501,7 @@ export default function DGCAPage() {
                 </div>
             </section>
 
-            {/* ── Quick Facts ── */}
+            {/* â”€â”€ Quick Facts â”€â”€ */}
             <section className="py-20 bg-muted/30">
                 <div className="container">
                     <SectionHeading
@@ -550,7 +549,7 @@ export default function DGCAPage() {
                 </div>
             </section>
 
-            {/* ── FAQ ── */}
+            {/* â”€â”€ FAQ â”€â”€ */}
             <section className="py-20 bg-background">
                 <div className="container">
                     <SectionHeading
@@ -584,7 +583,7 @@ export default function DGCAPage() {
                 </div>
             </section>
 
-            {/* ── Final CTA ── */}
+            {/* â”€â”€ Final CTA â”€â”€ */}
             <section className="py-20 aviation-gradient text-primary-foreground">
                 <div className="container">
                     <motion.div

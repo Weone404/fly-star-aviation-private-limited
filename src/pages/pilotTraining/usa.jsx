@@ -1,5 +1,4 @@
-import { motion } from "framer-motion";
-import { Helmet } from "react-helmet-async";
+﻿import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -222,7 +221,7 @@ const stepByStepGuide = [
     {
         step: 8,
         title: "Flight Training (At Flight School In USA)",
-        description: "Move to practical flying lessons — starting with SPL → PPL → IR → CPL → MEIR. Training is structured under FAA requirements for each stage.",
+        description: "Move to practical flying lessons â€” starting with SPL â†’ PPL â†’ IR â†’ CPL â†’ MEIR. Training is structured under FAA requirements for each stage.",
     },
     {
         step: 9,
@@ -392,13 +391,13 @@ const faqs = [
 export default function PilotTrainingUSAPage() {
     return (
         <Layout>
-            <Helmet>
+            
                 <title>Pilot Training USA | FAA-Approved Commercial Pilot Training</title>
                 <meta
                     name="description"
                     content="Train in the USA with FAA-approved flight schools. 10-12 months CPL training, 235-260 flying hours, modern fleet. DGCA license conversion available. Apply now."
                 />
-            </Helmet>
+            
 
             {/* Hero Section */}
             <section className="relative py-24 aviation-gradient text-primary-foreground">

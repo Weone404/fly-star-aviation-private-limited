@@ -1,5 +1,4 @@
-import { motion } from "framer-motion";
-import { Helmet } from "react-helmet-async";
+﻿import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -25,7 +24,7 @@ import {
 const quickOverview = [
     { label: "Course Name", value: "Commercial Pilot License (CPL)" },
     { label: "Course Type", value: "Professional Pilot Course" },
-    { label: "Duration", value: "18–24 Months" },
+    { label: "Duration", value: "18â€“24 Months" },
     { label: "Eligibility", value: "10+2 With Physics & Mathematics" },
     { label: "License Type", value: "DGCA   CPL" },
     { label: "Training Mode", value: "Ground + Flying" },
@@ -183,13 +182,13 @@ const basicRequirements = [
 export default function CPLCourseDetailsPage() {
     return (
         <Layout>
-            <Helmet>
+            
                 <title>Commercial Pilot License Course Details | CPL Training in India</title>
                 <meta
                     name="description"
                     content="Complete guide to Commercial Pilot License course in India. Learn about CPL training, syllabus, fees, eligibility, admission process, and career opportunities."
                 />
-            </Helmet>
+            
 
             {/* Hero Section */}
             <section className="relative py-24 aviation-gradient text-primary-foreground">
@@ -336,7 +335,7 @@ export default function CPLCourseDetailsPage() {
                         </div>
 
                         <p className="text-lg text-muted-foreground">
-                            A CPL pilot is not just a job role — it is a respected profession that combines skill, precision,
+                            A CPL pilot is not just a job role â€” it is a respected profession that combines skill, precision,
                             and passion.
                         </p>
                     </motion.div>
@@ -353,7 +352,7 @@ export default function CPLCourseDetailsPage() {
                         className="text-center mb-16"
                     >
                         <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                            Commercial Pilot Training in India – Course Overview
+                            Commercial Pilot Training in India â€“ Course Overview
                         </h2>
                         <p className="text-muted-foreground max-w-3xl mx-auto text-lg">
                             The commercial pilot training in India is conducted as per the guidelines of the DGCA. In the training, students are given ground training and are also provided with flight hours.

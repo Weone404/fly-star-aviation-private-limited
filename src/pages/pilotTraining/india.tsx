@@ -1,5 +1,4 @@
-import { motion } from "framer-motion";
-import { Helmet } from "react-helmet-async";
+﻿import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -192,7 +191,7 @@ const stepByStepGuide = [
     {
         step: 6,
         title: "SPL (Student Pilot Licence)",
-        description: "Apply for and obtain your SPL after initial training and checks — this authorises you to commence supervised solo flying.",
+        description: "Apply for and obtain your SPL after initial training and checks â€” this authorises you to commence supervised solo flying.",
     },
     {
         step: 7,
@@ -321,13 +320,13 @@ const faqs = [
 export default function PilotTrainingIndiaPage() {
     return (
         <Layout>
-            <Helmet>
+            
                 <title>Pilot Training India | DGCA-  Commercial Pilot Training</title>
                 <meta
                     name="description"
                     content="Start your pilot journey with DGCA-  flight schools in India. 14-16 months CPL training, 200 flying hours, modern aircraft fleet. Get complete course details and apply now."
                 />
-            </Helmet>
+            
 
             {/* Hero Section */}
             <section className="relative py-24 aviation-gradient text-primary-foreground">

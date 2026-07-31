@@ -1,5 +1,4 @@
-import { motion } from "framer-motion";
-import { Helmet } from "react-helmet-async";
+﻿import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -126,13 +125,13 @@ const faqs = [
 export default function CabinCrewPage() {
     return (
         <Layout>
-            <Helmet>
+            
                 <title>Cabin Crew Jobs | Join Esteemed Airlines Worldwide</title>
                 <meta
                     name="description"
                     content="Launch your cabin crew career with AAP Aviation. Permanent contracts, global opportunities with Etihad, SAS & more. For experienced and inexperienced crew."
                 />
-            </Helmet>
+            
 
             {/* Hero Section */}
             <section className="relative py-24 aviation-gradient text-primary-foreground">

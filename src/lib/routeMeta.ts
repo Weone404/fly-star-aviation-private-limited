@@ -254,11 +254,6 @@ const routeMeta: Record<string, RouteMeta> = {
     description: "Find Flying Star Aviator training centers and offices across India.",
     canonical: `${BASE_URL}/locations`,
   },
-  "/Sitemap": {
-    title: "Sitemap | Flying Star Aviator",
-    description: "Flying Star Aviator sitemap and navigation guide for pilot training, services, and aviation resources.",
-    canonical: `${BASE_URL}/Sitemap`,
-  },
   "/sitemap": {
     title: "Sitemap | Flying Star Aviator",
     description: "Flying Star Aviator sitemap and navigation guide for pilot training, services, and aviation resources.",
@@ -268,8 +263,8 @@ const routeMeta: Record<string, RouteMeta> = {
     title: "Aviation Blogs | Flying Star Aviator",
     description: "Read the latest aviation news, DGCA updates, CPL guides and pilot career tips from Flying Star Aviator.",
     canonical: `${BASE_URL}/blogs`,
-    ogImage: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1200&q=80",
-    twitterImage: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1200&q=80",
+    ogImage: "/hero-aircraft.jpg",
+    twitterImage: "/hero-aircraft.jpg",
   },
   "/admin/login": {
     title: "Admin Login — Fly Star Aviation",

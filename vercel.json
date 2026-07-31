@@ -8,6 +8,11 @@
       "dest": "/api/$1"
     },
     {
+      "src": "/Sitemap",
+      "status": 308,
+      "dest": "/sitemap"
+    },
+    {
       "src": "/sitemap.xml",
       "dest": "/sitemap.xml"
     },

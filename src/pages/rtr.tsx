@@ -1,5 +1,4 @@
-import { motion } from "framer-motion";
-import { Helmet } from "react-helmet-async";
+﻿import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -54,12 +53,12 @@ const rtrHighlights = [
 ];
 
 const rtrImportance = [
-    "Mandatory for Pilots – Essential for Commercial Pilot License (CPL)",
-    "Ensures Safety – Handle emergency communications efficiently",
-    "International Recognition – ICAO-approved phraseology validation",
-    "Eligibility for CPL – Required before obtaining Commercial Pilot License",
-    "Professional Requirement – Must-have for ATCs and pilots",
-    "Legal Compliance – Cannot operate aircraft in controlled airspace without RTR",
+    "Mandatory for Pilots â€“ Essential for Commercial Pilot License (CPL)",
+    "Ensures Safety â€“ Handle emergency communications efficiently",
+    "International Recognition â€“ ICAO-approved phraseology validation",
+    "Eligibility for CPL â€“ Required before obtaining Commercial Pilot License",
+    "Professional Requirement â€“ Must-have for ATCs and pilots",
+    "Legal Compliance â€“ Cannot operate aircraft in controlled airspace without RTR",
 ];
 
 const eligibilityRequirements = [
@@ -317,13 +316,13 @@ const faqs = [
 export default function RTRPage() {
     return (
         <Layout>
-            <Helmet>
+            
                 <title>RTR Full Form - Radio Telephony Restricted | Complete Guide 2026</title>
                 <meta
                     name="description"
                     content="Complete guide to RTR (Radio Telephony Restricted) - meaning, importance, types, eligibility, exam pattern, preparation tips. Essential license for pilots and ATCs in India."
                 />
-            </Helmet>
+            
 
             {/* Hero Section */}
             <section className="relative py-24 aviation-gradient text-primary-foreground">
@@ -337,7 +336,7 @@ export default function RTRPage() {
                             RTR - RADIO TELEPHONY RESTRICTED
                         </span>
                         <h1 className="text-4xl md:text-6xl font-bold mb-6">
-                            RTR Full Form – Radio Telephony Restricted
+                            RTR Full Form â€“ Radio Telephony Restricted
                         </h1>
                         <p className="text-xl text-primary-foreground/80 mb-8">
                             A comprehensive guide that covers all aspects of RTR, including its importance, types, eligibility, exam pattern, difficulties, and preparation tips, which are relevant for the year 2026. This is a vital license that is required by commercial pilots and air traffic controllers, which is granted by the WPC wing of the Ministry of Communications.
@@ -375,7 +374,7 @@ export default function RTRPage() {
                             </p>
                             <div className="p-8 rounded-2xl border-2 border-primary bg-primary/5 text-center my-8">
                                 <p className="text-2xl md:text-3xl font-bold text-primary mb-2">
-                                    RTR – Radio Telephony Restricted
+                                    RTR â€“ Radio Telephony Restricted
                                 </p>
                             </div>
                             <p className="text-muted-foreground text-lg mb-4">
@@ -410,7 +409,7 @@ export default function RTRPage() {
                             </p>
                             <div className="p-6 rounded-xl bg-primary/10 border-l-4 border-primary">
                                 <p className="text-lg font-semibold">
-                                    ⚠️ Without an RTR license, a pilot cannot legally fly an aircraft in controlled airspace. Communication is an essential aspect of aviation safety.
+                                    âš ï¸ Without an RTR license, a pilot cannot legally fly an aircraft in controlled airspace. Communication is an essential aspect of aviation safety.
                                 </p>
                             </div>
                         </div>

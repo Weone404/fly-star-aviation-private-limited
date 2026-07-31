@@ -1,5 +1,4 @@
-import { motion } from "framer-motion";
-import { Helmet } from "react-helmet-async";
+﻿import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -94,7 +93,7 @@ const selectionStages = [
         step: 6,
         title: "Final Selection",
         description:
-            "Consolidate everything — confidence, technical knowledge, communication, and airline readiness.",
+            "Consolidate everything â€” confidence, technical knowledge, communication, and airline readiness.",
     },
 ];
 
@@ -202,10 +201,10 @@ const faqs = [
 export default function IndiGoPilotInterviewPage() {
     return (
         <Layout>
-            <Helmet>
+            
                 <title>IndiGo Pilot Interview Preparation (JFO 2026) | We One Aviation</title>
                 <meta name="description" content="Ace the IndiGo JFO 2026 selection process with We One Aviation. Structured preparation for ADAPT test, Group Discussion, HR & Technical Interview. CPL & A320 Type Rated programs available." />
-            </Helmet>
+            
 
             {/* Hero Section */}
             <section className="relative py-24 aviation-gradient text-primary-foreground">
@@ -216,7 +215,7 @@ export default function IndiGoPilotInterviewPage() {
                         className="max-w-3xl"
                     >
                         <span className="inline-block text-sm font-semibold bg-white/20 px-4 py-2 rounded-full mb-4">
-                            ✈️ IndiGo Pilot Interview Preparation – JFO 2026
+                            âœˆï¸ IndiGo Pilot Interview Preparation â€“ JFO 2026
                         </span>
                         <h1 className="text-4xl md:text-6xl font-bold mb-6">
                             Ace Your IndiGo JFO Selection Process
@@ -255,7 +254,7 @@ export default function IndiGoPilotInterviewPage() {
                             IndiGo Selection Stages Covered
                         </h2>
                         <p className="text-muted-foreground max-w-3xl mx-auto text-lg">
-                            We prepare you comprehensively for every stage of the IndiGo JFO selection process — from the psychometric test to the final personal interview. No stage is left unprepared.
+                            We prepare you comprehensively for every stage of the IndiGo JFO selection process â€” from the psychometric test to the final personal interview. No stage is left unprepared.
                         </p>
                     </motion.div>
 
@@ -271,7 +270,7 @@ export default function IndiGoPilotInterviewPage() {
                                 IndiGo's Junior First Officer selection is a multi-stage process that tests aptitude, personality, communication, and technical knowledge. Our program ensures you are thoroughly prepared for each round with dedicated modules, practice sessions, and expert mentoring.
                             </p>
                             <p className="text-muted-foreground">
-                                With airline pilot mentors guiding every session, you get insider perspectives on what IndiGo evaluators look for — giving you a decisive edge over other candidates.
+                                With airline pilot mentors guiding every session, you get insider perspectives on what IndiGo evaluators look for â€” giving you a decisive edge over other candidates.
                             </p>
                         </motion.div>
 
@@ -311,7 +310,7 @@ export default function IndiGoPilotInterviewPage() {
                         className="text-center mb-16"
                     >
                         <span className="inline-block text-sm font-semibold bg-primary/10 text-primary px-4 py-2 rounded-full mb-4">
-                            🧑‍✈️ For Fresh Commercial Pilots
+                            ðŸ§‘â€âœˆï¸ For Fresh Commercial Pilots
                         </span>
                         <h2 className="text-3xl md:text-4xl font-bold mb-4">
                             CPL Holder Preparation Program
@@ -349,7 +348,7 @@ export default function IndiGoPilotInterviewPage() {
                         className="text-center mb-16"
                     >
                         <span className="inline-block text-sm font-semibold bg-primary/10 text-primary px-4 py-2 rounded-full mb-4">
-                            🛫 For A320 Type Rated Pilots
+                            ðŸ›« For A320 Type Rated Pilots
                         </span>
                         <h2 className="text-3xl md:text-4xl font-bold mb-4">
                             Type Rated Pilot Program (A320)
@@ -423,7 +422,7 @@ export default function IndiGoPilotInterviewPage() {
                     >
                         <h2 className="text-3xl md:text-4xl font-bold mb-4">IndiGo Selection Stages We Cover</h2>
                         <p className="text-muted-foreground max-w-2xl mx-auto">
-                            Our structured preparation program takes you through every stage of the IndiGo JFO selection — building knowledge, confidence, and readiness at each step.
+                            Our structured preparation program takes you through every stage of the IndiGo JFO selection â€” building knowledge, confidence, and readiness at each step.
                         </p>
                     </motion.div>
 
@@ -458,7 +457,7 @@ export default function IndiGoPilotInterviewPage() {
                         className="text-center mb-12"
                     >
                         <span className="inline-block text-sm font-semibold bg-amber-500/10 text-amber-600 px-4 py-2 rounded-full mb-4">
-                            🚨 New Batches Starting Soon
+                            ðŸš¨ New Batches Starting Soon
                         </span>
                         <h2 className="text-3xl md:text-4xl font-bold mb-4">Upcoming Batch Options</h2>
                         <p className="text-muted-foreground max-w-2xl mx-auto">
@@ -539,7 +538,7 @@ export default function IndiGoPilotInterviewPage() {
                         className="text-center mb-16"
                     >
                         <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                            🏆 Who Should Join?
+                            ðŸ† Who Should Join?
                         </h2>
                         <p className="text-muted-foreground max-w-2xl mx-auto">
                             This program is designed for pilots at various stages of their career journey who are targeting the IndiGo JFO position.
@@ -620,10 +619,10 @@ export default function IndiGoPilotInterviewPage() {
                             Why Start Preparation Now?
                         </h2>
                         <p className="text-muted-foreground text-lg mb-4">
-                            IndiGo is India's largest airline and regularly conducts JFO recruitment to meet growing demand. The competition is intense — candidates who prepare systematically with the right guidance have a significantly higher success rate.
+                            IndiGo is India's largest airline and regularly conducts JFO recruitment to meet growing demand. The competition is intense â€” candidates who prepare systematically with the right guidance have a significantly higher success rate.
                         </p>
                         <p className="text-muted-foreground text-lg mb-4">
-                            Our program is not just about interview tips — it is a comprehensive preparation ecosystem that includes psychometric test training, group discussion practice, technical mock sessions, and personalized feedback. Every component is designed to get you ready for IndiGo's specific evaluation criteria.
+                            Our program is not just about interview tips â€” it is a comprehensive preparation ecosystem that includes psychometric test training, group discussion practice, technical mock sessions, and personalized feedback. Every component is designed to get you ready for IndiGo's specific evaluation criteria.
                         </p>
                         <p className="text-muted-foreground text-lg">
                             Whether you are a fresh CPL holder or an A320 type-rated pilot, starting early gives you the advantage of time, practice, and confidence that translates directly into selection success.
@@ -683,13 +682,13 @@ export default function IndiGoPilotInterviewPage() {
                         className="max-w-3xl mx-auto text-center"
                     >
                         <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                            📞 Contact We One Aviation
+                            ðŸ“ž Contact We One Aviation
                         </h2>
                         <p className="text-primary-foreground/80 text-lg mb-4">
                             Ready to begin your IndiGo JFO preparation? Our counselors are available to guide you on the right program, upcoming batch dates, and everything you need to start your journey toward becoming an IndiGo pilot.
                         </p>
                         <p className="text-primary-foreground/80 text-lg mb-8">
-                            Don't wait — IndiGo recruitment cycles move fast, and early preparation is the key to success. Reach out today and take the first step toward your airline career.
+                            Don't wait â€” IndiGo recruitment cycles move fast, and early preparation is the key to success. Reach out today and take the first step toward your airline career.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <Button variant="gold" size="lg" asChild>

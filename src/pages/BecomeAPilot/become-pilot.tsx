@@ -1,5 +1,4 @@
-import { motion } from "framer-motion";
-import { Helmet } from "react-helmet-async";
+﻿import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
 import { CitableAnswer } from "@/components/CitableAnswer";
 import { Button } from "@/components/ui/button";
@@ -35,7 +34,7 @@ const careerPaths = [
         title: "Civil Aviation Route",
         description:
             "Self-sponsored training at DGCA-  Flying Training Organisation. Complete pathway from SPL to CPL.",
-        cost: "₹35 - 65 Lakhs",
+        cost: "â‚¹35 - 65 Lakhs",
         href: "/contact",
     },
     {
@@ -151,34 +150,34 @@ const trainingRoadmap = [
 ];
 
 const costBreakdown = [
-    { phase: "Ground School & Exams", cost: "₹2 - ₹5 Lakhs" },
-    { phase: "Flying Training (CPL)", cost: "₹40 - ₹65 Lakhs" },
-    { phase: "Type Rating", cost: "₹15 - ₹25 Lakhs" },
-    { phase: "Total Investment", cost: "₹57 - ₹95 Lakhs", highlight: true },
+    { phase: "Ground School & Exams", cost: "â‚¹2 - â‚¹5 Lakhs" },
+    { phase: "Flying Training (CPL)", cost: "â‚¹40 - â‚¹65 Lakhs" },
+    { phase: "Type Rating", cost: "â‚¹15 - â‚¹25 Lakhs" },
+    { phase: "Total Investment", cost: "â‚¹57 - â‚¹95 Lakhs", highlight: true },
 ];
 
 const salaryProgression = [
     {
         role: "Junior First Officer",
-        salary: "₹1.5 - ₹3.5 Lakhs",
+        salary: "â‚¹1.5 - â‚¹3.5 Lakhs",
         period: "Per Month",
         icon: Plane,
     },
     {
         role: "Senior First Officer",
-        salary: "₹4 - ₹6 Lakhs",
+        salary: "â‚¹4 - â‚¹6 Lakhs",
         period: "Per Month",
         icon: Briefcase,
     },
     {
         role: "Airline Captain",
-        salary: "₹6 - ₹10+ Lakhs",
+        salary: "â‚¹6 - â‚¹10+ Lakhs",
         period: "Per Month",
         icon: Award,
     },
     {
         role: "Flight Instructor",
-        salary: "₹50,000 - ₹2 Lakhs",
+        salary: "â‚¹50,000 - â‚¹2 Lakhs",
         period: "Per Month",
         icon: GraduationCap,
     },
@@ -255,17 +254,17 @@ const faqs = [
     {
         question: "What is the total cost of pilot training in India?",
         answer:
-            "The total cost ranges from ₹35 to ₹65 lakhs for CPL training at an FTO, plus ₹15-25 lakhs for type rating. This includes ground school (₹2-5 lakhs), flying training (₹40-65 lakhs), and type rating. Cadet programs and Air Force routes offer sponsored or fully-funded alternatives.",
+            "The total cost ranges from â‚¹35 to â‚¹65 lakhs for CPL training at an FTO, plus â‚¹15-25 lakhs for type rating. This includes ground school (â‚¹2-5 lakhs), flying training (â‚¹40-65 lakhs), and type rating. Cadet programs and Air Force routes offer sponsored or fully-funded alternatives.",
     },
     {
         question: "What is the salary of a pilot in India?",
         answer:
-            "Junior First Officers earn ₹1.5-3.5 lakhs per month, Senior First Officers earn ₹4-6 lakhs per month, and Airline Captains earn ₹6-10+ lakhs per month. Flight Instructors typically earn ₹50,000-2 lakhs per month. Salaries vary based on airline, experience, and aircraft type.",
+            "Junior First Officers earn â‚¹1.5-3.5 lakhs per month, Senior First Officers earn â‚¹4-6 lakhs per month, and Airline Captains earn â‚¹6-10+ lakhs per month. Flight Instructors typically earn â‚¹50,000-2 lakhs per month. Salaries vary based on airline, experience, and aircraft type.",
     },
     {
         question: "What are the different paths to becoming a pilot?",
         answer:
-            "There are three main paths: (1) Civil Aviation - Self-sponsored training at DGCA-  FTO (₹35-65 lakhs), (2) Cadet Pilot Programs - Airline-sponsored training with employment letter of intent, (3) Indian Air Force - Join through NDA or AFCAT with fully government-funded training.",
+            "There are three main paths: (1) Civil Aviation - Self-sponsored training at DGCA-  FTO (â‚¹35-65 lakhs), (2) Cadet Pilot Programs - Airline-sponsored training with employment letter of intent, (3) Indian Air Force - Join through NDA or AFCAT with fully government-funded training.",
     },
     {
         question: "What is the difference between SPL, PPL, and CPL?",
@@ -277,10 +276,10 @@ const faqs = [
 export default function BecomePilotPage() {
     return (
         <Layout>
-            <Helmet>
+            
                 <title>How to Become a Pilot in India 2026 | Complete Guide, Eligibility & Career Path</title>
-                <meta name="description" content="Complete guide to becoming a pilot in India. Learn about eligibility, DGCA requirements, training costs (₹35-65L), flying schools, salary (₹1.5L-10L+/month) & career paths." />
-            </Helmet>
+                <meta name="description" content="Complete guide to becoming a pilot in India. Learn about eligibility, DGCA requirements, training costs (â‚¹35-65L), flying schools, salary (â‚¹1.5L-10L+/month) & career paths." />
+            
 
             {/* Hero Section */}
             <section className="relative py-24 aviation-gradient text-primary-foreground">
@@ -319,10 +318,10 @@ export default function BecomePilotPage() {
 
             <CitableAnswer
                 heading="How do you become a commercial pilot in India after 12th?"
-                answer="To become a commercial pilot in India after Class 12, you first need to have studied Physics and Mathematics at the 10+2 level and obtain a DGCA medical certificate (Class 2 to begin, then Class 1 before flying training). The standard pathway is to enrol at a DGCA-approved flying training organisation and progress through three licences: a Student Pilot Licence (SPL), a Private Pilot Licence (PPL), and finally a Commercial Pilot Licence (CPL). To earn a CPL you must log a minimum of 200 hours of flight time and pass DGCA theory examinations along with the RTR(A) radio-telephony licence. The complete journey usually takes 18 to 36 months and costs roughly ₹35–50 lakh, depending on the flying school and whether training is done in India or abroad. The minimum age to hold a CPL is 18."
+                answer="To become a commercial pilot in India after Class 12, you first need to have studied Physics and Mathematics at the 10+2 level and obtain a DGCA medical certificate (Class 2 to begin, then Class 1 before flying training). The standard pathway is to enrol at a DGCA-approved flying training organisation and progress through three licences: a Student Pilot Licence (SPL), a Private Pilot Licence (PPL), and finally a Commercial Pilot Licence (CPL). To earn a CPL you must log a minimum of 200 hours of flight time and pass DGCA theory examinations along with the RTR(A) radio-telephony licence. The complete journey usually takes 18 to 36 months and costs roughly â‚¹35â€“50 lakh, depending on the flying school and whether training is done in India or abroad. The minimum age to hold a CPL is 18."
                 faqs={[
                     { q: "What is the minimum age to become a commercial pilot in India?", a: "You must be at least 18 years old to be issued a DGCA Commercial Pilot Licence, though you can begin ground school and training earlier." },
-                    { q: "How much does pilot training cost in India?", a: "Commercial pilot training typically costs around ₹35–50 lakh, varying with the flying school and country of flying training." },
+                    { q: "How much does pilot training cost in India?", a: "Commercial pilot training typically costs around â‚¹35â€“50 lakh, varying with the flying school and country of flying training." },
                 ]}
                 sources={[
                     { label: "DGCA (Directorate General of Civil Aviation)", url: "https://www.dgca.gov.in" },
@@ -662,7 +661,7 @@ export default function BecomePilotPage() {
                         viewport={{ once: true }}
                         className="text-center text-muted-foreground mt-8"
                     >
-                        Airline Captains at major carriers can earn ₹10+ lakhs per month with additional benefits and allowances.
+                        Airline Captains at major carriers can earn â‚¹10+ lakhs per month with additional benefits and allowances.
                     </motion.p>
                 </div>
             </section>
@@ -814,7 +813,7 @@ export default function BecomePilotPage() {
                             To become a pilot in India, it is a well-structured process of education and training. Whether you prefer to become a Civil Aviation pilot with self-sponsored training, an airline cadet program, or the elite Indian Air Force program, each of these options provides a unique opportunity for you.
                         </p>
                         <p className="text-primary-foreground/80 text-lg mb-8">
-                            With the aviation industry in huge demand for pilots, this is an ideal time to start your aviation career. After completing your 10+2 with Physics and Mathematics, and becoming medically fit, you can start your aviation journey with DGCA. This journey to becoming a commercial pilot can take anywhere between 18-36 months. While the cost of becoming a commercial pilot in India ranges between ₹35-65 lakhs for Civil Aviation, with salaries of ₹1.5-3.5 lakhs per month and the opportunity to become a Captain with salaries of ₹10+ lakhs per month, aviation provides an incredible long-term return on your investment.
+                            With the aviation industry in huge demand for pilots, this is an ideal time to start your aviation career. After completing your 10+2 with Physics and Mathematics, and becoming medically fit, you can start your aviation journey with DGCA. This journey to becoming a commercial pilot can take anywhere between 18-36 months. While the cost of becoming a commercial pilot in India ranges between â‚¹35-65 lakhs for Civil Aviation, with salaries of â‚¹1.5-3.5 lakhs per month and the opportunity to become a Captain with salaries of â‚¹10+ lakhs per month, aviation provides an incredible long-term return on your investment.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <Button variant="gold" size="lg" asChild>

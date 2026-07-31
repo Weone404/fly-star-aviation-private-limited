@@ -1,5 +1,4 @@
-import { motion } from "framer-motion";
-import { Helmet } from "react-helmet-async";
+﻿import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -97,7 +96,7 @@ const applicationSteps = [
   {
     step: 5,
     title: "DGCA Verification",
-    description: "Approval takes around 2–4 weeks. DGCA will verify all submitted documents.",
+    description: "Approval takes around 2â€“4 weeks. DGCA will verify all submitted documents.",
     icon: Clock,
   },
   {
@@ -181,13 +180,13 @@ const afterApproval = [
 export default function DGCAComputerNumberPage() {
   return (
     <Layout>
-      <Helmet>
+      
         <title>DGCA Computer Number - Complete Guide for Pilot Aspirants</title>
         <meta
           name="description"
           content="Get your DGCA Computer Number - the first step to become a pilot in India. Complete guide on application process, documents required, and approval timeline."
         />
-      </Helmet>
+      
 
       {/* Hero Section */}
       <section className="relative py-24 aviation-gradient text-primary-foreground">
@@ -201,7 +200,7 @@ export default function DGCAComputerNumberPage() {
               Essential Guide for Aspiring Pilots
             </span>
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              DGCA Computer Number – Full Guide for Pilot Aspirants
+              DGCA Computer Number â€“ Full Guide for Pilot Aspirants
             </h1>
             <p className="text-xl text-primary-foreground/80 mb-8">
               Are you planning a career as a pilot in India? Well, the first step you need to take is getting a Computer Number from the DGCA (Directorate General of Civil Aviation), which is a must if you want to start your flying career.

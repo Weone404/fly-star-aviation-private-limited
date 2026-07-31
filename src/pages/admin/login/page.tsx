@@ -1,8 +1,7 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect, FormEvent } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
 
 const ADMIN_USERNAME = "admin";
 const ADMIN_PASSWORD = "weoneaviation";
@@ -356,10 +355,10 @@ export default function AdminLogin() {
         <>
             <style dangerouslySetInnerHTML={{ __html: globalStyles }} />
 
-            <Helmet>
-                <title>Admin Login — Fly Star Aviation</title>
+            
+                <title>Admin Login â€” Fly Star Aviation</title>
                 <meta name="robots" content="noindex, nofollow" />
-            </Helmet>
+            
 
             <div className="al-root">
                 {/* Left decorative panel */}
@@ -368,7 +367,7 @@ export default function AdminLogin() {
                     <div className="al-left-glow" />
 
                     <div className="al-left-content">
-                        <span className="al-plane-icon">✈️</span>
+                        <span className="al-plane-icon">âœˆï¸</span>
 
                         <h2 className="al-left-title">
                             Fly Star<br />
@@ -396,7 +395,7 @@ export default function AdminLogin() {
                 <div className="al-right">
                     <div className="al-card">
                         <div className="al-logo">
-                            <div className="al-logo-icon">✈</div>
+                            <div className="al-logo-icon">âœˆ</div>
                             <div className="al-logo-text">
                                 Fly Star <span>Admin</span>
                             </div>
@@ -463,16 +462,16 @@ export default function AdminLogin() {
                                 {loading ? (
                                     <>
                                         <span className="al-spinner" />
-                                        Signing in…
+                                        Signing inâ€¦
                                     </>
                                 ) : (
-                                    "Sign In →"
+                                    "Sign In â†’"
                                 )}
                             </button>
                         </form>
 
                         <div className="al-footer">
-                            🔒 Restricted access · Fly Star Aviation Admin Panel
+                            ðŸ”’ Restricted access Â· Fly Star Aviation Admin Panel
                         </div>
                     </div>
                 </div>
