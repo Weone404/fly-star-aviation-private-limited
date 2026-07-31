@@ -159,6 +159,7 @@ function AppInner() {
         <Route path="/training-in-australia" element={<Australia />} />
         <Route path="/training-in-south-africa" element={<SouthAfrica />} />
         <Route path="/pilot-training/:topic" element={<PilotTraining />} />
+        <Route path="/training-in-india" element={<PilotTraining />} />
 
         {/* BECOME A PILOT */}
         <Route path="/become-a-pilot/airline-transport-pilot-licence" element={<Airlinetransportpilotlicence />} />
@@ -168,7 +169,9 @@ function AppInner() {
         <Route path="/how-to-become-a-pilot-in-india-after-12th" element={<Becomepilot />} />
         <Route path="/guide-on-how-to-become-a-pilot" element={<Becomepilot />} />
         <Route path="/training-in-india/" element={<PilotTraining />} />
+        <Route path="/training-in-india" element={<PilotTraining />} />
         <Route path="/how-to-become-a-pilot-in-india/" element={<Becomepilot />} />
+        <Route path="/how-to-become-a-pilot-in-india" element={<Becomepilot />} />
 
         {/* LOCATIONS */}
         <Route path="/locations" element={<Locations />} />
@@ -176,6 +179,7 @@ function AppInner() {
 
         {/* SITEMAP */}
         <Route path="/Sitemap" element={<Sitemap />} />
+        <Route path="/sitemap" element={<Sitemap />} />
 
         {/* BLOGS */}
         <Route path="/blogs" element={<Blogs />} />
