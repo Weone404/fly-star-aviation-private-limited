@@ -10,7 +10,7 @@ const locationData: Record<string, { name: string; description: string; highligh
     description: "India offers excellent opportunities for pilot training with DGCA-approved flying schools, modern aircraft, and favorable weather conditions throughout the year.",
     highlights: ["DGCA Approved Schools", "Year-round Flying Weather", "Cost-effective Training", "Strong Aviation Industry"],
     centers: 16,
-    image: "/flying_logo.webp",
+    image: "/flying_logo-optimized.webp",
   },
   hyderabad: {
     name: "Pilot Training in Hyderabad",
@@ -86,6 +86,8 @@ export default function LocationsPage() {
               src={currentLocation.image}
               alt={currentLocation.name}
               className="w-full h-full object-cover"
+              width={1600}
+              height={900}
             />
             <div className="absolute inset-0 bg-primary/70" />
           </div>
@@ -211,6 +213,8 @@ export default function LocationsPage() {
                         src={data.image}
                         alt={data.name}
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                        width={800}
+                        height={600}
                       />
                       {/* Gradient overlay */}
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />

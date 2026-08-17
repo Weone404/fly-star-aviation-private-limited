@@ -60,6 +60,7 @@ export function HeroSection() {
           alt="Commercial aircraft flying through clouds"
           className="w-full h-full object-cover object-center"
           loading="eager"
+          fetchPriority="high"
           decoding="async"
           width={1920}
           height={1080}

@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 
 const partners = [
-  { name: "Air India", logo: "/assets/air-india-logo.png" },
+  { name: "Air India", logo: "/assets/air-india-logo-optimized.webp" },
   { name: "Air India Express", logo: "/assets/Air-india-express-logo.png" },
   { name: "IndiGo", logo: "/assets/indigo.png" },
-  { name: "SpiceJet", logo: "/assets/SpiceJet-Logo.webp" },
+  { name: "SpiceJet", logo: "/assets/SpiceJet-Logo-optimized.webp" },
   { name: "Star Air", logo: "/assets/star-air-logo.webp" },
   { name: "Fly Big", logo: "/assets/flybig_logo.webp" },
   { name: "Jet Airways", logo: "/assets/jet_airways_logo.webp" },
@@ -115,6 +115,8 @@ export function PartnersSection() {
                   style={{ maxHeight: "48px", maxWidth: "120px" }}
                   loading="lazy"
                   decoding="async"
+                  width={160}
+                  height={80}
                 />
               ) : (
                 <span className="font-bold text-sm md:text-lg text-muted-foreground text-center leading-tight">

@@ -455,7 +455,13 @@ export default function AdminBlog() {
                             onClick={() => document.getElementById('imageInput')?.click()}
                         >
                             {form.imagePreview ? (
-                                <img src={form.imagePreview} alt="Preview" className="max-h-48 mx-auto rounded-lg object-cover" />
+                                <img
+                                    src={form.imagePreview}
+                                    alt="Preview"
+                                    className="max-h-48 mx-auto rounded-lg object-cover"
+                                    width={800}
+                                    height={480}
+                                />
                             ) : (
                                 <div>
                                     <p className="text-4xl mb-2">🖼️</p>

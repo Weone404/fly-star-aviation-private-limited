@@ -134,6 +134,8 @@ export default function Blogs() {
                                                 src={blog.coverImage || 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=800'}
                                                 alt={blog.title}
                                                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                                width={1200}
+                                                height={800}
                                             />
                                             <div className="absolute inset-0 bg-gradient-to-t from-[hsl(145,80%,15%)]/40 to-transparent" />
                                             <span className="absolute top-3 left-3 gold-gradient text-[hsl(145,80%,15%)] text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wide">

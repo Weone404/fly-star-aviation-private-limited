@@ -97,6 +97,8 @@ function HeroImageSlider() {
                         opacity: fading ? 0 : 1,
                         transition: "opacity 0.3s ease",
                     }}
+                    width={1200}
+                    height={900}
                 />
 
                 {/* Caption overlay */}

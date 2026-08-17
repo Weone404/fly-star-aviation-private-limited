@@ -79,6 +79,8 @@ export default function BlogDetail() {
                         src={blog.coverImage}
                         alt={blog.title}
                         className="w-full h-full object-cover"
+                        width={1600}
+                        height={900}
                     />
                 ) : (
                     <div className="w-full h-full aviation-gradient" />

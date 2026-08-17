@@ -387,11 +387,13 @@ _Sent via flyingstaraviator.com contact form_`;
                   aria-label="Open location in Google Maps"
                 >
                   <img
-                    src="/map-preview.webp"
+                    src="/map-preview-optimized.webp"
                     alt="Flying Star Aviator Location - C705, Sector 7, Block C, Palam Extension, Dwarka, Delhi, 110077"
                     className="w-full h-full object-cover hover:opacity-90 transition-opacity duration-200"
                     loading="lazy"
                     decoding="async"
+                    width={1200}
+                    height={900}
                   />
                 </a>
               </div>

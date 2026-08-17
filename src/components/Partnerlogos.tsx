@@ -14,7 +14,7 @@ interface Partner {
 const partners: Partner[] = [
     {
         name: "Air India",
-        src: "/assets/air-india-logo.png",
+        src: "/assets/air-india-logo-optimized.webp",
         height: 80,
         href: "https://www.airindia.com/",
     },
@@ -26,7 +26,7 @@ const partners: Partner[] = [
     },
     {
         name: "SpiceJet",
-        src: "/assets/SpiceJet-Logo.webp",
+        src: "/assets/SpiceJet-Logo-optimized.webp",
         height: 72,
         href: "https://www.spicejet.com/",
     },
@@ -156,6 +156,7 @@ export default function PartnerLogos(): JSX.Element {
                                         <img
                                             src={partner.src}
                                             alt={partner.name}
+                                            width={140}
                                             height={partner.height}
                                             className="partner-logo"
                                         />
@@ -164,6 +165,7 @@ export default function PartnerLogos(): JSX.Element {
                                     <img
                                         src={partner.src}
                                         alt={partner.name}
+                                        width={140}
                                         height={partner.height}
                                         className="partner-logo"
                                     />

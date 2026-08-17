@@ -176,9 +176,11 @@ export function Footer() {
           <div className="lg:col-span-2">
             <Link to="/" className="flex items-center gap-3 mb-6">
               <img
-                src="/flying_logo.webp"
+                src="/flying_logo-optimized.webp"
                 alt="Flying Star Logo"
                 className="w-12 h-12 rounded-full object-cover"
+                width={48}
+                height={48}
               />
               <div className="flex flex-col">
                 <span className="font-bold text-xl">Flying Star private limited</span>
@@ -209,10 +211,10 @@ export function Footer() {
           {/* Quick Links */}
           <div>
             <h4 className="font-semibold text-lg mb-4 text-accent">Quick Links</h4>
-            <ul className="space-y-3">
+            <ul className="space-y-2">
               {footerLinks.quickLinks.map((link) => (
                 <li key={link.name}>
-                  <Link to={link.href} className="text-white/70 hover:text-white hover:pl-2 transition-all">
+                  <Link to={link.href} className="block min-h-[48px] py-3 text-white/70 hover:text-white hover:pl-2 transition-all">
                     {link.name}
                   </Link>
                 </li>
@@ -223,10 +225,10 @@ export function Footer() {
           {/* Services */}
           <div>
             <h4 className="font-semibold text-lg mb-4 text-accent">Our Services</h4>
-            <ul className="space-y-3">
+            <ul className="space-y-2">
               {footerLinks.services.map((link) => (
                 <li key={link.name}>
-                  <Link to={link.href} className="text-white/70 hover:text-white hover:pl-2 transition-all">
+                  <Link to={link.href} className="block min-h-[48px] py-3 text-white/70 hover:text-white hover:pl-2 transition-all">
                     {link.name}
                   </Link>
                 </li>
@@ -239,7 +241,7 @@ export function Footer() {
             <h4 className="font-semibold text-lg mb-4 text-accent">Popular Pilot Keywords</h4>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm text-white/70">
               {keywordLinks.slice(0, 18).map((link) => (
-                <Link key={link.keyword} to={link.href} className="block hover:text-white transition-colors">
+                <Link key={link.keyword} to={link.href} className="block min-h-[48px] py-3 hover:text-white transition-colors">
                   {link.keyword}
                 </Link>
               ))}

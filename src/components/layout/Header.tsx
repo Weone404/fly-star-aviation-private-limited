@@ -127,9 +127,11 @@ export function Header() {
             <Link to="/" className="flex items-center gap-4">
               <div className="w-20 h-20 md:w-36 md:h-36 rounded-full overflow-hidden flex items-center justify-center">
                 <img
-                  src="/flying_logo.webp"
+                  src="/flying_logo-optimized.webp"
                   alt="Flying Star Logo"
                   className="w-full h-full object-contain"
+                  width={80}
+                  height={80}
                 />
               </div>
             </Link>

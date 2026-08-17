@@ -9,22 +9,22 @@ interface Pilot {
 }
 
 const reviewsData: Pilot[] = [
-  { id: 1, imageSrc: '/assets/pilot-1 (1).webp', airline: 'Air India' },
-  { id: 2, imageSrc: '/assets/pilot-1 (2).webp', airline: 'IndiGo' },
-  { id: 3, imageSrc: '/assets/pilot-1 (3).webp', airline: 'Air India Express' },
-  { id: 4, imageSrc: '/assets/pilot-1 (4).webp', airline: 'Air India Express' },
-  { id: 5, imageSrc: '/assets/pilot-1 (5).webp', airline: 'IndiGo' },
-  { id: 6, imageSrc: '/assets/pilot-1 (6).webp', airline: 'Air India Express' },
-  { id: 7, imageSrc: '/assets/pilot-1 (7).webp', airline: 'Air India' },
-  { id: 8, imageSrc: '/assets/pilot-1 (8).webp', airline: 'Air India Express' },
-  { id: 9, imageSrc: '/assets/pilot-1 (9).webp', airline: 'SpiceJet' },
-  { id: 10, imageSrc: '/assets/pilot-1 (10).webp', airline: 'Air India' },
-  { id: 11, imageSrc: '/assets/pilot-1 (11).webp', airline: 'SpiceJet' },
-  { id: 12, imageSrc: '/assets/pilot-1 (12).webp', airline: 'IndiGo' },
-  { id: 13, imageSrc: '/assets/pilot-1 (13).webp', airline: 'IndiGo' },
-  { id: 14, imageSrc: '/assets/pilot-1 (14).webp', airline: 'SpiceJet' },
-  { id: 15, imageSrc: '/assets/pilot-1 (15).webp', airline: 'SpiceJet' },
-  { id: 16, imageSrc: '/assets/pilot-1 (16).webp', airline: 'Air India Express' },
+  { id: 1, imageSrc: '/assets/pilot-1 (1)-optimized.webp', airline: 'Air India' },
+  { id: 2, imageSrc: '/assets/pilot-1 (2)-optimized.webp', airline: 'IndiGo' },
+  { id: 3, imageSrc: '/assets/pilot-1 (3)-optimized.webp', airline: 'Air India Express' },
+  { id: 4, imageSrc: '/assets/pilot-1 (4)-optimized.webp', airline: 'Air India Express' },
+  { id: 5, imageSrc: '/assets/pilot-1 (5)-optimized.webp', airline: 'IndiGo' },
+  { id: 6, imageSrc: '/assets/pilot-1 (6)-optimized.webp', airline: 'Air India Express' },
+  { id: 7, imageSrc: '/assets/pilot-1 (7)-optimized.webp', airline: 'Air India' },
+  { id: 8, imageSrc: '/assets/pilot-1 (8)-optimized.webp', airline: 'Air India Express' },
+  { id: 9, imageSrc: '/assets/pilot-1 (9)-optimized.webp', airline: 'SpiceJet' },
+  { id: 10, imageSrc: '/assets/pilot-1 (10)-optimized.webp', airline: 'Air India' },
+  { id: 11, imageSrc: '/assets/pilot-1 (11)-optimized.webp', airline: 'SpiceJet' },
+  { id: 12, imageSrc: '/assets/pilot-1 (12)-optimized.webp', airline: 'IndiGo' },
+  { id: 13, imageSrc: '/assets/pilot-1 (13)-optimized.webp', airline: 'IndiGo' },
+  { id: 14, imageSrc: '/assets/pilot-1 (14)-optimized.webp', airline: 'SpiceJet' },
+  { id: 15, imageSrc: '/assets/pilot-1 (15)-optimized.webp', airline: 'SpiceJet' },
+  { id: 16, imageSrc: '/assets/pilot-1 (16)-optimized.webp', airline: 'Air India Express' },
 ];
 
 const CARD_GAP = 18;
@@ -397,7 +397,14 @@ export default function PassResultsSlider() {
                   {/* avatar */}
                   <div className="prs-avatar-wrap">
                     <div className="prs-avatar-inner">
-                      <img src={pilot.imageSrc} alt={`Pilot ${pilot.id}`} loading="lazy" />
+                      <img
+                        src={pilot.imageSrc}
+                        alt={`Pilot ${pilot.id}`}
+                        loading="lazy"
+                        width={86}
+                        height={86}
+                        decoding="async"
+                      />
                     </div>
                   </div>
 
