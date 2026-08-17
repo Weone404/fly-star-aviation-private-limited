@@ -1,4 +1,6 @@
 {
+  "cleanUrls": true,
+  "trailingSlash": false,
   "routes": [
     {
       "handle": "filesystem"
@@ -17,8 +19,20 @@
       "dest": "/sitemap.xml"
     },
     {
-      "src": "/(.*)",
+      "src": "/robots.txt",
+      "dest": "/robots.txt"
+    },
+    {
+      "src": "/llms.txt",
+      "dest": "/llms.txt"
+    },
+    {
+      "src": "/((?:about|contact|contact-us|services(?:/.*)?|courses(?:/.*)?|dgca(?:/.*)?|pilot-training(?:/.*)?|become-a-pilot(?:/.*)?|locations(?:/.*)?|blogs(?:/.*)?|admin(?:/.*)?|rtr|sitemap|how-to-become-a-pilot(?:/.*)?|how-to-become-a-pilot-in-india(?:-after-12th)?(?:/.*)?|training-in-(?:india|australia|south-africa)(?:/.*)?|air-transport-pilots-license-atpl|best-atpl-classes-in-india|commercial-pilot-training(?:-.*)?|best-cpl-ground-classes|careers|pilot-course|top-aviation-courses-and-careers-after-12th|courses-and-careers|cpl-atpl-ground-classes-2|dgca-ground-classes-training-classes|guide-on-how-to-become-a-pilot))",
       "dest": "/index.html"
+    },
+    {
+      "src": "/(.*)",
+      "status": 404
     }
   ],
   "headers": [

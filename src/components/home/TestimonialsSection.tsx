@@ -319,7 +319,7 @@ export function TestimonialsSection() {
               <ChevronLeft className="h-5 w-5 md:h-6 md:w-6" aria-hidden="true" />
             </button>
 
-            <div className="flex gap-2" role="tablist" aria-label="Testimonials">
+            <div className="flex items-center justify-center gap-3 sm:gap-3" role="tablist" aria-label="Testimonials">
               {testimonials.map((testimonial, index) => (
                 <button
                   key={testimonial.id}
@@ -329,10 +329,10 @@ export function TestimonialsSection() {
                   onClick={() =>
                     goTo(index, index > currentIndex ? "right" : "left")
                   }
-                  className="py-4 flex items-center"
+                  className="flex min-h-[48px] min-w-[48px] items-center justify-center rounded-full p-0 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
                 >
                   <span
-                    className={`block h-2.5 md:h-3 rounded-full transition-all duration-300 ${index === currentIndex
+                    className={`block h-2.5 w-2.5 rounded-full transition-all duration-300 ${index === currentIndex
                         ? "bg-accent w-6 md:w-8"
                         : "bg-white/40 w-2.5 md:w-3"
                       }`}
