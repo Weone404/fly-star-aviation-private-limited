@@ -57,7 +57,7 @@ export function HeroSection() {
         <img
           src="/assets/hero-aircraft-1600w.jpg"
           srcSet="/assets/hero-aircraft-800w.jpg 800w, /assets/hero-aircraft-1600w.jpg 1600w, /assets/hero-aircraft-2400w.jpg 2400w"
-          sizes="100vw"
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 1920px"
           alt="Commercial aircraft flying through clouds"
           className="w-full h-full object-cover object-center"
           loading="eager"
