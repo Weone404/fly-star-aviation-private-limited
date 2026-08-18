@@ -35,9 +35,9 @@ export function useMeta() {
     setMeta('meta[property="og:description"]', "content", ogDescription || description);
     setMeta('meta[property="og:url"]', "content", canonical);
     setMeta('meta[property="og:type"]', "content", "website");
-    setMeta('meta[property="og:image"]', "content", ogImage || "/hero-aircraft.jpg");
+    setMeta('meta[property="og:image"]', "content", ogImage || "/assets/hero-aircraft-1600w.jpg");
     setMeta('meta[name="twitter:card"]', "content", "summary_large_image");
-    setMeta('meta[name="twitter:image"]', "content", twitterImage || ogImage || "/hero-aircraft.jpg");
+    setMeta('meta[name="twitter:image"]', "content", twitterImage || ogImage || "/assets/hero-aircraft-1600w.jpg");
 
     const canonicalLink = document.head.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
     if (canonicalLink) {

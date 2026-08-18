@@ -24,7 +24,7 @@ const testimonials = [
     id: 1,
     name: "Rajesh Kumar",
     role: "Commercial Pilot, IndiGo Airlines",
-    src: "/assets/pilot1.webp",
+    src: "/assets/pilot1-optimized.webp",
     quote:
       "fly star Aviator transformed my dream into reality. The training quality and placement support are exceptional. I'm now flying with IndiGo, thanks to their comprehensive CPL program.",
     rating: 5,
@@ -33,7 +33,7 @@ const testimonials = [
     id: 2,
     name: "Priya Sharma",
     role: "First Officer, Air India",
-    src: "/assets/pilot5.webp",
+    src: "/assets/pilot5-optimized.webp",
     quote:
       "The instructors here are world-class. They don't just teach you to fly; they prepare you for a successful aviation career. The DGCA exam preparation was incredibly thorough.",
     rating: 5,
@@ -42,7 +42,7 @@ const testimonials = [
     id: 3,
     name: "Amit Patel",
     role: "Pilot, Vistara",
-    src: "/assets/pilot3.webp",
+    src: "/assets/pilot3-optimized.webp",
     quote:
       "I tried multiple training schools before joining fly star. The difference in quality is remarkable. Their simulators and practical training gave me confidence from day one.",
     rating: 5,
@@ -51,7 +51,7 @@ const testimonials = [
     id: 4,
     name: "Sneha Reddy",
     role: "CPL Trainee",
-    src: "/assets/pilot4.webp",
+    src: "/assets/pilot4-optimized.webp",
     quote:
       "Currently in my final phase of training, and I couldn't be happier with my choice. The support system here is amazing, and the fees structure is very reasonable for the quality offered.",
     rating: 5,

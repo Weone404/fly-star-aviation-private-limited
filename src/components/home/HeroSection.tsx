@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import { Plane, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import heroImage from "@/assets/hero-aircraft.jpg";
 
 const STATS = [
   { value: "15+", label: "Years Experience" },
@@ -56,7 +55,9 @@ export function HeroSection() {
       {/* Hero image */}
       <div className="absolute inset-0">
         <img
-          src={heroImage}
+          src="/assets/hero-aircraft-1600w.jpg"
+          srcSet="/assets/hero-aircraft-800w.jpg 800w, /assets/hero-aircraft-1600w.jpg 1600w, /assets/hero-aircraft-2400w.jpg 2400w"
+          sizes="100vw"
           alt="Commercial aircraft flying through clouds"
           className="w-full h-full object-cover object-center"
           loading="eager"

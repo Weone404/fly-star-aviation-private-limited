@@ -263,8 +263,8 @@ const routeMeta: Record<string, RouteMeta> = {
     title: "Aviation Blogs | Flying Star Aviator",
     description: "Read the latest aviation news, DGCA updates, CPL guides and pilot career tips from Flying Star Aviator.",
     canonical: `${BASE_URL}/blogs`,
-    ogImage: "/hero-aircraft.jpg",
-    twitterImage: "/hero-aircraft.jpg",
+    ogImage: "/assets/hero-aircraft-1600w.jpg",
+    twitterImage: "/assets/hero-aircraft-1600w.jpg",
   },
   "/admin/login": {
     title: "Admin Login — Fly Star Aviation",
