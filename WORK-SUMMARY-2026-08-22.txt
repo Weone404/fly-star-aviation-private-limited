@@ -1,0 +1,371 @@
+================================================================================
+WORK SUMMARY — 2026-08-22
+Flying Star Aviator (flystar.co.in) — GEO/AEO campaign
+================================================================================
+
+Everything below happened in a single day, across 10 sessions.
+27 commits: 19 on main, 8 on the branch geo/tech-p0.
+
+NOTHING HAS BEEN PUSHED OR DEPLOYED. All work is local. The live site is
+unchanged.
+
+
+================================================================================
+1. HEADLINE OUTCOMES
+================================================================================
+
+BUILT
+  - A GEO/AEO operating system: 8 custom skills, an authorisation layer, a
+    resumable campaign protocol, and 12 state/context files.
+  - 4 finished article drafts (3 guides + 1 editorial policy page), each with
+    a wiring plan and validated structured data.
+  - A complete 25-query visibility baseline, captured BEFORE any deploy.
+
+FIXED (on branch geo/tech-p0, verified, not yet merged)
+  - 15 of 43 sitemap URLs were returning HTTP 404 in production.
+  - 169 mis-encoded characters across 19 files, including 58 rupee signs
+    inside fee tables.
+  - A site-wide broken nav link on the top-level "Courses" menu item.
+  - The root cause of the 404s: two competing sources of truth for routes,
+    with nothing enforcing their sync.
+
+FOUND (problems that existed before today and were not previously known)
+  - Another company's marketing copy inside this repo.
+  - A second brand ("We One Aviation") published on two live pages.
+  - A dummy phone number on the main call-to-action of eight live pages.
+  - Twelve different phone numbers associated with the brand.
+  - Seven different spellings of the company name across the web.
+  - Three conflicting founding dates, including a public company record.
+  - Live claims that contradict each other and cannot all be true.
+
+CLEANED
+  - 68 unused files / 11.3 MB removed from the repository.
+
+
+================================================================================
+2. WHAT WAS BUILT
+================================================================================
+
+2.1 THE OPERATING SYSTEM
+--------------------------------------------------------------------------------
+.claude/skills/  — 8 skills, each aware of this specific codebase:
+    geo-site-audit ........... technical + content audit
+    geo-page-optimizer ....... rewrite existing pages, protect rankings
+    geo-faq-schema ........... FAQ copy + JSON-LD wired to this repo's builder
+    geo-entity-mentions ...... off-site/brand strategy
+    geo-visibility-tracker ... query tracking and baselines
+    geo-keyword-researcher ... competitor and gap research
+    geo-article-writer ....... new article production
+    geo-site-editor .......... the hands: code changes, branches, commits
+
+.claude/settings.json — permissions. Edits allowed; `git push` and `rm -rf`
+    explicitly denied.
+
+CLAUDE.md — authorisation, 6 ground rules, 7 workflow gates. Under 60 lines
+    because it loads into every session.
+
+CAMPAIGN_PROMPT.md — the resumable campaign protocol.
+MASTER_PROMPT.md — the earlier phase protocol it supersedes.
+
+State files: GEO_CONTEXT.md, GEO_CAMPAIGN_STATE.md, GEO_DECISIONS.md,
+    GEO_CONTENT_CALENDAR.md, GEO_KEYWORD_RESEARCH.md, GEO_QUERIES.md,
+    GEO_LOG.md, GEO_ENTITY_TODO.md, GEO_MANUAL_CHECKS.md, GEO_AUDIT_REPORT.md
+
+
+2.2 ARTICLE DRAFTS (in drafts/, none published)
+--------------------------------------------------------------------------------
+Three guides, deliberately one of each format the rest of the calendar reuses:
+
+  PROCEDURE   drafts/dgca-computer-number.md            2,039 words
+              Eligibility, documents, application steps, timeline.
+              Required ZERO web searches — written entirely from banked
+              primary source. Revives a URL that currently 404s and is
+              linked from the site header on every page.
+
+  COMPARISON  drafts/dgca-olode-vs-regular-exams.md     1,732 words
+              On-demand vs regular DGCA exam sessions.
+              The only genuinely under-owned topic found in research.
+
+  CORRECTIONS drafts/dgca-exam-misconceptions.md        1,594 words
+              Seven widely-held beliefs checked against DGCA's own text.
+
+  POLICY      drafts/editorial-policy.md
+              Describes how these guides are actually researched and
+              verified. Must go live BEFORE the guides, because every
+              byline links to it.
+
+Each has a companion .meta.md with meta title/description, validated
+FAQPage JSON-LD, a [CONFIRM] list, and an internal-linking plan.
+
+Also drafted: drafts/privacy-policy.md and drafts/terms-of-use.md, both
+marked [LEGAL REVIEW REQUIRED — DO NOT MERGE].
+
+Quality checks passed on all three guides:
+  - Schema questions AND answers match visible page text exactly
+  - Zero unverified figures inside structured data
+  - Zero banned marketing words
+  - Zero competitors named
+
+
+2.3 SUPPORTING DOCUMENTS
+--------------------------------------------------------------------------------
+drafts/TECH-P0-REVIEW.md ............ 10-minute merge review path
+drafts/DEPLOY-CHECKLIST.md .......... 3-stage deploy + verification + rollback
+drafts/wiring-plan-*.md (4) ......... exact wiring steps per page
+drafts/research/SOURCE-INDEX.md ..... what's banked, reachable, blocked
+drafts/research/dgca-pariksha-faq-*.md  banked DGCA primary source
+GEO_MANUAL_CHECKS.md ................ 25 queries x 4 AI engines, to fill in
+GEO_ENTITY_TODO.md .................. 7 off-site decisions, with recommendations
+
+
+================================================================================
+3. WHAT WAS FIXED (branch geo/tech-p0 — 8 commits, NOT MERGED)
+================================================================================
+
+3.1 THE 404s — 15 of 43 sitemap URLs were dead
+--------------------------------------------------------------------------------
+Root cause: scripts/prerender.js builds its route list from
+src/lib/routeMeta.ts. Any URL in sitemap.xml WITHOUT a routeMeta entry is
+never prerendered, falls through vercel.json's catch-all, and returns 404.
+The dead set and the "in sitemap but not in routeMeta" set matched exactly,
+15 for 15.
+
+Contributing cause: a second prerender script (prerender.mjs) that read
+sitemap.xml instead, and never ran. And PRERENDER.md — the project's own
+documentation — described that dead script and gave a "how to add a route"
+checklist that omitted routeMeta.ts entirely. The documentation caused the bug.
+
+Fixed:
+  - Wired 2 pages that had real content: /courses/cabin-crew, /courses/ground-staff
+  - Pruned 13 URLs with no page behind them from sitemap.xml
+  - Removed a llms.txt entry pointing AI crawlers at a 404
+  - Deleted prerender.mjs; rewrote PRERENDER.md to match reality
+  - Added scripts/check-route-parity.js, wired as "prebuild" — the build now
+    FAILS if this drift ever recurs
+
+3.2 CHARACTER ENCODING — 169 broken characters across 19 files
+--------------------------------------------------------------------------------
+UTF-8 saved as Latin-1. User-visible damage included 58 rupee signs inside
+fee tables (garbled exactly where an AI engine looks for pricing), 19 emoji
+on live pages, and the /rtr page's H1.
+
+Done in two passes. The first missed 7 runs mixing two encoding types; the
+second caught them, and also cleared a real pre-existing lint error.
+Verified: all changed lines have identical ASCII skeletons — character
+substitutions only, no structural edits.
+
+3.3 NAV
+--------------------------------------------------------------------------------
+The top-level "Courses" menu item pointed at "/Courses/cpl" — capital C,
+a 404 in production, on every page of the site. Now "/courses/cpl".
+
+
+VERIFICATION (all run today)
+  npm ci ................. clean
+  route parity gate ...... PASS (30 sitemap + 17 llms.txt URLs)
+  npm run lint ........... 14 errors vs main's 16 — this branch reduces them
+  npm run build .......... exit 0, 60 routes prerendered
+  merge test ............. clean, exit 0, zero conflicts
+
+NOTE: `npm run build` exits 1 on macOS because the bundled chromium is a
+Linux binary. Documented, with the one-time workaround, in PRERENDER.md.
+Vercel is unaffected.
+
+
+================================================================================
+4. WHAT WAS FOUND — problems that pre-date today
+================================================================================
+
+CONTENT INTEGRITY
+  - src/pages/BecomeAPilot/airline-transport-pilot-licence.tsx contains
+    another company's marketing copy: "Golden Epaulettes Aviation" named 3x
+    in visible text, plus two phone numbers that are not yours, plus
+    "100% pass rate" and "4000+ Pilots Trained" claims.
+    It currently 404s, which is the only reason it isn't published.
+    NOT wired. Flagged for rewrite or deletion.
+
+  - /courses/Air-india-pilot-interview and /courses/Indigo-pilot-interview
+    are LIVE and branded "We One Aviation" throughout, including in the
+    page titles. Their contact blocks send enquiries to We One.
+
+  - The homepage links out to weoneaviation.com.
+
+BRAND / ENTITY
+  - We One Aviation is a real separate business at the SAME Dwarka address,
+    with its own two live domains. Verified: your interview pages are NOT
+    copies of theirs (1.0% and 0.1% text overlap) — they are original pages
+    written for the We One brand, placed on your domain.
+  - 7 different company name spellings across the web.
+  - 12 different phone numbers, including:
+      * +91 98765 43210 — a well-known dummy number, on the "Talk to
+        Counselor" call-to-action of EIGHT live pages
+      * 4 numbers belonging to We One
+      * 2 numbers belonging to Golden Epaulettes
+  - 2 Instagram accounts; 3 Justdial listings across 2 IDs, with review
+    counts disagreeing (615 vs 1201); a Facebook page under a third brand URL.
+  - Public company record found: CIN U85499DL2024PTC435001, indicating the
+    private limited company was incorporated in 2024 — against the site's
+    "operating since 2008" and Justdial's "established 2016".
+
+UNVERIFIABLE CLAIMS ON LIVE PAGES
+  - /about: "15+ Years Experience", "5000+ Trained Pilots",
+    "50+ Partner Airlines", "8 Training Centers"
+  - /services/mro: "20+ Years of Excellence"
+  - /dgca/ground-classes: "100% Pass Rate"
+  - /locations: "N Training Centers" per city
+  - Internshala lists the company at 2-10 employees. These cannot all be true.
+  - The homepage claims "DGCA-approved". OBSERVED TODAY: a search engine's
+    own summary now restates that claim as fact. If it cannot be evidenced,
+    it is propagating beyond your control.
+
+SECURITY (flagged, not touched — outside my authorised scope)
+  - Admin username and password are hardcoded in client-side source
+    (src/pages/admin/login/page.tsx), with /admin/login returning 200.
+
+OTHER
+  - 38 dead internal links in the header and footer, on every page.
+  - No /privacy or /terms page, though both are linked in the footer.
+  - bun.lockb sits alongside package-lock.json — Vercel may build with a
+    different package manager than you do locally.
+
+
+================================================================================
+5. RESEARCH AND MEASUREMENT
+================================================================================
+
+5.1 VISIBILITY BASELINE — COMPLETE, 25/25 QUERIES, PRE-DEPLOY
+--------------------------------------------------------------------------------
+This is the "before" picture. It cannot be recaptured once the site changes.
+
+  RESULT: flystar.co.in appears in 3 of 25 queries — all three are brand
+  queries. It appears in ZERO of the 20 non-brand queries.
+
+  It does not rank first for its own domain name.
+  It does not appear for "DGCA ground classes in Dwarka" — where the
+  business is physically located.
+
+  Competitor #1 is Golden Epaulettes Aviation: present in 5 of 8 core
+  queries, and based in Dwarka. The same company whose copy is in this repo.
+
+  Ramphal Chowk, Dwarka is described in ranking content as "India's largest
+  concentration of pilot training institutes."
+
+  Third-party surfaces that already rank (the off-site target list):
+  Quora, IndiaMART, Justdial, Shiksha, Sulekha, youyooz, merithub,
+  findglocal, Internshala, Facebook, YouTube.
+
+5.2 KEYWORD RESEARCH
+--------------------------------------------------------------------------------
+30 topics scored against the real competitor map, re-weighted for a
+ground-training institute (not a flying school). Top 10 proposed, ranked by
+winnability x commercial value rather than raw search volume.
+
+Two exploitable gaps found:
+  - Competitors rank on money queries with visibly stale 2025-dated pages
+  - "CPL vs ATPL" is served entirely by European sources; no DGCA-framed
+    answer exists
+
+5.3 PRIMARY SOURCE BANKED
+--------------------------------------------------------------------------------
+Retrieved DGCA's own Flight Crew FAQ from pariksha.dgca.gov.in and banked it
+with its URL and retrieval date. It carried three articles with zero further
+searches, and it CONTRADICTS claims that ranking competitor pages repeat:
+
+  - DGCA requires 10+2 with PHYSICS AND MATHEMATICS. Not PCM. Several
+    ranking pages say Chemistry is required. It is not.
+  - There is NO MAXIMUM AGE LIMIT to register. Age limits belong to airline
+    recruitment, not DGCA registration.
+  - Exam fee is Rs 2,500 per paper, never refundable under any circumstances.
+  - Legal basis: Rule 41A, Aircraft Rules 1937.
+  - The Computer Number is one per candidate, valid for life.
+  - The Pariksha portal itself carries an "under beta testing" disclaimer.
+
+Being demonstrably right where competitors are demonstrably wrong is the
+one advantage that compounds. That is what the three drafts are built on.
+
+
+================================================================================
+6. CORRECTIONS I MADE TO MY OWN WORK TODAY
+================================================================================
+Recorded because the campaign's value depends on its claims being checkable.
+
+  1. I said the render gate was public/sitemap.xml. It is
+     src/lib/routeMeta.ts. Corrected in 4 files.
+  2. I said the mojibake sweep was clean. It was not — 7 runs remained.
+     Found via a lint error, then fixed.
+  3. I reported "9 commits" on geo/tech-p0. It is 8.
+  4. I logged DGCA exam months from a secondary source, then found a
+     conflicting secondary source. Both are now marked unverified and
+     neither is published.
+  5. I reported that a lookalike domain (flystars.co.in) outranks the site.
+     Re-checked on request: the result reproduces, but that domain DOES NOT
+     RESOLVE. It is not a live competitor. The underlying finding — the site
+     does not rank first for its own domain — stands.
+
+
+================================================================================
+7. DECISIONS RECORDED
+================================================================================
+  - Byline: institutional — "Flying Star Aviator Academics Team", with an
+    editorial policy page that must go live first. Named authors remain the
+    standard for experience/judgement topics later.
+  - We One Aviation is out of scope. Zero references permitted on this domain.
+  - The blog system is unfit for GEO content; new guides ship as real
+    routed pages.
+  - B2B services (MRO/CAMO/charter) are a separate, later track.
+  - /privacy and /terms move to their own branch so they don't block
+    mergeable work behind a lawyer's schedule.
+  - Publication order is binding: editorial-policy -> computer-number ->
+    olode -> misconceptions (last, because it links to the other two).
+
+
+================================================================================
+8. WHAT IS WAITING ON YOU
+================================================================================
+
+IN LEVERAGE ORDER:
+
+  1. MERGE AND DEPLOY geo/tech-p0
+     Review path: drafts/TECH-P0-REVIEW.md (10 minutes).
+     Merge tested clean. Real change set is 32 files, +579/-483.
+     Then: request indexing for /courses/cabin-crew and /courses/ground-staff.
+     THIS GATES EVERYTHING ELSE.
+
+  2. CORRECTIONS CONTACT — one phone number and one email address.
+     Gates the editorial policy page, which gates all three guides.
+     Note: your site currently shows 12 different numbers, and 6 of them
+     provably belong to other companies. I will not guess which is yours.
+
+  3. brew install poppler — 30 seconds. Every high-value DGCA source
+     (exam calendar, syllabus, flight crew manual) is a PDF. This unblocks
+     6 of the 10 top calendar topics.
+
+  4. APPROVE THE TOP 10 calendar topics — or reorder them.
+
+  5. OWN FEES — publish or withhold. Recommendation: withhold.
+
+  6. THE FACTS BLOCK — 7 items: MCA record (x2), canonical phone/email,
+     what DGCA approvals you actually hold, real numbers, whether you
+     actually run interview prep classes, and which Google Maps listing
+     is yours.
+
+  7. OPTIONAL, 30 SECONDS, ONLY YOU CAN DO IT: log in to the Pariksha
+     portal and check the pilot notice board for whether Computer Numbers
+     are now auto-generated. I proved this cannot be reached from the
+     public web — I tried both a plain fetch and a full browser render.
+     It is the last open question on a finished article.
+
+
+================================================================================
+9. STATUS
+================================================================================
+  Live site ................ unchanged, nothing deployed
+  main branch .............. 19 commits (system, drafts, research, state)
+  geo/tech-p0 .............. 8 commits, verified, MERGE-READY
+  Articles ................. 4 drafted, 0 published
+  Baseline ................. complete and sealed, pre-deploy
+  Blocked .................. on items 1 and 2 above (~12 minutes of your time)
+
+Everything the campaign could do without your input, it has done.
+
+================================================================================
