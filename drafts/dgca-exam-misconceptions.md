@@ -1,6 +1,8 @@
 # Common Misconceptions About DGCA Exams: What the Rules Actually Say
 
-> **DRAFT — not published.** Byline unresolved; see the hand-off package.
+> **DRAFT — not published.** Byline resolved (institutional). Remaining gate:
+> the `/editorial-policy` page must be live before this ships, since the byline
+> links to it.
 >
 > **Slug:** `/dgca/exam-misconceptions`
 > **Target queries:** does dgca require pcm · dgca age limit · dgca exam
@@ -11,8 +13,8 @@
 > in a separate "Still unsettled" section and are **not** presented as
 > corrections. A wrong correction costs more than no correction.
 
-**Written by:** [CONFIRM AUTHOR — name and credentials, per GEO_CONTEXT.md fact 3]
-**Published:** [CONFIRM] · **Last updated:** [CONFIRM]
+**Written by:** [Flying Star Aviator Academics Team](/editorial-policy)
+**Published:** [CONFIRM: publication date] · **Last updated:** [CONFIRM: same]
 
 ---
 

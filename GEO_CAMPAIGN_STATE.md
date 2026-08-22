@@ -32,8 +32,9 @@ placeholders unfilled, so per the "skip any left blank" rule nothing was recorde
 
 | Blocked work | Exact input needed | Where it goes |
 |---|---|---|
-| Publication of all 3 drafts | **Byline: full name + one credential line** | `GEO_CONTEXT.md`, then author fields in all 3 drafts |
-| Phase 4 wiring (item 6) | Byline **and** `geo/tech-p0` merged | branch per article |
+| ~~Byline~~ | **✅ RESOLVED 2026-08-22** — institutional, "Flying Star Aviator Academics Team"; applied to all 3 drafts | — |
+| `/editorial-policy` page | Canonical email + phone (corrections contact) + MCA legal name | `drafts/editorial-policy.md` — **wires first** |
+| Phase 4 wiring | `geo/tech-p0` merged | policy page → computer-number → OLODE → misconceptions |
 | `geo/truth-hygiene` (item 7) | Canonical phone **and** merge | replaces 9876543210 + wa.me/919355611996 |
 | Further drafting (W5 cap) | Top-10 approved or reordered | `GEO_KEYWORD_RESEARCH.md` statuses |
 | 6 of 10 calendar topics | `brew install poppler` | see `drafts/research/SOURCE-INDEX.md` |
@@ -165,6 +166,7 @@ Merge + deploy · the MCA/DGCA lookups and real numbers · GSC indexing requests
 ## Run history
 | Run | Date | Workstreams | Outcome |
 |---|---|---|---|
+| 9 | 2026-08-22 | Byline ruling applied; editorial-policy page drafted | Byline resolved as institutional. Applied to all three drafts as a link to `/editorial-policy`, and stale "byline unresolved" headers cleared. Drafted the policy page from the campaign's **actual** operating rules, with a claim-by-claim enforcement table in its wiring plan so condition 2 is checkable rather than assumed. Publication order fixed: policy → computer-number → OLODE → misconceptions. Confirmed poppler still not installed and tech-p0 still unmerged. |
 | 8 | 2026-08-22 | Merge-prep, wiring plans, manual-check sheet, source index | No owner inputs supplied (all placeholders blank) — items 1, 6, 7 skipped per the rule. **Tested the merge: clean, exit 0, no conflicts**; real change set is 32 files (+579/−483), not the 117/+34,595 the raw diffstat implies. Wrote `drafts/TECH-P0-REVIEW.md` (8 commits, risk each, 10-minute review path), 3 wiring plans, `GEO_MANUAL_CHECKS.md` (25 queries × 4 engines), and `drafts/research/SOURCE-INDEX.md`. Established that **6 of 10 top topics are blocked on poppler** — every high-value DGCA source is a PDF. |
 | 7 | 2026-08-22 | A4 verification, W5 draft 3 | Re-ran A4 on request: reproduced exactly, but **flystars.co.in does not resolve** — corrected my "lookalike competitor" reading; the underlying finding (site does not rank #1 for its own domain) stands. Found two more phone numbers; built a 12-number inventory in the entity TODO. **Drafted #31 Misconceptions — the checkpoint trio is complete.** Eligibility gate held back 3 open questions into a "Still unsettled" section rather than presenting them as corrections. |
 | 6 | 2026-08-22 | W8 completion, entity TODO | **Baseline COMPLETE, 25/25, all pre-deploy.** Final presence rate **3 of 25** — brand queries only; zero of 20 non-brand queries. Query A4 shows the site does not rank for its own domain (`flystars.co.in` does). Found the public company record: **CIN U85499DL2024PTC435001**, indicating incorporation in **2024** against the site's "since 2008". Created `GEO_ENTITY_TODO.md` — 7 numbered off-site decisions with recommendations. Draft #31 deferred: the baseline was correctly ordered first and consumed the run. |

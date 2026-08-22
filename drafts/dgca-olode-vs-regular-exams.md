@@ -1,13 +1,14 @@
 # DGCA OLODE vs Regular Sessions: How On-Demand Flight Crew Exams Work
 
-> **DRAFT — not published.** Byline and two figures are unresolved; see the
-> [CONFIRM] list at the end. Nothing here goes live with a placeholder in it.
+> **DRAFT — not published.** Byline resolved (institutional). Two figures remain
+> [CONFIRM] — see the list at the end. The `/editorial-policy` page must be live
+> before this ships, since the byline links to it.
 >
 > **Slug:** `/dgca/olode-exam`
 > **Target query:** dgca olode exam · dgca on demand exam · olode vs regular dgca
 
-**Written by:** [CONFIRM AUTHOR — name and credentials, per GEO_CONTEXT.md fact 3]
-**Published:** [CONFIRM: publication date] · **Last updated:** [CONFIRM]
+**Written by:** [Flying Star Aviator Academics Team](/editorial-policy)
+**Published:** [CONFIRM: publication date] · **Last updated:** [CONFIRM: same]
 
 ---
 

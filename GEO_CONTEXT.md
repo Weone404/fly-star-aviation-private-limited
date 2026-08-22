@@ -133,6 +133,31 @@ fixed. Technical Accessibility should be rescored upward in Phase 1.
 - Verifiable brand facts/USPs: founded 2008; Dwarka, New Delhi;
   [CONFIRM the rest].
 
+## Byline ruling (owner, 2026-08-22) — RESOLVED
+
+**Byline: institutional — "Flying Star Aviator Academics Team."**
+
+Rationale, recorded because it governs future decisions: E-E-A-T is not one
+signal. *Experience* and *expertise* carry weight when a claim rests on personal
+authority. The claims in the current three articles rest on **DGCA's own
+published text** — the fee, the eligibility rule, the document specifications —
+so authority transfers through citation. For reference-grade procedural content
+the operative letter is **trust**, and trust comes from visible process.
+
+**Three binding conditions:**
+1. **The editorial-policy page wires FIRST.** Every article byline links to it;
+   shipping bylines that point at a 404 is the same error class as the
+   misconceptions hub linking to unpublished siblings.
+2. **The policy page describes the real process and nothing more.** Any claim
+   on it that is not actually true of how this campaign operates does not ship.
+   Same defensible-to-a-journalist test as every other page.
+3. **The named-byline door stays open.** Experience and judgment topics later
+   in the calendar get a real named author if one exists. Mixed bylines are a
+   mature editorial pattern, not an inconsistency.
+
+**Publication gate is now: the `geo/tech-p0` merge, and one canonical phone
+number.**
+
 ## Standing decisions (owner, 2026-08-22)
 - **Blog: leave it alone for now.** The `/blogs/3`-style posts are invisible to
   crawlers and hold near-zero equity, so there is nothing to protect and nothing

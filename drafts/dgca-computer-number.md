@@ -1,7 +1,8 @@
 # DGCA Computer Number: Eligibility, Documents, Process & Timeline
 
-> **DRAFT — not published.** Byline and two facts unresolved; see the [CONFIRM]
-> list in the hand-off package. Nothing goes live with a placeholder in it.
+> **DRAFT — not published.** Byline resolved (institutional). Two facts remain
+> [CONFIRM] — see the hand-off package. The `/editorial-policy` page must be
+> live before this ships, since the byline links to it.
 >
 > **Slug:** `/dgca/computer-number` — revives a URL currently returning 404
 > **Target query:** dgca computer number · dgca computer number process ·
@@ -12,8 +13,8 @@
 > `drafts/research/dgca-pariksha-faq-2026-08-22.md`. This draft required zero
 > web searches.
 
-**Written by:** [CONFIRM AUTHOR — name and credentials, per GEO_CONTEXT.md fact 3]
-**Published:** [CONFIRM] · **Last updated:** [CONFIRM]
+**Written by:** [Flying Star Aviator Academics Team](/editorial-policy)
+**Published:** [CONFIRM: publication date] · **Last updated:** [CONFIRM: same]
 
 ---
 
