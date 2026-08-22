@@ -115,9 +115,32 @@ observed rather than predicted.
     brand queries (A1 ~#6, A2 ~#7, A5 ~#5). It appears on **zero of the 20
     non-brand queries**.
 11. **It does not rank for its own domain name.** Query A4 `flystar.co.in`
-    returns **`flystars.co.in`** — a different domain, one letter apart — in
-    first place, then Internshala, Justdial and YouTube. The site itself does
-    not appear. This is the clearest possible signal of a weak brand entity.
+    returns Internshala, Justdial and YouTube — but not flystar.co.in itself.
+
+    **VERIFIED 2026-08-22 (A4 re-run) — with a correction to the first
+    reading.** The query was re-run and reproduced exactly. Top result,
+    verbatim:
+    - Title: `flystars.co.in | www.flystars.co.in`
+    - URL: `https://flystars.co.in/`
+
+    **However, `flystars.co.in` does not resolve.** No DNS A record for either
+    the apex or the `www` host; `curl` returns "Could not resolve host" over
+    both HTTP and HTTPS. A control fetch of `https://www.flystar.co.in/`
+    returned 200 in the same session, so this is not a local network fault.
+
+    So the first reading — "a lookalike competitor domain outranks you" — was
+    **wrong**. It is not a live rival. It is a non-resolving domain occupying
+    the top slot for a query that is literally our own domain name. Arguably a
+    stranger signal than the original claim, not a weaker one.
+
+    Note also that the search engine's own summary asserted flystars.co.in
+    "appears to be a modern travel booking platform." That cannot have come
+    from fetched content, since the host does not resolve. Treat generated
+    result summaries as unsourced — the same rule this campaign applies to
+    every other secondary source.
+
+    **The underlying finding stands either way: flystar.co.in does not rank
+    first for its own domain name.**
 12. **"CPL vs ATPL" is served entirely by EASA/UK sources** (Bristol
     Groundschool, Sherburn Aero Club, victorone.eu). The top results explain
     European thresholds. A DGCA-framed answer is genuinely absent — this
@@ -131,6 +154,12 @@ observed rather than predicted.
     list): Quora (ranks #1 and #2 on two queries) · IndiaMART (×3 on RTR) ·
     Justdial (dominates all brand queries) · Shiksha · Sulekha · youyooz ·
     merithub · findglocal · Internshala · Facebook · YouTube.
+15b. **Two further phone numbers surfaced** in the Internshala profile during
+    the A4 re-run: **8178366070** and **9315076787**. Neither appears in the
+    site's schema or contact pages. That takes the count of distinct numbers
+    associated with this brand into double figures. Added to the NAP problem in
+    `GEO_ENTITY_TODO.md` §4.
+
 15. **No published fees = no fee citations.** Query A5 returns US flight
     schools because the site publishes no Indian fee data. The
     highest-commercial-intent cluster is unwinnable without it (calendar #11).

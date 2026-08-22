@@ -105,6 +105,21 @@ campaign's rules say not to treat as primary.
 **Decision needed:** confirm the MCA name and CIN · confirm the registered
 address · approve the canonical string
 
+### Phone numbers associated with the brand (as at 2026-08-22)
+| Number | Where it appears | Whose? |
+|---|---|---|
+| +91 99535 36199 | site schema, Contact, Footer — 24 occurrences | Canonical? [CONFIRM] |
+| 9953566619 | Contact page and Footer, printed beside the above | [CONFIRM] |
+| +91 98765 43210 | "Talk to Counselor" CTA on 8 live pages | **Placeholder — clearly not real** |
+| 9355611996 | WhatsApp CTA on `/blogs` | **We One's** |
+| 9555291956 · 9717977702 | Air India interview page contact block | **We One's** |
+| 9667370747 · 9355566991 | We One's own site | **We One's** |
+| 8178366070 · 9315076787 | Internshala company profile | [CONFIRM] — new, found 2026-08-22 |
+| 7428897782 · 7428897780 | R1 ATPL component | **Golden Epaulettes'** |
+
+Twelve numbers. One of them is a well-known dummy sitting on the primary
+conversion CTA of eight live pages. **Facts block item 3 resolves this.**
+
 ---
 
 ## 5. The founding-date conflict (new, and it blocks the homepage branch)
