@@ -84,6 +84,20 @@ log; any article touching exam dates must cite the DGCA PDF directly.
 | 19 | Can You Become a Pilot Without Maths? The NIOS Route Explained | pilot without maths india | Low | — | /become-a-pilot/become-pilot | **P1** | provisional |
 | 20 | Pilot Eligibility in India: Age, Education, Medical, Height, Eyesight | pilot eligibility india | Med | — | /become-a-pilot/become-pilot | P2 | provisional |
 
+### Cluster 1b — Corrections (**the compounding moat — added 2026-08-22**)
+A page whose entire premise is correcting the record is a citation magnet:
+self-contained, resolves a question outright, and structurally superior to every
+page repeating an error. Sourced entirely from banked primary documents.
+
+| # | Title | Target query | Comp | Fresh gap | Supports | Priority | Status |
+|---|---|---|---|---|---|---|---|
+| 31 | Common Misconceptions About DGCA Exams (2026): What the Rules Actually Say | dgca exam requirements myths · does dgca require pcm · dgca age limit | **Low** | — | /dgca | **P1 — top 5** | provisional |
+
+Seed myth/fact pairs already verified and banked (DGCA Pariksha FAQ):
+PCM vs Physics+Maths · "age limit" vs no maximum age · Computer Number expiry
+vs lifetime validity · one number vs several · online submission vs
+online + posted hard copy · passport for Indian candidates · refundability.
+
 ### Cluster 5 — Neutral advisor (**the ground-school moat**)
 | # | Title | Target query | Comp | Fresh gap | Supports | Priority | Status |
 |---|---|---|---|---|---|---|---|
@@ -113,9 +127,10 @@ Ranked by winnability × commercial value, not volume:
 
 | Rank | # | Title | Why this one |
 |---|---|---|---|
-| 1 | 3 | DGCA OLODE: On-Demand vs Regular Sessions | The only genuinely under-owned topic found. Low competition, current, confusing to candidates. Fastest route to a first citation. |
+| 1 | 3 | DGCA OLODE: On-Demand vs Regular Sessions | The only genuinely under-owned topic found. Low competition, current, confusing to candidates. Fastest route to a first citation. **DRAFTED 2026-08-22.** |
 | 2 | 21 | How to Choose DGCA Ground Classes: 12 Questions | The moat topic. Low competition, and structurally more credible from a ground school than from anyone selling flying hours. |
-| 3 | 2 | DGCA Computer Number 2026 | Revives a dead URL already linked in our nav. Pure procedure, sourceable from `pariksha.dgca.gov.in`, no claims risk. |
+| 3 | 2 | DGCA Computer Number 2026 | Revives a dead URL already linked in our nav. Pure procedure, sourceable from `pariksha.dgca.gov.in`, no claims risk. **DRAFTED 2026-08-22 — zero web searches, entirely from the research bank.** |
+| — | 31 | Common Misconceptions About DGCA Exams (2026) | **Added after the primary-source run.** Its whole premise is corrections; myth/fact pairs are already verified and banked. Promote into the top 5. |
 | 4 | 18 | Foreign CPL to Indian CPL Conversion 2026 | Competitor #1 ranks here with a 2025-dated guide. Clean freshness win, revives a dead URL. |
 | 5 | 1 | DGCA Exam Calendar 2026 | High demand, annual refresh, stale competitor slugs. **Blocked on resolving the exam-date conflict from the official DGCA PDF.** |
 | 6 | 25 | ATPL Ground Classes in India 2026 | Replaces the deleted R1 topic with content that is actually ours. |

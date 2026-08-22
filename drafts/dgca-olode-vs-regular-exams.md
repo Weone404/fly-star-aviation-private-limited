@@ -141,19 +141,38 @@ served, so an OLODE plan is not guaranteed until the slot is confirmed.
 ## What does OLODE not change? {#unchanged}
 
 OLODE changes scheduling and fee. It does not change eligibility, syllabus,
-paper validity, or anything about your Computer Number.
+paper validity, or anything about your Computer Number. A pass carries the same
+weight, your Computer Number stays the same, and the syllabus is unchanged.
 
-Worth stating plainly, because these are widely muddled online:
+## Common misconceptions {#misconceptions}
 
-- **Qualification.** DGCA's own FAQ states the requirement as 10+2 with
-  **Physics and Mathematics** from a recognised board (PPL category excepted).
-  Several popular guides say "Physics, Chemistry and Mathematics" — DGCA's
-  published text does not.
-- **Age.** DGCA states there is **no maximum age limit** to register as a Flight
-  Crew candidate. Age ceilings you may have read about generally belong to
-  airline recruitment, not to DGCA registration.
-- **Computer Number.** One per candidate, valid for life, covering every Flight
-  Crew examination category.
+Several requirements around DGCA Flight Crew examinations are widely
+misreported. Each correction below is DGCA's own published text.
+
+**Misconception: DGCA requires PCM — Physics, Chemistry and Mathematics.**
+The actual requirement is **10+2 with Physics and Mathematics** from a
+recognised board or university, or its equivalent, per DGCA's Pariksha FAQ.
+Chemistry is not part of the stated requirement. The PPL category is excepted.
+
+**Misconception: there is an upper age limit for registering.**
+DGCA states there is **no maximum age limit** to register as a Flight Crew
+candidate. Age ceilings you may have read about belong to airline recruitment
+and cadet programmes, which are separate from DGCA registration.
+
+**Misconception: you can hold more than one Computer Number.**
+A candidate is authorised to hold **only one**, and its validity is lifetime.
+One number covers every Flight Crew examination category.
+
+**Misconception: a rejected exam form gets your money back.**
+DGCA states the fee paid once is **not refundable under any circumstances**,
+including rejection. Verify eligibility and documents before paying.
+
+**Misconception: OLODE is an easier or separate exam.**
+It is the same paper under the same syllabus and the same rule. Only the
+scheduling and the fee differ.
+
+*Source for all five: DGCA Pariksha Flight Crew FAQ, pariksha.dgca.gov.in,
+retrieved [CONFIRM: retrieval date at publication].*
 
 ## FAQ {#faq}
 

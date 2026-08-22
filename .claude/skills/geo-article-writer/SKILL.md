@@ -56,3 +56,36 @@ a salesperson.
 ## Step 5 — No code changes
 This skill does not touch `src/`. Keeping writing and code in separate sessions
 keeps context small and diffs reviewable.
+
+## Standing rules (added 2026-08-22 after the DGCA primary-source run)
+
+### Check the research bank BEFORE any web search
+`drafts/research/` holds primary sources already fetched, with their source URL
+and fetch date. Grep it first. A banked primary source costs zero searches and
+can carry five articles. Only search for what the bank does not already answer,
+and bank anything new you fetch from an authority (dgca.gov.in, wpc.gov.in,
+pariksha.dgca.gov.in) in the same format.
+
+### Unverified numbers NEVER enter JSON-LD
+A figure still carrying `[CONFIRM]` may appear in visible prose with its caveat,
+but must not appear in structured data. Machine-readable claims get scraped and
+repeated verbatim by other sites, so an error there propagates beyond our
+control. Omit the question from the FAQPage block until the number is verified.
+
+### The corrections play — state the fact, never name the rival
+Where a primary source contradicts what ranking pages say, that correction is
+the most citable asset available. Two rules:
+1. **Never name or characterise competitors.** No "other sites claim", no "many
+   institutes wrongly state". It reads as petty and adds nothing quotable.
+2. **Use the myth-vs-fact format**, which is highly citable because it carries
+   both the correction and the authority in one liftable sentence:
+
+   > **Common misconception:** DGCA requires PCM (Physics, Chemistry, Maths).
+   > **The actual requirement** is 10+2 with Physics and Mathematics, per
+   > DGCA's Pariksha FAQ.
+
+### "Common misconceptions" is a standard section type
+Any guide where a primary source contradicts widespread belief gets a
+`## Common misconceptions` section built from myth/fact pairs. Each pair cites
+its source inline. These sections are disproportionately quoted by answer
+engines because they are self-contained and resolve a question outright.
