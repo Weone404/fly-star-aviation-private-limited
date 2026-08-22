@@ -56,14 +56,14 @@ is to merge.
 ## Workstream status
 | # | Workstream | Status | Blocked by |
 |---|---|---|---|
-| W1 | Build-verify `geo/tech-p0` | run #1 | — |
+| W1 | Build-verify `geo/tech-p0` | **FAILED — disk full** | **Disk space.** `npm ci` needs GBs; 700Mi free. Owner must free space, then retry. |
 | W2 | `geo/truth-hygiene` | not started | tech-p0 merge + canonical phone (fact 3) |
-| W3 | Phase 2 keyword research | not started | — **unblocked** |
-| W4 | /privacy + /terms drafts → `drafts/` | not started | — **unblocked** (wiring waits for tech-p0 merge) |
+| W3 | Phase 2 keyword research | not started — **next up** | — unblocked. Now has baseline competitor intel to score against. |
+| W4 | /privacy + /terms drafts → `drafts/` | **DRAFTED** (run 1) | Wiring waits for tech-p0 merge + `geo/legal-pages`; text waits for legal review + facts 1, 3, 4 |
 | W5 | Article drafts (cap 3) | not started | W3 |
 | W6 | Interview-page rewrites ×2 | not started | W2 merged + facts 3, 6 |
 | W7 | `geo/homepage-accuracy` + Org schema + claims-truth | not started | facts 1, 2, 4, 5, 7 |
-| W8 | Visibility baseline (**time-sensitive, pre-deploy**) | not started | — **unblocked** |
+| W8 | Visibility baseline (**time-sensitive, pre-deploy**) | **BATCH 1 CAPTURED** (run 1) — 0/8 presence | Batches 2–3 pending; manual AI checks owed by owner |
 
 ## Facts owed by the owner (the canonical block)
 1. MCA — Flying Star Aviator Private Limited: legal name / CIN / registered address
@@ -94,4 +94,17 @@ Merge + deploy · the MCA/DGCA lookups and real numbers · GSC indexing requests
 ## Run history
 | Run | Date | Workstreams | Outcome |
 |---|---|---|---|
-| 1 | 2026-08-22 | init, W1, W8, W4 | see below |
+| 1 | 2026-08-22 | init, W1 (failed), W8 batch 1, W4 | Campaign initialized on main. W1 blocked: disk full — `npm ci` died at ENOSPC; the partial `node_modules` it left behind was removed, freeing 700Mi (still far short). **W8 baseline captured pre-deploy: flystar.co.in absent from all 8 queries.** Golden Epaulettes Aviation identified as competitor #1 (5/8 queries, based in Dwarka — and the source of R1's copied content). W4 drafts written to `drafts/`. |
+
+## Competitive picture (from the W8 baseline — feeds W3 scoring)
+- **Competitor #1: Golden Epaulettes Aviation** (Dwarka, Delhi) — 5 of 8 queries.
+- **Dwarka micro-cluster also ranking:** Airborne Aviation (Sector 7),
+  FMS Aviation Academy (Ramphal Chowk centre), CEA Aviation, 70knotsaviation.
+  Local intent is contested, not open.
+- **vfti.co.in confirmed a real competitor** — closes that Phase 0 [CONFIRM].
+- **Third-party surfaces already ranking** (the `geo-entity-mentions` target
+  list, named not hypothesised): Quora (commercialpilotindia), youyooz.com,
+  merithub.com, findglocal.com, Facebook.
+- **Sourced market data for future articles:** ground classes ₹1.5–3 lakh;
+  total CPL ₹55–90 lakh (2026), flying ~70% of it; programmes 4–6 months;
+  DGCA exams in January, April, July, October.
