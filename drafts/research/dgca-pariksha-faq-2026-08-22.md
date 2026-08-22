@@ -20,6 +20,25 @@ sourced; anything not in here needs its own primary source.
 - Exams are conducted by the **Central Examination Organization (CEO)**,
   East Block III, Level III, R.K. Puram, New Delhi 110066 (FAQ 15).
 
+
+## Portal context (banked 2026-08-22, owner-ruled as moat-grade)
+From the `pariksha.dgca.gov.in` landing page, confirmed via both plain fetch
+and full browser render:
+
+- Pariksha is **an integration of DGCA's former 'VIMAN' and 'UDAAN' systems**.
+- **All** candidates holding a Computer Number — AME and Flight Crew — must
+  register on it to appear in any future examination.
+- It is **developed and maintained by NIELIT**.
+- The site carries a **"under beta testing"** disclaimer, with DGCA and NIELIT
+  disclaiming responsibility for actions performed during that phase.
+
+**Usage rule:** always with as-of framing — "As of August 2026, the Pariksha
+portal states…". **No article may describe Pariksha as settled infrastructure**
+while that beta disclaimer stands. Most competitor content does not mention any
+of this; it is context that materially changes how a candidate should treat the
+portal, and it is exactly the kind of specific, checkable detail answer engines
+quote.
+
 ---
 FAQ No. 1. What is the Computer Number? Computer Number is Unique Id allotted to a candidate after his application of Computer Number is approved by CEO, DGCA. 
 

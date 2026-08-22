@@ -16,11 +16,27 @@ the model.
 | URL | Status | Notes |
 |---|---|---|
 | `pariksha.dgca.gov.in/home` | 200 HTML | Portal landing. Useful only as the link index that produced this file. |
-| `pariksha.dgca.gov.in/home/Notice_Board_General_PLT` | 200 but **JS-gated** | Returns the generic landing page to a plain fetch. The pilot notice board is where the **Computer Number auto-generation** question would be settled — needs a browser, not curl. |
-| `pariksha.dgca.gov.in/home/fc_olode_seat_count` | 200 but **JS-gated** | Same. Would confirm OLODE centres and live seat availability. |
+| `pariksha.dgca.gov.in/home/Notice_Board_General_PLT` | 200 — **CLOSED, see below** | Not reachable without candidate credentials |
+| `pariksha.dgca.gov.in/home/fc_olode_seat_count` | 200 — **CLOSED, see below** | Same |
 | `www.dgca.gov.in/digigov-portal/` | 200 HTML (208 KB) | Main DGCA portal. Not yet mined. |
 | `www.nios.ac.in` | 200 HTML | For calendar topic #19 ("pilot without maths" — the NIOS route). Not yet mined. |
 | `www.wpc.gov.in` | **000 — did not resolve** | The RTR(A) authority. Retry later; blocks primary sourcing for RTR topics. |
+
+### Ruled out with evidence (2026-08-22) — do not retry without credentials
+Both deep links were re-fetched with a **real headless Chrome** (the binary
+installed for build verification), `waitUntil: networkidle2`, plus a 3-second
+settle for late XHR. Both returned the **identical 457-character landing page**,
+zero tables, no notice content, no seat data.
+
+So they are **not** JS-gated — they are server-side aliases that do not serve
+content to unauthenticated visitors. Rendering will never help. The only routes
+in are a logged-in candidate session or the PDF documents.
+
+**Consequence:** the **Computer Number auto-generation** question cannot be
+settled from the public web. It stays `[CONFIRM]` in the Computer Number
+article and in the "Still unsettled" section of the misconceptions article
+until either the Flight Crew MANUAL PDF is readable (needs poppler) or someone
+with a Pariksha login checks the notice board directly.
 
 **New primary fact banked from the portal landing page:** Pariksha is described
 as an integration of DGCA's former **'VIMAN' and 'UDAAN'** systems, all
