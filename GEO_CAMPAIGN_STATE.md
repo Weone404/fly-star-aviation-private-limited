@@ -38,11 +38,28 @@ citable asset available. State the correct fact with its citation; **never name
 or characterise a competitor**. Use the myth-vs-fact format. Full rules in
 `.claude/skills/geo-article-writer/SKILL.md`.
 
+## ✅ geo/tech-p0 verification results (run 5, 2026-08-22) — ready to merge
+| Check | Result |
+|---|---|
+| `npm ci` | clean |
+| Route parity gate (`prebuild`) | **PASS** — 30 sitemap + 17 llms.txt URLs, all with routeMeta entries, 54 routes |
+| `npm run lint` | **14 errors vs main's 16** — this branch reduces them; the rest pre-date it |
+| `npm run build` | **exit 0** with `PRERENDER_EXECUTABLE_PATH` set (see PRERENDER.md) |
+| Prerender output | **60 routes** written to `dist/` |
+| `/courses/cabin-crew` | prerendered — correct title, H1, 4,552 chars body |
+| `/courses/ground-staff` | prerendered — correct title, H1, 10,076 chars body |
+| The 13 pruned URLs | correctly **absent** from `dist/` |
+
+**Caveat worth knowing:** plain `npm run build` exits 1 on macOS — the bundled
+`@sparticuz/chromium` is a Linux binary. `dist/` is still produced but nothing
+prerenders, so an unmodified local build does not verify the thing that matters.
+Workaround documented in PRERENDER.md. Vercel (Linux) is unaffected.
+
 ## Branch ledger
 | Branch | State | Contents | Gate |
 |---|---|---|---|
 | `main` | at `9337929` | Phase 0 only. **Still carries the OLD PRERENDER.md** (wrong route checklist) and settings.json without the We One domains. Never cut a site branch from main until tech-p0 merges. | — |
-| `geo/tech-p0` | 6 commits, unmerged | Mojibake fix (19 files), route parity gate, prerender.mjs removal, PRERENDER.md rewrite, 2 pages wired, 13 URLs pruned, nav casing fix, audit report, recon findings | **Owner: build + review + merge** |
+| `geo/tech-p0` | 9 commits, unmerged, **BUILD VERIFIED** | Mojibake fix (19 files), route parity gate, prerender.mjs removal, PRERENDER.md rewrite, 2 pages wired, 13 URLs pruned, nav casing fix, audit report, recon findings | **Owner: build + review + merge** |
 | `geo/truth-hygiene` | not cut | Spec below | Needs tech-p0 merged + canonical phone |
 | `geo/legal-pages` | not cut | /privacy + /terms fully wired, and restores their two footer links | Cut only AFTER tech-p0 merges; merges only after legal sign-off |
 | `geo/homepage-accuracy` | not cut | H1/meta + Organization schema + claims-truth pass | Needs MCA + DGCA-approval facts |
@@ -82,14 +99,14 @@ is to merge.
 ## Workstream status
 | # | Workstream | Status | Blocked by |
 |---|---|---|---|
-| W1 | Build-verify `geo/tech-p0` | **FAILED — disk full** | **Disk space.** `npm ci` needs GBs; 700Mi free. Owner must free space, then retry. |
+| W1 | Build-verify `geo/tech-p0` | **✅ PASSED (run 5)** | — **Ready to merge.** See verification results below. |
 | W2 | `geo/truth-hygiene` | not started | tech-p0 merge + canonical phone (fact 3) |
 | W3 | Phase 2 keyword research | **DONE (run 2)** — 30 topics in `GEO_KEYWORD_RESEARCH.md` | Top 10 awaiting owner approval before W5 drafting |
 | W4 | /privacy + /terms drafts → `drafts/` | **DRAFTED** (run 1) | Wiring waits for tech-p0 merge + `geo/legal-pages`; text waits for legal review + facts 1, 3, 4 |
 | W5 | Article drafts (cap 3) | **2 of 3 drafted** (runs 3–4): #1 OLODE, #3 Computer Number | Byline (fact 3) blocks publication of **every** draft. One more may be drafted before the checkpoint. |
 | W6 | Interview-page rewrites ×2 | not started | W2 merged + facts 3, 6 |
 | W7 | `geo/homepage-accuracy` + Org schema + claims-truth | not started | facts 1, 2, 4, 5, 7 |
-| W8 | Visibility baseline (**time-sensitive, pre-deploy**) | **BATCH 1 CAPTURED** (run 1) — 0/8 presence | Batches 2–3 pending; manual AI checks owed by owner |
+| W8 | Visibility baseline (**time-sensitive, pre-deploy**) | **14 of 25 captured** (runs 1, 5) | Remaining: C3, C5, D3, D4, D5, A2, A4, A5. Manual AI checks owed by owner. |
 
 ## Facts owed by the owner (the canonical block)
 1. MCA — Flying Star Aviator Private Limited: legal name / CIN / registered address
