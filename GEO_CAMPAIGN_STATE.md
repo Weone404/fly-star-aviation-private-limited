@@ -12,6 +12,20 @@ _Initialized 2026-08-22 (run #1)._
   `GEO_CONTEXT.md` on main until `geo/tech-p0` merges, or the merge conflicts.
   New files on main are safe.
 
+## 📌 Justification artifact for `geo/homepage-accuracy` — dated evidence
+**2026-08-22.** Running baseline query A1 ("Flying Star Aviator"), the search
+engine's own generated summary stated:
+
+> "Flying Star Aviator is India's best **DGCA-approved** CPL & ATPL ground
+> classes institute in Delhi."
+
+That sentence was lifted from the homepage H1 and meta title. Query A2
+reproduced it. **The unverified approval claim is already being restated as
+fact by an automated summary** — no longer a predicted risk, an observed one.
+If the DGCA approval cannot be evidenced (facts block item 4), this is a
+false claim propagating beyond our control, and the homepage branch is the
+remedy. Keep this dated entry as the record of when it was first observed.
+
 ## Standing rules (added 2026-08-22)
 
 ### Research bank first
@@ -106,7 +120,7 @@ is to merge.
 | W5 | Article drafts (cap 3) | **2 of 3 drafted** (runs 3–4): #1 OLODE, #3 Computer Number | Byline (fact 3) blocks publication of **every** draft. One more may be drafted before the checkpoint. |
 | W6 | Interview-page rewrites ×2 | not started | W2 merged + facts 3, 6 |
 | W7 | `geo/homepage-accuracy` + Org schema + claims-truth | not started | facts 1, 2, 4, 5, 7 |
-| W8 | Visibility baseline (**time-sensitive, pre-deploy**) | **14 of 25 captured** (runs 1, 5) | Remaining: C3, C5, D3, D4, D5, A2, A4, A5. Manual AI checks owed by owner. |
+| W8 | Visibility baseline | **✅ COMPLETE — 25/25, all captured pre-deploy** (runs 1, 5, 6) | Manual AI checks still owed by owner — see below |
 
 ## Facts owed by the owner (the canonical block)
 1. MCA — Flying Star Aviator Private Limited: legal name / CIN / registered address
@@ -137,6 +151,8 @@ Merge + deploy · the MCA/DGCA lookups and real numbers · GSC indexing requests
 ## Run history
 | Run | Date | Workstreams | Outcome |
 |---|---|---|---|
+| 6 | 2026-08-22 | W8 completion, entity TODO | **Baseline COMPLETE, 25/25, all pre-deploy.** Final presence rate **3 of 25** — brand queries only; zero of 20 non-brand queries. Query A4 shows the site does not rank for its own domain (`flystars.co.in` does). Found the public company record: **CIN U85499DL2024PTC435001**, indicating incorporation in **2024** against the site's "since 2008". Created `GEO_ENTITY_TODO.md` — 7 numbered off-site decisions with recommendations. Draft #31 deferred: the baseline was correctly ordered first and consumed the run. |
+| 5 | 2026-08-22 | W1 verification, W8 batch 2, mojibake follow-up |
 | 4 | 2026-08-22 | W5 (draft 2 of 3), editorial rulings | Institutionalised three rulings: research-bank-first, no unverified numbers in JSON-LD, and the corrections play (state the fact, never name the rival, use myth-vs-fact). Added a `Common misconceptions` section type to the writer skill and to the OLODE draft. **Drafted #3 Computer Number with ZERO web searches** — entirely from the banked DGCA FAQ. Added topic #31 "Common Misconceptions About DGCA Exams" to the calendar as a P1. |
 | 3 | 2026-08-22 | W5 (draft 1 of 3), repo cleanup | Drafted top-10 #1 (OLODE) with hand-off package: validated FAQPage JSON-LD, meta, linking plan, [CONFIRM] list. **Pulled primary-source facts directly from DGCA's Pariksha FAQ** — saved to `drafts/research/`. That source corrects two errors repeated on competitor pages (qualification is Physics + Maths, not PCM; there is no maximum registration age). Also removed 68 unused files / 11.3 MB from the repo. |
 | 2 | 2026-08-22 | W1 (still blocked), W3 | Disk still full (757Mi) — W1 not retried. **W3 complete: 30 scored topics, top 10 proposed.** Found a fact conflict on DGCA exam session months and corrected the W8 log; both figures now [CONFIRM] pending the official pariksha.dgca.gov.in calendar. |
