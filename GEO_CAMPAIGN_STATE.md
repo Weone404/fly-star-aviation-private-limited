@@ -117,7 +117,7 @@ is to merge.
 | W2 | `geo/truth-hygiene` | not started | tech-p0 merge + canonical phone (fact 3) |
 | W3 | Phase 2 keyword research | **DONE (run 2)** — 30 topics in `GEO_KEYWORD_RESEARCH.md` | Top 10 awaiting owner approval before W5 drafting |
 | W4 | /privacy + /terms drafts → `drafts/` | **DRAFTED** (run 1) | Wiring waits for tech-p0 merge + `geo/legal-pages`; text waits for legal review + facts 1, 3, 4 |
-| W5 | Article drafts (cap 3) | **2 of 3 drafted** (runs 3–4): #1 OLODE, #3 Computer Number | Byline (fact 3) blocks publication of **every** draft. One more may be drafted before the checkpoint. |
+| W5 | Article drafts (cap 3) | **✅ 3 of 3 — CHECKPOINT REACHED** (runs 3, 4, 6): #1 OLODE, #3 Computer Number, #31 Misconceptions | **Owner review required.** Cap reached; no further drafting until the top 10 is approved. Byline blocks publication of all three. |
 | W6 | Interview-page rewrites ×2 | not started | W2 merged + facts 3, 6 |
 | W7 | `geo/homepage-accuracy` + Org schema + claims-truth | not started | facts 1, 2, 4, 5, 7 |
 | W8 | Visibility baseline | **✅ COMPLETE — 25/25, all captured pre-deploy** (runs 1, 5, 6) | Manual AI checks still owed by owner — see below |
@@ -151,6 +151,7 @@ Merge + deploy · the MCA/DGCA lookups and real numbers · GSC indexing requests
 ## Run history
 | Run | Date | Workstreams | Outcome |
 |---|---|---|---|
+| 7 | 2026-08-22 | A4 verification, W5 draft 3 | Re-ran A4 on request: reproduced exactly, but **flystars.co.in does not resolve** — corrected my "lookalike competitor" reading; the underlying finding (site does not rank #1 for its own domain) stands. Found two more phone numbers; built a 12-number inventory in the entity TODO. **Drafted #31 Misconceptions — the checkpoint trio is complete.** Eligibility gate held back 3 open questions into a "Still unsettled" section rather than presenting them as corrections. |
 | 6 | 2026-08-22 | W8 completion, entity TODO | **Baseline COMPLETE, 25/25, all pre-deploy.** Final presence rate **3 of 25** — brand queries only; zero of 20 non-brand queries. Query A4 shows the site does not rank for its own domain (`flystars.co.in` does). Found the public company record: **CIN U85499DL2024PTC435001**, indicating incorporation in **2024** against the site's "since 2008". Created `GEO_ENTITY_TODO.md` — 7 numbered off-site decisions with recommendations. Draft #31 deferred: the baseline was correctly ordered first and consumed the run. |
 | 5 | 2026-08-22 | W1 verification, W8 batch 2, mojibake follow-up |
 | 4 | 2026-08-22 | W5 (draft 2 of 3), editorial rulings | Institutionalised three rulings: research-bank-first, no unverified numbers in JSON-LD, and the corrections play (state the fact, never name the rival, use myth-vs-fact). Added a `Common misconceptions` section type to the writer skill and to the OLODE draft. **Drafted #3 Computer Number with ZERO web searches** — entirely from the banked DGCA FAQ. Added topic #31 "Common Misconceptions About DGCA Exams" to the calendar as a P1. |
