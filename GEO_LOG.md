@@ -42,8 +42,13 @@ Method: anecdotal proxy, not a tracker export. No AI engine was queried directly
    for `geo-entity-mentions` — not hypotheses.
 6. **Market fee data for future articles** (sourced, cite on use): DGCA ground
    classes ₹1.5–3 lakh; total CPL ₹55–90 lakh in 2026, flying training ~70% of
-   it; ground-class programmes run 4–6 months; DGCA exams held in January,
-   April, July and October.
+   it; ground-class programmes run 4–6 months.
+   ⚠️ **CORRECTION (W3, same day):** this row originally logged "DGCA exams
+   held in January, April, July and October". W3 research found sources stating
+   Regular Flight Crew sessions run **March, June, September, December**, plus
+   on-demand OLODE windows. Two secondary sources disagree —
+   **[CONFIRM] against the official programme of examinations on
+   `pariksha.dgca.gov.in`.** Neither figure may be published until verified.
 
 ### Manual AI check — OWED BY OWNER (this is the half that actually counts)
 Run these same 8 queries yourself in **ChatGPT (search on), Perplexity, Gemini,

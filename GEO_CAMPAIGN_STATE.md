@@ -58,9 +58,9 @@ is to merge.
 |---|---|---|---|
 | W1 | Build-verify `geo/tech-p0` | **FAILED — disk full** | **Disk space.** `npm ci` needs GBs; 700Mi free. Owner must free space, then retry. |
 | W2 | `geo/truth-hygiene` | not started | tech-p0 merge + canonical phone (fact 3) |
-| W3 | Phase 2 keyword research | not started — **next up** | — unblocked. Now has baseline competitor intel to score against. |
+| W3 | Phase 2 keyword research | **DONE (run 2)** — 30 topics in `GEO_KEYWORD_RESEARCH.md` | Top 10 awaiting owner approval before W5 drafting |
 | W4 | /privacy + /terms drafts → `drafts/` | **DRAFTED** (run 1) | Wiring waits for tech-p0 merge + `geo/legal-pages`; text waits for legal review + facts 1, 3, 4 |
-| W5 | Article drafts (cap 3) | not started | W3 |
+| W5 | Article drafts (cap 3) | not started — **next up** | Owner approval of the top 10. Two of the top 10 additionally blocked on facts: #1 needs the official DGCA exam calendar, #11 needs fact 5. |
 | W6 | Interview-page rewrites ×2 | not started | W2 merged + facts 3, 6 |
 | W7 | `geo/homepage-accuracy` + Org schema + claims-truth | not started | facts 1, 2, 4, 5, 7 |
 | W8 | Visibility baseline (**time-sensitive, pre-deploy**) | **BATCH 1 CAPTURED** (run 1) — 0/8 presence | Batches 2–3 pending; manual AI checks owed by owner |
@@ -94,6 +94,7 @@ Merge + deploy · the MCA/DGCA lookups and real numbers · GSC indexing requests
 ## Run history
 | Run | Date | Workstreams | Outcome |
 |---|---|---|---|
+| 2 | 2026-08-22 | W1 (still blocked), W3 | Disk still full (757Mi) — W1 not retried. **W3 complete: 30 scored topics, top 10 proposed.** Found a fact conflict on DGCA exam session months and corrected the W8 log; both figures now [CONFIRM] pending the official pariksha.dgca.gov.in calendar. |
 | 1 | 2026-08-22 | init, W1 (failed), W8 batch 1, W4 | Campaign initialized on main. W1 blocked: disk full — `npm ci` died at ENOSPC; the partial `node_modules` it left behind was removed, freeing 700Mi (still far short). **W8 baseline captured pre-deploy: flystar.co.in absent from all 8 queries.** Golden Epaulettes Aviation identified as competitor #1 (5/8 queries, based in Dwarka — and the source of R1's copied content). W4 drafts written to `drafts/`. |
 
 ## Competitive picture (from the W8 baseline — feeds W3 scoring)
