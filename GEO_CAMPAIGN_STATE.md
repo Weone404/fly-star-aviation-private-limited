@@ -26,6 +26,34 @@ If the DGCA approval cannot be evidenced (facts block item 4), this is a
 false claim propagating beyond our control, and the homepage branch is the
 remedy. Keep this dated entry as the record of when it was first observed.
 
+## ▶ PHASE 2 — the governing roadmap (from 2026-08-22)
+`PHASE2_CAMPAIGN.md` supersedes the W1–W8 queue below. Launch line:
+**"Read PHASE2_CAMPAIGN.md and run the campaign."**
+
+Five stages, dependency-ordered — always work the earliest unblocked one:
+
+| Stage | Workstreams | Gate |
+|---|---|---|
+| **1 GO LIVE** | W1 deploy verify · W2 publication chain · W3 truth hygiene · W4 legal | tech-p0 merged + corrections contact |
+| **2 TRUTH** | W5 homepage · W6 claims · W7 Org schema/NAP · W8 interview rewrites · W9 /locations/delhi | the facts block |
+| **3 CORPUS** | W10 PDF bank · W11 article engine (2–3/week) | poppler · top-10 approved |
+| **4 ENTITY** | W12 execution kit — **~60% of AI visibility, equal priority to W11** | human executes; agent prepares + tracks monthly |
+| **5 LOOP** | W13 measurement · W14 security · W15 quarterly refresh | permanent |
+
+**Reality model that drives prioritisation:** ~40% of AI visibility is on-site,
+~60% is what others say about the brand. Visibility arrives in order —
+indexing → impressions → clicks → rankings → citations; impressions without
+clicks is progress, not failure. The moat is being demonstrably right where
+ranking competitors are wrong.
+
+**Completion is an operational state, not a date:** all stages live · 50+ page
+corpus · entity kit actually executed · presence in half the 25 baseline
+queries · first verified AI citations logged · refresh loop turning.
+
+**W0 skill alignment: ✅ DONE 2026-08-22.** `geo-entity-mentions` gained
+execution-kit mode; `geo-visibility-tracker` gained the A4 canary, the
+manual-check reminder, and the day-90 milestone.
+
 ## Blocked-work table (as at 2026-08-22, run 8)
 No owner inputs were supplied this run — the input block arrived with all five
 placeholders unfilled, so per the "skip any left blank" rule nothing was recorded.

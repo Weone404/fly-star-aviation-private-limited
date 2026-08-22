@@ -71,3 +71,29 @@ entity is not. Route those to `geo-entity-mentions`, never to a rewrite.
 - Diff Cited / Present / Absent / Misattributed against the last run.
 - Attribute changes cautiously: a listicle refresh, seasonality, or a tracker
   blip can dwarf an on-page edit. Never declare a win from one query flipping.
+
+## Every-run additions (added 2026-08-22 — PHASE2_CAMPAIGN W13)
+
+### The A4 canary — run this every time, it is one search
+Query **A4 = `flystar.co.in`**. Pre-deploy baseline (2026-08-22): the site did
+**not** rank first for its own domain name; Internshala, Justdial and YouTube
+did, and a non-resolving lookalike domain held the top slot.
+
+That single query is the cheapest available read on whether the brand entity is
+strengthening. Log the result to `GEO_LOG.md` every run with the date. Do not
+run it more than monthly — daily movement is noise.
+
+### Manual-check reminder — include in every report
+Everything this skill captures is a **retrieval proxy**, not evidence of what an
+answer engine says. Every run's handoff must remind the owner that
+`GEO_MANUAL_CHECKS.md` is unfilled, and name the priority subset:
+**A1, A4, B1, C1, D1** in ChatGPT and Perplexity — a 15-minute pass.
+
+Never describe web-search results as AI visibility. They are the input those
+engines retrieve from, which is a different claim.
+
+### Day-90 milestone
+Ninety days after the first deploy: re-run the full frozen 25-query set, prompt
+for the 4-engine manual pass, and write `GEO_REPORT_YYYY-MM.md` comparing
+against the sealed pre-deploy baseline (presence rate **3 of 25**, brand
+queries only). Gaps feed the content calendar.

@@ -78,3 +78,42 @@ course detail distinct enough for a stranger to repeat, say so. Off-site GEO is
 not a coat of paint. The correct recommendation is then: earn **one** primary
 citable fact first — a real pass-rate figure, a syllabus breakdown nobody else
 publishes, a fee teardown with sources — and distribute that.
+
+## Execution-kit mode (added 2026-08-22 — PHASE2_CAMPAIGN W12)
+
+Off-site properties — Justdial, Google Business Profile, Instagram, Facebook,
+review platforms — require account logins this agent does not have. So the
+deliverable is not an edit; it is a **playbook the human executes**, and a
+tracker this agent maintains.
+
+When invoked for W12, produce `GEO_ENTITY_EXECUTION_KIT.md` with a
+per-platform section. Each section carries: the current observed state, the
+recommended action with its reasoning, the literal step-by-step, and a status
+box the human ticks.
+
+Required sections:
+1. **Justdial** — which of the three listings to keep (recommend the
+   1,201-review record), what merge evidence to submit for the duplicate, and
+   the category correction from Air Hostess Training to pilot/aviation training.
+2. **Google Business Profile** — claim, categories, hours, photos, services,
+   and seeding owner-answered Q&A.
+3. **Instagram** — which of the two accounts is canonical, and the closure or
+   redirect-in-bio steps for the other.
+4. **facebook.com/flyspaceaviation** — confirm ownership first, then rebrand
+   or close.
+5. **NAP sweep table** — all 7 name variants and all 12 phone numbers mapped
+   to the single canonical value, platform by platform.
+6. **Review replies** — templates. Every review answered; replies are fresh,
+   keyword-bearing content that the platform and crawlers both read.
+7. **Listicle outreach** — 5 target "best DGCA ground classes Delhi" articles
+   with a pitch draft each, offering something genuinely useful (a corrected
+   fact, original data) rather than asking for a link.
+8. **Quora** — 10 real threads, with disclosed-affiliation answer outlines.
+
+**Priority note, binding:** roughly 60% of AI visibility comes from what other
+sources say about the brand. This workstream ranks equal to article production,
+never below it. Re-check completion status monthly and report what is still
+outstanding — a kit that stays a document has produced nothing.
+
+**Ethics unchanged:** no fake accounts, no fake reviews, no undisclosed
+promotion. Disclosure is mandatory wherever the business is recommended.
