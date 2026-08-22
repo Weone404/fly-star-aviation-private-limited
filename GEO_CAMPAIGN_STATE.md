@@ -37,7 +37,7 @@ Five stages, dependency-ordered — always work the earliest unblocked one:
 | **1 GO LIVE** | W1 deploy verify · W2 publication chain · W3 truth hygiene · W4 legal | tech-p0 merged + corrections contact |
 | **2 TRUTH** | W5 homepage · W6 claims · W7 Org schema/NAP · W8 interview rewrites · W9 /locations/delhi | the facts block |
 | **3 CORPUS** | W10 PDF bank · W11 article engine (2–3/week) | poppler · top-10 approved |
-| **4 ENTITY** | W12 execution kit — **~60% of AI visibility, equal priority to W11** | human executes; agent prepares + tracks monthly |
+| **4 ENTITY** | W12 execution kit — **✅ KIT WRITTEN 2026-08-22** (`GEO_ENTITY_EXECUTION_KIT.md`, 8 sections, status-boxed). Human execution: 0/8 done | human executes; agent re-checks monthly |
 | **5 LOOP** | W13 measurement · W14 security · W15 quarterly refresh | permanent |
 
 **Reality model that drives prioritisation:** ~40% of AI visibility is on-site,
@@ -194,6 +194,7 @@ Merge + deploy · the MCA/DGCA lookups and real numbers · GSC indexing requests
 ## Run history
 | Run | Date | Workstreams | Outcome |
 |---|---|---|---|
+| 11 | 2026-08-22 | W12 entity execution kit (continuous run) | Continuous mode requested with all inputs blank. Gates measured, not assumed: tech-p0 unmerged, production still 404, no poppler, no contact, no facts, no top-10, no legal sign-off — **reach map = W12 only**. Built `GEO_ENTITY_EXECUTION_KIT.md`: 8 status-boxed sections, priority-ordered repair-before-growth, with 8 verified Quora threads and 5 real listicle targets. Leads with the honest constraint: off-site work distributes a claim, it does not create one — and Flying Star currently has no citable fact to distribute. |
 | 10 | 2026-08-22 | Deploy checklist | Publication run requested; all four gates closed (tech-p0 unmerged, no corrections contact, poppler absent, `/courses/cabin-crew` still 404 in production). Item 4 applied — wrote `drafts/DEPLOY-CHECKLIST.md` and stopped rather than producing filler. PDF gap list already exists in `drafts/research/SOURCE-INDEX.md`; not duplicated. |
 | 9 | 2026-08-22 | Byline ruling applied; editorial-policy page drafted | Byline resolved as institutional. Applied to all three drafts as a link to `/editorial-policy`, and stale "byline unresolved" headers cleared. Drafted the policy page from the campaign's **actual** operating rules, with a claim-by-claim enforcement table in its wiring plan so condition 2 is checkable rather than assumed. Publication order fixed: policy → computer-number → OLODE → misconceptions. Confirmed poppler still not installed and tech-p0 still unmerged. |
 | 8 | 2026-08-22 | Merge-prep, wiring plans, manual-check sheet, source index | No owner inputs supplied (all placeholders blank) — items 1, 6, 7 skipped per the rule. **Tested the merge: clean, exit 0, no conflicts**; real change set is 32 files (+579/−483), not the 117/+34,595 the raw diffstat implies. Wrote `drafts/TECH-P0-REVIEW.md` (8 commits, risk each, 10-minute review path), 3 wiring plans, `GEO_MANUAL_CHECKS.md` (25 queries × 4 engines), and `drafts/research/SOURCE-INDEX.md`. Established that **6 of 10 top topics are blocked on poppler** — every high-value DGCA source is a PDF. |
