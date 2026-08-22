@@ -1,0 +1,31 @@
+{
+  "permissions": {
+    "defaultMode": "acceptEdits",
+    "allow": [
+      "WebSearch",
+      "WebFetch(domain:dgca.gov.in)",
+      "WebFetch(domain:wpc.gov.in)",
+      "WebFetch(domain:flystar.co.in)",
+      "WebFetch(domain:www.flystar.co.in)",
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(git show:*)",
+      "Bash(git branch:*)",
+      "Bash(git checkout:*)",
+      "Bash(git switch:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(npm run build:*)",
+      "Bash(npm run lint:*)",
+      "Bash(npm run test:*)",
+      "Bash(npm test:*)"
+    ],
+    "deny": [
+      "Bash(git push:*)",
+      "Bash(git push *)",
+      "Bash(rm -rf:*)",
+      "Bash(rm -rf *)"
+    ]
+  }
+}
