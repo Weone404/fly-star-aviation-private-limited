@@ -26,6 +26,20 @@ If the DGCA approval cannot be evidenced (facts block item 4), this is a
 false claim propagating beyond our control, and the homepage branch is the
 remedy. Keep this dated entry as the record of when it was first observed.
 
+## Blocked-work table (as at 2026-08-22, run 8)
+No owner inputs were supplied this run — the input block arrived with all five
+placeholders unfilled, so per the "skip any left blank" rule nothing was recorded.
+
+| Blocked work | Exact input needed | Where it goes |
+|---|---|---|
+| Publication of all 3 drafts | **Byline: full name + one credential line** | `GEO_CONTEXT.md`, then author fields in all 3 drafts |
+| Phase 4 wiring (item 6) | Byline **and** `geo/tech-p0` merged | branch per article |
+| `geo/truth-hygiene` (item 7) | Canonical phone **and** merge | replaces 9876543210 + wa.me/919355611996 |
+| Further drafting (W5 cap) | Top-10 approved or reordered | `GEO_KEYWORD_RESEARCH.md` statuses |
+| 6 of 10 calendar topics | `brew install poppler` | see `drafts/research/SOURCE-INDEX.md` |
+| Calendar #11 (fees) | Own-fees decision: publish / withhold | article scope |
+| W6, W7 | The 7-item facts block | `GEO_CONTEXT.md` |
+
 ## Standing rules (added 2026-08-22)
 
 ### Research bank first
@@ -73,7 +87,7 @@ Workaround documented in PRERENDER.md. Vercel (Linux) is unaffected.
 | Branch | State | Contents | Gate |
 |---|---|---|---|
 | `main` | at `9337929` | Phase 0 only. **Still carries the OLD PRERENDER.md** (wrong route checklist) and settings.json without the We One domains. Never cut a site branch from main until tech-p0 merges. | — |
-| `geo/tech-p0` | 9 commits, unmerged, **BUILD VERIFIED** | Mojibake fix (19 files), route parity gate, prerender.mjs removal, PRERENDER.md rewrite, 2 pages wired, 13 URLs pruned, nav casing fix, audit report, recon findings | **Owner: build + review + merge** |
+| `geo/tech-p0` | **8** commits, unmerged, **BUILD VERIFIED + MERGE TESTED CLEAN** | Mojibake fix (19 files), route parity gate, prerender.mjs removal, PRERENDER.md rewrite, 2 pages wired, 13 URLs pruned, nav casing fix, audit report, recon findings | **Owner: build + review + merge** |
 | `geo/truth-hygiene` | not cut | Spec below | Needs tech-p0 merged + canonical phone |
 | `geo/legal-pages` | not cut | /privacy + /terms fully wired, and restores their two footer links | Cut only AFTER tech-p0 merges; merges only after legal sign-off |
 | `geo/homepage-accuracy` | not cut | H1/meta + Organization schema + claims-truth pass | Needs MCA + DGCA-approval facts |
@@ -151,6 +165,7 @@ Merge + deploy · the MCA/DGCA lookups and real numbers · GSC indexing requests
 ## Run history
 | Run | Date | Workstreams | Outcome |
 |---|---|---|---|
+| 8 | 2026-08-22 | Merge-prep, wiring plans, manual-check sheet, source index | No owner inputs supplied (all placeholders blank) — items 1, 6, 7 skipped per the rule. **Tested the merge: clean, exit 0, no conflicts**; real change set is 32 files (+579/−483), not the 117/+34,595 the raw diffstat implies. Wrote `drafts/TECH-P0-REVIEW.md` (8 commits, risk each, 10-minute review path), 3 wiring plans, `GEO_MANUAL_CHECKS.md` (25 queries × 4 engines), and `drafts/research/SOURCE-INDEX.md`. Established that **6 of 10 top topics are blocked on poppler** — every high-value DGCA source is a PDF. |
 | 7 | 2026-08-22 | A4 verification, W5 draft 3 | Re-ran A4 on request: reproduced exactly, but **flystars.co.in does not resolve** — corrected my "lookalike competitor" reading; the underlying finding (site does not rank #1 for its own domain) stands. Found two more phone numbers; built a 12-number inventory in the entity TODO. **Drafted #31 Misconceptions — the checkpoint trio is complete.** Eligibility gate held back 3 open questions into a "Still unsettled" section rather than presenting them as corrections. |
 | 6 | 2026-08-22 | W8 completion, entity TODO | **Baseline COMPLETE, 25/25, all pre-deploy.** Final presence rate **3 of 25** — brand queries only; zero of 20 non-brand queries. Query A4 shows the site does not rank for its own domain (`flystars.co.in` does). Found the public company record: **CIN U85499DL2024PTC435001**, indicating incorporation in **2024** against the site's "since 2008". Created `GEO_ENTITY_TODO.md` — 7 numbered off-site decisions with recommendations. Draft #31 deferred: the baseline was correctly ordered first and consumed the run. |
 | 5 | 2026-08-22 | W1 verification, W8 batch 2, mojibake follow-up |
