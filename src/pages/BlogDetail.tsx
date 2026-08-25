@@ -5,6 +5,18 @@ import { getBlogPost } from '@/lib/blogData'
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000'
 
+const formatBlogDate = (value?: string) => {
+    if (!value) return 'N/A'
+    const date = new Date(value)
+    if (Number.isNaN(date.getTime())) return value
+    return date.toLocaleDateString('en-IN', {
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric',
+        timeZone: 'UTC',
+    })
+}
+
 const hardcoded: Record<string, any> = {
     '1': { _id: '1', title: 'How to Become a Commercial Pilot in India – Complete 2026 Guide', excerpt: 'Everything you need to know about becoming a CPL holder in India.', category: 'CPL Guide', createdAt: 'Dec 15, 2026', coverImage: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1200&q=80', content: '<h2>What is a Commercial Pilot License (CPL)?</h2><p>A Commercial Pilot License (CPL) allows you to fly aircraft for compensation or hire. In India, the CPL is issued by the Directorate General of Civil Aviation (DGCA).</p><h2>Eligibility Requirements</h2><ul><li>Minimum age: 18 years</li><li>Educational qualification: 10+2 with Physics and Mathematics</li><li>Valid DGCA Class 1 Medical Certificate</li><li>Minimum 200 hours of total flight time</li></ul><h2>Conclusion</h2><p>Becoming a commercial pilot in India is a challenging but rewarding career path.</p>' },
     '2': { _id: '2', title: 'DGCA Written Exams: Subjects, Pattern & Preparation Tips', excerpt: 'Ace all 9 DGCA written exams.', category: 'DGCA', createdAt: 'Dec 10, 2026', coverImage: 'https://images.unsplash.com/photo-1569629743817-70d8db6c323b?w=1200&q=80', content: '<h2>Overview</h2><p>To obtain a CPL in India, candidates must pass 9 written examinations conducted by the DGCA.</p>' },
@@ -99,7 +111,7 @@ export default function BlogDetail() {
                         {blog.title}
                     </h1>
                     <div className="flex flex-wrap items-center gap-4 text-white/60 text-xs">
-                        <span>📅 {blog.createdAt ? new Date(blog.createdAt).toDateString() : ''}</span>
+                        <span>📅 {formatBlogDate(blog.createdAt)}</span>
                         <span>⏱ 5 min read</span>
                         <span>✈️ {blog.category}</span>
                     </div>
@@ -220,7 +232,7 @@ export default function BlogDetail() {
                         <div className="space-y-3">
                             {[
                                 { label: 'Category', value: blog.category },
-                                { label: 'Published', value: blog.createdAt ? new Date(blog.createdAt).toDateString() : 'N/A' },
+                                { label: 'Published', value: formatBlogDate(blog.createdAt) },
                                 { label: 'Read Time', value: '5 min read' },
                             ].map(item => (
                                 <div key={item.label} className="flex justify-between items-center text-xs border-b border-border pb-2 last:border-0 last:pb-0">
