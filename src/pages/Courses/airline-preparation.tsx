@@ -1,5 +1,6 @@
 ﻿import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
+import { SocialShareButtons } from "@/components/SocialShareButtons";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import {
@@ -231,6 +232,13 @@ export default function AirlinePreparationPage() {
                             <Button variant="outline-white" size="lg" asChild>
                                 <Link to="/contact">Talk to Counselor</Link>
                             </Button>
+                        </div>
+                        <div className="mt-6">
+                            <SocialShareButtons
+                                title="Airline Preparation Course in India | Pilot Interview & CRM Training"
+                                label="Share this course"
+                                theme="dark"
+                            />
                         </div>
                     </motion.div>
                 </div>

@@ -3,6 +3,7 @@ import { useState, useEffect, useCallback } from "react";
 import { Layout } from "@/components/layout/Layout";
 import { CitableAnswer } from "@/components/CitableAnswer";
 import { CitableTable } from "@/components/CitableTable";
+import { SocialShareButtons } from "@/components/SocialShareButtons";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
@@ -374,6 +375,13 @@ export default function CPLCoursePage() {
                                 <Button variant="outline-white" size="lg" asChild>
                                     <Link to="/contact">Talk to Counselor</Link>
                                 </Button>
+                            </div>
+                            <div className="mt-6">
+                                <SocialShareButtons
+                                    title="Commercial Pilot License Course in India | CPL Training"
+                                    label="Share this course"
+                                    theme="dark"
+                                />
                             </div>
                         </motion.div>
 

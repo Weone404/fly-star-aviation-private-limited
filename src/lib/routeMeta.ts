@@ -287,18 +287,18 @@ function normalizePath(pathname: string) {
 
 function getBlogMeta(pathname: string): RouteMeta | null {
   const normalized = normalizePath(pathname);
-  const blogMatch = normalized.match(/^\/blogs\/([^\/]+)$/);
+  const blogMatch = normalized.match(/^\/(?:blogs|blog)\/([^/]+)$/);
   if (!blogMatch) return null;
 
   const blog = getBlogPost(blogMatch[1]);
   if (!blog) return null;
 
   return {
-    title: `${blog.title} | Fly Star Aviation Blog`,
-    description: blog.excerpt || "Expert pilot training guidance, DGCA updates, and aviation career advice from Fly Star Aviation.",
+    title: blog.seoTitle || `${blog.title} | Fly Star Aviation Blog`,
+    description: blog.metaDescription || blog.excerpt || "Expert pilot training guidance, DGCA updates, and aviation career advice from Fly Star Aviation.",
     canonical: `${BASE_URL}${normalized}`,
-    ogTitle: blog.title,
-    ogDescription: blog.excerpt || "Expert pilot training guidance, DGCA updates, and aviation career advice from Fly Star Aviation.",
+    ogTitle: blog.seoTitle || blog.title,
+    ogDescription: blog.metaDescription || blog.excerpt || "Expert pilot training guidance, DGCA updates, and aviation career advice from Fly Star Aviation.",
     ogUrl: `${BASE_URL}${normalized}`,
     ogImage: blog.coverImage || "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1200&q=80",
     twitterImage: blog.coverImage || "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1200&q=80",

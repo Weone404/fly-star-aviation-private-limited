@@ -183,6 +183,7 @@ function AppInner() {
         {/* BLOGS */}
         <Route path="/blogs" element={<Blogs />} />
         <Route path="/blogs/:id" element={<BlogDetail />} />
+        <Route path="/blog/:slug" element={<BlogDetail />} />
 
         {/* ADMIN */}
         <Route path="/admin/login" element={<AdminLogin />} />

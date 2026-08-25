@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
 import { CitableAnswer } from "@/components/CitableAnswer";
+import { SocialShareButtons } from "@/components/SocialShareButtons";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import {
@@ -278,6 +279,13 @@ export default function ATPLCoursePage() {
                             <Button variant="outline-white" size="lg" asChild>
                                 <Link to="/contact">Talk to Counselor</Link>
                             </Button>
+                        </div>
+                        <div className="mt-6">
+                            <SocialShareButtons
+                                title="Airline Transport Pilot License (ATPL) - The Pinnacle of Aviation Careers"
+                                label="Share this course"
+                                theme="dark"
+                            />
                         </div>
                     </motion.div>
                 </div>

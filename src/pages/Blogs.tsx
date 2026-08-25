@@ -12,6 +12,7 @@ const hardcoded = [
     { _id: '4', title: 'Pilot Salary in India 2026 – Complete Breakdown by Airline', excerpt: 'How much do pilots earn in India? Salary breakdown for trainee pilots, first officers, and captains at IndiGo, Air India, SpiceJet.', category: 'Career', createdAt: 'Nov 28, 2026', coverImage: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800&q=80' },
     { _id: '5', title: 'Medical Requirements to Become a Pilot – DGCA Class 1', excerpt: 'Detailed guide on DGCA Class 1 medical requirements, what conditions are disqualifying, and how to prepare for the medical exam.', category: 'Medical', createdAt: 'Nov 20, 2026', coverImage: 'https://images.unsplash.com/photo-1559628233-100c798642d8?w=800&q=80' },
     { _id: '6', title: 'How to Become a Pilot After 12th Science – Step-by-Step', excerpt: 'A complete roadmap for 12th PCM students aspiring to become commercial pilots. Colleges, entrance exams, fees, and timelines.', category: 'After 12th', createdAt: 'Nov 15, 2026', coverImage: 'https://images.unsplash.com/photo-1585995028913-16e7a4c9c1d3?w=800&q=80' },
+    { _id: '7', slug: 'air-hostess-salary-in-india-2026', title: 'Air Hostess Salary in India 2026: Complete Pay Scale Guide', excerpt: 'TL;DR: In 2026, the average starting salary for an air hostess (cabin crew) in India is projected to be between ₹35,000 and ₹50,000 per month. Experienced cabin crew flying international routes with airlines like Vistara or Air India can earn between ₹1,20,000 to ₹2,00,000 per month. Salaries are expected to rise by 10-15% compared to 2024 due to India\'s massive aviation expansion and new aircraft inductions.', category: 'Career', createdAt: 'Aug 25, 2026', coverImage: '/air-hostess-salary-in-india-2026.webp' },
 ]
 
 export default function Blogs() {
@@ -123,7 +124,7 @@ export default function Blogs() {
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                             {filtered.map((blog) => (
                                 <Link
-                                    to={`/blogs/${blog._id}`}
+                                    to={blog.slug ? `/blog/${blog.slug}` : `/blogs/${blog._id}`}
                                     key={blog._id}
                                     className="block group" // ✅ removed scroll-fade-up that was hiding cards
                                 >

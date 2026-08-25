@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
+import { SocialShareButtons } from '@/components/SocialShareButtons'
+import { getBlogPost } from '@/lib/blogData'
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000'
 
@@ -9,26 +11,27 @@ const hardcoded: Record<string, any> = {
 }
 
 export default function BlogDetail() {
-    const { id } = useParams()
+    const { id, slug } = useParams()
+    const postId = id || slug
     const [blog, setBlog] = useState<any>(null)
     const [loading, setLoading] = useState(true)
     const [readProgress, setReadProgress] = useState(0)
 
     useEffect(() => {
-        if (!id) return
+        if (!postId) return
         // Try MongoDB first, fallback to hardcoded
-        fetch(`${API_URL}/api/blogs/${id}`)
+        fetch(`${API_URL}/api/blogs/${postId}`)
             .then(res => res.json())
             .then(data => {
                 if (data && data.title) { setBlog(data); setLoading(false) }
-                else if (hardcoded[id]) { setBlog(hardcoded[id]); setLoading(false) }
+                else if (hardcoded[postId] || getBlogPost(postId)) { setBlog(hardcoded[postId] || getBlogPost(postId)); setLoading(false) }
                 else { setLoading(false) }
             })
             .catch(() => {
-                if (hardcoded[id]) setBlog(hardcoded[id])
+                if (hardcoded[postId] || getBlogPost(postId)) setBlog(hardcoded[postId] || getBlogPost(postId))
                 setLoading(false)
             })
-    }, [id])
+    }, [postId])
 
     // Reading progress bar
     useEffect(() => {
@@ -131,6 +134,16 @@ export default function BlogDetail() {
                             </div>
                         )}
 
+                        {blog.intro && (
+                            <p className="text-muted-foreground text-sm leading-relaxed mb-8">
+                                {blog.intro}
+                            </p>
+                        )}
+
+                        <div className="mb-8 flex justify-end">
+                            <SocialShareButtons title={blog.title} label="Share this article" className="justify-end" />
+                        </div>
+
                         {/* Content */}
                         <div
                             className="prose prose-lg max-w-none
@@ -148,7 +161,7 @@ export default function BlogDetail() {
 
                     {/* Tags */}
                     <div className="flex flex-wrap gap-2 mt-6">
-                        {['Pilot Training', 'Aviation', blog.category, 'DGCA', 'India'].map(tag => (
+                        {(blog.tags || ['Pilot Training', 'Aviation', blog.category, 'DGCA', 'India']).map((tag: string) => (
                             <span key={tag} className="text-xs px-3 py-1.5 rounded-full bg-[hsl(145,70%,22%)]/10 text-[hsl(145,70%,22%)] font-medium border border-[hsl(145,70%,22%)]/20">
                                 #{tag.replace(/\s+/g, '')}
                             </span>
@@ -218,29 +231,9 @@ export default function BlogDetail() {
                         </div>
                     </div>
 
-                    {/* Share */}
                     <div className="bg-white rounded-2xl border border-border shadow-card p-6">
                         <h4 className="font-bold text-foreground text-sm mb-4">Share Article</h4>
-                        <div className="flex gap-3">
-                            {[
-                                { label: 'WhatsApp', emoji: '💬', href: `https://wa.me/?text=${encodeURIComponent(blog.title + ' ' + window.location.href)}` },
-                                { label: 'Twitter', emoji: '🐦', href: `https://twitter.com/intent/tweet?text=${encodeURIComponent(blog.title)}&url=${encodeURIComponent(window.location.href)}` },
-                                { label: 'Copy', emoji: '🔗', href: '#' },
-                            ].map(s => (
-                                <a
-                                    key={s.label}
-                                    href={s.href}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    onClick={s.label === 'Copy' ? (e) => { e.preventDefault(); navigator.clipboard.writeText(window.location.href) } : undefined}
-                                    className="flex-1 text-center py-2 rounded-xl border border-border hover:border-[hsl(145,70%,22%)] hover:bg-[hsl(145,70%,22%)]/5 transition-all text-xs font-medium text-muted-foreground hover:text-[hsl(145,70%,22%)]"
-                                    title={s.label}
-                                >
-                                    <div className="text-base mb-0.5">{s.emoji}</div>
-                                    <div>{s.label}</div>
-                                </a>
-                            ))}
-                        </div>
+                        <SocialShareButtons title={blog.title} label="" className="flex-wrap" />
                     </div>
                 </aside>
             </div>
