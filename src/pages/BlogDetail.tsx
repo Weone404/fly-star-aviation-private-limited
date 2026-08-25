@@ -146,7 +146,7 @@ export default function BlogDetail() {
 
                         {/* Content */}
                         <div
-                            className="prose prose-lg max-w-none
+                            className="article-content prose prose-lg max-w-none
                 prose-headings:font-bold prose-headings:text-foreground
                 prose-h2:text-xl prose-h2:mt-8 prose-h2:mb-3 prose-h2:text-[hsl(145,70%,22%)]
                 prose-h3:text-lg prose-h3:mt-6 prose-h3:mb-2

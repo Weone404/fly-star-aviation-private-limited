@@ -6,3 +6,71 @@
   padding: 0;
   text-align: left;
 }
+
+.article-content > p {
+  display: block;
+  margin-bottom: 1.25rem;
+}
+
+.article-content > h2 {
+  display: block;
+  margin-top: 2.75rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid hsl(145 20% 88%);
+}
+
+.article-content > h3 {
+  display: block;
+  margin-top: 2rem;
+  padding-top: 0.5rem;
+}
+
+.article-content ul,
+.article-content ol {
+  margin-top: 1.25rem;
+  margin-bottom: 1.75rem;
+  padding-left: 1.5rem;
+}
+
+.article-content li + li {
+  margin-top: 0.65rem;
+}
+
+.article-content table {
+  display: block;
+  width: 100%;
+  margin: 1.75rem 0 2rem;
+  overflow-x: auto;
+  border: 1px solid hsl(145 20% 88%);
+  border-radius: 0.75rem;
+  border-spacing: 0;
+}
+
+.article-content thead,
+.article-content tbody {
+  display: table;
+  width: 100%;
+  min-width: 42rem;
+}
+
+.article-content tr {
+  display: table-row;
+}
+
+.article-content th,
+.article-content td {
+  min-width: 10rem;
+  padding: 0.9rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid hsl(145 20% 88%);
+}
+
+.article-content th {
+  color: hsl(145 70% 22%);
+  font-size: 0.8rem;
+  background: hsl(145 30% 96%);
+}
+
+.article-content tr:last-child td {
+  border-bottom: 0;
+}
