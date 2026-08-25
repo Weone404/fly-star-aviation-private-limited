@@ -2,21 +2,24 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
+import { BLOG_POSTS, sortBlogsByDate } from '@/lib/blogData'
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000'
 
-const hardcoded = [
-    { _id: '1', title: 'How to Become a Commercial Pilot in India – Complete 2026 Guide', excerpt: 'Everything you need to know about becoming a CPL holder in India – eligibility, DGCA exams, costs, flying hours, and career prospects.', category: 'CPL Guide', createdAt: 'Dec 15, 2026', coverImage: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=800&q=80' },
-    { _id: '2', title: 'DGCA Written Exams: Subjects, Pattern & Preparation Tips', excerpt: 'Ace all 9 DGCA written exams with our expert preparation strategy. Know the syllabus, exam pattern, and recommended study materials.', category: 'DGCA', createdAt: 'Dec 10, 2026', coverImage: 'https://images.unsplash.com/photo-1569629743817-70d8db6c323b?w=800&q=80' },
-    { _id: '3', title: 'CPL Training in India vs Abroad – Which is Better?', excerpt: 'Pros and cons of training in India vs USA, Canada, Australia. Cost comparison, timelines, and license conversion process explained.', category: 'Training', createdAt: 'Dec 5, 2026', coverImage: 'https://images.unsplash.com/photo-1540962351504-03099e0a754b?w=800&q=80' },
-    { _id: '4', title: 'Pilot Salary in India 2026 – Complete Breakdown by Airline', excerpt: 'How much do pilots earn in India? Salary breakdown for trainee pilots, first officers, and captains at IndiGo, Air India, SpiceJet.', category: 'Career', createdAt: 'Nov 28, 2026', coverImage: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800&q=80' },
-    { _id: '5', title: 'Medical Requirements to Become a Pilot – DGCA Class 1', excerpt: 'Detailed guide on DGCA Class 1 medical requirements, what conditions are disqualifying, and how to prepare for the medical exam.', category: 'Medical', createdAt: 'Nov 20, 2026', coverImage: 'https://images.unsplash.com/photo-1559628233-100c798642d8?w=800&q=80' },
-    { _id: '6', title: 'How to Become a Pilot After 12th Science – Step-by-Step', excerpt: 'A complete roadmap for 12th PCM students aspiring to become commercial pilots. Colleges, entrance exams, fees, and timelines.', category: 'After 12th', createdAt: 'Nov 15, 2026', coverImage: 'https://images.unsplash.com/photo-1585995028913-16e7a4c9c1d3?w=800&q=80' },
-    { _id: '7', slug: 'air-hostess-salary-in-india-2026', title: 'Air Hostess Salary in India 2026: Complete Pay Scale Guide', excerpt: 'TL;DR: In 2026, the average starting salary for an air hostess (cabin crew) in India is projected to be between ₹35,000 and ₹50,000 per month. Experienced cabin crew flying international routes with airlines like Vistara or Air India can earn between ₹1,20,000 to ₹2,00,000 per month. Salaries are expected to rise by 10-15% compared to 2024 due to India\'s massive aviation expansion and new aircraft inductions.', category: 'Career', createdAt: 'Aug 25, 2026', coverImage: '/air-hostess-salary-in-india-2026.webp' },
-]
+type BlogPost = {
+    _id: string
+    slug?: string
+    title: string
+    excerpt?: string
+    category?: string
+    createdAt?: string
+    coverImage?: string
+}
+
+const hardcoded = BLOG_POSTS
 
 export default function Blogs() {
-    const [blogs, setBlogs] = useState<any[]>(hardcoded) // ✅ default to hardcoded immediately
+    const [blogs, setBlogs] = useState<BlogPost[]>(sortBlogsByDate(hardcoded))
     const [loading, setLoading] = useState(false) // ✅ no loading flash for hardcoded
     const [search, setSearch] = useState('')
 
@@ -28,12 +31,12 @@ export default function Blogs() {
             })
             .then(data => {
                 // ✅ guard: only merge if data is a real array
-                const apiBlogs = Array.isArray(data) ? data : []
+                    const apiBlogs: BlogPost[] = Array.isArray(data) ? data : []
                 if (apiBlogs.length > 0) {
                     // avoid duplicate _ids with hardcoded
                     const hardcodedIds = new Set(hardcoded.map(b => b._id))
-                    const fresh = apiBlogs.filter((b: any) => !hardcodedIds.has(b._id))
-                    setBlogs([...fresh, ...hardcoded])
+                    const fresh = apiBlogs.filter((b) => !hardcodedIds.has(b._id))
+                    setBlogs(sortBlogsByDate([...fresh, ...hardcoded]))
                 }
             })
             .catch(() => {
