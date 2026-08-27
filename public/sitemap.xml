@@ -1,57 +1,88 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- HOMEPAGE -->
+  <url><loc>https://www.flystar.co.in/</loc><lastmod>2026-08-27</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
 
-  <url><loc>https://www.flystar.co.in/</loc><lastmod>2026-07-30</lastmod></url>
+  <!-- CORE PAGES -->
+  <url><loc>https://www.flystar.co.in/about</loc><lastmod>2026-08-27</lastmod><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.flystar.co.in/contact</loc><lastmod>2026-08-27</lastmod><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.flystar.co.in/services</loc><lastmod>2026-08-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.flystar.co.in/courses/cpl</loc><lastmod>2026-08-27</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.flystar.co.in/courses/atpl</loc><lastmod>2026-08-27</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.flystar.co.in/courses/cabin-crew</loc><lastmod>2026-08-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.flystar.co.in/courses/ground-staff</loc><lastmod>2026-08-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.flystar.co.in/courses/airline-preparation</loc><lastmod>2026-08-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.flystar.co.in/courses/Air-india-pilot-interview</loc><lastmod>2026-08-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.flystar.co.in/courses/Indigo-pilot-interview</loc><lastmod>2026-08-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
 
-  <url><loc>https://www.flystar.co.in/pilot-training</loc><lastmod>2026-07-30</lastmod></url>
-  <url><loc>https://www.flystar.co.in/courses/cpl</loc><lastmod>2026-07-30</lastmod></url>
-  <url><loc>https://www.flystar.co.in/pilot-training/cpl</loc><lastmod>2026-07-30</lastmod></url>
-  <url><loc>https://www.flystar.co.in/pilot-training/ppl</loc><lastmod>2026-07-30</lastmod></url>
-  <url><loc>https://www.flystar.co.in/pilot-training/india</loc><lastmod>2026-07-30</lastmod></url>
+  <!-- ACTIVE COURSE ALIASES -->
+  <url><loc>https://www.flystar.co.in/air-transport-pilots-license-atpl</loc><lastmod>2026-08-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.flystar.co.in/best-atpl-classes-in-india</loc><lastmod>2026-08-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.flystar.co.in/commercial-pilot-training</loc><lastmod>2026-08-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.flystar.co.in/best-cpl-ground-classes</loc><lastmod>2026-08-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.flystar.co.in/commercial-pilot-training-in-dwarka</loc><lastmod>2026-08-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.flystar.co.in/courses-and-careers</loc><lastmod>2026-08-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.flystar.co.in/commercial-pilot-training-cpl</loc><lastmod>2026-08-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.flystar.co.in/pilot-course</loc><lastmod>2026-08-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.flystar.co.in/top-aviation-courses-and-careers-after-12th</loc><lastmod>2026-08-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.flystar.co.in/careers</loc><lastmod>2026-08-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
 
-  <url><loc>https://www.flystar.co.in/locations/delhi</loc><lastmod>2026-07-30</lastmod></url>
-  <url><loc>https://www.flystar.co.in/locations/mumbai</loc><lastmod>2026-07-30</lastmod></url>
-  <url><loc>https://www.flystar.co.in/locations/bangalore</loc><lastmod>2026-07-30</lastmod></url>
-  <url><loc>https://www.flystar.co.in/locations/hyderabad</loc><lastmod>2026-07-30</lastmod></url>
+  <!-- AVIATION SERVICES -->
+  <url><loc>https://www.flystar.co.in/services/charter-services</loc><lastmod>2026-08-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.flystar.co.in/services/aircraft-management</loc><lastmod>2026-08-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.flystar.co.in/services/aircraft-sourcing-sale</loc><lastmod>2026-08-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.flystar.co.in/services/aviation-consultancy</loc><lastmod>2026-08-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.flystar.co.in/services/mro</loc><lastmod>2026-08-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.flystar.co.in/services/livery-painting</loc><lastmod>2026-08-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.flystar.co.in/services/camo</loc><lastmod>2026-08-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.flystar.co.in/services/components-spares</loc><lastmod>2026-08-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
 
-  <url><loc>https://www.flystar.co.in/become-a-pilot/become-pilot</loc><lastmod>2026-07-30</lastmod></url>
-  <url><loc>https://www.flystar.co.in/become-a-pilot/commercial-pilot-licence</loc><lastmod>2026-07-30</lastmod></url>
-  <url><loc>https://www.flystar.co.in/become-a-pilot/airline-transport-pilot-licence</loc><lastmod>2026-07-30</lastmod></url>
+  <!-- DGCA AND PILOT TRAINING GUIDES -->
+  <url><loc>https://www.flystar.co.in/dgca</loc><lastmod>2026-08-27</lastmod><changefreq>quarterly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.flystar.co.in/dgca/full-form</loc><lastmod>2026-08-27</lastmod><changefreq>quarterly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.flystar.co.in/dgca/medical</loc><lastmod>2026-08-27</lastmod><changefreq>quarterly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.flystar.co.in/dgca/ground-classes</loc><lastmod>2026-08-27</lastmod><changefreq>quarterly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.flystar.co.in/rtr</loc><lastmod>2026-08-27</lastmod><changefreq>quarterly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.flystar.co.in/pilot-training</loc><lastmod>2026-08-27</lastmod><changefreq>quarterly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.flystar.co.in/pilot-training/india</loc><lastmod>2026-08-27</lastmod><changefreq>quarterly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.flystar.co.in/pilot-training/usa</loc><lastmod>2026-08-27</lastmod><changefreq>quarterly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.flystar.co.in/pilot-training/new-zealand</loc><lastmod>2026-08-27</lastmod><changefreq>quarterly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.flystar.co.in/pilot-training/south-africa</loc><lastmod>2026-08-27</lastmod><changefreq>quarterly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.flystar.co.in/pilot-training/australia</loc><lastmod>2026-08-27</lastmod><changefreq>quarterly</changefreq><priority>0.7</priority></url>
 
-  <url><loc>https://www.flystar.co.in/dgca/computer-number</loc><lastmod>2026-07-30</lastmod></url>
-  <url><loc>https://www.flystar.co.in/dgca</loc><lastmod>2026-07-30</lastmod></url>
-  <url><loc>https://www.flystar.co.in/dgca/medical</loc><lastmod>2026-07-30</lastmod></url>
-  <url><loc>https://www.flystar.co.in/dgca/ground-classes</loc><lastmod>2026-07-30</lastmod></url>
-  <url><loc>https://www.flystar.co.in/rtr</loc><lastmod>2026-07-30</lastmod></url>
-  <url><loc>https://www.flystar.co.in/dgca/board-verification</loc><lastmod>2026-07-30</lastmod></url>
-  <url><loc>https://www.flystar.co.in/dgca/full-form</loc><lastmod>2026-07-30</lastmod></url>
+  <!-- ACTIVE TRAINING AND DGCA ALIASES -->
+  <url><loc>https://www.flystar.co.in/dgca-ground-classes-training-classes</loc><lastmod>2026-08-27</lastmod><changefreq>quarterly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.flystar.co.in/cpl-atpl-ground-classes-2</loc><lastmod>2026-08-27</lastmod><changefreq>quarterly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.flystar.co.in/training-in-australia</loc><lastmod>2026-08-27</lastmod><changefreq>quarterly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.flystar.co.in/training-in-south-africa</loc><lastmod>2026-08-27</lastmod><changefreq>quarterly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.flystar.co.in/training-in-india</loc><lastmod>2026-08-27</lastmod><changefreq>quarterly</changefreq><priority>0.7</priority></url>
 
-  <url><loc>https://www.flystar.co.in/courses/atpl</loc><lastmod>2026-07-30</lastmod></url>
-  <url><loc>https://www.flystar.co.in/courses/airline-preparation</loc><lastmod>2026-07-30</lastmod></url>
-  <url><loc>https://www.flystar.co.in/courses/cabin-crew</loc><lastmod>2026-07-30</lastmod></url>
-  <url><loc>https://www.flystar.co.in/courses/ground-staff</loc><lastmod>2026-07-30</lastmod></url>
-  <url><loc>https://www.flystar.co.in/courses/Air-india-pilot-interview</loc><lastmod>2026-07-30</lastmod></url>
-  <url><loc>https://www.flystar.co.in/courses/Indigo-pilot-interview</loc><lastmod>2026-07-30</lastmod></url>
+  <!-- BECOME A PILOT -->
+  <url><loc>https://www.flystar.co.in/become-a-pilot/become-pilot</loc><lastmod>2026-08-27</lastmod><changefreq>quarterly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.flystar.co.in/become-a-pilot/commercial-pilot-licence</loc><lastmod>2026-08-27</lastmod><changefreq>quarterly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.flystar.co.in/become-a-pilot/airline-transport-pilot-licence</loc><lastmod>2026-08-27</lastmod><changefreq>quarterly</changefreq><priority>0.7</priority></url>
 
-  <url><loc>https://www.flystar.co.in/services/aircraft-management</loc><lastmod>2026-07-30</lastmod></url>
-  <url><loc>https://www.flystar.co.in/services/aircraft-sourcing-sale</loc><lastmod>2026-07-30</lastmod></url>
-  <url><loc>https://www.flystar.co.in/services/aviation-consultancy</loc><lastmod>2026-07-30</lastmod></url>
-  <url><loc>https://www.flystar.co.in/services/mro</loc><lastmod>2026-07-30</lastmod></url>
-  <url><loc>https://www.flystar.co.in/services/charter-services</loc><lastmod>2026-07-30</lastmod></url>
-  <url><loc>https://www.flystar.co.in/services/livery-painting</loc><lastmod>2026-07-30</lastmod></url>
-  <url><loc>https://www.flystar.co.in/services/camo</loc><lastmod>2026-07-30</lastmod></url>
-  <url><loc>https://www.flystar.co.in/services/components-spares</loc><lastmod>2026-07-30</lastmod></url>
+  <!-- ACTIVE PILOT-GUIDE ALIASES -->
+  <url><loc>https://www.flystar.co.in/how-to-become-a-pilot</loc><lastmod>2026-08-27</lastmod><changefreq>quarterly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.flystar.co.in/how-to-become-a-pilot-in-india</loc><lastmod>2026-08-27</lastmod><changefreq>quarterly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.flystar.co.in/how-to-become-a-pilot-in-india-after-12th</loc><lastmod>2026-08-27</lastmod><changefreq>quarterly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.flystar.co.in/guide-on-how-to-become-a-pilot</loc><lastmod>2026-08-27</lastmod><changefreq>quarterly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.flystar.co.in/training-in-india/</loc><lastmod>2026-08-27</lastmod><changefreq>quarterly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.flystar.co.in/how-to-become-a-pilot-in-india/</loc><lastmod>2026-08-27</lastmod><changefreq>quarterly</changefreq><priority>0.7</priority></url>
 
-  <url><loc>https://www.flystar.co.in/pilot-training/usa</loc><lastmod>2026-07-30</lastmod></url>
-  <url><loc>https://www.flystar.co.in/pilot-training/new-zealand</loc><lastmod>2026-07-30</lastmod></url>
-  <url><loc>https://www.flystar.co.in/pilot-training/south-africa</loc><lastmod>2026-07-30</lastmod></url>
-  <url><loc>https://www.flystar.co.in/pilot-training/australia</loc><lastmod>2026-07-30</lastmod></url>
-  <url><loc>https://www.flystar.co.in/pilot-training/maldives</loc><lastmod>2026-07-30</lastmod></url>
-  <url><loc>https://www.flystar.co.in/pilot-training/sri-lanka</loc><lastmod>2026-07-30</lastmod></url>
-  <url><loc>https://www.flystar.co.in/pilot-training/guide-to-conversion</loc><lastmod>2026-07-30</lastmod></url>
+  <!-- LOCATION AND UTILITY PAGES -->
+  <url><loc>https://www.flystar.co.in/locations</loc><lastmod>2026-08-27</lastmod><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.flystar.co.in/sitemap</loc><lastmod>2026-08-27</lastmod><changefreq>yearly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://www.flystar.co.in/contact-us</loc><lastmod>2026-08-27</lastmod><changefreq>yearly</changefreq><priority>0.5</priority></url>
 
-  <url><loc>https://www.flystar.co.in/contact</loc><lastmod>2026-07-30</lastmod></url>
-  <url><loc>https://www.flystar.co.in/about</loc><lastmod>2026-07-30</lastmod></url>
-  <url><loc>https://www.flystar.co.in/blog/air-hostess-salary-in-india-2026</loc><lastmod>2026-08-25</lastmod></url>
-
+  <!-- BLOG PAGES -->
+  <url><loc>https://www.flystar.co.in/blogs</loc><lastmod>2026-08-27</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.flystar.co.in/blogs/1</loc><lastmod>2026-08-27</lastmod><changefreq>quarterly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://www.flystar.co.in/blogs/2</loc><lastmod>2026-08-27</lastmod><changefreq>quarterly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://www.flystar.co.in/blogs/3</loc><lastmod>2026-08-27</lastmod><changefreq>quarterly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://www.flystar.co.in/blogs/4</loc><lastmod>2026-08-27</lastmod><changefreq>quarterly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://www.flystar.co.in/blogs/5</loc><lastmod>2026-08-27</lastmod><changefreq>quarterly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://www.flystar.co.in/blogs/6</loc><lastmod>2026-08-27</lastmod><changefreq>quarterly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://www.flystar.co.in/blog/air-hostess-salary-in-india-2026</loc><lastmod>2026-08-27</lastmod><changefreq>quarterly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://www.flystar.co.in/blogs/7</loc><lastmod>2026-08-27</lastmod><changefreq>quarterly</changefreq><priority>0.5</priority></url>
 </urlset>
