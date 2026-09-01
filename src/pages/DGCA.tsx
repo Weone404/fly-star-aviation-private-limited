@@ -699,6 +699,36 @@ export default function DGCAComputerNumberPage() {
           </motion.div>
         </div>
       </section>
+
+      {/* Further reading — internal links to related guides */}
+      <section aria-labelledby="further-reading" className="py-12 bg-muted">
+        <div className="container mx-auto px-4 max-w-4xl">
+          <h2 id="further-reading" className="text-2xl font-bold mb-6">Further reading</h2>
+          <ul className="space-y-4">
+            <li>
+              <Link to="/blog/dgca-ground-classes-vs-self-study" className="group block">
+                <span className="font-semibold text-primary group-hover:underline">
+                  DGCA Ground Classes vs Self-Study: Which Route Actually Clears the Exams?
+                </span>
+                <span className="block text-sm text-muted-foreground mt-1">
+                  What CAR Section 7 actually requires, the 70% pass mark, five-year paper
+                  validity, and exam fees for regular sessions and OLODE.
+                </span>
+              </Link>
+            </li>
+            <li>
+              <Link to="/dgca/ground-classes" className="group block">
+                <span className="font-semibold text-primary group-hover:underline">
+                  DGCA CPL and ATPL ground classes in Dwarka, Delhi
+                </span>
+                <span className="block text-sm text-muted-foreground mt-1">
+                  Subjects covered, class formats and how the papers are taught.
+                </span>
+              </Link>
+            </li>
+          </ul>
+        </div>
+      </section>
     </Layout>
   );
 }
