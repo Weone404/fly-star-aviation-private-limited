@@ -7,7 +7,8 @@
     "category": "Testing",
     "coverImage": "",
     "createdAt": "2026-09-01T05:04:53.314Z",
-    "updatedAt": "2026-09-01T05:04:53.314Z"
+    "updatedAt": "2026-09-01T05:04:53.314Z",
+    "slug": "test-blog-backend-is-working"
   },
   {
     "_id": "c03bb5f5-5c83-4ffd-9e80-f74ab0a6d1f3",
@@ -17,6 +18,7 @@
     "category": "Admin Test",
     "coverImage": "https://res.cloudinary.com/dw8f4vrth/image/upload/v1788239874/flystar/blogs/wzastzdhsq3iinwntz2i.png",
     "createdAt": "2026-09-01T05:17:54.604Z",
-    "updatedAt": "2026-09-01T05:17:54.604Z"
+    "updatedAt": "2026-09-01T05:17:54.604Z",
+    "slug": "admin-panel-test-blog"
   }
 ]
