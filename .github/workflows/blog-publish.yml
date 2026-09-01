@@ -1,0 +1,106 @@
+# Gate for the scheduled blog routine.
+#
+# The routine pushes a claude/blog-YYYY-MM-DD branch. This workflow re-runs the
+# full check suite, proves the new post actually prerendered WITH its BlogPosting
+# schema, and only then fast-forwards main. Vercel deploys from main.
+#
+# Design rule learned the hard way: a gate that cannot pass is worse than no gate.
+# Every check below is green on main as of the commit that added this file, so a
+# red run means the new post broke something — not that the gate is broken.
+name: Blog publish
+
+on:
+  push:
+    branches:
+      - "claude/blog-**"
+  workflow_dispatch:
+
+concurrency:
+  group: blog-publish
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  verify-and-merge:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Test
+        run: npm test
+
+      - name: Locate a Chromium for the prerender
+        run: |
+          CHROME="$(command -v google-chrome || command -v google-chrome-stable || command -v chromium-browser || true)"
+          if [ -z "$CHROME" ]; then
+            sudo apt-get update -qq
+            sudo apt-get install -y -qq chromium-browser
+            CHROME="$(command -v chromium-browser)"
+          fi
+          echo "Using $CHROME"
+          echo "PRERENDER_EXECUTABLE_PATH=$CHROME" >> "$GITHUB_ENV"
+
+      - name: Build and prerender
+        run: npm run build
+
+      - name: Verify every blog post prerendered with BlogPosting schema
+        run: |
+          shopt -s nullglob
+          pages=(dist/blog/*/index.html)
+          if [ ${#pages[@]} -eq 0 ]; then
+            echo "::error::No blog pages were prerendered. Check getBlogRoutes() in src/lib/blogData.js."
+            exit 1
+          fi
+          fail=0
+          for page in "${pages[@]}"; do
+            if ! grep -q '"@type":"BlogPosting"' "$page"; then
+              echo "::error file=$page::prerendered without BlogPosting schema"
+              fail=1
+            fi
+            if ! grep -q 'rel="canonical"' "$page"; then
+              echo "::error file=$page::prerendered without a canonical link"
+              fail=1
+            fi
+          done
+          echo "Checked ${#pages[@]} prerendered blog pages."
+          exit $fail
+
+      - name: Confirm the new post reached the sitemap
+        run: |
+          fail=0
+          for page in dist/blog/*/index.html; do
+            slug="$(basename "$(dirname "$page")")"
+            if ! grep -q "/blog/$slug<" public/sitemap.xml; then
+              echo "::error::/blog/$slug is prerendered but missing from public/sitemap.xml"
+              fail=1
+            fi
+          done
+          exit $fail
+
+      - name: Fast-forward main
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch origin main
+          if ! git merge-base --is-ancestor origin/main "$GITHUB_SHA"; then
+            echo "::error::main has moved since this branch was cut. Rebase claude/blog-* onto main and push again — refusing to force."
+            exit 1
+          fi
+          git push origin "$GITHUB_SHA:refs/heads/main"
+          echo "Merged $GITHUB_SHA into main. Vercel will deploy."

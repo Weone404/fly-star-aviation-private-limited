@@ -1,4 +1,4 @@
-﻿import { motion } from "framer-motion";
+ import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -155,13 +155,13 @@ const faqs = [
 export default function AirIndiaPilotInterviewPage() {
     return (
         <Layout>
-            
+
                 <title>Air India Pilot Interview Preparation 2026 | We One Aviation</title>
                 <meta
                     name="description"
                     content="Crack the Air India pilot selection process with We One Aviation. Structured preparation for CPL holders & Type Rated pilots â€“ Psychometric, GD, HR & Technical interviews. Enroll now."
                 />
-            
+
 
             {/* Hero Section */}
             <section className="relative py-24 aviation-gradient text-primary-foreground">
@@ -365,7 +365,7 @@ export default function AirIndiaPilotInterviewPage() {
                         className="text-center mb-16"
                     >
                         <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                            ðŸ§  What Makes Our Training Different?
+                            ðŸ§  What Makes Our Training Different?
                         </h2>
                         <p className="text-muted-foreground max-w-2xl mx-auto">
                             We don't just teach you what to say â€” we prepare you to think, perform, and succeed under real airline evaluation conditions.

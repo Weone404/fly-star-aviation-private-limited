@@ -19,11 +19,12 @@
       "Bash(npm run build:*)",
       "Bash(npm run lint:*)",
       "Bash(npm run test:*)",
-      "Bash(npm test:*)"
+      "Bash(npm test:*)",
+      "Bash(git push origin claude/*)",
+      "Bash(git push origin HEAD:claude/*)",
+      "Bash(npm ci:*)"
     ],
     "deny": [
-      "Bash(git push:*)",
-      "Bash(git push *)",
       "Bash(rm -rf:*)",
       "Bash(rm -rf *)"
     ]

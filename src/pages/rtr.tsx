@@ -1,4 +1,4 @@
-﻿import { motion } from "framer-motion";
+ import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -316,13 +316,13 @@ const faqs = [
 export default function RTRPage() {
     return (
         <Layout>
-            
+
                 <title>RTR Full Form - Radio Telephony Restricted | Complete Guide 2026</title>
                 <meta
                     name="description"
                     content="Complete guide to RTR (Radio Telephony Restricted) - meaning, importance, types, eligibility, exam pattern, preparation tips. Essential license for pilots and ATCs in India."
                 />
-            
+
 
             {/* Hero Section */}
             <section className="relative py-24 aviation-gradient text-primary-foreground">
@@ -409,7 +409,7 @@ export default function RTRPage() {
                             </p>
                             <div className="p-6 rounded-xl bg-primary/10 border-l-4 border-primary">
                                 <p className="text-lg font-semibold">
-                                    âš ï¸ Without an RTR license, a pilot cannot legally fly an aircraft in controlled airspace. Communication is an essential aspect of aviation safety.
+                                    âš ï¸ Without an RTR license, a pilot cannot legally fly an aircraft in controlled airspace. Communication is an essential aspect of aviation safety.
                                 </p>
                             </div>
                         </div>

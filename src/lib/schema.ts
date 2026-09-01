@@ -150,8 +150,8 @@ function serviceNode(path: string): JsonLdNode {
 }
 
 function webPageNode(path: string): JsonLdNode {
-  const url = canonicalUrl(path);
   const post = blogPostFor(path);
+  const url = canonicalUrl(post ? blogPath(path, post) : path);
   let type: string | string[] = "WebPage";
   if (path === "/about") type = ["AboutPage", "WebPage"];
   else if (path === "/contact") type = ["ContactPage", "WebPage"];
@@ -192,7 +192,19 @@ interface BlogPost {
   coverImage?: string;
   createdAt?: string;
   updatedAt?: string;
-  faqs?: { q: string; a: string }[];
+  dateModified?: string;
+  // Two shapes are accepted: {q,a} (as written by this repo) and
+  // {question,answer} (as the scheduled routine's prompt specifies).
+  faqs?: ({ q?: string; a?: string; question?: string; answer?: string })[];
+}
+
+/**
+ * A post with a slug has exactly one canonical URL: /blog/<slug>. The legacy
+ * /blogs/<id> form resolves to the same post, so every URL and @id we emit is
+ * pinned to the slug form to stop the two competing as duplicates.
+ */
+function blogPath(path: string, post: BlogPost): string {
+  return post.slug ? `/blog/${post.slug}` : path;
 }
 
 /** ISO-8601 date, or undefined when the stored value is not parseable. */
@@ -218,9 +230,9 @@ function absolute(url?: string): string | undefined {
  * whether a page is a maintained article or an orphan.
  */
 function blogPostingNode(path: string, post: BlogPost): JsonLdNode {
-  const url = canonicalUrl(path);
+  const url = canonicalUrl(blogPath(path, post));
   const published = isoDate(post.createdAt);
-  const modified = isoDate(post.updatedAt) || published;
+  const modified = isoDate(post.updatedAt || post.dateModified) || published;
   return {
     "@type": "BlogPosting",
     "@id": `${url}#article`,
@@ -258,14 +270,18 @@ function blogPostingNode(path: string, post: BlogPost): JsonLdNode {
 /** FAQPage built from the post's `faqs` array — the AEO extraction surface. */
 function faqNode(path: string, post: BlogPost): JsonLdNode | null {
   if (!post.faqs?.length) return null;
-  const url = canonicalUrl(path);
+  const url = canonicalUrl(blogPath(path, post));
+  const entries = post.faqs
+    .map((item) => ({ name: item.question ?? item.q, text: item.answer ?? item.a }))
+    .filter((item): item is { name: string; text: string } => Boolean(item.name && item.text));
+  if (!entries.length) return null;
   return {
     "@type": "FAQPage",
     "@id": `${url}#faq`,
-    mainEntity: post.faqs.map((item) => ({
+    mainEntity: entries.map((item) => ({
       "@type": "Question",
-      name: item.q,
-      acceptedAnswer: { "@type": "Answer", text: item.a },
+      name: item.name,
+      acceptedAnswer: { "@type": "Answer", text: item.text },
     })),
   };
 }

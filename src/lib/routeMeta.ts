@@ -293,10 +293,14 @@ function getBlogMeta(pathname: string): RouteMeta | null {
   const blog = getBlogPost(blogMatch[1]);
   if (!blog) return null;
 
+  // A post with a slug canonicalises to /blog/<slug> even when reached via the
+  // legacy /blogs/<id> URL, so the two forms never compete in search.
+  const canonicalPath = blog.slug ? `/blog/${blog.slug}` : normalized;
+
   return {
     title: blog.seoTitle || `${blog.title} | Fly Star Aviation Blog`,
     description: blog.metaDescription || blog.excerpt || "Expert pilot training guidance, DGCA updates, and aviation career advice from Fly Star Aviation.",
-    canonical: `${BASE_URL}${normalized}`,
+    canonical: `${BASE_URL}${canonicalPath}`,
     ogTitle: blog.seoTitle || blog.title,
     ogDescription: blog.metaDescription || blog.excerpt || "Expert pilot training guidance, DGCA updates, and aviation career advice from Fly Star Aviation.",
     ogUrl: `${BASE_URL}${normalized}`,
