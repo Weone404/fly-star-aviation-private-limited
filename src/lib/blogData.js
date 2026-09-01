@@ -20,6 +20,16 @@ export const BLOG_POSTS = [
       '<h2>Overview</h2><p>To obtain a CPL in India, candidates must pass 9 written examinations conducted by the DGCA.</p>',
   },
   {
+    slug: 'commercial-pilot-vs-airline-pilot--whats-the-difference',
+    title: 'Commercial Pilot vs Airline Pilot: What’s the Difference?',
+    excerpt: 'A simple breakdown of how commercial pilot training and airline pilot careers differ in scope, progression, and responsibility.',
+    category: 'Career',
+    createdAt: '2026-08-27',
+    coverImage: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1200&q=80',
+    content:
+      '<p>Many aspirants use the terms “commercial pilot” and “airline pilot” interchangeably, but they are not exactly the same.</p><h2>Commercial pilot</h2><p>A commercial pilot is someone who holds a Commercial Pilot License (CPL) and is legally allowed to fly for payment or reward. This is the qualification that opens the door to paid flying work.</p><h2>Airline pilot</h2><p>An airline pilot is a pilot who flies for a scheduled airline, usually after building hours, completing type rating training, and meeting the airline’s selection requirements.</p><h2>The key difference</h2><p>The CPL is the training and licensing milestone. The airline pilot role is the career stage that comes after that license is earned and the pilot gains operational experience.</p><h2>Typical progression</h2><ul><li>Complete CPL training and DGCA exams</li><li>Build flying experience and required hours</li><li>Clear airline assessments and interviews</li><li>Join a carrier as a First Officer or Junior Pilot</li></ul><p>In short, a commercial pilot is licensed to fly for payment, while an airline pilot is a pilot working within an airline structure and operating scheduled flights.</p>',
+  },
+  {
     _id: '3',
     title: 'CPL Training in India vs Abroad – Which is Better?',
     excerpt: 'Pros and cons of training in India vs USA, Canada, Australia. Cost comparison, timelines, and license conversion process explained.',

@@ -127,14 +127,18 @@ app.get("/api/blogs", async (req, res) => {
 // ── GET /api/blogs/:id — fetch single blog (by ID or slug) ────────────────────
 app.get("/api/blogs/:id", async (req, res) => {
     try {
-        const lookupId = req.params.id;
-        let blog;
+        const lookupId = String(req.params.id || '').trim();
+        if (!lookupId) {
+            return res.status(400).json({ success: false, message: "Blog identifier is required" });
+        }
+
+        let blog = null;
 
         if (mongoConnected && db) {
             try {
-                // Try ObjectId lookup first
+                const candidate = lookupId;
                 try {
-                    blog = await db.collection("blogs").findOne({ _id: new ObjectId(lookupId) });
+                    blog = await db.collection("blogs").findOne({ _id: new ObjectId(candidate) });
                     if (blog) {
                         return res.status(200).json({
                             ...blog,
@@ -143,8 +147,7 @@ app.get("/api/blogs/:id", async (req, res) => {
                         });
                     }
                 } catch (oidErr) {
-                    // Not an ObjectId, try slug lookup
-                    blog = await db.collection("blogs").findOne({ slug: lookupId });
+                    blog = await db.collection("blogs").findOne({ slug: candidate });
                     if (blog) {
                         return res.status(200).json({
                             ...blog,
@@ -154,19 +157,19 @@ app.get("/api/blogs/:id", async (req, res) => {
                     }
                 }
             } catch (mongoErr) {
-                console.warn("MongoDB lookup failed, trying fallback");
+                console.warn("MongoDB lookup failed, trying fallback:", mongoErr.message);
             }
         }
 
-        // Fallback to file-based storage: try UUID first, then slug
-        blog = blogStore.getBlogById(lookupId);
+        blog = blogStore.getBlogById(lookupId) || blogStore.getBlogBySlug(lookupId);
         if (!blog) {
-            blog = blogStore.getBlogBySlug(lookupId);
+            return res.status(404).json({ success: false, message: "Blog not found" });
         }
-        if (!blog) return res.status(404).json({ success: false, message: "Blog not found" });
+
         return res.status(200).json(blog);
     } catch (e) {
-        return res.status(500).json({ success: false, message: e.message });
+        console.error("GET /api/blogs/:id error:", e.message);
+        return res.status(500).json({ success: false, message: "Unexpected error loading blog" });
     }
 });
 

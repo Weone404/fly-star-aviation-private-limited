@@ -31,18 +31,48 @@ export default function BlogDetail() {
 
     useEffect(() => {
         if (!postId) return
-        // Try MongoDB first, fallback to hardcoded
-        fetch(`${API_URL}/api/blogs/${postId}`)
-            .then(res => res.json())
-            .then(data => {
-                if (data && data.title) { setBlog(data); setLoading(false) }
-                else if (hardcoded[postId] || getBlogPost(postId)) { setBlog(hardcoded[postId] || getBlogPost(postId)); setLoading(false) }
-                else { setLoading(false) }
-            })
-            .catch(() => {
-                if (hardcoded[postId] || getBlogPost(postId)) setBlog(hardcoded[postId] || getBlogPost(postId))
+
+        const fallbackBlog = hardcoded[postId] || getBlogPost(postId)
+
+        const loadBlog = async () => {
+            try {
+                const directRes = await fetch(`${API_URL}/api/blogs/${postId}`)
+                if (directRes.ok) {
+                    const directData = await directRes.json()
+                    if (directData && directData.title) {
+                        setBlog(directData)
+                        setLoading(false)
+                        return
+                    }
+                }
+
+                const listRes = await fetch(`${API_URL}/api/blogs`)
+                if (listRes.ok) {
+                    const listData = await listRes.json()
+                    const apiBlogs = Array.isArray(listData) ? listData : []
+                    const matched = apiBlogs.find((item: any) => item.slug === postId || item._id === postId)
+
+                    if (matched && matched.title) {
+                        setBlog(matched)
+                        setLoading(false)
+                        return
+                    }
+                }
+
+                if (fallbackBlog) {
+                    setBlog(fallbackBlog)
+                } else {
+                    setBlog(null)
+                }
                 setLoading(false)
-            })
+            } catch {
+                if (fallbackBlog) setBlog(fallbackBlog)
+                else setBlog(null)
+                setLoading(false)
+            }
+        }
+
+        loadBlog()
     }, [postId])
 
     // Reading progress bar
