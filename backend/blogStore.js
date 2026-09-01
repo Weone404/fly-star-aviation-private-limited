@@ -64,6 +64,12 @@ function getBlogById(id) {
     return blogs.find(b => b._id === id) || null;
 }
 
+// Get single blog by slug
+function getBlogBySlug(slug) {
+    const blogs = loadBlogs();
+    return blogs.find(b => b.slug === slug) || null;
+}
+
 // Create new blog
 function createBlog(data) {
     const blogs = loadBlogs();
@@ -117,6 +123,7 @@ function deleteBlog(id) {
 module.exports = {
     getAllBlogs,
     getBlogById,
+    getBlogBySlug,
     createBlog,
     updateBlog,
     deleteBlog,

@@ -124,26 +124,45 @@ app.get("/api/blogs", async (req, res) => {
     }
 });
 
-// ── GET /api/blogs/:id — fetch single blog ────────────────────────────────────
+// ── GET /api/blogs/:id — fetch single blog (by ID or slug) ────────────────────
 app.get("/api/blogs/:id", async (req, res) => {
     try {
+        const lookupId = req.params.id;
         let blog;
+
         if (mongoConnected && db) {
             try {
-                blog = await db.collection("blogs").findOne({ _id: new ObjectId(req.params.id) });
-                if (blog) {
-                    return res.status(200).json({
-                        ...blog,
-                        _id: blog._id.toString(),
-                        createdAt: blog.createdAt ? blog.createdAt.toString() : new Date().toString(),
-                    });
+                // Try ObjectId lookup first
+                try {
+                    blog = await db.collection("blogs").findOne({ _id: new ObjectId(lookupId) });
+                    if (blog) {
+                        return res.status(200).json({
+                            ...blog,
+                            _id: blog._id.toString(),
+                            createdAt: blog.createdAt ? blog.createdAt.toString() : new Date().toString(),
+                        });
+                    }
+                } catch (oidErr) {
+                    // Not an ObjectId, try slug lookup
+                    blog = await db.collection("blogs").findOne({ slug: lookupId });
+                    if (blog) {
+                        return res.status(200).json({
+                            ...blog,
+                            _id: blog._id.toString(),
+                            createdAt: blog.createdAt ? blog.createdAt.toString() : new Date().toString(),
+                        });
+                    }
                 }
             } catch (mongoErr) {
                 console.warn("MongoDB lookup failed, trying fallback");
             }
         }
-        // Fallback to file-based storage
-        blog = blogStore.getBlogById(req.params.id);
+
+        // Fallback to file-based storage: try UUID first, then slug
+        blog = blogStore.getBlogById(lookupId);
+        if (!blog) {
+            blog = blogStore.getBlogBySlug(lookupId);
+        }
         if (!blog) return res.status(404).json({ success: false, message: "Blog not found" });
         return res.status(200).json(blog);
     } catch (e) {
