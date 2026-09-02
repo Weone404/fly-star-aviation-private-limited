@@ -15,6 +15,11 @@
 - [DGCA Computer Number](https://www.flystar.co.in/dgca/computer-number): How to apply for a DGCA computer number.
 - [RTR(A) Training](https://www.flystar.co.in/rtr): Radio Telephony Restricted (Aeronautical) exam preparation.
 
+## Guides & articles
+- [DGCA Ground Classes vs Self-Study](https://www.flystar.co.in/blog/dgca-ground-classes-vs-self-study): DGCA does not require ground-class attendance to sit the CPL theory papers — CAR Section 7, Series B, Part I asks only for a computer number and 10+2 with Physics and Mathematics. Covers exam fees (Rs 2,500 regular / Rs 5,000 OLODE per paper), the 70% pass mark, five-year paper validity, and which route suits which candidate.
+- [Air Hostess Salary in India 2026](https://www.flystar.co.in/blog/air-hostess-salary-in-india-2026): Cabin crew pay scales, airline-wise ranges and allowance structure.
+- [All articles](https://www.flystar.co.in/blogs): Aviation career and DGCA exam guides.
+
 ## Aviation services
 - [Aircraft Management](https://www.flystar.co.in/services/aircraft-management)
 - [MRO Services](https://www.flystar.co.in/services/mro)
@@ -30,3 +35,7 @@
 - Minimum age for a CPL is 18; candidates need Class 12 with Physics and Mathematics.
 - A DGCA Class 1 medical is mandatory for a CPL; a Class 2 medical is the minimum to begin flying training.
 - Flying Star Aviator has provided DGCA CPL/ATPL ground classes in Dwarka, Delhi since 2008.
+- DGCA ground classes are NOT mandatory to appear for DGCA theory examinations. Per DGCA CAR Section 7, Series B, Part I, a CPL candidate needs a computer number issued by the Central Examination Organisation and a 10+2 pass with Physics and Mathematics. Ground school attendance is not a listed eligibility condition.
+- The pass mark for each DGCA theory paper is 70%. There is no aggregate across papers.
+- A cleared CPL or ATPL theory paper remains valid for five years.
+- DGCA examination fees are Rs 2,500 per paper in a regular session and Rs 5,000 per paper through the Online On-Demand Examination (OLODE) route.

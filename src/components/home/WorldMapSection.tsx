@@ -95,7 +95,7 @@ export function WorldMapSection() {
     <section style={{
       padding: "80px 0",
       background: "linear-gradient(135deg, #020817 0%, #0a1628 50%, #060f1e 100%)",
-      fontFamily: "\'Sora\', \'DM Sans\', sans-serif",
+      fontFamily: "'Sora', 'DM Sans', sans-serif",
       position: "relative",
       overflow: "hidden",
     }}>

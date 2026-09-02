@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { SocialShareButtons } from '@/components/SocialShareButtons'
-import { getBlogPost } from '@/lib/blogData'
+import { getBlogPost, getReadingMinutes } from '@/lib/blogData'
+import type { BlogPost } from '@/types/blog'
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000'
 
@@ -17,22 +18,23 @@ const formatBlogDate = (value?: string) => {
     })
 }
 
-const hardcoded: Record<string, any> = {
-    '1': { _id: '1', title: 'How to Become a Commercial Pilot in India – Complete 2026 Guide', excerpt: 'Everything you need to know about becoming a CPL holder in India.', category: 'CPL Guide', createdAt: 'Dec 15, 2026', coverImage: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1200&q=80', content: '<h2>What is a Commercial Pilot License (CPL)?</h2><p>A Commercial Pilot License (CPL) allows you to fly aircraft for compensation or hire. In India, the CPL is issued by the Directorate General of Civil Aviation (DGCA).</p><h2>Eligibility Requirements</h2><ul><li>Minimum age: 18 years</li><li>Educational qualification: 10+2 with Physics and Mathematics</li><li>Valid DGCA Class 1 Medical Certificate</li><li>Minimum 200 hours of total flight time</li></ul><h2>Conclusion</h2><p>Becoming a commercial pilot in India is a challenging but rewarding career path.</p>' },
-    '2': { _id: '2', title: 'DGCA Written Exams: Subjects, Pattern & Preparation Tips', excerpt: 'Ace all 9 DGCA written exams.', category: 'DGCA', createdAt: 'Dec 10, 2026', coverImage: 'https://images.unsplash.com/photo-1569629743817-70d8db6c323b?w=1200&q=80', content: '<h2>Overview</h2><p>To obtain a CPL in India, candidates must pass 9 written examinations conducted by the DGCA.</p>' },
-}
-
 export default function BlogDetail() {
     const { id, slug } = useParams()
     const postId = id || slug
-    const [blog, setBlog] = useState<any>(null)
+    const [blog, setBlog] = useState<BlogPost | null>(null)
     const [loading, setLoading] = useState(true)
     const [readProgress, setReadProgress] = useState(0)
+
+    // Reading time is computed from the article body (200 wpm) instead of the
+    // old hardcoded "5 min read", which understated every long-form guide.
+    const readingMinutes = blog ? getReadingMinutes(blog) : 0
+    const authorName = blog?.author || 'Flying Star Aviator Academics Team'
+    const authorRole = blog?.authorRole || 'DGCA CPL & ATPL ground instruction, Dwarka, New Delhi'
 
     useEffect(() => {
         if (!postId) return
 
-        const fallbackBlog = hardcoded[postId] || getBlogPost(postId)
+        const fallbackBlog = getBlogPost(postId)
 
         const loadBlog = async () => {
             try {
@@ -64,10 +66,13 @@ export default function BlogDetail() {
                 } else {
                     setBlog(null)
                 }
-                setLoading(false)
             } catch {
-                if (fallbackBlog) setBlog(fallbackBlog)
-                else setBlog(null)
+                if (fallbackBlog) {
+                    setBlog(fallbackBlog)
+                } else {
+                    setBlog(null)
+                }
+            } finally {
                 setLoading(false)
             }
         }
@@ -118,7 +123,7 @@ export default function BlogDetail() {
             </div>
 
             {/* Hero */}
-            <div className="relative h-72 md:h-96 overflow-hidden">
+            <header className="relative h-72 md:h-96 overflow-hidden">
                 {blog.coverImage ? (
                     <img
                         src={blog.coverImage}
@@ -141,23 +146,31 @@ export default function BlogDetail() {
                         {blog.title}
                     </h1>
                     <div className="flex flex-wrap items-center gap-4 text-white/60 text-xs">
-                        <span>📅 {formatBlogDate(blog.createdAt)}</span>
-                        <span>⏱ 5 min read</span>
-                        <span>✈️ {blog.category}</span>
+                        <span>By <span className="text-white/80 font-medium">{authorName}</span></span>
+                        <span>
+                            Published <time dateTime={blog.createdAt}>{formatBlogDate(blog.createdAt)}</time>
+                        </span>
+                        {blog.updatedAt && blog.updatedAt !== blog.createdAt && (
+                            <span>
+                                Updated <time dateTime={blog.updatedAt}>{formatBlogDate(blog.updatedAt)}</time>
+                            </span>
+                        )}
+                        <span>{readingMinutes} min read</span>
+                        <span>{blog.category}</span>
                     </div>
                 </div>
-            </div>
+            </header>
 
             {/* Breadcrumb */}
-            <div className="bg-[hsl(145,80%,15%)] border-b border-amber-400/20 px-4 py-3">
+            <nav aria-label="Breadcrumb" className="bg-[hsl(145,80%,15%)] border-b border-amber-400/20 px-4 py-3">
                 <div className="max-w-4xl mx-auto flex items-center gap-2 text-xs text-white/50">
                     <Link to="/" className="hover:text-amber-400 transition-colors">Home</Link>
                     <span>/</span>
                     <Link to="/blogs" className="hover:text-amber-400 transition-colors">Blogs</Link>
                     <span>/</span>
-                    <span className="text-amber-400 truncate max-w-xs">{blog.title}</span>
+                    <span aria-current="page" className="text-amber-400 truncate max-w-xs">{blog.title}</span>
                 </div>
-            </div>
+            </nav>
 
             {/* Article Layout */}
             <div className="max-w-6xl mx-auto px-4 py-12 grid grid-cols-1 lg:grid-cols-3 gap-10">
@@ -167,7 +180,18 @@ export default function BlogDetail() {
                     {/* Article Card */}
                     <div className="bg-white rounded-2xl border border-border shadow-card p-8 md:p-10">
 
-                        {/* Excerpt */}
+                        {/* Byline */}
+                        <div className="flex items-center gap-3 pb-6 mb-6 border-b border-border">
+                            <div className="w-10 h-10 rounded-full aviation-gradient flex items-center justify-center text-white font-bold text-sm shrink-0">
+                                FS
+                            </div>
+                            <div className="text-xs leading-snug">
+                                <p className="font-semibold text-foreground">{authorName}</p>
+                                <p className="text-muted-foreground">{authorRole}</p>
+                            </div>
+                        </div>
+
+                        {/* Key takeaway */}
                         {blog.excerpt && (
                             <div className="border-l-4 border-[hsl(145,70%,22%)] pl-4 mb-8 bg-[hsl(145,70%,22%)]/5 py-3 rounded-r-xl">
                                 <p className="text-[hsl(145,70%,22%)] font-medium text-sm leading-relaxed italic">
@@ -231,8 +255,8 @@ export default function BlogDetail() {
                                 FS
                             </div>
                             <div>
-                                <p className="font-bold text-foreground text-sm">Flystar Aviation</p>
-                                <p className="text-xs text-muted-foreground">Aviation Experts</p>
+                                <p className="font-bold text-foreground text-sm">{authorName}</p>
+                                <p className="text-xs text-muted-foreground">{authorRole}</p>
                             </div>
                         </div>
                         <p className="text-xs text-muted-foreground leading-relaxed">
@@ -263,7 +287,8 @@ export default function BlogDetail() {
                             {[
                                 { label: 'Category', value: blog.category },
                                 { label: 'Published', value: formatBlogDate(blog.createdAt) },
-                                { label: 'Read Time', value: '5 min read' },
+                                { label: 'Read Time', value: `${readingMinutes} min read` },
+                                ...(blog.updatedAt ? [{ label: 'Updated', value: formatBlogDate(blog.updatedAt) }] : []),
                             ].map(item => (
                                 <div key={item.label} className="flex justify-between items-center text-xs border-b border-border pb-2 last:border-0 last:pb-0">
                                     <span className="text-muted-foreground">{item.label}</span>

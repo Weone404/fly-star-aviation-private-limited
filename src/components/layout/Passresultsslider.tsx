@@ -343,7 +343,7 @@ export default function PassResultsSlider() {
   const onPointerUp = (e: React.PointerEvent<HTMLDivElement>): void => {
     if (dragStart === null) return;
     const delta = dragStart - e.clientX;
-    if (Math.abs(delta) > 40) delta > 0 ? next() : prev();
+    if (Math.abs(delta) > 40) { if (delta > 0) { next(); } else { prev(); } }
     setDragStart(null);
   };
 

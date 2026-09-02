@@ -688,6 +688,46 @@ export default function DGCAGroundClassesPage(): JSX.Element {
                     </motion.div>
                 </div>
             </section>
+
+            {/* Further reading — internal links to related guides */}
+            <section aria-labelledby="further-reading" className="py-12 bg-muted">
+                <div className="container mx-auto px-4 max-w-4xl">
+                    <h2 id="further-reading" className="text-2xl font-bold mb-6">Further reading</h2>
+                    <ul className="space-y-4">
+                        <li>
+                            <Link to="/blog/dgca-ground-classes-vs-self-study" className="group block">
+                                <span className="font-semibold text-primary group-hover:underline">
+                                    DGCA Ground Classes vs Self-Study: Which Route Actually Clears the Exams?
+                                </span>
+                                <span className="block text-sm text-muted-foreground mt-1">
+                                    Ground classes are not a DGCA requirement. An honest look at what each route costs
+                                    in fees and months, and how to judge a ground school before you pay.
+                                </span>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/dgca/computer-number" className="group block">
+                                <span className="font-semibold text-primary group-hover:underline">
+                                    DGCA Computer Number: documents and process
+                                </span>
+                                <span className="block text-sm text-muted-foreground mt-1">
+                                    The registration step you must clear before you can apply for any theory paper.
+                                </span>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/dgca/medical" className="group block">
+                                <span className="font-semibold text-primary group-hover:underline">
+                                    DGCA Class 1 and Class 2 medical requirements
+                                </span>
+                                <span className="block text-sm text-muted-foreground mt-1">
+                                    The medical gate that runs in parallel with your theory preparation.
+                                </span>
+                            </Link>
+                        </li>
+                    </ul>
+                </div>
+            </section>
         </Layout>
     );
 }

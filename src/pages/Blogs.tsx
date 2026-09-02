@@ -39,7 +39,7 @@ export default function Blogs() {
                 }
             })
             .catch(() => {
-                // hardcoded already set as default, nothing to do
+                // static posts already rendered, nothing to do
             })
             .finally(() => setLoading(false))
     }, [])
@@ -123,14 +123,15 @@ export default function Blogs() {
                             <p>No articles found. Try a different search.</p>
                         </div>
                     ) : (
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div role="list" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                             {filtered.map((blog) => (
                                 <Link
                                     to={blog.slug ? `/blog/${blog.slug}` : `/blogs/${blog._id}`}
                                     key={blog._id}
-                                    className="block group" // ✅ removed scroll-fade-up that was hiding cards
+                                    role="listitem"
+                                    className="block group"
                                 >
-                                    <div className="bg-white rounded-2xl overflow-hidden border border-border shadow-card hover:shadow-hover transition-all duration-300 hover:-translate-y-1 flex flex-col h-full">
+                                    <article className="bg-white rounded-2xl overflow-hidden border border-border shadow-card hover:shadow-hover transition-all duration-300 hover:-translate-y-1 flex flex-col h-full">
                                         {/* Image */}
                                         <div className="relative h-48 overflow-hidden bg-[hsl(145,70%,22%)]">
                                             <img
@@ -156,14 +157,15 @@ export default function Blogs() {
                                             </p>
                                             <div className="flex items-center justify-between pt-3 border-t border-border">
                                                 <span className="text-xs text-muted-foreground">
-                                                    📅 {blog.createdAt ? new Date(blog.createdAt).toDateString() : ''}
+                                                    {blog.createdAt ? new Date(blog.createdAt).toDateString() : ''}
+                                                    {blog.content ? ` · ${getReadingMinutes(blog)} min read` : ''}
                                                 </span>
                                                 <span className="text-xs font-semibold text-[hsl(145,70%,22%)] group-hover:text-amber-500 transition-colors">
                                                     Read →
                                                 </span>
                                             </div>
                                         </div>
-                                    </div>
+                                    </article>
                                 </Link>
                             ))}
                         </div>
