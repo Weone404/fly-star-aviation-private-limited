@@ -28,6 +28,7 @@ Once a reserved page ships, strike its row and the query returns to the pool.
 | 2026-09-01 | `/blog/dgca-ground-classes-vs-self-study` | DGCA Ground Classes vs Self-Study: Which Route Actually Clears the Exams? | DGCA |
 | 2026-12-10 | `/blogs/2` | DGCA Written Exams: Subjects, Pattern & Preparation Tips | DGCA |
 | 2026-12-15 | `/blogs/1` | How to Become a Commercial Pilot in India – Complete 2026 Guide | CPL Guide |
+| 2026-09-02 | `/blog/how-to-choose-a-flying-school-in-india` | How to Choose a Flying School in India: What to Verify Before You Pay | Training |
 
 > Posts `_id` 3–6 in `src/lib/blogData.js` are placeholders with empty content.
 > They are **not** published and their titles are **not** reserved — but leave
