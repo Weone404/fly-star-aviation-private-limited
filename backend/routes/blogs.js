@@ -11,6 +11,7 @@ const express = require('express')
 const router = express.Router()
 const multer = require('multer')
 const { v2: cloudinary } = require('cloudinary')
+const { getLookupQuery, isValidObjectId } = require('../blogLookup')
 const Blog = require('../models/Blog')   // ← your existing Mongoose Blog model
 
 // ── Cloudinary (reads from your existing backend/.env) ───────────────────────
@@ -53,7 +54,16 @@ router.get('/', async (_req, res) => {
 // ── GET /api/blogs/:id  — single blog (for BlogDetail page) ─────────────────
 router.get('/:id', async (req, res) => {
     try {
-        const blog = await Blog.findById(req.params.id).lean()
+        const lookupId = String(req.params.id || '').trim()
+        if (!lookupId) {
+            return res.status(400).json({ success: false, message: 'Blog identifier is required.' })
+        }
+
+        const query = getLookupQuery(lookupId)
+        const blog = query
+            ? await Blog.findOne(query).lean()
+            : null
+
         if (!blog) return res.status(404).json({ success: false, message: 'Blog not found.' })
         res.json(blog)
     } catch (err) {

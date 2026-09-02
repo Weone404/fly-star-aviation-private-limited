@@ -9,6 +9,7 @@ require("dotenv").config({ path: __dirname + "/.env" });
 
 const Contact = require("./models/Contact");
 const blogStore = require("./blogStore");
+const { getLookupQuery, isValidObjectId } = require("./blogLookup");
 
 const app = express();
 
@@ -136,18 +137,9 @@ app.get("/api/blogs/:id", async (req, res) => {
 
         if (mongoConnected && db) {
             try {
-                const candidate = lookupId;
-                try {
-                    blog = await db.collection("blogs").findOne({ _id: new ObjectId(candidate) });
-                    if (blog) {
-                        return res.status(200).json({
-                            ...blog,
-                            _id: blog._id.toString(),
-                            createdAt: blog.createdAt ? blog.createdAt.toString() : new Date().toString(),
-                        });
-                    }
-                } catch (oidErr) {
-                    blog = await db.collection("blogs").findOne({ slug: candidate });
+                const query = getLookupQuery(lookupId);
+                if (query) {
+                    blog = await db.collection("blogs").findOne(query);
                     if (blog) {
                         return res.status(200).json({
                             ...blog,
@@ -161,7 +153,11 @@ app.get("/api/blogs/:id", async (req, res) => {
             }
         }
 
-        blog = blogStore.getBlogById(lookupId) || blogStore.getBlogBySlug(lookupId);
+        const fallbackBlog = isValidObjectId(lookupId)
+            ? blogStore.getBlogById(lookupId)
+            : blogStore.getBlogBySlug(lookupId);
+
+        blog = fallbackBlog || blogStore.getBlogById(lookupId) || blogStore.getBlogBySlug(lookupId);
         if (!blog) {
             return res.status(404).json({ success: false, message: "Blog not found" });
         }
