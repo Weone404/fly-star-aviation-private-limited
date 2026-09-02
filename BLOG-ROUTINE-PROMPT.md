@@ -144,17 +144,19 @@ Append one row to the Published table in BLOG-TOPICS-PUBLISHED.md: date, URL, ti
 =========================================================
 STEP 6 — VERIFY
 =========================================================
-Run in order and fix anything that fails:
+Run these four, in the FOREGROUND, one at a time:
   npm ci
   npm run lint
   npm test
-  npm run build
+  npx vite build
 
 main is clean: 0 lint errors (8 known warnings) and all tests pass. If either goes red, your change caused it. Fix it.
 
-src/test/blogSchema.test.ts proves the BlogPosting and FAQPage wiring without a browser. If THAT test fails, stop and report — the schema builder is broken and fixing src/lib/schema.ts is outside your file list.
+Use `npx vite build`, NOT `npm run build`. `npm run build` chains a postbuild step that prerenders ~60 routes through Chromium and takes many minutes. You do not need it: CI runs the full prerender with a real Chromium and is the gate that matters. `npx vite build` compiles in seconds and catches every TypeScript and import error your change could introduce.
 
-If Chromium will not launch for the prerender locally, note it and continue. CI runs the prerender with a real Chromium and will catch a genuine failure.
+Never launch a build as a background task and wait for it. Run each command in the foreground and read its output. If any single command has not returned within about three minutes, stop waiting, note it in your summary, and move on to Step 7 — a slow local build is not a reason to abandon a finished post, because CI re-runs everything anyway.
+
+src/test/blogSchema.test.ts proves the BlogPosting and FAQPage wiring without a browser. If THAT test fails, stop and report — the schema builder is broken and fixing src/lib/schema.ts is outside your file list.
 
 Self-check before committing:
 - word count 2000-4000, counted on the rendered text
