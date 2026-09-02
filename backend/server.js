@@ -9,7 +9,6 @@ require("dotenv").config({ path: __dirname + "/.env" });
 
 const Contact = require("./models/Contact");
 const blogStore = require("./blogStore");
-const { getLookupQuery, isValidObjectId } = require("./blogLookup");
 
 const app = express();
 
@@ -128,43 +127,41 @@ app.get("/api/blogs", async (req, res) => {
 // ── GET /api/blogs/:id — fetch single blog (by ID or slug) ────────────────────
 app.get("/api/blogs/:id", async (req, res) => {
     try {
-        const lookupId = String(req.params.id || '').trim();
-        if (!lookupId) {
+        const identifier = String(req.params.id || "").trim();
+        if (!identifier) {
             return res.status(400).json({ success: false, message: "Blog identifier is required" });
         }
 
         let blog = null;
 
         if (mongoConnected && db) {
-            try {
-                const query = getLookupQuery(lookupId);
-                if (query) {
-                    blog = await db.collection("blogs").findOne(query);
-                    if (blog) {
-                        return res.status(200).json({
-                            ...blog,
-                            _id: blog._id.toString(),
-                            createdAt: blog.createdAt ? blog.createdAt.toString() : new Date().toString(),
-                        });
-                    }
-                }
-            } catch (mongoErr) {
-                console.warn("MongoDB lookup failed, trying fallback:", mongoErr.message);
+            const blogsCollection = db.collection("blogs");
+            if (mongoose.Types.ObjectId.isValid(identifier)) {
+                blog = await blogsCollection.findOne({ _id: new ObjectId(identifier) });
+            }
+
+            if (!blog) {
+                blog = await blogsCollection.findOne({ slug: identifier });
+            }
+
+            if (blog) {
+                return res.status(200).json({
+                    ...blog,
+                    _id: blog._id.toString(),
+                    createdAt: blog.createdAt ? blog.createdAt.toString() : new Date().toString(),
+                });
             }
         }
 
-        const fallbackBlog = isValidObjectId(lookupId)
-            ? blogStore.getBlogById(lookupId)
-            : blogStore.getBlogBySlug(lookupId);
-
-        blog = fallbackBlog || blogStore.getBlogById(lookupId) || blogStore.getBlogBySlug(lookupId);
+        // File storage uses UUIDs, so try its id first and then its slug as well.
+        blog = blogStore.getBlogById(identifier) || blogStore.getBlogBySlug(identifier);
         if (!blog) {
             return res.status(404).json({ success: false, message: "Blog not found" });
         }
 
         return res.status(200).json(blog);
     } catch (e) {
-        console.error("GET /api/blogs/:id error:", e.message);
+        console.error("GET /api/blogs/:id error:", e);
         return res.status(500).json({ success: false, message: "Unexpected error loading blog" });
     }
 });
