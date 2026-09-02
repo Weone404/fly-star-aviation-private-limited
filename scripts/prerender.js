@@ -65,7 +65,17 @@ async function prerender() {
   });
 
   const isWindows = process.platform === "win32";
+  // When PRERENDER_EXECUTABLE_PATH is set we are driving a stock Chrome/Chromium
+  // (CI, or a local dev machine). @sparticuz/chromium's args are tuned for its
+  // OWN bundled binary — they include --single-process and custom GL/font paths
+  // that make a stock build exit during startup, which surfaces as
+  // "Protocol error (Target.setDiscoverTargets): Target closed" before a single
+  // route renders. Only pass those args alongside the binary they belong to.
+  const externalBinary = Boolean(process.env.PRERENDER_EXECUTABLE_PATH);
   const chromiumPath = process.env.PRERENDER_EXECUTABLE_PATH || (isWindows ? null : await chromium.executablePath());
+  const launchArgs = externalBinary
+    ? ["--no-sandbox", "--disable-setuid-sandbox", "--disable-dev-shm-usage", "--disable-gpu"]
+    : chromium.args;
 
   if (isWindows && !chromiumPath) {
     console.log(
@@ -75,12 +85,41 @@ async function prerender() {
     return;
   }
 
-  const browser = await puppeteer.launch({
-    executablePath: chromiumPath || undefined,
-    headless: true,
-    args: chromium.args,
-    defaultViewport: chromium.defaultViewport,
-  });
+  // Two ways to get a browser, tried in order. CI provides a stock Chrome via
+  // PRERENDER_EXECUTABLE_PATH; if that binary refuses to start we fall back to
+  // the bundled @sparticuz build with its own args, which is a matched pair and
+  // is what a local build uses. Either works, so a runner-image change cannot
+  // silently break publishing again.
+  async function launchBrowser() {
+    const attempts = externalBinary
+      ? [
+          { label: "external", executablePath: chromiumPath, args: launchArgs },
+          { label: "bundled", executablePath: await chromium.executablePath(), args: chromium.args },
+        ]
+      : [{ label: "bundled", executablePath: chromiumPath, args: chromium.args }];
+
+    let lastError;
+    for (const attempt of attempts) {
+      try {
+        const browser = await puppeteer.launch({
+          executablePath: attempt.executablePath || undefined,
+          headless: true,
+          args: attempt.args,
+          defaultViewport: chromium.defaultViewport,
+        });
+        console.log(`Prerendering with ${attempt.label} Chromium at ${attempt.executablePath}`);
+        return browser;
+      } catch (error) {
+        lastError = error;
+        console.warn(
+          `Chromium (${attempt.label}) failed to launch: ${String(error).split("\n")[0]}`
+        );
+      }
+    }
+    throw lastError;
+  }
+
+  const browser = await launchBrowser();
   const page = await browser.newPage();
 
   for (const route of routes) {

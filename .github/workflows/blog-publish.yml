@@ -5,8 +5,11 @@
 # schema, and only then fast-forwards main. Vercel deploys from main.
 #
 # Design rule learned the hard way: a gate that cannot pass is worse than no gate.
-# Every check below is green on main as of the commit that added this file, so a
-# red run means the new post broke something — not that the gate is broken.
+# Run 1 of this workflow failed for exactly that reason: the step below exported
+# PRERENDER_EXECUTABLE_PATH to a stock Chromium while scripts/prerender.js still
+# launched it with @sparticuz/chromium's bundled-binary args. Fixed in
+# prerender.js by matching the args to the binary. Do not assume this file is
+# green because it looks right — check the Actions tab.
 name: Blog publish
 
 on:
