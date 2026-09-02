@@ -30,8 +30,7 @@ export default function Blogs() {
                 return res.json()
             })
             .then(data => {
-                // ✅ guard: only merge if data is a real array
-                    const apiBlogs: BlogPost[] = Array.isArray(data) ? data : []
+                const apiBlogs: BlogPost[] = Array.isArray(data) ? sortBlogsByDate(data) : []
                 if (apiBlogs.length > 0) {
                     // avoid duplicate _ids with hardcoded
                     const hardcodedIds = new Set(hardcoded.map(b => b._id))

@@ -88,8 +88,8 @@ export function getBlogPost(idOrSlug) {
 
 export function sortBlogsByDate(posts) {
   return [...posts].sort((a, b) => {
-    const dateA = Date.parse(a.createdAt || '');
-    const dateB = Date.parse(b.createdAt || '');
+    const dateA = new Date(a.createdAt || a.updatedAt || a.publishedAt || a.date || 0).getTime();
+    const dateB = new Date(b.createdAt || b.updatedAt || b.publishedAt || b.date || 0).getTime();
     const validA = Number.isNaN(dateA) ? 0 : dateA;
     const validB = Number.isNaN(dateB) ? 0 : dateB;
     return validB - validA;
