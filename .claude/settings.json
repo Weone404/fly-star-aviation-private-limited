@@ -20,9 +20,11 @@
       "Bash(npm run lint:*)",
       "Bash(npm run test:*)",
       "Bash(npm test:*)",
-      "Bash(git push origin claude/*)",
-      "Bash(git push origin HEAD:claude/*)",
-      "Bash(npm ci:*)"
+      "Bash(npm ci:*)",
+      "Bash(git push:*)",
+      "Bash(git fetch:*)",
+      "Bash(git rebase:*)",
+      "WebFetch(domain:pariksha.dgca.gov.in)"
     ],
     "deny": [
       "Bash(rm -rf:*)",

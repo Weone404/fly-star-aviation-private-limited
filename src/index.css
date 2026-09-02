@@ -312,3 +312,38 @@
   .stagger-4 { animation-delay: 0.4s; }
   .stagger-5 { animation-delay: 0.5s; }
 }
+
+/* Image slot: marks where a commissioned illustration will go. Rendered as a
+   deliberate placeholder rather than a broken <img>, so a post reads as
+   finished while its artwork is still being made. */
+.prose-editorial .img-slot {
+  display: grid;
+  place-items: center;
+  gap: 0.4rem;
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  border: 1.5px dashed hsl(145 30% 70%);
+  border-radius: 14px;
+  background: var(--surface);
+  color: var(--ink-faint);
+  font-family: Poppins, ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+.prose-editorial .img-slot::before {
+  content: "Illustration";
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.prose-editorial figure { margin-top: 2em; }
+.prose-editorial figure img { border-radius: 14px; width: 100%; height: auto; }
+.prose-editorial figcaption {
+  margin-top: 0.6rem;
+  font-family: Poppins, ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.8rem;
+  color: var(--ink-faint);
+  text-align: center;
+}
