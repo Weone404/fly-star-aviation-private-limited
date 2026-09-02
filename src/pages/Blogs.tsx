@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
-import { BLOG_POSTS, sortBlogsByDate } from '@/lib/blogData'
+import { BLOG_POSTS, sortBlogsByDate, getReadingMinutes } from '@/lib/blogData'
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000'
 
@@ -11,6 +11,7 @@ type BlogPost = {
     slug?: string
     title: string
     excerpt?: string
+    content?: string
     category?: string
     createdAt?: string
     coverImage?: string
