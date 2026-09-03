@@ -3,6 +3,7 @@ import { useState, useEffect, useCallback } from 'react'
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
 import { useNavigate } from 'react-router-dom'
+import { sortBlogsByDate } from '@/lib/blogData'
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000'
 
@@ -91,7 +92,8 @@ export default function AdminBlog() {
         try {
             const res = await fetch(`${API_URL}/api/blogs`)
             const data = await res.json()
-            setBlogs(Array.isArray(data) ? data : data.blogs ?? [])
+            const loadedBlogs = Array.isArray(data) ? data : data.blogs ?? []
+            setBlogs(sortBlogsByDate(loadedBlogs))
         } catch {
             setBlogsError('Could not load blogs. Make sure your backend is running.')
         } finally {

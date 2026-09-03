@@ -1,0 +1,24 @@
+[
+  {
+    "_id": "e39331f3-f858-4f9a-bcbf-ce73a45ad24c",
+    "title": "Test Blog: Backend is Working!",
+    "excerpt": "This blog was created via API test",
+    "content": "<h2>Welcome</h2><p>The backend is now running with fallback storage.</p><p>You can now upload blogs from the admin panel and they will be saved!</p>",
+    "category": "Testing",
+    "coverImage": "",
+    "createdAt": "2026-09-01T05:04:53.314Z",
+    "updatedAt": "2026-09-01T05:04:53.314Z",
+    "slug": "test-blog-backend-is-working"
+  },
+  {
+    "_id": "c03bb5f5-5c83-4ffd-9e80-f74ab0a6d1f3",
+    "title": "Admin Panel Test Blog",
+    "excerpt": "Testing admin panel upload",
+    "content": "<h2>Admin Test</h2><p>Blog uploaded from admin panel via FormData</p>",
+    "category": "Admin Test",
+    "coverImage": "https://res.cloudinary.com/dw8f4vrth/image/upload/v1788239874/flystar/blogs/wzastzdhsq3iinwntz2i.png",
+    "createdAt": "2026-09-01T05:17:54.604Z",
+    "updatedAt": "2026-09-01T05:17:54.604Z",
+    "slug": "admin-panel-test-blog"
+  }
+]

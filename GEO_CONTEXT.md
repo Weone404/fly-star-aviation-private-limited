@@ -69,10 +69,10 @@ guessed. Items marked [CONFIRM] need the owner's answer._
   OAI-SearchBot, ChatGPT-User, ClaudeBot, PerplexityBot, Google-Extended) —
   P0 crawler gate already PASSED.
 - `public/llms.txt`: exists, well-formed, includes a "Key facts" block.
-- Blog: `src/pages/Blogs.tsx` + `BlogDetail.tsx` fetch from the Express/Mongo
-  API with numeric URLs (`/blogs/3`), fallback `src/lib/blogData.js`.
-  **Not prerendered, no per-post meta, no descriptive slugs — unfit for GEO
-  content.** New guides ship as real routed pages instead.
+- Blog: `src/pages/Blogs.tsx` renders the unified slug-based dataset from
+  `src/lib/blogData.js`; `BlogDetail.tsx` still supports API-backed post lookups.
+  **Not prerendered and no per-post meta — unfit for GEO content.** New guides
+  ship as real routed pages instead.
 
 ## Prior work (do not redo)
 `flystar.co.in-audit/` — full audit dated 2026-07-30: GEO-ANALYSIS.md (GEO
@@ -159,11 +159,9 @@ the operative letter is **trust**, and trust comes from visible process.
 number.**
 
 ## Standing decisions (owner, 2026-08-22)
-- **Blog: leave it alone for now.** The `/blogs/3`-style posts are invisible to
-  crawlers and hold near-zero equity, so there is nothing to protect and nothing
-  to rebuild. After 4–6 new routed articles are live, cherry-pick the best old
-  posts and convert them to routed pages. Migration is a later chore; new
-  content comes first.
+- **Blog listing:** numeric seed posts were removed from the listing dataset.
+  Existing slugged posts remain available, while new GEO guides continue to
+  ship as real routed pages instead of blog entries.
 - **B2B (MRO / CAMO / charter / aircraft management) is a deliberately later,
   separate track.** Aircraft operators and CPL aspirants are different
   audiences — never mix them on a page or score them in the same cluster. B2B

@@ -271,6 +271,11 @@ const routeMeta: Record<string, RouteMeta> = {
     description: "Sign in to the Fly Star Aviation admin console.",
     canonical: `${BASE_URL}/admin/login`,
   },
+  "/admin/blog": {
+    title: "Blog Manager — Fly Star Aviation Admin",
+    description: "Admin console for managing blogs.",
+    canonical: `${BASE_URL}/admin/blog`,
+  },
   "/rtr": {
     title: "RTR Full Form - Radio Telephony Restricted | Complete Guide 2026",
     description: "Essential RTR(A) exam guidance for pilot candidates and aviation students.",
