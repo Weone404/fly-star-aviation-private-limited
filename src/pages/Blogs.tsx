@@ -1,10 +1,8 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import { BLOG_POSTS, sortBlogsByDate, getReadingMinutes } from '@/lib/blogData'
-
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000'
 
 type BlogPost = {
     _id: string
@@ -17,33 +15,9 @@ type BlogPost = {
     coverImage?: string
 }
 
-const hardcoded = BLOG_POSTS
-
 export default function Blogs() {
-    const [blogs, setBlogs] = useState<BlogPost[]>(sortBlogsByDate(hardcoded))
-    const [loading, setLoading] = useState(false) // ✅ no loading flash for hardcoded
+    const [blogs] = useState<BlogPost[]>(() => sortBlogsByDate(BLOG_POSTS))
     const [search, setSearch] = useState('')
-
-    useEffect(() => {
-        fetch(`${API_URL}/api/blogs`)
-            .then(res => {
-                if (!res.ok) throw new Error('API error')
-                return res.json()
-            })
-            .then(data => {
-                const apiBlogs: BlogPost[] = Array.isArray(data) ? sortBlogsByDate(data) : []
-                if (apiBlogs.length > 0) {
-                    // avoid duplicate _ids with hardcoded
-                    const hardcodedIds = new Set(hardcoded.map(b => b._id))
-                    const fresh = apiBlogs.filter((b) => !hardcodedIds.has(b._id))
-                    setBlogs(sortBlogsByDate([...fresh, ...hardcoded]))
-                }
-            })
-            .catch(() => {
-                // static posts already rendered, nothing to do
-            })
-            .finally(() => setLoading(false))
-    }, [])
 
     const filtered = blogs.filter(b =>
         !search ||
@@ -113,12 +87,7 @@ export default function Blogs() {
                         </h2>
                     </div>
 
-                    {loading ? (
-                        <div className="flex flex-col items-center justify-center py-24 gap-4">
-                            <div className="w-10 h-10 rounded-full border-4 border-[hsl(145,70%,22%)/20%] border-t-[hsl(145,70%,22%)] animate-spin" />
-                            <p className="text-muted-foreground text-sm">Loading articles...</p>
-                        </div>
-                    ) : filtered.length === 0 ? (
+                    {filtered.length === 0 ? (
                         <div className="text-center py-24 text-muted-foreground">
                             <div className="text-5xl mb-4">✈️</div>
                             <p>No articles found. Try a different search.</p>

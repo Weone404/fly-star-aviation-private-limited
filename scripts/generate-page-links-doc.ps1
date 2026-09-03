@@ -23,7 +23,7 @@ $sections = [ordered]@{
     @('Locations', '/locations'), @('HTML Sitemap', '/sitemap'), @('HTML Sitemap Case Variant', '/Sitemap')
   )
   'Blog Pages' = @(
-    @('Blog Index', '/blogs'), @('Blog Post 1', '/blogs/1'), @('Blog Post 2', '/blogs/2'), @('Blog Post 3', '/blogs/3'), @('Blog Post 4', '/blogs/4'), @('Blog Post 5', '/blogs/5'), @('Blog Post 6', '/blogs/6'), @('Blog Post 7', '/blogs/7'), @('Air Hostess Salary in India 2026', '/blog/air-hostess-salary-in-india-2026')
+    @('Blog Index', '/blogs'), @('Air Hostess Salary in India 2026', '/blog/air-hostess-salary-in-india-2026')
   )
 }
 
