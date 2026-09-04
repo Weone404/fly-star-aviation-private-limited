@@ -1,50 +1,82 @@
 User-agent: Googlebot
 Allow: /
+Disallow: /admin
+Disallow: /api/
 
 User-agent: Bingbot
 Allow: /
+Disallow: /admin
+Disallow: /api/
 
 User-agent: Twitterbot
 Allow: /
+Disallow: /admin
+Disallow: /api/
 
 User-agent: facebookexternalhit
 Allow: /
+Disallow: /admin
+Disallow: /api/
 
 # ── AI search crawlers (explicitly allowed for AI citation visibility) ──
 User-agent: GPTBot
 Allow: /
+Disallow: /admin
+Disallow: /api/
 
 User-agent: OAI-SearchBot
 Allow: /
+Disallow: /admin
+Disallow: /api/
 
 User-agent: ChatGPT-User
 Allow: /
+Disallow: /admin
+Disallow: /api/
 
 User-agent: ClaudeBot
 Allow: /
+Disallow: /admin
+Disallow: /api/
 
 User-agent: PerplexityBot
 Allow: /
+Disallow: /admin
+Disallow: /api/
 
 User-agent: Google-Extended
 Allow: /
+Disallow: /admin
+Disallow: /api/
 
 User-agent: CCBot
 Allow: /
+Disallow: /admin
+Disallow: /api/
 
 User-agent: Applebot-Extended
 Allow: /
+Disallow: /admin
+Disallow: /api/
 
 User-agent: Amazonbot
 Allow: /
+Disallow: /admin
+Disallow: /api/
 
 User-agent: meta-externalagent
 Allow: /
+Disallow: /admin
+Disallow: /api/
 
 User-agent: Bytespider
 Allow: /
+Disallow: /admin
+Disallow: /api/
 
 User-agent: *
 Allow: /
+Disallow: /admin
+Disallow: /api/
 
 Sitemap: https://www.flystar.co.in/sitemap.xml

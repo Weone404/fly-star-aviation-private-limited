@@ -15,6 +15,8 @@ const ORG_ID = `${SITE_ORIGIN}/#organization`;
 // Human-readable labels for breadcrumb segments (acronyms, ampersands, etc.).
 const LABELS: Record<string, string> = {
   courses: "Courses",
+  "computer-number": "Computer Number",
+  "editorial-policy": "Editorial Policy",
   cpl: "CPL Training",
   atpl: "ATPL Training",
   "cabin-crew": "Cabin Crew",
@@ -297,6 +299,46 @@ function pageNode(path: string): JsonLdNode {
  * schema (WebPage + FAQPage) is provided by the Index component's Helmet and
  * whose Organization/WebSite live in index.html.
  */
+/**
+ * FAQs for non-blog pages. Each entry MUST mirror the visible FAQ text on that
+ * page word for word — schema that carries answers a reader cannot see on the
+ * page is a structured-data violation, and Google drops the rich result for it.
+ * Source of truth for /dgca/computer-number is COMPUTER_NUMBER_FAQS in
+ * src/pages/dgca/computer-number.tsx.
+ */
+export const PAGE_FAQS: Record<string, { q: string; a: string }[]> = {
+  "/dgca/computer-number": [
+    { q: "What is a DGCA Computer Number?", a: "It is the unique identity allotted to a Flight Crew candidate by the Central Examination Organization, Office of the DGCA, after the candidate's application is approved. It is required to apply for any DGCA pilot examination." },
+    { q: "How long is a Computer Number valid?", a: "Its validity is lifetime." },
+    { q: "Can I have more than one Computer Number?", a: "No. A candidate is authorised to hold only one, and it applies to all Flight Crew examination categories." },
+    { q: "What qualification do I need?", a: "Except for the PPL category, applicants must have passed 10+2 with Physics and Mathematics from a recognised board or university, or an equivalent." },
+    { q: "Is there a maximum age to register?", a: "No. DGCA states there is no maximum age limit to register as a Flight Crew candidate." },
+    { q: "Do I have to post a hard copy?", a: "NEW candidates do — by Speed Post or Registered Post to the CEO at East Block-III, Level-III, R.K. Puram, New Delhi 110066. OLD candidates do not." },
+    { q: "Is the Computer Number generated automatically after I submit?", a: "No. It is allotted only after DGCA scrutinises the online application against the hard copy posted by the candidate." },
+    { q: "What is a Board Verification Certificate?", a: "A certificate from the relevant board certifying that your 10th, 10+2, 10+2-equivalent or Diploma mark sheet is authentic. It is mandatory for all NEW candidates." },
+    { q: "Can I upload documents as JPEG?", a: "No. Documents must be PDF. Only the photograph and signature are JPEG/JPG." },
+    { q: "Can I add a missing document after Final Submission?", a: "No. Nothing can be uploaded after Final Submit." },
+    { q: "How long is the registration email link valid?", a: "24 hours. If it is not activated in that window, you must register again." },
+    { q: "My school board is not in the dropdown. What do I do?", a: "Select \"OTHERS\" and proceed with registration." },
+    { q: "What will my login ID be after allotment?", a: "Your allotted Computer Number with the prefix \"P-\"." },
+    { q: "Which profile details can I change myself?", a: "Mobile number, email ID and correspondence address. Everything else requires prior approval from the CEO, DGCA, requested through the \"Raise query\" tab." },
+  ],
+};
+
+function pageFaqNode(path: string): JsonLdNode | null {
+  const faqs = PAGE_FAQS[path];
+  if (!faqs?.length) return null;
+  return {
+    "@type": "FAQPage",
+    "@id": `${canonicalUrl(path)}#faq`,
+    mainEntity: faqs.map((item) => ({
+      "@type": "Question",
+      name: item.q,
+      acceptedAnswer: { "@type": "Answer", text: item.a },
+    })),
+  };
+}
+
 export function buildGraph(path: string): JsonLdNode | null {
   if (path === "/") return null;
 
@@ -312,8 +354,9 @@ export function buildGraph(path: string): JsonLdNode | null {
     return { "@context": "https://schema.org", "@graph": nodes };
   }
 
-  return {
-    "@context": "https://schema.org",
-    "@graph": [breadcrumb(path), pageNode(path)],
-  };
+  const nodes: JsonLdNode[] = [breadcrumb(path), pageNode(path)];
+  const pageFaq = pageFaqNode(path);
+  if (pageFaq) nodes.push(pageFaq);
+
+  return { "@context": "https://schema.org", "@graph": nodes };
 }

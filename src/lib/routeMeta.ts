@@ -271,6 +271,36 @@ const routeMeta: Record<string, RouteMeta> = {
     description: "Sign in to the Fly Star Aviation admin console.",
     canonical: `${BASE_URL}/admin/login`,
   },
+  "/courses/cabin-crew": {
+    title: "Cabin Crew Course | Flying Star Aviator",
+    description: "Cabin crew training in Delhi — eligibility, syllabus, grooming and interview preparation for airline cabin crew roles in India.",
+    canonical: `${BASE_URL}/courses/cabin-crew`,
+  },
+  "/courses/ground-staff": {
+    title: "Airport Ground Staff Course | Flying Star Aviator",
+    description: "Aviation ground staff training in Delhi — job roles, eligibility, syllabus and airport career paths explained.",
+    canonical: `${BASE_URL}/courses/ground-staff`,
+  },
+  "/become-a-pilot/commercial-pilot-licence": {
+    title: "Commercial Pilot Licence (CPL) in India | Flying Star Aviator",
+    description: "How to get a DGCA Commercial Pilot Licence in India: eligibility, 200 flight hours, theory papers, medical and cost.",
+    canonical: `${BASE_URL}/become-a-pilot/commercial-pilot-licence`,
+  },
+  "/become-a-pilot/airline-transport-pilot-licence": {
+    title: "Airline Transport Pilot Licence (ATPL) in India | Flying Star Aviator",
+    description: "DGCA ATPL requirements in India: 1,500 flight hours, theory papers, Class 1 medical and how ATPL differs from CPL.",
+    canonical: `${BASE_URL}/become-a-pilot/airline-transport-pilot-licence`,
+  },
+  "/dgca/computer-number": {
+    title: "DGCA Computer Number: Eligibility, Documents, Steps",
+    description: "DGCA Computer Number explained: 10+2 with Physics and Maths, no age limit, lifetime validity, one per candidate, and the hard copy you must post to CEO.",
+    canonical: `${BASE_URL}/dgca/computer-number`,
+  },
+  "/editorial-policy": {
+    title: "Editorial Policy | Flying Star Aviator",
+    description: "How our DGCA guides are researched and verified: primary sources first, unverified figures never stated as fact, quarterly re-checks, corrections welcomed.",
+    canonical: `${BASE_URL}/editorial-policy`,
+  },
   "/rtr": {
     title: "RTR Full Form - Radio Telephony Restricted | Complete Guide 2026",
     description: "Essential RTR(A) exam guidance for pilot candidates and aviation students.",

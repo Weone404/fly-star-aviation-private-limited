@@ -1,0 +1,68 @@
+# AUDIT.md — flystar.co.in
+Date: 2026-09-04 · Auditor: Claude (SEO/GEO/AEO + full-stack pass)
+Method: full read of `src/`, `public/`, `vercel.json`, build scripts + live HTTP checks against production.
+
+## 1. What the site actually is
+- **Entity:** Flying Star Aviator Private Limited — DGCA CPL/ATPL **ground-class** institute, C705 Sector 7 Block C, Palam Extension, Dwarka, New Delhi 110077. Phone +91 9953536199. Operating since 2008.
+- **Second business line:** B2B aviation services (aircraft management, MRO, CAMO, charter, sourcing, livery, spares, consultancy).
+- **Stack:** Vite 5 + React 18 + TS + Tailwind + shadcn/ui. Express/Mongo backend in `backend/`. Vercel.
+- **Rendering:** NOT a naked SPA. `scripts/prerender.js` drives Puppeteer over every route listed in `src/lib/routeMeta.ts` (+ blog routes from `src/lib/blogData.js`) and writes static HTML into `dist/`. Crawlers get real HTML **for prerendered routes only**.
+
+## 2. THE critical finding — the render gate is leaking 15 URLs
+Production serves a file only if prerender wrote it. Any route absent from `routeMeta.ts` returns **HTTP 404** — verified live, not inferred.
+
+`sitemap.xml` advertises 48 URLs. **15 of them 404.** That is 31% of the declared site returning dead ends to Googlebot, GPTBot, PerplexityBot and ClaudeBot. `llms.txt` also links one of them (`/dgca/computer-number`), so the AI-entity file points at a 404.
+
+| Dead URL | Component exists? | Verdict |
+|---|---|---|
+| /become-a-pilot/commercial-pilot-licence | Yes (801 lines) | **FIXED — added to routeMeta** |
+| /become-a-pilot/airline-transport-pilot-licence | Yes (763 lines) | **FIXED — added to routeMeta** |
+| /courses/cabin-crew | Yes (508 lines) | **FIXED — added to routeMeta** |
+| /courses/ground-staff | Yes (851 lines) | **FIXED — added to routeMeta** |
+| /dgca/computer-number | No — but full draft in `drafts/` | Wire the draft as a real page |
+| /dgca/board-verification | No content anywhere | Decide: write or drop |
+| /locations/{delhi,mumbai,bangalore,hyderabad} | Generic `Locations.tsx`, ~60 unique words each | Blocked — see §4 |
+| /pilot-training/{cpl,ppl,maldives,sri-lanka,guide-to-conversion} | No `:topic` branching — all 5 render the identical /pilot-training page | Duplicate content. Redirect or write real pages |
+
+Four of the fifteen were pure plumbing: 2,900 lines of finished, well-structured page content that has never been crawlable. Those are live-ready in this commit.
+
+## 3. What is already in good shape (do not touch)
+- `robots.txt` — Googlebot, Bingbot and every major AI crawler explicitly allowed (GPTBot, OAI-SearchBot, ChatGPT-User, ClaudeBot, PerplexityBot, Google-Extended, CCBot, Applebot-Extended, Amazonbot, meta-externalagent, Bytespider). Sitemap referenced.
+- `llms.txt` — genuinely good. Correct llmstxt.org shape, one-line entity summary, sectioned links, and a **Key facts** block with citable, sourced numbers (CAR Section 7 Series B Part I; Rs 2,500 regular / Rs 5,000 OLODE per paper; 70% pass mark; five-year paper validity; 200 flight hours; Class 1 medical). This is the single best AEO asset on the site.
+- Alias consolidation — 20 legacy keyword URLs map to canonical paths via `ALIAS_CANONICAL`, so `useMeta`/`useSchema` never emit competing canonicals.
+- Schema — `buildGraph()` emits `@graph` with BreadcrumbList + page node on every route, and BlogPosting + FAQPage on posts. New pages inherit it automatically.
+- Per-page meta — `pageMeta.ts` already holds titles/descriptions for **all 15 dead routes**. The content was ready; only the render gate was missing.
+- Blog engine — slug-based `/blog/<slug>`, canonicalises legacy `/blogs/<id>` to the slug, prerendered, FAQ schema mirrors visible text. Three real posts live.
+
+## 4. Blocked — unverifiable factual claims (Ground Rule 2)
+`src/pages/Locations.tsx` publishes, as fact:
+- `centers: 3` for Delhi, `2` Mumbai, `2` Hyderabad, `4` Bangalore, `8` USA, `16` India.
+- City pages titled "Pilot Training in Mumbai / Bangalore / Hyderabad".
+
+Every other source on the site describes **one** location: Dwarka, New Delhi. If Flying Star Aviator does not operate centres in those cities, these pages are (a) fabricated counts and (b) a local-SEO liability — Google treats unsupported multi-city location pages as doorway pages, and an entity that claims four cities while its NAP says one is exactly the ambiguity that stops an LLM resolving "Fly Star" confidently. **Not publishing these until confirmed.**
+
+## 5. Other gaps found
+- **No legal pages live.** `/privacy-policy`, `/terms`, `/editorial-policy` exist as drafts only. Missing privacy/terms weakens E-E-A-T and trips Google's YMYL-adjacent trust signals for a fee-charging education business.
+- **Thin `/pilot-training/:topic`.** Five sitemap URLs collapse onto one page.
+- **`vercel.json` regex allows paths that 404 anyway** — the allowlist includes `courses/.*`, `locations/.*`, `pilot-training/.*`, but `blog/` (singular) is absent. Blog posts survive only because `handle: filesystem` serves the prerendered file first. Fragile: a blog route that ever misses prerender 404s silently.
+- **`routes` + `cleanUrls` + `trailingSlash` + `headers` in one `vercel.json`** is an unsupported combination in Vercel's schema. Works today; a platform tightening would break routing.
+- **No RSS/Atom feed** for the blog.
+- **No author byline / Person schema** — CLAUDE.md Rule 5 requires one; posts currently have none, costing E-E-A-T and the "who says this" signal LLMs weigh.
+- **Four empty blog stubs** (`_id` 3–6) with titles and no bodies — indexable thin content if ever routed.
+
+## 6. Priority plan (impact × effort)
+| # | Action | Impact | Effort | Status |
+|---|---|---|---|---|
+| P0 | Add 4 finished pages to the render gate | High | Trivial | **Done** |
+| P0 | Resolve locations question | High | Blocked | Awaiting owner |
+| P1 | Wire `/dgca/computer-number` from existing draft | High | Low | Next |
+| P1 | Redirect or build the 5 `/pilot-training/*` duplicates | High | Med | Next |
+| P1 | Ship privacy-policy, terms, editorial-policy from drafts | Med-High | Low | Next |
+| P2 | Author byline + Person schema on all posts | Med | Low | Queued |
+| P2 | Add `blog/` to `vercel.json` allowlist | Med | Trivial | Queued |
+| P2 | RSS feed at `/feed.xml` | Med | Low | Queued |
+| P3 | Ship remaining 2 DGCA drafts (OLODE, exam misconceptions) | Med | Low | Queued |
+| P3 | Sitemap generated at build from `routeMeta.ts` so drift is impossible | Med | Med | Queued |
+
+## 7. Judgment call, documented
+The brief asked whether to migrate to Next.js. **Recommendation: do not.** The existing Puppeteer prerender already emits full static HTML per route, which is what Google and every AI crawler need — the SEO problem here was never rendering, it was a route registry that 15 URLs were missing from. A Next.js migration would spend the entire budget re-achieving the status quo while risking the Express/Mongo backend, admin auth and lead forms. The higher-return move is to make the route registry self-verifying: generate `sitemap.xml` **from** `routeMeta.ts` at build time, so a URL can never be advertised without being rendered. That closes this class of bug permanently, in a fraction of the effort.

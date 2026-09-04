@@ -12,7 +12,7 @@
 - [DGCA Full Form & Role](https://www.flystar.co.in/dgca/full-form): What DGCA (Directorate General of Civil Aviation) is and what it regulates.
 - [DGCA Medical Requirements](https://www.flystar.co.in/dgca/medical): Class 1 and Class 2 medical requirements for pilots in India.
 - [DGCA Ground Classes](https://www.flystar.co.in/dgca/ground-classes): CPL & ATPL ground classes in Dwarka, Delhi.
-- [DGCA Computer Number](https://www.flystar.co.in/dgca/computer-number): How to apply for a DGCA computer number.
+- [DGCA Computer Number](https://www.flystar.co.in/dgca/computer-number): Eligibility (10+2 with Physics and Mathematics; PPL category excepted), no maximum age limit, lifetime validity, one number per candidate, Board Verification Certificate mandatory for new candidates, PDF-only documents, and the hard copy that must be posted to the Central Examination Organization, R.K. Puram, New Delhi 110066.
 - [RTR(A) Training](https://www.flystar.co.in/rtr): Radio Telephony Restricted (Aeronautical) exam preparation.
 
 ## Guides & articles
@@ -28,6 +28,7 @@
 
 ## Company
 - [About](https://www.flystar.co.in/about): Company background, founded 2008.
+- [Editorial Policy](https://www.flystar.co.in/editorial-policy): How guides on this site are researched and verified — primary sources first, unverified figures never stated as fact, quarterly re-checks.
 - [Contact](https://www.flystar.co.in/contact): C705, Sector 7, Block C, Palam Extension, Dwarka, New Delhi 110077. Phone: +91 9953536199.
 
 ## Key facts
@@ -39,3 +40,6 @@
 - The pass mark for each DGCA theory paper is 70%. There is no aggregate across papers.
 - A cleared CPL or ATPL theory paper remains valid for five years.
 - DGCA examination fees are Rs 2,500 per paper in a regular session and Rs 5,000 per paper through the Online On-Demand Examination (OLODE) route.
+- A DGCA Computer Number is the unique lifetime identifier allotted to a Flight Crew candidate by the Central Examination Organization, Office of the DGCA. It is required to apply for any DGCA pilot examination, a candidate may hold only one, and it covers every Flight Crew examination category.
+- There is no maximum age limit to register as a DGCA Flight Crew candidate. Except for the PPL category, applicants need 10+2 with Physics and Mathematics — not Chemistry.
+- A DGCA Computer Number is not generated automatically on submission. For new candidates it is allotted only after DGCA scrutinises the online application against a hard copy posted to the CEO, DGCA, East Block-III, Level-III, R.K. Puram, New Delhi 110066.

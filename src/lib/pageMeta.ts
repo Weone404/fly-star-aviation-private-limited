@@ -184,6 +184,11 @@ export const PAGE_META: Record<string, PageMeta> = {
   },
 
   // ── DGCA sub-pages ──────────────────────────────────────────────────────────
+  "/editorial-policy": {
+    title: "Editorial Policy | Flying Star Aviator",
+    description:
+      "How our DGCA guides are researched, verified and corrected.",
+  },
   "/dgca/computer-number": {
     title: "DGCA Computer Number Guide | Flying Star Aviator",
     description:
