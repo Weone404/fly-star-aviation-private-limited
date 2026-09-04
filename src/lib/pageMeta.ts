@@ -126,7 +126,18 @@ export const PAGE_META: Record<string, PageMeta> = {
   },
   "/locations": {
     title: "Our Locations | Flying Star Aviator",
-    description: "Find Flying Star Aviator training centers and offices across India.",
+    description:
+      "One centre, in Dwarka, New Delhi — and partner flying schools elsewhere. Which is which, stated plainly.",
+  },
+  "/locations/india": {
+    title: "Pilot Training in India | Flying Star Aviator",
+    description:
+      "The two phases of a DGCA licence in India: ground training and theory papers, then flying hours at a DGCA-approved FTO.",
+  },
+  "/locations/usa": {
+    title: "Flight Training in the USA for Indian Candidates | Flying Star Aviator",
+    description:
+      "An FAA licence does not permit commercial flying in India. What DGCA conversion actually requires for hours logged in the USA.",
   },
   "/rtr": {
     title: "RTR(A) Training | Flying Star Aviator",
@@ -168,19 +179,19 @@ export const PAGE_META: Record<string, PageMeta> = {
       "DGCA CPL & ATPL ground classes in Dwarka, Delhi. Visit Flying Star Aviator's flagship training centre.",
   },
   "/locations/mumbai": {
-    title: "Pilot Training in Mumbai | Flying Star Aviator",
+    title: "Pilot Training for Mumbai Candidates | Flying Star Aviator",
     description:
-      "Pilot training guidance for aspiring pilots in Mumbai with Flying Star Aviator.",
+      "We have no centre in Mumbai. DGCA ground classes run from Dwarka, Delhi; partner schools handle the flying phase. What that means for a Mumbai candidate.",
   },
   "/locations/bangalore": {
-    title: "Pilot Training in Bangalore | Flying Star Aviator",
+    title: "Pilot Training for Bangalore Candidates | Flying Star Aviator",
     description:
-      "Pilot training guidance for aspiring pilots in Bangalore with Flying Star Aviator.",
+      "We have no centre in Bangalore. DGCA ground training runs from Delhi and partner schools cover the flying hours — the licensing rules are national either way.",
   },
   "/locations/hyderabad": {
-    title: "Pilot Training in Hyderabad | Flying Star Aviator",
+    title: "Pilot Training for Hyderabad Candidates | Flying Star Aviator",
     description:
-      "Pilot training guidance for aspiring pilots in Hyderabad with Flying Star Aviator.",
+      "We have no centre in Hyderabad. Ground classes run from Dwarka, Delhi; the flying phase is through partner schools. Same DGCA papers, same 200-hour minimum.",
   },
 
   // ── DGCA sub-pages ──────────────────────────────────────────────────────────

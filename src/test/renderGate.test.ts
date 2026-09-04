@@ -1,0 +1,80 @@
+import { readFileSync } from "node:fs";
+import { resolve } from "node:path";
+import { describe, expect, it } from "vitest";
+
+/**
+ * THE RENDER GATE.
+ *
+ * Production serves a route only if `scripts/prerender.js` wrote a file for it,
+ * and that script builds its route list from `src/lib/routeMeta.ts`. A URL in
+ * sitemap.xml that is absent from routeMeta.ts is advertised to Google and to
+ * every AI crawler and returns HTTP 404.
+ *
+ * On 2026-09-04 that was true of 15 of the 48 URLs in the sitemap. This test
+ * exists so it can never silently be true again: sitemap.xml is the
+ * advertisement, routeMeta.ts is the gate, and a URL needs both.
+ */
+const ROOT = resolve(__dirname, "../..");
+const ORIGIN = "https://www.flystar.co.in";
+
+function routeMetaPaths(): Set<string> {
+  const file = readFileSync(resolve(ROOT, "src/lib/routeMeta.ts"), "utf8");
+  const block = file.match(
+    /const routeMeta: Record<string, RouteMeta> = \{([\s\S]*?)\n\};/m
+  );
+  if (!block) throw new Error("Could not parse routeMeta — the prerender script parses it the same way, so it is broken too.");
+  const paths = new Set<string>(["/"]);
+  for (const line of block[1].split("\n")) {
+    const m = line.trim().match(/^"([^"]+)":\s*\{/);
+    if (m) paths.add(m[1]);
+  }
+  return paths;
+}
+
+function blogPaths(): string[] {
+  const file = readFileSync(resolve(ROOT, "src/lib/blogData.js"), "utf8");
+  return [...file.matchAll(/slug:\s*['"]([^'"]+)['"]/g)].map((m) => `/blog/${m[1]}`);
+}
+
+function sitemapPaths(): string[] {
+  const xml = readFileSync(resolve(ROOT, "public/sitemap.xml"), "utf8");
+  return [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)]
+    .map((m) => m[1].replace(ORIGIN, ""))
+    .map((p) => (p === "" ? "/" : p));
+}
+
+function vercelRedirectSources(): Set<string> {
+  const config = JSON.parse(readFileSync(resolve(ROOT, "vercel.json"), "utf8"));
+  const routes = Array.isArray(config.routes) ? config.routes : [];
+  return new Set(
+    routes
+      .filter((r) => r && typeof r.src === "string" && r.status && r.status >= 300 && r.status < 400)
+      .map((r) => r.src)
+  );
+}
+
+describe("render gate", () => {
+  it("prerenders every URL the sitemap advertises", () => {
+    const rendered = new Set([...routeMetaPaths(), ...blogPaths()]);
+    const dead = sitemapPaths().filter((p) => !rendered.has(p));
+    expect(dead, `sitemap.xml advertises URLs that prerender never writes, so they 404: ${dead.join(", ")}`).toEqual([]);
+  });
+
+  it("does not advertise a URL that only exists as a redirect", () => {
+    const redirects = vercelRedirectSources();
+    const advertised = sitemapPaths().filter((p) => redirects.has(p));
+    expect(advertised, `sitemap.xml should list destinations, not redirect sources: ${advertised.join(", ")}`).toEqual([]);
+  });
+
+  it("keeps every canonical inside routeMeta pointing at its own path", () => {
+    const file = readFileSync(resolve(ROOT, "src/lib/routeMeta.ts"), "utf8");
+    const entries = [...file.matchAll(/"(\/[^"]*)":\s*\{[^}]*?canonical:\s*`\$\{BASE_URL\}([^`]*)`/g)];
+    expect(entries.length).toBeGreaterThan(30);
+    const mismatched = entries
+      .filter(([, path, canonical]) => path !== canonical && `${path}/` !== canonical)
+      .map(([, path, canonical]) => `${path} → ${canonical}`);
+    // Alias routes intentionally self-canonicalise here; useMeta resolves them
+    // through ALIAS_CANONICAL at render time. Flag only genuine typos.
+    expect(mismatched).toEqual([]);
+  });
+});

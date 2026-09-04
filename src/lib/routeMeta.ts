@@ -254,6 +254,36 @@ const routeMeta: Record<string, RouteMeta> = {
     description: "Find Flying Star Aviator training centers and offices across India.",
     canonical: `${BASE_URL}/locations`,
   },
+  "/locations/india": {
+    title: "Pilot Training in India: The Two Phases Explained",
+    description: "A DGCA licence in India has two phases: ground training and theory papers, then flying hours at a DGCA-approved FTO. What each one involves.",
+    canonical: `${BASE_URL}/locations/india`,
+  },
+  "/locations/delhi": {
+    title: "Pilot Training in Delhi | Flying Star Aviator",
+    description: "Our own centre is at C705, Sector 7, Palam Extension, Dwarka, New Delhi 110077 — DGCA CPL and ATPL ground classes since 2008. Visit before you enrol.",
+    canonical: `${BASE_URL}/locations/delhi`,
+  },
+  "/locations/mumbai": {
+    title: "Pilot Training for Mumbai Candidates | Flying Star Aviator",
+    description: "We have no centre in Mumbai. DGCA ground classes run from Dwarka, Delhi; partner schools handle flying. What that means for a Mumbai candidate.",
+    canonical: `${BASE_URL}/locations/mumbai`,
+  },
+  "/locations/bangalore": {
+    title: "Pilot Training for Bangalore Candidates | Flying Star Aviator",
+    description: "We have no centre in Bangalore. Ground training runs from Delhi, partner schools cover flying hours — DGCA licensing rules are national either way.",
+    canonical: `${BASE_URL}/locations/bangalore`,
+  },
+  "/locations/hyderabad": {
+    title: "Pilot Training for Hyderabad Candidates | Flying Star Aviator",
+    description: "We have no centre in Hyderabad. Ground classes run from Dwarka, Delhi; flying through partner schools. Same DGCA papers, same 200-hour minimum.",
+    canonical: `${BASE_URL}/locations/hyderabad`,
+  },
+  "/locations/usa": {
+    title: "Flight Training in the USA for Indian Candidates",
+    description: "An FAA licence does not permit commercial flying in India. What DGCA conversion requires for flight hours logged in the USA, and when to clear the papers.",
+    canonical: `${BASE_URL}/locations/usa`,
+  },
   "/sitemap": {
     title: "Sitemap | Flying Star Aviator",
     description: "Flying Star Aviator sitemap and navigation guide for pilot training, services, and aviation resources.",

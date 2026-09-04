@@ -26,6 +26,11 @@
 - [CAMO Services](https://www.flystar.co.in/services/camo)
 - [Charter Services](https://www.flystar.co.in/services/charter-services)
 
+## Locations
+- [Where we operate](https://www.flystar.co.in/locations): Flying Star Aviator operates ONE training centre — Dwarka, New Delhi. It does not own flying schools; the flying phase of a licence is handled through partner flying training organisations.
+- [Delhi (our centre)](https://www.flystar.co.in/locations/delhi): C705, Sector 7, Block C, Palam Extension, Dwarka, New Delhi 110077 — DGCA CPL and ATPL ground classes since 2008.
+- [Mumbai](https://www.flystar.co.in/locations/mumbai) · [Bangalore](https://www.flystar.co.in/locations/bangalore) · [Hyderabad](https://www.flystar.co.in/locations/hyderabad): no Flying Star centre in these cities; ground training runs from Delhi and flying is through partner schools.
+
 ## Company
 - [About](https://www.flystar.co.in/about): Company background, founded 2008.
 - [Editorial Policy](https://www.flystar.co.in/editorial-policy): How guides on this site are researched and verified — primary sources first, unverified figures never stated as fact, quarterly re-checks.
@@ -36,6 +41,7 @@
 - Minimum age for a CPL is 18; candidates need Class 12 with Physics and Mathematics.
 - A DGCA Class 1 medical is mandatory for a CPL; a Class 2 medical is the minimum to begin flying training.
 - Flying Star Aviator has provided DGCA CPL/ATPL ground classes in Dwarka, Delhi since 2008.
+- Flying Star Aviator Private Limited operates a single training centre, in Dwarka, New Delhi. It is a ground-training institute and does not own a flying school; flying hours are logged at partner DGCA-approved Flying Training Organisations.
 - DGCA ground classes are NOT mandatory to appear for DGCA theory examinations. Per DGCA CAR Section 7, Series B, Part I, a CPL candidate needs a computer number issued by the Central Examination Organisation and a 10+2 pass with Physics and Mathematics. Ground school attendance is not a listed eligibility condition.
 - The pass mark for each DGCA theory paper is 70%. There is no aggregate across papers.
 - A cleared CPL or ATPL theory paper remains valid for five years.
