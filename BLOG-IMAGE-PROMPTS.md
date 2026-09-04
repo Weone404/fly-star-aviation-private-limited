@@ -183,3 +183,82 @@ placeholders until art is dropped at the paths below.
 > Flat vector illustration, minimal clean style, professional Indian aviation
 > training context, generous negative space, absolutely NO text, words, letters,
 > numbers or signage anywhere in the image.
+
+---
+
+## Post: cpl-vs-atpl-difference-india
+
+**Status:** needs all images — `coverImage` points at the site-wide fallback
+(`/assets/hero-aircraft-1600w.jpg`); the three inline slots render as labelled
+placeholders until art is dropped at the paths below.
+
+### Cover
+
+- **File:** `/blog/cpl-vs-atpl-difference-india/cover.webp`
+- **Dimensions:** 1200 × 675
+- **Alt text:** A First Officer's uniform shoulder board with three stripes beside a Captain's shoulder board with four stripes, laid flat on a desk next to a folded licence document.
+
+> A wide banner showing two epaulette shoulder boards laid flat on a desk side
+> by side, one with three abstract stripe bars, the other with four, a single
+> closed document folder resting just behind them. Deep green background, warm
+> amber as the single accent, a quietly aspirational but factual mood. No
+> aircraft, no logos, no faces, no readable text or insignia detail on the
+> boards or the folder.
+>
+> Flat vector illustration, minimal clean style, professional Indian aviation
+> training context, generous negative space, absolutely NO text, words, letters,
+> numbers or signage anywhere in the image.
+
+### Slot 1 — CPL-to-ATPL sequence timeline
+
+- **File:** `/blog/cpl-vs-atpl-difference-india/cpl-atpl-sequence-timeline.webp`
+- **Dimensions:** 1200 × 675
+- **Alt text:** A horizontal timeline showing four stages in sequence: DGCA computer number and 10+2 eligibility, CPL theory papers and flight training, working as a First Officer on a CPL, then ATPL theory papers and accumulated flight experience that leads to a Captain upgrade.
+
+> A wide banner showing a single horizontal line running left to right with
+> four evenly spaced abstract waypoint markers on it, each paired with a small
+> flat icon above it: a document icon, an open-book icon, a co-pilot-seat
+> icon, and a captain's-seat icon, rising slightly in visual weight from left
+> to right. Deep green background, warm amber as the single accent, a steady
+> progression mood. No aircraft, no logos, no faces, no readable text or
+> numerals anywhere in the frame.
+>
+> Flat vector illustration, minimal clean style, professional Indian aviation
+> training context, generous negative space, absolutely NO text, words, letters,
+> numbers or signage anywhere in the image.
+
+### Slot 2 — the "frozen ATPL" myth explained
+
+- **File:** `/blog/cpl-vs-atpl-difference-india/frozen-atpl-myth-explainer.webp`
+- **Dimensions:** 1200 × 675
+- **Alt text:** A split-panel graphic contrasting two labelled ideas either side of an equals sign: a paused icon representing the foreign "frozen ATPL" term on the left, and a clock icon representing the Indian CPL-plus-banked-ATPL-papers structure on the right, showing the two situations are equivalent even though the label differs.
+
+> A wide banner divided into two equal panels by a thin vertical line with a
+> small equals-sign glyph centred on it. The left panel holds a single
+> pause-button icon inside a soft circle outline. The right panel holds a
+> single clock-face icon, its hands set to show elapsed time, inside a
+> matching circle outline. Deep green background, warm amber as the single
+> accent, a clarifying and slightly myth-busting mood. No flags, no aircraft,
+> no logos, no faces, no readable text anywhere in the frame.
+>
+> Flat vector illustration, minimal clean style, professional Indian aviation
+> training context, generous negative space, absolutely NO text, words, letters,
+> numbers or signage anywhere in the image.
+
+### Slot 3 — CPL vs ATPL paper comparison
+
+- **File:** `/blog/cpl-vs-atpl-difference-india/cpl-atpl-papers-comparison.webp`
+- **Dimensions:** 1200 × 675
+- **Alt text:** A Venn-diagram style comparison of two overlapping circles: the CPL circle containing five paper icons for Air Navigation, Meteorology, Air Regulation, Technical General and Technical Specific, and the ATPL circle containing the same five plus a sixth icon for Radio Aids and Instruments in the non-overlapping section.
+
+> A wide banner showing two large overlapping circles in a Venn-diagram
+> arrangement. The shared central overlap area contains five small identical
+> abstract document icons arranged in a row. The right circle's
+> non-overlapping crescent contains one additional, slightly distinct icon
+> resembling a radio-wave symbol. Deep green background, warm amber as the
+> single accent, an analytical and orderly mood. No aircraft, no logos, no
+> faces, no readable text or numerals anywhere in the frame.
+>
+> Flat vector illustration, minimal clean style, professional Indian aviation
+> training context, generous negative space, absolutely NO text, words, letters,
+> numbers or signage anywhere in the image.
