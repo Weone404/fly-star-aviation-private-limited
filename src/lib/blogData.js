@@ -1,4 +1,7 @@
-export const BLOG_POSTS = [
+import { REMOTE_BLOG_POSTS } from "./blogData.remote.js";
+
+/** Posts committed to this repo. The daily publishing routine appends here. */
+export const STATIC_BLOG_POSTS = [
   {
     _id: '1',
     title: 'How to Become a Commercial Pilot in India – Complete 2026 Guide',
@@ -282,6 +285,28 @@ export const BLOG_POSTS = [
 <p>Check the approval on the regulator's list, not the brochure. Ask for utilisation figures from the last six months rather than capacity claims, and get them in writing. Settle your theory sequencing before you sign, because a paper cleared at 70% stays valid for five years and is the one part of your progress no school's schedule can slow down. Get the exit terms in writing before you pay, and ask current students what they wish they had asked. If you are planning that theory sequence now, our <a href="/dgca/ground-classes">DGCA ground classes</a> are built around exactly that decision, and the wider <a href="/courses/cpl">CPL route</a> is set out separately for candidates still mapping the whole path.</p>`,
   },
 ];
+
+/**
+ * Every post the site knows about: the ones committed here, plus the ones
+ * fetched from /api/blogs at build time by scripts/fetch-blogs.mjs and passed
+ * through the quality gate in blog-gate.json.
+ *
+ * A committed post wins a slug collision — the repo is the source of truth for
+ * anything it holds, and a database row must never silently replace a reviewed,
+ * fact-checked article.
+ *
+ * Merging here rather than at each call site means routeMeta (titles, canonical),
+ * the schema builder, the prerender route list and the generated sitemap all see
+ * one list. Before this existed, admin-published posts were in none of them.
+ */
+export const BLOG_POSTS = (() => {
+  const staticSlugs = new Set(STATIC_BLOG_POSTS.map((p) => p.slug).filter(Boolean));
+  const staticIds = new Set(STATIC_BLOG_POSTS.map((p) => p._id).filter(Boolean));
+  const remote = (REMOTE_BLOG_POSTS || []).filter(
+    (p) => !staticSlugs.has(p.slug) && !staticIds.has(p._id)
+  );
+  return [...STATIC_BLOG_POSTS, ...remote];
+})();
 
 export function getBlogPost(idOrSlug) {
   return BLOG_POSTS.find((post) => post._id === idOrSlug || post.slug === idOrSlug) || null;

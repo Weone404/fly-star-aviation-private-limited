@@ -190,3 +190,101 @@ no errors).
 ### Result
 `sitemap.xml` advertises 50 URLs. **All 50 are now prerenderable.** At the start
 of this session, 15 of 48 returned HTTP 404.
+
+
+---
+
+## 2026-09-04 (evening) — Blog publishing pipeline, quality gate, generated sitemap
+
+### The gap
+Posts written through `/admin/blog` are stored in MongoDB and served by
+`/api/blogs`. `Blogs.tsx` and `BlogDetail.tsx` fetch them at runtime.
+`scripts/prerender.js` did not: it built its route list from the posts hardcoded
+in `src/lib/blogData.js` alone.
+
+So an admin-published post was visible to a human — the SPA fetched it — and
+invisible to every crawler: no static file, no title, no meta description, no
+sitemap entry. **Fourteen posts were in that state**, twelve of them substantial
+(700–2,200 words). Until the `blog/` fix earlier today they were worse than
+invisible: `/blog/<slug>` fell through `vercel.json` to the 404 catch-all, so the
+admin panel had not been able to publish a reachable post at all.
+
+### The fix
+`scripts/fetch-blogs.mjs` (new, runs in `prebuild`) fetches `/api/blogs`, applies
+a quality gate, and writes `src/lib/blogData.remote.js`. `blogData.js` merges
+that into `BLOG_POSTS`, with committed posts winning any slug collision — a
+database row must never silently replace a reviewed article. Because
+`routeMeta`, the schema builder, `getBlogRoutes()` and the sitemap generator all
+read `BLOG_POSTS`, one merge fixes meta, structured data, prerendering and the
+sitemap together.
+
+**It fails soft.** If the API is unreachable — Render cold start, outage, an
+egress-restricted build — the previously generated file is kept and the build
+continues. A blog outage must not fail a deploy of the whole site.
+
+### The quality gate, and why it exists
+`blog-gate.json` holds the rules; `scripts/blogGate.mjs` holds the logic. A post
+must have a title, a usable slug, at least 300 words, no duplicate slug, and no
+configured spam marker. Failing posts are still served by the SPA at runtime —
+they simply are not advertised to crawlers — and every decision is written to
+`blog-gate-report.json` (gitignored) so nothing disappears silently.
+
+The gate is not hypothetical. Of the fourteen live posts:
+- **"Why India Needs More Pilots"** opens with a section on *"HCHCR Steel Flat
+  Supplier in Delhi"*. Held back on a spam marker.
+- **"Pilot Demand in India Through 2030"** had the slug
+  `-pilot-demand-in-india-through-`. Leading and trailing hyphens are trimmed;
+  internal double hyphens are deliberately left alone, because several live posts
+  have them and changing one would break the `/api/blogs/:slug` runtime lookup.
+
+Wiring the fetch without the gate would have put both into the sitemap.
+
+### sitemap.xml is now generated
+`scripts/generate-sitemap.mjs` builds it from `src/lib/routeMeta.ts` — the render
+gate itself — plus the merged blog posts, skipping alias routes, `/admin`, and
+posts with no slug or under 300 words. Hand-editing is what let the manifest and
+the gate drift into fifteen dead URLs; a generated file cannot drift.
+`renderGate.test.ts` now also asserts the generated header is still present.
+
+Excluded on purpose: the legacy `/blogs/1`–`/blogs/6` URLs. Four of those
+(`_id` 3–6) are the title-only stubs. They still prerender and still resolve for
+anyone holding an old link — a sitemap is a recommendation, not an inventory.
+
+### Post-deploy smoke check
+`scripts/smoke.mjs` (`npm run smoke`) fetches every sitemap URL and asserts HTTP
+200, and asserts that declared redirect sources return 3xx rather than 200.
+Exits non-zero so CI can gate on it. This is the check that would have caught the
+original defect on the day it shipped rather than weeks later.
+
+### Tests
+`src/test/blogGate.test.ts` (new, 11 cases) covers the gate against fixtures of
+the real 2026-09-04 database rows, including the steel-supplier post and the
+malformed slug. The gate logic is pure and lives in `scripts/blogGate.mjs`
+precisely so it can be tested without the API, which is unreachable from CI
+sandboxes. `renderGate.test.ts` now imports `getBlogRoutes()` instead of scraping
+`blogData.js` with a regex, so it asks the same question the build does.
+
+**40 tests passing.** `prebuild` + `vite build` green.
+
+### Co-branding, not de-branding
+`/courses/Air-india-pilot-interview` and `/courses/Indigo-pilot-interview`
+carried only We One Aviation's identity — name, `weoneaviation.in`,
+`info@weoneaviation.in`, `+91 9555291956`, `+91 9717977702` — on the
+flystar.co.in domain, with meta titles ending "| We One Aviation".
+
+Owner confirmed We One Aviation is also their brand and asked for Flying Star
+Aviator's details to be added rather than the We One references removed. Done:
+We One Aviation's contacts stay, Flying Star Aviator's NAP is added beside them,
+and both pages now state that the programme is run by the two together.
+
+Meta titles now end "| Flying Star Aviator" to match the domain. That is a
+judgement call worth flagging: a page served from flystar.co.in whose title names
+a different business is the single clearest way to confuse entity resolution, and
+titles have no room for two brands. The body text names both. Easy to revert if
+the owner prefers otherwise.
+
+### Still open
+- Admin auth — accepted as-is by the owner; see AUDIT.md §6.
+- The spam row is excluded from the sitemap but not deleted from the database.
+- The twelve newly-publishable posts have not been fact-checked against the
+  editorial policy. They pre-date it. Worth a pass before they earn citations.

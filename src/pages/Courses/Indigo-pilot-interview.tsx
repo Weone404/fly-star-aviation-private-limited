@@ -202,8 +202,8 @@ export default function IndiGoPilotInterviewPage() {
     return (
         <Layout>
             
-                <title>IndiGo Pilot Interview Preparation (JFO 2026) | We One Aviation</title>
-                <meta name="description" content="Ace the IndiGo JFO 2026 selection process with We One Aviation. Structured preparation for ADAPT test, Group Discussion, HR & Technical Interview. CPL & A320 Type Rated programs available." />
+                <title>IndiGo Pilot Interview Preparation (JFO 2026) | Flying Star Aviator</title>
+                <meta name="description" content="Ace the IndiGo JFO 2026 selection process with Flying Star Aviator and We One Aviation. Structured preparation for ADAPT test, Group Discussion, HR & Technical Interview. CPL & A320 Type Rated programs available." />
             
 
             {/* Hero Section */}
@@ -682,13 +682,23 @@ export default function IndiGoPilotInterviewPage() {
                         className="max-w-3xl mx-auto text-center"
                     >
                         <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                            ðŸ“ž Contact We One Aviation
+                            Contact us
                         </h2>
                         <p className="text-primary-foreground/80 text-lg mb-4">
                             Ready to begin your IndiGo JFO preparation? Our counselors are available to guide you on the right program, upcoming batch dates, and everything you need to start your journey toward becoming an IndiGo pilot.
                         </p>
                         <p className="text-primary-foreground/80 text-lg mb-8">
                             Don't wait â€” IndiGo recruitment cycles move fast, and early preparation is the key to success. Reach out today and take the first step toward your airline career.
+                        </p>
+                        <p className="text-primary-foreground/80 mb-8">
+                            This programme is run by Flying Star Aviator Private Limited
+                            together with We One Aviation. Flying Star Aviator:{" "}
+                            <a href="tel:+919953536199" className="underline">+91 9953536199</a>,{" "}
+                            <a href="mailto:flyingstaraviator@gmail.com" className="underline">flyingstaraviator@gmail.com</a>,
+                            C705, Sector 7, Palam Extension, Dwarka, New Delhi 110077.
+                            We One Aviation:{" "}
+                            <a href="tel:+919555291956" className="underline">+91 9555291956</a>,{" "}
+                            <a href="mailto:info@weoneaviation.in" className="underline">info@weoneaviation.in</a>.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <Button variant="gold" size="lg" asChild>

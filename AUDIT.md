@@ -61,8 +61,21 @@ public JavaScript bundle and are readable by anyone who opens developer tools on
 flystar.co.in. `/admin/login` is prerendered and was crawlable.
 
 Mitigated so far: `Disallow: /admin` added to every user-agent group in
-`robots.txt`. That hides the door; it does not lock it. The password must be
-rotated and the check moved server-side. Raised with the owner 2026-09-04.
+`robots.txt`. That hides the door; it does not lock it.
+
+**Owner decision, 2026-09-04: accepted as-is.** The password stays and the auth
+stays client-side. Recorded here so the choice is deliberate and visible, not
+forgotten. Not to be re-raised.
+
+**Related finding, same day.** `GET /api/blogs` returned a post titled "Why India
+Needs More Pilots" whose body opens with a block on "HCHCR Steel Flat Supplier in
+Delhi" — SEO spam for an unrelated industrial product, sitting in the production
+database. The admin API has no server-side authentication, so `POST /api/blogs`
+accepts writes from anyone, with or without the client-side login. Whether this
+row was injected or pasted in error is not established. It is excluded from the
+sitemap by the build-time gate in `blog-gate.json`; it has not been deleted,
+because deleting production data is the owner's call.
+- **Two We One Aviation-branded pages on flystar.co.in.** `/courses/Air-india-pilot-interview` and `/courses/Indigo-pilot-interview` carried We One Aviation's name, website, email and phone numbers, and meta titles ending "| We One Aviation", on the Fly Star domain. Owner confirmed both are their brands; pages are now co-branded with Flying Star Aviator's NAP added and titles matching the domain. See CHANGELOG 2026-09-04 (later).
 - **No analytics installed.** No GA4, GTM, Meta Pixel or Clarity tag in `index.html`. Nothing on this site is currently measurable.
 - **Four empty blog stubs** (`_id` 3–6) with titles and no bodies — indexable thin content if ever routed.
 

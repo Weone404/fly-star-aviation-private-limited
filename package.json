@@ -15,7 +15,11 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "start:backend": "node backend/server.js",
-    "dev:all": "concurrently \"npm run dev\" \"npm run start:backend\""
+    "dev:all": "concurrently \"npm run dev\" \"npm run start:backend\"",
+    "prebuild": "node scripts/fetch-blogs.mjs && node scripts/generate-sitemap.mjs",
+    "sitemap": "node scripts/generate-sitemap.mjs",
+    "blogs:fetch": "node scripts/fetch-blogs.mjs",
+    "smoke": "node scripts/smoke.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",

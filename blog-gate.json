@@ -1,0 +1,11 @@
+{
+  "_comment": "Quality gate for posts pulled from /api/blogs at build time. A post that fails is still served by the SPA at runtime; it just does not get a prerendered file or a sitemap entry, so it is never advertised to a crawler. Review blog-gate-report.json after each build.",
+  "minWords": 300,
+  "denySlugs": [],
+  "denyIds": [],
+  "spamMarkers": [
+    "hchcr",
+    "steel flat",
+    "steel supplier"
+  ]
+}

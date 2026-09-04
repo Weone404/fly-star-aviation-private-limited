@@ -135,12 +135,12 @@ const routeMeta: Record<string, RouteMeta> = {
     canonical: `${BASE_URL}/careers`,
   },
   "/courses/Air-india-pilot-interview": {
-    title: "Air India Pilot Interview Preparation 2026 | We One Aviation",
+    title: "Air India Pilot Interview Preparation 2026 | Flying Star Aviator",
     description: "Air India pilot interview coaching, psychometric assessments and personality preparation for airline entry.",
     canonical: `${BASE_URL}/courses/Air-india-pilot-interview`,
   },
   "/courses/Indigo-pilot-interview": {
-    title: "IndiGo Pilot Interview Preparation (JFO 2026) | We One Aviation",
+    title: "IndiGo Pilot Interview Preparation (JFO 2026) | Flying Star Aviator",
     description: "IndiGo pilot interview coaching with mock interviews, CRM training, and HR preparation.",
     canonical: `${BASE_URL}/courses/Indigo-pilot-interview`,
   },

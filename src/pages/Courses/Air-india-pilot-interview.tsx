@@ -156,10 +156,10 @@ export default function AirIndiaPilotInterviewPage() {
     return (
         <Layout>
 
-                <title>Air India Pilot Interview Preparation 2026 | We One Aviation</title>
+                <title>Air India Pilot Interview Preparation 2026 | Flying Star Aviator</title>
                 <meta
                     name="description"
-                    content="Crack the Air India pilot selection process with We One Aviation. Structured preparation for CPL holders & Type Rated pilots â€“ Psychometric, GD, HR & Technical interviews. Enroll now."
+                    content="Crack the Air India pilot selection process with Flying Star Aviator and We One Aviation. Structured preparation for CPL holders & Type Rated pilots â€“ Psychometric, GD, HR & Technical interviews. Enroll now."
                 />
 
 
@@ -497,7 +497,9 @@ export default function AirIndiaPilotInterviewPage() {
                     >
                         <h2 className="text-3xl md:text-4xl font-bold mb-4">ðŸ“ž Contact We One Aviation</h2>
                         <p className="text-muted-foreground max-w-2xl mx-auto">
-                            Get in touch with our team to learn more about upcoming batches, course details, and enrollment.
+                            This programme is run by Flying Star Aviator Private Limited
+                            together with We One Aviation. Either team can help you with
+                            upcoming batches, course details and enrolment.
                         </p>
                     </motion.div>
 
@@ -526,6 +528,24 @@ export default function AirIndiaPilotInterviewPage() {
                                 label: "Instagram",
                                 value: "@topflyer_pilot",
                                 href: "https://www.instagram.com/topflyer_pilot",
+                            },
+                            {
+                                icon: Phone,
+                                label: "Flying Star Aviator \u2014 phone",
+                                value: "+91 9953536199",
+                                href: "tel:+919953536199",
+                            },
+                            {
+                                icon: Mail,
+                                label: "Flying Star Aviator \u2014 email",
+                                value: "flyingstaraviator@gmail.com",
+                                href: "mailto:flyingstaraviator@gmail.com",
+                            },
+                            {
+                                icon: Globe,
+                                label: "Flying Star Aviator \u2014 centre",
+                                value: "Dwarka, New Delhi 110077",
+                                href: "/locations/delhi",
                             },
                         ].map((contact, index) => (
                             <motion.a

@@ -25,3 +25,4 @@ dist-ssr
 .vercel
 .env*
 flystar-routine-prompt.txt
+blog-gate-report.json

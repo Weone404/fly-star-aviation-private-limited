@@ -14,13 +14,53 @@ backend in `backend/` · Vercel.
 
 ## 3. Build
 ```bash
-npm run build          # vite build, then scripts/prerender.js via postbuild
-npm run test           # vitest — 28 tests
+npm run build          # prebuild -> vite build -> postbuild
+npm run test           # vitest — 40 tests
 npm run lint           # eslint
+npm run smoke          # post-deploy: every sitemap URL must return 200
 ```
 
-`postbuild` runs the prerender. A build that skips it ships an empty SPA shell to
-crawlers.
+The full build is three stages:
+
+| Stage | Script | Does |
+|---|---|---|
+| `prebuild` | `fetch-blogs.mjs`, `generate-sitemap.mjs` | Pulls admin-published posts from `/api/blogs` through the quality gate; regenerates `public/sitemap.xml` from `routeMeta.ts` |
+| `build` | `vite build` | The SPA bundle |
+| `postbuild` | `prerender.js` | Writes a static HTML file per route |
+
+A build that skips `postbuild` ships an empty SPA shell to crawlers. A build that
+skips `prebuild` ships yesterday's blog posts and a stale sitemap.
+
+### Blog publishing — how a post actually goes live
+There are two publishing paths and they behave differently.
+
+| Path | Lands in | Live when |
+|---|---|---|
+| Daily Claude routine | commit to `blogData.js` → `claude/blog-*` branch → GitHub Action → merge to `main` | Vercel builds on the merge |
+| `/admin/blog` | MongoDB, via `POST /api/blogs` | **Only on the next build** |
+
+The second path needs a rebuild to become crawlable, because prerendering happens
+at build time. Until a rebuild runs, an admin-published post is served by the SPA
+at runtime but has no static HTML, no meta tags and no sitemap entry.
+
+**Set up a rebuild trigger.** Vercel → Settings → Git → Deploy Hooks, create a
+hook for `main`, then either:
+- call it from `backend/server.js` after a successful `POST`/`PUT`/`DELETE` on
+  `/api/blogs` (immediate, preferred), or
+- call it on a schedule — a daily cron against the hook URL is enough if
+  same-day publishing is not required.
+
+Treat the hook URL as a secret; anyone holding it can trigger builds.
+
+### Blog quality gate
+`blog-gate.json` decides which fetched posts may be advertised. A post needs a
+title, a usable slug, 300+ words, a unique slug, and no configured spam marker.
+Rejected posts still render in the SPA; they get no static file and no sitemap
+entry. Check `blog-gate-report.json` after each build to see what was held back
+and why — it is gitignored, so read it in the build log or locally.
+
+To publish something the gate is holding: fix the post in `/admin/blog`, or
+adjust `blog-gate.json` deliberately. Do not bypass the gate.
 
 ### Documentation drift, worth fixing
 `PRERENDER.md` says prerendering reads `<loc>` entries from `dist/sitemap.xml`
@@ -81,20 +121,23 @@ green checks; it does not cover `geo/*` branches.
 2. **View source, not the rendered page.** Confirm the H1 and body text are in
    the raw HTML. If they only appear after JavaScript runs, prerendering did not
    happen for that route and the SEO work has not landed.
-3. **Google Search Console** — submit `sitemap.xml`, then request indexing on
+3. **Run the smoke check** — `npm run smoke`. It fetches every sitemap URL and
+   fails on anything that is not 200, and verifies declared redirects still 3xx.
+   Treat a failure here as a blocker, not a warning.
+4. **Google Search Console** — submit `sitemap.xml`, then request indexing on
    `/dgca/computer-number` and the five `/pilot-training/*` pages directly.
-4. **Validate structured data** — Rich Results Test on `/dgca/computer-number`
+5. **Validate structured data** — Rich Results Test on `/dgca/computer-number`
    and one `/pilot-training/*` page. Confirm the FAQ answers in the markup match
    the visible accordion text word for word.
-5. **Google Business Profile** — align name, address and phone to §1 of `SEO.md`
+6. **Google Business Profile** — align name, address and phone to §1 of `SEO.md`
    exactly, and confirm the GBP category reflects a training institute. Add the
    `sameAs` URLs already in `index.html`.
-6. **Install analytics.** There is none today (see `SEO.md` §6).
+7. **Install analytics.** There is none today (see `SEO.md` §6).
 
 ## 7. Blocked, needing owner input
 | Item | Why it is blocked |
 |---|---|
-| **Hardcoded admin credentials** | `src/pages/admin/login/page.tsx` holds the admin username and password in client-side source, shipped in the JS bundle. Rotate the password; moving the check server-side touches `backend/` and admin auth, gated by CLAUDE.md rule 5 |
+| **Admin auth** | Owner reviewed and accepted as-is on 2026-09-04. Credentials remain client-side. Not to be re-raised. See AUDIT.md §6 for the accepted risk and the related spam row found in the database |
 | `/privacy-policy`, `/terms` | Drafts complete but hold ~13 `[CONFIRM]` items only the business knows: analytics and pixels in use, third parties receiving data, retention periods, grievance officer, minimum enrolment age, registered MCA address. The footer's links to them were removed rather than left pointing at 404s |
 | Canonical email | Two addresses in circulation (`SEO.md` §1) |
 | PPL flight-hour minimum | Not verifiable from DGCA's portal, which serves its homepage to non-browser clients. Needs Schedule II, Aircraft Rules 1937, read directly |
