@@ -79,6 +79,23 @@ jobs:
           HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK_URL }}
 ```
 
+### Snapshots: where they may live
+`.gitignore` covers `*-snapshot.json`, but that is a backstop against committing,
+not a storage policy.
+
+| File | Where | Why |
+|---|---|---|
+| `blog-snapshot.json` | Repo folder is fine (ignored) | Post content, already public |
+| `contacts-snapshot.json` | **Outside the repo folder** | Real names, phone numbers and email addresses |
+
+The contacts export does not belong in a directory whose habitual verb is
+`git add -A`, and it does not belong on a shared machine. Earlier guidance in this
+project said to write both into the repo folder; that was wrong for the contacts
+file, and this table supersedes it.
+
+Take the contacts snapshot **before** the `GET /api/contacts` removal deploys —
+afterwards, the only read path is the database directly.
+
 ### Blog approval — the workflow
 Nothing written in `/admin/blog` reaches the public site until you approve it by
 name. The approval list is `src/lib/blogApproval.ts`.
@@ -96,6 +113,13 @@ write in /admin/blog  ->  review it  ->  npm run blogs:approve -- <slug>
 | `npm run blogs:approve -- <slug> --note "..."` | Same, with a note recorded beside the approval |
 
 Run these from a machine that can reach the API, then commit the changed file.
+
+**Approve last, not first.** The hash pins whatever exists at the moment you run
+the command. If a post still needs an edit — a figure to source, a slug to
+repair, a sentence to rewrite — make the edit in `/admin/blog` *first*, then
+approve. Approving pre-edit content and fixing it afterwards trips the tamper
+alarm on the very next build, and a false alarm on day one is how a real one gets
+ignored on day thirty.
 
 **Why an allowlist and not a filter.** `POST /api/blogs` accepts unauthenticated
 writes, and post bodies are rendered as HTML. A heuristic filter's rules live in
