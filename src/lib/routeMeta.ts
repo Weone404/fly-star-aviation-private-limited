@@ -254,6 +254,31 @@ const routeMeta: Record<string, RouteMeta> = {
     description: "Find Flying Star Aviator training centers and offices across India.",
     canonical: `${BASE_URL}/locations`,
   },
+  "/pilot-training/ppl": {
+    title: "PPL Training in India: Eligibility, Exams & Validity",
+    description: "A PPL needs a Class 10 pass, not 10+2 with PCM — that is the CPL rule. DGCA subjects, the 70% pass mark and the two-and-a-half-year paper validity explained.",
+    canonical: `${BASE_URL}/pilot-training/ppl`,
+  },
+  "/pilot-training/cpl": {
+    title: "CPL Flight Training in India: The Flying Half of the Licence",
+    description: "Ground school and flying school are different institutions. What DGCA requires for the theory papers, the 200-hour minimum and how the two halves sequence.",
+    canonical: `${BASE_URL}/pilot-training/cpl`,
+  },
+  "/pilot-training/guide-to-conversion": {
+    title: "Convert a Foreign Pilot Licence to a DGCA Licence",
+    description: "DGCA conversion under CAR Section 7 Series G Part I: the 10-hours-PIC-in-24-months currency rule, Indian written exams and a skill test with a DGCA examiner.",
+    canonical: `${BASE_URL}/pilot-training/guide-to-conversion`,
+  },
+  "/pilot-training/maldives": {
+    title: "Pilot Training in the Maldives: What to Check First",
+    description: "The Maldives CAA publishes its approved flight training organisations. Verify the school on that list, and know that the licence needs DGCA conversion for India.",
+    canonical: `${BASE_URL}/pilot-training/maldives`,
+  },
+  "/pilot-training/sri-lanka": {
+    title: "Pilot Training in Sri Lanka: CAASL Requirements Explained",
+    description: "CAASL requires age 18+, a Class I medical and English Language Proficiency at ELPC Level 4. What differs from the Indian route, and how conversion back works.",
+    canonical: `${BASE_URL}/pilot-training/sri-lanka`,
+  },
   "/locations/india": {
     title: "Pilot Training in India: The Two Phases Explained",
     description: "A DGCA licence in India has two phases: ground training and theory papers, then flying hours at a DGCA-approved FTO. What each one involves.",

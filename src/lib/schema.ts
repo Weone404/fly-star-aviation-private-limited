@@ -9,6 +9,7 @@
 import { SITE_ORIGIN, canonicalUrl } from "./routes";
 import { PAGE_META } from "./pageMeta";
 import { getBlogPost, getWordCount, getReadingMinutes } from "./blogData.js";
+import { PILOT_TRAINING_TOPICS } from "./pilotTrainingTopics";
 
 const ORG_ID = `${SITE_ORIGIN}/#organization`;
 
@@ -325,8 +326,16 @@ export const PAGE_FAQS: Record<string, { q: string; a: string }[]> = {
   ],
 };
 
+/** /pilot-training/<topic> FAQs come straight from the array the page renders. */
+function faqsFor(path: string): { q: string; a: string }[] | undefined {
+  const direct = PAGE_FAQS[path];
+  if (direct) return direct;
+  const topic = path.match(/^\/pilot-training\/([^/]+)$/)?.[1];
+  return topic ? PILOT_TRAINING_TOPICS[topic]?.faqs : undefined;
+}
+
 function pageFaqNode(path: string): JsonLdNode | null {
-  const faqs = PAGE_FAQS[path];
+  const faqs = faqsFor(path);
   if (!faqs?.length) return null;
   return {
     "@type": "FAQPage",

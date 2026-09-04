@@ -7,6 +7,11 @@
 - [Airline Preparation](https://www.flystar.co.in/courses/airline-preparation): Airline interview and assessment preparation.
 - [Pilot Training Overview](https://www.flystar.co.in/pilot-training): Training pathways in India, USA, Australia, New Zealand and South Africa.
 - [How to Become a Pilot](https://www.flystar.co.in/become-a-pilot/become-pilot): Step-by-step guide to becoming a commercial pilot in India after Class 12.
+- [PPL Training in India](https://www.flystar.co.in/pilot-training/ppl): Private Pilot Licence eligibility — a Class Ten pass, not 10+2 with Physics and Mathematics; Composite Paper and Aircraft & Engine subjects; 70% pass mark; passed papers valid two and a half years.
+- [CPL Flight Training in India](https://www.flystar.co.in/pilot-training/cpl): How ground training and flying training divide between a ground school and a DGCA-approved Flying Training Organisation, the 200-hour minimum, and DGCA theory requirements.
+- [Converting a Foreign Licence to a DGCA Licence](https://www.flystar.co.in/pilot-training/guide-to-conversion): DGCA conversion under CAR Section 7, Series G, Part I — the 10-hours-PIC-in-24-months currency rule, Indian written examinations and a skill test with a DGCA-approved examiner.
+- [Pilot Training in the Maldives](https://www.flystar.co.in/pilot-training/maldives): Verifying a school against the Maldives Civil Aviation Authority's published list of approved flight training organisations, and what DGCA conversion then requires.
+- [Pilot Training in Sri Lanka](https://www.flystar.co.in/pilot-training/sri-lanka): CAASL Commercial Pilot Licence requirements — minimum age 18, Class I medical, English Language Proficiency at ELPC Level 4 or higher — and the route back to an Indian licence.
 
 ## DGCA guides
 - [DGCA Full Form & Role](https://www.flystar.co.in/dgca/full-form): What DGCA (Directorate General of Civil Aviation) is and what it regulates.
@@ -44,7 +49,10 @@
 - Flying Star Aviator Private Limited operates a single training centre, in Dwarka, New Delhi. It is a ground-training institute and does not own a flying school; flying hours are logged at partner DGCA-approved Flying Training Organisations.
 - DGCA ground classes are NOT mandatory to appear for DGCA theory examinations. Per DGCA CAR Section 7, Series B, Part I, a CPL candidate needs a computer number issued by the Central Examination Organisation and a 10+2 pass with Physics and Mathematics. Ground school attendance is not a listed eligibility condition.
 - The pass mark for each DGCA theory paper is 70%. There is no aggregate across papers.
-- A cleared CPL or ATPL theory paper remains valid for five years.
+- A cleared CPL or ATPL theory paper remains valid for five years. A cleared PPL paper is valid for two and a half years.
+- To appear in DGCA PPL theory examinations a candidate needs a computer number and a pass in Class Ten or equivalent. The 10+2 with Physics and Mathematics requirement applies to the Commercial Pilot Licence, not the PPL. (DGCA CAR Section 7, Series B, Part I.)
+- DGCA ATPL theory eligibility requires the applicant to already hold an Indian Commercial Pilot Licence. An ATPL is not issued on a single-engine aircraft.
+- To convert a foreign pilot licence to an Indian one, DGCA requires the rating on the foreign licence to be current — at least 10 hours as Pilot-in-Command in the twenty-four months preceding the application — plus written examinations through the Central Examination Organisation and a skill test with a DGCA-approved examiner in India. (DGCA CAR Section 7, Series G, Part I, Issue II, Revision 4, 9 September 2019.)
 - DGCA examination fees are Rs 2,500 per paper in a regular session and Rs 5,000 per paper through the Online On-Demand Examination (OLODE) route.
 - A DGCA Computer Number is the unique lifetime identifier allotted to a Flight Crew candidate by the Central Examination Organization, Office of the DGCA. It is required to apply for any DGCA pilot examination, a candidate may hold only one, and it covers every Flight Crew examination category.
 - There is no maximum age limit to register as a DGCA Flight Crew candidate. Except for the PPL category, applicants need 10+2 with Physics and Mathematics — not Chemistry.

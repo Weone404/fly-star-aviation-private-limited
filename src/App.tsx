@@ -33,6 +33,7 @@ const Fullform = lazy(() => import("./pages/dgca/full-form"));
 const Medical = lazy(() => import("./pages/dgca/medical"));
 const Groundclasses = lazy(() => import("./pages/dgca/ground-classes"));
 const ComputerNumber = lazy(() => import("./pages/dgca/computer-number"));
+const PilotTrainingTopic = lazy(() => import("./pages/pilotTraining/topics"));
 const EditorialPolicy = lazy(() => import("./pages/editorial-policy"));
 
 const PilotTraining = lazy(() => import("./pages/pilotTraining/PilotTraining"));
@@ -161,6 +162,11 @@ function AppInner() {
         <Route path="/pilot-training/australia" element={<Australia />} />
         <Route path="/training-in-australia" element={<Australia />} />
         <Route path="/training-in-south-africa" element={<SouthAfrica />} />
+        <Route path="/pilot-training/cpl" element={<PilotTrainingTopic />} />
+        <Route path="/pilot-training/ppl" element={<PilotTrainingTopic />} />
+        <Route path="/pilot-training/maldives" element={<PilotTrainingTopic />} />
+        <Route path="/pilot-training/sri-lanka" element={<PilotTrainingTopic />} />
+        <Route path="/pilot-training/guide-to-conversion" element={<PilotTrainingTopic />} />
         <Route path="/pilot-training/:topic" element={<PilotTraining />} />
         <Route path="/training-in-india" element={<PilotTraining />} />
 
