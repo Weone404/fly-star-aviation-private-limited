@@ -74,6 +74,33 @@ flystar.co.in. `/admin/login` is prerendered and was crawlable.
 Mitigated so far: `Disallow: /admin` added to every user-agent group in
 `robots.txt`. That hides the door; it does not lock it.
 
+### Personal-data exposure: `GET /api/contacts` (discovered and closed 2026-09-04)
+
+| | |
+|---|---|
+| **Discovered** | 2026-09-04, during a backend endpoint audit requested for the risk record |
+| **What was exposed** | Every contact-form submission: name, email address, phone number, stated interest, and message body — the full enquiry history |
+| **How** | `GET /api/contacts` returned `Contact.find()` with no authentication. Any HTTP client could read it |
+| **Since when** | Not established. The route predates this session; the repository history would date it |
+| **Closed** | 2026-09-04, same day. Route removed outright, not protected — nothing in the frontend called it (verified by grep across `src/`, `api/` and `index.html`) |
+| **Prior access** | **Unknown — Render request logs are being checked.** Filter `GET /api/contacts` and distinguish the owner's own browser hits by IP. Log retention on lower tiers is short, so this is time-limited |
+| **Applicable law** | Digital Personal Data Protection Act, 2023. These are identifiable personal data of prospective students, which makes the operator a data fiduciary with safeguard and breach-intimation duties |
+
+**Why CORS did not mitigate it.** `server.js` restricts origins, which governs what a
+*browser* permits a page to read cross-origin. It has no effect on `curl`, a
+script, or any server-side request, and was never an access control.
+
+**Do not restore this route as it was.** Enquiries are read directly from the
+database. A UI for them needs authentication first.
+
+Same day, `DELETE /api/blogs/:id` was disabled (405). Unauthenticated, it let
+anyone erase the entire posts collection, and no backup existed. Its only caller
+was the admin panel's delete button, now removed.
+
+Neither change touches authentication: there is still no auth middleware
+anywhere, per the decision below. Two routes were removed, which is a different
+thing.
+
 **Owner decision, 2026-09-04: accepted as-is.** The password stays and the auth
 stays client-side. Recorded here so the choice is deliberate and visible, not
 forgotten. Not to be re-raised.

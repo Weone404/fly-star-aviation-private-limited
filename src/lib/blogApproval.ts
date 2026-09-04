@@ -9,9 +9,10 @@
  * content that passes. An allowlist inverts that — nothing from the database is
  * shown or advertised unless a human has approved that exact post.
  *
- * The `sha256` field pins the approved *content*, so an already-approved post
- * cannot be silently edited afterwards. If the hash drifts, the build fails
- * loudly rather than republishing changed text under an old approval.
+ * The `sha256` field pins every rendered field of the approved post, so it
+ * cannot be silently edited afterwards. If the hash drifts, or an approved post
+ * disappears from the API entirely, the build fails loudly rather than
+ * republishing changed text or quietly shrinking the sitemap.
  *
  * HOW TO APPROVE A POST
  *   1. Write or edit it in /admin/blog.
@@ -29,7 +30,13 @@
  */
 export interface ApprovedPost {
   slug: string;
-  /** sha256 of the post's `content` field at the moment it was approved. */
+  /**
+   * sha256 over every field that renders — slug, title, excerpt, content,
+   * coverImage, category — at the moment of approval. See HASHED_FIELDS in
+   * scripts/blogGate.mjs. Pinning content alone was not enough: an
+   * unauthenticated PUT could swap the title, which is the H1 and the meta
+   * title, without changing the content hash.
+   */
   sha256: string;
   approvedOn: string;
   note?: string;

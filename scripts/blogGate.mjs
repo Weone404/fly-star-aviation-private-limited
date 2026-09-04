@@ -40,7 +40,36 @@ export const DEFAULT_GATE = {
   spamMarkers: [],
 };
 
-/** sha256 of a post's content field — what an approval pins. */
+/**
+ * Fields an approval pins.
+ *
+ * Every one of these renders somewhere a reader or a search engine sees it:
+ * `title` is the H1 and the meta title, `excerpt` the meta description and the
+ * card text, `coverImage` the hero and the OG image, `category` the label, and
+ * `slug` the URL itself. Pinning `content` alone left a hole — an unauthenticated
+ * PUT could swap an approved post's title and land attacker-chosen text on the
+ * site without tripping the alarm.
+ */
+export const HASHED_FIELDS = ["slug", "title", "excerpt", "content", "coverImage", "category"];
+
+/**
+ * sha256 over every rendered field, in a fixed order, length-prefixed.
+ *
+ * Length prefixes stop a boundary attack: without them, moving text from the end
+ * of one field to the start of the next leaves the concatenation — and so the
+ * hash — unchanged.
+ */
+export function postHash(post) {
+  const h = createHash("sha256");
+  for (const field of HASHED_FIELDS) {
+    const value = String(post?.[field] ?? "");
+    h.update(`${field}:${value.length}:`, "utf8");
+    h.update(value, "utf8");
+  }
+  return h.digest("hex");
+}
+
+/** @deprecated Use postHash. Kept so an old approval file fails loudly rather than silently mismatching. */
 export function contentHash(content) {
   return createHash("sha256").update(String(content ?? ""), "utf8").digest("hex");
 }
@@ -67,7 +96,7 @@ export function assess(post, gateInput = {}, approvals = null) {
     const approval = approvals.find((a) => a.slug === slug || a.slug === rawSlug);
     if (!approval) return { ok: false, reason: "not on the approval list", slug, words };
 
-    const actual = contentHash(post?.content);
+    const actual = postHash(post);
     if (approval.sha256 !== actual) {
       return {
         ok: false,
@@ -150,5 +179,14 @@ export function partition(posts, gate, approvals = null) {
     accepted.push(normalise(post, verdict.slug));
   }
 
-  return { accepted, rejected, drifted };
+  // An approval whose post is no longer in the API response is as serious as a
+  // changed hash: DELETE was open until 2026-09-04, and a post disappearing
+  // between builds is exactly what that looks like. Silently shrinking the
+  // sitemap would hide it.
+  const present = new Set(posts.map((p) => tidySlug(p?.slug)).filter(Boolean));
+  const missing = (approvals || [])
+    .filter((a) => !present.has(a.slug))
+    .map((a) => ({ slug: a.slug, approvedOn: a.approvedOn }));
+
+  return { accepted, rejected, drifted, missing };
 }

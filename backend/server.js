@@ -108,15 +108,20 @@ app.post("/api/contact", async (req, res) => {
     }
 });
 
-// ── GET /api/contacts ─────────────────────────────────────────────────────────
-app.get("/api/contacts", async (req, res) => {
-    try {
-        const contacts = await Contact.find().sort({ createdAt: -1 });
-        res.status(200).json({ success: true, data: contacts });
-    } catch (err) {
-        res.status(500).json({ success: false, error: err.message });
-    }
-});
+// ── GET /api/contacts — REMOVED 2026-09-04 ───────────────────────────────────
+// This route returned every contact-form submission — name, email, phone,
+// interest, message — to anyone who requested the URL. No authentication, and
+// the CORS allowlist above does not help: CORS governs what a browser lets a
+// page read cross-origin, and has no effect on curl or any server-side request.
+//
+// That is personal data of prospective students under India's DPDP Act, 2023.
+// Nothing in the frontend called this route (verified by grep across src/, api/
+// and index.html), so it was removed outright rather than protected. Removal is
+// not an access-control change: there is still no auth middleware anywhere, by
+// the owner's standing decision.
+//
+// To read enquiries, query the contacts collection directly. If a UI is wanted
+// later, it needs authentication first — do not restore this route as it was.
 
 // ════════════════════════════════════════════════════════════════════════════
 // BLOG ROUTES — all stored in flystar DB → blogs collection
@@ -276,20 +281,19 @@ app.put("/api/blogs/:id", (req, res) => {
     });
 });
 
-// ── DELETE /api/blogs/:id — delete blog ──────────────────────────────────────
-app.delete("/api/blogs/:id", async (req, res) => {
-    try {
-        const result = await db.collection("blogs").deleteOne({
-            _id: new ObjectId(req.params.id)
-        });
-        if (result.deletedCount === 0) {
-            return res.status(404).json({ success: false, message: "Blog not found" });
-        }
-        triggerRebuild("blog deleted");
-        return res.status(200).json({ success: true, message: "Blog deleted" });
-    } catch (e) {
-        return res.status(500).json({ success: false, message: e.message });
-    }
+// ── DELETE /api/blogs/:id — DISABLED 2026-09-04 ──────────────────────────────
+// Unauthenticated, this route let anyone permanently erase the entire posts
+// collection, and no backup existed. Its only caller was the delete button in
+// the admin panel, which has been removed.
+//
+// It answers 405 rather than being deleted, so an old client gets a clear
+// refusal instead of a confusing 404. Deletions are done directly against the
+// database. Do not re-enable without authentication.
+app.delete("/api/blogs/:id", (req, res) => {
+    return res.status(405).json({
+        success: false,
+        message: "Deleting posts through the API is disabled. Delete directly in the database.",
+    });
 });
 
 // ════════════════════════════════════════════════════════════════════════════

@@ -17,7 +17,7 @@
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { readApprovals, writeApprovals } from "./approvals.mjs";
-import { contentHash, tidySlug, plainWords } from "./blogGate.mjs";
+import { postHash, tidySlug, plainWords } from "./blogGate.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const API = process.env.BLOG_API_URL || process.env.VITE_API_URL || "https://fly-star-aviation-private-limited.onrender.com";
@@ -51,7 +51,7 @@ async function main() {
     console.log(`\n${posts.length} posts in the database. ${approvals.length} approved.\n`);
     for (const p of posts) {
       const slug = tidySlug(p.slug);
-      const current = contentHash(p.content);
+      const current = postHash(p);
       const approval = approvals.find((a) => a.slug === slug);
       const state = !approval ? "NOT APPROVED" : approval.sha256 === current ? "approved" : "CHANGED SINCE APPROVAL";
       console.log(`  [${state.padEnd(21)}] ${slug || "(no slug)"}  ${plainWords(p)}w  ${p.title || ""}`);
@@ -67,7 +67,7 @@ async function main() {
     process.exit(1);
   }
 
-  const sha256 = contentHash(post.content);
+  const sha256 = postHash(post);
   const existing = approvals.find((a) => a.slug === wanted);
   const next = approvals.filter((a) => a.slug !== wanted);
   next.push({ slug: wanted, sha256, approvedOn: new Date().toISOString().slice(0, 10), note });

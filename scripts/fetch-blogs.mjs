@@ -93,7 +93,7 @@ async function main() {
     return;
   }
 
-  const { accepted, rejected, drifted } = partition(posts, gate, approvals);
+  const { accepted, rejected, drifted, missing } = partition(posts, gate, approvals);
   const clean = accepted.map(sanitizePostFields);
 
   fs.writeFileSync(OUT, emit(clean, `fetched ${posts.length}, approved and merged ${clean.length}`));
@@ -109,6 +109,7 @@ async function main() {
         accepted: clean.map((p) => p.slug),
         rejected,
         drifted,
+        missing,
       },
       null,
       2
@@ -121,6 +122,23 @@ async function main() {
   // Content drift on an APPROVED post is the one condition that fails the build.
   // An approval pins specific text; if the text changed, the approval no longer
   // describes what would be published.
+  if (missing.length) {
+    console.error("");
+    console.error("  ############################################################");
+    console.error("  #  APPROVED POST HAS DISAPPEARED — BUILD STOPPED           #");
+    console.error("  ############################################################");
+    for (const m of missing) console.error(`  #  ${m.slug}  (approved ${m.approvedOn})`);
+    console.error("  #");
+    console.error("  #  It was approved but is no longer returned by /api/blogs.");
+    console.error("  #  If you deleted it on purpose, remove its entry from");
+    console.error("  #    src/lib/blogApproval.ts");
+    console.error("  #  and commit. If you did NOT delete it, check the backend");
+    console.error("  #  request logs before doing anything else.");
+    console.error("  ############################################################");
+    console.error("");
+    process.exit(1);
+  }
+
   if (drifted.length) {
     console.error("");
     console.error("  ############################################################");

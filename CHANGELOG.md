@@ -456,3 +456,55 @@ server-side request, and was never an access control.
 Reported to the owner 2026-09-04. No change made — the standing auth decision
 covers the blog admin panel, and `/api/contacts` is the owner's call to weigh
 separately.
+
+
+---
+
+## 2026-09-04 (late night) — Two routes removed, manifest widened
+
+Removals, not access control. No auth middleware was added, the admin login flow
+and password are untouched, and `POST /api/contact` and `POST`/`PUT /api/blogs`
+are unchanged.
+
+### `GET /api/contacts` removed
+Returned every contact-form submission — name, email, phone, interest, message —
+to anyone who requested the URL. **Nothing in the frontend called it**, verified
+by grep across `src/`, `api/` and `index.html`, so it was deleted rather than
+protected.
+
+That absence raises its own question, recorded here because it needs answering:
+if no code reads this route, how have enquiries been reaching anyone? Either they
+are read straight from the database, or they are not being read at all.
+
+Full incident record, including the DPDP position and the outstanding
+log check, is in AUDIT.md §6.
+
+### `DELETE /api/blogs/:id` disabled
+Now answers 405. Unauthenticated, it let anyone permanently erase the posts
+collection, with no backup in existence. Its only caller was the admin panel's
+delete button, removed in the same commit. 405 rather than deletion, so an old
+client gets a clear refusal instead of a confusing 404.
+
+### The manifest was pinning too little
+An approval pinned a hash of `content` only. But `title` renders as the H1 **and**
+the meta title, `excerpt` as the meta description, `coverImage` as the hero and
+OG image. `PUT /api/blogs/:id` is unauthenticated — so swapping an approved
+post's headline put attacker-chosen text on the site **without tripping the
+alarm**. A real gap in a control that had been described as complete.
+
+`postHash()` now covers `slug`, `title`, `excerpt`, `content`, `coverImage` and
+`category`, in fixed order and length-prefixed. The length prefixes matter: without
+them, moving characters from the end of one field to the start of the next leaves
+the concatenation, and therefore the hash, unchanged.
+
+### A vanished approved post now fails the build too
+If a slug on the approval list is absent from the API response, `prebuild` exits
+non-zero with the same loudness as a hash change. `DELETE` was open until today,
+and a post disappearing between builds is exactly what that looks like — a
+silently shrinking sitemap would have hidden it.
+
+`contentHash()` is kept and marked deprecated so an approval file written under
+the old scheme fails loudly rather than mismatching quietly. `APPROVED_POSTS` is
+still empty, so there is nothing to migrate.
+
+75 tests passing, including boundary-shift resistance and per-field tamper cases.

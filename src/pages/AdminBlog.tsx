@@ -191,25 +191,10 @@ export default function AdminBlog() {
     }
 
     // ── Delete ──────────────────────────────────────────────────────────────
-    const handleDelete = async () => {
-        if (!confirm('Delete this blog permanently? This cannot be undone.')) return
-        setLoading(true)
-        setStatus('Deleting...')
-        try {
-            const res = await fetch(`${API_URL}/api/blogs/${editingId}`, { method: 'DELETE' })
-            const data = await res.json()
-            if (data.success) {
-                setStatus('✅ Deleted.')
-                setTimeout(() => backToDashboard(), 900)
-            } else {
-                setStatus(`❌ ${data.message ?? 'Delete failed.'}`)
-                setLoading(false)
-            }
-        } catch (e: unknown) {
-            setStatus(`❌ ${(e as Error).message}`)
-            setLoading(false)
-        }
-    }
+    // Removed 2026-09-04 along with the server route. DELETE /api/blogs/:id was
+    // unauthenticated, so it let anyone erase the whole posts collection, and no
+    // backup existed. This button was its only caller. Deletions are now done
+    // directly against the database.
 
     // ════════════════════════════════════════════════════════════════════════
     // DASHBOARD
@@ -388,15 +373,6 @@ export default function AdminBlog() {
                         </div>
                     </div>
                     <div className="flex items-center gap-3">
-                        {view === 'edit' && (
-                            <button
-                                onClick={handleDelete}
-                                disabled={loading}
-                                className="px-4 py-2 border border-red-300 text-red-500 hover:bg-red-500 hover:text-white text-sm font-medium rounded-lg transition-colors disabled:opacity-50"
-                            >
-                                🗑 Delete
-                            </button>
-                        )}
                         <button
                             onClick={handleLogout}
                             className="px-4 py-2 bg-red-500 hover:bg-red-600 text-white text-sm font-medium rounded-lg transition-colors"
