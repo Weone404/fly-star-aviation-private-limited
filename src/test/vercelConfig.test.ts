@@ -40,11 +40,32 @@ describe("Vercel config", () => {
     "/become-a-pilot/commercial-pilot-licence",
     "/locations/delhi",
     "/blogs",
-    "/blog/dgca-ground-classes-vs-self-study",
     "/editorial-policy",
     "/rtr",
   ])("routes %s to the SPA", (path) => {
     expect(matchesSpa(path)).toBe(true);
+  });
+
+  /**
+   * /blog/<slug> is deliberately NOT in the SPA allowlist.
+   *
+   * A blog post is served only if prerender wrote a file for it, which happens
+   * only for posts on the approval list in src/lib/blogApproval.ts. Routing
+   * /blog/* to the SPA would give every unapproved slug an HTTP 200 with a
+   * "not found" body — a soft 404 that Google can index, and a live-looking URL
+   * on this domain for anything written to the open write endpoint.
+   *
+   * Failing closed costs one thing: an approved post that fails to prerender
+   * 404s instead of degrading to a client-side render. renderGate.test.ts and
+   * scripts/smoke.mjs both exist to catch that first.
+   */
+  it("does not route /blog/<slug> to the SPA — unapproved posts must hard-404", () => {
+    expect(matchesSpa("/blog/dgca-ground-classes-vs-self-study")).toBe(false);
+    expect(matchesSpa("/blog/anything-someone-wrote-to-the-api")).toBe(false);
+  });
+
+  it("still routes the legacy /blogs/<id> form to the SPA so old links resolve", () => {
+    expect(matchesSpa("/blogs/1")).toBe(true);
   });
 
   it.each(["/not-a-page", "/random/deep/path", "/wp-admin"])(

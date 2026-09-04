@@ -105,12 +105,26 @@ allowlist inverts the default: unknown content is not published, full stop.
 **The content hash.** Approving pins the exact text. If an approved post's
 content later differs, `prebuild` **fails the build** and prints both hashes.
 
-- *You made the edit:* re-read it, run `npm run blogs:approve -- <slug>` again to
-  re-pin, commit.
-- *You did not make the edit:* do not re-approve. Someone wrote to the database.
+**Treat this failure as a tamper alarm, not routine drift.** `PUT /api/blogs/:id`
+is unauthenticated, so an approved post's hash changing is exactly how an edit by
+someone outside the team would surface. It is the only alarm you have for that.
 
-That failure is the point — an approval describes specific text, so text that has
-changed is no longer approved.
+The rule:
+
+1. **Do not re-approve a changed hash until a teammate confirms they made the
+   edit.** Ask before you run the approve command, not after.
+2. **If nobody claims it**, check the backend request logs for `PUT /api/blogs`
+   around the time of the change before doing anything else. Render's log
+   retention on lower tiers is short, so check within days.
+3. Only once the edit is accounted for: re-read the post, run
+   `npm run blogs:approve -- <slug>` to re-pin, and commit.
+
+Re-approving first and asking later launders the tamper in — the build goes
+green, the changed text publishes, and the one signal that something happened is
+gone. The inconvenience of asking is the entire value of the control.
+
+That is why the failure exists: an approval describes specific text, so text that
+has changed is not approved.
 
 **Held-back posts are invisible to visitors too**, not just to crawlers.
 `Blogs.tsx` and `BlogDetail.tsx` both check the same list, so an unapproved post
@@ -215,7 +229,7 @@ green checks; it does not cover `geo/*` branches.
 | Item | Why it is blocked |
 |---|---|
 | **Stored XSS surface** | `BlogDetail.tsx` renders post content as HTML and the write endpoint is open. Sanitisation now runs on both paths, which stops a payload executing; it does not stop anyone writing to the database. The approval list is what keeps unreviewed content off the site |
-| **Backend slugify bug** | `backend/server.js:158` hyphenates before stripping punctuation, so dashes, ampersands and emoji leave stray hyphens behind — the cause of `pilot-career-after-12th--eligibility-fees--scope` and the leading/trailing hyphens on another post. Fix is one line, but it is outside the approved backend scope, so it is left alone |
+| **Unauthenticated backend** | Every endpoint in `backend/server.js` is open, including `DELETE /api/blogs/:id` (any post deletable by anyone, no backup exists) and `GET /api/contacts` (returns every lead's name, email, phone and message). CORS restricts browsers, not `curl` — it is not an access control. Reported 2026-09-04; owner's call |
 | **Admin auth** | Owner reviewed and accepted as-is on 2026-09-04. Credentials remain client-side. Not to be re-raised. See AUDIT.md §6 for the accepted risk and the related spam row found in the database |
 | `/privacy-policy`, `/terms` | Drafts complete but hold ~13 `[CONFIRM]` items only the business knows: analytics and pixels in use, third parties receiving data, retention periods, grievance officer, minimum enrolment age, registered MCA address. The footer's links to them were removed rather than left pointing at 404s |
 | Canonical email | Two addresses in circulation (`SEO.md` §1) |

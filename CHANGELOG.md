@@ -372,3 +372,87 @@ applied.
 58 passing. New: `sanitizeHtml.test.ts` (11), `blogApproval.test.ts` (7) —
 covering an empty allowlist publishing nothing, an approved post publishing, and
 an approved post whose content drifted being refused with both hashes reported.
+
+
+---
+
+## 2026-09-04 (night) — Direct-URL gap closed, sanitiser replaced, slug fix
+
+### The direct-URL question, answered precisely
+The review asked whether an unapproved post is still reachable at its own URL,
+since the runtime filter was described as living in the listing.
+
+**Checked: the detail route already enforced it.** `BlogDetail.tsx` gates on
+`isApproved(data.slug)` before accepting an API response and falls back to the
+committed posts, so an unapproved post renders "Article Not Found" and never
+shows its text. Arbitrary content was not publishable via direct link.
+
+**But the review was right that it was not properly closed**, for a reason
+neither of us had named: that page returned **HTTP 200**. A soft 404. Google can
+index a 200, and an externally linked spam URL would have looked like a live page
+on this domain.
+
+Two changes:
+- `vercel.json` no longer routes `/blog/<slug>` to the SPA. A blog post is served
+  only if prerender wrote a file for it, which happens only for approved posts —
+  so an unapproved slug now gets a **hard 404 from the edge**. Failing closed
+  costs one thing: an approved post that fails to prerender 404s rather than
+  degrading to a client render. `renderGate.test.ts` and `smoke.mjs` exist to
+  catch that first.
+- The legacy `/blogs/<id>` form stays routed to the SPA so old links resolve, and
+  its not-found state now carries `<meta name="robots" content="noindex,nofollow">`.
+
+### The sanitiser failed its own bypass suite, and was replaced
+`sanitizeBypass.test.ts` covers mutation XSS via recontextualised containers
+(noscript, style, template, svg, math), `srcdoc`, `xlink:href`, `data:` URIs,
+obfuscated schemes, malformed tags, `formaction`, comment-hidden payloads and
+`base`/`meta` redirection — written to fail, against **both** copies.
+
+The hand-rolled sanitiser passed all of it except one vector:
+
+```
+<img src=x onerror=alert(1)//
+```
+
+An unterminated tag. A regex needs a closing `>` to recognise a tag, so this
+passed through as "text" — and the browser's parser then recovers it into a live
+`<img>` as soon as any later `>` appears in the document. With an open write
+endpoint, an attacker controls what follows.
+
+Per the standing rule, this was **not patched**. Both copies now use
+**DOMPurify** — `src/lib/sanitizeHtml.ts` in the browser, `scripts/sanitize.mjs`
+over a jsdom window at build time, same config. DOMPurify parses with the same
+engine that will render, so this entire category is gone rather than narrowed.
+
+The bypass suite stays. Its job now is to catch a bad config, and to fail loudly
+if anyone swaps this back for something clever. All 70 tests pass.
+
+### Backend slug fix (approved, one line)
+`backend/server.js` now strips non-alphanumerics **before** hyphenating, then
+collapses and trims:
+
+| Title | Before | After |
+|---|---|---|
+| `12th – Eligibility, Fees & Scope` | `12th--eligibility-fees--scope` | `12th-eligibility-fees-scope` |
+| `✈️ Pilot Demand … 2030 🚀` | `-pilot-demand-…-` | `pilot-demand-in-india-through-2030` |
+
+**Affects new posts only.** Slugs already stored are unchanged; the two damaged
+rows are repaired in the audit pass.
+
+### Backend endpoint audit (report only, no changes)
+Every endpoint in `backend/server.js` is unauthenticated. Beyond the blog write
+routes already known:
+
+- `DELETE /api/blogs/:id` — any post permanently deletable by anyone, and no
+  backup exists.
+- `GET /api/contacts` — returns **every** contact-form submission: name, email,
+  phone, interest, message. Personal data under India's DPDP Act, 2023, readable
+  by anyone who requests the URL.
+
+The CORS allowlist at `server.js:64` does not mitigate either. CORS governs what
+a *browser* will let a page read cross-origin; it has no effect on `curl` or any
+server-side request, and was never an access control.
+
+Reported to the owner 2026-09-04. No change made — the standing auth decision
+covers the blog admin panel, and `/api/contacts` is the owner's call to weigh
+separately.

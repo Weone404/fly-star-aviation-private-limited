@@ -186,7 +186,19 @@ app.post("/api/blogs", (req, res) => {
             }
         }
 
-        const slug = title.toLowerCase().replace(/\s+/g, "-").replace(/[^\w-]/g, "");
+        // Strip what is not a word character FIRST, then hyphenate, then collapse
+        // and trim. The previous order hyphenated first and stripped punctuation
+        // afterwards, so an en dash, an ampersand or an emoji left its hyphen
+        // behind: "12th - Eligibility, Fees & Scope" became
+        // "12th--eligibility-fees--scope", and a title starting or ending with a
+        // symbol produced a leading or trailing hyphen.
+        // Affects NEW posts only; slugs already stored are unchanged.
+        const slug = title
+            .toLowerCase()
+            .replace(/[^a-z0-9\s-]/g, " ")
+            .trim()
+            .replace(/[\s-]+/g, "-")
+            .replace(/^-+|-+$/g, "");
 
         try {
             const result = await db.collection("blogs").insertOne({

@@ -4,6 +4,25 @@ import { SocialShareButtons } from '@/components/SocialShareButtons'
 import { getBlogPost, getReadingMinutes } from '@/lib/blogData'
 import { isApproved } from '@/lib/blogApproval'
 import { sanitizeHtml } from '@/lib/sanitizeHtml'
+
+/**
+ * Adds <meta name="robots" content="noindex,nofollow"> while mounted.
+ *
+ * A "not found" body served with HTTP 200 is a soft 404 — Google may index it,
+ * and an externally linked spam URL would otherwise look like a live page on
+ * this domain. The SPA cannot set a status code, so this is the signal it can
+ * send.
+ */
+function NoIndex({ children }: { children: React.ReactNode }) {
+    useEffect(() => {
+        const el = document.createElement('meta')
+        el.name = 'robots'
+        el.content = 'noindex,nofollow'
+        document.head.appendChild(el)
+        return () => { el.remove() }
+    }, [])
+    return <>{children}</>
+}
 import type { BlogPost } from '@/types/blog'
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000'
@@ -71,7 +90,12 @@ export default function BlogDetail() {
         </div>
     )
 
+    // An unapproved or unknown post must never look like a real page to a search
+    // engine. /blog/<slug> for anything not prerendered is a hard 404 from the
+    // edge (see vercel.json); this covers the legacy /blogs/<id> path, which
+    // stays routed to the SPA so old links keep working.
     if (!blog) return (
+        <NoIndex>
         <div className="min-h-screen flex flex-col items-center justify-center gap-4 text-center px-4">
             <div className="text-6xl animate-float">✈️</div>
             <h1 className="text-2xl font-bold text-foreground">Article Not Found</h1>
@@ -81,6 +105,7 @@ export default function BlogDetail() {
                 ← Back to Blogs
             </Link>
         </div>
+        </NoIndex>
     )
 
     return (
