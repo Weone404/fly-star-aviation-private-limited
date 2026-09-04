@@ -12,7 +12,7 @@
     {
       "src": "/dgca/board-verification",
       "status": 301,
-      "dest": "/dgca/computer-number"
+      "dest": "/blog/dgca-board-verification-certificate"
     },
     {
       "src": "/Sitemap",
@@ -28,11 +28,15 @@
       "dest": "/robots.txt"
     },
     {
+      "src": "/feed.xml",
+      "dest": "/feed.xml"
+    },
+    {
       "src": "/llms.txt",
       "dest": "/llms.txt"
     },
     {
-      "src": "/((?:about|contact|contact-us|services(?:/.*)?|courses(?:/.*)?|dgca(?:/.*)?|pilot-training(?:/.*)?|become-a-pilot(?:/.*)?|locations(?:/.*)?|blogs(?:/.*)?|admin(?:/.*)?|rtr|sitemap|editorial-policy|how-to-become-a-pilot(?:/.*)?|how-to-become-a-pilot-in-india(?:-after-12th)?(?:/.*)?|training-in-(?:india|australia|south-africa)(?:/.*)?|air-transport-pilots-license-atpl|best-atpl-classes-in-india|commercial-pilot-training(?:-.*)?|best-cpl-ground-classes|careers|pilot-course|top-aviation-courses-and-careers-after-12th|courses-and-careers|cpl-atpl-ground-classes-2|dgca-ground-classes-training-classes|guide-on-how-to-become-a-pilot))",
+      "src": "/((?:about|contact|contact-us|services(?:/.*)?|courses(?:/.*)?|dgca(?:/.*)?|pilot-training(?:/.*)?|become-a-pilot(?:/.*)?|locations(?:/.*)?|blogs(?:/.*)?|admin(?:/.*)?|rtr|sitemap|editorial-policy|faq|glossary|how-to-become-a-pilot(?:/.*)?|how-to-become-a-pilot-in-india(?:-after-12th)?(?:/.*)?|training-in-(?:india|australia|south-africa)(?:/.*)?|air-transport-pilots-license-atpl|best-atpl-classes-in-india|commercial-pilot-training(?:-.*)?|best-cpl-ground-classes|careers|pilot-course|top-aviation-courses-and-careers-after-12th|courses-and-careers|cpl-atpl-ground-classes-2|dgca-ground-classes-training-classes|guide-on-how-to-become-a-pilot))",
       "dest": "/index.html"
     },
     {

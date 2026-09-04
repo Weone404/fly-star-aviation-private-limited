@@ -16,12 +16,13 @@
     "test:watch": "vitest",
     "start:backend": "node backend/server.js",
     "dev:all": "concurrently \"npm run dev\" \"npm run start:backend\"",
-    "prebuild": "node scripts/fetch-blogs.mjs && node scripts/generate-sitemap.mjs",
+    "prebuild": "node scripts/fetch-blogs.mjs && node scripts/generate-sitemap.mjs && node scripts/generate-feed.mjs",
     "sitemap": "node scripts/generate-sitemap.mjs",
     "blogs:fetch": "node scripts/fetch-blogs.mjs",
     "smoke": "node scripts/smoke.mjs",
     "blogs:approve": "node scripts/approve-blog.mjs",
-    "blogs:list": "node scripts/approve-blog.mjs --list"
+    "blogs:list": "node scripts/approve-blog.mjs --list",
+    "feed": "node scripts/generate-feed.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",

@@ -75,7 +75,7 @@ Each of these is sourced, stated in a self-contained sentence, and repeated in
 | Conversion currency: **10 hrs PIC in 24 months** | CAR 7-G-I | The rule people discover too late |
 | Computer number: **lifetime, one per candidate, not auto-generated** | DGCA Pariksha FAQ | Procedural depth competitors lack |
 | No **maximum age** to register with DGCA | DGCA Pariksha FAQ | Corrects a common myth |
-| Exam fee **Rs 2,500 regular / Rs 5,000 OLODE**, 70% per paper, no aggregate | DGCA | Concrete, quotable |
+| Exam fee **Rs 2,500 per paper**, non-refundable; **no OLODE fee is published** | DGCA Pariksha FAQ 13, 14 | The Rs 5,000 OLODE figure everyone repeats has no primary source |
 
 ## 4. Per-page meta
 Source of truth is `src/lib/routeMeta.ts` (which is also the render gate) with

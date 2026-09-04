@@ -110,6 +110,8 @@ export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState(INITIAL_FORM);
+  // Honeypot value. Always "" for a real visitor; bots fill it.
+  const [honeypot, setHoneypot] = useState("");
   const [errors, setErrors] = useState<Record<string, string>>({});
   const { toast } = useToast();
 
@@ -134,6 +136,7 @@ export default function ContactPage() {
           email: formData.email,
           interest: formData.interest || "Not specified",
           message: formData.message || "No additional message",
+          company: honeypot,
         }),
       });
       const data = await res.json();
@@ -141,7 +144,7 @@ export default function ContactPage() {
     } catch (err) {
       console.error("❌ MongoDB save failed:", err); // Fail silently — WA still opens
     }
-  }, [formData]);
+  }, [formData, honeypot]);
 
   const handleSubmit = useCallback(
     async (e: React.FormEvent) => {
@@ -251,6 +254,23 @@ _Sent via flyingstaraviator.com contact form_`;
                     className="space-y-5"
                     noValidate
                   >
+                    {/* Honeypot — hidden from people, filled by bots. The server
+                        discards any submission where this arrives non-empty.
+                        See backend/enquiryGuard.js. Not display:none, which some
+                        bots detect; positioned off-screen and hidden from a11y. */}
+                    <div aria-hidden="true" style={{ position: "absolute", left: "-9999px", width: 1, height: 1, overflow: "hidden" }}>
+                      <label htmlFor="fsa-company">Company (leave blank)</label>
+                      <input
+                        id="fsa-company"
+                        type="text"
+                        name="company"
+                        tabIndex={-1}
+                        autoComplete="off"
+                        value={honeypot}
+                        onChange={(e) => setHoneypot(e.target.value)}
+                      />
+                    </div>
+
                     {/* Name + Phone */}
                     <div className="grid sm:grid-cols-2 gap-4">
                       <div>

@@ -840,7 +840,7 @@ export default function AirportGroundStaffCoursePage() {
                                 <Link to="/contact">Check Course Fees</Link>
                             </Button>
                             <Button variant="outline-white" size="lg" asChild>
-                                <a href="tel:+919876543210">Talk to Counselor</a>
+                                <a href="tel:+919953536199">Talk to Counselor</a>
                             </Button>
                         </div>
                     </motion.div>

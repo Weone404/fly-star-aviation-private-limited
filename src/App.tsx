@@ -35,6 +35,8 @@ const Groundclasses = lazy(() => import("./pages/dgca/ground-classes"));
 const ComputerNumber = lazy(() => import("./pages/dgca/computer-number"));
 const PilotTrainingTopic = lazy(() => import("./pages/pilotTraining/topics"));
 const EditorialPolicy = lazy(() => import("./pages/editorial-policy"));
+const FaqHub = lazy(() => import("./pages/faq"));
+const Glossary = lazy(() => import("./pages/glossary"));
 
 const PilotTraining = lazy(() => import("./pages/pilotTraining/PilotTraining"));
 const India = lazy(() => import("./pages/pilotTraining/india"));
@@ -146,6 +148,8 @@ function AppInner() {
         <Route path="/dgca/:topic" element={<DGCA />} />
         <Route path="/rtr" element={<Rtr />} />
         <Route path="/editorial-policy" element={<EditorialPolicy />} />
+        <Route path="/faq" element={<FaqHub />} />
+        <Route path="/glossary" element={<Glossary />} />
         <Route path="/dgca/full-form" element={<Fullform />} />
         <Route path="/dgca/medical" element={<Medical />} />
         <Route path="/dgca/computer-number" element={<ComputerNumber />} />

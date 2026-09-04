@@ -195,6 +195,16 @@ export const PAGE_META: Record<string, PageMeta> = {
   },
 
   // ── DGCA sub-pages ──────────────────────────────────────────────────────────
+  "/faq": {
+    title: "DGCA & Pilot Training FAQ | Flying Star Aviator",
+    description:
+      "Sourced answers on DGCA eligibility, exams, fees and licence conversion.",
+  },
+  "/glossary": {
+    title: "Indian Pilot Training Glossary | Flying Star Aviator",
+    description:
+      "CPL, ATPL, PPL, RTR(A), computer number, OLODE and BVC explained.",
+  },
   "/editorial-policy": {
     title: "Editorial Policy | Flying Star Aviator",
     description:

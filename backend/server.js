@@ -8,6 +8,8 @@ const { MongoClient, ObjectId } = require("mongodb");
 require("dotenv").config({ path: __dirname + "/.env" });
 
 const Contact = require("./models/Contact");
+const { notifyEnquiry } = require("./notifyEnquiry");
+const { isHoneypotTripped, createRateLimiter, clientIp } = require("./enquiryGuard");
 const blogStore = require("./blogStore");
 
 const app = express();
@@ -56,6 +58,9 @@ const mongoClient = new MongoClient(process.env.MONGODB_URI);
 let db;
 let mongoConnected = false;
 
+// Public, unauthenticated endpoint — see AUDIT.md §6. These are the only guards.
+const enquiryLimiter = createRateLimiter({ max: 5, windowMs: 10 * 60 * 1000 });
+
 mongoClient.connect()
     .then(() => {
         db = mongoClient.db("flystarDB");   // ✅ flystar database — separate from WeOne
@@ -95,20 +100,42 @@ mongoose
 app.post("/api/contact", async (req, res) => {
     try {
         const { name, email, phone, interest, message } = req.body;
+
+        // Honeypot: a field no human sees. Answer 201 anyway — telling a bot it
+        // was detected just teaches it which field to leave alone next time.
+        if (isHoneypotTripped(req.body)) {
+            console.log("[enquiry] honeypot tripped, discarded");
+            return res.status(201).json({ success: true, message: "Contact saved successfully!" });
+        }
+
+        const limit = enquiryLimiter.check(clientIp(req));
+        if (!limit.allowed) {
+            return res.status(429).json({
+                success: false,
+                error: "Too many enquiries from this connection. Please try again shortly.",
+            });
+        }
+
         if (!name || !email || !phone) {
             return res.status(400).json({
                 success: false,
                 error: "Name, email, and phone are required.",
             });
         }
-        const newContact = new Contact({
+        const contact = {
             name,
             email,
             phone,
             interest: interest || "Not specified",
             message: message || "No additional message",
-        });
+        };
+        const newContact = new Contact(contact);
         await newContact.save();
+
+        // Fire and forget. The enquiry is saved; the response must not wait on an
+        // email, and a mail failure must never surface as a failed submission.
+        notifyEnquiry(contact).catch((e) => console.warn("[enquiry-mail] unexpected:", e?.message));
+
         res.status(201).json({ success: true, message: "Contact saved successfully!" });
     } catch (err) {
         console.error("Save error:", err);

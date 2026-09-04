@@ -10,12 +10,15 @@ import { SITE_ORIGIN, canonicalUrl } from "./routes";
 import { PAGE_META } from "./pageMeta";
 import { getBlogPost, getWordCount, getReadingMinutes } from "./blogData.js";
 import { PILOT_TRAINING_TOPICS } from "./pilotTrainingTopics";
+import { FAQ_HUB_QUESTIONS } from "./faqHub";
 
 const ORG_ID = `${SITE_ORIGIN}/#organization`;
 
 // Human-readable labels for breadcrumb segments (acronyms, ampersands, etc.).
 const LABELS: Record<string, string> = {
   courses: "Courses",
+  faq: "FAQ",
+  glossary: "Glossary",
   "computer-number": "Computer Number",
   "editorial-policy": "Editorial Policy",
   cpl: "CPL Training",
@@ -330,6 +333,7 @@ export const PAGE_FAQS: Record<string, { q: string; a: string }[]> = {
 function faqsFor(path: string): { q: string; a: string }[] | undefined {
   const direct = PAGE_FAQS[path];
   if (direct) return direct;
+  if (path === "/faq") return FAQ_HUB_QUESTIONS;
   const topic = path.match(/^\/pilot-training\/([^/]+)$/)?.[1];
   return topic ? PILOT_TRAINING_TOPICS[topic]?.faqs : undefined;
 }

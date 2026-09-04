@@ -41,6 +41,8 @@ describe("Vercel config", () => {
     "/locations/delhi",
     "/blogs",
     "/editorial-policy",
+    "/faq",
+    "/glossary",
     "/rtr",
   ])("routes %s to the SPA", (path) => {
     expect(matchesSpa(path)).toBe(true);
@@ -75,11 +77,11 @@ describe("Vercel config", () => {
     }
   );
 
-  it("keeps the dead board-verification URL redirecting rather than 404ing", () => {
-    const redirect = loadRoutes().find(
-      (r) => r && r.src === "/dgca/board-verification"
-    );
+  it("redirects the dead board-verification URL to the page that now answers it", () => {
+    // Retargeted 2026-09-04: it pointed at the computer-number guide as the
+    // nearest available answer. There is now a page on the query itself.
+    const redirect = loadRoutes().find((r) => r && r.src === "/dgca/board-verification");
     expect(redirect?.status).toBe(301);
-    expect(redirect?.dest).toBe("/dgca/computer-number");
+    expect(redirect?.dest).toBe("/blog/dgca-board-verification-certificate");
   });
 });

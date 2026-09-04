@@ -361,6 +361,16 @@ const routeMeta: Record<string, RouteMeta> = {
     description: "Admin console for managing blogs.",
     canonical: `${BASE_URL}/admin/blog`,
   },
+  "/faq": {
+    title: "DGCA & Pilot Training FAQ | Flying Star Aviator",
+    description: "Sourced answers on DGCA eligibility, exam subjects, pass marks, fees, the computer number and foreign licence conversion — each linked to the rule behind it.",
+    canonical: `${BASE_URL}/faq`,
+  },
+  "/glossary": {
+    title: "Indian Pilot Training Glossary | Flying Star Aviator",
+    description: "CPL, ATPL, PPL, RTR(A), computer number, OLODE, BVC and more — what each term means under DGCA's published rules, defined in plain English.",
+    canonical: `${BASE_URL}/glossary`,
+  },
   "/rtr": {
     title: "RTR Full Form - Radio Telephony Restricted | Complete Guide 2026",
     description: "Essential RTR(A) exam guidance for pilot candidates and aviation students.",

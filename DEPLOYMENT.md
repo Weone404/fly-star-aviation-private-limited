@@ -96,6 +96,28 @@ file, and this table supersedes it.
 Take the contacts snapshot **before** the `GET /api/contacts` removal deploys —
 afterwards, the only read path is the database directly.
 
+### Enquiry notifications
+`POST /api/contact` sends one notification email per enquiry. Configure in the
+backend environment (Render):
+
+| Variable | Required | Notes |
+|---|---|---|
+| `RESEND_API_KEY` | yes, to enable | From resend.com |
+| `ENQUIRY_NOTIFY_TO` | yes, to enable | Recipient, or a comma-separated list |
+| `ENQUIRY_NOTIFY_FROM` | no | Verified sender; defaults to `onboarding@resend.dev` |
+
+With `RESEND_API_KEY` or `ENQUIRY_NOTIFY_TO` unset it is a complete no-op and the
+form behaves exactly as before. A send failure never fails the enquiry — the row
+is already saved. `reply_to` is set to the enquirer, so replying in the inbox
+reaches them directly.
+
+Spam guards, both dependency-free: a honeypot field (`company`) that answers 201
+and discards, and a per-IP rate limit of 5 in 10 minutes returning 429.
+
+### Analytics
+Dormant until configured. See `docs/ANALYTICS.md` for the GA4-vs-Plausible
+comparison and the two variables. Nothing loads until both are set.
+
 ### Blog approval — the workflow
 Nothing written in `/admin/blog` reaches the public site until you approve it by
 name. The approval list is `src/lib/blogApproval.ts`.
