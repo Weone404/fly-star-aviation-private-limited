@@ -8,6 +8,7 @@ const { MongoClient, ObjectId } = require("mongodb");
 require("dotenv").config({ path: __dirname + "/.env" });
 
 const Contact = require("./models/Contact");
+const blogStore = require("./blogStore");
 
 const app = express();
 
@@ -53,12 +54,19 @@ function triggerRebuild(reason) {
 const mongoClient = new MongoClient(process.env.MONGODB_URI);
 
 let db;
+let mongoConnected = false;
+
 mongoClient.connect()
     .then(() => {
         db = mongoClient.db("flystarDB");   // ✅ flystar database — separate from WeOne
+        mongoConnected = true;
         console.log("✅ MongoDB Native Client Connected → flystar DB");
     })
-    .catch(err => console.error("❌ MongoDB Native Client Error:", err));
+    .catch(err => {
+        mongoConnected = false;
+        console.error("❌ MongoDB Native Client Error:", err.message);
+        console.log("⚠️  Using file-based blog storage fallback");
+    });
 
 // ── Middleware ────────────────────────────────────────────────────────────────
 app.use(cors({
@@ -130,30 +138,67 @@ app.post("/api/contact", async (req, res) => {
 // ── GET /api/blogs — fetch all blogs ─────────────────────────────────────────
 app.get("/api/blogs", async (req, res) => {
     try {
-        const blogs = await db.collection("blogs").find({}).sort({ createdAt: -1 }).toArray();
-        const serialized = blogs.map(b => ({
-            ...b,
-            _id: b._id.toString(),
-            createdAt: b.createdAt ? b.createdAt.toString() : new Date().toString(),
-        }));
-        return res.status(200).json(serialized);
+        let blogs;
+        if (mongoConnected && db) {
+            blogs = await db.collection("blogs").find({}).sort({ createdAt: -1 }).toArray();
+            const serialized = blogs.map(b => ({
+                ...b,
+                _id: b._id.toString(),
+                createdAt: b.createdAt ? b.createdAt.toString() : new Date().toString(),
+            }));
+            return res.status(200).json(serialized);
+        } else {
+            // Fallback to file-based storage
+            blogs = blogStore.getAllBlogs();
+            return res.status(200).json(blogs);
+        }
     } catch (e) {
-        return res.status(500).json({ success: false, message: e.message });
+        console.error("GET /api/blogs error:", e.message);
+        // Last resort: return file-based blogs
+        const blogs = blogStore.getAllBlogs();
+        return res.status(200).json(blogs);
     }
 });
 
-// ── GET /api/blogs/:id — fetch single blog ────────────────────────────────────
+// ── GET /api/blogs/:id — fetch single blog (by ID or slug) ────────────────────
 app.get("/api/blogs/:id", async (req, res) => {
     try {
-        const blog = await db.collection("blogs").findOne({ _id: new ObjectId(req.params.id) });
-        if (!blog) return res.status(404).json({ success: false, message: "Blog not found" });
-        return res.status(200).json({
-            ...blog,
-            _id: blog._id.toString(),
-            createdAt: blog.createdAt ? blog.createdAt.toString() : new Date().toString(),
-        });
+        const identifier = String(req.params.id || "").trim();
+        if (!identifier) {
+            return res.status(400).json({ success: false, message: "Blog identifier is required" });
+        }
+
+        let blog = null;
+
+        if (mongoConnected && db) {
+            const blogsCollection = db.collection("blogs");
+            if (mongoose.Types.ObjectId.isValid(identifier)) {
+                blog = await blogsCollection.findOne({ _id: new ObjectId(identifier) });
+            }
+
+            if (!blog) {
+                blog = await blogsCollection.findOne({ slug: identifier });
+            }
+
+            if (blog) {
+                return res.status(200).json({
+                    ...blog,
+                    _id: blog._id.toString(),
+                    createdAt: blog.createdAt ? blog.createdAt.toString() : new Date().toString(),
+                });
+            }
+        }
+
+        // File storage uses UUIDs, so try its id first and then its slug as well.
+        blog = blogStore.getBlogById(identifier) || blogStore.getBlogBySlug(identifier);
+        if (!blog) {
+            return res.status(404).json({ success: false, message: "Blog not found" });
+        }
+
+        return res.status(200).json(blog);
     } catch (e) {
-        return res.status(500).json({ success: false, message: e.message });
+        console.error("GET /api/blogs/:id error:", e);
+        return res.status(500).json({ success: false, message: "Unexpected error loading blog" });
     }
 });
 
@@ -187,7 +232,8 @@ app.post("/api/blogs", (req, res) => {
                 });
                 coverImage = uploaded.secure_url;
             } catch (uploadErr) {
-                return res.status(500).json({ success: false, message: `Image upload failed: ${uploadErr.message}` });
+                console.warn("Image upload failed, continuing without image:", uploadErr.message);
+                // Don't fail entirely, allow blog to be created without image
             }
         }
 
@@ -205,18 +251,34 @@ app.post("/api/blogs", (req, res) => {
             .replace(/[\s-]+/g, "-")
             .replace(/^-+|-+$/g, "");
 
+        const blogData = {
+            title,
+            excerpt: excerpt || "",
+            content,
+            coverImage,
+            category: category || "Blog",
+            slug,
+        };
+
         try {
-            const result = await db.collection("blogs").insertOne({
-                title,
-                excerpt: excerpt || "",
-                content,
-                coverImage,
-                category: category || "Blog",
-                slug,
-                createdAt: new Date(),
-            });
-            triggerRebuild("blog created");
-            return res.status(200).json({ success: true, id: result.insertedId.toString() });
+            if (mongoConnected && db) {
+                try {
+                    const result = await db.collection("blogs").insertOne({
+                        ...blogData,
+                        createdAt: new Date(),
+                    });
+                    console.log("✅ Blog saved to MongoDB");
+                    triggerRebuild("blog created");
+                    return res.status(200).json({ success: true, id: result.insertedId.toString() });
+                } catch (mongoErr) {
+                    console.warn("MongoDB save failed, using file storage:", mongoErr.message);
+                }
+            }
+            // Fallback to file-based storage
+            const blog = blogStore.createBlog(blogData);
+            console.log("✅ Blog saved to file storage");
+            triggerRebuild("blog created (file storage)");
+            return res.status(200).json({ success: true, id: blog._id });
         } catch (e) {
             return res.status(500).json({ success: false, message: e.message });
         }
@@ -261,18 +323,32 @@ app.put("/api/blogs/:id", (req, res) => {
                 });
                 update.coverImage = uploaded.secure_url;
             } catch (uploadErr) {
-                return res.status(500).json({ success: false, message: `Image upload failed: ${uploadErr.message}` });
+                console.warn("Image upload failed, continuing without new image:", uploadErr.message);
             }
         }
 
         try {
-            const result = await db.collection("blogs").updateOne(
-                { _id: new ObjectId(req.params.id) },
-                { $set: update }
-            );
-            if (result.matchedCount === 0) {
+            if (mongoConnected && db) {
+                try {
+                    const result = await db.collection("blogs").updateOne(
+                        { _id: new ObjectId(req.params.id) },
+                        { $set: update }
+                    );
+                    if (result.matchedCount === 0) {
+                        throw new Error("Blog not found in MongoDB");
+                    }
+                    console.log("✅ Blog updated in MongoDB");
+                    return res.status(200).json({ success: true, message: "Blog updated" });
+                } catch (mongoErr) {
+                    console.warn("MongoDB update failed, using file storage:", mongoErr.message);
+                }
+            }
+            // Fallback to file-based storage
+            const updated = blogStore.updateBlog(req.params.id, update);
+            if (!updated) {
                 return res.status(404).json({ success: false, message: "Blog not found" });
             }
+            console.log("✅ Blog updated in file storage");
             triggerRebuild("blog updated");
             return res.status(200).json({ success: true, message: "Blog updated" });
         } catch (e) {
@@ -286,9 +362,13 @@ app.put("/api/blogs/:id", (req, res) => {
 // collection, and no backup existed. Its only caller was the delete button in
 // the admin panel, which has been removed.
 //
-// It answers 405 rather than being deleted, so an old client gets a clear
-// refusal instead of a confusing 404. Deletions are done directly against the
-// database. Do not re-enable without authentication.
+// The version on origin/main added a file-storage fallback to the same open
+// delete. That is deliberately NOT merged: a fallback makes an unauthenticated
+// destructive route work in more situations, which is the opposite of what was
+// wanted. Deletions are done directly against the database.
+//
+// It answers 405 rather than being removed, so an old client gets a clear
+// refusal instead of a confusing 404. Do not re-enable without authentication.
 app.delete("/api/blogs/:id", (req, res) => {
     return res.status(405).json({
         success: false,

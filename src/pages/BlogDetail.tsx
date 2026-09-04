@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { SocialShareButtons } from '@/components/SocialShareButtons'
 import { getBlogPost, getReadingMinutes } from '@/lib/blogData'
-import { isApproved } from '@/lib/blogApproval'
 import { sanitizeHtml } from '@/lib/sanitizeHtml'
 
 /**
@@ -25,7 +24,6 @@ function NoIndex({ children }: { children: React.ReactNode }) {
 }
 import type { BlogPost } from '@/types/blog'
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000'
 
 const formatBlogDate = (value?: string) => {
     if (!value) return 'N/A'
@@ -54,21 +52,24 @@ export default function BlogDetail() {
 
     useEffect(() => {
         if (!postId) return
-        // Try the API first; fall back to the static posts in blogData.js
-        fetch(`${API_URL}/api/blogs/${postId}`)
-            .then(res => res.json())
-            .then(data => {
-                // A post from the API is only trusted if a human approved that
-                // exact slug. Everything else falls back to the committed posts —
-                // the write endpoint is open, and this body is rendered as HTML.
-                if (data && data.title && isApproved(data.slug)) { setBlog(data); setLoading(false) }
-                else if (getBlogPost(postId)) { setBlog(getBlogPost(postId)); setLoading(false) }
-                else { setLoading(false) }
-            })
-            .catch(() => {
-                if (getBlogPost(postId)) setBlog(getBlogPost(postId))
-                setLoading(false)
-            })
+
+        // No runtime fetch. BLOG_POSTS already holds every post this site will
+        // show: the ones committed here, plus the ones scripts/fetch-blogs.mjs
+        // pulled from /api/blogs at build time and a human approved by slug in
+        // src/lib/blogApproval.ts. getBlogPost resolves either a slug or a
+        // legacy _id, so it covers both URL forms.
+        //
+        // Two earlier versions of this effect fetched the API directly and
+        // rendered whatever came back. That endpoint takes unauthenticated
+        // writes and this body renders as HTML, so every one of those responses
+        // was untrusted input on the page. Reading from the build output instead
+        // removes the path entirely rather than filtering it — and it matches
+        // what Blogs.tsx now does.
+        //
+        // The cost is that an approved post appears after the next build, not
+        // instantly. That is the intended workflow: approve, rebuild, publish.
+        setBlog(getBlogPost(postId))
+        setLoading(false)
     }, [postId])
 
     // Reading progress bar

@@ -1,57 +1,23 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
-import { BLOG_POSTS, getReadingMinutes } from '@/lib/blogData'
-import { isApproved } from '@/lib/blogApproval'
-import type { BlogPost } from '@/types/blog'
+import { BLOG_POSTS, sortBlogsByDate, getReadingMinutes } from '@/lib/blogData'
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000'
-
-// Posts come from src/lib/blogData.js — the same source the router, the
-// prerenderer (scripts/prerender.js) and the schema builder read. The listing
-// used to keep its own copy of this array, so any post added to blogData.js
-// was reachable by URL but invisible here.
-// Published posts (those with a body) rank above the unwritten placeholders,
-// then newest first — otherwise the future-dated stubs bury real articles.
-const staticPosts: BlogPost[] = [...(BLOG_POSTS as BlogPost[])].sort((a, b) => {
-    const written = Number(Boolean(b.content)) - Number(Boolean(a.content))
-    if (written !== 0) return written
-    return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-})
+type BlogPost = {
+    _id: string
+    slug?: string
+    title: string
+    excerpt?: string
+    content?: string
+    category?: string
+    createdAt?: string
+    coverImage?: string
+}
 
 export default function Blogs() {
-    const [blogs, setBlogs] = useState<BlogPost[]>(staticPosts)
-    const [loading, setLoading] = useState(false)
+    const [blogs] = useState<BlogPost[]>(() => sortBlogsByDate(BLOG_POSTS))
     const [search, setSearch] = useState('')
-
-    useEffect(() => {
-        fetch(`${API_URL}/api/blogs`)
-            .then(res => {
-                if (!res.ok) throw new Error('API error')
-                return res.json()
-            })
-            .then(data => {
-                // ✅ guard: only merge if data is a real array
-                const apiBlogs: BlogPost[] = Array.isArray(data) ? data : []
-                if (apiBlogs.length > 0) {
-                    // Only posts a human has approved by slug are shown. The write
-                    // endpoint is unauthenticated, so anything else in this response
-                    // is untrusted — including the spam row found on 2026-09-04,
-                    // which used to render here to real visitors.
-                    // See src/lib/blogApproval.ts.
-                    const staticIds = new Set(staticPosts.map(b => b._id))
-                    const fresh = apiBlogs.filter(
-                        (b: BlogPost) => isApproved(b.slug) && !staticIds.has(b._id)
-                    )
-                    setBlogs([...fresh, ...staticPosts])
-                }
-            })
-            .catch(() => {
-                // static posts already rendered, nothing to do
-            })
-            .finally(() => setLoading(false))
-    }, [])
 
     const filtered = blogs.filter(b =>
         !search ||
@@ -121,12 +87,7 @@ export default function Blogs() {
                         </h2>
                     </div>
 
-                    {loading ? (
-                        <div className="flex flex-col items-center justify-center py-24 gap-4">
-                            <div className="w-10 h-10 rounded-full border-4 border-[hsl(145,70%,22%)/20%] border-t-[hsl(145,70%,22%)] animate-spin" />
-                            <p className="text-muted-foreground text-sm">Loading articles...</p>
-                        </div>
-                    ) : filtered.length === 0 ? (
+                    {filtered.length === 0 ? (
                         <div className="text-center py-24 text-muted-foreground">
                             <div className="text-5xl mb-4">✈️</div>
                             <p>No articles found. Try a different search.</p>

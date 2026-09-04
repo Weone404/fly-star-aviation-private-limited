@@ -107,3 +107,79 @@ placeholders until art is dropped at the paths below.
 > Flat vector illustration, minimal clean style, professional Indian aviation
 > training context, generous negative space, absolutely NO text, words, letters,
 > numbers or signage anywhere in the image.
+
+---
+
+## Post: how-to-choose-dgca-ground-classes
+
+**Status:** needs all images — `coverImage` points at the site-wide fallback
+(`/assets/hero-aircraft-1600w.jpg`); the three inline slots render as labelled
+placeholders until art is dropped at the paths below.
+
+### Cover
+
+- **File:** `/blog/how-to-choose-dgca-ground-classes/cover.webp`
+- **Dimensions:** 1200 × 675
+- **Alt text:** A candidate comparing two ground-class brochures at a desk, weighing which coaching institute to join.
+
+> A wide banner showing one adult seated at a desk with two glossy folded
+> brochures spread open side by side, one hand resting on each, weighing them
+> against each other, a notebook and pen visible in the foreground. Deep green
+> background, warm amber as the single accent, a careful evaluating mood. No
+> aircraft, no logos, no faces in close detail, no readable text on either
+> brochure.
+>
+> Flat vector illustration, minimal clean style, professional Indian aviation
+> training context, generous negative space, absolutely NO text, words, letters,
+> numbers or signage anywhere in the image.
+
+### Slot 1 — syllabus scope
+
+- **File:** `/blog/how-to-choose-dgca-ground-classes/syllabus-scope.webp`
+- **Dimensions:** 1200 × 675
+- **Alt text:** A whiteboard split into five labelled columns for the DGCA CPL and ATPL theory papers, with an instructor's hand pointing to the Air Navigation column where worked numerical examples are visible.
+
+> A wide banner showing a whiteboard divided into five even columns by thin
+> vertical lines, each column filled with abstract diagrams and figures, an
+> adult instructor's hand and forearm entering from the right pointing at the
+> first column where a triangular navigation plot is sketched. Deep green
+> background, warm amber as the single accent, an instructional mood. No
+> aircraft, no logos, no faces, no readable text or numerals on the whiteboard.
+>
+> Flat vector illustration, minimal clean style, professional Indian aviation
+> training context, generous negative space, absolutely NO text, words, letters,
+> numbers or signage anywhere in the image.
+
+### Slot 2 — fee breakdown
+
+- **File:** `/blog/how-to-choose-dgca-ground-classes/fee-breakdown.webp`
+- **Dimensions:** 1200 × 675
+- **Alt text:** An itemised ground-class fee sheet on a desk, with per-paper costs, study material, and mock-test charges each listed on a separate line and a calculator beside it.
+
+> A top-down composition of a desk surface with a single printed sheet showing
+> abstract rows of line items and a short column of price-like marks beside
+> each, a small calculator resting in the lower corner and a pen laid across
+> the sheet. Deep green background, warm amber as the single accent, an
+> analytical and orderly mood. No people, no aircraft, no logos, and absolutely
+> no readable characters or numerals on the sheet or calculator.
+>
+> Flat vector illustration, minimal clean style, professional Indian aviation
+> training context, generous negative space, absolutely NO text, words, letters,
+> numbers or signage anywhere in the image.
+
+### Slot 3 — student checklist
+
+- **File:** `/blog/how-to-choose-dgca-ground-classes/student-checklist.webp`
+- **Dimensions:** 1200 × 675
+- **Alt text:** A candidate sitting at a desk checking off items on a printed twelve-point checklist, with a ground-class fee quote and a notebook of DGCA past-paper questions beside them.
+
+> A wide banner showing one adult seated at a desk, pen in hand, marking ticks
+> down a printed list of short abstract rows, a folded fee quote and a spiral
+> notebook open to a page of worked problems visible to one side. Deep green
+> background, warm amber as the single accent, a methodical and focused mood.
+> No aircraft, no logos, no faces in close detail, no readable text anywhere in
+> the frame.
+>
+> Flat vector illustration, minimal clean style, professional Indian aviation
+> training context, generous negative space, absolutely NO text, words, letters,
+> numbers or signage anywhere in the image.

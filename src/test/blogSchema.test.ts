@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { BLOG_POSTS, getReadingMinutes, getWordCount } from "@/lib/blogData.js";
+import { BLOG_POSTS, getBlogRoutes, getReadingMinutes, getWordCount, sortBlogsByDate } from "@/lib/blogData.js";
 import { buildGraph } from "@/lib/schema";
 import { getRouteMeta } from "@/lib/routeMeta";
 
@@ -12,6 +12,16 @@ const nodesFor = (path: string): Node[] =>
 const typeOf = (nodes: Node[], t: string) => nodes.find((n) => n["@type"] === t);
 
 describe("blog post structured data", () => {
+  it("keeps the listing dataset slug-based and sorted newest first", () => {
+    const routes = getBlogRoutes();
+    expect(routes.some((route) => /^\/blogs\/\d+$/.test(route))).toBe(false);
+
+    const dates = sortBlogsByDate(BLOG_POSTS).map((post) =>
+      new Date(post.createdAt || post.updatedAt || post.publishedAt || post.date || 0).getTime()
+    );
+    expect(dates.every((date, index) => index === 0 || date <= dates[index - 1])).toBe(true);
+  });
+
   it("has at least one written, slugged post to guard", () => {
     expect(written.length).toBeGreaterThan(0);
   });
