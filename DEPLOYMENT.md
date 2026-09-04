@@ -1,0 +1,138 @@
+# DEPLOYMENT.md — flystar.co.in
+Updated 2026-09-04.
+
+## 1. Stack
+Vite 5 · React 18 · TypeScript · Tailwind · shadcn/ui · Express + Mongoose
+backend in `backend/` · Vercel.
+
+## 2. Environment variables
+| Variable | Where | Notes |
+|---|---|---|
+| `VITE_API_URL` | `.env.production`, Vercel project settings | Backend base URL for the blog/admin API |
+| `PRERENDER_EXECUTABLE_PATH` | CI only, optional | Path to a stock Chrome/Chromium. When unset, the bundled `@sparticuz/chromium` is used |
+| `PRERENDER_PORT` | optional | Defaults to 4173 |
+
+## 3. Build
+```bash
+npm run build          # vite build, then scripts/prerender.js via postbuild
+npm run test           # vitest — 28 tests
+npm run lint           # eslint
+```
+
+`postbuild` runs the prerender. A build that skips it ships an empty SPA shell to
+crawlers.
+
+### Documentation drift, worth fixing
+`PRERENDER.md` says prerendering reads `<loc>` entries from `dist/sitemap.xml`
+via `scripts/prerender.mjs`. **That is not what runs.** `package.json`'s
+`postbuild` calls `scripts/prerender.js`, which builds its route list from
+`src/lib/routeMeta.ts` plus `getBlogRoutes()`. Both scripts exist; only the
+second is wired.
+
+This gap is almost certainly *why* 15 sitemap URLs sat dead for weeks — anyone
+reading the documentation would reasonably conclude that adding a URL to
+`sitemap.xml` was sufficient to get it rendered. It is not.
+`src/test/renderGate.test.ts` now enforces the real rule; `PRERENDER.md` should
+be corrected to match, or `prerender.mjs` deleted so there is one script.
+
+### Prerendering cannot run everywhere
+Chromium must launch. It will not on Windows without
+`PRERENDER_EXECUTABLE_PATH`, and it does not run in the sandboxed Linux VM used
+for remote editing. Vercel and GitHub Actions are the environments where the
+full build is verified.
+
+## 4. Adding a page — the checklist that matters
+A route is live only if **all** of these exist. Missing number 3 produces an
+HTTP 404 that looks exactly like a page that was never built.
+
+1. Component in `src/pages/…`
+2. `<Route>` in `src/App.tsx` (static routes rank above `:param` routes in React Router 6, so order is not the concern — presence is)
+3. **Entry in `src/lib/routeMeta.ts` — THE RENDER GATE**
+4. Entry in `src/lib/pageMeta.ts`
+5. Schema, if the page type needs more than the default WebPage + BreadcrumbList
+6. `<url>` in `public/sitemap.xml`
+7. Line in `public/llms.txt`
+8. Inbound links from 2–3 related pages
+9. `npm run test` — `renderGate.test.ts` fails if 3 and 6 disagree
+
+## 5. Deploying
+Vercel builds from `main`. Pushes happen from the repository owner's terminal.
+Current work sits on `geo/render-gate-repair` — **not yet merged, not yet
+deployed.**
+
+```bash
+git checkout main
+git merge geo/render-gate-repair
+npm run test && npm run build
+git push origin main
+```
+
+`.github/workflows/blog-publish.yml` auto-merges `claude/blog-*` branches on
+green checks; it does not cover `geo/*` branches.
+
+## 6. After the first deploy — do these in order
+1. **Spot-check the 15 revived URLs.** Every one should return 200:
+   `/courses/cabin-crew` · `/courses/ground-staff` ·
+   `/become-a-pilot/commercial-pilot-licence` ·
+   `/become-a-pilot/airline-transport-pilot-licence` · `/dgca/computer-number` ·
+   `/editorial-policy` · `/locations/{delhi,mumbai,bangalore,hyderabad,india,usa}` ·
+   `/pilot-training/{ppl,cpl,maldives,sri-lanka,guide-to-conversion}`.
+   Also confirm `/dgca/board-verification` returns a 301, not a 404.
+2. **View source, not the rendered page.** Confirm the H1 and body text are in
+   the raw HTML. If they only appear after JavaScript runs, prerendering did not
+   happen for that route and the SEO work has not landed.
+3. **Google Search Console** — submit `sitemap.xml`, then request indexing on
+   `/dgca/computer-number` and the five `/pilot-training/*` pages directly.
+4. **Validate structured data** — Rich Results Test on `/dgca/computer-number`
+   and one `/pilot-training/*` page. Confirm the FAQ answers in the markup match
+   the visible accordion text word for word.
+5. **Google Business Profile** — align name, address and phone to §1 of `SEO.md`
+   exactly, and confirm the GBP category reflects a training institute. Add the
+   `sameAs` URLs already in `index.html`.
+6. **Install analytics.** There is none today (see `SEO.md` §6).
+
+## 7. Blocked, needing owner input
+| Item | Why it is blocked |
+|---|---|
+| **Hardcoded admin credentials** | `src/pages/admin/login/page.tsx` holds the admin username and password in client-side source, shipped in the JS bundle. Rotate the password; moving the check server-side touches `backend/` and admin auth, gated by CLAUDE.md rule 5 |
+| `/privacy-policy`, `/terms` | Drafts complete but hold ~13 `[CONFIRM]` items only the business knows: analytics and pixels in use, third parties receiving data, retention periods, grievance officer, minimum enrolment age, registered MCA address. The footer's links to them were removed rather than left pointing at 404s |
+| Canonical email | Two addresses in circulation (`SEO.md` §1) |
+| PPL flight-hour minimum | Not verifiable from DGCA's portal, which serves its homepage to non-browser clients. Needs Schedule II, Aircraft Rules 1937, read directly |
+
+## 8. 30 / 60 / 90-day plan
+
+### Days 1–30 — make the repair count
+- Merge, deploy, and complete §6 end to end.
+- Rotate the admin password. Decide on the server-side auth fix.
+- Baseline the `GEO_QUERIES.md` prompt set **before** the re-crawl lands, and log it in `GEO_LOG.md`. Without a baseline the next 90 days are unmeasurable.
+- Ship the two remaining DGCA drafts already written and sitting in `drafts/`:
+  `dgca-olode-vs-regular-exams.md` and `dgca-exam-misconceptions.md`. Both are
+  primary-sourced and cost only wiring.
+- Resolve the canonical email; propagate to schema, GBP and directories.
+- Fix `PRERENDER.md`, or delete `prerender.mjs`.
+
+### Days 31–60 — depth on what we own
+- `/dgca/board-verification` as a real page. It currently 301s to the Computer
+  Number guide, which is right for now, but BVC is a distinct query with real
+  volume and the material already exists.
+- Author byline and `Person` or `Organization` schema across existing blog posts —
+  CLAUDE.md rule 5 is not yet satisfied retroactively.
+- RSS/Atom feed at `/feed.xml`. Answer engines and aggregators both use it.
+- Blog cadence: one guide a fortnight, from `GEO_CONTENT_CALENDAR.md`. Prefer
+  topics where a primary source lets us be *right* where the vertical is wrong —
+  that is what earned the PPL Class-Ten and 2.5-year findings.
+- Resolve the four empty blog stubs (`_id` 3–6): write them or remove them.
+
+### Days 61–90 — authority and compounding
+- Generate `sitemap.xml` from `routeMeta.ts` at build time. `renderGate.test.ts`
+  catches drift today; generation makes drift impossible.
+- Off-site entity work per `GEO_ENTITY_EXECUTION_KIT.md`: consistent NAP on
+  JustDial, Sulekha, IndiaMART, Google Business Profile, LinkedIn. Entity
+  consistency is the highest-leverage off-site GEO factor.
+- Quarterly fact re-check, per the published editorial policy. First pass due
+  December 2026. Start with the computer-number auto-generation question, where
+  a press report and DGCA's FAQ disagree.
+- Ship `/privacy-policy` and `/terms` once the `[CONFIRM]` list is answered, and
+  restore their footer links.
+- Then, and only then, consider new commercial pages. Informational depth is what
+  earns citations; commercial pages convert the traffic those citations bring.

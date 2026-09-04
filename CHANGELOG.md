@@ -107,8 +107,86 @@ answer engine lifts verbatim.
 
 ### Decision recorded: no Next.js migration
 The brief asked whether to migrate. Recommendation is no, and the reasoning is
-in AUDIT.md §7. Short version: the Puppeteer prerender already emits full static
+in AUDIT.md §8. Short version: the Puppeteer prerender already emits full static
 HTML per route, so rendering was never the problem — a route registry that 15
 URLs were missing from was. The durable fix is to generate `sitemap.xml` *from*
 `routeMeta.ts` at build time so a URL can never be advertised without being
 rendered. That is queued as P3.
+
+---
+
+## 2026-09-04 (later) — Location model corrected, five pilot-training pages built
+
+### Location pages rebuilt on the real business model
+`src/pages/Locations.tsx`, `routeMeta.ts`, `pageMeta.ts`, sitemap, llms.txt.
+
+The page published centre counts — 3 Delhi, 2 Mumbai, 2 Hyderabad, 4 Bangalore,
+8 USA, 16 India — that nothing else on the site supports. Owner confirmed the
+model: **Dwarka is the head office; everywhere else is a partner or affiliate
+relationship.** Every count is gone and must not return.
+
+Each city page now opens by stating plainly whether there is a centre there
+("Flying Star Aviator does not operate a centre in Mumbai"), separates the
+ground-training half from the flying half, and carries verifiable context in
+place of counts. This is better GEO, not just safer copy: an entity claiming
+four cities while its NAP names one is precisely the ambiguity that stops a
+language model resolving "Fly Star" to a single business, and a page that says
+where it *isn't* is more quotable than one that pads.
+
+Also removed `+919876543210` — a placeholder number sitting behind a "Call Local
+Office" button on every city page.
+
+All six `/locations/*` routes added to the render gate.
+
+### Five `/pilot-training/*` pages, written from regulator documents
+`src/pages/pilotTraining/topics.tsx` (component) +
+`src/lib/pilotTrainingTopics.ts` (data) + routes + render gate + schema.
+
+`/pilot-training/{ppl,cpl,maldives,sri-lanka,guide-to-conversion}` were
+advertised in the sitemap, had no `:topic` handling so all five rendered the
+same overview page, and 404'd in production. Owner chose real pages over
+redirects.
+
+Sources, each named on the page:
+| Page | Primary source |
+|---|---|
+| PPL, CPL | DGCA CAR Section 7, Series 'B', Part I (Issue III, Rev 2, 13 Feb 2019) |
+| Conversion, Maldives, Sri Lanka | DGCA CAR Section 7, Series 'G', Part I (Issue II, Rev 4, 9 Sep 2019) |
+| Sri Lanka | Civil Aviation Authority of Sri Lanka, CPL requirements |
+| Maldives | Maldives CAA, published list of approved flight training organisations |
+
+Two facts worth owning, because the vertical states both wrongly:
+- **A PPL requires a Class Ten pass, not 10+2 with Physics and Mathematics.**
+  The 10+2 PCM rule is the CPL rule. Nearly every Indian training-school page
+  conflates them.
+- **A passed PPL paper is valid two and a half years, not five.** Five years is
+  CPL and ATPL.
+
+**What is deliberately missing:** the PPL flight-hour minimum. Every competitor
+page states a number; none sources it, and Schedule II of the Aircraft Rules
+1937 could not be read directly from DGCA's portal, which serves its homepage to
+non-browser clients. The page says the figure is unverified and tells the reader
+to get it from their FTO in writing. This is the editorial policy's first live
+test and it decides against publishing.
+
+Topic data sits in `src/lib/` rather than beside the component because
+`schema.ts` builds each page's `FAQPage` JSON-LD from the same `faqs` array the
+page renders. One array, two consumers, no drift.
+
+### Test suite
+- `src/test/renderGate.test.ts` (new) — asserts every `sitemap.xml` URL is
+  prerenderable, that redirect sources are never advertised, and that canonicals
+  match their own paths. **This is the durable fix.** The 15-dead-URL bug was
+  possible because nothing connected the manifest to the gate; now the suite
+  fails instead of the site.
+- `src/test/vercelConfig.test.ts` — rewritten to assert routing *behaviour*
+  against a set of real paths rather than pinning the allowlist regex as a
+  literal string, which made every legitimate addition fail for the wrong
+  reason.
+
+28 tests passing, `vite build` green, `eslint` clean (8 pre-existing warnings,
+no errors).
+
+### Result
+`sitemap.xml` advertises 50 URLs. **All 50 are now prerenderable.** At the start
+of this session, 15 of 48 returned HTTP 404.
