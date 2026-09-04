@@ -631,3 +631,26 @@ Test runs moved to an isolated clone in the cloud container. The device VM share
 `node_modules` with the owner's Mac through the folder mount, so installing there
 replaced macOS binaries with Linux ones and broke their local build. That will
 not happen again.
+
+
+### Review pass (same day) — two defects found before merge
+
+Preparing the fact-check pack found two things the writing pass missed. Both are
+fixed in the working tree; `REVIEW-MONTH-1.md` is the artifact.
+
+**Orphan FAQPage schema.** All six new posts emitted `FAQPage` structured data
+from their `faqs` array while rendering **none of it on the page**. The site's
+existing convention embeds the FAQ visibly inside `content` and mirrors it in
+`faqs`; the new posts had only the array. Schema asserting answers a reader
+cannot see is a structured-data violation and breaks the rule this repo documents
+in SEO.md §5.
+
+Fixed by generating each post's visible FAQ HTML **from its own `faqs` array**, so
+the two remain one source rather than two copies. Verified verbatim afterwards
+across all six: zero orphans. Word counts rose to 744–938.
+
+**Four meta descriptions over 155 characters** (160–169). Shortened.
+
+Both were found by demanding evidence rather than restating intent — the review
+asked for a figure-by-figure table and a parity check, and the parity check
+failed. Worth keeping as the shape of future content review.
