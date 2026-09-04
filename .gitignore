@@ -26,4 +26,10 @@ dist-ssr
 .env*
 flystar-routine-prompt.txt
 blog-gate-report.json
+
+# Local API snapshots. contacts-snapshot.json holds real people's names, phone
+# numbers and email addresses — it must never be committed, and it does not
+# belong on a shared machine.
 blog-snapshot.json
+contacts-snapshot.json
+*-snapshot.json
