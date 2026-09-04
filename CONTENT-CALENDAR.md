@@ -119,16 +119,59 @@ wiring. They go first because they are the cheapest real content available.
 
 ---
 
-# MONTH 2 — outline
+# MONTH 2 — detailed
 
-| Slug | Primary keyword | Source status |
-|---|---|---|
-| `/dgca/class-1-medical-guide` | dgca class 1 medical requirements | **browser** — needs the DGCA medical CAR |
-| `/rtr-a-exam-guide` | rtr a exam syllabus | **browser** — WPC Wing is the authority |
-| `/blog/dgca-exam-attempts-and-validity` | dgca exam validity | fetched (CAR 7-B-I) |
-| `/blog/foreign-licence-conversion-checklist` | dgca conversion documents | fetched (CAR 7-G-I) |
-| `/blog/cpl-eligibility-after-12th` | cpl eligibility after 12th | fetched (CAR 7-B-I) |
-| `/blog/pilot-training-cost-india` | pilot training cost india | **secondary-only — held.** Every published figure is a school's own quote. Either we publish a cost *framework* with no invented numbers, or we do not publish |
+Six entries. Checked against all 60 live URLs: **zero slug or primary-keyword
+collisions.** Two are writable today; four are gated on `BROWSER-FETCH.md`.
+
+### 1. `/blog/cpl-eligibility-after-12th`
+- **Primary:** cpl eligibility after 12th
+- **Secondary:** how to become a pilot after 12th, cpl age limit, cpl qualification india, pcm for cpl
+- **Intent:** informational · **Length:** ~800 · **Pillar:** `/courses/cpl`
+- **Source status:** **fetched** — CAR 7-B-I. Writable now.
+- **Cannibalization check:** `/become-a-pilot/become-pilot` targets *how to become a pilot in India* (the whole path); this targets the narrower *eligibility after 12th* query. Different intent, and this page links up to the pillar rather than competing.
+- **The angle:** Physics and Mathematics, not PCM. There is no maximum age. And the PPL/CPL qualification split, which is the correction most likely to change a reader's plan.
+
+### 2. `/blog/dgca-exam-attempts-and-validity`
+- **Primary:** dgca exam validity
+- **Secondary:** dgca exam attempts limit, how long is dgca paper valid, dgca paper expiry
+- **Intent:** informational · **Length:** ~800 · **Pillar:** `/dgca`
+- **Source status:** **fetched** — CAR 7-B-I. Writable now.
+- **The angle:** five years for CPL/ATPL, two and a half for PPL, and DGCA publishes **no attempt cap** — so the real constraint is validity plus a non-refundable fee per attempt. A page that says "we checked and no limit is published" is more useful, and more citable, than one that invents one.
+
+### 3. `/blog/foreign-licence-conversion-checklist`
+- **Primary:** dgca licence conversion documents
+- **Secondary:** faa to dgca checklist, foreign cpl conversion india, dgca conversion requirements
+- **Intent:** procedural · **Length:** ~900 · **Pillar:** `/pilot-training/guide-to-conversion`
+- **Source status:** **fetched** — CAR 7-G-I. Writable now.
+- **Cannibalization check:** the pillar answers *how conversion works*; this answers *what to assemble*. Checklist intent, not explanatory. Must link up, not across.
+- **The angle:** the 10-hours-PIC-in-24-months currency rule as a **deadline**, not a footnote. It is the item people discover after it has lapsed.
+
+### 4. `/blog/dgca-class-1-medical-guide`
+- **Primary:** dgca class 1 medical
+- **Secondary:** class 1 medical validity, dgca medical examiner, class 2 medical india, pilot medical requirements
+- **Intent:** informational · **Length:** ~1,200 · **Pillar:** `/dgca/medical`
+- **Source status:** **BLOCKED — BROWSER-FETCH item 2**
+- **Note:** `/dgca/medical` exists and stays the pillar. This would be the depth page on validity by age band and who may issue — but not one word of it gets written before the CAR is in hand. Medical is the worst possible place to guess.
+
+### 5. `/blog/rtr-a-exam-guide`
+- **Primary:** rtr a exam syllabus
+- **Secondary:** rtr a exam preparation, radio telephony licence india, rtr practical exam
+- **Intent:** informational · **Length:** ~1,000 · **Pillar:** `/rtr`
+- **Source status:** **BLOCKED — BROWSER-FETCH item 4**
+- **Note:** we cannot currently name the examining authority with confidence, which makes a syllabus page premature.
+
+### 6. `/blog/pilot-training-cost-india`
+- **Primary:** pilot training cost india
+- **Secondary:** cpl cost india, how much to become a pilot, pilot training fees
+- **Intent:** commercial-informational · **Length:** ~1,000 · **Pillar:** `/courses/cpl`
+- **Source status:** **BLOCKED — BROWSER-FETCH item 6**
+- **Note:** the highest-intent query in this vertical and the one we are least able to write. Every published figure is a school quoting itself. **The unlock is the business's own fee** — a figure Flying Star publishes about Flying Star is primary-sourced by definition. Until then, unwritten. A cost page with invented numbers would undo the credibility the sourced pages are building.
+
+### Month 2 sequencing
+Write 1–3 in week one, in that order. 4–6 are dark until `BROWSER-FETCH.md` items
+land. If none land, month 2 is three posts, and that is the correct outcome
+rather than three more written on secondary sources.
 
 # MONTH 3 — outline
 

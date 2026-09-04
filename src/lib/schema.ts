@@ -11,6 +11,7 @@ import { PAGE_META } from "./pageMeta";
 import { getBlogPost, getWordCount, getReadingMinutes } from "./blogData.js";
 import { PILOT_TRAINING_TOPICS } from "./pilotTrainingTopics";
 import { FAQ_HUB_QUESTIONS } from "./faqHub";
+import { GLOSSARY } from "./glossary";
 
 const ORG_ID = `${SITE_ORIGIN}/#organization`;
 
@@ -19,7 +20,6 @@ const LABELS: Record<string, string> = {
   courses: "Courses",
   faq: "FAQ",
   glossary: "Glossary",
-  "computer-number": "Computer Number",
   "editorial-policy": "Editorial Policy",
   cpl: "CPL Training",
   atpl: "ATPL Training",
@@ -352,6 +352,39 @@ function pageFaqNode(path: string): JsonLdNode | null {
   };
 }
 
+/**
+ * DefinedTermSet for /glossary.
+ *
+ * A glossary rendered as a <dl> is unambiguous to a person and ambiguous to a
+ * parser — it looks like any other list of bold text and paragraphs.
+ * DefinedTermSet/DefinedTerm says explicitly "these are terms and these are
+ * their definitions", which is what lets an answer engine lift a definition
+ * knowing it is one. No visible change; this is purely machine-facing.
+ *
+ * Built from the same GLOSSARY array the page renders, so the two cannot drift.
+ */
+function glossaryNode(path: string): JsonLdNode | null {
+  if (path !== "/glossary") return null;
+  const url = canonicalUrl(path);
+  return {
+    "@type": "DefinedTermSet",
+    "@id": `${url}#glossary`,
+    name: "Indian Pilot Training Glossary",
+    description:
+      "Terms used in Indian pilot training and DGCA licensing, defined as the regulator uses them.",
+    url,
+    inDefinedTermSet: undefined,
+    hasDefinedTerm: GLOSSARY.map((entry) => ({
+      "@type": "DefinedTerm",
+      name: entry.term,
+      ...(entry.abbr ? { alternateName: entry.abbr } : {}),
+      description: entry.definition,
+      inDefinedTermSet: `${url}#glossary`,
+      ...(entry.href ? { url: canonicalUrl(entry.href) } : {}),
+    })),
+  };
+}
+
 export function buildGraph(path: string): JsonLdNode | null {
   if (path === "/") return null;
 
@@ -370,6 +403,8 @@ export function buildGraph(path: string): JsonLdNode | null {
   const nodes: JsonLdNode[] = [breadcrumb(path), pageNode(path)];
   const pageFaq = pageFaqNode(path);
   if (pageFaq) nodes.push(pageFaq);
+  const glossary = glossaryNode(path);
+  if (glossary) nodes.push(glossary);
 
   return { "@context": "https://schema.org", "@graph": nodes };
 }

@@ -654,3 +654,87 @@ across all six: zero orphans. Word counts rose to 744–938.
 Both were found by demanding evidence rather than restating intent — the review
 asked for a figure-by-figure table and a parity check, and the parity check
 failed. Worth keeping as the shape of future content review.
+
+
+---
+
+## 2026-09-04 (post-merge) — Salary post repaired, two shipped defects fixed
+
+### Two defects the deploy surfaced
+**Duplicate object key in `schema.ts`.** esbuild warned: `Duplicate key
+"computer-number" in object literal`. Introduced in the first session by adding a
+LABELS entry that already existed 20 lines below. Same value, so no behaviour
+change, but it shipped. Removed; LABELS now has 50 unique keys and zero
+duplicates.
+
+**Share buttons pointed at localhost on every prerendered page.** Flagged by a
+fetch of the live blog post, not by any test. `SocialShareButtons` built its URL
+from `window.location.href` — and prerendering runs in a headless browser served
+from `http://localhost:4173`, so **`localhost` share links were baked into the
+static HTML of every prerendered page.** Hydration corrects it for a visitor with
+working JS; crawlers and answer engines read the static HTML, and so does anyone
+whose JS is slow or blocked.
+
+Now built from `SITE_ORIGIN` plus the live pathname. The pathname was always
+right; only the origin was wrong. Pre-existing, not from this batch.
+
+### W1 — `/blog/air-hostess-salary-in-india-2026` repaired
+Same slug, same URL, `dateModified` bumped, no redirect.
+
+**What we tried first:** sourcing the figures. No Indian airline publishes cabin
+crew pay. Air India's own cabin crew careers page states only *"competitive
+salary: attractive compensation package with performance-linked incentives"*. The
+job posting carries no figure. Search returns aggregator sites (self-reported,
+unaudited) and training institutes (selling courses). There is no primary source
+to cite, for any airline.
+
+So under the numbers policy the airline-by-airline tables — Air India, IndiGo,
+Vistara, Akasa — are **deleted, not softened**. Rupee figures on the page: zero.
+
+What replaced them is sourced and, we think, more useful:
+- What cabin crew pay is **made of** — base, flying allowance, layover allowance,
+  international component — which holds across carriers even though amounts do
+  not, and explains why any single monthly figure misleads.
+- **Air India's published eligibility**, in full and cited: nationality, age
+  bands, Class 12 with 50%, height, BMI, vision, tattoos, languages, experience,
+  basing. This is what the airlines *do* publish.
+- How to read the figures found online, by source type — including naming our own
+  incentive as a training institute, which is exactly why the page carries none.
+- Five questions to ask before accepting an offer, which actually determine pay.
+
+The page now opens by saying no airline publishes this and explains why the
+previous version's tables were removed. 1,196 words, 6 FAQs, zero orphans.
+
+**Judgement call, flagged:** this is a large character change to an indexed page
+targeting a high-volume commercial query. It may lose traffic that wanted a
+number. It cannot lose credibility, and being quoted by an AI Overview on
+invented salary tables was the likeliest way this campaign could damage the
+business it is meant to help.
+
+### W2 — `BROWSER-FETCH.md`
+Six held items converted into two-minute tasks: exact URL, what to find, what to
+copy, which pages it unblocks, ordered by value. Item 1 (Schedule II) alone
+unblocks three live pages.
+
+Item 6 is the one worth noticing: the cost page is blocked on *any* citable
+figure, and the business is itself a school — a fee Flying Star publishes about
+Flying Star is primary-sourced by definition. It is the only item on the list
+that can be created rather than found.
+
+### W3 — Month 2 detailed
+Six entries, checked against all 60 live URLs: **zero slug or primary-keyword
+collisions.** Three writable today from CAR 7-B-I and CAR 7-G-I; three dark until
+`BROWSER-FETCH.md` items land. Cannibalization notes recorded per entry where a
+pillar page targets an adjacent query.
+
+If no browser items land, month 2 is three posts. That is the correct outcome
+rather than three more written on secondary sources.
+
+### W4 — Small wins
+- **`DefinedTermSet` schema on `/glossary`**, built from the same `GLOSSARY`
+  array the page renders. A `<dl>` is unambiguous to a person and ambiguous to a
+  parser; this states explicitly that these are terms and these are their
+  definitions. No visible change.
+- `/faq` meta description 158 → 148 characters.
+
+113 tests passing, build green, no esbuild warnings.

@@ -363,7 +363,7 @@ const routeMeta: Record<string, RouteMeta> = {
   },
   "/faq": {
     title: "DGCA & Pilot Training FAQ | Flying Star Aviator",
-    description: "Sourced answers on DGCA eligibility, exam subjects, pass marks, fees, the computer number and foreign licence conversion — each linked to the rule behind it.",
+    description: "Sourced answers on DGCA eligibility, exam subjects, pass marks, fees, the computer number and licence conversion, each linked to the rule behind it.",
     canonical: `${BASE_URL}/faq`,
   },
   "/glossary": {
