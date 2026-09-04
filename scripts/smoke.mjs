@@ -63,6 +63,39 @@ async function pool(items, worker) {
   return results;
 }
 
+/**
+ * Cross-check the sitemap against the build's own blog report.
+ *
+ * The blog fetch fails soft, so a build where /api/blogs was unreachable still
+ * succeeds — it just quietly ships fewer blog URLs. Smoke alone cannot catch
+ * that: it only checks URLs that ARE in the sitemap, never the ones that should
+ * have been. This is the check for the missing ones.
+ */
+function blogCountCheck() {
+  const reportPath = path.join(ROOT, "blog-gate-report.json");
+  if (!fs.existsSync(reportPath)) {
+    console.warn("[smoke] no blog-gate-report.json — run a build first to cross-check blog counts");
+    return true;
+  }
+  const report = JSON.parse(fs.readFileSync(reportPath, "utf8"));
+  const inSitemap = sitemapPaths().filter((p) => p.startsWith("/blog/")).length;
+
+  if (report.outcome === "fetch-failed") {
+    console.error(`[smoke] FAIL the last build could not reach ${report.api} (${report.error}).`);
+    console.error("[smoke]      Blog posts may be missing from the sitemap. Rebuild once the API is up.");
+    return false;
+  }
+
+  const staticWithSlug = inSitemap - (report.merged ?? 0);
+  console.log(`[smoke] blog URLs in sitemap: ${inSitemap} (${report.merged ?? 0} from the API, ${staticWithSlug} committed)`);
+
+  if (staticWithSlug < 0) {
+    console.error("[smoke] FAIL sitemap has fewer blog URLs than the build reported merging.");
+    return false;
+  }
+  return true;
+}
+
 async function main() {
   const paths = sitemapPaths();
   const redirects = expectedRedirects();
@@ -71,14 +104,15 @@ async function main() {
   const pageResults = await pool(paths, (p) => check(`${BASE}${p}`));
   const redirectResults = await pool(redirects, (p) => check(`${BASE}${p}`, { expectRedirect: true }));
 
+  const countsOk = blogCountCheck();
   const failures = [...pageResults, ...redirectResults].filter((r) => !r.ok);
 
   for (const f of failures) {
     console.error(`[smoke] FAIL ${f.status || "ERR"} ${f.url}${f.error ? ` — ${f.error}` : ""}`);
   }
 
-  if (failures.length) {
-    console.error(`\n[smoke] ${failures.length} of ${paths.length + redirects.length} checks failed.`);
+  if (failures.length || !countsOk) {
+    console.error(`\n[smoke] ${failures.length} of ${paths.length + redirects.length} URL checks failed${countsOk ? "" : ", and the blog count cross-check failed"}.`);
     process.exit(1);
   }
   console.log(`[smoke] All ${paths.length + redirects.length} checks passed.`);

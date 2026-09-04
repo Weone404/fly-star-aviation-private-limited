@@ -288,3 +288,87 @@ the owner prefers otherwise.
 - The spam row is excluded from the sitemap but not deleted from the database.
 - The twelve newly-publishable posts have not been fact-checked against the
   editorial policy. They pre-date it. Worth a pass before they earn citations.
+
+
+---
+
+## 2026-09-04 (late) — Stored XSS closed, approval allowlist, content-hash pinning
+
+### The finding that reframed the rest
+`src/pages/BlogDetail.tsx:191` rendered `blog.content` through
+`dangerouslySetInnerHTML`, where `blog` is the response from `/api/blogs/:id`.
+No sanitiser existed anywhere in the project.
+
+`POST /api/blogs` accepts unauthenticated writes. So arbitrary HTML could be
+written to the database and executed in every visitor's browser on this origin —
+**stored XSS**, live. The build-time fetch shipped that morning would have made
+it worse: prerendering bakes fetched content into static files served from the
+edge, so a payload would execute without any fetch at all, and be cached.
+
+### Sanitisation, both paths
+`src/lib/sanitizeHtml.ts` (runtime) and `scripts/sanitize.mjs` (build) strip
+script/style/iframe/form/svg with their contents, all `on*` handlers, and unsafe
+URL schemes including whitespace- and control-character-obfuscated
+`javascript:`. Allowlist-based, because an allowlist fails closed when a new
+attack shape appears. No dependency — string operations only, so there is nothing
+to keep patched. `src/test/sanitizeHtml.test.ts` asserts the two copies agree
+character for character on a shared corpus.
+
+### Allowlist replaces heuristics as the control
+`src/lib/blogApproval.ts` holds `APPROVED_POSTS`. A database post is not
+prerendered, not in the sitemap, and **not rendered to visitors** unless its slug
+is on that list.
+
+The previous quality gate was a filter, not a control — its rules are in this
+repo, so anyone who can read them can write content that passes. `blog-gate.json`
+remains, demoted in its own comment to a safety net for an approved post that has
+since become malformed.
+
+`REFUSED_POSTS` records the steel-supplier row and why, so the rejection stays
+visible rather than being an absence someone later "fixes".
+
+### Content-hash pinning
+Each approval pins the sha256 of the post's `content` at approval time. If an
+approved post's content later differs, `prebuild` **exits non-zero** and prints
+both hashes and the remedy. An approval describes specific text; text that has
+changed is not approved.
+
+Re-approving after a deliberate edit is `npm run blogs:approve -- <slug>`.
+`npm run blogs:list` shows every post as approved / NOT APPROVED / CHANGED SINCE
+APPROVAL.
+
+**Consequence, stated plainly:** `APPROVED_POSTS` ships empty, so the twelve
+otherwise-publishable posts are off the live site until reviewed and approved.
+That is deliberate — they pre-date the editorial policy and their figures are
+unverified. The spam post is off the site for visitors too, which it was not
+before.
+
+### Fetch failure is now loud and distinguishable
+A gate rejection and an unreachable API were previously both just warnings.
+`blog-gate-report.json` now carries an `outcome` field (`ok` / `fetch-failed`)
+with `merged` counts, and a fetch failure prints a boxed warning. `smoke.mjs`
+fails on a `fetch-failed` report and cross-checks the sitemap's blog URL count
+against what the build said it merged — smoke can only check URLs that ARE in the
+sitemap, never the ones that should have been, so that gap needed its own check.
+
+### Deploy hook (scoped backend change, owner-approved)
+`backend/server.js` calls `VERCEL_DEPLOY_HOOK_URL` after a successful blog
+create, update or delete. Unset variable is a no-op; a hook failure never fails
+the write. It publishes nothing by itself — a rebuild still only picks up
+approved, hash-matching posts. A nightly-rebuild workflow is documented in
+DEPLOYMENT.md as the fallback. **No other backend change; auth untouched.**
+
+### Slug bug identified, not fixed
+`backend/server.js:158` runs `.replace(/\s+/g, "-")` before
+`.replace(/[^\w-]/g, "")`. It never strips digits — it strips punctuation and
+emoji *after* they have become hyphens, leaving the leftovers. That produces
+`pilot-career-after-12th--eligibility-fees--scope` from "12th – Eligibility, Fees
+& Scope", and leading/trailing hyphens where a title starts or ends with a
+symbol. **A code bug, not manual entry.** The one-line fix is outside the
+approved backend scope, so it is recorded in DEPLOYMENT.md §7 rather than
+applied.
+
+### Tests
+58 passing. New: `sanitizeHtml.test.ts` (11), `blogApproval.test.ts` (7) —
+covering an empty allowlist publishing nothing, an approved post publishing, and
+an approved post whose content drifted being refused with both hashes reported.

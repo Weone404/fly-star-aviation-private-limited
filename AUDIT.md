@@ -46,6 +46,17 @@ the pages rebuilt to say so plainly. Original finding kept below for the record.
 
 Every other source on the site describes **one** location: Dwarka, New Delhi. If Flying Star Aviator does not operate centres in those cities, these pages are (a) fabricated counts and (b) a local-SEO liability — Google treats unsupported multi-city location pages as doorway pages, and an entity that claims four cities while its NAP says one is exactly the ambiguity that stops an LLM resolving "Fly Star" confidently. **Not publishing these until confirmed.**
 
+## 5b. CRITICAL — stored XSS via the blog API (closed 2026-09-04)
+`BlogDetail.tsx` rendered `/api/blogs` content through `dangerouslySetInnerHTML`
+with no sanitiser in the project. Combined with an unauthenticated `POST
+/api/blogs`, that is stored XSS: arbitrary HTML written to the database executed
+in visitors' browsers on this origin.
+
+Closed by sanitising both the runtime and build paths, and by requiring explicit
+per-post approval before any database content is rendered or advertised. The
+write endpoint itself remains open — that is the accepted auth decision in §6, and
+it is why these two controls have to carry the weight.
+
 ## 5. Other gaps found
 - **No legal pages live.** `/privacy-policy`, `/terms`, `/editorial-policy` exist as drafts only. Missing privacy/terms weakens E-E-A-T and trips Google's YMYL-adjacent trust signals for a fee-charging education business.
 - **Thin `/pilot-training/:topic`.** Five sitemap URLs collapse onto one page.

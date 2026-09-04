@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { SocialShareButtons } from '@/components/SocialShareButtons'
 import { getBlogPost, getReadingMinutes } from '@/lib/blogData'
+import { isApproved } from '@/lib/blogApproval'
+import { sanitizeHtml } from '@/lib/sanitizeHtml'
 import type { BlogPost } from '@/types/blog'
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000'
@@ -37,7 +39,10 @@ export default function BlogDetail() {
         fetch(`${API_URL}/api/blogs/${postId}`)
             .then(res => res.json())
             .then(data => {
-                if (data && data.title) { setBlog(data); setLoading(false) }
+                // A post from the API is only trusted if a human approved that
+                // exact slug. Everything else falls back to the committed posts —
+                // the write endpoint is open, and this body is rendered as HTML.
+                if (data && data.title && isApproved(data.slug)) { setBlog(data); setLoading(false) }
                 else if (getBlogPost(postId)) { setBlog(getBlogPost(postId)); setLoading(false) }
                 else { setLoading(false) }
             })
@@ -188,7 +193,9 @@ export default function BlogDetail() {
                 prose-strong:text-foreground
                 prose-a:text-[hsl(145,70%,22%)] prose-a:no-underline hover:prose-a:underline
                 prose-ul:my-4 prose-ol:my-4"
-                            dangerouslySetInnerHTML={{ __html: blog.content }}
+                            // Sanitised even though the post is approved: approval is
+                            // a review of the text, not proof the markup is safe.
+                            dangerouslySetInnerHTML={{ __html: sanitizeHtml(blog.content) }}
                         />
                     </div>
 

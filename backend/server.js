@@ -18,6 +18,37 @@ cloudinary.config({
     secure: true,
 });
 
+
+// ── Vercel deploy hook ────────────────────────────────────────────────────────
+// Prerendering happens at build time, so a post written here is not crawlable
+// until the site rebuilds. This nudges Vercel after a successful blog write.
+//
+// It publishes NOTHING on its own. A rebuild only picks up posts whose slug is
+// on the approval list in src/lib/blogApproval.ts with a matching content hash,
+// so an unapproved or edited post triggers a build and is still held back.
+//
+// Set VERCEL_DEPLOY_HOOK_URL in the backend environment. Treat it as a secret:
+// anyone holding it can trigger builds. If it is unset, this is a no-op and blog
+// writes behave exactly as before.
+function triggerRebuild(reason) {
+    const hook = process.env.VERCEL_DEPLOY_HOOK_URL;
+    if (!hook) return;
+
+    try {
+        const req = https.request(hook, { method: "POST", timeout: 10000 }, (res) => {
+            res.resume();
+            console.log(`[deploy-hook] ${reason} -> HTTP ${res.statusCode}`);
+        });
+        // A failed hook must never fail the blog write that triggered it — the
+        // post is already saved, and the nightly rebuild is the fallback.
+        req.on("error", (e) => console.warn(`[deploy-hook] ${reason} failed: ${e.message}`));
+        req.on("timeout", () => { console.warn(`[deploy-hook] ${reason} timed out`); req.destroy(); });
+        req.end();
+    } catch (e) {
+        console.warn(`[deploy-hook] ${reason} threw: ${e.message}`);
+    }
+}
+
 // ── MongoDB Native Client (for blogs) ─────────────────────────────────────────
 const mongoClient = new MongoClient(process.env.MONGODB_URI);
 
@@ -167,6 +198,7 @@ app.post("/api/blogs", (req, res) => {
                 slug,
                 createdAt: new Date(),
             });
+            triggerRebuild("blog created");
             return res.status(200).json({ success: true, id: result.insertedId.toString() });
         } catch (e) {
             return res.status(500).json({ success: false, message: e.message });
@@ -224,6 +256,7 @@ app.put("/api/blogs/:id", (req, res) => {
             if (result.matchedCount === 0) {
                 return res.status(404).json({ success: false, message: "Blog not found" });
             }
+            triggerRebuild("blog updated");
             return res.status(200).json({ success: true, message: "Blog updated" });
         } catch (e) {
             return res.status(500).json({ success: false, message: e.message });
@@ -240,6 +273,7 @@ app.delete("/api/blogs/:id", async (req, res) => {
         if (result.deletedCount === 0) {
             return res.status(404).json({ success: false, message: "Blog not found" });
         }
+        triggerRebuild("blog deleted");
         return res.status(200).json({ success: true, message: "Blog deleted" });
     } catch (e) {
         return res.status(500).json({ success: false, message: e.message });

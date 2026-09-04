@@ -1,5 +1,5 @@
 {
-  "_comment": "Quality gate for posts pulled from /api/blogs at build time. A post that fails is still served by the SPA at runtime; it just does not get a prerendered file or a sitemap entry, so it is never advertised to a crawler. Review blog-gate-report.json after each build.",
+  "_comment": "Safety net only. The CONTROL is the allowlist in src/lib/blogApproval.ts — a post is not published unless a human approved its slug and pinned its content hash. These heuristics run after that, to catch an approved post that has since become malformed. Do not treat them as security: their rules are in this repo, so anyone who can read them can write content that passes. Review blog-gate-report.json after each build.",
   "minWords": 300,
   "denySlugs": [],
   "denyIds": [],

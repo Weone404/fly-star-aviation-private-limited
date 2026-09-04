@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import { BLOG_POSTS, getReadingMinutes } from '@/lib/blogData'
+import { isApproved } from '@/lib/blogApproval'
 import type { BlogPost } from '@/types/blog'
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000'
@@ -34,9 +35,15 @@ export default function Blogs() {
                 // ✅ guard: only merge if data is a real array
                 const apiBlogs: BlogPost[] = Array.isArray(data) ? data : []
                 if (apiBlogs.length > 0) {
-                    // avoid duplicate _ids with the static posts
+                    // Only posts a human has approved by slug are shown. The write
+                    // endpoint is unauthenticated, so anything else in this response
+                    // is untrusted — including the spam row found on 2026-09-04,
+                    // which used to render here to real visitors.
+                    // See src/lib/blogApproval.ts.
                     const staticIds = new Set(staticPosts.map(b => b._id))
-                    const fresh = apiBlogs.filter((b: BlogPost) => !staticIds.has(b._id))
+                    const fresh = apiBlogs.filter(
+                        (b: BlogPost) => isApproved(b.slug) && !staticIds.has(b._id)
+                    )
                     setBlogs([...fresh, ...staticPosts])
                 }
             })

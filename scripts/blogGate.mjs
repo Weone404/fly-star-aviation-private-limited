@@ -1,5 +1,7 @@
+import { createHash } from "node:crypto";
+
 /**
- * Pure logic for the build-time blog quality gate.
+ * Pure logic for the build-time blog approval gate.
  *
  * Kept separate from scripts/fetch-blogs.mjs (which does the network I/O) so it
  * can be unit-tested without reaching the API — the API is not reachable from
@@ -38,6 +40,11 @@ export const DEFAULT_GATE = {
   spamMarkers: [],
 };
 
+/** sha256 of a post's content field — what an approval pins. */
+export function contentHash(content) {
+  return createHash("sha256").update(String(content ?? ""), "utf8").digest("hex");
+}
+
 /**
  * Decide whether a post may be advertised to crawlers.
  *
@@ -45,12 +52,32 @@ export const DEFAULT_GATE = {
  * simply gets no prerendered file and no sitemap entry, so it is never offered
  * to a search engine or an answer engine.
  */
-export function assess(post, gateInput = {}) {
+export function assess(post, gateInput = {}, approvals = null) {
   const gate = { ...DEFAULT_GATE, ...gateInput };
   const id = post?._id ? String(post._id) : "";
   const rawSlug = post?.slug;
   const slug = tidySlug(rawSlug);
   const words = plainWords(post);
+
+  // ── The allowlist comes first and overrides everything below it. ──────────
+  // The heuristics that follow are a safety net for an approved post that has
+  // become malformed; they are NOT the control. The control is that a human
+  // named this slug and pinned this content.
+  if (approvals) {
+    const approval = approvals.find((a) => a.slug === slug || a.slug === rawSlug);
+    if (!approval) return { ok: false, reason: "not on the approval list", slug, words };
+
+    const actual = contentHash(post?.content);
+    if (approval.sha256 !== actual) {
+      return {
+        ok: false,
+        reason: "content changed since approval",
+        slug,
+        words,
+        drift: { approved: approval.sha256, current: actual },
+      };
+    }
+  }
 
   if (gate.denySlugs.includes(rawSlug) || (slug && gate.denySlugs.includes(slug)))
     return { ok: false, reason: "denylisted by slug" };
@@ -90,13 +117,17 @@ export function normalise(post, slug) {
 }
 
 /** Split a fetched list into what may be published and what is held back. */
-export function partition(posts, gate) {
+export function partition(posts, gate, approvals = null) {
   const accepted = [];
   const rejected = [];
+  const drifted = [];
   const seen = new Set();
 
   for (const post of posts) {
-    const verdict = assess(post, gate);
+    const verdict = assess(post, gate, approvals);
+    if (verdict.drift) {
+      drifted.push({ slug: verdict.slug, title: post?.title ?? null, ...verdict.drift });
+    }
     if (!verdict.ok) {
       rejected.push({
         id: String(post?._id || ""),
@@ -119,5 +150,5 @@ export function partition(posts, gate) {
     accepted.push(normalise(post, verdict.slug));
   }
 
-  return { accepted, rejected };
+  return { accepted, rejected, drifted };
 }

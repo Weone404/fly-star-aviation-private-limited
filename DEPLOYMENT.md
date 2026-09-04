@@ -43,16 +43,88 @@ The second path needs a rebuild to become crawlable, because prerendering happen
 at build time. Until a rebuild runs, an admin-published post is served by the SPA
 at runtime but has no static HTML, no meta tags and no sitemap entry.
 
-**Set up a rebuild trigger.** Vercel → Settings → Git → Deploy Hooks, create a
-hook for `main`, then either:
-- call it from `backend/server.js` after a successful `POST`/`PUT`/`DELETE` on
-  `/api/blogs` (immediate, preferred), or
-- call it on a schedule — a daily cron against the hook URL is enough if
-  same-day publishing is not required.
+**The rebuild trigger is wired.** `backend/server.js` calls the hook after a
+successful create, update or delete on `/api/blogs`. To turn it on:
+
+1. Vercel → Settings → Git → Deploy Hooks → create a hook for `main`.
+2. Set `VERCEL_DEPLOY_HOOK_URL` in the backend environment (Render).
+
+If the variable is unset the call is a no-op and blog writes behave exactly as
+before. A hook failure never fails the write — the post is already saved.
 
 Treat the hook URL as a secret; anyone holding it can trigger builds.
 
-### Blog quality gate
+**It publishes nothing by itself.** A rebuild only picks up posts on the approval
+list whose content hash still matches, so a write by someone else triggers a
+build and is still held back.
+
+**Nightly fallback.** The hook fires on database writes, not on approvals — you
+approve by committing a file, and a commit to `main` already rebuilds. Add a
+nightly rebuild anyway so an approval that missed a deploy, or a hook that failed
+silently, still lands within a day. GitHub Actions:
+
+```yaml
+# .github/workflows/nightly-rebuild.yml
+name: Nightly rebuild
+on:
+  schedule:
+    - cron: "30 19 * * *"   # 01:00 IST
+  workflow_dispatch:
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - run: curl -fsS -X POST "$HOOK"
+        env:
+          HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK_URL }}
+```
+
+### Blog approval — the workflow
+Nothing written in `/admin/blog` reaches the public site until you approve it by
+name. The approval list is `src/lib/blogApproval.ts`.
+
+```
+write in /admin/blog  ->  review it  ->  npm run blogs:approve -- <slug>
+                                     ->  commit src/lib/blogApproval.ts
+                                     ->  rebuild
+```
+
+| Command | Does |
+|---|---|
+| `npm run blogs:list` | Every post in the database with its state: approved, NOT APPROVED, or CHANGED SINCE APPROVAL |
+| `npm run blogs:approve -- <slug>` | Adds the slug and pins the sha256 of its content as it stands now |
+| `npm run blogs:approve -- <slug> --note "..."` | Same, with a note recorded beside the approval |
+
+Run these from a machine that can reach the API, then commit the changed file.
+
+**Why an allowlist and not a filter.** `POST /api/blogs` accepts unauthenticated
+writes, and post bodies are rendered as HTML. A heuristic filter's rules live in
+this repo, so anyone who can read them can write content that passes. An
+allowlist inverts the default: unknown content is not published, full stop.
+
+**The content hash.** Approving pins the exact text. If an approved post's
+content later differs, `prebuild` **fails the build** and prints both hashes.
+
+- *You made the edit:* re-read it, run `npm run blogs:approve -- <slug>` again to
+  re-pin, commit.
+- *You did not make the edit:* do not re-approve. Someone wrote to the database.
+
+That failure is the point — an approval describes specific text, so text that has
+changed is no longer approved.
+
+**Held-back posts are invisible to visitors too**, not just to crawlers.
+`Blogs.tsx` and `BlogDetail.tsx` both check the same list, so an unapproved post
+does not appear in the listing and does not render at its URL.
+
+### Sanitisation
+Post bodies are rendered through `dangerouslySetInnerHTML`. Both paths sanitise:
+`src/lib/sanitizeHtml.ts` at runtime, `scripts/sanitize.mjs` at build time, with
+`src/test/sanitizeHtml.test.ts` asserting the two agree. Allowlist-based — script
+tags, event handlers, `javascript:` URLs, iframes, forms and inline styles are
+stripped. Approval is a review of the *text*; sanitisation is what makes the
+*markup* safe. Both are needed.
+
+### Blog quality gate (safety net, not the control)
 `blog-gate.json` decides which fetched posts may be advertised. A post needs a
 title, a usable slug, 300+ words, a unique slug, and no configured spam marker.
 Rejected posts still render in the SPA; they get no static file and no sitemap
@@ -121,22 +193,29 @@ green checks; it does not cover `geo/*` branches.
 2. **View source, not the rendered page.** Confirm the H1 and body text are in
    the raw HTML. If they only appear after JavaScript runs, prerendering did not
    happen for that route and the SEO work has not landed.
-3. **Run the smoke check** — `npm run smoke`. It fetches every sitemap URL and
+3. **Check the build log for the blog fetch.** `blog-gate-report.json` must show
+   `"outcome": "ok"` with a `merged` count. If it shows `"fetch-failed"`, the API
+   was unreachable and the sitemap may be short — rebuild once it is up. The
+   build prints a boxed warning in that case; smoke also fails on it, because a
+   URL that never entered the sitemap cannot be caught by checking the sitemap.
+4. **Run the smoke check** — `npm run smoke`. It fetches every sitemap URL and
    fails on anything that is not 200, and verifies declared redirects still 3xx.
    Treat a failure here as a blocker, not a warning.
-4. **Google Search Console** — submit `sitemap.xml`, then request indexing on
+5. **Google Search Console** — submit `sitemap.xml`, then request indexing on
    `/dgca/computer-number` and the five `/pilot-training/*` pages directly.
-5. **Validate structured data** — Rich Results Test on `/dgca/computer-number`
+6. **Validate structured data** — Rich Results Test on `/dgca/computer-number`
    and one `/pilot-training/*` page. Confirm the FAQ answers in the markup match
    the visible accordion text word for word.
-6. **Google Business Profile** — align name, address and phone to §1 of `SEO.md`
+7. **Google Business Profile** — align name, address and phone to §1 of `SEO.md`
    exactly, and confirm the GBP category reflects a training institute. Add the
    `sameAs` URLs already in `index.html`.
-7. **Install analytics.** There is none today (see `SEO.md` §6).
+8. **Install analytics.** There is none today (see `SEO.md` §6).
 
 ## 7. Blocked, needing owner input
 | Item | Why it is blocked |
 |---|---|
+| **Stored XSS surface** | `BlogDetail.tsx` renders post content as HTML and the write endpoint is open. Sanitisation now runs on both paths, which stops a payload executing; it does not stop anyone writing to the database. The approval list is what keeps unreviewed content off the site |
+| **Backend slugify bug** | `backend/server.js:158` hyphenates before stripping punctuation, so dashes, ampersands and emoji leave stray hyphens behind — the cause of `pilot-career-after-12th--eligibility-fees--scope` and the leading/trailing hyphens on another post. Fix is one line, but it is outside the approved backend scope, so it is left alone |
 | **Admin auth** | Owner reviewed and accepted as-is on 2026-09-04. Credentials remain client-side. Not to be re-raised. See AUDIT.md §6 for the accepted risk and the related spam row found in the database |
 | `/privacy-policy`, `/terms` | Drafts complete but hold ~13 `[CONFIRM]` items only the business knows: analytics and pixels in use, third parties receiving data, retention periods, grievance officer, minimum enrolment age, registered MCA address. The footer's links to them were removed rather than left pointing at 404s |
 | Canonical email | Two addresses in circulation (`SEO.md` §1) |

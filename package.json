@@ -19,7 +19,9 @@
     "prebuild": "node scripts/fetch-blogs.mjs && node scripts/generate-sitemap.mjs",
     "sitemap": "node scripts/generate-sitemap.mjs",
     "blogs:fetch": "node scripts/fetch-blogs.mjs",
-    "smoke": "node scripts/smoke.mjs"
+    "smoke": "node scripts/smoke.mjs",
+    "blogs:approve": "node scripts/approve-blog.mjs",
+    "blogs:list": "node scripts/approve-blog.mjs --list"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
