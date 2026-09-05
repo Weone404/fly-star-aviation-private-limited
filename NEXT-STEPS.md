@@ -103,3 +103,87 @@ and brand queries first, informational long-tail second, competitive head terms
 only as the content cadence compounds. Informational depth wins the long tail
 first — that is the nature of the approach chosen here, and it is why the
 sourcing discipline matters more than the volume.
+
+---
+
+## Push day
+
+Four commits sit on local `main` ahead of `origin/main`: `293f4fc` (month-2
+skeleton and two shipped fixes), `0b2a2ba` (convention fixes), `9b470da`
+(month 2) and the docs commit carrying this section. None have been pushed. Push has to run from the Mac mini terminal — GitHub
+credentials live in the macOS keychain and are not reachable from this session.
+
+```bash
+cd ~/Desktop/fly-star-aviation-private-limited
+git pull --rebase origin main   # remote moved once before; check for conflicts
+npm test                        # expect 116 passing
+npm run build                   # expect green, including prerender
+git push origin main
+```
+
+If `git pull --rebase` reports conflicts, resolve them **per conflict, not per
+file** — `blogData.js` is one array holding fourteen independent posts, and
+`--ours`/`--theirs` on the whole file silently drops someone's work.
+
+### Before you push — three gates
+
+- [ ] **Verify the DGCA figures.** `REVIEW-MONTH-1.md` §1 lists every number with
+      its source and its status. The four load-bearing ones, in the order they
+      matter: **Rs 2,500** per paper, **Class Ten** as the PPL qualification (not
+      10+2 PCM), **2.5 years** PPL paper validity, and the **absence** of any
+      published OLODE fee. Those four are quoted on more than one page each; if a
+      figure is wrong it is wrong in several places at once. Open CAR 7-B-I and
+      the Pariksha FAQ and read them yourself — nobody else in this chain has.
+- [ ] **Read the month-1 posts.** Eight entries, all live-facing, none reviewed by
+      a human yet. You are the only person here who has sat DGCA papers and run
+      the classes; anything that reads wrong to you is wrong.
+- [ ] **Read the three month-2 posts.** `cpl-eligibility-after-12th`,
+      `dgca-exam-attempts-and-validity`, `foreign-licence-conversion-checklist`.
+      Same test. The eligibility post is the one that will get quoted most.
+
+Nothing here needs a decision from anyone else. These three gates are the whole
+reason the push is being held.
+
+### After the push — live checks
+
+Give Vercel a couple of minutes, then:
+
+- [ ] `npm run smoke` against production — all checks pass.
+- [ ] `curl -s https://www.flystar.co.in/sitemap.xml | grep -c "<url>"` → **63**
+- [ ] `curl -s https://www.flystar.co.in/feed.xml | grep -c "<item>"` → **13**
+- [ ] `curl -s https://www.flystar.co.in/llms.txt | grep -i "cpl-eligibility"` — the
+      new entries reached the AI-facing index, not just the sitemap.
+- [ ] `curl -sI https://www.flystar.co.in/blog/cpl-eligibility-after-12th` → **200**,
+      and the same for the other two slugs. A 404 here means the post exists in
+      `blogData.js` but the route never rendered — the render gate, again.
+- [ ] **Open `/courses/cpl` and tap "Talk to Counselor".** It must dial
+      **+91 9953536199**. This button held the placeholder `+91 9876543210` for
+      weeks; it is worth one tap per deploy for as long as that memory is fresh.
+- [ ] Log into the admin panel once — it still works, the delete button is still
+      gone.
+- [ ] Submit one test enquiry through the live form and confirm the row lands in
+      Mongo and the notification email arrives.
+- [ ] Confirm `blog-gate-report.json` in the Vercel build log shows
+      `"outcome": "ok"` and **0 published** from the remote collection. The
+      database has grown to 27 posts; the allowlist is empty on purpose, so 0 is
+      the correct number and any other number is a defect.
+
+### Then Search Console
+
+- [ ] Resubmit `sitemap.xml`. Status must read **Success**, and Discovered URLs
+      should reach 63.
+- [ ] URL Inspection → Request Indexing, in this order, three today and the rest
+      as the quota allows:
+      1. `/blog/cpl-eligibility-after-12th`
+      2. `/blog/dgca-exam-attempts-and-validity`
+      3. `/blog/foreign-licence-conversion-checklist`
+      4. `/blog/how-to-choose-a-flying-school-in-india` (its FAQ is now visible —
+         the previously-emitted schema was unbacked, so this is a genuine change)
+      5. `/blog/how-to-choose-dgca-ground-classes` (same reason)
+- [ ] Bing Webmaster Tools: re-import from GSC.
+
+### Housekeeping
+
+`.git/_stale/` in this repo holds a few lock files that the cloud session created
+and could not remove (the folder mount denies deletes). Nothing in it affects git.
+Delete the folder locally whenever convenient: `rm -rf .git/_stale`.

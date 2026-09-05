@@ -2,6 +2,69 @@
 
 All entries: what changed, and why. Newest first.
 
+## 2026-09-05 — Month 2 (three of six), convention fixes on the older posts
+
+### W1 — Month 2, static path only
+Three entries written into `src/lib/blogData.js`, sourced from CAR 7-B-I and the
+DGCA Pariksha Flight Crew FAQ — the same two documents month 1 was built on.
+
+- **`/blog/cpl-eligibility-after-12th`** — 957 words, 6 FAQs. The load-bearing
+  point: CAR 7-B-I asks for 10+2 with **Physics and Mathematics**, which is not
+  the same as PCM, and names no maximum age. Both are asked constantly and
+  answered wrongly almost everywhere, including by people selling courses.
+- **`/blog/dgca-exam-attempts-and-validity`** — 843 words, 6 FAQs. Attempts, the
+  2.5-year PPL / 5-year CPL–ATPL validity split, and the non-refundable Rs 2,500
+  per paper. Rs 10,000 appears once as four papers × Rs 2,500, shown as the
+  arithmetic it is rather than as a published figure.
+- **`/blog/foreign-licence-conversion-checklist`** — 854 words, 6 FAQs. Currency
+  stated as 10 hours PIC in the preceding 24 months.
+
+All three: title ≤ 60, description ≤ 155, visible FAQ generated from the `faqs`
+array, zero orphan schema.
+
+**Three entries skipped, not stubbed.** `dgca-class-1-medical-guide`,
+`rtr-a-exam-guide` and `pilot-training-cost-india` are each gated on a
+`BROWSER-FETCH.md` item that has not landed. A stub would put a thin URL into the
+sitemap and into the feed on the strength of a topic name — that is exactly the
+page an AI Overview quotes back with nothing behind it. Month 2 is three posts,
+and that is the correct outcome, not a shortfall.
+
+### W2 — Convention fixes on the pre-month-1 content
+The month-1 review found orphan FAQ schema on the six new posts and fixed it
+there. Applying the same check to everything older found the same defect,
+worse, on posts that have been live for weeks:
+
+- **`how-to-choose-a-flying-school-in-india`** — 8 FAQs in schema, **no visible
+  FAQ section at all**. Generated one from the array. Description 157 → shortened.
+- **`how-to-choose-dgca-ground-classes`** — 8 FAQs in schema, **no visible FAQ
+  section**. Generated one.
+- **`dgca-ground-classes-vs-self-study`** — 1 orphan: the visible text had drifted
+  from the array. Replaced the visible section with the generated one, so the two
+  are one source again. Description 158 → shortened.
+- **`dgca-board-verification-certificate`** — description 169 → 144.
+- **Reference footer added to 9 posts**, pointing at `/faq`, `/glossary` and
+  `/editorial-policy`. Internal links from the corpus back to the three pages
+  that carry the sourcing were the missing half of that structure.
+
+Final verification across all 14 posts: **over-length descriptions 0, orphan FAQ
+entries 0, posts missing the reference footer 0.** Sitemap regenerated to 63 URLs,
+feed to 13 items.
+
+### W3 — Push day
+`NEXT-STEPS.md` gained a **Push day** section: the command, the gates that must
+clear before it, and the live checks after it. Deliberately not a separate file —
+a checklist nobody opens is the failure mode this repo already has one example of.
+
+### Tests
+**116 passing**, `vite build` green, eslint 8 warnings / 0 errors. The full
+`npm run build` cannot complete in the cloud container because prerender fetches
+Google Fonts and egress is blocked; that step runs on Vercel and on the owner's
+Mac, where it is already green.
+
+### Not done, by design
+Nothing was created outside existing files. No report pack, no review file, no
+new directory.
+
 ## 2026-09-04 — Render-gate repair, DGCA Computer Number guide, editorial policy
 
 ### Fixed: 4 finished pages that had never been crawlable
