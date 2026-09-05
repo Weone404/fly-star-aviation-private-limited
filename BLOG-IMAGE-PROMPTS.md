@@ -183,3 +183,83 @@ placeholders until art is dropped at the paths below.
 > Flat vector illustration, minimal clean style, professional Indian aviation
 > training context, generous negative space, absolutely NO text, words, letters,
 > numbers or signage anywhere in the image.
+
+---
+
+## Post: rtr-a-exam-dgca-takeover-2026
+
+**Status:** needs all images — `coverImage` points at the site-wide fallback
+(`/assets/hero-aircraft-1600w.jpg`); the three inline slots render as labelled
+placeholders until art is dropped at the paths below.
+
+### Cover
+
+- **File:** `/blog/rtr-a-exam-dgca-takeover-2026/cover.webp`
+- **Dimensions:** 1200 × 675
+- **Alt text:** A student pilot wearing a headset at a radio console, with an authority baton visually passing from one regulatory hand to another in the background.
+
+> A wide banner showing one adult seated at a radio console wearing a
+> headset, one hand on a microphone stand, facing an abstract instrument
+> panel with soft glowing dials. In the softly blurred background, a subtle
+> visual motif of a baton or seal passing from one outstretched hand to
+> another, suggesting a handover of authority without depicting any real
+> emblem or insignia. Deep green background, warm amber as the single
+> accent, a calm and procedural mood. No aircraft, no logos, no real
+> government seals, no faces in close detail.
+>
+> Flat vector illustration, minimal clean style, professional Indian aviation
+> training context, generous negative space, absolutely NO text, words, letters,
+> numbers or signage anywhere in the image.
+
+### Slot 1 — eligibility comparison
+
+- **File:** `/blog/rtr-a-exam-dgca-takeover-2026/eligibility-comparison.webp`
+- **Dimensions:** 1200 × 675
+- **Alt text:** Split comparison graphic showing RTR(A) eligibility before and after the DGCA takeover: age 18 and 10+2 PCM on the left under a WPC-era label, age 16 and Class 10 pass on the right under a DGCA-era label, with a caution icon noting the right-hand figures are reported but not independently verified.
+
+> A wide banner split into two halves by a soft vertical divider. On the left,
+> an abstract card showing a taller figure silhouette beside a stack of three
+> books, suggesting an older, higher eligibility bar. On the right, a
+> slightly shorter figure silhouette beside a single book, suggesting a
+> lower bar, with a small triangular caution icon in the corner of that half.
+> Deep green background, warm amber as the single accent, an evaluative,
+> side-by-side mood. No aircraft, no logos, no faces in close detail, no
+> readable text or numerals anywhere.
+>
+> Flat vector illustration, minimal clean style, professional Indian aviation
+> training context, generous negative space, absolutely NO text, words, letters,
+> numbers or signage anywhere in the image.
+
+### Slot 2 — two-part exam flow
+
+- **File:** `/blog/rtr-a-exam-dgca-takeover-2026/two-part-exam-flow.webp`
+- **Dimensions:** 1200 × 675
+- **Alt text:** Process flow diagram showing the two-part RTR(A) exam sequence: a computer-based written test on the left feeding into a locked gate labelled "written pass required", opening into a scenario-based practical radiotelephony evaluation on the right, both stages labelled as administered by DGCA.
+
+> A wide banner showing a left-to-right process flow with three abstract
+> stages connected by a simple arrow line: a laptop/monitor icon on the
+> left, a small padlock icon in the middle standing slightly open, and a
+> headset-and-microphone icon on the right. Deep green background, warm
+> amber as the single accent, a clean sequential mood. No aircraft, no
+> logos, no faces, no readable text or numerals anywhere.
+>
+> Flat vector illustration, minimal clean style, professional Indian aviation
+> training context, generous negative space, absolutely NO text, words, letters,
+> numbers or signage anywhere in the image.
+
+### Slot 3 — verification checklist
+
+- **File:** `/blog/rtr-a-exam-dgca-takeover-2026/verification-checklist.webp`
+- **Dimensions:** 1200 × 675
+- **Alt text:** Clean checklist graphic titled "Before you register for RTR(A)" listing five check-marked items: confirm the examining authority in your study material, verify eligibility on the Pariksha portal, confirm the fee at registration, confirm validity periods in writing, and check whether your ground class covers RTR(A) preparation.
+
+> A wide banner showing a printed sheet resting on a desk with five short
+> abstract rows, each preceded by a small checkmark icon, one row shown
+> mid-tick by a hand holding a pen. Deep green background, warm amber as
+> the single accent, a methodical, pre-flight-checklist mood. No aircraft,
+> no logos, no faces in close detail, no readable text or numerals on the
+> sheet.
+>
+> Flat vector illustration, minimal clean style, professional Indian aviation
+> training context, generous negative space, absolutely NO text, words, letters,
+> numbers or signage anywhere in the image.

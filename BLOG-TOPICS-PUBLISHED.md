@@ -28,3 +28,4 @@ Once a reserved page ships, strike its row and the query returns to the pool.
 | 2026-09-01 | `/blog/dgca-ground-classes-vs-self-study` | DGCA Ground Classes vs Self-Study: Which Route Actually Clears the Exams? | DGCA |
 | 2026-09-02 | `/blog/how-to-choose-a-flying-school-in-india` | How to Choose a Flying School in India: What to Verify Before You Pay | Training |
 | 2026-09-03 | `/blog/how-to-choose-dgca-ground-classes` | How to Choose DGCA Ground Classes: 12 Questions to Ask Before You Pay | DGCA |
+| 2026-09-05 | `/blog/rtr-a-exam-dgca-takeover-2026` | RTR(A) Exam 2026: What Changed Now That DGCA Runs It, Not WPC | DGCA |
