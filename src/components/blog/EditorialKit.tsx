@@ -171,7 +171,7 @@ export function TableOfContents({ items, variant }: { items: TocItem[]; variant:
         <li key={i.id}>
           <a
             href={`#${i.id}`}
-            className="block rounded px-2 py-1.5 leading-snug text-muted-foreground hover:bg-muted hover:text-primary"
+            className="flex min-h-11 items-center rounded px-2 py-1 leading-snug text-muted-foreground hover:bg-muted hover:text-primary"
           >
             {i.text}
           </a>
