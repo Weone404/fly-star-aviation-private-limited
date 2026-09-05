@@ -115,11 +115,12 @@ on top of it (month-3 hold plus the reference-footer repair). None have been
 pushed. `git log --oneline origin/main..HEAD` lists them.
 
 **Gate zero, before anything else: run `npm test` and `npm run build` here.**
-The cloud session cannot finish prerender — its egress blocks Google Fonts — and
-it could not reach its test runner at all on the last pass, so the suite has not
-been run since the footer repair. Your Mac is the first machine to run the
-complete pipeline on this content. Expect 116 tests and 63 prerendered files. If
-it fails here it fails on Vercel. Push has to run from the Mac mini terminal — GitHub
+The suite was re-run after the footer repair and passes: **116 tests, 11 files.**
+What the cloud session still cannot do is finish prerender — its egress blocks
+Google Fonts — so your Mac is the first machine to run the complete pipeline on
+this content. Expect 116 tests and 63 prerendered files. If either number differs,
+stop and report it rather than pushing: the difference is information. If it fails
+here it fails on Vercel. Push has to run from the Mac mini terminal — GitHub
 credentials live in the macOS keychain and are not reachable from this session.
 
 ```bash

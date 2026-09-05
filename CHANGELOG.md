@@ -56,6 +56,28 @@ thin legacy page needing a rewrite, not a convention violation.
 
 Sitemap 63 URLs, feed 13 items — unchanged, as expected.
 
+### Second fetch pass — one DGCA URL shape does work
+Going after Schedule II found something better. `dgca.gov.in/digigov-portal/
+Upload?flag=iframeAttachView&attachId=<id>` **serves real CAR PDFs to a fetcher**;
+`?dynamicPage=` and `?page=` return the homepage. Two CARs were read cold through
+it — Section 7 Series 'B' Part VI (ATPL exam syllabus, 16 Jun 2011) and Section 7
+Series 'J' Part III (FDTL, Rev 1, 8 Jan 2024).
+
+**This changes the ask.** The owner no longer transcribes figures out of DGCA
+documents — they copy the frame URL of a document they have open and send that.
+Recorded in `BROWSER-FETCH.md` with the two working URLs as examples.
+
+Three `SOURCE-INDEX.md` entries were also corrected: the Pariksha "Flight Crew
+MANUAL" is the portal's **user manual**, the "Reference Book – FC" is a **study-
+material list**, and the "Syllabus" PDF is a pointer to CAR 7-B-I. Three of that
+file's four highest-value blocked PDFs are worth less than it estimated.
+
+Medical retargeted: the validity figures are in **Rule 39C of the Aircraft
+Rules**, not a CAR.
+
+Schedule II is still unreachable — India Code's and the Ministry's copies both
+fetch and both stop before the schedules, a length limit rather than a block.
+
 ### Nothing writable remains
 No workstream in this phase had its trigger filled: mailbox word, snapshot path,
 Render logs, analytics decision, fetched sources and the privacy/terms worksheet

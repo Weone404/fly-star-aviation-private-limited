@@ -135,3 +135,59 @@ opened to the CPL(A) and ATPL(A) experience requirements and to FCL.025 on
 theoretical-knowledge validity, finishes the post. **And the DGCA column of that
 post is Schedule II — item 1 again.** Item 1 is now the single highest-value
 thing on this list by a wide margin.
+
+---
+
+# The crack in the DGCA portal — 2026-09-05, second pass
+
+Going after Schedule II found something better than Schedule II: **one DGCA URL
+shape does serve real documents to a fetcher.**
+
+| URL shape | Result |
+|---|---|
+| `…/digigov-portal/?dynamicPage=…` | homepage, always |
+| `…/digigov-portal/?page=…/something.pdf` | homepage |
+| **`…/digigov-portal/Upload?flag=iframeAttachView&attachId=<id>`** | **the actual PDF text** |
+
+Two documents were read through it today, cold:
+
+- **CAR Section 7, Series 'B', Part VI** — *Syllabus for Examination for Issue of
+  Airline Transport Pilot's Licence – Aeroplanes*, Issue III, 16 June 2011.
+  `…Upload?flag=iframeAttachView&attachId=J/ZGd3DOlXdtF/reyJMhhg%3D%3D`
+- **CAR Section 7, Series 'J', Part III** — flight duty period and rest
+  limitations, Issue III Rev 1, 8 January 2024.
+  `…Upload?flag=iframeAttachView&attachId=YUKKrHOBzBr0RZyThH2OXw%3D%3D`
+
+**What this changes for you.** When you open a CAR in your browser, the document
+itself loads in a frame with an `attachId` in its URL. **Copy that URL and send
+it — nothing else.** No copying of paragraphs, no transcription, no risk of a
+typo in a figure. Right-click the document frame → *Copy frame address*, or open
+the PDF in its own tab and copy the address bar. That is now the fastest form of
+every item on this list except item 6.
+
+### Three corrections to `drafts/research/SOURCE-INDEX.md`
+- The Pariksha **"Flight Crew MANUAL"** PDF is the **Pariksha portal user
+  manual**, not a regulatory manual. It will not settle the OLODE-fee or
+  auto-generation questions that file hoped for.
+- The **"Reference Book – FC"** PDF is a **list of study material for PPL, CPL and
+  ATPL exams** — a reading list, not a source of pass rates.
+- The **"Syllabus"** PDF is a pointer reading *"Refer latest CAR, Section-7,
+  Series-B"* (recorded earlier today).
+
+Three of that file's four "highest-value blocked PDFs" are therefore worth less
+than it estimated, and `brew install poppler` buys correspondingly little.
+
+### Item 3 (medical) is in the wrong place
+The medical validity figures are in the **Aircraft Rules, not a CAR**: Rule 39C is
+titled *"Period of validity of medical fitness Assessment"*. Its portal page is a
+`dynamicPage` URL and returns the homepage, so it needs your browser — but it is
+one rule, not a CAR to hunt down.
+
+### Schedule II: still out of reach, and why
+Both public copies of the Aircraft Rules 1937 — India Code's and the Ministry of
+Civil Aviation's (`civilaviation.gov.in/sites/default/files/migration/moca_000947.pdf`)
+— fetch successfully and both stop before Schedule II; the conversion has a length
+limit and the schedules sit at the end of a long document. A third mirror timed
+out. **Item 1 remains yours, and it is still the highest-value item on this list.**
+If the PDF is saved into this repo folder it can be read here directly, schedules
+and all.
