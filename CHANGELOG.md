@@ -2,6 +2,98 @@
 
 All entries: what changed, and why. Newest first.
 
+## 2026-09-05 — Blog experience rebuild
+
+Presentation regenerated; content conventions untouched. The complaint was that
+sourced pages still read like plain text, and it was fair.
+
+### W1 — Editorial design system
+`src/components/blog/EditorialKit.tsx` and `src/lib/articleHtml.ts`, plus article
+typography in `src/index.css`. Every colour is a token, so the pages follow the
+theme instead of pinning one palette; interactive targets are 44px.
+
+**The sanitiser was not touched.** Heading anchors for the table of contents are
+the obvious reason to add `id` to the allow-list, and that would let post content
+name DOM properties — the clobbering class of bug. The ids are generated
+downstream instead, from each heading's own text, after sanitisation. Same
+anchors, none of the surface, both DOMPurify copies still character-identical.
+
+**FAQs now render as native `<details>` accordions from the `faqs` array**, which
+makes the array and the visible text one object rather than two copies. The
+answer is in the served HTML whether the accordion is open or shut, so a crawler
+reads it without running a script. `prepareArticle` lifts the generated FAQ block
+out of the body by matching its own text, and keeps whatever follows.
+
+Tables were promoted to primary content — bordered, with a header band and their
+own scroll container so a comparison table can never make the page scroll
+sideways on a phone. Ordered lists render as numbered steps. Measure is 68ch.
+
+### W2 — Blog detail template
+Rebuilt on the kit. Database-path posts keep the plain layout: the editorial
+treatment reads as a claim about how carefully a page was checked, and that claim
+is only true for posts sourced in this repo.
+
+**Post pages had no header and no footer.** Every blog post was a dead end with
+no site navigation at all — added.
+
+The hero is text-first and the cover image is lazy, which moves LCP from an image
+to the H1.
+
+### W3 — Blog listing
+Featured post chosen by search value rather than recency (a `featured` flag;
+`/blog/dgca-exam-fees` carries it). Category filter chips replace the client-side
+search. Everything renders in the prerendered HTML — the filter only hides what is
+already there, so a crawler and a visitor without JavaScript see the full list.
+
+### W4 — Depth pass
+`keyFacts` on ten posts, three to four each, rendered as React text so the field
+never becomes markup and never reaches the sanitiser. Each carries the document
+it came from, linked where a stable URL exists. **Every figure was checked back
+against the post's own body before commit** — a script traced each one, and the
+run is clean.
+
+`correction` pull-quotes on the three posts carrying the sourced corrections:
+Rs 2,500 with no OLODE fee, Class Ten for the PPL, two and a half years of PPL
+validity. These are the differentiator and they now look like it.
+
+**No new claims.** Everything in `keyFacts` restates something the post already
+said with a source behind it.
+
+### `/blog/commercial-pilot-vs-airline-pilot`: still excluded, and now for a
+### stated reason
+The rewrite was attempted and abandoned on the material. What separates a
+commercial pilot from an airline pilot is the **privileges** of each licence, and
+privileges live in Schedule II — the one document still out of reach. Everything
+that can be sourced today (exam subjects, the ATPL-requires-a-CPL relationship,
+validity) is already covered by `/blog/dgca-exam-subjects-by-licence` and
+`/blog/atpl-eligibility-india`, so writing it from banked sources would produce a
+near-duplicate competing with two live pages.
+
+It stays at 192 words, out of the sitemap and out of the feed. **Sitemap 63, not
+64.** When Schedule II lands it becomes writable in an afternoon.
+
+### Two unsourced claims removed from the blog surfaces
+- `/blogs` displayed **"7+ Categories"** and **"100% Free"** as statistics. The
+  category count is now derived from the posts; the other is gone.
+- Every post page closed with **"Join thousands of students"**. Removed. It is
+  exactly the kind of sentence the numbers policy exists to stop, and it was
+  sitting under fourteen carefully sourced articles.
+
+### One thing left for the owner to decide
+The blog CTA pointed at WhatsApp on **+91 9355611996**, which is not the number in
+the Organization schema, the header, the footer or `llms.txt` (`+91 9953536199`).
+Rather than propagate a second number or silently switch it, the CTA now links to
+`/contact`. If 9355611996 is a real second line, say so and it goes back.
+
+### New test
+`src/test/articleHtml.test.ts` — a judgement call, since this phase said new files
+only for site code. It earned its place: it caught two defects during the build.
+The first version of the FAQ split deleted the reference footer on every post
+whose FAQ is the last section; the second lost a table's scroll wrapper. Neither
+showed up in a green build. Delete it if the rule matters more than the cover.
+
+**119 tests passing, `vite build` green, sitemap 63, feed 13.**
+
 ## 2026-09-05 — Month 3 is not writable, and final QA found a defect in my own work
 
 ### W1 — Month 3: zero posts, five skips
