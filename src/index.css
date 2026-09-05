@@ -347,3 +347,157 @@
   color: var(--ink-faint);
   text-align: center;
 }
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Blog article typography.
+
+   The complaint these rules answer is that the posts read as one grey wall.
+   The fixes are structural rather than decorative: a measure short enough to
+   track a line, real space around headings so a section starts where the eye
+   expects, and tables promoted to the status of primary content — on these
+   pages a requirements table is usually the strongest thing on the page, not
+   an appendix to the prose.
+
+   Every colour is a token, so this follows the theme instead of pinning one
+   palette.
+   ───────────────────────────────────────────────────────────────────────── */
+
+.article-body {
+  color: hsl(var(--foreground));
+  font-size: 1.0625rem;
+  line-height: 1.75;
+}
+
+.article-body > * {
+  max-width: 68ch;
+}
+
+.article-body > p,
+.article-body > ul,
+.article-body > ol,
+.article-body > blockquote {
+  margin-block: 1.25rem;
+  color: hsl(var(--muted-foreground));
+}
+
+.article-body h2 {
+  margin-block: 2.5rem 0.875rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.25;
+  color: hsl(var(--foreground));
+  scroll-margin-top: 6rem;
+}
+
+.article-body h3 {
+  margin-block: 1.75rem 0.5rem;
+  font-size: 1.175rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: hsl(var(--foreground));
+  scroll-margin-top: 6rem;
+}
+
+.article-body strong { color: hsl(var(--foreground)); font-weight: 650; }
+
+.article-body a {
+  color: hsl(var(--primary));
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.article-body ul { list-style: disc; padding-inline-start: 1.25rem; }
+.article-body li { margin-block: 0.4rem; }
+
+/* Numbered process sections read as steps, not as a list of sentences. */
+.article-body ol {
+  counter-reset: step;
+  list-style: none;
+  padding-inline-start: 0;
+}
+
+.article-body ol > li {
+  counter-increment: step;
+  position: relative;
+  padding-inline-start: 2.75rem;
+  margin-block: 0.9rem;
+}
+
+.article-body ol > li::before {
+  content: counter(step);
+  position: absolute;
+  inset-inline-start: 0;
+  top: 0.1rem;
+  display: grid;
+  place-items: center;
+  width: 1.85rem;
+  height: 1.85rem;
+  border-radius: 999px;
+  background: hsl(var(--primary) / 0.1);
+  color: hsl(var(--primary));
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+/* Tables: the centrepiece. */
+.article-body .table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  margin-block: 1.75rem;
+  border: 1px solid hsl(var(--border));
+  border-radius: var(--radius);
+  background: hsl(var(--card));
+}
+
+.article-body table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.article-body thead th {
+  background: hsl(var(--primary) / 0.08);
+  color: hsl(var(--foreground));
+  font-weight: 700;
+  text-align: start;
+}
+
+.article-body th,
+.article-body td {
+  padding: 0.7rem 0.9rem;
+  border-bottom: 1px solid hsl(var(--border));
+  vertical-align: top;
+  color: hsl(var(--muted-foreground));
+}
+
+.article-body th { color: hsl(var(--foreground)); }
+.article-body tbody tr:last-child td { border-bottom: 0; }
+.article-body caption {
+  caption-side: bottom;
+  padding: 0.6rem 0.9rem;
+  font-size: 0.8rem;
+  color: hsl(var(--muted-foreground));
+  text-align: start;
+}
+
+.article-body blockquote {
+  border-inline-start: 3px solid hsl(var(--primary) / 0.4);
+  padding-inline-start: 1rem;
+  font-style: italic;
+}
+
+.article-body img { border-radius: var(--radius); }
+
+/* The reference footer that closes every post. */
+.article-body p:last-child { margin-bottom: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
