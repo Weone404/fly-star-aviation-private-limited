@@ -78,6 +78,45 @@ Rules**, not a CAR.
 Schedule II is still unreachable — India Code's and the Ministry's copies both
 fetch and both stop before the schedules, a length limit rather than a block.
 
+### Third pass — Rule 39C found, read, and not usable
+The prompt asked whether the rules text was already in hand. It was not: the
+fetcher answers a question against a page, it does not hand over or save a
+document, so nothing had been banked. But the point held — the rules precede the
+schedules, so the part that converts is the part 39C lives in. The Ministry of
+Civil Aviation's copy of the Aircraft Rules was re-read and **Rule 39C came back
+in full**, table and sub-rules.
+
+**It is banked and it is not citable**, for two independent reasons:
+
+- **Stale.** The latest amendment visible anywhere in it is **GSR No. 11(E) dated
+  10-01-2011**. Fifteen years of possible amendment unaccounted for.
+- **Badly scanned.** The OCR renders "1937" as "1997" and "39C" as "29C" — and, in
+  the clause that matters most, the item references in sub-rule (5) as
+  **"items () and (i)"**. That is the clause halving medical validity after age
+  forty, which is where every "Class 1 medical validity after 40" search lands.
+  The obvious reading is the two twelve-month categories. The obvious reading is
+  not a source.
+
+Banked at `drafts/research/aircraft-rules-1937-moca-copy-2026-09-05.md` with the
+garbles preserved rather than tidied, because a cleaned-up transcript of a bad
+scan is a fabrication with good manners.
+
+**What it bought:** the medical page is no longer blocked on a document hunt. It
+is blocked on two specific facts from one rule on one page — which items sub-rule
+(5) names, and what amendment the copy is current to. `BROWSER-FETCH.md` item 3 is
+rewritten accordingly, and item 1 answers both for free, since Schedule II and
+Rule 39C are in the same maintained document.
+
+India Code served that document cleanly this morning and then began failing
+robots.txt with connect timeouts. **Retry it before assuming a browser is needed.**
+
+### Method change, ratified
+`BROWSER-FETCH.md` now asks for **URLs, not transcribed text**: a CAR's frame
+address (`Upload?flag=iframeAttachView&attachId=…`), or a PDF saved into the repo
+folder. Documents read through an `attachId` URL are **archived into
+`drafts/research/` at read time** — those tokens are of unknown stability, so the
+public URL goes in the citation and the saved copy is the source of record.
+
 ### Nothing writable remains
 No workstream in this phase had its trigger filled: mailbox word, snapshot path,
 Render logs, analytics decision, fetched sources and the privacy/terms worksheet

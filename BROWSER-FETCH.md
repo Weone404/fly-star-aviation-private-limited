@@ -191,3 +191,48 @@ limit and the schedules sit at the end of a long document. A third mirror timed
 out. **Item 1 remains yours, and it is still the highest-value item on this list.**
 If the PDF is saved into this repo folder it can be read here directly, schedules
 and all.
+
+---
+
+# The method, from here on — 2026-09-05
+
+**Send URLs, not text.** Two of the three routes now need nothing typed:
+
+1. **A DGCA CAR** — open it on the portal, right-click the document frame →
+   *Copy frame address*, send that URL. It will contain
+   `Upload?flag=iframeAttachView&attachId=…` and it is readable from here.
+2. **A PDF you can download** — save it into this repo folder and say where. It is
+   read directly, at full length, schedules included.
+3. **A page that is neither** — only then copy the text, and copy it as printed.
+
+**Archive on read.** Every document read through an `attachId` URL is banked into
+`drafts/research/` at the moment it is read, because nobody knows how long those
+tokens stay valid. The public URL goes in the citation; the saved copy is the
+source of record. Link rot then costs nothing.
+
+## Item 1 — revised: it is now the only route to two answers
+Schedule II **and** Rule 39C both live in the maintained Aircraft Rules. India
+Code's copy served cleanly this morning and later began failing on robots.txt with
+connect timeouts, so it may simply work again — **retry the URL before assuming
+your browser is needed.** If it will not serve, save the PDF into this repo folder
+and both questions are answered at once: PPL flight hours, and medical validity.
+
+## Item 3 — revised: it was aimed at the wrong document
+Medical validity is **Rule 39C of the Aircraft Rules**, not a CAR. The Ministry of
+Civil Aviation's copy has been fetched and banked
+(`drafts/research/aircraft-rules-1937-moca-copy-2026-09-05.md`) — and it is **not
+citable**: its latest visible amendment is GSR No. 11(E) of 10-01-2011, and the
+scan's OCR destroyed the one clause that matters most.
+
+The medical page is therefore blocked on **two specific things**, not on a
+document hunt:
+
+- **which table items sub-rule (5) names** — the clause that halves medical
+  validity after age forty. Every "Class 1 medical validity after 40" search lands
+  here. The obvious reading is the two twelve-month categories; the obvious reading
+  is not a source.
+- **what amendment the copy you read is current to**, to compare against GSR 11(E)
+  of 10-01-2011.
+
+Both come from one rule on one page. This is now the second-cheapest item on the
+list, and item 1 answers it for free.
