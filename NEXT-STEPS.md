@@ -108,9 +108,18 @@ sourcing discipline matters more than the volume.
 
 ## Push day
 
-Four commits sit on local `main` ahead of `origin/main`: `293f4fc` (month-2
+Five commits sit on local `main` ahead of `origin/main`: `293f4fc` (month-2
 skeleton and two shipped fixes), `0b2a2ba` (convention fixes), `9b470da`
-(month 2) and the docs commit carrying this section. None have been pushed. Push has to run from the Mac mini terminal — GitHub
+(month 2), `ddeef02` (the docs commit carrying this section) and the QA commit
+on top of it (month-3 hold plus the reference-footer repair). None have been
+pushed. `git log --oneline origin/main..HEAD` lists them.
+
+**Gate zero, before anything else: run `npm test` and `npm run build` here.**
+The cloud session cannot finish prerender — its egress blocks Google Fonts — and
+it could not reach its test runner at all on the last pass, so the suite has not
+been run since the footer repair. Your Mac is the first machine to run the
+complete pipeline on this content. Expect 116 tests and 63 prerendered files. If
+it fails here it fails on Vercel. Push has to run from the Mac mini terminal — GitHub
 credentials live in the macOS keychain and are not reachable from this session.
 
 ```bash

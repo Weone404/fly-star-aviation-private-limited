@@ -168,6 +168,13 @@ collisions.** Two are writable today; four are gated on `BROWSER-FETCH.md`.
 - **Source status:** **BLOCKED — BROWSER-FETCH item 6**
 - **Note:** the highest-intent query in this vertical and the one we are least able to write. Every published figure is a school quoting itself. **The unlock is the business's own fee** — a figure Flying Star publishes about Flying Star is primary-sourced by definition. Until then, unwritten. A cost page with invented numbers would undo the credibility the sourced pages are building.
 
+### Month 3 status, 2026-09-05
+Nothing in the month-3 table was writable on the day month 2 shipped, and nothing
+became writable by retrying. Four of the five need a document only a browser can
+open; the fifth needs a figure that does not exist in public. The FAA half of
+entry 1 is now banked, which makes it the closest to writable — it still needs
+Schedule II for the DGCA column and Part-FCL for the EASA one.
+
 ### Month 2 sequencing
 Write 1–3 in week one, in that order. 4–6 are dark until `BROWSER-FETCH.md` items
 land. If none land, month 2 is three posts, and that is the correct outcome
@@ -177,7 +184,7 @@ rather than three more written on secondary sources.
 
 | Slug | Primary keyword | Source status |
 |---|---|---|
-| `/blog/dgca-vs-faa-vs-easa` | dgca vs faa licence | fetched for the DGCA side; **browser** for FAA/EASA |
+| `/blog/dgca-vs-faa-vs-easa` | dgca vs faa licence | FAA **banked 2026-09-05** (eCFR, see `BROWSER-FETCH.md`); DGCA hours need Schedule II; EASA still **browser** |
 | `/blog/type-rating-india` | type rating india | **browser** |
 | `/blog/pilot-salary-india` | pilot salary india | **secondary-only — held** pending a citable source |
 | `/blog/english-proficiency-pilots-india` | icao english proficiency india | **browser** |

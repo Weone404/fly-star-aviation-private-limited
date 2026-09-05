@@ -77,3 +77,61 @@ Send the document URL and the copied text. Nothing else is needed — the page,
 the citation, the schema and the internal links all follow from that.
 
 Partial is fine. Item 1 alone unblocks three live pages.
+
+---
+
+# Fetch attempt log — 2026-09-05
+
+Every item above was retried from the cloud session before month 3 was written.
+Four findings, two of which change this list.
+
+**Item 1 has a route that does not need the DGCA portal.** India Code serves the
+complete Aircraft Rules 1937 as a single PDF:
+`https://upload.indiacode.nic.in/showfile?actid=AC_CEN_36_0_00013_193422_1523351174422&filename=Aircraft+Rules+1937.pdf&type=rule`
+It fetched successfully — the rules text is readable — but **Schedule II sits
+past the point where the fetcher's conversion stops**, so the schedule itself
+still needs a human to open the PDF and scroll. That is a better instruction than
+the one this file carried: one PDF, one scroll, no portal navigation.
+
+**The DGCA portal is confirmed dead to fetchers, again.** Two Schedule II deep
+links (`aircraftRulesContent2Req/1/3046/…`, titled *Commercial Pilot's Licence
+(Aeroplanes)* in search results, and `…/3055/…`) both returned the DGCA homepage,
+not rule text. This matches what `drafts/research/SOURCE-INDEX.md` recorded on
+2026-08-22 for the Pariksha deep links. Treat every `dgca.gov.in/digigov-portal`
+URL as owner-only. **The two URLs above are worth opening in your browser** — the
+search index says they are the CPL and one other Schedule II entry.
+
+**One SOURCE-INDEX assumption is wrong.** The Pariksha "Syllabus" PDF
+(`PDFViewer.jsp?pdf=1A745E29…`) was expected to unblock the four per-subject exam
+guides. It fetched, and its content is a pointer: *"Refer latest CAR,
+Section-7, Series-B"*. It contains no syllabus. Those four topics are blocked on
+CAR 7-B-I, which we already have — so they may be writable after all, and the
+poppler install that file recommends buys less than it claims.
+
+**FAA rules are fully machine-readable.** eCFR served the text directly, so the
+FAA half of `dgca-vs-faa-vs-easa` no longer needs you. Banked below, verbatim as
+returned, on 2026-09-05:
+
+- **14 CFR 61.129(a)** — "§ 61.129 Aeronautical experience". Commercial pilot,
+  airplane single-engine: "at least 250 hours of flight time as a pilot",
+  including "100 hours in powered aircraft, of which 50 hours must be in
+  airplanes"; "100 hours of pilot-in-command flight time"; "20 hours of training
+  on the areas of operation" including "Ten hours of instrument training"; "Ten
+  hours of solo flight time in a single engine airplane".
+  Source: `https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-61/subpart-F/section-61.129`
+- **14 CFR 61.159** — "§ 61.159 Aeronautical experience: Airplane category
+  rating". ATP: "at least 1,500 hours of total time as a pilot", with 500 hours
+  cross-country, 100 hours night, 75 hours instrument, 50 hours in the class
+  sought, 250 hours as PIC or SIC performing PIC duties, per §61.159(a)(1)–(5).
+  Source: `https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-61/subpart-G/section-61.159`
+  **The breakdown above is the fetcher's summary, not a verbatim quote.** Quote it
+  from the section itself before it is published.
+
+**What is still needed for `dgca-vs-faa-vs-easa`:** the EASA side. Part-FCL is
+published as *Easy Access Rules for Flight Crew Licencing (Part-FCL)* at
+`https://www.easa.europa.eu/sites/default/files/dfu/Easy_Access_Rules_for_Part-FCL-Aug20.pdf`,
+and the regulation itself is Regulation (EU) No 1178/2011 on EUR-Lex. Either one,
+opened to the CPL(A) and ATPL(A) experience requirements and to FCL.025 on
+theoretical-knowledge validity, finishes the post. **And the DGCA column of that
+post is Schedule II — item 1 again.** Item 1 is now the single highest-value
+thing on this list by a wide margin.

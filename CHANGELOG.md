@@ -2,6 +2,65 @@
 
 All entries: what changed, and why. Newest first.
 
+## 2026-09-05 — Month 3 is not writable, and final QA found a defect in my own work
+
+### W1 — Month 3: zero posts, five skips
+Every entry in the calendar's month-3 table was retried against primary sources
+before being skipped. None is writable under the numbers policy:
+
+- `dgca-vs-faa-vs-easa` — **now half-sourced.** eCFR served 14 CFR 61.129 and
+  61.159 directly, so the FAA column is banked in `BROWSER-FETCH.md`. The DGCA
+  column is Schedule II and the EASA column is Part-FCL; both still need a
+  browser. Closest to writable of the five.
+- `type-rating-india` — needs the DGCA type-rating CAR. Portal serves fetchers
+  its homepage.
+- `english-proficiency-pilots-india` — needs the DGCA language-proficiency CAR.
+  Same portal, same result.
+- `/locations/india-flying-schools` — needs the DGCA approved-FTO list URL. Same.
+- `pilot-salary-india` — held by the numbers policy, not by a fetch. No airline
+  publishes this and no secondary figure is citable. It stays held until the
+  business has a figure of its own.
+
+**No post was written.** Three sourced posts in month 2 and none in month 3 is the
+correct output of a rule that says every figure carries a source, not a shortfall
+against a calendar written before the sources were tested.
+
+### Fetch findings, recorded in `BROWSER-FETCH.md`
+- **India Code serves the whole Aircraft Rules 1937 as one PDF** and it fetches.
+  Schedule II sits past the conversion limit, so it still needs a human — but the
+  instruction is now "open one PDF and scroll", not "navigate the DGCA portal".
+- **Two DGCA Schedule II deep links confirmed dead to fetchers** (both returned
+  the homepage), matching the 2026-08-22 finding for the Pariksha deep links.
+  Both URLs are recorded — they are worth opening in a browser.
+- **A `SOURCE-INDEX.md` assumption is wrong.** The Pariksha "Syllabus" PDF was
+  expected to unblock the four per-subject exam guides. Its content is a pointer:
+  *"Refer latest CAR, Section-7, Series-B"* — a document we already hold. Those
+  four topics may be writable without any fetch at all, and the poppler install
+  that file recommends buys less than it claims.
+
+### W7 — Final QA, and the defect it found
+Parity re-run across all 14 posts by importing the module rather than grepping it.
+seoTitle ≤ 60: clean. Description ≤ 155: clean. **Orphan FAQ entries: zero.**
+
+But the reference footer added in the 2026-09-05 convention pass was missing from
+**five** posts, including **the three month-2 posts written the same day**. The
+earlier "missing 0" claim came from a check that only looked at the nine posts the
+pass had edited — it verified the edit, not the invariant. That is the same class
+of error as the orphan schema: the check agreed with the intent instead of
+testing the rule. Footer added to all five; parity re-run from the module, clean.
+
+`/blog/commercial-pilot-vs-airline-pilot--whats-the-difference` has no FAQ section
+at all. It is 192 words and the sitemap generator already declines to advertise
+it, so it emits no schema and orphans nothing. Left alone and recorded: it is a
+thin legacy page needing a rewrite, not a convention violation.
+
+Sitemap 63 URLs, feed 13 items — unchanged, as expected.
+
+### Nothing writable remains
+No workstream in this phase had its trigger filled: mailbox word, snapshot path,
+Render logs, analytics decision, fetched sources and the privacy/terms worksheet
+were all blank. Those six workstreams are untouched and waiting.
+
 ## 2026-09-05 — Month 2 (three of six), convention fixes on the older posts
 
 ### W1 — Month 2, static path only
