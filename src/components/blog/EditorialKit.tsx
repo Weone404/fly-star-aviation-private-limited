@@ -4,6 +4,7 @@ import { SocialShareButtons } from '@/components/SocialShareButtons'
 import type { BlogPost } from '@/types/blog'
 import type { TocItem } from '@/lib/articleHtml'
 import type { BlogImage } from '@/types/blog'
+import { HOUSE_STYLE } from '@/lib/blogImages'
 import { FAQ_ANCHOR } from '@/lib/articleHtml'
 
 /**
@@ -429,12 +430,20 @@ export function BlogMasthead({
 /**
  * Renders a planned illustration.
  *
- * Until the file exists, this renders **nothing in production** and a
- * placeholder carrying its own prompt in `npm run dev`. A missing picture is a
- * gap; a broken image is a defect, and on a page whose whole claim is that its
- * figures are checked, a broken asset is the wrong kind of first impression.
+ * Once the file exists this is an ordinary `<figure>`. Until then it renders a
+ * designed placeholder that says what the picture will show — not a broken
+ * image, and not an empty gap.
+ *
+ * **The prompt is deliberately not in the served HTML.** It is injected into the
+ * DOM only when someone presses "Show prompt", so the prerendered page a crawler
+ * reads contains the article and the caption, never five paragraphs of
+ * "flat vector illustration, generous negative space" per post. That would be a
+ * real cost on pages whose whole job is to be quotable.
  */
 export function ArticleFigure({ image }: { image: BlogImage }) {
+  const [showPrompt, setShowPrompt] = useState(false)
+  const [copied, setCopied] = useState(false)
+
   if (image.ready) {
     return (
       <figure className="my-8">
@@ -445,7 +454,8 @@ export function ArticleFigure({ image }: { image: BlogImage }) {
           height={675}
           loading="lazy"
           decoding="async"
-          className="w-full rounded-xl border border-border object-cover"
+          sizes="(min-width: 1280px) 46rem, (min-width: 768px) 42rem, 100vw"
+          className="w-full rounded-xl border border-border bg-muted object-cover"
         />
         {image.caption && (
           <figcaption className="mt-2 text-sm text-muted-foreground">{image.caption}</figcaption>
@@ -454,19 +464,72 @@ export function ArticleFigure({ image }: { image: BlogImage }) {
     )
   }
 
-  if (!import.meta.env.DEV) return null
+  const fullPrompt = `${image.prompt} ${HOUSE_STYLE}`
 
   return (
-    <div className="my-8 rounded-xl border border-dashed border-primary/40 bg-muted/50 p-5">
-      <p className="text-xs font-bold uppercase tracking-wide text-primary">
-        Image placeholder · dev only · {image.slot}
-      </p>
-      <p className="mt-2 text-sm font-semibold text-foreground">{image.alt}</p>
-      <p className="mt-3 whitespace-pre-wrap text-xs leading-relaxed text-muted-foreground">{image.prompt}</p>
-      <p className="mt-3 text-xs text-muted-foreground">
-        Save the generated file to <code className="font-mono">{image.file}</code>, then set{' '}
-        <code className="font-mono">ready: true</code> in <code className="font-mono">src/lib/blogImages.ts</code>.
-      </p>
-    </div>
+    <figure className="my-8 overflow-hidden rounded-xl border border-dashed border-primary/40 bg-muted/40">
+      <div className="flex items-start gap-3 p-5">
+        <span aria-hidden="true" className="mt-0.5 shrink-0 text-primary">
+          <IconImage className="h-5 w-5" />
+        </span>
+        <div className="min-w-0 flex-1">
+          <p className="text-[11px] font-bold uppercase tracking-wide text-primary">
+            Illustration in production
+          </p>
+          <figcaption className="mt-1 text-sm leading-relaxed text-foreground">
+            {image.caption || image.alt}
+          </figcaption>
+
+          <div className="mt-3 flex flex-wrap gap-2">
+            <button
+              type="button"
+              onClick={() => setShowPrompt((v) => !v)}
+              aria-expanded={showPrompt}
+              className="inline-flex min-h-11 items-center rounded-lg border border-border bg-card px-3 text-xs font-semibold text-foreground hover:border-primary/40"
+            >
+              {showPrompt ? 'Hide prompt' : 'Show prompt'}
+            </button>
+            {showPrompt && (
+              <button
+                type="button"
+                onClick={() => {
+                  navigator.clipboard?.writeText(fullPrompt).then(
+                    () => {
+                      setCopied(true)
+                      setTimeout(() => setCopied(false), 1500)
+                    },
+                    () => { /* clipboard blocked; the text is on screen to select */ },
+                  )
+                }}
+                className="inline-flex min-h-11 items-center rounded-lg border border-border bg-card px-3 text-xs font-semibold text-foreground hover:border-primary/40"
+              >
+                {copied ? 'Copied' : 'Copy prompt'}
+              </button>
+            )}
+          </div>
+
+          {showPrompt && (
+            <div className="mt-3 rounded-lg border border-border bg-card p-3">
+              <p className="whitespace-pre-wrap text-xs leading-relaxed text-muted-foreground">{fullPrompt}</p>
+              <p className="mt-3 text-[11px] leading-relaxed text-muted-foreground">
+                Save the result to <code className="font-mono">public{image.file}</code>, then set{' '}
+                <code className="font-mono">ready: true</code> on this entry in{' '}
+                <code className="font-mono">src/lib/blogImages.js</code>.
+              </p>
+            </div>
+          )}
+        </div>
+      </div>
+    </figure>
+  )
+}
+
+export function IconImage({ className = 'h-4 w-4' }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 20 20" fill="none" aria-hidden="true" className={className}>
+      <rect x="2.5" y="4" width="15" height="12" rx="2" stroke="currentColor" strokeWidth="1.6" />
+      <circle cx="7.5" cy="8.5" r="1.4" stroke="currentColor" strokeWidth="1.4" />
+      <path d="M3 14l4-3.5 3.5 3 3-2.5L17.5 14" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
   )
 }

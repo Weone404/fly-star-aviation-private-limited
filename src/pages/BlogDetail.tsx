@@ -6,7 +6,7 @@ import { BLOG_POSTS, STATIC_BLOG_POSTS, getBlogPost, getReadingMinutes } from '@
 import { sanitizeHtml } from '@/lib/sanitizeHtml'
 import { prepareArticle } from '@/lib/articleHtml'
 import { neighboursInTopic, sourcesOf } from '@/lib/blogTopics'
-import { imagesFor } from '@/lib/blogImages'
+import { imagesFor, isGenericCover } from '@/lib/blogImages'
 import { Fragment } from 'react'
 import {
   ArticleFigure,
@@ -89,7 +89,11 @@ export default function BlogDetail() {
   const cluster = useMemo(() => (blog ? neighboursInTopic(blog) : null), [blog])
   const sources = useMemo(() => (blog ? sourcesOf(blog) : []), [blog])
   const images = useMemo(() => imagesFor(blog?.slug), [blog?.slug])
-  const cover = images.find((i) => i.slot === 'cover' && i.ready)
+  const coverEntry = images.find((i) => i.slot === 'cover')
+  const cover = coverEntry?.ready ? coverEntry : undefined
+  // A generic stand-in is worse than an honest placeholder: it is the same
+  // photograph on ten posts, and it says nothing about this one.
+  const showCoverPlaceholder = Boolean(coverEntry && !coverEntry.ready && isGenericCover(blog?.coverImage))
   const related = useMemo(
     () => (blog && isEditorial ? relatedTo(blog, BLOG_POSTS as BlogPost[]) : []),
     [blog, isEditorial],
@@ -168,7 +172,9 @@ export default function BlogDetail() {
             </>
           )}
 
-          {(cover || blog.coverImage) && (
+          {showCoverPlaceholder && coverEntry && <ArticleFigure image={coverEntry} />}
+
+          {!showCoverPlaceholder && (cover || blog.coverImage) && (
             <figure className="my-8">
               <img
                 src={cover?.file || blog.coverImage}

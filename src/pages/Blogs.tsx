@@ -4,6 +4,7 @@ import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import { BLOG_POSTS, sortBlogsByDate, getReadingMinutes } from '@/lib/blogData'
 import { TOPICS, postsInTopic } from '@/lib/blogTopics'
+import { isGenericCover } from '@/lib/blogImages'
 import { BlogMasthead, IconArrow, formatDate } from '@/components/blog/EditorialKit'
 import type { BlogPost } from '@/types/blog'
 
@@ -27,7 +28,7 @@ function Meta({ post }: { post: BlogPost }) {
 }
 
 function Cover({ post, className }: { post: BlogPost; className?: string }) {
-  if (post.coverImage) {
+  if (post.coverImage && !isGenericCover(post.coverImage)) {
     return (
       <img
         src={post.coverImage}
