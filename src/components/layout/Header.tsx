@@ -1,5 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronDown, Phone, Plane } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -87,6 +88,8 @@ export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [mobileMenuTop, setMobileMenuTop] = useState(96);
+  const headerRef = useRef<HTMLElement>(null);
   const location = useLocation();
 
   useEffect(() => {
@@ -99,6 +102,32 @@ export function Header() {
     setIsMobileMenuOpen(false);
     setActiveDropdown(null);
   }, [location.pathname]);
+
+  useEffect(() => {
+    if (!isMobileMenuOpen) return;
+
+    const updateMobileMenuPosition = () => {
+      const headerBottom = headerRef.current?.getBoundingClientRect().bottom;
+      if (headerBottom !== undefined) setMobileMenuTop(Math.max(headerBottom, 0));
+    };
+
+    const previousBodyOverflow = document.body.style.overflow;
+    const previousDocumentOverflow = document.documentElement.style.overflow;
+    document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
+    updateMobileMenuPosition();
+    window.addEventListener("resize", updateMobileMenuPosition);
+    window.addEventListener("scroll", updateMobileMenuPosition);
+
+    return () => {
+      document.body.style.overflow = previousBodyOverflow;
+      document.documentElement.style.overflow = previousDocumentOverflow;
+      window.removeEventListener("resize", updateMobileMenuPosition);
+      window.removeEventListener("scroll", updateMobileMenuPosition);
+    };
+  }, [isMobileMenuOpen]);
+
+  const closeMobileMenu = () => setIsMobileMenuOpen(false);
 
   return (
     <>
@@ -118,6 +147,7 @@ export function Header() {
 
       {/* Header */}
       <header
+        ref={headerRef}
         className={`sticky top-0 z-50 transition-all ${isScrolled ? "bg-background/95 backdrop-blur shadow-card" : "bg-background"
           }`}
       >
@@ -191,27 +221,43 @@ export function Header() {
             {/* Mobile Button */}
             <button
               className="xl:hidden p-2 rounded-lg hover:bg-secondary"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              onClick={() => setIsMobileMenuOpen((open) => !open)}
+              aria-expanded={isMobileMenuOpen}
+              aria-controls="mobile-navigation"
+              aria-label={isMobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
             >
               {isMobileMenuOpen ? <X /> : <Menu />}
             </button>
           </div>
         </div>
 
-        {/* Mobile Menu */}
+      </header>
+      {createPortal(
         <AnimatePresence>
           {isMobileMenuOpen && (
             <motion.div
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              className="xl:hidden border-t bg-background"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-x-0 z-[60] xl:hidden"
+              style={{
+                top: mobileMenuTop,
+                height: `calc(100dvh - ${mobileMenuTop}px)`,
+              }}
+              onClick={closeMobileMenu}
             >
-              <nav className="container py-4 space-y-2">
+              <div className="absolute inset-0 bg-black/20" aria-hidden="true" />
+              <nav
+                id="mobile-navigation"
+                aria-label="Mobile navigation"
+                onClick={(event) => event.stopPropagation()}
+                className="relative mx-auto h-full w-full overflow-y-auto overscroll-contain border-t bg-background px-4 py-4 shadow-hover"
+              >
                 {navigation.map((item) => (
                   <div key={item.name}>
                     <Link
                       to={item.href}
+                      onClick={closeMobileMenu}
                       className="block px-4 py-3 text-lg font-semibold rounded-lg hover:bg-secondary"
                     >
                       {item.name}
@@ -222,6 +268,7 @@ export function Header() {
                           <Link
                             key={child.href}
                             to={child.href}
+                            onClick={closeMobileMenu}
                             className="block px-4 py-2 text-lg text-muted-foreground hover:text-primary"
                           >
                             {child.name}
@@ -231,14 +278,15 @@ export function Header() {
                     )}
                   </div>
                 ))}
-                <Button variant="aviation" size="lg" className="w-full mt-4">
+                <Button variant="aviation" size="lg" className="w-full mt-4" onClick={closeMobileMenu}>
                   Get Free Counselling
                 </Button>
               </nav>
             </motion.div>
           )}
-        </AnimatePresence>
-      </header>
+        </AnimatePresence>,
+        document.body,
+      )}
     </>
   );
 }
