@@ -183,3 +183,83 @@ placeholders until art is dropped at the paths below.
 > Flat vector illustration, minimal clean style, professional Indian aviation
 > training context, generous negative space, absolutely NO text, words, letters,
 > numbers or signage anywhere in the image.
+
+
+---
+
+## Post: dgca-cpl-exam-pass-rate
+
+**Status:** needs all images — `coverImage` points at the site-wide fallback
+(`/assets/hero-aircraft-1600w.jpg`); the three inline slots render as labelled
+placeholders until art is dropped at the paths below.
+
+### Cover
+
+- **File:** `/blog/dgca-cpl-exam-pass-rate/cover.webp`
+- **Dimensions:** 1200 × 675
+- **Alt text:** A single sealed file folder marked with a question mark sitting apart from a row of open, labelled reference binders.
+
+> A wide banner showing a short row of open binders with tidy abstract spine
+> marks standing upright, and to one side a single closed folder set apart from
+> the row with a soft question-mark shape on its cover. Deep green background,
+> warm amber as the single accent, a calm, evidentiary mood. No people, no
+> aircraft, no logos, and absolutely no readable text, numerals or signage
+> anywhere in the image.
+>
+> Flat vector illustration, minimal clean style, professional Indian aviation
+> training context, generous negative space, absolutely NO text, words, letters,
+> numbers or signage anywhere in the image.
+
+### Slot 1 — published vs not
+
+- **File:** `/blog/dgca-cpl-exam-pass-rate/published-vs-not.webp`
+- **Dimensions:** 1200 × 675
+- **Alt text:** A split illustration: on one side a clear rulebook with a checkmark labelled pass mark, on the other side a blank results board with a question mark where a statistic would be.
+
+> A wide banner split into two halves by a soft vertical divider. On the left,
+> an open rulebook lying flat with a single clean checkmark icon above it. On
+> the right, a blank noticeboard standing on a small easel with one faint
+> question-mark shape in the centre where a chart or figure would normally sit.
+> Deep green background, warm amber as the single accent, a calm, analytical
+> mood. No people, no aircraft, no logos, and absolutely no readable text,
+> numerals or signage anywhere in the image.
+>
+> Flat vector illustration, minimal clean style, professional Indian aviation
+> training context, generous negative space, absolutely NO text, words, letters,
+> numbers or signage anywhere in the image.
+
+### Slot 2 — unsourced claim
+
+- **File:** `/blog/dgca-cpl-exam-pass-rate/unsourced-claim.webp`
+- **Dimensions:** 1200 × 675
+- **Alt text:** A magnifying glass hovering over a printed advertisement that shows a large percentage figure with no citation or footnote beneath it.
+
+> A close composition of a printed flyer lying on a flat surface, with a large
+> abstract circular chart shape occupying most of the sheet and empty white
+> space beneath it where a source line would normally sit. A magnifying glass
+> hovers just above that empty space, held from outside the frame. Deep green
+> background, warm amber as the single accent, a quietly sceptical mood. No
+> people, no aircraft, no logos, and absolutely no readable text, numerals or
+> signage anywhere in the image.
+>
+> Flat vector illustration, minimal clean style, professional Indian aviation
+> training context, generous negative space, absolutely NO text, words, letters,
+> numbers or signage anywhere in the image.
+
+### Slot 3 — mock test benchmark
+
+- **File:** `/blog/dgca-cpl-exam-pass-rate/mock-test-benchmark.webp`
+- **Dimensions:** 1200 × 675
+- **Alt text:** A candidate at a desk marking their own timed mock exam paper with a red pen, a stack of five subject folders labelled by icon rather than text arranged beside them.
+
+> A wide banner showing one adult seated at a desk, red pen in hand, marking a
+> printed answer sheet with abstract rows of short marks. Beside the sheet, a
+> neat stack of five thin folders each carrying a small distinct icon rather
+> than any text, and a stopwatch resting near the edge of the desk. Deep green
+> background, warm amber as the single accent, a focused, self-directed mood.
+> No aircraft, no logos, no faces in close detail, no readable text anywhere in
+> the frame.
+>
+> Flat vector illustration, minimal clean style, professional Indian aviation
+> training context, generous negative space, absolutely NO text, words, letters,
+> numbers or signage anywhere in the image.

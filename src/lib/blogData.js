@@ -680,6 +680,154 @@ export const STATIC_BLOG_POSTS = [
     content:
       `<p>Converting a foreign pilot licence into an Indian one is governed by DGCA CAR Section 7, Series &lsquo;G&rsquo;, Part I. Most of it is paperwork you can assemble at any time. One clause is a deadline, and it is the one candidates read too late: <strong>your rating must be current, meaning at least 10 hours as Pilot-in-Command in the 24 months before the date of application.</strong></p><h2>The checklist</h2><table><thead><tr><th>Requirement</th><th>What the CAR states</th><th>When to handle it</th></tr></thead><tbody><tr><td><strong>Currency</strong></td><td>Rating &ldquo;current&rdquo; for the type &mdash; at least 10 hours as Pilot-in-Command in the preceding 24 months</td><td><strong>Track from the day you stop flying</strong></td></tr><tr><td>Written examinations</td><td>Conducted by DGCA&rsquo;s Central Examination Organisation</td><td>As early as possible &mdash; longest lead time</td></tr><tr><td>Skill test</td><td>Competency demonstrated to a DGCA-approved examiner in India</td><td>After the papers, in India</td></tr><tr><td>Medical fitness</td><td>Per Schedule II, Aircraft Rules 1937</td><td>Early &mdash; a disqualifying finding is cheaper to learn now</td></tr><tr><td>Licence validity</td><td>Foreign licence and supporting documents within their laid-down validity period</td><td>Check before applying</td></tr><tr><td>Documents</td><td>As required under Schedule II, Aircraft Rules 1937</td><td>Assemble in advance</td></tr></tbody></table><p class="source-note">Source: DGCA CAR Section 7, Series &lsquo;G&rsquo;, Part I, Issue II, Revision 4, dated 9 September 2019 (effective 1 July 2019).</p><h2>Which licences this covers</h2><p>The CAR names pilot licences for microlights, gliders, balloons, light sport aircraft and gyroplanes, plus the Private Pilot Licence, Commercial Pilot Licence and Airline Transport Pilot Licence &mdash; each for aeroplanes or helicopters. In practice the common case is a CPL earned abroad, on an FAA or EASA licence, being converted for commercial use in India.</p><h2>Why currency is the clause that bites</h2><p>Everything else on the checklist waits for you. Currency does not.</p><p>The sequence that goes wrong is ordinary: finish training abroad, return to India, spend months on paperwork, exams and scheduling &mdash; and somewhere in that gap the 24-month window closes on your last 10 hours of Pilot-in-Command time. Re-establishing currency then means flying again, usually abroad, usually at the price you were trying to stop paying.</p><p>Two practical consequences:</p><ul><li><strong>Know your date.</strong> Work out when your PIC hours fall outside 24 months, and treat that as the deadline the whole conversion runs against.</li><li><strong>Do the papers first, not last.</strong> They are Indian papers sat in India, a cleared CPL or ATPL paper is valid five years, and they are the step most likely to add months. Clearing them <em>before</em> or during your time abroad takes the longest pole out of the timeline.</li></ul><h2>What conversion does not waive</h2><ul><li>It does not waive the DGCA written examinations. Hours abroad are not a substitute.</li><li>It does not waive the skill test with a DGCA-approved examiner in India.</li><li>It does not waive Indian medical requirements under Schedule II.</li><li>It does not revive an expired foreign licence &mdash; documents must be within validity.</li></ul><h2>Order of operations</h2><ol><li><strong>Establish your currency date</strong> from your logbook. Everything else is scheduled against it.</li><li><strong>Get a computer number</strong> if you do not hold one &mdash; see the <a href="/dgca/computer-number">computer number guide</a>. It gates every paper.</li><li><strong>Sit the written papers.</strong> Earliest possible, valid five years once cleared.</li><li><strong>Complete the Indian medical</strong> under Schedule II.</li><li><strong>Assemble documents</strong> per Schedule II and confirm the foreign licence is within validity.</li><li><strong>Book the skill test</strong> with a DGCA-approved examiner.</li></ol><h2>Frequently asked questions</h2><h3>What does DGCA require to convert a foreign pilot licence?</h3><p>Under CAR Section 7, Series G, Part I: the rating on the foreign licence must be current for the type of aircraft, written examinations must be passed through DGCA's Central Examination Organisation, competency must be demonstrated to a DGCA-approved examiner in India, medical fitness must meet Schedule II of the Aircraft Rules 1937, and the foreign licence and supporting documents must be within their validity.</p><h3>What counts as "current" on the foreign licence?</h3><p>The CAR defines it as having flying experience of at least 10 hours as Pilot-in-Command in the twenty-four months preceding the date of application, for the type of aircraft.</p><h3>Which foreign licences can be converted?</h3><p>Pilot licences for microlights, gliders, balloons, light sport aircraft and gyroplanes, and the Private Pilot Licence, Commercial Pilot Licence and Airline Transport Pilot Licence, each for aeroplanes or helicopters.</p><h3>Do I still have to pass Indian exams if I trained abroad?</h3><p>Yes. Conversion requires written examinations conducted by DGCA's Central Examination Organisation. Flight hours logged abroad do not substitute for them.</p><h3>When should I sit the Indian papers if I am training abroad?</h3><p>As early as you can. A cleared CPL or ATPL paper is valid for five years, and the papers are the longest lead-time item in a conversion. Clearing them before or during training abroad removes the step most likely to stall you.</p><h3>Does conversion have a shortcut if my licence is from the USA or Europe?</h3><p>CAR Section 7, Series G, Part I sets the same requirements regardless of the issuing country. If someone offers you a faster route, ask which clause permits it.</p><h2>Related</h2><ul><li><a href="/pilot-training/guide-to-conversion">How DGCA conversion works</a></li><li><a href="/pilot-training/usa">Training in the USA and what it means for India</a></li><li><a href="/glossary">Glossary: PIC, CAR, FTO and the rest</a></li></ul><p>The CAR is revised periodically. Verify the current text on <a href="https://www.dgca.gov.in/" target="_blank" rel="noopener nofollow">dgca.gov.in</a> before acting on any of this.</p><p class="ref-links">More: the <a href="/faq">FAQ</a> for short sourced answers, the <a href="/glossary">glossary</a> for the terms, and our <a href="/editorial-policy">editorial policy</a> for how these figures are checked.</p>`,
   },
+  {
+    slug: 'dgca-cpl-exam-pass-rate',
+    title: 'DGCA CPL Exam Pass Rate: What the Data Actually Shows',
+    seoTitle: 'DGCA CPL Exam Pass Rate 2026: What Is Actually Published',
+    metaDescription: 'DGCA does not publish a CPL or ATPL exam pass rate. What the regulator actually discloses, why unsourced percentages circulate, and how to gauge readiness.',
+    tags: ['DGCA Exam Pass Rate', 'DGCA CPL Difficulty', 'DGCA Exam Statistics'],
+    category: 'DGCA',
+    author: 'Flying Star Aviator Academics Team',
+    authorRole: 'DGCA CPL & ATPL ground instruction, Dwarka, New Delhi',
+    createdAt: '2026-09-08',
+    updatedAt: '2026-09-08',
+    coverImage: '/assets/hero-aircraft-1600w.jpg',
+    excerpt: 'TL;DR: DGCA does not publish a pass rate for the CPL or ATPL theory papers. Every specific percentage you find online is unsourced. What is published is the 70% pass mark per paper and five-year validity on a cleared paper. Use marked mock papers, not a borrowed statistic, to judge your own readiness.',
+    intro: 'Search for the DGCA CPL pass rate and you will find a dozen confident percentages, no two of them the same, and none of them sourced. This guide sets out exactly what DGCA does and does not publish about exam performance, where the numbers circulating online actually come from, and what should inform your preparation instead of a borrowed statistic.',
+    faqs: [
+      { q: 'What is the DGCA CPL exam pass rate?', a: 'There is no published figure. We checked the Pariksha portal and DGCA’s own Flight Crew FAQ, the two sources this site cites for every other fact about these exams, and neither states a pass rate for any paper, subject or session. Any specific percentage you find elsewhere is unsourced.' },
+      { q: 'Why doesn’t DGCA publish exam pass rate data?', a: 'DGCA has not stated a reason. The Pariksha portal lets a candidate view their own examination history after logging in, but there is no public dashboard or notice showing results in aggregate across candidates or sessions. Whether that is policy or simply a report DGCA has not built is not something we can answer from outside the organisation.' },
+      { q: 'Is the DGCA CPL exam hard?', a: 'There is no data to answer that in aggregate, only structural reasons some papers carry a harder reputation than others. Air Navigation is calculation-heavy and difficult to self-correct; Air Regulation is built on regulatory text that is revised and goes stale in an old book. Your own result depends on your preparation and background, not on the subject’s general reputation.' },
+      { q: 'Which DGCA subject has the highest failure rate?', a: 'No failure rate is published for any subject, so there is no ranked answer. Air Navigation and Air Regulation carry the strongest difficulty reputation in candidate discussion, for identifiable structural reasons, but that is reputation, not measured data.' },
+      { q: 'Can I trust a coaching institute’s advertised pass rate?', a: 'Ask where the figure comes from before you weigh it. A pass rate for one institute’s own batch is not a controlled comparison against self-study candidates of similar ability, and an institute that cannot produce a source for its own headline number is telling you something about how it handles its other claims.' },
+      { q: 'Is there a limit on how many times I can attempt a DGCA paper?', a: 'DGCA does not state an attempt cap in the eligibility CAR or its Flight Crew FAQ. What actually constrains you is that a cleared CPL or ATPL paper stays valid five years, and the Rs 2,500 fee is non-refundable on every attempt, covered in our separate guide to DGCA exam validity and attempts.' },
+      { q: 'Does ground coaching have a better pass rate than self-study?', a: 'Nobody has published a comparison, so there is no sourced answer either way. Our comparison of ground classes against self-study looks at what each route actually offers instead of resting the argument on a pass-rate figure that does not exist.' },
+      { q: 'How can I judge my own exam readiness without an official benchmark?', a: 'Use full-length, timed mock papers and treat two consecutive scores above 75% as the signal to book the real exam, not two scores at exactly 70%. That margin allows for a slightly harder question set on the day, since DGCA applies no scaling or grace marks.' },
+    ],
+    content:
+      `<p>DGCA does not publish a pass rate for the CPL or ATPL theory papers. No official percentage exists for how many candidates clear Air Navigation, Air Regulation or any other paper on a first attempt. Every specific number circulating online &mdash; a first-attempt rate, an overall rate, a subject rate &mdash; is unsourced.</p>
+
+<h2>What is the DGCA CPL exam pass rate?</h2>
+<p>There is no published figure. We looked for one on the Pariksha portal and in DGCA&rsquo;s own Flight Crew FAQ, the same two sources this site cites for every other fact about these exams, and neither states a pass rate for any paper, any subject or any session.</p>
+<p>That is a narrower claim than it sounds. We are not saying DGCA does not <em>track</em> this internally &mdash; a regulator running national examinations almost certainly knows how many candidates sat each paper and how many cleared it. We are saying that number is not made public, and a figure that is not public is not a figure you can cite. Anyone who tells you "the DGCA CPL pass rate is 30%" is telling you something we could not find, from a source they have not shown.</p>
+
+<h2>Why doesn&rsquo;t DGCA publish exam pass rate data?</h2>
+<p>DGCA has not stated a reason, so this section is observation, not explanation. What we can tell you is what the Pariksha portal does publish about your own result: a candidate can log in and view their personal examination history, paper by paper. There is no public dashboard, report or notice showing results in aggregate, across all candidates or across a session.</p>
+<p>This is consistent with how DGCA handles most operational detail. The regulator publishes rules &mdash; eligibility, subjects, pass marks, fees, validity periods &mdash; through Civil Aviation Requirements and portal FAQs. It does not routinely publish performance statistics about the population sitting its exams, the way a university might publish a board-exam pass percentage each year. Whether that is policy or simply a report nobody has built is not something we can answer from outside the organisation.</p>
+
+<h2>Where do the "80% fail" numbers you see online actually come from?</h2>
+<p>They come from training institutes, aggregator blogs and forum posts, none of which have access to DGCA&rsquo;s internal data either. A number repeated across many pages is not the same as a number sourced to one place.</p>
+<p>Three patterns explain most of what circulates:</p>
+<ul>
+<li><strong>A guess dressed as a statistic.</strong> "Only 20&ndash;30% clear on the first attempt" reads like data. It is usually an instructor&rsquo;s impression, generalised into a headline figure with no session, no year and no candidate count behind it.</li>
+<li><strong>A small, self-selecting sample.</strong> A coaching institute that tracks its own batch's results is describing its own students, not the national candidate pool, and it has no reason to publish a batch that performed badly.</li>
+<li><strong>A number copied forward.</strong> Once one uncredited figure appears on one page, it gets paraphrased onto the next, and the next, until it reads as settled fact simply because it is everywhere. Frequency is not verification.</li>
+</ul>
+<p>None of this means the real pass rate is high or low. It means nobody writing about it, including every page you will find if you search this question, is showing you where their number came from.</p>
+
+<h2>What does DGCA actually publish about how the exams are graded?</h2>
+<p>DGCA publishes the pass mark, the subjects, the fee and the validity period for a cleared paper &mdash; all rules, none of them statistics. Put together, this is the entire public record on difficulty, and it is worth seeing as a table because most pages blur the line between what is a rule and what is a rumour.</p>
+<table>
+<thead><tr><th>DGCA publishes</th><th>DGCA does not publish</th></tr></thead>
+<tbody>
+<tr><td>Pass mark: 70% in each paper, no aggregate across papers</td><td>Any national or session-wise pass percentage</td></tr>
+<tr><td>The subject list per licence category</td><td>How many candidates sat a given paper in a given session</td></tr>
+<tr><td>Exam fee: Rs 2,500 per paper, non-refundable</td><td>A breakdown of how many candidates failed on a first, second or later attempt</td></tr>
+<tr><td>Validity of a cleared paper: five years for CPL and ATPL</td><td>A pass rate by ground school, city or self-study status</td></tr>
+<tr><td>A candidate&rsquo;s own examination history, via individual portal login</td><td>Any aggregate or comparative results dashboard</td></tr>
+</tbody>
+</table>
+<p class="source-note">Source: DGCA CAR Section 7, Series B, Part I; DGCA Pariksha Flight Crew FAQ.</p>
+<p>Everything in the left column is something you can plan around. Nothing in the right column exists to plan around, no matter how confidently a page states it.</p>
+
+<figure class="img-slot" data-src="/blog/dgca-cpl-exam-pass-rate/published-vs-not.webp" data-dimensions="1200x675">
+  <span>A split illustration: on one side a clear rulebook with a checkmark labelled pass mark, on the other side a blank results board with a question mark where a statistic would be.</span>
+</figure>
+
+<h2>Which DGCA subject has the reputation for being hardest, and why?</h2>
+<p>Air Navigation and Air Regulation carry the strongest reputation for difficulty, for two different and specific reasons: Air Navigation because it is calculation-heavy and errors in method are hard to self-correct, Air Regulation because it depends on regulatory text that is revised and quickly goes out of date in an old book.</p>
+<p>Reputation is not the same as a measured failure rate, and no paper has one. What follows is a structural read on why each subject earns the reputation it has &mdash; the mechanism, not a score.</p>
+<table>
+<thead><tr><th>Paper</th><th>What drives its reputation</th><th>Why</th></tr></thead>
+<tbody>
+<tr><td>Air Navigation</td><td>Calculation-heavy, hardest to self-correct</td><td>Chart work and flight-planning numericals compound a single early error through the rest of a problem, and a candidate working alone often cannot see where the method went wrong</td></tr>
+<tr><td>Air Regulation</td><td>Perishable material</td><td>Built on Civil Aviation Requirements and circulars that are revised. Studying from an outdated edition produces a confident, wrong answer, which is different from not knowing the answer at all</td></tr>
+<tr><td>Aviation Meteorology</td><td>Broad but stable</td><td>Wide syllabus &mdash; atmosphere, pressure systems, Indian monsoon behaviour &mdash; but the underlying science does not change year to year the way regulation does</td></tr>
+<tr><td>Technical General</td><td>Conceptually stable</td><td>Airframes, powerplants and instruments are the paper most candidates describe as the least likely to surprise them, since the content is settled engineering knowledge</td></tr>
+<tr><td>Technical Specific</td><td>Depends entirely on your nominated aircraft</td><td>Written against the manual for the specific type you nominate, so its difficulty is a function of how well that manual is taught, not the subject itself</td></tr>
+</tbody>
+</table>
+<p>Two of these five rows explain most of the anecdotal "hardest paper" discussion you will find elsewhere. The other three are usually mentioned only in passing, which is itself informative: a subject nobody complains about is not commonly the one that derails a candidate's session.</p>
+
+<h2>Does a subject's reputation predict your own result?</h2>
+<p>Only loosely. A paper's reputation describes a structural difficulty that applies to the average candidate in the abstract; your result depends on your own preparation, your mathematics background and how current your study material is, which reputation cannot account for.</p>
+<p>A candidate with strong, recent mathematics can find Air Navigation the most straightforward paper on the list, and a candidate who has not touched a chart or a flight computer since school can find it the hardest by a wide margin, regardless of what any page says about the subject in general. Reputation is useful for allocating your study time, not for predicting your outcome.</p>
+
+<h2>How should you gauge your own readiness, without an official benchmark?</h2>
+<p>Use full-length, timed mock papers as your own benchmark, and treat two consecutive scores above 75% as the signal to book the real exam, not two scores at exactly 70%. That five-point margin exists because DGCA applies no scaling and no grace marks, so a slightly harder question set on the day should not be able to take you below the pass mark.</p>
+<p>This is the only readiness measure that is actually yours. It does not depend on DGCA publishing anything, and it does not depend on trusting a stranger's pass-rate claim on a forum. It depends on your own marked attempt against a full-length paper, under exam conditions, scored honestly.</p>
+<table>
+<thead><tr><th>Signal</th><th>What it tells you</th><th>What it does not tell you</th></tr></thead>
+<tbody>
+<tr><td>A single mock score at 70&ndash;74%</td><td>You are close to the line</td><td>Whether you would clear a harder question set on exam day</td></tr>
+<tr><td>Two consecutive mocks above 75%</td><td>You have margin above the pass mark</td><td>Nothing about the paper's difficulty relative to other candidates</td></tr>
+<tr><td>A marked mock with error review</td><td>Exactly which topic cost you marks</td><td>Whether that gap is common or unusual &mdash; there is no comparison data</td></tr>
+<tr><td>A pass-rate claim from a coaching website</td><td>What that institute wants you to believe about difficulty</td><td>Anything about your own preparation</td></tr>
+</tbody>
+</table>
+
+<h2>Do ground classes have a better pass rate than self-study?</h2>
+<p>Nobody has published a comparison, so there is no honest answer to this beyond "we don't know, and neither does anyone claiming otherwise." Our own comparison of <a href="/blog/dgca-ground-classes-vs-self-study">ground classes against self-study</a> looks at what each route offers &mdash; scope control, correction on your working, pace &mdash; without resting the argument on a pass-rate number, because that number does not exist to rest an argument on.</p>
+<p>A ground class that claims a specific pass rate for its own students is describing a self-selected batch, not a controlled comparison against self-study candidates who share the same starting ability. Even if that institute's figure is accurate for its own batch, it tells you nothing about whether a candidate with your background would have passed anyway, alone, at lower cost.</p>
+
+<figure class="img-slot" data-src="/blog/dgca-cpl-exam-pass-rate/unsourced-claim.webp" data-dimensions="1200x675">
+  <span>A magnifying glass hovering over a printed advertisement that shows a large percentage figure with no citation or footnote beneath it.</span>
+</figure>
+
+<h2>Why does the missing pass rate matter more than it sounds?</h2>
+<p>It matters because of what sits next to it: DGCA has not published a cap on how many times you may attempt a paper, and the fee is non-refundable on every attempt. Without a pass rate to weigh against that combination, "how many tries should I plan for" has no data-backed answer, only a cost you control through preparation.</p>
+<p>Our separate guide to <a href="/blog/dgca-exam-attempts-and-validity">DGCA exam validity and attempts</a> covers this in detail: a cleared CPL or ATPL paper stays valid five years, DGCA states no attempt limit in the eligibility CAR or its FAQ, and Rs 2,500 is gone the moment you submit, pass or fail. Put the two pages together and the practical position is this &mdash; you are not managing your odds against a published pass rate, because none exists. You are managing a fee you pay every time you sit, against a validity window that does not wait for you to get it right. That is a reason to treat mock-test readiness as a financial decision, not only an academic one.</p>
+<p>It also explains why a rushed attempt at four papers in one session, taken to "get it over with" before a pass rate you read online supposedly gets worse, is poor risk management on its own terms. There is no evidence sessions get harder over time. There is clear evidence that four half-prepared papers cost four fees.</p>
+
+<h2>What should you do when a coaching website quotes you a pass rate?</h2>
+<p>Ask where the figure comes from, in writing, before you weigh it in any decision. A specific, sourced answer is rare enough that asking the question is itself useful information about the institute you are asking.</p>
+<ul>
+<li><strong>Ask for the source, not the number.</strong> "Where is that published?" is a fair question about any statistic used to sell you something.</li>
+<li><strong>Ask what population the figure covers.</strong> Its own recent batch, all-time, or a marketing estimate are three very different claims wearing the same sentence.</li>
+<li><strong>Ask for the raw counts, not just the percentage.</strong> "18 of 20 cleared Air Navigation" is checkable in a way "90% pass rate" is not.</li>
+<li><strong>Treat silence or vagueness as an answer.</strong> An institute that cannot produce a source for its own headline number is telling you something about how it handles every other claim on its page.</li>
+</ul>
+<p>The same scepticism applies to this page. Every figure above is either DGCA's own published rule, cited to its source, or explicitly marked as something we looked for and could not find. If a later version of this page ever states a pass rate without a citation, that is a mistake to flag under our <a href="/editorial-policy">editorial policy</a>, not a fact to repeat.</p>
+
+<h2>What should actually inform your preparation, if not a pass rate?</h2>
+<p>Plan around what DGCA does publish &mdash; the 70% mark in each paper with no aggregate, five-year validity on a cleared CPL or ATPL paper, and the structural reasons Air Navigation and Air Regulation carry their reputations &mdash; and validate your own readiness with marked mock papers rather than a borrowed statistic.</p>
+<p>In practice that means three things. Sit full-length mocks early enough to still act on what they show you, not in the final week. Verify Air Regulation material against the current Civil Aviation Requirements rather than an old book, since that is where a stale source costs the most marks. And stage your attempts &mdash; DGCA's non-refundable Rs 2,500 fee per paper, covered in full in our guide to <a href="/blog/dgca-exam-fees">DGCA exam fees</a>, makes a rushed, underprepared attempt an expensive way to test a theory about difficulty you read on a forum.</p>
+
+<figure class="img-slot" data-src="/blog/dgca-cpl-exam-pass-rate/mock-test-benchmark.webp" data-dimensions="1200x675">
+  <span>A candidate at a desk marking their own timed mock exam paper with a red pen, a stack of five subject folders labelled by icon rather than text arranged beside them.</span>
+</figure>
+
+<h2>The short version</h2>
+<p>DGCA does not publish a pass rate for the CPL or ATPL theory papers, and no other source has one either &mdash; every specific percentage in circulation is unsourced, whatever page it appears on. What is published is the pass mark of 70% in each paper with no aggregate, a five-year validity window on a cleared CPL or ATPL paper, and the subjects each licence requires. Air Navigation and Air Regulation carry the strongest difficulty reputation, for identifiable structural reasons, but reputation is not your result. Use marked, full-length mock papers as your own benchmark instead of a borrowed statistic, and ask any institute quoting you a pass rate to show where it comes from. If you are weighing how to prepare for the papers themselves, our <a href="/dgca/ground-classes">DGCA ground classes</a> page sets out what we teach, subject by subject, and the wider <a href="/courses/cpl">CPL route</a> covers what comes before and after the exams.</p>
+<h2>Frequently asked questions</h2>
+<h3>What is the DGCA CPL exam pass rate?</h3>
+<p>There is no published figure. We checked the Pariksha portal and DGCA’s own Flight Crew FAQ, the two sources this site cites for every other fact about these exams, and neither states a pass rate for any paper, subject or session. Any specific percentage you find elsewhere is unsourced.</p>
+<h3>Why doesn’t DGCA publish exam pass rate data?</h3>
+<p>DGCA has not stated a reason. The Pariksha portal lets a candidate view their own examination history after logging in, but there is no public dashboard or notice showing results in aggregate across candidates or sessions. Whether that is policy or simply a report DGCA has not built is not something we can answer from outside the organisation.</p>
+<h3>Is the DGCA CPL exam hard?</h3>
+<p>There is no data to answer that in aggregate, only structural reasons some papers carry a harder reputation than others. Air Navigation is calculation-heavy and difficult to self-correct; Air Regulation is built on regulatory text that is revised and goes stale in an old book. Your own result depends on your preparation and background, not on the subject’s general reputation.</p>
+<h3>Which DGCA subject has the highest failure rate?</h3>
+<p>No failure rate is published for any subject, so there is no ranked answer. Air Navigation and Air Regulation carry the strongest difficulty reputation in candidate discussion, for identifiable structural reasons, but that is reputation, not measured data.</p>
+<h3>Can I trust a coaching institute’s advertised pass rate?</h3>
+<p>Ask where the figure comes from before you weigh it. A pass rate for one institute’s own batch is not a controlled comparison against self-study candidates of similar ability, and an institute that cannot produce a source for its own headline number is telling you something about how it handles its other claims.</p>
+<h3>Is there a limit on how many times I can attempt a DGCA paper?</h3>
+<p>DGCA does not state an attempt cap in the eligibility CAR or its Flight Crew FAQ. What actually constrains you is that a cleared CPL or ATPL paper stays valid five years, and the Rs 2,500 fee is non-refundable on every attempt, covered in our separate guide to DGCA exam validity and attempts.</p>
+<h3>Does ground coaching have a better pass rate than self-study?</h3>
+<p>Nobody has published a comparison, so there is no sourced answer either way. Our comparison of ground classes against self-study looks at what each route actually offers instead of resting the argument on a pass-rate figure that does not exist.</p>
+<h3>How can I judge my own exam readiness without an official benchmark?</h3>
+<p>Use full-length, timed mock papers and treat two consecutive scores above 75% as the signal to book the real exam, not two scores at exactly 70%. That margin allows for a slightly harder question set on the day, since DGCA applies no scaling or grace marks.</p>
+<p class="ref-links">More: the <a href="/faq">FAQ</a> for short sourced answers, the <a href="/glossary">glossary</a> for the terms, and our <a href="/editorial-policy">editorial policy</a> for how these figures are checked.</p>`,
+  },
 ];
 
 /**
