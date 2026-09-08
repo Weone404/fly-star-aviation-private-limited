@@ -12,6 +12,7 @@ import { getBlogPost, getWordCount, getReadingMinutes } from "./blogData.js";
 import { PILOT_TRAINING_TOPICS } from "./pilotTrainingTopics";
 import { FAQ_HUB_QUESTIONS } from "./faqHub";
 import { GLOSSARY } from "./glossary";
+import { imagesFor } from "./blogImages.js";
 import { postsInTopic, topicBySlug, type Topic } from "./blogTopics";
 
 const ORG_ID = `${SITE_ORIGIN}/#organization`;
@@ -246,6 +247,31 @@ function absolute(url?: string): string | undefined {
  * count and reading time — the fields Google and answer engines use to judge
  * whether a page is a maintained article or an orphan.
  */
+/**
+ * Every illustration on the post, as ImageObject nodes.
+ *
+ * Only images whose file actually exists are listed — an entry still waiting to
+ * be generated renders a placeholder on the page, and a placeholder must never
+ * be claimed in structured data as an image of the article. Each node carries
+ * its own caption and alt text, which is what makes an image quotable rather
+ * than merely present.
+ */
+function articleImages(post: BlogPost): unknown {
+  const planned = imagesFor(post.slug).filter((img) => img.ready);
+  const nodes = planned.map((img) => ({
+    "@type": "ImageObject",
+    url: absolute(img.file),
+    contentUrl: absolute(img.file),
+    width: 1200,
+    height: 675,
+    caption: img.caption || img.alt,
+    description: img.alt,
+    representativeOfPage: img.slot === "cover" || undefined,
+  }));
+  if (nodes.length > 0) return nodes;
+  return absolute(post.coverImage);
+}
+
 function blogPostingNode(path: string, post: BlogPost): JsonLdNode {
   const url = canonicalUrl(blogPath(path, post));
   const published = isoDate(post.createdAt);
@@ -259,7 +285,7 @@ function blogPostingNode(path: string, post: BlogPost): JsonLdNode {
     abstract: post.excerpt,
     url,
     mainEntityOfPage: { "@type": "WebPage", "@id": `${url}#webpage` },
-    image: absolute(post.coverImage),
+    image: articleImages(post),
     articleSection: post.category,
     keywords: post.tags?.join(", "),
     wordCount: getWordCount(post),

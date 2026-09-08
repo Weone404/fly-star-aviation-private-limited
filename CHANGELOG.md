@@ -10,6 +10,37 @@ good pages in a flat grid, four category labels, one of which held a single post
 and not a single URL a reader or a crawler could point at for "everything about
 the DGCA papers".
 
+### Illustrations: 65 planned, placeholders live, prompts kept out of the HTML
+Five images per post across all thirteen — a cover and four inline — including
+new covers for the two posts that already had one, so the whole set comes from
+one style in one run.
+
+**Live placeholders, without feeding the crawler prompt text.** The request was
+to show the prompt placeholder on the site. Rendered naively that puts *"flat
+vector illustration, minimal clean style, generous negative space"* five times
+into every article's HTML, on pages whose entire value is being quotable. So the
+placeholder is a designed figure — an "Illustration in production" block carrying
+the caption, which is real content — and the prompt is injected into the DOM only
+when someone presses **Show prompt**. Verified in a browser: the served HTML
+contains no prompt text before that click and does after it.
+
+**Generic covers now yield to the placeholder.** Ten posts pointed at the same
+site-wide hero photograph and one at a stock URL, so "has a cover" was never the
+same as "has its own cover". Where the cover is a stand-in, the listing card and
+the article show the planned illustration instead. One shared aeroplane photo
+repeated down a listing tells a reader nothing.
+
+**Structured data.** `BlogPosting.image` is now an array of `ImageObject` nodes —
+url, dimensions, caption and description per figure, with the cover marked
+representative — built only from images that actually exist. A placeholder is
+never claimed in schema as an image of the article.
+
+**Style, decided rather than asked:** flat vector, no lettering, and
+diagrammatic. What gets pulled into an AI answer is structure — a Venn of shared
+exam subjects, a timeline of a PPL pass expiring at half the CPL window, a
+balance of money against time. A figure baked into a picture cannot be corrected
+or sourced, which is the one thing this site refuses to do.
+
 ### The offer banner was floating over every article — and the rule meant to stop it never matched
 `App.tsx` already carried a rule to suppress popups on the blog. It tested
 `/^\/(blogs|admin)/`, which matches `/blogs` but **not `/blog/<slug>`** — the
