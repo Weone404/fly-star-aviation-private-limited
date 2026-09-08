@@ -350,3 +350,73 @@ export function TagList({ tags }: { tags?: string[] }) {
     </ul>
   )
 }
+
+/* ── Small inline icons (no icon library, no font) ───────────────────────── */
+
+export function IconCheck({ className = 'h-4 w-4' }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 20 20" fill="none" aria-hidden="true" className={className}>
+      <path d="M4 10.5 8 14.5 16 6" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  )
+}
+
+export function IconDoc({ className = 'h-4 w-4' }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 20 20" fill="none" aria-hidden="true" className={className}>
+      <path d="M11.5 2.5H6a1.5 1.5 0 0 0-1.5 1.5v12A1.5 1.5 0 0 0 6 17.5h8a1.5 1.5 0 0 0 1.5-1.5V6.5l-4-4Z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" />
+      <path d="M11.5 2.5v4h4M7.5 11h5M7.5 14h3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  )
+}
+
+export function IconArrow({ className = 'h-4 w-4' }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 20 20" fill="none" aria-hidden="true" className={className}>
+      <path d="M4 10h12M11 5l5 5-5 5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  )
+}
+
+/* ── Gradient masthead shared by the listing and the topic hubs ──────────── */
+
+export function BlogMasthead({
+  eyebrow,
+  title,
+  lede,
+  stats,
+  children,
+}: {
+  eyebrow: string
+  title: React.ReactNode
+  lede: React.ReactNode
+  stats?: { value: string; label: string }[]
+  children?: React.ReactNode
+}) {
+  return (
+    <header className="aviation-gradient relative overflow-hidden">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 opacity-[0.12] [background:radial-gradient(60rem_20rem_at_20%_-10%,white,transparent)]"
+      />
+      <div className="relative mx-auto max-w-6xl px-4 pb-10 pt-12 md:pt-16">
+        <p className="text-xs font-bold uppercase tracking-[0.2em] text-amber-300">{eyebrow}</p>
+        <h1 className="mt-3 max-w-4xl text-3xl font-bold leading-tight text-white md:text-[2.6rem]">{title}</h1>
+        <div className="mt-4 max-w-2xl text-base leading-relaxed text-white/75">{lede}</div>
+        {children}
+      </div>
+      {stats && stats.length > 0 && (
+        <div className="relative border-t border-white/15">
+          <dl className="mx-auto flex max-w-6xl flex-wrap gap-x-10 gap-y-4 px-4 py-5">
+            {stats.map((s) => (
+              <div key={s.label}>
+                <dt className="text-[11px] uppercase tracking-widest text-white/50">{s.label}</dt>
+                <dd className="text-lg font-bold text-amber-300">{s.value}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      )}
+    </header>
+  )
+}
