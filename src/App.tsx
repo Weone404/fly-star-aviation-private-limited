@@ -98,7 +98,13 @@ function AppInner() {
   const location = useLocation();
 
   // ── Suppress popups on blogs and admin pages ──────────────────────────────
-  const suppressPopups = /^\/(blogs|admin)(\/|$)/.test(location.pathname);
+  //
+  // This rule already existed and did not work. It matched `/blogs` but not
+  // `/blog/<slug>`, which is the canonical URL every post actually lives at —
+  // so the offer banner floated over every article, on top of the reading
+  // sidebar, on the one part of the site whose job is to be read. `blogs?`
+  // covers both spellings, and `/blog/topic/...` with them.
+  const suppressPopups = /^\/(blogs?|admin)(\/|$)/.test(location.pathname);
   // ─────────────────────────────────────────────────────────────────────────
 
   useEffect(() => {
