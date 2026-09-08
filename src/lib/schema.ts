@@ -9,12 +9,20 @@
 import { SITE_ORIGIN, canonicalUrl } from "./routes";
 import { PAGE_META } from "./pageMeta";
 import { getBlogPost, getWordCount, getReadingMinutes } from "./blogData.js";
+import { PILOT_TRAINING_TOPICS } from "./pilotTrainingTopics";
+import { FAQ_HUB_QUESTIONS } from "./faqHub";
+import { GLOSSARY } from "./glossary";
+import { imagesFor } from "./blogImages.js";
+import { postsInTopic, topicBySlug, type Topic } from "./blogTopics";
 
 const ORG_ID = `${SITE_ORIGIN}/#organization`;
 
 // Human-readable labels for breadcrumb segments (acronyms, ampersands, etc.).
 const LABELS: Record<string, string> = {
   courses: "Courses",
+  faq: "FAQ",
+  glossary: "Glossary",
+  "editorial-policy": "Editorial Policy",
   cpl: "CPL Training",
   atpl: "ATPL Training",
   "cabin-crew": "Cabin Crew",
@@ -85,6 +93,16 @@ function breadcrumb(path: string): JsonLdNode {
   const items: JsonLdNode[] = [
     { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_ORIGIN}/` },
   ];
+
+  // A topic hub sits under the blog, not under two path segments that are not
+  // pages. Walking the URL would advertise /blog and /blog/topic, neither of
+  // which resolves.
+  const topic = topicFor(path);
+  if (topic) {
+    items.push({ "@type": "ListItem", position: 2, name: "Blog", item: `${SITE_ORIGIN}/blogs` });
+    items.push({ "@type": "ListItem", position: 3, name: topic.name, item: canonicalUrl(path) });
+    return { "@type": "BreadcrumbList", "@id": `${canonicalUrl(path)}#breadcrumb`, itemListElement: items };
+  }
   const segments = path.split("/").filter(Boolean);
   const post = blogPostFor(path);
   let acc = "";
@@ -229,6 +247,31 @@ function absolute(url?: string): string | undefined {
  * count and reading time — the fields Google and answer engines use to judge
  * whether a page is a maintained article or an orphan.
  */
+/**
+ * Every illustration on the post, as ImageObject nodes.
+ *
+ * Only images whose file actually exists are listed — an entry still waiting to
+ * be generated renders a placeholder on the page, and a placeholder must never
+ * be claimed in structured data as an image of the article. Each node carries
+ * its own caption and alt text, which is what makes an image quotable rather
+ * than merely present.
+ */
+function articleImages(post: BlogPost): unknown {
+  const planned = imagesFor(post.slug).filter((img) => img.ready);
+  const nodes = planned.map((img) => ({
+    "@type": "ImageObject",
+    url: absolute(img.file),
+    contentUrl: absolute(img.file),
+    width: 1200,
+    height: 675,
+    caption: img.caption || img.alt,
+    description: img.alt,
+    representativeOfPage: img.slot === "cover" || undefined,
+  }));
+  if (nodes.length > 0) return nodes;
+  return absolute(post.coverImage);
+}
+
 function blogPostingNode(path: string, post: BlogPost): JsonLdNode {
   const url = canonicalUrl(blogPath(path, post));
   const published = isoDate(post.createdAt);
@@ -242,7 +285,7 @@ function blogPostingNode(path: string, post: BlogPost): JsonLdNode {
     abstract: post.excerpt,
     url,
     mainEntityOfPage: { "@type": "WebPage", "@id": `${url}#webpage` },
-    image: absolute(post.coverImage),
+    image: articleImages(post),
     articleSection: post.category,
     keywords: post.tags?.join(", "),
     wordCount: getWordCount(post),
@@ -286,6 +329,50 @@ function faqNode(path: string, post: BlogPost): JsonLdNode | null {
   };
 }
 
+/** The topic cluster behind a /blog/topic/<slug> path, if any. */
+function topicFor(path: string): Topic | undefined {
+  const match = path.match(/^\/blog\/topic\/([^/]+)$/);
+  return match ? topicBySlug(match[1]) : undefined;
+}
+
+/**
+ * CollectionPage for a topic hub, carrying the cluster's reading order as an
+ * ItemList.
+ *
+ * No FAQPage here on purpose. Every question in this cluster is already
+ * answered — and marked up — on the post that answers it, and repeating that
+ * markup on the hub would offer two pages as the source of one answer.
+ */
+function topicNode(path: string, topic: Topic): JsonLdNode {
+  const url = canonicalUrl(path);
+  const posts = postsInTopic(topic);
+  return {
+    "@type": ["CollectionPage", "WebPage"],
+    "@id": `${url}#collection`,
+    url,
+    name: topic.title,
+    description: topic.description,
+    abstract: topic.summary,
+    isPartOf: { "@id": `${SITE_ORIGIN}/#website` },
+    breadcrumb: { "@id": `${url}#breadcrumb` },
+    inLanguage: "en-IN",
+    publisher: { "@id": ORG_ID },
+    mainEntity: {
+      "@type": "ItemList",
+      "@id": `${url}#list`,
+      name: topic.title,
+      numberOfItems: posts.length,
+      itemListOrder: "https://schema.org/ItemListOrderAscending",
+      itemListElement: posts.map((post, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        name: post.title,
+        url: `${SITE_ORIGIN}/blog/${post.slug}`,
+      })),
+    },
+  };
+}
+
 function pageNode(path: string): JsonLdNode {
   if (path.startsWith("/courses/")) return courseNode(path);
   if (path.startsWith("/services/")) return serviceNode(path);
@@ -297,6 +384,88 @@ function pageNode(path: string): JsonLdNode {
  * schema (WebPage + FAQPage) is provided by the Index component's Helmet and
  * whose Organization/WebSite live in index.html.
  */
+/**
+ * FAQs for non-blog pages. Each entry MUST mirror the visible FAQ text on that
+ * page word for word — schema that carries answers a reader cannot see on the
+ * page is a structured-data violation, and Google drops the rich result for it.
+ * Source of truth for /dgca/computer-number is COMPUTER_NUMBER_FAQS in
+ * src/pages/dgca/computer-number.tsx.
+ */
+export const PAGE_FAQS: Record<string, { q: string; a: string }[]> = {
+  "/dgca/computer-number": [
+    { q: "What is a DGCA Computer Number?", a: "It is the unique identity allotted to a Flight Crew candidate by the Central Examination Organization, Office of the DGCA, after the candidate's application is approved. It is required to apply for any DGCA pilot examination." },
+    { q: "How long is a Computer Number valid?", a: "Its validity is lifetime." },
+    { q: "Can I have more than one Computer Number?", a: "No. A candidate is authorised to hold only one, and it applies to all Flight Crew examination categories." },
+    { q: "What qualification do I need?", a: "Except for the PPL category, applicants must have passed 10+2 with Physics and Mathematics from a recognised board or university, or an equivalent." },
+    { q: "Is there a maximum age to register?", a: "No. DGCA states there is no maximum age limit to register as a Flight Crew candidate." },
+    { q: "Do I have to post a hard copy?", a: "NEW candidates do — by Speed Post or Registered Post to the CEO at East Block-III, Level-III, R.K. Puram, New Delhi 110066. OLD candidates do not." },
+    { q: "Is the Computer Number generated automatically after I submit?", a: "No. It is allotted only after DGCA scrutinises the online application against the hard copy posted by the candidate." },
+    { q: "What is a Board Verification Certificate?", a: "A certificate from the relevant board certifying that your 10th, 10+2, 10+2-equivalent or Diploma mark sheet is authentic. It is mandatory for all NEW candidates." },
+    { q: "Can I upload documents as JPEG?", a: "No. Documents must be PDF. Only the photograph and signature are JPEG/JPG." },
+    { q: "Can I add a missing document after Final Submission?", a: "No. Nothing can be uploaded after Final Submit." },
+    { q: "How long is the registration email link valid?", a: "24 hours. If it is not activated in that window, you must register again." },
+    { q: "My school board is not in the dropdown. What do I do?", a: "Select \"OTHERS\" and proceed with registration." },
+    { q: "What will my login ID be after allotment?", a: "Your allotted Computer Number with the prefix \"P-\"." },
+    { q: "Which profile details can I change myself?", a: "Mobile number, email ID and correspondence address. Everything else requires prior approval from the CEO, DGCA, requested through the \"Raise query\" tab." },
+  ],
+};
+
+/** /pilot-training/<topic> FAQs come straight from the array the page renders. */
+function faqsFor(path: string): { q: string; a: string }[] | undefined {
+  const direct = PAGE_FAQS[path];
+  if (direct) return direct;
+  if (path === "/faq") return FAQ_HUB_QUESTIONS;
+  const topic = path.match(/^\/pilot-training\/([^/]+)$/)?.[1];
+  return topic ? PILOT_TRAINING_TOPICS[topic]?.faqs : undefined;
+}
+
+function pageFaqNode(path: string): JsonLdNode | null {
+  const faqs = faqsFor(path);
+  if (!faqs?.length) return null;
+  return {
+    "@type": "FAQPage",
+    "@id": `${canonicalUrl(path)}#faq`,
+    mainEntity: faqs.map((item) => ({
+      "@type": "Question",
+      name: item.q,
+      acceptedAnswer: { "@type": "Answer", text: item.a },
+    })),
+  };
+}
+
+/**
+ * DefinedTermSet for /glossary.
+ *
+ * A glossary rendered as a <dl> is unambiguous to a person and ambiguous to a
+ * parser — it looks like any other list of bold text and paragraphs.
+ * DefinedTermSet/DefinedTerm says explicitly "these are terms and these are
+ * their definitions", which is what lets an answer engine lift a definition
+ * knowing it is one. No visible change; this is purely machine-facing.
+ *
+ * Built from the same GLOSSARY array the page renders, so the two cannot drift.
+ */
+function glossaryNode(path: string): JsonLdNode | null {
+  if (path !== "/glossary") return null;
+  const url = canonicalUrl(path);
+  return {
+    "@type": "DefinedTermSet",
+    "@id": `${url}#glossary`,
+    name: "Indian Pilot Training Glossary",
+    description:
+      "Terms used in Indian pilot training and DGCA licensing, defined as the regulator uses them.",
+    url,
+    inDefinedTermSet: undefined,
+    hasDefinedTerm: GLOSSARY.map((entry) => ({
+      "@type": "DefinedTerm",
+      name: entry.term,
+      ...(entry.abbr ? { alternateName: entry.abbr } : {}),
+      description: entry.definition,
+      inDefinedTermSet: `${url}#glossary`,
+      ...(entry.href ? { url: canonicalUrl(entry.href) } : {}),
+    })),
+  };
+}
+
 export function buildGraph(path: string): JsonLdNode | null {
   if (path === "/") return null;
 
@@ -312,8 +481,16 @@ export function buildGraph(path: string): JsonLdNode | null {
     return { "@context": "https://schema.org", "@graph": nodes };
   }
 
-  return {
-    "@context": "https://schema.org",
-    "@graph": [breadcrumb(path), pageNode(path)],
-  };
+  const topic = topicFor(path);
+  if (topic) {
+    return { "@context": "https://schema.org", "@graph": [breadcrumb(path), topicNode(path, topic)] };
+  }
+
+  const nodes: JsonLdNode[] = [breadcrumb(path), pageNode(path)];
+  const pageFaq = pageFaqNode(path);
+  if (pageFaq) nodes.push(pageFaq);
+  const glossary = glossaryNode(path);
+  if (glossary) nodes.push(glossary);
+
+  return { "@context": "https://schema.org", "@graph": nodes };
 }
