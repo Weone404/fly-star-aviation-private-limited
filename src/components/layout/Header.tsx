@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronDown, Phone, Plane } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -115,13 +116,16 @@ export function Header() {
     };
 
     const previousBodyOverflow = document.body.style.overflow;
+    const previousDocumentOverflow = document.documentElement.style.overflow;
     document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
     updateMobileMenuPosition();
     window.addEventListener("resize", updateMobileMenuPosition);
     window.addEventListener("scroll", updateMobileMenuPosition);
 
     return () => {
       document.body.style.overflow = previousBodyOverflow;
+      document.documentElement.style.overflow = previousDocumentOverflow;
       window.removeEventListener("resize", updateMobileMenuPosition);
       window.removeEventListener("scroll", updateMobileMenuPosition);
     };
@@ -231,14 +235,15 @@ export function Header() {
           </div>
         </div>
 
-        {/* Mobile Menu */}
+      </header>
+      {createPortal(
         <AnimatePresence>
           {isMobileMenuOpen && (
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-x-0 z-50 xl:hidden"
+              className="fixed inset-x-0 z-[60] xl:hidden"
               style={{
                 top: mobileMenuTop,
                 height: `calc(100dvh - ${mobileMenuTop}px)`,
@@ -283,8 +288,9 @@ export function Header() {
               </nav>
             </motion.div>
           )}
-        </AnimatePresence>
-      </header>
+        </AnimatePresence>,
+        document.body,
+      )}
     </>
   );
 }
