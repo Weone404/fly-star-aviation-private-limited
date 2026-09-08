@@ -15,7 +15,15 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "start:backend": "node backend/server.js",
-    "dev:all": "concurrently \"npm run dev\" \"npm run start:backend\""
+    "dev:all": "concurrently \"npm run dev\" \"npm run start:backend\"",
+    "prebuild": "node scripts/fetch-blogs.mjs && node scripts/generate-sitemap.mjs && node scripts/generate-feed.mjs",
+    "sitemap": "node scripts/generate-sitemap.mjs",
+    "blogs:fetch": "node scripts/fetch-blogs.mjs",
+    "image-prompts": "node scripts/generate-image-prompts.mjs",
+    "smoke": "node scripts/smoke.mjs",
+    "blogs:approve": "node scripts/approve-blog.mjs",
+    "blogs:list": "node scripts/approve-blog.mjs --list",
+    "feed": "node scripts/generate-feed.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
@@ -52,6 +60,7 @@
     "cmdk": "^1.1.1",
     "cors": "^2.8.6",
     "date-fns": "^3.6.0",
+    "dompurify": "^3.4.14",
     "dotenv": "^17.3.1",
     "embla-carousel-react": "^8.6.0",
     "express": "^5.2.1",

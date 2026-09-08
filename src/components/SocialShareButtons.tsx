@@ -1,4 +1,5 @@
 import { Facebook, Linkedin, MessageCircle } from "lucide-react";
+import { SITE_ORIGIN } from "@/lib/routes";
 
 export type SocialShareButtonTheme = "light" | "dark";
 
@@ -15,7 +16,17 @@ export function SocialShareButtons({
   label = "Share",
   theme = "light",
 }: SocialShareButtonsProps) {
-  const pageUrl = typeof window !== "undefined" ? window.location.href : "";
+  // Build from the canonical origin, never window.location.href.
+  //
+  // Prerendering renders these pages in a headless browser served from
+  // http://localhost:4173, so window.location.href baked "localhost" share links
+  // into the static HTML of every prerendered page — the exact HTML crawlers and
+  // answer engines read, and what a visitor gets if hydration is slow or blocked.
+  // The pathname is correct in both environments; only the origin was wrong.
+  const pageUrl =
+    typeof window !== "undefined"
+      ? `${SITE_ORIGIN}${window.location.pathname}${window.location.search}`
+      : "";
   const pageTitle =
     title ||
     (typeof document !== "undefined" ? document.title : "") ||

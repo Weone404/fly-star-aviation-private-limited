@@ -27,3 +27,4 @@ Once a reserved page ships, strike its row and the query returns to the pool.
 | 2026-08-25 | `/blog/air-hostess-salary-in-india-2026` | Air Hostess Salary in India 2026: Complete Pay Scale Guide | Career |
 | 2026-09-01 | `/blog/dgca-ground-classes-vs-self-study` | DGCA Ground Classes vs Self-Study: Which Route Actually Clears the Exams? | DGCA |
 | 2026-09-02 | `/blog/how-to-choose-a-flying-school-in-india` | How to Choose a Flying School in India: What to Verify Before You Pay | Training |
+| 2026-09-03 | `/blog/how-to-choose-dgca-ground-classes` | How to Choose DGCA Ground Classes: 12 Questions to Ask Before You Pay | DGCA |

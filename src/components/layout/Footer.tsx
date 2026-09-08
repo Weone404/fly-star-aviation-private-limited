@@ -284,8 +284,8 @@ export function Footer() {
             </div>
             <p className="text-white/50 text-sm text-center">
               © {new Date().getFullYear()} Flying Star Aviator. All rights reserved. |
-              <Link to="/privacy" className="hover:text-white ml-1">Privacy Policy</Link> |
-              <Link to="/terms" className="hover:text-white ml-1">Terms of Service</Link>
+              <Link to="/editorial-policy" className="hover:text-white ml-1">Editorial Policy</Link> |
+              <Link to="/sitemap" className="hover:text-white ml-1">Sitemap</Link>
             </p>
           </div>
         </div>

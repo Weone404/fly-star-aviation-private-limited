@@ -167,7 +167,7 @@ export function Header() {
             </Link>
 
             {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center gap-2">
+            <nav className="hidden xl:flex items-center gap-2">
               {navigation.map((item) => (
                 <div
                   key={item.name}
@@ -212,7 +212,7 @@ export function Header() {
             </nav>
 
             {/* CTA */}
-            <div className="hidden lg:block">
+            <div className="hidden xl:block">
               <Button variant="aviation" size="lg">
                 Get Free Counselling
               </Button>
@@ -220,7 +220,7 @@ export function Header() {
 
             {/* Mobile Button */}
             <button
-              className="lg:hidden p-2 rounded-lg hover:bg-secondary"
+              className="xl:hidden p-2 rounded-lg hover:bg-secondary"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-expanded={isMobileMenuOpen}
               aria-controls="mobile-navigation"
@@ -238,7 +238,7 @@ export function Header() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-x-0 z-50 lg:hidden"
+              className="fixed inset-x-0 z-50 xl:hidden"
               style={{
                 top: mobileMenuTop,
                 height: `calc(100dvh - ${mobileMenuTop}px)`,

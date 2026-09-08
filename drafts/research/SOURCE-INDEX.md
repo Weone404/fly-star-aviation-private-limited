@@ -11,6 +11,34 @@ rule. It records what is already banked, what is reachable, and what is blocked.
 That one file carried **three articles** with zero additional searches. It is
 the model.
 
+## Added 2026-09-05
+
+**The DGCA portal has one working door.**
+`www.dgca.gov.in/digigov-portal/Upload?flag=iframeAttachView&attachId=<id>`
+serves real CAR PDFs to a plain fetcher. `?dynamicPage=` and `?page=…​.pdf` both
+return the homepage — that is the distinction this file was missing. Two CARs were
+read cold through it on 2026-09-05: Section 7 Series 'B' Part VI (ATPL examination
+syllabus, Issue III, 16 Jun 2011) and Section 7 Series 'J' Part III (FDTL, Issue
+III Rev 1, 8 Jan 2024). **Archive anything read this way at read time** — the
+`attachId` tokens are of unknown stability.
+
+**Banked:** `aircraft-rules-1937-moca-copy-2026-09-05.md` — the Ministry's copy of
+the Aircraft Rules 1937, Parts I–V, including Rule 39C. **Not citable**: current
+only to GSR 11(E) of 10-01-2011, and badly OCR'd. See the file's own warning.
+
+### Three corrections to the PDF table below
+- **"Flight Crew MANUAL"** (`6F8C326F…`) is the **Pariksha portal user manual**. It
+  will not settle the OLODE-fee or Computer-Number auto-generation questions.
+- **"Reference Book – FC"** (`C9FAE7D8…`) is a **list of study material** for PPL,
+  CPL and ATPL exams — a reading list, not a source of pass rates.
+- **"Syllabus"** (`1A745E29…`) fetches, and its content is a pointer: *"Refer
+  latest CAR, Section-7, Series-B"* — a document already held.
+
+Three of the four documents this file called highest-value are therefore worth
+less than it estimated, and the `brew install poppler` recommendation below buys
+correspondingly little. **Medical validity is Rule 39C of the Aircraft Rules, not
+a CAR** — see `BROWSER-FETCH.md` item 3.
+
 ## 🟡 Reachable but low-yield (HTML)
 
 | URL | Status | Notes |

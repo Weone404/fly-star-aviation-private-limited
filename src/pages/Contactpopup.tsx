@@ -45,6 +45,8 @@ export default function ContactPopup(): JSX.Element {
         name: "", phone: "", email: "", interest: interestOptions[0], message: "",
     });
     const [errors, setErrors] = useState<FormErrors>({});
+    // Honeypot value. Always "" for a real visitor; bots fill it.
+    const [honeypot, setHoneypot] = useState("");
 
     const handleClose = (): void => { setIsOpen(false); };
 
@@ -80,6 +82,7 @@ export default function ContactPopup(): JSX.Element {
                 body: JSON.stringify({
                     ...formData,
                     message: formData.message || "No additional message",
+                    company: honeypot,
                 }),
             });
             const data = await res.json();
@@ -444,6 +447,23 @@ export default function ContactPopup(): JSX.Element {
                                     </p>
 
                                     <form onSubmit={handleSubmit} noValidate>
+                                        {/* Honeypot — hidden from people, filled by bots. The server
+                                            discards any submission where this arrives non-empty.
+                                            See backend/enquiryGuard.js. Not display:none, which some
+                                            bots detect; positioned off-screen and hidden from a11y. */}
+                                        <div aria-hidden="true" style={{ position: "absolute", left: "-9999px", width: 1, height: 1, overflow: "hidden" }}>
+                                          <label htmlFor="fsa-company-popup">Company (leave blank)</label>
+                                          <input
+                                            id="fsa-company-popup"
+                                            type="text"
+                                            name="company"
+                                            tabIndex={-1}
+                                            autoComplete="off"
+                                            value={honeypot}
+                                            onChange={(e) => setHoneypot(e.target.value)}
+                                          />
+                                        </div>
+
                                         {/* Name + Phone */}
                                         <div className="fsa-row">
                                             <div className={`fsa-field ${focused === "name" ? "foc" : ""}`}>

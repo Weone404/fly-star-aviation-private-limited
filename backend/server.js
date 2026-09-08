@@ -8,6 +8,8 @@ const { MongoClient, ObjectId } = require("mongodb");
 require("dotenv").config({ path: __dirname + "/.env" });
 
 const Contact = require("./models/Contact");
+const { notifyEnquiry } = require("./notifyEnquiry");
+const { isHoneypotTripped, createRateLimiter, clientIp } = require("./enquiryGuard");
 const blogStore = require("./blogStore");
 
 const app = express();
@@ -19,11 +21,45 @@ cloudinary.config({
     secure: true,
 });
 
+
+// ── Vercel deploy hook ────────────────────────────────────────────────────────
+// Prerendering happens at build time, so a post written here is not crawlable
+// until the site rebuilds. This nudges Vercel after a successful blog write.
+//
+// It publishes NOTHING on its own. A rebuild only picks up posts whose slug is
+// on the approval list in src/lib/blogApproval.ts with a matching content hash,
+// so an unapproved or edited post triggers a build and is still held back.
+//
+// Set VERCEL_DEPLOY_HOOK_URL in the backend environment. Treat it as a secret:
+// anyone holding it can trigger builds. If it is unset, this is a no-op and blog
+// writes behave exactly as before.
+function triggerRebuild(reason) {
+    const hook = process.env.VERCEL_DEPLOY_HOOK_URL;
+    if (!hook) return;
+
+    try {
+        const req = https.request(hook, { method: "POST", timeout: 10000 }, (res) => {
+            res.resume();
+            console.log(`[deploy-hook] ${reason} -> HTTP ${res.statusCode}`);
+        });
+        // A failed hook must never fail the blog write that triggered it — the
+        // post is already saved, and the nightly rebuild is the fallback.
+        req.on("error", (e) => console.warn(`[deploy-hook] ${reason} failed: ${e.message}`));
+        req.on("timeout", () => { console.warn(`[deploy-hook] ${reason} timed out`); req.destroy(); });
+        req.end();
+    } catch (e) {
+        console.warn(`[deploy-hook] ${reason} threw: ${e.message}`);
+    }
+}
+
 // ── MongoDB Native Client (for blogs) ─────────────────────────────────────────
 const mongoClient = new MongoClient(process.env.MONGODB_URI);
 
 let db;
 let mongoConnected = false;
+
+// Public, unauthenticated endpoint — see AUDIT.md §6. These are the only guards.
+const enquiryLimiter = createRateLimiter({ max: 5, windowMs: 10 * 60 * 1000 });
 
 mongoClient.connect()
     .then(() => {
@@ -64,20 +100,42 @@ mongoose
 app.post("/api/contact", async (req, res) => {
     try {
         const { name, email, phone, interest, message } = req.body;
+
+        // Honeypot: a field no human sees. Answer 201 anyway — telling a bot it
+        // was detected just teaches it which field to leave alone next time.
+        if (isHoneypotTripped(req.body)) {
+            console.log("[enquiry] honeypot tripped, discarded");
+            return res.status(201).json({ success: true, message: "Contact saved successfully!" });
+        }
+
+        const limit = enquiryLimiter.check(clientIp(req));
+        if (!limit.allowed) {
+            return res.status(429).json({
+                success: false,
+                error: "Too many enquiries from this connection. Please try again shortly.",
+            });
+        }
+
         if (!name || !email || !phone) {
             return res.status(400).json({
                 success: false,
                 error: "Name, email, and phone are required.",
             });
         }
-        const newContact = new Contact({
+        const contact = {
             name,
             email,
             phone,
             interest: interest || "Not specified",
             message: message || "No additional message",
-        });
+        };
+        const newContact = new Contact(contact);
         await newContact.save();
+
+        // Fire and forget. The enquiry is saved; the response must not wait on an
+        // email, and a mail failure must never surface as a failed submission.
+        notifyEnquiry(contact).catch((e) => console.warn("[enquiry-mail] unexpected:", e?.message));
+
         res.status(201).json({ success: true, message: "Contact saved successfully!" });
     } catch (err) {
         console.error("Save error:", err);
@@ -85,15 +143,20 @@ app.post("/api/contact", async (req, res) => {
     }
 });
 
-// ── GET /api/contacts ─────────────────────────────────────────────────────────
-app.get("/api/contacts", async (req, res) => {
-    try {
-        const contacts = await Contact.find().sort({ createdAt: -1 });
-        res.status(200).json({ success: true, data: contacts });
-    } catch (err) {
-        res.status(500).json({ success: false, error: err.message });
-    }
-});
+// ── GET /api/contacts — REMOVED 2026-09-04 ───────────────────────────────────
+// This route returned every contact-form submission — name, email, phone,
+// interest, message — to anyone who requested the URL. No authentication, and
+// the CORS allowlist above does not help: CORS governs what a browser lets a
+// page read cross-origin, and has no effect on curl or any server-side request.
+//
+// That is personal data of prospective students under India's DPDP Act, 2023.
+// Nothing in the frontend called this route (verified by grep across src/, api/
+// and index.html), so it was removed outright rather than protected. Removal is
+// not an access-control change: there is still no auth middleware anywhere, by
+// the owner's standing decision.
+//
+// To read enquiries, query the contacts collection directly. If a UI is wanted
+// later, it needs authentication first — do not restore this route as it was.
 
 // ════════════════════════════════════════════════════════════════════════════
 // BLOG ROUTES — all stored in flystar DB → blogs collection
@@ -201,7 +264,20 @@ app.post("/api/blogs", (req, res) => {
             }
         }
 
-        const slug = title.toLowerCase().replace(/\s+/g, "-").replace(/[^\w-]/g, "");
+        // Strip what is not a word character FIRST, then hyphenate, then collapse
+        // and trim. The previous order hyphenated first and stripped punctuation
+        // afterwards, so an en dash, an ampersand or an emoji left its hyphen
+        // behind: "12th - Eligibility, Fees & Scope" became
+        // "12th--eligibility-fees--scope", and a title starting or ending with a
+        // symbol produced a leading or trailing hyphen.
+        // Affects NEW posts only; slugs already stored are unchanged.
+        const slug = title
+            .toLowerCase()
+            .replace(/[^a-z0-9\s-]/g, " ")
+            .trim()
+            .replace(/[\s-]+/g, "-")
+            .replace(/^-+|-+$/g, "");
+
         const blogData = {
             title,
             excerpt: excerpt || "",
@@ -219,6 +295,7 @@ app.post("/api/blogs", (req, res) => {
                         createdAt: new Date(),
                     });
                     console.log("✅ Blog saved to MongoDB");
+                    triggerRebuild("blog created");
                     return res.status(200).json({ success: true, id: result.insertedId.toString() });
                 } catch (mongoErr) {
                     console.warn("MongoDB save failed, using file storage:", mongoErr.message);
@@ -227,6 +304,7 @@ app.post("/api/blogs", (req, res) => {
             // Fallback to file-based storage
             const blog = blogStore.createBlog(blogData);
             console.log("✅ Blog saved to file storage");
+            triggerRebuild("blog created (file storage)");
             return res.status(200).json({ success: true, id: blog._id });
         } catch (e) {
             return res.status(500).json({ success: false, message: e.message });
@@ -298,6 +376,7 @@ app.put("/api/blogs/:id", (req, res) => {
                 return res.status(404).json({ success: false, message: "Blog not found" });
             }
             console.log("✅ Blog updated in file storage");
+            triggerRebuild("blog updated");
             return res.status(200).json({ success: true, message: "Blog updated" });
         } catch (e) {
             return res.status(500).json({ success: false, message: e.message });
@@ -305,32 +384,23 @@ app.put("/api/blogs/:id", (req, res) => {
     });
 });
 
-// ── DELETE /api/blogs/:id — delete blog ──────────────────────────────────────
-app.delete("/api/blogs/:id", async (req, res) => {
-    try {
-        if (mongoConnected && db) {
-            try {
-                const result = await db.collection("blogs").deleteOne({
-                    _id: new ObjectId(req.params.id)
-                });
-                if (result.deletedCount > 0) {
-                    console.log("✅ Blog deleted from MongoDB");
-                    return res.status(200).json({ success: true, message: "Blog deleted" });
-                }
-            } catch (mongoErr) {
-                console.warn("MongoDB delete failed, trying file storage:", mongoErr.message);
-            }
-        }
-        // Fallback to file-based storage
-        const deleted = blogStore.deleteBlog(req.params.id);
-        if (!deleted) {
-            return res.status(404).json({ success: false, message: "Blog not found" });
-        }
-        console.log("✅ Blog deleted from file storage");
-        return res.status(200).json({ success: true, message: "Blog deleted" });
-    } catch (e) {
-        return res.status(500).json({ success: false, message: e.message });
-    }
+// ── DELETE /api/blogs/:id — DISABLED 2026-09-04 ──────────────────────────────
+// Unauthenticated, this route let anyone permanently erase the entire posts
+// collection, and no backup existed. Its only caller was the delete button in
+// the admin panel, which has been removed.
+//
+// The version on origin/main added a file-storage fallback to the same open
+// delete. That is deliberately NOT merged: a fallback makes an unauthenticated
+// destructive route work in more situations, which is the opposite of what was
+// wanted. Deletions are done directly against the database.
+//
+// It answers 405 rather than being removed, so an old client gets a clear
+// refusal instead of a confusing 404. Do not re-enable without authentication.
+app.delete("/api/blogs/:id", (req, res) => {
+    return res.status(405).json({
+        success: false,
+        message: "Deleting posts through the API is disabled. Delete directly in the database.",
+    });
 });
 
 // ════════════════════════════════════════════════════════════════════════════

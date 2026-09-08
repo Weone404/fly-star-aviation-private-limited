@@ -32,6 +32,11 @@ const Rtr = lazy(() => import("./pages/rtr"));
 const Fullform = lazy(() => import("./pages/dgca/full-form"));
 const Medical = lazy(() => import("./pages/dgca/medical"));
 const Groundclasses = lazy(() => import("./pages/dgca/ground-classes"));
+const ComputerNumber = lazy(() => import("./pages/dgca/computer-number"));
+const PilotTrainingTopic = lazy(() => import("./pages/pilotTraining/topics"));
+const EditorialPolicy = lazy(() => import("./pages/editorial-policy"));
+const FaqHub = lazy(() => import("./pages/faq"));
+const Glossary = lazy(() => import("./pages/glossary"));
 
 const PilotTraining = lazy(() => import("./pages/pilotTraining/PilotTraining"));
 const India = lazy(() => import("./pages/pilotTraining/india"));
@@ -63,6 +68,7 @@ const Becomepilot = lazy(() => import("./pages/BecomeAPilot/become-pilot"));
 
 const Blogs = lazy(() => import("./pages/Blogs"));
 const BlogDetail = lazy(() => import("./pages/BlogDetail"));
+const BlogTopic = lazy(() => import("./pages/BlogTopic"));
 const AdminBlog = lazy(() => import("./pages/AdminBlog"));
 const AdminLogin = lazy(() => import("./pages/admin/login/page"));
 
@@ -92,7 +98,13 @@ function AppInner() {
   const location = useLocation();
 
   // ── Suppress popups on blogs and admin pages ──────────────────────────────
-  const suppressPopups = /^\/(blogs|admin)(\/|$)/.test(location.pathname);
+  //
+  // This rule already existed and did not work. It matched `/blogs` but not
+  // `/blog/<slug>`, which is the canonical URL every post actually lives at —
+  // so the offer banner floated over every article, on top of the reading
+  // sidebar, on the one part of the site whose job is to be read. `blogs?`
+  // covers both spellings, and `/blog/topic/...` with them.
+  const suppressPopups = /^\/(blogs?|admin)(\/|$)/.test(location.pathname);
   // ─────────────────────────────────────────────────────────────────────────
 
   useEffect(() => {
@@ -142,8 +154,12 @@ function AppInner() {
         <Route path="/dgca" element={<DGCA />} />
         <Route path="/dgca/:topic" element={<DGCA />} />
         <Route path="/rtr" element={<Rtr />} />
+        <Route path="/editorial-policy" element={<EditorialPolicy />} />
+        <Route path="/faq" element={<FaqHub />} />
+        <Route path="/glossary" element={<Glossary />} />
         <Route path="/dgca/full-form" element={<Fullform />} />
         <Route path="/dgca/medical" element={<Medical />} />
+        <Route path="/dgca/computer-number" element={<ComputerNumber />} />
         <Route path="/dgca/ground-classes" element={<Groundclasses />} />
         <Route path="/dgca-ground-classes-training-classes" element={<Groundclasses />} />
         <Route path="/cpl-atpl-ground-classes-2" element={<Groundclasses />} />
@@ -157,6 +173,11 @@ function AppInner() {
         <Route path="/pilot-training/australia" element={<Australia />} />
         <Route path="/training-in-australia" element={<Australia />} />
         <Route path="/training-in-south-africa" element={<SouthAfrica />} />
+        <Route path="/pilot-training/cpl" element={<PilotTrainingTopic />} />
+        <Route path="/pilot-training/ppl" element={<PilotTrainingTopic />} />
+        <Route path="/pilot-training/maldives" element={<PilotTrainingTopic />} />
+        <Route path="/pilot-training/sri-lanka" element={<PilotTrainingTopic />} />
+        <Route path="/pilot-training/guide-to-conversion" element={<PilotTrainingTopic />} />
         <Route path="/pilot-training/:topic" element={<PilotTraining />} />
         <Route path="/training-in-india" element={<PilotTraining />} />
 
@@ -183,6 +204,7 @@ function AppInner() {
         {/* BLOGS */}
         <Route path="/blogs" element={<Blogs />} />
         <Route path="/blogs/:id" element={<BlogDetail />} />
+        <Route path="/blog/topic/:topic" element={<BlogTopic />} />
         <Route path="/blog/:slug" element={<BlogDetail />} />
 
         {/* ADMIN */}

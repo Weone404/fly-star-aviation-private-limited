@@ -1,172 +1,216 @@
-import { useState } from 'react'
+import { useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import { BLOG_POSTS, sortBlogsByDate, getReadingMinutes } from '@/lib/blogData'
+import { TOPICS, postsInTopic } from '@/lib/blogTopics'
+import { isGenericCover } from '@/lib/blogImages'
+import { BlogMasthead, IconArrow, formatDate } from '@/components/blog/EditorialKit'
+import type { BlogPost } from '@/types/blog'
 
-type BlogPost = {
-    _id: string
-    slug?: string
-    title: string
-    excerpt?: string
-    content?: string
-    category?: string
-    createdAt?: string
-    coverImage?: string
+const ALL = 'All'
+
+function Meta({ post }: { post: BlogPost }) {
+  const verified = post.updatedAt || post.createdAt
+  return (
+    <p className="mt-3 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-muted-foreground">
+      <span>{getReadingMinutes(post)} min read</span>
+      {verified && (
+        <>
+          <span aria-hidden="true">·</span>
+          <span>
+            Last verified <time dateTime={verified}>{formatDate(verified)}</time>
+          </span>
+        </>
+      )}
+    </p>
+  )
+}
+
+function Cover({ post, className }: { post: BlogPost; className?: string }) {
+  if (post.coverImage && !isGenericCover(post.coverImage)) {
+    return (
+      <img
+        src={post.coverImage}
+        alt={post.coverAlt || post.title}
+        width={1200}
+        height={800}
+        loading="lazy"
+        decoding="async"
+        className={className}
+      />
+    )
+  }
+  // No stock photo stand-in: an unrelated aeroplane picture tells the reader
+  // nothing and costs a request. The category does both jobs.
+  return (
+    <div className={`${className} grid place-items-center bg-primary/10`}>
+      <span className="px-4 text-center text-sm font-semibold uppercase tracking-wide text-primary">
+        {post.category}
+      </span>
+    </div>
+  )
 }
 
 export default function Blogs() {
-    const [blogs] = useState<BlogPost[]>(() => sortBlogsByDate(BLOG_POSTS))
-    const [search, setSearch] = useState('')
+  const posts = useMemo(() => sortBlogsByDate(BLOG_POSTS) as BlogPost[], [])
 
-    const filtered = blogs.filter(b =>
-        !search ||
-        b.title.toLowerCase().includes(search.toLowerCase()) ||
-        (b.excerpt || '').toLowerCase().includes(search.toLowerCase())
-    )
+  // Chosen, not newest: the listing leads with the page that answers the
+  // highest-intent question, and falls back to the most recent only if nothing
+  // is marked.
+  const featured = useMemo(() => posts.find((p) => p.featured) || posts[0], [posts])
 
-    return (
-        <div className="min-h-screen bg-background">
-            <Header />
+  // Posts that belong to no cluster still have to appear somewhere. They are
+  // listed last under their own label rather than hidden — a category with two
+  // posts does not deserve a hub page, but it does deserve to be readable.
+  const clustered = useMemo(() => TOPICS.map((t) => ({ topic: t, posts: postsInTopic(t, posts) })), [posts])
+  const inCluster = useMemo(
+    () => new Set(clustered.flatMap((c) => c.posts.map((p) => p.slug))),
+    [clustered],
+  )
+  const others = useMemo(() => posts.filter((p) => p.slug && !inCluster.has(p.slug)), [posts, inCluster])
 
-            {/* ── Hero ── */}
-            <div className="aviation-gradient pt-24 pb-16 px-4 text-center relative overflow-hidden">
-                <div className="absolute top-8 left-0 w-full pointer-events-none">
-                    <span className="animate-fly text-3xl inline-block">✈️</span>
-                </div>
+  // Name the leftover group after its own category when it has only one, so the
+  // heading says something. "More" is what it falls back to, not what it aims at.
+  const othersLabel = useMemo(() => {
+    const cats = new Set(others.map((p) => p.category).filter(Boolean))
+    return cats.size === 1 ? (Array.from(cats)[0] as string) : 'More'
+  }, [others])
 
-                <div className="max-w-3xl mx-auto relative z-10">
-                    <span className="inline-block bg-white/10 text-amber-400 border border-amber-400/30 text-xs font-semibold tracking-widest uppercase px-4 py-2 rounded-full mb-4">
-                        Knowledge Hub
-                    </span>
-                    <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 leading-tight">
-                        Aviation Blog
-                    </h1>
-                    <p className="text-white/60 text-base mb-8 max-w-xl mx-auto">
-                        Expert insights on pilot training, DGCA exams, career guidance and everything aviation
-                    </p>
+  const sourceCount = useMemo(() => {
+    const seen = new Set<string>()
+    for (const p of posts) for (const f of p.keyFacts || []) seen.add(f.source)
+    return seen.size
+  }, [posts])
 
-                    {/* Search */}
-                    <div className="relative max-w-md mx-auto">
-                        <input
-                            type="text"
-                            placeholder="Search articles..."
-                            value={search}
-                            onChange={e => setSearch(e.target.value)}
-                            className="w-full px-6 py-3 rounded-full bg-white/10 border border-white/20 text-white placeholder:text-white/40 outline-none focus:border-amber-400/50 text-sm"
-                        />
-                        <span className="absolute right-5 top-1/2 -translate-y-1/2 text-amber-400">🔍</span>
-                    </div>
-                </div>
+  const href = (p: BlogPost) => (p.slug ? `/blog/${p.slug}` : `/blogs/${p._id}`)
+
+  const card = (post: BlogPost) => (
+    <li key={post._id || post.slug}>
+      <Link
+        to={href(post)}
+        className="group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-hover"
+      >
+        <span aria-hidden="true" className="gold-gradient h-1 w-full" />
+        <Cover post={post} className="h-40 w-full object-cover" />
+        <div className="flex flex-1 flex-col p-5">
+          {post.category && (
+            <span className="text-[11px] font-semibold uppercase tracking-wide text-primary">{post.category}</span>
+          )}
+          <h3 className="mt-1.5 text-base font-bold leading-snug text-foreground group-hover:text-primary">
+            {post.title}
+          </h3>
+          {post.excerpt && (
+            <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">{post.excerpt}</p>
+          )}
+          <Meta post={post} />
+        </div>
+      </Link>
+    </li>
+  )
+
+  return (
+    <div className="min-h-screen bg-background">
+      <Header />
+
+      <BlogMasthead
+        eyebrow="Flying Star Aviator · Knowledge base"
+        title={<>DGCA exams, CPL and pilot training in India &mdash; answered from the source documents</>}
+        lede={
+          <>
+            Guides to the DGCA Flight Crew papers, licence eligibility and choosing ground classes. Every
+            figure is checked against the regulator&rsquo;s own Civil Aviation Requirements or its Pariksha
+            FAQ, and anything we cannot source is marked unsourced rather than filled in.{' '}
+            <Link to="/editorial-policy" className="font-medium text-amber-300 underline underline-offset-2">
+              How we check them
+            </Link>
+            .
+          </>
+        }
+        stats={[
+          { value: String(posts.length), label: 'Guides' },
+          { value: String(TOPICS.length), label: 'Topics' },
+          { value: String(sourceCount), label: 'Primary documents cited' },
+        ]}
+      >
+        <nav aria-label="Topics" className="mt-7 flex flex-wrap gap-2">
+          {TOPICS.map((t) => (
+            <Link
+              key={t.slug}
+              to={`/blog/topic/${t.slug}`}
+              className="inline-flex min-h-11 items-center gap-1.5 rounded-full border border-white/25 bg-white/10 px-4 text-sm font-medium text-white transition-colors hover:bg-white/20"
+            >
+              {t.name}
+              <IconArrow className="h-3.5 w-3.5" />
+            </Link>
+          ))}
+        </nav>
+      </BlogMasthead>
+
+      {featured && (
+        <section aria-labelledby="featured" className="border-b border-border bg-muted/40">
+          <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 xl:max-w-7xl">
+            <h2 id="featured" className="text-xs font-bold uppercase tracking-widest text-muted-foreground">
+              Start here
+            </h2>
+            <Link
+              to={href(featured)}
+              className="mt-4 grid gap-6 rounded-2xl border border-border bg-card p-5 transition-colors hover:border-primary/40 md:grid-cols-[1fr_18rem] md:p-6"
+            >
+              <div className="min-w-0">
+                {featured.category && (
+                  <span className="text-xs font-semibold uppercase tracking-wide text-primary">
+                    {featured.category}
+                  </span>
+                )}
+                <h3 className="mt-2 text-2xl font-bold leading-snug text-foreground">{featured.title}</h3>
+                {featured.excerpt && (
+                  <p className="mt-3 text-[15px] leading-relaxed text-muted-foreground">{featured.excerpt}</p>
+                )}
+                <Meta post={featured} />
+              </div>
+              <Cover post={featured} className="h-44 w-full rounded-xl object-cover md:h-full" />
+            </Link>
+          </div>
+        </section>
+      )}
+
+      <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 xl:max-w-7xl">
+        {clustered.map(({ topic, posts: list }) => (
+          <section key={topic.slug} aria-labelledby={topic.slug} className="mb-14">
+            <div className="flex flex-wrap items-end justify-between gap-3 border-b border-border pb-4">
+              <div className="min-w-0">
+                <h2 id={topic.slug} className="text-2xl font-bold text-foreground">
+                  {topic.name}
+                </h2>
+                <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted-foreground">{topic.summary}</p>
+              </div>
+              <Link
+                to={`/blog/topic/${topic.slug}`}
+                className="inline-flex min-h-11 items-center whitespace-nowrap text-sm font-semibold text-primary underline underline-offset-2"
+              >
+                All {list.length} articles
+              </Link>
             </div>
+            <ul className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">{list.map(card)}</ul>
+          </section>
+        ))}
 
-            {/* ── Stats Bar ── */}
-            <div className="bg-[hsl(145,80%,15%)] border-y border-amber-400/20 py-4 px-4">
-                <div className="max-w-5xl mx-auto flex justify-center gap-16">
-                    {[
-                        { num: `${blogs.length}+`, label: 'Articles' },
-                        { num: '7+', label: 'Categories' },
-                        { num: '100%', label: 'Free' },
-                    ].map(s => (
-                        <div key={s.label} className="text-center">
-                            <div className="text-xl font-bold text-amber-400">{s.num}</div>
-                            <div className="text-xs text-white/50 uppercase tracking-widest mt-0.5">{s.label}</div>
-                        </div>
-                    ))}
-                </div>
+        {others.length > 0 && (
+          <section aria-labelledby="more" className="mb-6">
+            <div className="border-b border-border pb-4">
+              <h2 id="more" className="text-2xl font-bold text-foreground">{othersLabel}</h2>
+              <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+                Pages that do not yet sit in a topic. They get one when there is enough behind them to be
+                worth a page of its own.
+              </p>
             </div>
+            <ul className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">{others.map(card)}</ul>
+          </section>
+        )}
+      </div>
 
-            {/* ── Main Content ── */}
-            <div className="bg-muted py-16 px-4">
-                <div className="max-w-7xl mx-auto">
-
-                    {/* Section Header */}
-                    <div className="mb-10">
-                        <h2 className="text-2xl font-bold text-foreground">
-                            Latest <span className="text-[hsl(145,70%,35%)]">Articles</span>
-                        </h2>
-                    </div>
-
-                    {filtered.length === 0 ? (
-                        <div className="text-center py-24 text-muted-foreground">
-                            <div className="text-5xl mb-4">✈️</div>
-                            <p>No articles found. Try a different search.</p>
-                        </div>
-                    ) : (
-                        <div role="list" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                            {filtered.map((blog) => (
-                                <Link
-                                    to={blog.slug ? `/blog/${blog.slug}` : `/blogs/${blog._id}`}
-                                    key={blog._id}
-                                    role="listitem"
-                                    className="block group"
-                                >
-                                    <article className="bg-white rounded-2xl overflow-hidden border border-border shadow-card hover:shadow-hover transition-all duration-300 hover:-translate-y-1 flex flex-col h-full">
-                                        {/* Image */}
-                                        <div className="relative h-48 overflow-hidden bg-[hsl(145,70%,22%)]">
-                                            <img
-                                                src={blog.coverImage || 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=800'}
-                                                alt={blog.title}
-                                                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                                                width={1200}
-                                                height={800}
-                                            />
-                                            <div className="absolute inset-0 bg-gradient-to-t from-[hsl(145,80%,15%)]/40 to-transparent" />
-                                            <span className="absolute top-3 left-3 gold-gradient text-[hsl(145,80%,15%)] text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wide">
-                                                {blog.category}
-                                            </span>
-                                        </div>
-
-                                        {/* Body */}
-                                        <div className="p-5 flex flex-col flex-1">
-                                            <h3 className="text-sm font-bold text-foreground leading-snug mb-2 group-hover:text-[hsl(145,70%,22%)] transition-colors line-clamp-2">
-                                                {blog.title}
-                                            </h3>
-                                            <p className="text-xs text-muted-foreground leading-relaxed flex-1 mb-4 line-clamp-3">
-                                                {blog.excerpt}
-                                            </p>
-                                            <div className="flex items-center justify-between pt-3 border-t border-border">
-                                                <span className="text-xs text-muted-foreground">
-                                                    {blog.createdAt ? new Date(blog.createdAt).toDateString() : ''}
-                                                    {blog.content ? ` · ${getReadingMinutes(blog)} min read` : ''}
-                                                </span>
-                                                <span className="text-xs font-semibold text-[hsl(145,70%,22%)] group-hover:text-amber-500 transition-colors">
-                                                    Read →
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </article>
-                                </Link>
-                            ))}
-                        </div>
-                    )}
-                </div>
-            </div>
-
-            {/* ── CTA Section ── */}
-            <div className="aviation-gradient py-16 px-4 text-center">
-                <div className="max-w-2xl mx-auto">
-                    <div className="text-4xl mb-4 animate-float">✈️</div>
-                    <h2 className="text-3xl font-bold text-white mb-3">
-                        Ready to Start Your{' '}
-                        <span className="text-amber-400">Pilot Journey?</span>
-                    </h2>
-                    <p className="text-white/60 text-sm mb-8">
-                        Get free expert guidance from our airline pilot mentors
-                    </p>
-
-
-                    <a href="https://wa.me/919355611996"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 gold-gradient text-[hsl(145,80%,15%)] px-8 py-3.5 rounded-xl font-bold text-sm animate-pulse-glow btn-aviation"
-                    >
-                        ✈️ Talk to an Expert on WhatsApp
-                    </a>
-                </div>
-            </div>
-
-            <Footer />
-        </div >
-    )
+      <Footer />
+    </div>
+  )
 }
