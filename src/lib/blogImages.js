@@ -55,6 +55,24 @@ export const BLOG_IMAGES = {
       prompt:
         'A single application form on a desk with a bold cross mark stamped across a corner, and beside it an empty coin-shaped outline where a coin used to be. Quiet, matter-of-fact, not alarming. Conveys a fee that is not returned when a form is rejected.',
     },
+    {
+      slot: 'inline',
+      after: 2,
+      file: '/blog/dgca-exam-fees-not-the-fee.webp',
+      alt: 'Three cost blocks beside the exam fee, each a different size and none of them the fee.',
+      caption: 'Class fees, books and travel are not the exam fee.',
+      prompt:
+        'One small labelled-free coin block on the left, separated by a clear vertical rule from three larger blocks of different heights on the right, each holding a small abstract icon: an open book, a classroom desk, a bus. The single small block is the point.',
+    },
+    {
+      slot: 'inline',
+      after: 4,
+      file: '/blog/dgca-exam-fees-before-you-pay.webp',
+      alt: 'A short pre-payment checklist beside a payment button.',
+      caption: 'The checks that are cheaper than a resit.',
+      prompt:
+        'A vertical stack of four rounded rows with empty tick boxes on the left, and to the right a single prominent rounded payment button shape. A thin arrow runs from the last row to the button, in that order.',
+    },
   ],
 
   'dgca-exam-subjects-by-licence': [
@@ -81,6 +99,24 @@ export const BLOG_IMAGES = {
       alt: 'A simple left-to-right path with numbered stops for sequencing the papers.',
       prompt:
         'A horizontal path with four evenly spaced circular stops, each holding a small abstract icon, connected by a thin dashed line that gets slightly bolder left to right. Suggests an order of attempt without naming any subject.',
+    },
+    {
+      slot: 'inline',
+      after: 1,
+      file: '/blog/dgca-exam-subjects-comparison-grid.webp',
+      alt: 'A three-column grid comparing what each licence is examined on.',
+      caption: 'One grid settles the three licences.',
+      prompt:
+        'A clean three-column comparison grid with a header band, rows of small abstract icons instead of any lettering, and one column subtly highlighted. Reads as a specification table with no text at all.',
+    },
+    {
+      slot: 'inline',
+      after: 3,
+      file: '/blog/dgca-exam-subjects-outside.webp',
+      alt: 'A boundary line with two items placed outside it.',
+      caption: 'Some requirements sit outside these papers entirely.',
+      prompt:
+        'A large rounded boundary shape containing four small icon tiles, and two further tiles sitting clearly outside the boundary with a soft gap between. Conveys scope: what these papers cover and what they do not.',
     },
   ],
 
@@ -109,6 +145,24 @@ export const BLOG_IMAGES = {
       prompt:
         'Four small exam paper icons placed at different positions along a horizontal timeline, each with a soft shaded bar extending to its right, the bars overlapping unevenly. Conveys staging attempts so the windows still overlap at the end.',
     },
+    {
+      slot: 'inline',
+      after: 2,
+      file: '/blog/dgca-exam-attempts-no-limit.webp',
+      alt: 'An open counter with no ceiling above it.',
+      caption: 'What is published about attempts, and what is not.',
+      prompt:
+        'A vertical stack of identical small paper tiles rising upward, the topmost fading out into empty space rather than meeting a bar or a lid. Conveys an absence of a stated ceiling, calmly.',
+    },
+    {
+      slot: 'inline',
+      after: 4,
+      file: '/blog/dgca-exam-attempts-real-constraint.webp',
+      alt: 'A door closing on a timeline while attempts continue.',
+      caption: 'The constraint is the window, not the count.',
+      prompt:
+        'A horizontal timeline with several small paper icons along it, and a shutter descending at one point on the line. The icons to the right of the shutter are pale. Quiet, mechanical.',
+    },
   ],
 
   'dgca-olode-vs-regular-exams': [
@@ -135,6 +189,24 @@ export const BLOG_IMAGES = {
       alt: 'Two identical rulebooks, one on each side of a mirror line.',
       prompt:
         'Two identical closed books lying symmetrically either side of a faint vertical mirror line, drawn identically down to the binding. Emphasises that the rules do not change between the two routes.',
+    },
+    {
+      slot: 'inline',
+      after: 2,
+      file: '/blog/dgca-olode-eligibility-identical.webp',
+      alt: 'Two identical entry gates, mirrored.',
+      caption: 'Eligibility does not change with the route.',
+      prompt:
+        'Two identical archway gates mirrored across a faint vertical centre line, each with the same small figure approaching at the same distance. Perfect symmetry is the message.',
+    },
+    {
+      slot: 'inline',
+      after: 4,
+      file: '/blog/dgca-olode-before-you-book.webp',
+      alt: 'A booking slot being selected from a row of open slots.',
+      caption: 'What to settle before you book.',
+      prompt:
+        'A horizontal row of six identical open slot shapes, one of them highlighted and slightly raised with a soft glow, and a cursor-like arrow pointing to it. Flat, calm, no calendar numerals.',
     },
   ],
 
@@ -163,6 +235,24 @@ export const BLOG_IMAGES = {
       prompt:
         'A magnifying glass held over a plain official document bearing only an abstract seal and faint horizontal placeholder lines that are clearly not readable text. Calm, instructional. Conveys checking a claim at its source.',
     },
+    {
+      slot: 'inline',
+      after: 1,
+      file: '/blog/dgca-misconceptions-repetition.webp',
+      alt: 'The same shape copied across a page, with one different.',
+      caption: 'Repetition is not verification.',
+      prompt:
+        'A grid of twelve identical grey rounded tiles with one tile in a warm accent colour and a small check seal on it. The eleven identical tiles are copies of each other; the accented one is the source.',
+    },
+    {
+      slot: 'inline',
+      after: 3,
+      file: '/blog/dgca-misconceptions-age-open-door.webp',
+      alt: 'An open doorway with no bar across it.',
+      caption: 'No stated upper limit.',
+      prompt:
+        'A single wide open doorway with an empty horizontal bar shape lying discarded on the ground beside it, and a clear path leading through. Understated, no figures, no faces.',
+    },
   ],
 
   'dgca-board-verification-certificate': [
@@ -189,6 +279,24 @@ export const BLOG_IMAGES = {
       alt: 'Four steps in a row, with the verification step highlighted early in the sequence.',
       prompt:
         'Four connected rounded rectangles in a horizontal row, the second one filled in the accent colour and slightly raised. Each holds a small abstract icon. Conveys that this step comes early, not late.',
+    },
+    {
+      slot: 'inline',
+      after: 2,
+      file: '/blog/dgca-bvc-documents-covered.webp',
+      alt: 'A fanned set of four certificates, each with a corner seal.',
+      caption: 'Which documents the certificate covers.',
+      prompt:
+        'Four rectangular certificate shapes fanned in a shallow arc, each with a small circular seal in the top corner and faint non-readable placeholder lines. Even, orderly, no lettering.',
+    },
+    {
+      slot: 'inline',
+      after: 4,
+      file: '/blog/dgca-bvc-international-route.webp',
+      alt: 'A second, longer path branching off through an extra desk.',
+      caption: 'An international qualification takes a longer route.',
+      prompt:
+        'A main horizontal path with a branch that loops downward through one additional desk marked with a small globe icon before rejoining. The branch is visibly longer than the main line.',
     },
   ],
 
@@ -217,6 +325,24 @@ export const BLOG_IMAGES = {
       prompt:
         'Four simple silhouetted figures of clearly different ages standing shoulder to shoulder at a single starting line on a runway. Equal footing, no hierarchy. No faces, no text.',
     },
+    {
+      slot: 'inline',
+      after: 2,
+      file: '/blog/cpl-eligibility-pcm-myth.webp',
+      alt: 'Three subject icons with one lifted away from the other two.',
+      caption: 'Physics and Mathematics is not the same as PCM.',
+      prompt:
+        'Three small subject icons in a row — an atom, a geometric compass, a beaker — with the beaker lifted clearly out of the line and rendered pale grey. Neutral, no cross or prohibition mark.',
+    },
+    {
+      slot: 'inline',
+      after: 4,
+      file: '/blog/cpl-eligibility-first-steps.webp',
+      alt: 'Three numbered steps leading from a school desk to a licence card.',
+      caption: 'What to do first, while you are still in school.',
+      prompt:
+        'Three circular numbered stops connected by a thin line, starting at a school desk and ending at a blank licence card, with a small aircraft silhouette above the final stop.',
+    },
   ],
 
   'atpl-eligibility-india': [
@@ -243,6 +369,24 @@ export const BLOG_IMAGES = {
       alt: 'A twin-engine aircraft silhouette beside a single-engine one, with the single greyed out.',
       prompt:
         'Two aircraft silhouettes side by side in flat profile: a twin-engine aircraft in full accent colour and a single-engine aircraft rendered in pale grey. Clear, calm contrast with no cross or prohibition symbol.',
+    },
+    {
+      slot: 'inline',
+      after: 2,
+      file: '/blog/atpl-eligibility-three-mistakes.webp',
+      alt: 'Three stumbling points marked along an otherwise clear path.',
+      caption: 'The three things people get wrong.',
+      prompt:
+        'A clean horizontal path with three small raised bumps along it, each marked by a subtle warm-toned marker, and a figure silhouette walking the path. Restrained, not alarming.',
+    },
+    {
+      slot: 'inline',
+      after: 4,
+      file: '/blog/atpl-eligibility-after-the-papers.webp',
+      alt: 'A cleared paper handing over to a flight-hours logbook.',
+      caption: 'The papers are one step, not the last one.',
+      prompt:
+        'An exam paper on the left with a check seal, an arrow to the right, and an open blank logbook with a small aircraft silhouette above it. Equal weight to both objects.',
     },
   ],
 
@@ -271,6 +415,24 @@ export const BLOG_IMAGES = {
       prompt:
         'A vertical checklist of five rounded rows with empty tick boxes, connected by a thin line that loops from the third row back up to the first. Conveys an order of operations that is not simply top to bottom. Rows carry icons, never text.',
     },
+    {
+      slot: 'inline',
+      after: 2,
+      file: '/blog/foreign-conversion-which-licences.webp',
+      alt: 'Two licence cards accepted and one set aside.',
+      caption: 'Which licences this route covers.',
+      prompt:
+        'Three blank licence cards: two grouped together and slightly raised, one set apart and pale. Clean spacing, no marks or symbols of rejection.',
+    },
+    {
+      slot: 'inline',
+      after: 4,
+      file: '/blog/foreign-conversion-not-waived.webp',
+      alt: 'A gate that stays shut on one path while another opens.',
+      caption: 'Conversion waives nothing on the examination side.',
+      prompt:
+        'Two parallel paths: the upper passes through an open gate, the lower meets a closed gate with an exam paper icon on it. Both paths continue beyond, so nothing is a dead end.',
+    },
   ],
 
   'dgca-ground-classes-vs-self-study': [
@@ -290,6 +452,31 @@ export const BLOG_IMAGES = {
       alt: 'One path splitting and rejoining, with a shorter branch through a classroom.',
       prompt:
         'A single path that forks into two and rejoins further along; the upper branch passes through a small classroom block, the lower runs past a desk with a lamp. Both branches reach the same endpoint.',
+    },
+    {
+      slot: 'cover',
+      file: '/blog/ground-classes-vs-self-study-cover-v2.webp',
+      alt: 'A classroom of students on one side and a single desk lamp on the other, divided by a soft line.',
+      prompt:
+        'A wide banner split by a soft vertical divider. Left: rows of simple seated figures facing a board. Right: one figure alone at a desk with a lamp and an open book. Same warm light on both halves, neither presented as better.',
+    },
+    {
+      slot: 'inline',
+      after: 3,
+      file: '/blog/ground-classes-what-you-pay-for.webp',
+      alt: 'Four things bundled inside a package outline.',
+      caption: 'What a ground-class fee actually buys.',
+      prompt:
+        'A large rounded package outline containing four small icon tiles — a board, a stack of notes, a clock, a headset — with generous space around them. The outline is what is being purchased.',
+    },
+    {
+      slot: 'inline',
+      after: 7,
+      file: '/blog/ground-classes-six-month-plan.webp',
+      alt: 'A six-segment arc with papers distributed unevenly across it.',
+      caption: 'A plan that works on either route.',
+      prompt:
+        'A wide flat arc divided into six equal unlabelled segments, with small paper icons placed unevenly across them, two segments carrying two icons and two carrying none.',
     },
   ],
 
@@ -318,6 +505,24 @@ export const BLOG_IMAGES = {
       prompt:
         'A row of small triangular pennant flags on thin poles, all in muted grey except one in a warm accent standing noticeably taller. Restrained, not alarming.',
     },
+    {
+      slot: 'inline',
+      after: 1,
+      file: '/blog/choose-ground-classes-not-approved.webp',
+      alt: 'An approval seal with a line through the space where an institute would sit.',
+      caption: 'The regulator approves examinations, not coaching.',
+      prompt:
+        'A circular official seal on the left connected by a thin line to an exam paper, and a second thin line reaching toward a small institute building but stopping short with a visible gap. The gap is the point.',
+    },
+    {
+      slot: 'inline',
+      after: 3,
+      file: '/blog/choose-ground-classes-timeline.webp',
+      alt: 'A realistic timeline with four papers spread across it.',
+      caption: 'What a realistic timeline looks like.',
+      prompt:
+        'A horizontal timeline with four small paper icons spaced unevenly, each with a soft shaded preparation bar of a different length leading up to it. Conveys that the papers are not evenly weighted.',
+    },
   ],
 
   'how-to-choose-a-flying-school-in-india': [
@@ -345,6 +550,24 @@ export const BLOG_IMAGES = {
       prompt:
         'A wide flat arc divided into twelve equal unlabelled segments, four of them shaded in a cool grey with small rain and haze motifs above them. Conveys a season that costs flying days.',
     },
+    {
+      slot: 'inline',
+      after: 1,
+      file: '/blog/choose-flying-school-approval-list.webp',
+      alt: 'A regulator list on one side and a glossy brochure on the other.',
+      caption: 'Check the list, not the brochure.',
+      prompt:
+        'Left: a plain official document with a circular seal and faint non-readable rows. Right: a glossy folded brochure with an aircraft silhouette on the cover. The plain document is lit; the brochure sits in shadow.',
+    },
+    {
+      slot: 'inline',
+      after: 3,
+      file: '/blog/choose-flying-school-logbook.webp',
+      alt: 'An open logbook with a pen resting on a filled column.',
+      caption: 'Records are the thing you are actually buying.',
+      prompt:
+        'An open double-page logbook in flat perspective with columns of faint non-readable ruling, one column subtly shaded, and a pen lying across it. Careful, administrative, unglamorous.',
+    },
   ],
 
   'air-hostess-salary-in-india-2026': [
@@ -365,6 +588,31 @@ export const BLOG_IMAGES = {
       prompt:
         'A plain offer letter on a desk under a magnifying glass, with five small empty question-mark bubbles arranged down its right side. Faint placeholder lines on the letter that are clearly not readable text.',
     },
+    {
+      slot: 'cover',
+      file: '/blog/cabin-crew-salary-cover-v2.webp',
+      alt: 'A cabin crew silhouette beside a pay slip broken into three parts.',
+      prompt:
+        'A single cabin crew figure silhouette on the left in flat vector, and on the right a document divided into three stacked bands of different sizes. Calm, professional, no faces and no lettering.',
+    },
+    {
+      slot: 'inline',
+      after: 2,
+      file: '/blog/cabin-crew-what-airlines-publish.webp',
+      alt: 'A small published area beside a much larger unpublished one.',
+      caption: 'What airlines publish, and what they do not.',
+      prompt:
+        'Two adjacent rectangles: a small solid one and a much larger one drawn only as a dashed outline. A thin label line points to each, ending in a small icon rather than any text.',
+    },
+    {
+      slot: 'inline',
+      after: 5,
+      file: '/blog/cabin-crew-different-paths.webp',
+      alt: 'Two paths diverging from one school gate, one to a cabin door and one to a cockpit.',
+      caption: 'Cabin crew and pilot training are different paths.',
+      prompt:
+        'A single starting point that forks into two clearly separate paths, one ending at a cabin door outline and the other at a cockpit window outline. Equal visual weight, no hierarchy.',
+    },
   ],
 }
 
@@ -375,4 +623,19 @@ export const BLOG_IMAGES = {
  */
 export function imagesFor(slug) {
   return (slug && BLOG_IMAGES[slug]) || []
+}
+
+/**
+ * True when a post's `coverImage` is a stand-in rather than a picture of that
+ * post's subject.
+ *
+ * Ten of the fourteen posts point at the same site-wide hero photograph and one
+ * still points at a stock URL, so "has a cover" was never the same as "has its
+ * own cover". Where the cover is generic the page shows the planned
+ * illustration's placeholder instead — one shared aeroplane photo repeated down
+ * a listing tells a reader nothing and tells a crawler less.
+ */
+export function isGenericCover(src) {
+  if (!src) return true
+  return /\/assets\/hero-aircraft|images\.unsplash\.com/.test(src)
 }
