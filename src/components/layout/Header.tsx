@@ -137,7 +137,7 @@ export function Header() {
             </Link>
 
             {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center gap-2">
+            <nav className="hidden xl:flex items-center gap-2">
               {navigation.map((item) => (
                 <div
                   key={item.name}
@@ -182,7 +182,7 @@ export function Header() {
             </nav>
 
             {/* CTA */}
-            <div className="hidden lg:block">
+            <div className="hidden xl:block">
               <Button variant="aviation" size="lg">
                 Get Free Counselling
               </Button>
@@ -190,7 +190,7 @@ export function Header() {
 
             {/* Mobile Button */}
             <button
-              className="lg:hidden p-2 rounded-lg hover:bg-secondary"
+              className="xl:hidden p-2 rounded-lg hover:bg-secondary"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
               {isMobileMenuOpen ? <X /> : <Menu />}
@@ -205,7 +205,7 @@ export function Header() {
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: "auto", opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
-              className="lg:hidden border-t bg-background"
+              className="xl:hidden border-t bg-background"
             >
               <nav className="container py-4 space-y-2">
                 {navigation.map((item) => (
