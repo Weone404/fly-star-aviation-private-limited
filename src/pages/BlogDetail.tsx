@@ -5,6 +5,7 @@ import { Footer } from '@/components/layout/Footer'
 import { BLOG_POSTS, STATIC_BLOG_POSTS, getBlogPost, getReadingMinutes } from '@/lib/blogData'
 import { sanitizeHtml } from '@/lib/sanitizeHtml'
 import { prepareArticle } from '@/lib/articleHtml'
+import { neighboursInTopic, sourcesOf } from '@/lib/blogTopics'
 import {
   BackToTop,
   Breadcrumbs,
@@ -82,6 +83,8 @@ export default function BlogDetail() {
   const readingMinutes = blog ? getReadingMinutes(blog) : 0
   const authorName = blog?.author || 'Flying Star Aviator Academics Team'
   const authorRole = blog?.authorRole || 'DGCA CPL & ATPL ground instruction, Dwarka, New Delhi'
+  const cluster = useMemo(() => (blog ? neighboursInTopic(blog) : null), [blog])
+  const sources = useMemo(() => (blog ? sourcesOf(blog) : []), [blog])
   const related = useMemo(
     () => (blog && isEditorial ? relatedTo(blog, BLOG_POSTS as BlogPost[]) : []),
     [blog, isEditorial],
@@ -121,6 +124,20 @@ export default function BlogDetail() {
       <Header />
       {isEditorial && <ReadingProgress />}
       <Breadcrumbs title={blog.title} />
+
+      {isEditorial && cluster?.topic && (
+        <div className="border-b border-border bg-primary/5">
+          <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-x-3 gap-y-1 px-4 py-2.5 text-xs text-muted-foreground">
+            <Link to={`/blog/topic/${cluster.topic.slug}`} className="font-semibold text-primary hover:underline">
+              {cluster.topic.name}
+            </Link>
+            <span aria-hidden="true">·</span>
+            <span>
+              Part {cluster.position} of {cluster.total}
+            </span>
+          </div>
+        </div>
+      )}
 
       {isEditorial ? (
         <PostHero post={blog} readingMinutes={readingMinutes} authorName={authorName} authorRole={authorRole} />
@@ -176,6 +193,68 @@ export default function BlogDetail() {
               All articles
             </Link>
           </div>
+
+          {isEditorial && sources.length > 0 && (
+            <section aria-labelledby="sources" className="mt-12 border-t border-border pt-8">
+              <h2 id="sources" className="text-xl font-bold text-foreground">Sources</h2>
+              <p className="mt-2 text-sm text-muted-foreground">
+                Every figure above traces to one of these documents. Where a claim could not be sourced, the
+                page says so instead of repeating it.
+              </p>
+              <ul className="mt-4 space-y-2 text-sm">
+                {sources.map((s) => (
+                  <li key={s.source}>
+                    {s.href ? (
+                      <a
+                        href={s.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-primary underline underline-offset-2"
+                      >
+                        {s.source}
+                      </a>
+                    ) : (
+                      <span className="text-muted-foreground">{s.source}</span>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
+
+          {isEditorial && cluster?.topic && (cluster.prev || cluster.next) && (
+            <nav
+              aria-label={`More in ${cluster.topic.name}`}
+              className="mt-12 grid gap-4 border-t border-border pt-8 sm:grid-cols-2"
+            >
+              {cluster.prev && (
+                <Link
+                  to={`/blog/${cluster.prev.slug}`}
+                  className="rounded-xl border border-border bg-card p-4 transition-colors hover:border-primary/40"
+                >
+                  <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                    Previous in {cluster.topic.name}
+                  </span>
+                  <span className="mt-1 block text-sm font-bold leading-snug text-foreground">
+                    {cluster.prev.title}
+                  </span>
+                </Link>
+              )}
+              {cluster.next && (
+                <Link
+                  to={`/blog/${cluster.next.slug}`}
+                  className="rounded-xl border border-border bg-card p-4 text-right transition-colors hover:border-primary/40 sm:col-start-2"
+                >
+                  <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                    Next in {cluster.topic.name}
+                  </span>
+                  <span className="mt-1 block text-sm font-bold leading-snug text-foreground">
+                    {cluster.next.title}
+                  </span>
+                </Link>
+              )}
+            </nav>
+          )}
 
           {isEditorial && <RelatedPosts posts={related} />}
         </article>
