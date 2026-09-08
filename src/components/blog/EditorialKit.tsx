@@ -28,7 +28,7 @@ export const formatDate = (value?: string) => {
 export function Breadcrumbs({ title }: { title: string }) {
   return (
     <nav aria-label="Breadcrumb" className="border-b border-border bg-muted/60">
-      <ol className="mx-auto flex max-w-6xl items-center gap-2 overflow-x-auto px-4 py-3 text-xs text-muted-foreground">
+      <ol className="mx-auto flex max-w-6xl items-center gap-2 overflow-x-auto px-4 py-3 text-xs text-muted-foreground sm:px-6 xl:max-w-7xl">
         <li><Link to="/" className="hover:text-primary">Home</Link></li>
         <li aria-hidden="true">/</li>
         <li><Link to="/blogs" className="hover:text-primary">Blog</Link></li>
@@ -55,7 +55,8 @@ export function PostHero({
   const verified = post.updatedAt || post.createdAt
   return (
     <header className="border-b border-border bg-card">
-      <div className="mx-auto max-w-3xl px-4 pb-10 pt-10 md:pt-14">
+      <div className="mx-auto w-full max-w-6xl px-4 pb-10 pt-10 sm:px-6 md:pt-14 xl:max-w-7xl">
+        <div className="max-w-3xl">
         {post.category && (
           <Link
             to="/blogs"
@@ -92,6 +93,7 @@ export function PostHero({
           </Link>
           .
         </p>
+        </div>
       </div>
     </header>
   )
@@ -400,7 +402,7 @@ export function BlogMasthead({
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 opacity-[0.12] [background:radial-gradient(60rem_20rem_at_20%_-10%,white,transparent)]"
       />
-      <div className="relative mx-auto max-w-6xl px-4 pb-10 pt-12 md:pt-16">
+      <div className="relative mx-auto max-w-6xl px-4 pb-10 pt-12 sm:px-6 md:pt-16 xl:max-w-7xl">
         <p className="text-xs font-bold uppercase tracking-[0.2em] text-amber-300">{eyebrow}</p>
         <h1 className="mt-3 max-w-4xl text-3xl font-bold leading-tight text-white md:text-[2.6rem]">{title}</h1>
         <div className="mt-4 max-w-2xl text-base leading-relaxed text-white/75">{lede}</div>
@@ -408,7 +410,7 @@ export function BlogMasthead({
       </div>
       {stats && stats.length > 0 && (
         <div className="relative border-t border-white/15">
-          <dl className="mx-auto flex max-w-6xl flex-wrap gap-x-10 gap-y-4 px-4 py-5">
+          <dl className="mx-auto flex max-w-6xl flex-wrap gap-x-8 gap-y-4 px-4 py-5 sm:gap-x-10 sm:px-6 xl:max-w-7xl">
             {stats.map((s) => (
               <div key={s.label}>
                 <dt className="text-[11px] uppercase tracking-widest text-white/50">{s.label}</dt>

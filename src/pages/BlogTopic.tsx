@@ -47,7 +47,7 @@ export default function BlogTopic() {
     return (
       <div className="min-h-screen bg-background">
         <Header />
-        <div className="mx-auto max-w-3xl px-4 py-24 text-center">
+        <div className="mx-auto max-w-3xl px-4 py-24 text-center sm:px-6">
           <h1 className="text-2xl font-bold text-foreground">Topic not found</h1>
           <Link to="/blogs" className="mt-4 inline-flex min-h-11 items-center text-sm font-semibold text-primary underline underline-offset-2">
             Back to the blog
@@ -63,7 +63,7 @@ export default function BlogTopic() {
       <Header />
 
       <nav aria-label="Breadcrumb" className="border-b border-border bg-muted/60">
-        <ol className="mx-auto flex max-w-6xl items-center gap-2 overflow-x-auto px-4 py-3 text-xs text-muted-foreground">
+        <ol className="mx-auto flex max-w-6xl items-center gap-2 overflow-x-auto px-4 py-3 text-xs text-muted-foreground sm:px-6">
           <li><Link to="/" className="hover:text-primary">Home</Link></li>
           <li aria-hidden="true">/</li>
           <li><Link to="/blogs" className="hover:text-primary">Blog</Link></li>
@@ -90,7 +90,8 @@ export default function BlogTopic() {
         ]}
       />
 
-      <div className="mx-auto max-w-3xl px-4 py-10">
+      <div className="mx-auto w-full max-w-6xl px-4 py-10 sm:px-6 xl:max-w-7xl">
+        <div className="max-w-3xl">
         <div className="article-body">
           {topic.intro.map((para) => (
             <p key={para.slice(0, 40)}>{para}</p>
@@ -201,6 +202,7 @@ export default function BlogTopic() {
             ))}
           </ul>
         </section>
+        </div>
       </div>
 
       <Footer />

@@ -132,7 +132,7 @@ export default function BlogDetail() {
 
       {isEditorial && cluster?.topic && (
         <div className="border-b border-border bg-primary/5">
-          <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-x-3 gap-y-1 px-4 py-2.5 text-xs text-muted-foreground">
+          <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-x-3 gap-y-1 px-4 py-2.5 text-xs text-muted-foreground sm:px-6 xl:max-w-7xl">
             <Link to={`/blog/topic/${cluster.topic.slug}`} className="font-semibold text-primary hover:underline">
               {cluster.topic.name}
             </Link>
@@ -148,7 +148,7 @@ export default function BlogDetail() {
         <PostHero post={blog} readingMinutes={readingMinutes} authorName={authorName} authorRole={authorRole} />
       ) : (
         <header className="border-b border-border bg-card">
-          <div className="mx-auto max-w-3xl px-4 py-10">
+          <div className="mx-auto w-full max-w-6xl px-4 py-10 sm:px-6 xl:max-w-7xl">
             <h1 className="text-3xl font-bold leading-tight text-foreground">{blog.title}</h1>
             <p className="mt-3 text-sm text-muted-foreground">
               {blog.category} · {readingMinutes} min read
@@ -158,7 +158,7 @@ export default function BlogDetail() {
         </header>
       )}
 
-      <div className="mx-auto max-w-6xl gap-10 px-4 py-10 lg:grid lg:grid-cols-[minmax(0,1fr)_16rem]">
+      <div className="mx-auto w-full max-w-6xl gap-8 px-4 py-10 sm:px-6 lg:grid lg:grid-cols-[minmax(0,1fr)_17rem] lg:gap-10 xl:max-w-7xl xl:grid-cols-[minmax(0,1fr)_20rem]">
         <article className="min-w-0">
           {isEditorial && (
             <>
@@ -291,7 +291,7 @@ export default function BlogDetail() {
         </article>
 
         {isEditorial && (
-          <aside className="mt-10 lg:mt-0">
+          <aside className="mt-10 min-w-0 lg:mt-0">
             <div className="lg:sticky lg:top-24 lg:space-y-6">
               <div className="hidden lg:block">
                 <TableOfContents items={parts.toc} variant="desktop" />

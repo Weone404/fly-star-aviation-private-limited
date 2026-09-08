@@ -148,7 +148,7 @@ export default function Blogs() {
 
       {featured && (
         <section aria-labelledby="featured" className="border-b border-border bg-muted/40">
-          <div className="mx-auto max-w-6xl px-4 py-10">
+          <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 xl:max-w-7xl">
             <h2 id="featured" className="text-xs font-bold uppercase tracking-widest text-muted-foreground">
               Start here
             </h2>
@@ -174,7 +174,7 @@ export default function Blogs() {
         </section>
       )}
 
-      <div className="mx-auto max-w-6xl px-4 py-10">
+      <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 xl:max-w-7xl">
         {clustered.map(({ topic, posts: list }) => (
           <section key={topic.slug} aria-labelledby={topic.slug} className="mb-14">
             <div className="flex flex-wrap items-end justify-between gap-3 border-b border-border pb-4">

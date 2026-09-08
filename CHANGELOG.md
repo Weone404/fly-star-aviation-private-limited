@@ -10,6 +10,39 @@ good pages in a flat grid, four category labels, one of which held a single post
 and not a single URL a reader or a crawler could point at for "everything about
 the DGCA papers".
 
+### The offer banner was floating over every article — and the rule meant to stop it never matched
+`App.tsx` already carried a rule to suppress popups on the blog. It tested
+`/^\/(blogs|admin)/`, which matches `/blogs` but **not `/blog/<slug>`** — the
+canonical URL every post actually lives at. So the fixed-position CPL offer sat
+on top of the reading sidebar on all fourteen articles, and on the topic hubs
+too. One character: `blogs?`.
+
+The banner itself was rewritten rather than deleted. It was `position: fixed` at
+a hard 320px with no close button and no breakpoints — a promotion the reader
+cannot dismiss is an obstacle, not a promotion. It now has a real close button
+that is remembered for the session, becomes a slim bottom bar on phones and
+tablets where there is no free column, and is capped to the viewport instead of a
+fixed pixel width. It still runs on non-blog pages; the price is the business's
+own published figure, which is the one number this site can state without an
+external source.
+
+### A site-wide horizontal scroll at exactly 1024px
+Found by driving the real pages in a headless browser at six widths rather than
+reading the classes. The header switched to its desktop nav at `lg` (1024px)
+before the nav fitted, pushing the document 139px wider than the viewport — on
+**every page, including the homepage**, not just the blog. Moved to `xl`, so
+1024–1279px uses the menu button. Re-checked at 320, 390, 768, 1024, 1440 and
+1920: no horizontal overflow anywhere, on the listing, a hub, an article or the
+homepage.
+
+### Space
+The post hero was centred on a 3xl measure while the body below ran in a wider
+grid, so the H1 started about 250px right of the article it introduced. Hero and
+body now share one gutter, with the reading measure kept on an inner block. The
+reading column and sidebar grow on large screens (17rem at `lg`, 20rem at `xl`,
+container to `max-w-7xl`) instead of stranding a third of a 1920px display, and
+every container gained an `sm` gutter for tablets.
+
 ### Illustrations: 37 planned, prompts generated from the code
 `src/lib/blogImages.js` is the single source for what each image shows, the
 prompt that makes it, and where it sits — `after: 2` places it under the second
