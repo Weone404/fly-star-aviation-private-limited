@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { SocialShareButtons } from '@/components/SocialShareButtons'
 import type { BlogPost } from '@/types/blog'
 import type { TocItem } from '@/lib/articleHtml'
+import type { BlogImage } from '@/types/blog'
 import { FAQ_ANCHOR } from '@/lib/articleHtml'
 
 /**
@@ -418,5 +419,52 @@ export function BlogMasthead({
         </div>
       )}
     </header>
+  )
+}
+
+/* ── Article illustration ────────────────────────────────────────────────── */
+
+/**
+ * Renders a planned illustration.
+ *
+ * Until the file exists, this renders **nothing in production** and a
+ * placeholder carrying its own prompt in `npm run dev`. A missing picture is a
+ * gap; a broken image is a defect, and on a page whose whole claim is that its
+ * figures are checked, a broken asset is the wrong kind of first impression.
+ */
+export function ArticleFigure({ image }: { image: BlogImage }) {
+  if (image.ready) {
+    return (
+      <figure className="my-8">
+        <img
+          src={image.file}
+          alt={image.alt}
+          width={1200}
+          height={675}
+          loading="lazy"
+          decoding="async"
+          className="w-full rounded-xl border border-border object-cover"
+        />
+        {image.caption && (
+          <figcaption className="mt-2 text-sm text-muted-foreground">{image.caption}</figcaption>
+        )}
+      </figure>
+    )
+  }
+
+  if (!import.meta.env.DEV) return null
+
+  return (
+    <div className="my-8 rounded-xl border border-dashed border-primary/40 bg-muted/50 p-5">
+      <p className="text-xs font-bold uppercase tracking-wide text-primary">
+        Image placeholder · dev only · {image.slot}
+      </p>
+      <p className="mt-2 text-sm font-semibold text-foreground">{image.alt}</p>
+      <p className="mt-3 whitespace-pre-wrap text-xs leading-relaxed text-muted-foreground">{image.prompt}</p>
+      <p className="mt-3 text-xs text-muted-foreground">
+        Save the generated file to <code className="font-mono">{image.file}</code>, then set{' '}
+        <code className="font-mono">ready: true</code> in <code className="font-mono">src/lib/blogImages.ts</code>.
+      </p>
+    </div>
   )
 }

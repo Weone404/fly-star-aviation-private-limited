@@ -38,6 +38,12 @@ export type ArticleParts = {
   toc: TocItem[]
   /** True when the FAQ section was found and removed from bodyHtml. */
   faqExtracted: boolean
+  /**
+   * The body split at its <h2> boundaries, so an illustration can be placed
+   * after a named section instead of being dropped at the end of the article.
+   * `heading` is 0 for whatever precedes the first h2, then 1, 2, 3 …
+   */
+  sections: { heading: number; html: string }[]
 }
 
 export const FAQ_ANCHOR = 'faq'
@@ -66,7 +72,13 @@ export function prepareArticle(
   sanitized: string,
   faqs?: { q: string; a: string }[],
 ): ArticleParts {
-  const fallback: ArticleParts = { bodyHtml: sanitized || '', tailHtml: '', toc: [], faqExtracted: false }
+  const fallback: ArticleParts = {
+    bodyHtml: sanitized || '',
+    tailHtml: '',
+    toc: [],
+    faqExtracted: false,
+    sections: sanitized ? [{ heading: 0, html: sanitized }] : [],
+  }
   if (!sanitized) return fallback
   if (typeof DOMParser === 'undefined') return fallback
 
@@ -110,6 +122,8 @@ export function prepareArticle(
 
   let phase: 'body' | 'faq' | 'tail' = 'body'
   let faqExtracted = false
+  const sections: { heading: number; nodes: Node[] }[] = [{ heading: 0, nodes: [] }]
+  let h2Count = 0
 
   for (const node of nodes) {
     const el = node.nodeType === 1 ? (node as Element) : null
@@ -128,6 +142,7 @@ export function prepareArticle(
       const id = headingId(text, taken)
       el!.setAttribute('id', id)
       if (text) toc.push({ id, text })
+      if (phase === 'body') sections.push({ heading: ++h2Count, nodes: [] })
     }
 
     if (phase === 'faq') {
@@ -137,6 +152,7 @@ export function prepareArticle(
       phase = 'tail'
     }
     ;(phase === 'tail' ? after : before).push(node)
+    if (phase === 'body') sections[sections.length - 1].nodes.push(node)
   }
 
   const html = (list: Node[]) =>
@@ -144,7 +160,15 @@ export function prepareArticle(
       .map((n) => (n.nodeType === 1 ? (n as Element).outerHTML : n.textContent || ''))
       .join('')
 
-  return { bodyHtml: html(before), tailHtml: html(after), toc, faqExtracted }
+  return {
+    bodyHtml: html(before),
+    tailHtml: html(after),
+    toc,
+    faqExtracted,
+    sections: sections
+      .filter((sec) => sec.nodes.length > 0)
+      .map((sec) => ({ heading: sec.heading, html: html(sec.nodes) })),
+  }
 }
 
 /** Distinct categories in document order — used by the listing's filter chips. */

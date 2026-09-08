@@ -6,7 +6,10 @@ import { BLOG_POSTS, STATIC_BLOG_POSTS, getBlogPost, getReadingMinutes } from '@
 import { sanitizeHtml } from '@/lib/sanitizeHtml'
 import { prepareArticle } from '@/lib/articleHtml'
 import { neighboursInTopic, sourcesOf } from '@/lib/blogTopics'
+import { imagesFor } from '@/lib/blogImages'
+import { Fragment } from 'react'
 import {
+  ArticleFigure,
   BackToTop,
   Breadcrumbs,
   CorrectionQuote,
@@ -85,6 +88,8 @@ export default function BlogDetail() {
   const authorRole = blog?.authorRole || 'DGCA CPL & ATPL ground instruction, Dwarka, New Delhi'
   const cluster = useMemo(() => (blog ? neighboursInTopic(blog) : null), [blog])
   const sources = useMemo(() => (blog ? sourcesOf(blog) : []), [blog])
+  const images = useMemo(() => imagesFor(blog?.slug), [blog?.slug])
+  const cover = images.find((i) => i.slot === 'cover' && i.ready)
   const related = useMemo(
     () => (blog && isEditorial ? relatedTo(blog, BLOG_POSTS as BlogPost[]) : []),
     [blog, isEditorial],
@@ -163,11 +168,11 @@ export default function BlogDetail() {
             </>
           )}
 
-          {blog.coverImage && (
+          {(cover || blog.coverImage) && (
             <figure className="my-8">
               <img
-                src={blog.coverImage}
-                alt={blog.coverAlt || blog.title}
+                src={cover?.file || blog.coverImage}
+                alt={cover?.alt || blog.coverAlt || blog.title}
                 width={1600}
                 height={900}
                 loading="lazy"
@@ -177,7 +182,33 @@ export default function BlogDetail() {
             </figure>
           )}
 
-          <div className="article-body" dangerouslySetInnerHTML={{ __html: body }} />
+          {parts.sections.length > 0 ? (
+            <>
+              {parts.sections.map((section) => (
+                <Fragment key={section.heading}>
+                  <div className="article-body" dangerouslySetInnerHTML={{ __html: section.html }} />
+                  {images
+                    .filter((img) => img.slot === 'inline' && img.after === section.heading)
+                    .map((img) => (
+                      <ArticleFigure key={img.file} image={img} />
+                    ))}
+                </Fragment>
+              ))}
+              {/* An illustration aimed at a heading that no longer exists still
+                  belongs on the page rather than nowhere. */}
+              {images
+                .filter(
+                  (img) =>
+                    img.slot === 'inline' &&
+                    !parts.sections.some((section) => section.heading === img.after),
+                )
+                .map((img) => (
+                  <ArticleFigure key={img.file} image={img} />
+                ))}
+            </>
+          ) : (
+            <div className="article-body" dangerouslySetInnerHTML={{ __html: body }} />
+          )}
 
           {parts.faqExtracted && <FaqAccordions faqs={blog.faqs} />}
 

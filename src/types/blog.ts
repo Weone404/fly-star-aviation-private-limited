@@ -33,3 +33,20 @@ export interface BlogPost {
      */
     correction?: { claim: string; correction: string; source: string; href?: string }
 }
+
+/** One planned illustration for a post. See src/lib/blogImages.js. */
+export interface BlogImage {
+  slot: 'cover' | 'inline'
+  /** Public path the generated file should be saved to. */
+  file: string
+  /** Real alt text: what the image shows, not a keyword list. */
+  alt: string
+  /** Optional visible caption. */
+  caption?: string
+  /** The generation prompt, minus the house style line. */
+  prompt: string
+  /** Place after the Nth h2 of the body. Inline images only. */
+  after?: number
+  /** True once the file exists at `file`. Until then it renders in dev only. */
+  ready?: boolean
+}
