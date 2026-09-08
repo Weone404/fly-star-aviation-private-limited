@@ -12,6 +12,7 @@ import { getBlogPost, getWordCount, getReadingMinutes } from "./blogData.js";
 import { PILOT_TRAINING_TOPICS } from "./pilotTrainingTopics";
 import { FAQ_HUB_QUESTIONS } from "./faqHub";
 import { GLOSSARY } from "./glossary";
+import { postsInTopic, topicBySlug, type Topic } from "./blogTopics";
 
 const ORG_ID = `${SITE_ORIGIN}/#organization`;
 
@@ -91,6 +92,16 @@ function breadcrumb(path: string): JsonLdNode {
   const items: JsonLdNode[] = [
     { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_ORIGIN}/` },
   ];
+
+  // A topic hub sits under the blog, not under two path segments that are not
+  // pages. Walking the URL would advertise /blog and /blog/topic, neither of
+  // which resolves.
+  const topic = topicFor(path);
+  if (topic) {
+    items.push({ "@type": "ListItem", position: 2, name: "Blog", item: `${SITE_ORIGIN}/blogs` });
+    items.push({ "@type": "ListItem", position: 3, name: topic.name, item: canonicalUrl(path) });
+    return { "@type": "BreadcrumbList", "@id": `${canonicalUrl(path)}#breadcrumb`, itemListElement: items };
+  }
   const segments = path.split("/").filter(Boolean);
   const post = blogPostFor(path);
   let acc = "";
@@ -292,6 +303,50 @@ function faqNode(path: string, post: BlogPost): JsonLdNode | null {
   };
 }
 
+/** The topic cluster behind a /blog/topic/<slug> path, if any. */
+function topicFor(path: string): Topic | undefined {
+  const match = path.match(/^\/blog\/topic\/([^/]+)$/);
+  return match ? topicBySlug(match[1]) : undefined;
+}
+
+/**
+ * CollectionPage for a topic hub, carrying the cluster's reading order as an
+ * ItemList.
+ *
+ * No FAQPage here on purpose. Every question in this cluster is already
+ * answered — and marked up — on the post that answers it, and repeating that
+ * markup on the hub would offer two pages as the source of one answer.
+ */
+function topicNode(path: string, topic: Topic): JsonLdNode {
+  const url = canonicalUrl(path);
+  const posts = postsInTopic(topic);
+  return {
+    "@type": ["CollectionPage", "WebPage"],
+    "@id": `${url}#collection`,
+    url,
+    name: topic.title,
+    description: topic.description,
+    abstract: topic.summary,
+    isPartOf: { "@id": `${SITE_ORIGIN}/#website` },
+    breadcrumb: { "@id": `${url}#breadcrumb` },
+    inLanguage: "en-IN",
+    publisher: { "@id": ORG_ID },
+    mainEntity: {
+      "@type": "ItemList",
+      "@id": `${url}#list`,
+      name: topic.title,
+      numberOfItems: posts.length,
+      itemListOrder: "https://schema.org/ItemListOrderAscending",
+      itemListElement: posts.map((post, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        name: post.title,
+        url: `${SITE_ORIGIN}/blog/${post.slug}`,
+      })),
+    },
+  };
+}
+
 function pageNode(path: string): JsonLdNode {
   if (path.startsWith("/courses/")) return courseNode(path);
   if (path.startsWith("/services/")) return serviceNode(path);
@@ -398,6 +453,11 @@ export function buildGraph(path: string): JsonLdNode | null {
     const faq = faqNode(path, post);
     if (faq) nodes.push(faq);
     return { "@context": "https://schema.org", "@graph": nodes };
+  }
+
+  const topic = topicFor(path);
+  if (topic) {
+    return { "@context": "https://schema.org", "@graph": [breadcrumb(path), topicNode(path, topic)] };
   }
 
   const nodes: JsonLdNode[] = [breadcrumb(path), pageNode(path)];

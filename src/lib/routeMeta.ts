@@ -315,9 +315,38 @@ const routeMeta: Record<string, RouteMeta> = {
     canonical: `${BASE_URL}/sitemap`,
   },
   "/blogs": {
-    title: "Aviation Blogs | Flying Star Aviator",
-    description: "Read the latest aviation news, DGCA updates, CPL guides and pilot career tips from Flying Star Aviator.",
+    title: "DGCA Exam & Pilot Training Guides in India | Flying Star Aviator",
+    description:
+      "Guides to DGCA exams, CPL and ATPL eligibility, ground classes and flying schools in India - every figure checked against the regulator's own documents.",
     canonical: `${BASE_URL}/blogs`,
+    ogImage: "/assets/hero-aircraft-1600w.jpg",
+    twitterImage: "/assets/hero-aircraft-1600w.jpg",
+  },
+  // Topic hubs. Each is a real page with its own copy and an ordered reading
+  // list; membership comes from the post `category`, so the hub and the posts
+  // cannot drift. Present here means prerendered and advertised — routeMeta is
+  // the gate that scripts/prerender.js and generate-sitemap.mjs both read.
+  "/blog/topic/dgca-exams": {
+    title: "DGCA Exams: Fees, Subjects, Validity and Attempts | Flying Star Aviator",
+    description:
+      "Everything the DGCA theory examinations involve - subjects by licence, the fee, how long a pass stays valid, and the claims that are wrong.",
+    canonical: `${BASE_URL}/blog/topic/dgca-exams`,
+    ogImage: "/assets/hero-aircraft-1600w.jpg",
+    twitterImage: "/assets/hero-aircraft-1600w.jpg",
+  },
+  "/blog/topic/licences-and-eligibility": {
+    title: "Pilot Licence Eligibility in India: CPL, ATPL and Conversions | Flying Star Aviator",
+    description:
+      "What DGCA requires before you can appear for CPL and ATPL theory papers, and what converting a foreign licence actually involves.",
+    canonical: `${BASE_URL}/blog/topic/licences-and-eligibility`,
+    ogImage: "/assets/hero-aircraft-1600w.jpg",
+    twitterImage: "/assets/hero-aircraft-1600w.jpg",
+  },
+  "/blog/topic/choosing-training": {
+    title: "Choosing Ground Classes and a Flying School in India | Flying Star Aviator",
+    description:
+      "How to judge DGCA ground classes and a flying training organisation before you pay - what to verify, what to ask, and what ends the conversation.",
+    canonical: `${BASE_URL}/blog/topic/choosing-training`,
     ogImage: "/assets/hero-aircraft-1600w.jpg",
     twitterImage: "/assets/hero-aircraft-1600w.jpg",
   },

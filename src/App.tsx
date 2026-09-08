@@ -68,6 +68,7 @@ const Becomepilot = lazy(() => import("./pages/BecomeAPilot/become-pilot"));
 
 const Blogs = lazy(() => import("./pages/Blogs"));
 const BlogDetail = lazy(() => import("./pages/BlogDetail"));
+const BlogTopic = lazy(() => import("./pages/BlogTopic"));
 const AdminBlog = lazy(() => import("./pages/AdminBlog"));
 const AdminLogin = lazy(() => import("./pages/admin/login/page"));
 
@@ -197,6 +198,7 @@ function AppInner() {
         {/* BLOGS */}
         <Route path="/blogs" element={<Blogs />} />
         <Route path="/blogs/:id" element={<BlogDetail />} />
+        <Route path="/blog/topic/:topic" element={<BlogTopic />} />
         <Route path="/blog/:slug" element={<BlogDetail />} />
 
         {/* ADMIN */}

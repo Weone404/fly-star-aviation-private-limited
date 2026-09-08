@@ -73,10 +73,24 @@ describe("render gate", () => {
     ).toBe(true);
   });
 
+  it("advertises every topic hub, and every hub is in the render gate", async () => {
+    const { TOPICS } = await import("../lib/blogTopics");
+    const advertised = new Set(sitemapPaths());
+    const gated = new Set(routeMetaPaths());
+    for (const t of TOPICS) {
+      const path = `/blog/topic/${t.slug}`;
+      expect(gated.has(path), `${path} missing from routeMeta — it would 404 in production`).toBe(true);
+      expect(advertised.has(path), `${path} missing from sitemap.xml`).toBe(true);
+    }
+  });
+
   it("keeps every advertised blog post in the feed", async () => {
     const mod = await import("../lib/blogData.js");
     const feed = readFileSync(resolve(ROOT, "public/feed.xml"), "utf8");
-    const advertised = sitemapPaths().filter((p) => p.startsWith("/blog/"));
+    // Topic hubs live under /blog/topic/ and are not articles: they carry no
+    // date, no author and no body of their own, so an RSS reader has nothing to
+    // do with them. Only posts belong in the feed.
+    const advertised = sitemapPaths().filter((p) => p.startsWith("/blog/") && !p.startsWith("/blog/topic/"));
     const missing = advertised.filter((p) => !feed.includes(`${ORIGIN}${p}<`));
     expect(missing, `in the sitemap but not the feed: ${missing.join(", ")}`).toEqual([]);
     expect(mod.BLOG_POSTS.length).toBeGreaterThan(0);
