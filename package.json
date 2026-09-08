@@ -19,6 +19,7 @@
     "prebuild": "node scripts/fetch-blogs.mjs && node scripts/generate-sitemap.mjs && node scripts/generate-feed.mjs",
     "sitemap": "node scripts/generate-sitemap.mjs",
     "blogs:fetch": "node scripts/fetch-blogs.mjs",
+    "image-prompts": "node scripts/generate-image-prompts.mjs",
     "smoke": "node scripts/smoke.mjs",
     "blogs:approve": "node scripts/approve-blog.mjs",
     "blogs:list": "node scripts/approve-blog.mjs --list",

@@ -10,6 +10,30 @@ good pages in a flat grid, four category labels, one of which held a single post
 and not a single URL a reader or a crawler could point at for "everything about
 the DGCA papers".
 
+### Illustrations: 37 planned, prompts generated from the code
+`src/lib/blogImages.js` is the single source for what each image shows, the
+prompt that makes it, and where it sits — `after: 2` places it under the second
+`<h2>`, so a picture lands with the section it illustrates rather than at the end
+of the article. `prepareArticle` now returns the body split at its headings to
+make that possible.
+
+**Nothing renders until the file exists.** An entry with `ready: false` renders
+nothing in production and a placeholder carrying its own prompt in `npm run dev`,
+so the gaps are visible exactly where the pictures will go. A missing picture is
+a gap; a broken image on a page whose whole claim is that its figures are checked
+is a defect.
+
+`BLOG-IMAGE-PROMPTS.md` is now **generated** by `npm run image-prompts`. The
+prompts used to live in the markdown and the filenames in the code, which meant
+the two drifted the moment anyone renamed a file.
+
+**No text in any image**, enforced by the house-style line appended to all 37
+prompts. Generated lettering is reliably almost-right, and an almost-right number
+inside an illustration is precisely the failure this site exists to avoid.
+
+Ten posts currently share one stock cover (`/assets/hero-aircraft-1600w.jpg`) and
+one still points at an Unsplash URL. The plan replaces both.
+
 ### Topic clusters, and three hub pages
 `src/lib/blogTopics.ts` defines three clusters. Membership comes from each post's
 `category`, so there is one taxonomy and it cannot drift; `order` fixes a reading
