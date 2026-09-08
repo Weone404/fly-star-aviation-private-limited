@@ -29,7 +29,10 @@
 - [Common Misconceptions About DGCA Exams](https://www.flystar.co.in/blog/dgca-exam-misconceptions): Chemistry is not required, there is no maximum age, ground classes are not mandatory, and a PPL needs only a Class Ten pass — each checked against DGCA's published rules.
 - [DGCA Board Verification Certificate](https://www.flystar.co.in/blog/dgca-board-verification-certificate): A certificate from your board confirming a mark sheet is authentic, mandatory for all NEW Flight Crew candidates before registration.
 - [ATPL Eligibility in India](https://www.flystar.co.in/blog/atpl-eligibility-india): An ATPL applicant should already hold an Indian CPL, defence personnel may qualify on 500 hours including 200 as Pilot-in-Command, and an ATPL is not issued on a single-engine aircraft.
-- [All articles](https://www.flystar.co.in/blogs): Aviation career and DGCA exam guides.
+- [Topic: DGCA exams](https://www.flystar.co.in/blog/topic/dgca-exams): Hub for the DGCA Flight Crew theory papers - subjects by licence, the Rs 2,500 fee, paper validity, the OLODE route and the claims that are wrong. Six articles in reading order.
+- [Topic: Licences and eligibility](https://www.flystar.co.in/blog/topic/licences-and-eligibility): Hub for what DGCA requires before you can appear - CPL after 10+2 with Physics and Mathematics, ATPL on an existing CPL, and converting a foreign licence. Three articles.
+- [Topic: Choosing training](https://www.flystar.co.in/blog/topic/choosing-training): Hub for judging DGCA ground classes and a flying training organisation before paying - what the regulator does and does not certify. Three articles.
+- [All articles](https://www.flystar.co.in/blogs): Every guide, grouped by topic - DGCA exams, licence eligibility, and choosing training.
 - [RSS feed](https://www.flystar.co.in/feed.xml): New guides as they are published.
 
 ## Aviation services

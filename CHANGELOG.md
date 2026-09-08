@@ -2,6 +2,84 @@
 
 All entries: what changed, and why. Newest first.
 
+## 2026-09-08 — Blog restructured into topic clusters
+
+The last pass fixed how the posts *looked*. This one fixes how they are
+*organised*, which is what was actually making the section feel thin: fourteen
+good pages in a flat grid, four category labels, one of which held a single post,
+and not a single URL a reader or a crawler could point at for "everything about
+the DGCA papers".
+
+### Topic clusters, and three hub pages
+`src/lib/blogTopics.ts` defines three clusters. Membership comes from each post's
+`category`, so there is one taxonomy and it cannot drift; `order` fixes a reading
+sequence, which is not the publication order.
+
+| Hub | Posts |
+|---|---|
+| `/blog/topic/dgca-exams` | 6 — subjects, fees, validity, OLODE, misconceptions, BVC |
+| `/blog/topic/licences-and-eligibility` | 3 — CPL after 12th, ATPL, foreign conversion |
+| `/blog/topic/choosing-training` | 3 — ground classes vs self-study, choosing classes, choosing an FTO |
+
+Posts were re-categorised to match. The old labels were not clusters: `DGCA` held
+eight unrelated pages while `Training` held one.
+
+**Careers gets no hub.** It has two posts and one of them is deliberately out of
+the sitemap, so a hub there would be a thin page with a nice name. It stays a
+labelled group on the listing, and the listing names it after its own category
+rather than calling it "More".
+
+Each hub carries orientation prose, the cluster's posts in reading order, the
+sourced facts the cluster settles between them, and the documents those facts came
+from. **No new claims:** the facts panel is assembled from `keyFacts` the posts
+already carry.
+
+### Schema
+`CollectionPage` + `ItemList` per hub, with the reading order as positions, and a
+breadcrumb that goes Home → Blog → topic rather than walking `/blog` and
+`/blog/topic`, neither of which resolves.
+
+**No `FAQPage` on the hubs, on purpose.** Every question in a cluster is already
+answered and marked up on the post that answers it. Repeating that markup would
+offer two pages as the source of one answer.
+
+### Render gate
+Three `routeMeta.ts` entries, which is what makes the hubs prerender and get
+advertised — the gate, the sitemap and the prerenderer all read that one file.
+**Sitemap 63 → 66.** Feed stays 13: a hub has no date, no author and no body of
+its own, so it does not belong in RSS. `renderGate.test.ts` was amended to say
+that in one place and now also fails if a hub ever drops out of routeMeta or the
+sitemap.
+
+### Post pages
+A topic ribbon under the breadcrumbs ("DGCA exams · Part 2 of 6"), previous/next
+within the cluster, and a **Sources** block listing every document the page's
+figures trace to. That block is generated from `keyFacts`, so it cannot claim a
+source the page does not actually cite.
+
+### Presentation
+A gradient masthead on the listing and the hubs with a real stat strip — articles,
+topics, primary documents cited — every number derived from the data rather than
+written down. Cards got a topic accent, a category label and a hover lift. Icons
+are three inline SVGs; no icon library, no new font, no new dependency.
+
+### Search terms
+Hub H1s are separate from their nav labels so they can carry the terms people
+actually search: *DGCA exam guide*, *pilot licence eligibility in India*, *DGCA
+ground classes and flying schools in India*. The listing H1 leads with DGCA exams,
+CPL and pilot training in India. The `/blogs` title and description were rewritten
+from "Aviation Blogs" to name what the section covers.
+
+The hubs were added to `llms.txt` with a line each — the AI-facing index now has
+three entry points that group fourteen pages by subject instead of listing them
+flat.
+
+**What was not done:** no keyword was inserted into a sentence it did not belong
+in, and no volume figure is claimed anywhere. Head terms went into headings and
+titles, which is where they earn their keep.
+
+**120 tests passing, `vite build` green, sitemap 66, feed 13, lint 0 errors.**
+
 ## 2026-09-05 — Blog experience rebuild
 
 Presentation regenerated; content conventions untouched. The complaint was that
