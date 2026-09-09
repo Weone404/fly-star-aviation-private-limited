@@ -38,8 +38,11 @@ Once a reserved page ships, strike its row and the query returns to the pool.
 | 2026-09-05 | `/blog/dgca-exam-attempts-and-validity` | DGCA Exam Validity and Attempts: What Is Published, and What Is Not | DGCA |
 | 2026-09-05 | `/blog/foreign-licence-conversion-checklist` | Converting a Foreign Pilot Licence: The Document and Currency Checklist | Licences & Eligibility |
 | 2026-09-09 | `/blog/dgca-exam-pass-rate` | DGCA Exam Pass Rate: What the Data Actually Shows | DGCA |
+| 2026-09-09 | `/blog/rtr-a-exam-dgca-takeover-2026` | RTR(A) Exam 2026: What Changed Now That DGCA Runs It, Not WPC | DGCA |
 
 _Rows for 2026-09-04 and 2026-09-05 above (`dgca-olode-vs-regular-exams` through `foreign-licence-conversion-checklist`) were backfilled on 2026-09-09: this session found them already live in `src/lib/blogData.js` and `public/sitemap.xml` but missing from this ledger. The Reserved rows for OLODE and exam misconceptions below were stale as a result — both have already shipped as blog posts, not page articles, so those two Reserved rows are struck through._
+
+_The `rtr-a-exam-dgca-takeover-2026` row was written on 2026-09-05 by a separate, uncommitted session (`claude/keen-dijkstra-rgm876`) and never merged: the `claude/blog-**` branches that reach main go through `.github/workflows/blog-publish.yml`, but a session branch outside that naming pattern never triggers the gate at all, so the post sat unpublished for four days. Recovered and merged 2026-09-09. Two other unmerged drafts covering the same two topics were found alongside it and intentionally left out as duplicates rather than merged: an older, staler RTR(A) draft (`rtr-a-exam-guide-2026`, on `claude/blog-2026-09-01` / `claude/gifted-cray-x12a6m`), and a second DGCA-exam-pass-rate draft (`dgca-cpl-exam-pass-rate`, on `claude/blog-2026-09-08`) that duplicates this session's own `dgca-exam-pass-rate`. A fourth draft, `cpl-vs-atpl-difference-india` on `claude/blog-2026-09-04`, was also left unmerged: it never passed lint, and its ground is now covered by the already-live `atpl-eligibility-india` and `dgca-exam-subjects-by-licence` rows above. All four of those branches are safe to delete._
 
 ## Reserved — do not write as blog posts (updated)
 

@@ -84,13 +84,22 @@ jobs:
           echo "Checked ${#pages[@]} prerendered blog pages."
           exit $fail
 
-      - name: Confirm the new post reached the sitemap
+      - name: Confirm every sitemap blog URL actually prerendered
         run: |
+          # Direction matters here. scripts/generate-sitemap.mjs deliberately
+          # omits any post under 300 words (or with no slug) from the sitemap
+          # so Google isn't asked to index a stub, while scripts/prerender.js
+          # still builds a page for it so an old link doesn't 404. So a
+          # prerendered page missing from the sitemap is often correct, not a
+          # bug — checking that direction broke this gate on every run for a
+          # single 192-word legacy stub. The real risk is the other way round:
+          # a URL the sitemap advertises to Google/AI crawlers that never got
+          # prerendered, which 404s. Check that instead — same check
+          # src/test/renderGate.test.ts already makes, which passed above.
           fail=0
-          for page in dist/blog/*/index.html; do
-            slug="$(basename "$(dirname "$page")")"
-            if ! grep -q "/blog/$slug<" public/sitemap.xml; then
-              echo "::error::/blog/$slug is prerendered but missing from public/sitemap.xml"
+          for loc in $(grep -o '<loc>https://www.flystar.co.in/blog/[^<]*</loc>' public/sitemap.xml | sed -E 's#<loc>https://www.flystar.co.in(/blog/[^<]*)</loc>#\1#'); do
+            if [ ! -f "dist${loc}/index.html" ]; then
+              echo "::error::$loc is advertised in public/sitemap.xml but was never prerendered"
               fail=1
             fi
           done
