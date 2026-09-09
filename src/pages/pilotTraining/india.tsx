@@ -191,7 +191,7 @@ const stepByStepGuide = [
     {
         step: 6,
         title: "SPL (Student Pilot Licence)",
-        description: "Apply for and obtain your SPL after initial training and checks â€” this authorises you to commence supervised solo flying.",
+        description: "Apply for and obtain your SPL after initial training and checks — this authorises you to commence supervised solo flying.",
     },
     {
         step: 7,

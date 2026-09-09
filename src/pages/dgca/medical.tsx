@@ -25,7 +25,7 @@ import {
     LucideIcon,
 } from "lucide-react";
 
-// â”€â”€â”€ Lazy-load framer-motion so it doesn't block the initial paint â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── Lazy-load framer-motion so it doesn't block the initial paint ───────────
 const MotionDiv = lazy(() =>
     import("framer-motion").then((m) => ({ default: m.motion.div }))
 );
@@ -61,7 +61,7 @@ function FadeIn({
     );
 }
 
-// Hero uses animate (not whileInView) â€“ keep it separate so the rest of the
+// Hero uses animate (not whileInView) – keep it separate so the rest of the
 // bundle doesn't block the hero render.
 function HeroMotion({ children, className }: { children: React.ReactNode; className?: string }) {
     return (
@@ -78,7 +78,7 @@ function HeroMotion({ children, className }: { children: React.ReactNode; classN
     );
 }
 
-// â”€â”€â”€ Static data (defined once at module level â€“ zero re-creation cost) â”€â”€â”€â”€â”€â”€
+// ─── Static data (defined once at module level – zero re-creation cost) ──────
 
 interface OverviewRow { label: string; value: string }
 interface MedicalComparison { aspect: string; classII: string; classI: string }
@@ -181,7 +181,7 @@ const preparationTips: string[] = [
     "Arrive on time with all required documents",
 ];
 
-// â”€â”€â”€ Memoised sub-components (prevent unnecessary re-renders) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── Memoised sub-components (prevent unnecessary re-renders) ─────────────────
 
 const OverviewTableRow = memo(function OverviewTableRow({
     row, even,
@@ -254,7 +254,7 @@ const StepCard = memo(function StepCard({
     );
 });
 
-// â”€â”€â”€ Page component â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── Page component ───────────────────────────────────────────────────────────
 
 export default function DGCAMedicalGuidePage(): JSX.Element {
     return (
@@ -267,7 +267,7 @@ export default function DGCAMedicalGuidePage(): JSX.Element {
                 />
             
 
-            {/* â”€â”€ Hero â”€â”€ */}
+            {/* ── Hero ── */}
             <section className="relative py-24 aviation-gradient text-primary-foreground">
                 <div className="container">
                     <HeroMotion className="max-w-4xl">
@@ -300,7 +300,7 @@ export default function DGCAMedicalGuidePage(): JSX.Element {
                             </Button>
                         </div>
 
-                        {/* Quick Stats â€“ static, no animation needed */}
+                        {/* Quick Stats – static, no animation needed */}
                         <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mt-12 pt-12 border-t border-white/20">
                             {[
                                 { Icon: Shield, value: "2 Types", label: "Medical Certifications" },
@@ -324,17 +324,17 @@ export default function DGCAMedicalGuidePage(): JSX.Element {
                 heading="What are the DGCA medical requirements to become a pilot in India?"
                 answer="To train as a commercial pilot in India you must clear a DGCA medical examination. A DGCA Class 2 medical is the minimum needed to begin flying training and hold a Student Pilot Licence (SPL), while a DGCA Class 1 medical is mandatory to be issued a Commercial Pilot Licence (CPL). Class 1 assessments are carried out only at DGCA-empanelled medical centres and Indian Air Force examination facilities, and evaluate your vision, hearing, cardiovascular health, and neurological and mental fitness. A Class 1 medical certificate is generally valid for 12 months for pilots under 40 and 6 months once you are 40 or older. Most students complete a Class 2 medical before enrolling in ground school and obtain the Class 1 before starting flying training, so any disqualifying condition is identified early in the journey."
                 faqs={[
-                    { q: "Which medical do I need first â€” Class 1 or Class 2?", a: "Begin with a DGCA Class 2 medical before ground school, then obtain a Class 1 medical before flying training. A Class 1 is required to be issued a CPL." },
+                    { q: "Which medical do I need first — Class 1 or Class 2?", a: "Begin with a DGCA Class 2 medical before ground school, then obtain a Class 1 medical before flying training. A Class 1 is required to be issued a CPL." },
                     { q: "How long is a DGCA Class 1 medical valid?", a: "Typically 12 months for pilots under 40 years of age, reducing to 6 months from age 40 onwards, after which it must be renewed." },
                 ]}
                 sources={[
                     { label: "DGCA (Directorate General of Civil Aviation)", url: "https://www.dgca.gov.in" },
-                    { label: "ICAO Annex 1 â€” Personnel Licensing", url: "https://www.icao.int" },
+                    { label: "ICAO Annex 1 — Personnel Licensing", url: "https://www.icao.int" },
                 ]}
                 lastUpdated="2026-07-30"
             />
 
-            {/* â”€â”€ Quick Overview â”€â”€ */}
+            {/* ── Quick Overview ── */}
             <section className="py-20 bg-background">
                 <div className="container">
                     <FadeIn className="text-center mb-12">
@@ -364,7 +364,7 @@ export default function DGCAMedicalGuidePage(): JSX.Element {
                 </div>
             </section>
 
-            {/* â”€â”€ Overview Section â”€â”€ */}
+            {/* ── Overview Section ── */}
             <section className="py-20 bg-muted/30">
                 <div className="container">
                     <FadeIn className="max-w-4xl mx-auto">
@@ -419,7 +419,7 @@ export default function DGCAMedicalGuidePage(): JSX.Element {
                 </div>
             </section>
 
-            {/* â”€â”€ Comparison Table â”€â”€ */}
+            {/* ── Comparison Table ── */}
             <section className="py-20 bg-background">
                 <div className="container">
                     <FadeIn className="text-center mb-12">
@@ -450,7 +450,7 @@ export default function DGCAMedicalGuidePage(): JSX.Element {
                 </div>
             </section>
 
-            {/* â”€â”€ Class II Section â”€â”€ */}
+            {/* ── Class II Section ── */}
             <section className="py-20 bg-muted/30">
                 <div className="container">
                     <FadeIn className="max-w-4xl mx-auto mb-12">
@@ -506,7 +506,7 @@ export default function DGCAMedicalGuidePage(): JSX.Element {
                 </div>
             </section>
 
-            {/* â”€â”€ Final CTA â”€â”€ */}
+            {/* ── Final CTA ── */}
             <section className="py-20 aviation-gradient text-primary-foreground">
                 <div className="container">
                     <FadeIn className="max-w-3xl mx-auto text-center">

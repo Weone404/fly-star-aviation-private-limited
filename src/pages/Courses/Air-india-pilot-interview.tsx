@@ -47,14 +47,14 @@ const selectionStages = [
     },
     {
         icon: Briefcase,
-        title: "Personal Interviews â€“ HR",
+        title: "Personal Interviews – HR",
         description:
             "In-depth HR interview coaching with airline-specific scenarios and confidence-building techniques.",
         href: "/contact",
     },
     {
         icon: BookOpen,
-        title: "Personal Interviews â€“ Technical",
+        title: "Personal Interviews – Technical",
         description:
             "Technical interview preparation covering aircraft systems, SOPs, CRM, and line operations.",
         href: "/contact",
@@ -148,7 +148,7 @@ const faqs = [
     {
         question: "What makes We One Aviation's preparation methodology different?",
         answer:
-            "Our training is mentored by airline professionals, uses realistic mock assessments, and is specifically focused on Air India's hiring patterns. Each candidate receives personalized feedback and a tailored improvement plan â€” not a one-size-fits-all approach.",
+            "Our training is mentored by airline professionals, uses realistic mock assessments, and is specifically focused on Air India's hiring patterns. Each candidate receives personalized feedback and a tailored improvement plan — not a one-size-fits-all approach.",
     },
 ];
 
@@ -159,7 +159,7 @@ export default function AirIndiaPilotInterviewPage() {
                 <title>Air India Pilot Interview Preparation 2026 | Flying Star Aviator</title>
                 <meta
                     name="description"
-                    content="Crack the Air India pilot selection process with Flying Star Aviator and We One Aviation. Structured preparation for CPL holders & Type Rated pilots â€“ Psychometric, GD, HR & Technical interviews. Enroll now."
+                    content="Crack the Air India pilot selection process with Flying Star Aviator and We One Aviation. Structured preparation for CPL holders & Type Rated pilots – Psychometric, GD, HR & Technical interviews. Enroll now."
                 />
 
 
@@ -172,7 +172,7 @@ export default function AirIndiaPilotInterviewPage() {
                         className="max-w-3xl"
                     >
                         <span className="inline-block text-sm font-semibold bg-white/20 px-4 py-2 rounded-full mb-4">
-                            âœˆï¸ Air India Pilot Interview Preparation (2026) â€“ We One Aviation
+                            ✈️ Air India Pilot Interview Preparation (2026) – We One Aviation
                         </span>
                         <h1 className="text-4xl md:text-6xl font-bold mb-6">
                             Crack Your Air India Pilot Selection Process
@@ -211,7 +211,7 @@ export default function AirIndiaPilotInterviewPage() {
                             Air India Selection Stages We Cover
                         </h2>
                         <p className="text-muted-foreground max-w-3xl mx-auto text-lg">
-                            Our program is built around the actual airline hiring process. We prepare you thoroughly for every stage of the Air India pilot selection â€” from psychometric testing to final personal interviews.
+                            Our program is built around the actual airline hiring process. We prepare you thoroughly for every stage of the Air India pilot selection — from psychometric testing to final personal interviews.
                         </p>
                     </motion.div>
 
@@ -267,7 +267,7 @@ export default function AirIndiaPilotInterviewPage() {
                         className="text-center mb-16"
                     >
                         <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                            ðŸ§‘â€âœˆï¸ Courses for CPL Holders
+                            🧑‍✈️ Courses for CPL Holders
                         </h2>
                         <p className="text-muted-foreground max-w-2xl mx-auto">
                             Designed for fresh commercial pilots preparing for airline entry. Build the skills, knowledge, and confidence needed to clear Air India's multi-stage selection process.
@@ -316,7 +316,7 @@ export default function AirIndiaPilotInterviewPage() {
                         className="text-center mb-16"
                     >
                         <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                            ðŸ›« Type Rated Pilot Preparation (A320 / B737)
+                            🛫 Type Rated Pilot Preparation (A320 / B737)
                         </h2>
                         <p className="text-muted-foreground max-w-2xl mx-auto">
                             Tailored for experienced pilots aiming to join Air India fleet operations. Go beyond technical knowledge and master the full interview process.
@@ -368,7 +368,7 @@ export default function AirIndiaPilotInterviewPage() {
                             ðŸ§  What Makes Our Training Different?
                         </h2>
                         <p className="text-muted-foreground max-w-2xl mx-auto">
-                            We don't just teach you what to say â€” we prepare you to think, perform, and succeed under real airline evaluation conditions.
+                            We don't just teach you what to say — we prepare you to think, perform, and succeed under real airline evaluation conditions.
                         </p>
                     </motion.div>
 
@@ -402,9 +402,9 @@ export default function AirIndiaPilotInterviewPage() {
                         viewport={{ once: true }}
                         className="text-center mb-12"
                     >
-                        <h2 className="text-3xl md:text-4xl font-bold mb-4">ðŸ“… Upcoming Batches</h2>
+                        <h2 className="text-3xl md:text-4xl font-bold mb-4">📅 Upcoming Batches</h2>
                         <p className="text-muted-foreground max-w-2xl mx-auto">
-                            ðŸš¨ New batches starting soon â€” secure your seat before it fills up.
+                            🚨 New batches starting soon — secure your seat before it fills up.
                         </p>
                     </motion.div>
 
@@ -461,7 +461,7 @@ export default function AirIndiaPilotInterviewPage() {
                         className="text-center mb-16"
                     >
                         <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                            ðŸ† Who Should Join?
+                            🏆 Who Should Join?
                         </h2>
                         <p className="text-muted-foreground max-w-2xl mx-auto">
                             This program is ideal for pilots at any stage who are serious about clearing the Air India selection process.
@@ -495,7 +495,7 @@ export default function AirIndiaPilotInterviewPage() {
                         viewport={{ once: true }}
                         className="text-center mb-12"
                     >
-                        <h2 className="text-3xl md:text-4xl font-bold mb-4">ðŸ“ž Contact We One Aviation</h2>
+                        <h2 className="text-3xl md:text-4xl font-bold mb-4">📞 Contact We One Aviation</h2>
                         <p className="text-muted-foreground max-w-2xl mx-auto">
                             This programme is run by Flying Star Aviator Private Limited
                             together with We One Aviation. Either team can help you with
@@ -621,10 +621,10 @@ export default function AirIndiaPilotInterviewPage() {
                         className="max-w-3xl mx-auto text-center"
                     >
                         <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                            ðŸš€ Start Your Airline Career Today
+                            🚀 Start Your Airline Career Today
                         </h2>
                         <p className="text-primary-foreground/80 text-lg mb-4">
-                            âœˆï¸ Prepare Smart. Perform Better. Get Selected.
+                            ✈️ Prepare Smart. Perform Better. Get Selected.
                         </p>
                         <p className="text-primary-foreground/80 text-lg mb-8">
                             Join We One Aviation's Air India Pilot Interview Preparation Program and give yourself the edge you need to succeed in one of India's most competitive airline selection processes.

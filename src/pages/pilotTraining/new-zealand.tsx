@@ -141,7 +141,7 @@ const trainingStages = [
         ],
     },
     {
-        stage: "Private Pilot Licence â€“ PPL",
+        stage: "Private Pilot Licence – PPL",
         duration: "5 Months",
         flyingHours: "0-70 hrs",
         highlights: [
@@ -214,7 +214,7 @@ const stepByStepGuide = [
     {
         step: 8,
         title: "Flight Training",
-        description: "Follow the structured PPLâ†’hour-buildingâ†’CPL (and optional IR/ME) progression with dual instruction, solo flights, cross-countries and simulator sessions.",
+        description: "Follow the structured PPL→hour-building→CPL (and optional IR/ME) progression with dual instruction, solo flights, cross-countries and simulator sessions.",
     },
     {
         step: 9,

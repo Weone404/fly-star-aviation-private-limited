@@ -31,7 +31,7 @@ import {
     LucideIcon,
 } from "lucide-react";
 
-// â”€â”€â”€ Types â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── Types ────────────────────────────────────────────────────────────────────
 interface OverviewRow { label: string; value: string }
 interface Subject { icon: LucideIcon; name: string; description: string }
 interface Benefit { icon: LucideIcon; title: string; description: string }
@@ -40,14 +40,14 @@ interface WhoShouldJoin { category: string; description: string; icon: LucideIco
 interface SelectionFactor { factor: string; description: string; icon: LucideIcon }
 interface SkillCovered { skill: string; description: string; icon: LucideIcon }
 
-// â”€â”€â”€ Static data (module scope â€” zero re-creation cost) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── Static data (module scope — zero re-creation cost) ───────────────────────
 const quickOverview: OverviewRow[] = [
     { label: "Course Name", value: "DGCA Ground Classes for CPL" },
     { label: "Purpose", value: "CPL Theory Exam Preparation" },
     { label: "Training Mode", value: "Online / Offline / Hybrid" },
     { label: "Subjects Covered", value: "6 DGCA Papers" },
     { label: "Authority", value: "DGCA (Directorate General of Civil Aviation)" },
-    { label: "Fee Range", value: "â‚¹1.5 - 3.5 Lakhs (Full Course)" },
+    { label: "Fee Range", value: "₹1.5 - 3.5 Lakhs (Full Course)" },
     { label: "Who Can Join", value: "10+2 Students, Flying Students, Professionals" },
 ];
 
@@ -136,14 +136,14 @@ const offlineFeatures = [
     "Peer learning opportunities",
 ] as const;
 
-// â”€â”€â”€ Shared animation variants (module scope â€” single allocation) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── Shared animation variants (module scope — single allocation) ─────────────
 const fadeUp = { hidden: { opacity: 0, y: 30 }, show: { opacity: 1, y: 0 } };
 const fadeLeft = { hidden: { opacity: 0, x: -30 }, show: { opacity: 1, x: 0 } };
 const fadeRight = { hidden: { opacity: 0, x: 30 }, show: { opacity: 1, x: 0 } };
 const viewport = { once: true, margin: "-50px" } as const;
 const delay = (i: number) => ({ delay: i * 0.1 });
 
-// â”€â”€â”€ Memoized sub-components â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── Memoized sub-components ──────────────────────────────────────────────────
 
 /** Generic icon card used by subjects, benefits, skills */
 const IconCard = memo(({ icon: Icon, heading, body, index }: {
@@ -209,7 +209,7 @@ const BulletCard = memo(({ text, icon: Icon, index }: {
 ));
 BulletCard.displayName = "BulletCard";
 
-/** Section heading â€” reusable pattern */
+/** Section heading — reusable pattern */
 const SectionHeading = memo(({ title, subtitle, center = true }: {
     title: string; subtitle?: string; center?: boolean;
 }) => (
@@ -228,7 +228,7 @@ const SectionHeading = memo(({ title, subtitle, center = true }: {
 ));
 SectionHeading.displayName = "SectionHeading";
 
-// â”€â”€â”€ Page â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── Page ─────────────────────────────────────────────────────────────────────
 export default function DGCAGroundClassesPage(): JSX.Element {
     return (
         <Layout>
@@ -240,7 +240,7 @@ export default function DGCAGroundClassesPage(): JSX.Element {
                 />
             
 
-            {/* â”€â”€ Hero â”€â”€ */}
+            {/* ── Hero ── */}
             <section className="relative py-24 aviation-gradient text-primary-foreground">
                 <div className="container">
                     <motion.div
@@ -253,7 +253,7 @@ export default function DGCAGroundClassesPage(): JSX.Element {
                             Professional Ground Training
                         </span>
                         <h1 className="text-4xl md:text-6xl font-bold mb-6">
-                            DGCA Ground Classes â€“ Complete CPL Ground Training
+                            DGCA Ground Classes – Complete CPL Ground Training
                         </h1>
                         <p className="text-xl text-primary-foreground/80 mb-6">
                             The most important step to become a commercial pilot is to prepare for the DGCA exams. DGCA ground classes offer theoretical knowledge to clear the DGCA written exams and move towards a Commercial Pilot's License.
@@ -295,7 +295,7 @@ export default function DGCAGroundClassesPage(): JSX.Element {
                 heading="What subjects are covered in DGCA ground classes?"
                 answer="DGCA ground classes prepare pilots for the theory examinations required to obtain a Commercial Pilot Licence (CPL) or Airline Transport Pilot Licence (ATPL) in India. For the CPL, the DGCA examination consists of four written papers: Air Navigation, Aviation Meteorology, Air Regulations, and Technical General (with Technical Specific for the aircraft type). Candidates must also clear the RTR(A) radio-telephony examination conducted by the WPC Wing. The DGCA pass mark for each paper is 70%. Each subject can be attempted and cleared separately, and passes are valid for a defined period during which the remaining papers must be completed. Flying Star Aviator's DGCA ground classes in Dwarka, Delhi cover all four CPL subjects with structured lessons, question banks, and mock tests aligned to the current DGCA syllabus."
                 faqs={[
-                    { q: "How many subjects are there in the DGCA CPL exam?", a: "Four written papers â€” Air Navigation, Aviation Meteorology, Air Regulations, and Technical General â€” plus the RTR(A) radio-telephony examination." },
+                    { q: "How many subjects are there in the DGCA CPL exam?", a: "Four written papers — Air Navigation, Aviation Meteorology, Air Regulations, and Technical General — plus the RTR(A) radio-telephony examination." },
                     { q: "What is the passing mark for DGCA exams?", a: "The DGCA pass mark is 70% for each paper; subjects can be cleared individually." },
                 ]}
                 sources={[
@@ -304,7 +304,7 @@ export default function DGCAGroundClassesPage(): JSX.Element {
                 lastUpdated="2026-07-30"
             />
 
-            {/* â”€â”€ Quick Overview Table â”€â”€ */}
+            {/* ── Quick Overview Table ── */}
             <section className="py-20 bg-background">
                 <div className="container">
                     <SectionHeading
@@ -340,7 +340,7 @@ export default function DGCAGroundClassesPage(): JSX.Element {
                 </div>
             </section>
 
-            {/* â”€â”€ What Are DGCA Ground Classes â”€â”€ */}
+            {/* ── What Are DGCA Ground Classes ── */}
             <section className="py-20 bg-muted/30">
                 <div className="container">
                     <motion.div
@@ -373,7 +373,7 @@ export default function DGCAGroundClassesPage(): JSX.Element {
                 </div>
             </section>
 
-            {/* â”€â”€ CPL Subjects â”€â”€ */}
+            {/* ── CPL Subjects ── */}
             <section className="py-20 bg-background">
                 <div className="container">
                     <SectionHeading
@@ -388,7 +388,7 @@ export default function DGCAGroundClassesPage(): JSX.Element {
                 </div>
             </section>
 
-            {/* â”€â”€ Why Ground Training Is Important â”€â”€ */}
+            {/* ── Why Ground Training Is Important ── */}
             <section className="py-20 bg-muted/30">
                 <div className="container">
                     <SectionHeading
@@ -403,7 +403,7 @@ export default function DGCAGroundClassesPage(): JSX.Element {
                 </div>
             </section>
 
-            {/* â”€â”€ Benefits â”€â”€ */}
+            {/* ── Benefits ── */}
             <section className="py-20 bg-background">
                 <div className="container">
                     <SectionHeading
@@ -418,11 +418,11 @@ export default function DGCAGroundClassesPage(): JSX.Element {
                 </div>
             </section>
 
-            {/* â”€â”€ Who Should Join â”€â”€ */}
+            {/* ── Who Should Join ── */}
             <section className="py-20 bg-muted/30">
                 <div className="container">
                     <SectionHeading
-                        title="Ground Classes for DGCA Exams â€“ Who Should Join?"
+                        title="Ground Classes for DGCA Exams – Who Should Join?"
                         subtitle="DGCA ground classes are ideal for various categories of aviation aspirants"
                     />
                     <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-6">
@@ -433,7 +433,7 @@ export default function DGCAGroundClassesPage(): JSX.Element {
                 </div>
             </section>
 
-            {/* â”€â”€ Online vs Offline â”€â”€ */}
+            {/* ── Online vs Offline ── */}
             <section className="py-20 bg-background">
                 <div className="container">
                     <SectionHeading
@@ -520,7 +520,7 @@ export default function DGCAGroundClassesPage(): JSX.Element {
                 </div>
             </section>
 
-            {/* â”€â”€ Fees â”€â”€ */}
+            {/* ── Fees ── */}
             <section className="py-20 bg-muted/30">
                 <div className="container">
                     <SectionHeading
@@ -542,7 +542,7 @@ export default function DGCAGroundClassesPage(): JSX.Element {
                                     <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
                                     <div>
                                         <span className="font-semibold">Full CPL Ground Classes:</span>
-                                        <span className="text-muted-foreground"> â‚¹1.5 â€“ 3.5 Lakhs</span>
+                                        <span className="text-muted-foreground"> ₹1.5 – 3.5 Lakhs</span>
                                     </div>
                                 </li>
                                 <li className="flex items-start gap-3">
@@ -579,11 +579,11 @@ export default function DGCAGroundClassesPage(): JSX.Element {
                 </div>
             </section>
 
-            {/* â”€â”€ How to Choose â”€â”€ */}
+            {/* ── How to Choose ── */}
             <section className="py-20 bg-background">
                 <div className="container">
                     <SectionHeading
-                        title="Best Ground Classes for DGCA Exams â€“ How to Choose"
+                        title="Best Ground Classes for DGCA Exams – How to Choose"
                         subtitle="When selecting the best DGCA ground classes, consider these essential factors"
                     />
                     <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-6">
@@ -594,11 +594,11 @@ export default function DGCAGroundClassesPage(): JSX.Element {
                 </div>
             </section>
 
-            {/* â”€â”€ What You Learn â”€â”€ */}
+            {/* ── What You Learn ── */}
             <section className="py-20 bg-muted/30">
                 <div className="container">
                     <SectionHeading
-                        title="Ground Classes for Pilots â€“ What You Learn"
+                        title="Ground Classes for Pilots – What You Learn"
                         subtitle="Professional ground classes for pilots go beyond exam preparation to develop comprehensive aviation skills"
                     />
                     <div className="max-w-5xl mx-auto">
@@ -623,7 +623,7 @@ export default function DGCAGroundClassesPage(): JSX.Element {
                 </div>
             </section>
 
-            {/* â”€â”€ Preparation Tips â”€â”€ */}
+            {/* ── Preparation Tips ── */}
             <section className="py-20 bg-background">
                 <div className="container">
                     <SectionHeading
@@ -638,7 +638,7 @@ export default function DGCAGroundClassesPage(): JSX.Element {
                 </div>
             </section>
 
-            {/* â”€â”€ Final CTA â”€â”€ */}
+            {/* ── Final CTA ── */}
             <section className="py-20 aviation-gradient text-primary-foreground">
                 <div className="container">
                     <motion.div

@@ -1028,7 +1028,7 @@ export default function PilotTrainingSouthAfricaPage() {
                             Start Your Pilot Journey in South Africa Today
                         </h2>
                         <p className="text-primary-foreground/80 text-lg mb-8">
-                            South Africaâ€™s SACAA-approved training facilities, favorable weather conditions (300+ days a year), and affordable courses are the perfect combination for a thriving flying career. Begin your path to a dream job as a professional pilot with internationally recognized certification and DGCA conversion on offer. Enjoy state-of-the-art training equipment and expert instructors in one of the worldâ€™s premier pilot training locations.
+                            South Africa’s SACAA-approved training facilities, favorable weather conditions (300+ days a year), and affordable courses are the perfect combination for a thriving flying career. Begin your path to a dream job as a professional pilot with internationally recognized certification and DGCA conversion on offer. Enjoy state-of-the-art training equipment and expert instructors in one of the world’s premier pilot training locations.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <Button variant="gold" size="lg" asChild>

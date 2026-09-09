@@ -124,7 +124,7 @@ export default function ATPLCourseDetailsPage() {
                 <meta name="description" content="Complete guide to ATPL course in India. DGCA-approved ground classes covering Air Navigation, Meteorology, Radio Aids, and Flight Planning. Become an airline captain." />
             
 
-            {/* â”€â”€ Hero â”€â”€ */}
+            {/* ── Hero ── */}
             <section className="relative py-16 md:py-24 aviation-gradient text-primary-foreground">
                 <div className="container px-4">
                     <motion.div
@@ -177,7 +177,7 @@ export default function ATPLCourseDetailsPage() {
                 </div>
             </section>
 
-            {/* â”€â”€ Quick Course Overview â”€â”€ */}
+            {/* ── Quick Course Overview ── */}
             <section className="py-12 md:py-20 bg-background">
                 <div className="container px-4">
                     <motion.div
@@ -198,7 +198,7 @@ export default function ATPLCourseDetailsPage() {
                         viewport={{ once: true }}
                         className="max-w-4xl mx-auto"
                     >
-                        {/* Scrollable table wrapper â€” prevents horizontal overflow on mobile */}
+                        {/* Scrollable table wrapper — prevents horizontal overflow on mobile */}
                         <div className="rounded-2xl border border-border overflow-hidden shadow-card">
                             <div className="overflow-x-auto">
                                 <table className="w-full min-w-[480px]">
@@ -223,7 +223,7 @@ export default function ATPLCourseDetailsPage() {
                 </div>
             </section>
 
-            {/* â”€â”€ What is ATPL â”€â”€ */}
+            {/* ── What is ATPL ── */}
             <section className="py-12 md:py-20 bg-muted/30">
                 <div className="container px-4">
                     <motion.div
@@ -269,7 +269,7 @@ export default function ATPLCourseDetailsPage() {
                 </div>
             </section>
 
-            {/* â”€â”€ Why Choose ATPL â”€â”€ */}
+            {/* ── Why Choose ATPL ── */}
             <section className="py-12 md:py-20 bg-background">
                 <div className="container px-4">
                     <motion.div
@@ -305,7 +305,7 @@ export default function ATPLCourseDetailsPage() {
                 </div>
             </section>
 
-            {/* â”€â”€ Program Features â”€â”€ */}
+            {/* ── Program Features ── */}
             <section className="py-12 md:py-20 bg-muted/30">
                 <div className="container px-4">
                     <motion.div
@@ -343,7 +343,7 @@ export default function ATPLCourseDetailsPage() {
                 </div>
             </section>
 
-            {/* â”€â”€ Pre-Entry Requirements â”€â”€ */}
+            {/* ── Pre-Entry Requirements ── */}
             <section className="py-12 md:py-20 bg-background">
                 <div className="container px-4">
                     <motion.div
@@ -398,7 +398,7 @@ export default function ATPLCourseDetailsPage() {
                 </div>
             </section>
 
-            {/* â”€â”€ Syllabus â”€â”€ */}
+            {/* ── Syllabus ── */}
             <section className="py-12 md:py-20 bg-muted/30">
                 <div className="container px-4">
                     <motion.div
@@ -453,7 +453,7 @@ export default function ATPLCourseDetailsPage() {
                                     <ul className="space-y-1.5 md:space-y-2">
                                         {module.topics.map((topic, i) => (
                                             <li key={i} className="flex items-start gap-2 text-xs md:text-sm text-muted-foreground">
-                                                <span className="text-primary mt-1 flex-shrink-0">â€¢</span>
+                                                <span className="text-primary mt-1 flex-shrink-0">•</span>
                                                 <span>{topic}</span>
                                             </li>
                                         ))}
@@ -465,7 +465,7 @@ export default function ATPLCourseDetailsPage() {
                 </div>
             </section>
 
-            {/* â”€â”€ Admission Process â”€â”€ */}
+            {/* ── Admission Process ── */}
             <section className="py-12 md:py-20 bg-background">
                 <div className="container px-4">
                     <motion.div
@@ -494,7 +494,7 @@ export default function ATPLCourseDetailsPage() {
                                     /* Extra top padding so the badge doesn't get clipped */
                                     className="relative pt-6 px-5 pb-5 md:p-6 md:pt-6 rounded-xl bg-card border border-border hover:border-primary/50 transition-colors"
                                 >
-                                    {/* Badge â€” inset so it's never cut off */}
+                                    {/* Badge — inset so it's never cut off */}
                                     <div className="absolute top-0 left-4 -translate-y-1/2 w-9 h-9 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold text-sm shadow-lg">
                                         {item.step}
                                     </div>
@@ -507,7 +507,7 @@ export default function ATPLCourseDetailsPage() {
                 </div>
             </section>
 
-            {/* â”€â”€ DGCA Exam Papers â”€â”€ */}
+            {/* ── DGCA Exam Papers ── */}
             <section className="py-12 md:py-20 bg-muted/30">
                 <div className="container px-4">
                     <motion.div
@@ -555,7 +555,7 @@ export default function ATPLCourseDetailsPage() {
                 </div>
             </section>
 
-            {/* â”€â”€ Career Opportunities â”€â”€ */}
+            {/* ── Career Opportunities ── */}
             <section className="py-12 md:py-20 bg-background">
                 <div className="container px-4">
                     <motion.div
@@ -608,7 +608,7 @@ export default function ATPLCourseDetailsPage() {
                 </div>
             </section>
 
-            {/* â”€â”€ Why Choose Golden Epaulettes â”€â”€ */}
+            {/* ── Why Choose Golden Epaulettes ── */}
             <section className="py-12 md:py-20 bg-muted/30">
                 <div className="container px-4">
                     <motion.div
@@ -645,7 +645,7 @@ export default function ATPLCourseDetailsPage() {
                 </div>
             </section>
 
-            {/* â”€â”€ Learning Resources â”€â”€ */}
+            {/* ── Learning Resources ── */}
             <section className="py-12 md:py-20 bg-background">
                 <div className="container px-4">
                     <motion.div
@@ -707,7 +707,7 @@ export default function ATPLCourseDetailsPage() {
                 </div>
             </section>
 
-            {/* â”€â”€ Final CTA â”€â”€ */}
+            {/* ── Final CTA ── */}
             <section className="py-16 md:py-20 aviation-gradient text-primary-foreground">
                 <div className="container px-4">
                     <motion.div
@@ -748,10 +748,10 @@ export default function ATPLCourseDetailsPage() {
                             <p className="text-primary-foreground/70 text-xs md:text-sm mb-3 md:mb-4">Contact Us</p>
                             <div className="flex flex-col sm:flex-row gap-3 md:gap-6 justify-center text-sm">
                                 <a href="tel:+917428897782" className="hover:text-white transition-colors">
-                                    ðŸ“ž +91-7428897782
+                                    📞 +91-7428897782
                                 </a>
                                 <a href="https://wa.me/917428897780" className="hover:text-white transition-colors">
-                                    ðŸ’¬ WhatsApp: +91-7428897780
+                                    💬 WhatsApp: +91-7428897780
                                 </a>
                             </div>
                         </div>

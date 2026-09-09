@@ -167,7 +167,7 @@ const faqs = [
     {
         question: "What is the Airline Preparation Course?",
         answer:
-            "The Airline Preparation Course is a comprehensive programme designed to equip aspiring pilots with the knowledge, skills, and confidence required to excel in commercial aviation. It covers airline operations, crew resource management, flight planning, simulator training, industry insights, and interview preparation â€” giving graduates a competitive edge in airline recruitment.",
+            "The Airline Preparation Course is a comprehensive programme designed to equip aspiring pilots with the knowledge, skills, and confidence required to excel in commercial aviation. It covers airline operations, crew resource management, flight planning, simulator training, industry insights, and interview preparation — giving graduates a competitive edge in airline recruitment.",
     },
     {
         question: "Who is this course designed for?",
@@ -177,7 +177,7 @@ const faqs = [
     {
         question: "What is Crew Resource Management (CRM) and why is it important?",
         answer:
-            "Crew Resource Management (CRM) training develops essential teamwork and communication skills critical to airline operations. It focuses on effective cockpit communication, collaborative decision-making, situational awareness, and threat and error management â€” all of which are essential competencies assessed during airline selection and throughout a pilot's career.",
+            "Crew Resource Management (CRM) training develops essential teamwork and communication skills critical to airline operations. It focuses on effective cockpit communication, collaborative decision-making, situational awareness, and threat and error management — all of which are essential competencies assessed during airline selection and throughout a pilot's career.",
     },
     {
         question: "Does the course include simulator training?",
@@ -202,7 +202,7 @@ export default function AirlinePreparationPage() {
                 />
             
 
-            {/* â”€â”€ Hero Section â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+            {/* ── Hero Section ─────────────────────────────────────────── */}
             <section className="relative py-24 aviation-gradient text-primary-foreground">
                 <div className="container">
                     <motion.div
@@ -211,10 +211,10 @@ export default function AirlinePreparationPage() {
                         className="max-w-3xl"
                     >
                         <span className="inline-block text-sm font-semibold bg-white/20 px-4 py-2 rounded-full mb-4">
-                            Airline Preparation Course â€” Bridge the Gap Between Training & Your First Airline Job
+                            Airline Preparation Course — Bridge the Gap Between Training & Your First Airline Job
                         </span>
                         <h1 className="text-4xl md:text-6xl font-bold mb-6">
-                            Airline Preparation Course â€” Launch Your Commercial Aviation Career
+                            Airline Preparation Course — Launch Your Commercial Aviation Career
                         </h1>
                         <p className="text-xl text-primary-foreground/80 mb-8">
                             Kickstart your commercial aviation career with our highly effective Airline Preparation Course. Our course has been carefully designed to provide aspiring pilots with the required knowledge, skills, and confidence to succeed in the ever-evolving world of commercial aviation.
@@ -244,7 +244,7 @@ export default function AirlinePreparationPage() {
                 </div>
             </section>
 
-            {/* â”€â”€ About the Course â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+            {/* ── About the Course ─────────────────────────────────────── */}
             <section className="py-20 bg-background">
                 <div className="container">
                     <motion.div
@@ -302,7 +302,7 @@ export default function AirlinePreparationPage() {
                 </div>
             </section>
 
-            {/* â”€â”€ Course Highlights â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+            {/* ── Course Highlights ─────────────────────────────────────── */}
             <section className="py-20 bg-muted/30">
                 <div className="container">
                     <motion.div
@@ -316,7 +316,7 @@ export default function AirlinePreparationPage() {
                         </h2>
                         <p className="text-muted-foreground max-w-2xl mx-auto">
                             Designed in consultation with airline industry professionals, our course covers every
-                            competency airlines assess â€” from technical knowledge to interpersonal readiness.
+                            competency airlines assess — from technical knowledge to interpersonal readiness.
                         </p>
                     </motion.div>
 
@@ -338,7 +338,7 @@ export default function AirlinePreparationPage() {
                 </div>
             </section>
 
-            {/* â”€â”€ Course Modules â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+            {/* ── Course Modules ────────────────────────────────────────── */}
             <section className="py-20 bg-background">
                 <div className="container">
                     <motion.div
@@ -351,7 +351,7 @@ export default function AirlinePreparationPage() {
                             What the Course Covers
                         </h2>
                         <p className="text-muted-foreground max-w-2xl mx-auto">
-                            A wide range of topics delivered through theory, simulation, and practical sessions â€” providing
+                            A wide range of topics delivered through theory, simulation, and practical sessions — providing
                             a holistic approach to airline readiness.
                         </p>
                     </motion.div>
@@ -377,7 +377,7 @@ export default function AirlinePreparationPage() {
                 </div>
             </section>
 
-            {/* â”€â”€ CRM Training â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+            {/* ── CRM Training ─────────────────────────────────────────── */}
             <section className="py-20 bg-muted/30">
                 <div className="container">
                     <motion.div
@@ -418,7 +418,7 @@ export default function AirlinePreparationPage() {
                                 ))}
                             </ul>
                             <p className="text-sm text-muted-foreground mt-6">
-                                CRM skills are assessed at every stage of an airline career â€” from initial selection to
+                                CRM skills are assessed at every stage of an airline career — from initial selection to
                                 recurrent training and command upgrade.
                             </p>
                         </motion.div>
@@ -463,7 +463,7 @@ export default function AirlinePreparationPage() {
                 </div>
             </section>
 
-            {/* â”€â”€ Training Journey â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+            {/* ── Training Journey ─────────────────────────────────────── */}
             <section className="py-20 bg-background">
                 <div className="container">
                     <motion.div
@@ -499,7 +499,7 @@ export default function AirlinePreparationPage() {
                 </div>
             </section>
 
-            {/* â”€â”€ Industry Insights â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+            {/* ── Industry Insights ─────────────────────────────────────── */}
             <section className="py-20 bg-muted/30">
                 <div className="container">
                     <motion.div
@@ -539,7 +539,7 @@ export default function AirlinePreparationPage() {
                 </div>
             </section>
 
-            {/* â”€â”€ Career Outcomes â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+            {/* ── Career Outcomes ───────────────────────────────────────── */}
             <section className="py-20 bg-background">
                 <div className="container">
                     <motion.div
@@ -577,7 +577,7 @@ export default function AirlinePreparationPage() {
                 </div>
             </section>
 
-            {/* â”€â”€ Course Overview Table â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+            {/* ── Course Overview Table ─────────────────────────────────── */}
             <section className="py-20 bg-muted/30">
                 <div className="container">
                     <motion.div
@@ -617,7 +617,7 @@ export default function AirlinePreparationPage() {
                 </div>
             </section>
 
-            {/* â”€â”€ Why Right Preparation Matters â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+            {/* ── Why Right Preparation Matters ────────────────────────── */}
             <section className="py-20 bg-background">
                 <div className="container">
                     <motion.div
@@ -639,7 +639,7 @@ export default function AirlinePreparationPage() {
                 </div>
             </section>
 
-            {/* â”€â”€ FAQ â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+            {/* ── FAQ ───────────────────────────────────────────────────── */}
             <section className="py-20 bg-muted/30">
                 <div className="container">
                     <motion.div
@@ -680,7 +680,7 @@ export default function AirlinePreparationPage() {
                 </div>
             </section>
 
-            {/* â”€â”€ Final CTA â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+            {/* ── Final CTA ─────────────────────────────────────────────── */}
             <section className="py-20 aviation-gradient text-primary-foreground">
                 <div className="container">
                     <motion.div

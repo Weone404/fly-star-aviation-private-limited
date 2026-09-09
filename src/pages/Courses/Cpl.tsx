@@ -26,7 +26,7 @@ import {
     AccordionTrigger,
 } from "@/components/ui/accordion";
 
-// â”€â”€â”€ Image Slider Data â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── Image Slider Data ────────────────────────────────────────────────────────
 const heroSlides = [
     {
         image: "/cpl-slider/slider1.webp",
@@ -50,7 +50,7 @@ const heroSlides = [
     },
 ];
 
-// â”€â”€â”€ Hero Image Slider Component â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── Hero Image Slider Component ──────────────────────────────────────────────
 function HeroImageSlider() {
     const [current, setCurrent] = useState(0);
     const [fading, setFading] = useState(false);
@@ -172,7 +172,7 @@ function HeroImageSlider() {
     );
 }
 
-// â”€â”€â”€ Page Data â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── Page Data ────────────────────────────────────────────────────────────────
 const cplServices = [
     {
         icon: Plane,
@@ -185,7 +185,7 @@ const cplServices = [
         icon: BookOpen,
         title: "Ground Classes",
         description:
-            "Comprehensive ground training covering all DGCA exam subjects â€” Air Navigation, Meteorology, Air Regulations, Technical General & Specific.",
+            "Comprehensive ground training covering all DGCA exam subjects — Air Navigation, Meteorology, Air Regulations, Technical General & Specific.",
         href: "/dgca/ground-classes",
     },
     {
@@ -269,9 +269,9 @@ const careerOptions = [
 ];
 
 const salaryGrowth = [
-    { stage: "Fresh CPL holder", level: "â‚¹1.5Lakh to â‚¹2.5Lakh", icon: DollarSign },
-    { stage: "Mid-level pilot", level: "â‚¹3.5Lakh to â‚¹8.5Lakh", icon: TrendingUp },
-    { stage: "Captain", level: "â‚¹8Lakh to âˆž", icon: TrendingUp },
+    { stage: "Fresh CPL holder", level: "₹1.5Lakh to ₹2.5Lakh", icon: DollarSign },
+    { stage: "Mid-level pilot", level: "₹3.5Lakh to ₹8.5Lakh", icon: TrendingUp },
+    { stage: "Captain", level: "₹8Lakh to ∞", icon: TrendingUp },
 ];
 
 const faqs = [
@@ -326,7 +326,7 @@ const admissionSteps = [
     "Start ground classes and flying training",
 ];
 
-// â”€â”€â”€ Page Component â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── Page Component ───────────────────────────────────────────────────────────
 export default function CPLCoursePage() {
     return (
         <Layout>
@@ -338,7 +338,7 @@ export default function CPLCoursePage() {
                 />
             
 
-            {/* â”€â”€ Hero Section â”€â”€ */}
+            {/* ── Hero Section ── */}
             <section className="relative py-24 aviation-gradient text-primary-foreground overflow-hidden">
                 <div className="container !pr-0">
                     {/* Two-column layout: content left, slider right */}
@@ -401,23 +401,23 @@ export default function CPLCoursePage() {
                 ]}
                 sources={[
                     { label: "DGCA (Directorate General of Civil Aviation)", url: "https://www.dgca.gov.in" },
-                    { label: "ICAO Annex 1 â€” Personnel Licensing", url: "https://www.icao.int" },
+                    { label: "ICAO Annex 1 — Personnel Licensing", url: "https://www.icao.int" },
                 ]}
                 lastUpdated="2026-07-30"
             />
 
             <CitableTable
                 heading="CPL cost in India (2026): typical fee breakdown"
-                intro="The total cost of a Commercial Pilot Licence (CPL) in India is driven mainly by flying hours, since the 200 hours of flight time are charged per hour. Ground classes, examinations and licensing are a smaller share. The table below shows indicative 2026 ranges â€” actual figures vary by flying school, aircraft type, location and fuel prices."
-                columns={["Component", "Indicative cost (â‚¹)", "Notes"]}
+                intro="The total cost of a Commercial Pilot Licence (CPL) in India is driven mainly by flying hours, since the 200 hours of flight time are charged per hour. Ground classes, examinations and licensing are a smaller share. The table below shows indicative 2026 ranges — actual figures vary by flying school, aircraft type, location and fuel prices."
+                columns={["Component", "Indicative cost (₹)", "Notes"]}
                 rows={[
-                    ["DGCA CPL ground classes", "â‚¹1,00,000 â€“ â‚¹2,50,000", "Air Navigation, Meteorology, Air Regulations, Technical General"],
-                    ["Flying training (200 hrs)", "â‚¹28,00,000 â€“ â‚¹45,00,000", "Largest cost; per-hour rate depends on the flying school & aircraft"],
-                    ["DGCA exams & licence fees", "â‚¹25,000 â€“ â‚¹75,000", "Exam attempts, computer number, licence issue"],
-                    ["Class 1 medical", "â‚¹8,000 â€“ â‚¹15,000", "At a DGCA-empanelled medical centre"],
-                    ["RTR(A) licence", "â‚¹15,000 â€“ â‚¹40,000", "Radio-telephony training + WPC exam"],
-                    ["Type rating (optional)", "â‚¹15,00,000 â€“ â‚¹35,00,000", "Usually after CPL, for a specific airliner (e.g. A320/B737)"],
-                    ["Total CPL (typical)", "â‚¹35,00,000 â€“ â‚¹50,00,000", "Excluding type rating; higher if trained abroad"],
+                    ["DGCA CPL ground classes", "₹1,00,000 – ₹2,50,000", "Air Navigation, Meteorology, Air Regulations, Technical General"],
+                    ["Flying training (200 hrs)", "₹28,00,000 – ₹45,00,000", "Largest cost; per-hour rate depends on the flying school & aircraft"],
+                    ["DGCA exams & licence fees", "₹25,000 – ₹75,000", "Exam attempts, computer number, licence issue"],
+                    ["Class 1 medical", "₹8,000 – ₹15,000", "At a DGCA-empanelled medical centre"],
+                    ["RTR(A) licence", "₹15,000 – ₹40,000", "Radio-telephony training + WPC exam"],
+                    ["Type rating (optional)", "₹15,00,000 – ₹35,00,000", "Usually after CPL, for a specific airliner (e.g. A320/B737)"],
+                    ["Total CPL (typical)", "₹35,00,000 – ₹50,00,000", "Excluding type rating; higher if trained abroad"],
                 ]}
                 note="Figures are indicative industry ranges for 2026 and are not a quotation. Contact Flying Star Aviator for current ground-class fees and school-specific flying costs."
                 sources={[
@@ -426,7 +426,7 @@ export default function CPLCoursePage() {
                 lastUpdated="2026-07-30"
             />
 
-            {/* â”€â”€ What is CPL â”€â”€ */}
+            {/* ── What is CPL ── */}
             <section className="py-20 bg-background">
                 <div className="container">
                     <motion.div
@@ -485,7 +485,7 @@ export default function CPLCoursePage() {
                 </div>
             </section>
 
-            {/* â”€â”€ Benefits â”€â”€ */}
+            {/* ── Benefits ── */}
             <section className="py-20 bg-muted/30">
                 <div className="container">
                     <motion.div
@@ -529,7 +529,7 @@ export default function CPLCoursePage() {
                 </div>
             </section>
 
-            {/* â”€â”€ Training Structure â”€â”€ */}
+            {/* ── Training Structure ── */}
             <section className="py-20 bg-background">
                 <div className="container">
                     <motion.div
@@ -615,7 +615,7 @@ export default function CPLCoursePage() {
                 </div>
             </section>
 
-            {/* â”€â”€ Admission Process â”€â”€ */}
+            {/* ── Admission Process ── */}
             <section className="py-20 bg-muted/30">
                 <div className="container">
                     <motion.div
@@ -661,7 +661,7 @@ export default function CPLCoursePage() {
                 </div>
             </section>
 
-            {/* â”€â”€ CPL Fees â”€â”€ */}
+            {/* ── CPL Fees ── */}
             <section className="py-20 bg-background">
                 <div className="container">
                     <motion.div
@@ -714,7 +714,7 @@ export default function CPLCoursePage() {
                 </div>
             </section>
 
-            {/* â”€â”€ Training Journey Steps â”€â”€ */}
+            {/* ── Training Journey Steps ── */}
             <section className="py-20 bg-muted/30">
                 <div className="container">
                     <motion.div
@@ -750,7 +750,7 @@ export default function CPLCoursePage() {
                 </div>
             </section>
 
-            {/* â”€â”€ Career Opportunities â”€â”€ */}
+            {/* ── Career Opportunities ── */}
             <section className="py-20 bg-background">
                 <div className="container">
                     <motion.div
@@ -823,7 +823,7 @@ export default function CPLCoursePage() {
                 </div>
             </section>
 
-            {/* â”€â”€ Course Overview Table â”€â”€ */}
+            {/* ── Course Overview Table ── */}
             <section className="py-20 bg-muted/30">
                 <div className="container">
                     <motion.div
@@ -863,7 +863,7 @@ export default function CPLCoursePage() {
                 </div>
             </section>
 
-            {/* â”€â”€ Why Choose â”€â”€ */}
+            {/* ── Why Choose ── */}
             <section className="py-20 bg-background">
                 <div className="container">
                     <motion.div
@@ -885,7 +885,7 @@ export default function CPLCoursePage() {
                 </div>
             </section>
 
-            {/* â”€â”€ FAQ â”€â”€ */}
+            {/* ── FAQ ── */}
             <section className="py-20 bg-muted/30">
                 <div className="container">
                     <motion.div
@@ -926,7 +926,7 @@ export default function CPLCoursePage() {
                 </div>
             </section>
 
-            {/* â”€â”€ Final CTA â”€â”€ */}
+            {/* ── Final CTA ── */}
             <section className="py-20 aviation-gradient text-primary-foreground">
                 <div className="container">
                     <motion.div
@@ -939,7 +939,7 @@ export default function CPLCoursePage() {
                             Build Your Aviation Career Today
                         </h2>
                         <p className="text-primary-foreground/80 text-lg mb-4">
-                            A commercial pilot license is more than just a certification â€” it is the beginning of an exciting
+                            A commercial pilot license is more than just a certification — it is the beginning of an exciting
                             and rewarding profession. From structured commercial pilot training and DGCA-approved syllabus to
                             real flight experience, the cpl course prepares students for a successful future.
                         </p>

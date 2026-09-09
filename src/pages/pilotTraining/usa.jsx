@@ -221,7 +221,7 @@ const stepByStepGuide = [
     {
         step: 8,
         title: "Flight Training (At Flight School In USA)",
-        description: "Move to practical flying lessons â€” starting with SPL â†’ PPL â†’ IR â†’ CPL â†’ MEIR. Training is structured under FAA requirements for each stage.",
+        description: "Move to practical flying lessons — starting with SPL → PPL → IR → CPL → MEIR. Training is structured under FAA requirements for each stage.",
     },
     {
         step: 9,

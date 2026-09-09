@@ -96,7 +96,7 @@ const applicationSteps = [
   {
     step: 5,
     title: "DGCA Verification",
-    description: "Approval takes around 2â€“4 weeks. DGCA will verify all submitted documents.",
+    description: "Approval takes around 2–4 weeks. DGCA will verify all submitted documents.",
     icon: Clock,
   },
   {
@@ -200,7 +200,7 @@ export default function DGCAComputerNumberPage() {
               Essential Guide for Aspiring Pilots
             </span>
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              DGCA Computer Number â€“ Full Guide for Pilot Aspirants
+              DGCA Computer Number – Full Guide for Pilot Aspirants
             </h1>
             <p className="text-xl text-primary-foreground/80 mb-8">
               Are you planning a career as a pilot in India? Well, the first step you need to take is getting a Computer Number from the DGCA (Directorate General of Civil Aviation), which is a must if you want to start your flying career.

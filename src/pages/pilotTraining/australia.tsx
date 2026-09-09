@@ -214,7 +214,7 @@ const stepByStepGuide = [
     {
         step: 8,
         title: "Flight Training (At FTO in Australia)",
-        description: "Progress through structured flight stages â€” RPL â†’ PPL â†’ CPL â†’ MEIR â€” completing 221 flight hours including solo, cross-country, night, and instrument flying.",
+        description: "Progress through structured flight stages — RPL → PPL → CPL → MEIR — completing 221 flight hours including solo, cross-country, night, and instrument flying.",
     },
     {
         step: 9,
@@ -308,7 +308,7 @@ const faqs = [
     },
     {
         question: "What is the Diploma in Aviation?",
-        answer: "The Diploma of Aviation (CPL â€“ Aeroplane) integrates theory and flight training under CASA standards, combining academic qualification with professional flight training, enhancing your credentials and career prospects.",
+        answer: "The Diploma of Aviation (CPL – Aeroplane) integrates theory and flight training under CASA standards, combining academic qualification with professional flight training, enhancing your credentials and career prospects.",
     },
     {
         question: "Can I convert my CASA licence to DGCA?",
