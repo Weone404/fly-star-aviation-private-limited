@@ -694,7 +694,7 @@ export default function IndiGoPilotInterviewPage() {
                             This programme is run by Flying Star Aviator Private Limited
                             together with We One Aviation. Flying Star Aviator:{" "}
                             <a href="tel:+919953536199" className="underline">+91 9953536199</a>,{" "}
-                            <a href="mailto:flyingstaraviator@gmail.com" className="underline">flyingstaraviator@gmail.com</a>,
+                            <a href="mailto:info@flyingstaraviator.com" className="underline">info@flyingstaraviator.com</a>,
                             C705, Sector 7, Palam Extension, Dwarka, New Delhi 110077.
                             We One Aviation:{" "}
                             <a href="tel:+919555291956" className="underline">+91 9555291956</a>,{" "}

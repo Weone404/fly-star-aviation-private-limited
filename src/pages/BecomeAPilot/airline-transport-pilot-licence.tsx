@@ -744,8 +744,8 @@ export default function ATPLCourseDetailsPage() {
                         <div className="mt-10 md:mt-12 pt-8 md:pt-12 border-t border-white/20">
                             <p className="text-primary-foreground/70 text-xs md:text-sm mb-3 md:mb-4">Contact Us</p>
                             <div className="flex flex-col sm:flex-row gap-3 md:gap-6 justify-center text-sm">
-                                <a href="tel:+917428897782" className="hover:text-white transition-colors">
-                                    📞 +91-7428897782
+                                <a href="tel:+919953536199" className="hover:text-white transition-colors">
+                                    📞 +91 9953536199
                                 </a>
                                 <a href="https://wa.me/917428897780" className="hover:text-white transition-colors">
                                     💬 WhatsApp: +91-7428897780

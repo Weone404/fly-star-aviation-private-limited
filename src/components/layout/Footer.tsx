@@ -196,9 +196,9 @@ export function Footer() {
                 <Phone className="h-5 w-5 text-accent" />
                 +91 99535 36199 , 9953566619
               </a>
-              <a href="mailto:flyingstaraviator@gmail.com" className="flex items-center gap-3 text-white/70 hover:text-accent transition-colors">
+              <a href="mailto:info@flyingstaraviator.com" className="flex items-center gap-3 text-white/70 hover:text-accent transition-colors">
                 <Mail className="h-5 w-5 text-accent" />
-                flyingstaraviator@gmail.com
+                info@flyingstaraviator.com
               </a>
               <div className="flex items-start gap-3 text-white/70">
                 <MapPin className="h-5 w-5 text-accent flex-shrink-0 mt-0.5" />

@@ -132,8 +132,8 @@ export default function EditorialPolicy() {
             </p>
             <p>
               <strong>Contact:</strong>{" "}
-              <a href="mailto:flyingstaraviator@gmail.com">
-                flyingstaraviator@gmail.com
+              <a href="mailto:info@flyingstaraviator.com">
+                info@flyingstaraviator.com
               </a>{" "}
               · <a href="tel:+919953536199">+91 99535 36199</a>
             </p>

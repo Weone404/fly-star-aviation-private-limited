@@ -538,8 +538,8 @@ export default function AirIndiaPilotInterviewPage() {
                             {
                                 icon: Mail,
                                 label: "Flying Star Aviator \u2014 email",
-                                value: "flyingstaraviator@gmail.com",
-                                href: "mailto:flyingstaraviator@gmail.com",
+                                value: "info@flyingstaraviator.com",
+                                href: "mailto:info@flyingstaraviator.com",
                             },
                             {
                                 icon: Globe,

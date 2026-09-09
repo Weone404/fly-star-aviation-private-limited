@@ -356,7 +356,7 @@ export default function AdminLogin() {
             <style dangerouslySetInnerHTML={{ __html: globalStyles }} />
 
             
-                <title>Admin Login — Fly Star Aviation</title>
+                <title>Admin Login — Flying Star Aviator</title>
                 <meta name="robots" content="noindex, nofollow" />
             
 
@@ -471,7 +471,7 @@ export default function AdminLogin() {
                         </form>
 
                         <div className="al-footer">
-                            🔒 Restricted access · Fly Star Aviation Admin Panel
+                            🔒 Restricted access · Flying Star Aviator Admin Panel
                         </div>
                     </div>
                 </div>

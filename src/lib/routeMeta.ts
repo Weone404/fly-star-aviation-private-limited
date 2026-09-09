@@ -351,8 +351,8 @@ const routeMeta: Record<string, RouteMeta> = {
     twitterImage: "/assets/hero-aircraft-1600w.jpg",
   },
   "/admin/login": {
-    title: "Admin Login — Fly Star Aviation",
-    description: "Sign in to the Fly Star Aviation admin console.",
+    title: "Admin Login — Flying Star Aviator",
+    description: "Sign in to the Flying Star Aviator admin console.",
     canonical: `${BASE_URL}/admin/login`,
   },
   "/courses/cabin-crew": {
@@ -386,7 +386,7 @@ const routeMeta: Record<string, RouteMeta> = {
     canonical: `${BASE_URL}/editorial-policy`,
   },
   "/admin/blog": {
-    title: "Blog Manager — Fly Star Aviation Admin",
+    title: "Blog Manager — Flying Star Aviator Admin",
     description: "Admin console for managing blogs.",
     canonical: `${BASE_URL}/admin/blog`,
   },
@@ -427,11 +427,11 @@ function getBlogMeta(pathname: string): RouteMeta | null {
   const canonicalPath = blog.slug ? `/blog/${blog.slug}` : normalized;
 
   return {
-    title: blog.seoTitle || `${blog.title} | Fly Star Aviation Blog`,
-    description: blog.metaDescription || blog.excerpt || "Expert pilot training guidance, DGCA updates, and aviation career advice from Fly Star Aviation.",
+    title: blog.seoTitle || `${blog.title} | Flying Star Aviator Blog`,
+    description: blog.metaDescription || blog.excerpt || "Expert pilot training guidance, DGCA updates, and aviation career advice from Flying Star Aviator.",
     canonical: `${BASE_URL}${canonicalPath}`,
     ogTitle: blog.seoTitle || blog.title,
-    ogDescription: blog.metaDescription || blog.excerpt || "Expert pilot training guidance, DGCA updates, and aviation career advice from Fly Star Aviation.",
+    ogDescription: blog.metaDescription || blog.excerpt || "Expert pilot training guidance, DGCA updates, and aviation career advice from Flying Star Aviator.",
     ogUrl: `${BASE_URL}${normalized}`,
     ogImage: blog.coverImage || "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1200&q=80",
     twitterImage: blog.coverImage || "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1200&q=80",
