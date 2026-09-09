@@ -149,7 +149,7 @@ export default function ATPLCourseDetailsPage() {
 
                         <div className="flex flex-col sm:flex-row gap-3">
                             <Button variant="gold" size="lg" asChild>
-                                <Link to="/apply">
+                                <Link to="/contact">
                                     Enroll Now
                                     <ArrowRight className="h-4 w-4 ml-2" />
                                 </Link>
@@ -731,13 +731,10 @@ export default function ATPLCourseDetailsPage() {
                         {/* Stacked on mobile, row on sm+ */}
                         <div className="flex flex-col sm:flex-row flex-wrap gap-3 justify-center">
                             <Button variant="gold" size="lg" asChild>
-                                <Link to="/apply">
+                                <Link to="/contact">
                                     Enroll in ATPL Program
                                     <ArrowRight className="h-4 w-4 ml-2" />
                                 </Link>
-                            </Button>
-                            <Button variant="outline-white" size="lg" asChild>
-                                <Link to="/atpl/brochure">Download Brochure</Link>
                             </Button>
                             <Button variant="outline-white" size="lg" asChild>
                                 <Link to="/contact">Book Counselling</Link>

@@ -217,7 +217,7 @@ export default function DGCAComputerNumberPage() {
                 </a>
               </Button>
               <Button variant="outline-white" size="lg" asChild>
-                <Link to="/cpl">Learn About CPL Course</Link>
+                <Link to="/courses/cpl">Learn About CPL Course</Link>
               </Button>
             </div>
           </motion.div>

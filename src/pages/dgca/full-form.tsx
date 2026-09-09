@@ -312,7 +312,7 @@ export default function DGCAPage() {
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4">
                             <Button variant="gold" size="lg" asChild>
-                                <Link to="/apply">
+                                <Link to="/contact">
                                     Start Pilot Training
                                     <ArrowRight className="h-4 w-4 ml-2" />
                                 </Link>
@@ -603,7 +603,7 @@ export default function DGCAPage() {
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <Button variant="gold" size="lg" asChild>
-                                <Link to="/Contact">
+                                <Link to="/contact">
                                     Apply for Training
                                     <ArrowRight className="h-4 w-4 ml-2" />
                                 </Link>

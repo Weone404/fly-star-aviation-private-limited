@@ -212,7 +212,7 @@ export default function CPLCourseDetailsPage() {
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4">
                             <Button variant="gold" size="lg" asChild>
-                                <Link to="/apply">
+                                <Link to="/contact">
                                     Apply Now
                                     <ArrowRight className="h-4 w-4 ml-2" />
                                 </Link>
@@ -557,7 +557,7 @@ export default function CPLCourseDetailsPage() {
                                     in a high-value career.
                                 </p>
                                 <Button variant="gold" size="lg" asChild className="w-full">
-                                    <Link to="/cpl/fees">
+                                    <Link to="/courses/cpl">
                                         Get Detailed Fee Breakdown
                                         <ArrowRight className="h-4 w-4 ml-2" />
                                     </Link>
@@ -781,13 +781,13 @@ export default function CPLCourseDetailsPage() {
                         </div>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <Button variant="gold" size="lg" asChild>
-                                <Link to="/apply">
+                                <Link to="/contact">
                                     Apply Now
                                     <ArrowRight className="h-4 w-4 ml-2" />
                                 </Link>
                             </Button>
                             <Button variant="outline-white" size="lg" asChild>
-                                <Link to="/cpl/fees">Get CPL Course Fees</Link>
+                                <Link to="/courses/cpl">Get CPL Course Fees</Link>
                             </Button>
                             <Button variant="outline-white" size="lg" asChild>
                                 <Link to="/contact">Talk to Counselor</Link>

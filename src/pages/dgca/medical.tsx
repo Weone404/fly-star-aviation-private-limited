@@ -290,7 +290,7 @@ export default function DGCAMedicalGuidePage(): JSX.Element {
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4">
                             <Button variant="gold" size="lg" asChild>
-                                <Link to="/apply">
+                                <Link to="/contact">
                                     Start Your Medical Process
                                     <ArrowRight className="h-4 w-4 ml-2" />
                                 </Link>
@@ -533,7 +533,7 @@ export default function DGCAMedicalGuidePage(): JSX.Element {
                         </div>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <Button variant="gold" size="lg" asChild>
-                                <Link to="/apply">
+                                <Link to="/contact">
                                     Start Your Pilot Journey
                                     <ArrowRight className="h-4 w-4 ml-2" />
                                 </Link>
