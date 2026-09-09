@@ -419,10 +419,22 @@ export default function CPLCoursePage() {
                     ["Type rating (optional)", "₹15,00,000 – ₹35,00,000", "Usually after CPL, for a specific airliner (e.g. A320/B737)"],
                     ["Total CPL (typical)", "₹35,00,000 – ₹50,00,000", "Excluding type rating; higher if trained abroad"],
                 ]}
-                note="Figures are indicative industry ranges for 2026 and are not a quotation. Contact Flying Star Aviator for current ground-class fees and school-specific flying costs."
-                sources={[
-                    { label: "DGCA (Directorate General of Civil Aviation)", url: "https://www.dgca.gov.in" },
-                ]}
+                note={
+                    <>
+                        These are indicative market ranges compiled from fee schedules published by Indian
+                        flying schools and ground-training institutes. They are estimates, not a quotation, and
+                        no regulator publishes them. The one figure DGCA does publish is the examination fee of
+                        Rs 2,500 per paper, non-refundable &mdash; see{" "}
+                        <a href="/blog/dgca-exam-fees" className="underline hover:text-primary">
+                            what a DGCA paper actually costs
+                        </a>
+                        . For current Flying Star Aviator ground-class fees and school-specific flying rates,
+                        ask us directly.
+                    </>
+                }
+                /* No sources line: the ranges below are market estimates, and citing a
+                   regulator homepage for a number it does not publish is worse than
+                   citing nothing. */
                 lastUpdated="2026-07-30"
             />
 

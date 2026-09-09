@@ -87,10 +87,11 @@ export default function SpecialOfferBanner() {
           </div>
 
           <div className="flex items-baseline justify-between gap-3 px-4 py-3 lg:block lg:text-center">
-            <span className="block text-3xl font-black leading-none text-amber-400 lg:text-4xl">$35,000</span>
+            <span className="block text-3xl font-black leading-none text-amber-400 lg:text-4xl">
+              ₹29–32 Lakhs
+            </span>
             <span className="block text-[11px] leading-snug text-white/60 lg:mt-2">
-              Approx. ₹29–32 Lakhs*
-              <span className="hidden lg:block">*rupee range moves with the exchange rate</span>
+              Complete CPL training
             </span>
           </div>
         </Link>

@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 /**
  * CitableTable — a titled, self-contained data table designed for AI-answer
  * citation and featured snippets (comparison / fee / spec tables are among the
@@ -14,8 +15,13 @@ interface CitableTableProps {
   intro?: string;
   columns: string[];
   rows: string[][];
-  /** Caption/disclaimer under the table (e.g. figures are indicative). */
-  note?: string;
+  /**
+   * Caption under the table. Accepts nodes rather than a bare string so a
+   * disclaimer can link to the page that actually carries the sourced figure —
+   * which is the difference between "these are estimates" and "here is the one
+   * number the regulator publishes".
+   */
+  note?: ReactNode;
   sources?: Source[];
   /** ISO date, e.g. "2026-07-30" */
   lastUpdated: string;
