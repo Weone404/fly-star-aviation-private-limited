@@ -1,5 +1,5 @@
 ﻿import React, { cloneElement, isValidElement, ReactNode } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { KEYWORD_LINKS } from "@/lib/seoKeywords";
 
 const keywordMap = new Map<string, string>(
@@ -16,8 +16,31 @@ interface KeywordLinkifyProps {
   children: ReactNode;
 }
 
+/**
+ * Elements whose text must never be broken up by a link.
+ *
+ * A heading and a question are single semantic units. Linkifying inside them
+ * split "What is an Airline Transport Pilot License (ATPL)?" into five nodes on
+ * screen and gave a crawler a heading made of anchors — the visible symptom that
+ * prompted this fix. Prose is where an internal link belongs; a title is not.
+ */
+const NEVER_LINKIFY_TAGS = new Set(["h1", "h2", "h3", "h4", "h5", "h6", "summary", "button", "label", "th"]);
+
+const NEVER_LINKIFY_COMPONENTS = new Set([
+  "AccordionTrigger",
+  "CardTitle",
+  "DialogTitle",
+  "SheetTitle",
+]);
+
 export function KeywordLinkify({ children }: KeywordLinkifyProps) {
   let linkKeyCounter = 0;
+  const { pathname } = useLocation();
+
+  // First mention only. Repeating the same anchor to the same URL a dozen times
+  // down a page adds no crawl signal and reads as keyword spray; search engines
+  // weigh the first link to a target anyway.
+  const alreadyLinked = new Set<string>();
 
   function linkifyText(text: string): ReactNode[] {
     const elements: ReactNode[] = [];
@@ -33,7 +56,11 @@ export function KeywordLinkify({ children }: KeywordLinkifyProps) {
       const href = keywordMap.get(matchedText.toLowerCase());
       const key = `keyword-${linkKeyCounter++}-${matchedText}-${match.index}`;
 
-      if (href) {
+      // Never link a page to itself, and never link the same target twice.
+      const usable = href && href !== pathname && !alreadyLinked.has(href);
+      if (usable) alreadyLinked.add(href as string);
+
+      if (usable) {
         elements.push(
           <Link key={key} to={href} className="text-accent hover:underline">
             {matchedText}
@@ -69,6 +96,9 @@ export function KeywordLinkify({ children }: KeywordLinkifyProps) {
     if (isValidElement(node)) {
       const elementType = node.type;
       const isProtectedElement =
+        (typeof elementType === "string" && NEVER_LINKIFY_TAGS.has(elementType)) ||
+        (typeof elementType === "function" &&
+          NEVER_LINKIFY_COMPONENTS.has(elementType.displayName || elementType.name)) ||
         elementType === Link ||
         elementType === "a" ||
         elementType === "title" ||
