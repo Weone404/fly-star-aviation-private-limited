@@ -7,7 +7,8 @@ import type { ReactNode } from "react";
  */
 interface Source {
   label: string;
-  url: string;
+  /** Optional: many primary documents have no stable public URL. */
+  url?: string;
 }
 
 interface CitableTableProps {
@@ -78,11 +79,15 @@ export function CitableTable({ heading, intro, columns, rows, note, sources, las
           <p className="mt-4 text-sm text-muted-foreground">
             <span className="font-semibold text-foreground">Sources: </span>
             {sources.map((s, i) => (
-              <span key={s.url}>
+              <span key={s.label}>
                 {i > 0 && ", "}
-                <a href={s.url} target="_blank" rel="noopener nofollow" className="underline hover:text-primary">
-                  {s.label}
-                </a>
+                {s.url ? (
+                  <a href={s.url} target="_blank" rel="noopener nofollow" className="underline hover:text-primary">
+                    {s.label}
+                  </a>
+                ) : (
+                  <span>{s.label}</span>
+                )}
               </span>
             ))}
           </p>

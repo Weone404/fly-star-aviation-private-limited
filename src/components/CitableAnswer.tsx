@@ -14,7 +14,8 @@ interface QA {
 
 interface Source {
   label: string;
-  url: string;
+  /** Optional: many primary documents have no stable public URL. */
+  url?: string;
 }
 
 interface CitableAnswerProps {
@@ -60,16 +61,15 @@ export function CitableAnswer({ heading, answer, faqs, sources, lastUpdated }: C
           <p className="mt-6 text-sm text-muted-foreground">
             <span className="font-semibold text-foreground">Sources: </span>
             {sources.map((s, i) => (
-              <span key={s.url}>
+              <span key={s.label}>
                 {i > 0 && ", "}
-                <a
-                  href={s.url}
-                  target="_blank"
-                  rel="noopener nofollow"
-                  className="underline hover:text-primary"
-                >
-                  {s.label}
-                </a>
+                {s.url ? (
+                  <a href={s.url} target="_blank" rel="noopener nofollow" className="underline hover:text-primary">
+                    {s.label}
+                  </a>
+                ) : (
+                  <span>{s.label}</span>
+                )}
               </span>
             ))}
           </p>

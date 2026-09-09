@@ -333,7 +333,7 @@ export default function DGCAPage() {
                     { q: "Under which ministry does DGCA operate?", a: "DGCA operates under the Ministry of Civil Aviation, Government of India, and aligns its standards with ICAO." },
                 ]}
                 sources={[
-                    { label: "DGCA (Directorate General of Civil Aviation)", url: "https://www.dgca.gov.in" },
+                    { label: "DGCA — official website (organisation name and remit)", url: "https://www.dgca.gov.in" },
                     { label: "Ministry of Civil Aviation, Government of India", url: "https://www.civilaviation.gov.in" },
                 ]}
                 lastUpdated="2026-07-30"

@@ -328,9 +328,7 @@ export default function DGCAMedicalGuidePage(): JSX.Element {
                     { q: "How long is a DGCA Class 1 medical valid?", a: "Typically 12 months for pilots under 40 years of age, reducing to 6 months from age 40 onwards, after which it must be renewed." },
                 ]}
                 sources={[
-                    { label: "DGCA (Directorate General of Civil Aviation)", url: "https://www.dgca.gov.in" },
-                    { label: "ICAO Annex 1 — Personnel Licensing", url: "https://www.icao.int" },
-                ]}
+                                    ]}
                 lastUpdated="2026-07-30"
             />
 

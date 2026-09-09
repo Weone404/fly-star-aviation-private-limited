@@ -324,7 +324,7 @@ export default function BecomePilotPage() {
                     { q: "How much does pilot training cost in India?", a: "Commercial pilot training typically costs around ₹35–50 lakh, varying with the flying school and country of flying training." },
                 ]}
                 sources={[
-                    { label: "DGCA (Directorate General of Civil Aviation)", url: "https://www.dgca.gov.in" },
+                    { label: "DGCA CAR Section 7, Series 'B', Part I \u2014 Examinations for Flight Crew Licences" },
                 ]}
                 lastUpdated="2026-07-30"
             />

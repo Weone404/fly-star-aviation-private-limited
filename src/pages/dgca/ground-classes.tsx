@@ -299,7 +299,7 @@ export default function DGCAGroundClassesPage(): JSX.Element {
                     { q: "What is the passing mark for DGCA exams?", a: "The DGCA pass mark is 70% for each paper; subjects can be cleared individually." },
                 ]}
                 sources={[
-                    { label: "DGCA (Directorate General of Civil Aviation)", url: "https://www.dgca.gov.in" },
+                    { label: "DGCA CAR Section 7, Series 'B', Part I \u2014 Examinations for Flight Crew Licences" },
                 ]}
                 lastUpdated="2026-07-30"
             />

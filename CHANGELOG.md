@@ -2,6 +2,41 @@
 
 All entries: what changed, and why. Newest first.
 
+## 2026-09-09 — Every remaining regulator citation, checked against what the document actually says
+
+Eleven citation lines across seven pages named DGCA, ICAO, FAA or SACAA and
+linked to a **homepage**. A homepage is not a citation: it evidences that an
+organisation exists, not the claim above it. Resolved one block at a time
+against what is actually banked, rather than swapped wholesale.
+
+**Cited precisely (the document is banked and does state the claim)**
+- `/become-a-pilot/become-pilot` — the 10+2 Physics and Mathematics entry
+  requirement is CAR Section 7, Series 'B', Part I. Now named in full.
+- `/dgca/ground-classes` — the subjects examined per licence, same document.
+
+**Source line removed (the claim is real, the evidence is not in hand)**
+- `/courses/cpl` and `/courses/atpl` definition blocks. What a licence *permits*
+  is Schedule II of the Aircraft Rules 1937, which is still not banked.
+- `/dgca/medical` — Class 1 and Class 2 validity is Rule 39C. The only copy
+  banked is current to GSR 11(E) of 2011 and badly OCR'd, so it is not citable.
+
+**Kept, relabelled** — `/dgca/full-form`. The claim is DGCA's own name and parent
+ministry, and an official website is legitimate evidence for exactly that. The
+label now says so instead of implying a document.
+
+**The worst one: the India / USA / South Africa comparison.** Cost ranges of
+Rs 35–50 lakh, Rs 60–85 lakh and Rs 25–40 lakh were attributed to DGCA, FAA and
+SACAA. None of the three publishes training prices. Ranges kept and labelled as
+market estimates from published school fee schedules; the regulator names stay in
+the "Licensing authority" column, which is the part they do evidence. The note
+now links to the sourced exam-fee page and the conversion checklist.
+
+**Component change:** `url` is optional on both citation components. CAR 7-B-I has
+no stable public URL — the DGCA portal serves its homepage to non-browser clients
+— and naming the document beats linking the wrong page.
+
+121 tests passing, build green.
+
 ## 2026-09-08 — Blog restructured into topic clusters
 
 The last pass fixed how the posts *looked*. This one fixes how they are

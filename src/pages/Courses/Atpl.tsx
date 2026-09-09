@@ -299,9 +299,7 @@ export default function ATPLCoursePage() {
                     { q: "What is the minimum age for an ATPL?", a: "You must be at least 21 years old and already hold a CPL with a multi-engine instrument rating to be issued a DGCA ATPL." },
                 ]}
                 sources={[
-                    { label: "DGCA (Directorate General of Civil Aviation)", url: "https://www.dgca.gov.in" },
-                    { label: "ICAO Annex 1 — Personnel Licensing", url: "https://www.icao.int" },
-                ]}
+                                    ]}
                 lastUpdated="2026-07-30"
             />
 

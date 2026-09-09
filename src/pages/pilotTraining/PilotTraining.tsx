@@ -97,12 +97,26 @@ export default function PilotTrainingPage() {
           ["USA", "FAA", "12 – 18 months", "₹60 – 85 lakh", "Fast hour-building & fleet; DGCA conversion required on return"],
           ["South Africa", "SACAA", "12 – 18 months", "₹25 – 40 lakh", "Lower cost & good weather; DGCA conversion required on return"],
         ]}
-        note="Figures are indicative 2026 ranges (including flying training) and vary by school, aircraft and exchange rate — not a quotation. A foreign CPL must be converted to a DGCA CPL to fly commercially in India."
-        sources={[
-          { label: "DGCA (India)", url: "https://www.dgca.gov.in" },
-          { label: "FAA (USA)", url: "https://www.faa.gov" },
-          { label: "SACAA (South Africa)", url: "https://www.caa.co.za" },
-        ]}
+        note={
+          <>
+            Indicative market ranges for 2026 compiled from fee schedules published by flying schools in each
+            country, including flying training. They are estimates, not quotations, and no regulator publishes
+            them; totals move with the school, the aircraft and the exchange rate. The one figure DGCA does
+            publish is the examination fee of Rs 2,500 per paper, non-refundable &mdash; see{" "}
+            <a href="/blog/dgca-exam-fees" className="underline hover:text-primary">
+              what a DGCA paper actually costs
+            </a>
+            . Conversion requirements for a foreign licence are covered in{" "}
+            <a href="/blog/foreign-licence-conversion-checklist" className="underline hover:text-primary">
+              the conversion checklist
+            </a>
+            .
+          </>
+        }
+        /* No source line. DGCA, FAA and SACAA publish licensing rules, not
+           training prices — attributing cost ranges to them was a citation for
+           something none of them states. The authority column below is the part
+           they do evidence, and it stays. */
         lastUpdated="2026-07-30"
       />
 
