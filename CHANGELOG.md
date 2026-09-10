@@ -29,8 +29,14 @@ did not contain.
 **Provenance relabelled.** Claims previously carried as INDETERMINATE - that the
 deploy served, that the sitemap and feed the build produced are the ones on the
 edge, that the render gate holds in production - are now VERIFIED LIVE against
-the evidence above. Claims about robots.txt and llms.txt content remain
-repo-verified: the files were read from the repo, not fetched from the host.
+the evidence above.
+
+**robots.txt and llms.txt now VERIFIED LIVE too.** Fetched from the host, not
+read from the repo: robots.txt matches all four of GPTBot, OAI-SearchBot,
+ClaudeBot and PerplexityBot, and llms.txt serves 62 links. That is the agent's
+half of the section 9G edge access check done with live evidence rather than
+repo evidence. The owner's half - hosting logs showing recent 200 responses to
+those four agents - is still outstanding and is a monthly item, not a P0.
 
 ## 2026-09-10 - The FAQ answers that were never in the HTML, and three pages that did not exist
 
