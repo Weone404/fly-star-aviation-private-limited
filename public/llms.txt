@@ -5,6 +5,8 @@
 - [CPL Ground Classes](https://www.flystar.co.in/courses/cpl): DGCA Commercial Pilot Licence ground training — Air Navigation, Meteorology, Air Regulations, Technical General.
 - [ATPL Ground Training](https://www.flystar.co.in/courses/atpl): Airline Transport Pilot Licence ground classes for airline career advancement.
 - [Airline Preparation](https://www.flystar.co.in/courses/airline-preparation): Airline interview and assessment preparation.
+- [CPL Fees: Every Cost Component](https://www.flystar.co.in/courses/cpl/fees): What a CPL in India actually costs you, component by component - who sets each charge, which of them anyone publishes, and seven questions that make two flying-school quotes comparable. States plainly that DGCA publishes examination charges, not training prices, and carries no unsourced figure.
+- [ATPL Ground Classes Brochure](https://www.flystar.co.in/atpl/brochure): The ATPL course brochure as a page rather than a download - what the licence permits, how it differs from a CPL, and what a ground school does and does not provide.
 - [Pilot Training Overview](https://www.flystar.co.in/pilot-training): Training pathways in India, USA, Australia, New Zealand and South Africa.
 - [How to Become a Pilot](https://www.flystar.co.in/become-a-pilot/become-pilot): Step-by-step guide to becoming a commercial pilot in India after Class 12.
 - [PPL Training in India](https://www.flystar.co.in/pilot-training/ppl): Private Pilot Licence eligibility — a Class Ten pass, not 10+2 with Physics and Mathematics; Composite Paper and Aircraft & Engine subjects; 70% pass mark; passed papers valid two and a half years.
@@ -12,8 +14,20 @@
 - [Converting a Foreign Licence to a DGCA Licence](https://www.flystar.co.in/pilot-training/guide-to-conversion): DGCA conversion under CAR Section 7, Series G, Part I — the 10-hours-PIC-in-24-months currency rule, Indian written examinations and a skill test with a DGCA-approved examiner.
 - [Pilot Training in the Maldives](https://www.flystar.co.in/pilot-training/maldives): Verifying a school against the Maldives Civil Aviation Authority's published list of approved flight training organisations, and what DGCA conversion then requires.
 - [Pilot Training in Sri Lanka](https://www.flystar.co.in/pilot-training/sri-lanka): CAASL Commercial Pilot Licence requirements — minimum age 18, Class I medical, English Language Proficiency at ELPC Level 4 or higher — and the route back to an Indian licence.
+- [Pilot Training in India](https://www.flystar.co.in/pilot-training/india): How CPL training works at a DGCA-approved Flying Training Organisation in India, and how the ground and flying phases divide.
+- [Pilot Training in the USA](https://www.flystar.co.in/pilot-training/usa): FAA-approved flight schools, the training route, and what converting the resulting licence to a DGCA licence involves.
+- [Pilot Training in Australia](https://www.flystar.co.in/pilot-training/australia): CASA-approved flight schools, the Australian training pathway, and DGCA conversion.
+- [Pilot Training in New Zealand](https://www.flystar.co.in/pilot-training/new-zealand): CAA-approved flight schools, the New Zealand training pathway, and DGCA conversion.
+- [Pilot Training in South Africa](https://www.flystar.co.in/pilot-training/south-africa): SACAA-approved flight schools, the South African training pathway, and DGCA conversion.
+- [What a Commercial Pilot Licence Is](https://www.flystar.co.in/become-a-pilot/commercial-pilot-licence): What a CPL permits, the entry requirements under CAR Section 7 Series B Part I, and where it sits in a pilot's career.
+- [What an Airline Transport Pilot Licence Is](https://www.flystar.co.in/become-a-pilot/airline-transport-pilot-licence): What an ATPL permits and how it differs from a CPL.
+- [Cabin Crew Course](https://www.flystar.co.in/courses/cabin-crew): Cabin crew training and what the role requires. Not a pilot licence pathway.
+- [Airport Ground Staff Course](https://www.flystar.co.in/courses/ground-staff): Ground staff training covering passenger handling, baggage and customer service. Not a pilot licence pathway.
+- [Air India Pilot Interview Preparation](https://www.flystar.co.in/courses/Air-india-pilot-interview): Preparation for the Air India pilot selection process.
+- [IndiGo Pilot Interview Preparation](https://www.flystar.co.in/courses/Indigo-pilot-interview): Preparation for the IndiGo pilot selection process.
 
 ## DGCA guides
+- [DGCA Guides Index](https://www.flystar.co.in/dgca): Index of the DGCA guides on this site - examinations, medical, computer number and ground classes.
 - [DGCA Full Form & Role](https://www.flystar.co.in/dgca/full-form): What DGCA (Directorate General of Civil Aviation) is and what it regulates.
 - [DGCA Medical Requirements](https://www.flystar.co.in/dgca/medical): Class 1 and Class 2 medical requirements for pilots in India.
 - [DGCA Ground Classes](https://www.flystar.co.in/dgca/ground-classes): CPL & ATPL ground classes in Dwarka, Delhi.
@@ -36,14 +50,21 @@
 - [RSS feed](https://www.flystar.co.in/feed.xml): New guides as they are published.
 
 ## Aviation services
+- [Aviation Services Overview](https://www.flystar.co.in/services): Index of the B2B aviation services Flying Star Aviator provides, separate from its pilot-training work.
 - [Aircraft Management](https://www.flystar.co.in/services/aircraft-management)
 - [MRO Services](https://www.flystar.co.in/services/mro)
 - [CAMO Services](https://www.flystar.co.in/services/camo)
 - [Charter Services](https://www.flystar.co.in/services/charter-services)
+- [Aircraft Sourcing & Sale](https://www.flystar.co.in/services/aircraft-sourcing-sale)
+- [Aviation Consultancy](https://www.flystar.co.in/services/aviation-consultancy)
+- [Livery Painting](https://www.flystar.co.in/services/livery-painting)
+- [Components & Spares](https://www.flystar.co.in/services/components-spares)
 
 ## Locations
 - [Where we operate](https://www.flystar.co.in/locations): Flying Star Aviator operates ONE training centre — Dwarka, New Delhi. It does not own flying schools; the flying phase of a licence is handled through partner flying training organisations.
 - [Delhi (our centre)](https://www.flystar.co.in/locations/delhi): C705, Sector 7, Block C, Palam Extension, Dwarka, New Delhi 110077 — DGCA CPL and ATPL ground classes since 2008.
+- [India](https://www.flystar.co.in/locations/india): Where Flying Star Aviator operates in India, and what is handled through partner flying training organisations.
+- [USA](https://www.flystar.co.in/locations/usa): How training in the USA is arranged through partner schools rather than a Flying Star centre.
 - [Mumbai](https://www.flystar.co.in/locations/mumbai) · [Bangalore](https://www.flystar.co.in/locations/bangalore) · [Hyderabad](https://www.flystar.co.in/locations/hyderabad): no Flying Star centre in these cities; ground training runs from Delhi and flying is through partner schools.
 
 ## Reference
@@ -54,6 +75,7 @@
 - [About](https://www.flystar.co.in/about): Company background, founded 2008.
 - [Editorial Policy](https://www.flystar.co.in/editorial-policy): How guides on this site are researched and verified — primary sources first, unverified figures never stated as fact, quarterly re-checks.
 - [Contact](https://www.flystar.co.in/contact): C705, Sector 7, Block C, Palam Extension, Dwarka, New Delhi 110077. Phone: +91 9953536199.
+- [Apply](https://www.flystar.co.in/apply): Enquiry form for ground classes and career guidance, with what happens after you send it and what to have ready. Not a DGCA application: registering as a Flight Crew candidate happens only on the DGCA portal.
 
 ## Key facts
 - A DGCA Commercial Pilot Licence (CPL) in India requires a minimum of 200 hours of flight time, a Class 1 medical, and passes in DGCA theory subjects (Air Navigation, Meteorology, Air Regulations, Technical General) plus the RTR(A) licence.
