@@ -717,6 +717,28 @@ export default function DGCAComputerNumberPage() {
               </Link>
             </li>
             <li>
+              <Link to="/dgca/fto-ranking" className="group block">
+                <span className="font-semibold text-primary group-hover:underline">
+                  How DGCA ranks flying schools, and how to use the ranking
+                </span>
+                <span className="block text-sm text-muted-foreground mt-1">
+                  The A+ to C bands, the five weighted parameters behind the score, and
+                  what a grade does and does not tell you about a school.
+                </span>
+              </Link>
+            </li>
+            <li>
+              <Link to="/dgca/computer-number" className="group block">
+                <span className="font-semibold text-primary group-hover:underline">
+                  DGCA computer number: eligibility, documents and process
+                </span>
+                <span className="block text-sm text-muted-foreground mt-1">
+                  The lifetime identifier every DGCA examination candidate needs, and how
+                  it is actually obtained.
+                </span>
+              </Link>
+            </li>
+            <li>
               <Link to="/dgca/ground-classes" className="group block">
                 <span className="font-semibold text-primary group-hover:underline">
                   DGCA CPL and ATPL ground classes in Dwarka, Delhi

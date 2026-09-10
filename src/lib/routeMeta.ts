@@ -400,6 +400,21 @@ const routeMeta: Record<string, RouteMeta> = {
     description: "CPL, ATPL, PPL, RTR(A), computer number, OLODE, BVC and more — what each term means under DGCA's published rules, defined in plain English.",
     canonical: `${BASE_URL}/glossary`,
   },
+  "/pilot-salary-india": {
+    title: "Pilot Salary in India: What Is Actually Published, and What Is Not",
+    description: "No Indian airline publishes a pilot pay scale and DGCA publishes none. What is genuinely published, what moves the number, and how to test any salary claim before planning a career on it.",
+    canonical: `${BASE_URL}/pilot-salary-india`,
+  },
+  "/cadet-pilot-programme": {
+    title: "Cadet Pilot Programmes in India: What Airlines Actually Publish",
+    description: "Airline-published eligibility, duration and structure separated from the cost, bond and pay figures that circulate but are not published. Cadet route against self-sponsored training.",
+    canonical: `${BASE_URL}/cadet-pilot-programme`,
+  },
+  "/dgca/fto-ranking": {
+    title: "DGCA FTO Ranking: How Flying Schools Are Scored and Graded",
+    description: "DGCA scores approved Flying Training Organisations out of 100 across five weighted parameters and grades them A+ to C, twice a year. The bands, the weights, and how to use them when choosing a school.",
+    canonical: `${BASE_URL}/dgca/fto-ranking`,
+  },
   "/apply": {
     title: "Apply to Flying Star Aviator | DGCA Ground Classes, Dwarka",
     description: "Send an enquiry to the academics team. What happens after you send it, what to have ready, and why this is not a DGCA application.",

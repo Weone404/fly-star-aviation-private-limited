@@ -14,6 +14,8 @@
 - [Converting a Foreign Licence to a DGCA Licence](https://www.flystar.co.in/pilot-training/guide-to-conversion): DGCA conversion under CAR Section 7, Series G, Part I — the 10-hours-PIC-in-24-months currency rule, Indian written examinations and a skill test with a DGCA-approved examiner.
 - [Pilot Training in the Maldives](https://www.flystar.co.in/pilot-training/maldives): Verifying a school against the Maldives Civil Aviation Authority's published list of approved flight training organisations, and what DGCA conversion then requires.
 - [Pilot Training in Sri Lanka](https://www.flystar.co.in/pilot-training/sri-lanka): CAASL Commercial Pilot Licence requirements — minimum age 18, Class I medical, English Language Proficiency at ELPC Level 4 or higher — and the route back to an Indian licence.
+- [Cadet Pilot Programmes in India](https://www.flystar.co.in/cadet-pilot-programme): What airlines publish about cadet programmes - IndiGo's stated age range of 18 to 32, 10+2 with Physics and Mathematics, two attempts per stage and 22 months from zero flight time - separated from the cost, bond and pay figures that circulate but are not published by the airline.
+- [Pilot Salary in India](https://www.flystar.co.in/pilot-salary-india): No Indian airline publishes a pilot pay scale and DGCA publishes none. What is genuinely published, what moves the number, and how to test any salary claim. Carries no salary figure, on purpose.
 - [Pilot Training in India](https://www.flystar.co.in/pilot-training/india): How CPL training works at a DGCA-approved Flying Training Organisation in India, and how the ground and flying phases divide.
 - [Pilot Training in the USA](https://www.flystar.co.in/pilot-training/usa): FAA-approved flight schools, the training route, and what converting the resulting licence to a DGCA licence involves.
 - [Pilot Training in Australia](https://www.flystar.co.in/pilot-training/australia): CASA-approved flight schools, the Australian training pathway, and DGCA conversion.
@@ -28,6 +30,7 @@
 
 ## DGCA guides
 - [DGCA Guides Index](https://www.flystar.co.in/dgca): Index of the DGCA guides on this site - examinations, medical, computer number and ground classes.
+- [DGCA FTO Ranking](https://www.flystar.co.in/dgca/fto-ranking): DGCA scores approved Flying Training Organisations out of 100 across five weighted parameters and grades them A+ to C, published twice a year from 1 October 2025. The bands, the weights, the first ranking result, and how to use it when choosing a school.
 - [DGCA Full Form & Role](https://www.flystar.co.in/dgca/full-form): What DGCA (Directorate General of Civil Aviation) is and what it regulates.
 - [DGCA Medical Requirements](https://www.flystar.co.in/dgca/medical): Class 1 and Class 2 medical requirements for pilots in India.
 - [DGCA Ground Classes](https://www.flystar.co.in/dgca/ground-classes): CPL & ATPL ground classes in Dwarka, Delhi.

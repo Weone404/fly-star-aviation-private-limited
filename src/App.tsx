@@ -17,6 +17,9 @@ const queryClient = new QueryClient({
 
 import Index from "./pages/Index";
 import Apply from "./pages/Apply";
+import PilotSalaryIndia from "./pages/PilotSalaryIndia";
+import CadetPilotProgramme from "./pages/CadetPilotProgramme";
+import DgcaFtoRanking from "./pages/dgca/fto-ranking";
 import CplFees from "./pages/Courses/CplFees";
 import AtplBrochure from "./pages/Courses/AtplBrochure";
 
@@ -136,6 +139,9 @@ function AppInner() {
 
         {/* COURSES */}
         <Route path="/apply" element={<Apply />} />
+        <Route path="/pilot-salary-india" element={<PilotSalaryIndia />} />
+        <Route path="/cadet-pilot-programme" element={<CadetPilotProgramme />} />
+        <Route path="/dgca/fto-ranking" element={<DgcaFtoRanking />} />
         <Route path="/courses/cpl/fees" element={<CplFees />} />
         <Route path="/atpl/brochure" element={<AtplBrochure />} />
         <Route path="/courses/cpl" element={<Cpl />} />

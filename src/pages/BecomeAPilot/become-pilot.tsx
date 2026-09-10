@@ -306,7 +306,7 @@ export default function BecomePilotPage() {
                                 </Link>
                             </Button>
                             <Button variant="outline-white" size="lg" asChild>
-                                <Link to="/contact">View CPL Course</Link>
+                                <Link to="/courses/cpl">View CPL Course</Link>
                             </Button>
                             <Button variant="outline-white" size="lg" asChild>
                                 <Link to="/contact">Talk to Counselor</Link>
@@ -823,7 +823,7 @@ export default function BecomePilotPage() {
                                 </Link>
                             </Button>
                             <Button variant="outline-white" size="lg" asChild>
-                                <Link to="/contact">View CPL Course Details</Link>
+                                <Link to="/courses/cpl">View CPL Course Details</Link>
                             </Button>
                             <Button variant="outline-white" size="lg" asChild>
                                 <a href="tel:+919953536199">Talk to Expert</a>

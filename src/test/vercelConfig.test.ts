@@ -47,6 +47,9 @@ describe("Vercel config", () => {
     "/apply",
     "/courses/cpl/fees",
     "/atpl/brochure",
+    "/pilot-salary-india",
+    "/cadet-pilot-programme",
+    "/dgca/fto-ranking",
   ])("routes %s to the SPA", (path) => {
     expect(matchesSpa(path)).toBe(true);
   });

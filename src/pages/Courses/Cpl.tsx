@@ -11,7 +11,8 @@ import {
     Plane,
     GraduationCap,
     BookOpen,
-    DollarSign,
+    FileCheck,
+    AlertTriangle,
     Briefcase,
     TrendingUp,
     ArrowRight,
@@ -268,10 +269,18 @@ const careerOptions = [
     { title: "Flight Instructor", icon: GraduationCap },
 ];
 
-const salaryGrowth = [
-    { stage: "Fresh CPL holder", level: "₹1.5Lakh to ₹2.5Lakh", icon: DollarSign },
-    { stage: "Mid-level pilot", level: "₹3.5Lakh to ₹8.5Lakh", icon: TrendingUp },
-    { stage: "Captain", level: "₹8Lakh to ∞", icon: TrendingUp },
+/**
+ * No figures here on purpose.
+ *
+ * The ranges that used to sit in this block were unsourced: no Indian airline
+ * publishes a pilot pay scale, DGCA publishes none, and every website quoting
+ * one is quoting another website. What a reader can actually be told is what
+ * moves the number and where the honest account lives.
+ */
+const salaryFactors = [
+    { stage: "What is published", level: "Airlines publish job criteria, not pay scales. DGCA publishes licensing requirements, not salaries.", icon: FileCheck },
+    { stage: "What moves it", level: "Employer, aircraft type, seat, command upgrade timing, and flying hours actually rostered.", icon: TrendingUp },
+    { stage: "What to distrust", level: "Any single number presented as the pilot salary in India, on any website, without naming who published it.", icon: AlertTriangle },
 ];
 
 const faqs = [
@@ -802,15 +811,20 @@ export default function CPLCoursePage() {
                         viewport={{ once: true }}
                         className="text-center mb-10"
                     >
-                        <h2 className="text-3xl md:text-4xl font-bold mb-4">Salary After Commercial Pilot Training</h2>
+                        <h2 className="text-3xl md:text-4xl font-bold mb-4">What a Commercial Pilot Earns in India</h2>
                         <p className="text-muted-foreground max-w-2xl mx-auto">
-                            The commercial pilot license salary depends on experience, airline, and aircraft type. With experience,
-                            pilots enjoy strong financial growth and international career opportunities.
+                            No Indian airline publishes a pilot pay scale and DGCA publishes none, so any single
+                            figure you are shown is an estimate repeated from another website. What is published,
+                            what is not, and what actually moves the number is set out on the{" "}
+                            <Link to="/pilot-salary-india" className="underline hover:text-primary">
+                                pilot salary page
+                            </Link>
+                            .
                         </p>
                     </motion.div>
 
                     <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-                        {salaryGrowth.map((item, index) => (
+                        {salaryFactors.map((item, index) => (
                             <motion.div
                                 key={item.stage}
                                 initial={{ opacity: 0, y: 30 }}
