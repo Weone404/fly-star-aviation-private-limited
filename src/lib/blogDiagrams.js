@@ -147,4 +147,120 @@ export const BLOG_DIAGRAMS = {
       ],
     },
   },
+
+  "dgca-exam-fees": {
+    type: "stat",
+    title: "What DGCA actually publishes about exam fees",
+    source: "DGCA; legal basis Rule 48, Aircraft Rules 1937",
+    data: {
+      hero: { value: "Rs 2,500", label: "per paper, Flight Crew Licence online examination" },
+      rows: [
+        ["Refunds", "Not refundable under any circumstances, including a rejected form"],
+        ["OLODE fee", "No separate figure published by DGCA"],
+        ["Computer number fee", "Not mentioned"],
+        ["Four CPL papers, first time", "Rs 10,000"],
+      ],
+    },
+  },
+
+  "dgca-exam-misconceptions": {
+    type: "absence",
+    title: "What people believe, and what DGCA actually says",
+    source: "CAR Section 7, Series B, Part I; DGCA Pariksha",
+    data: {
+      rows: [
+        { claim: "PPL needs 10+2 with Physics and Maths", backing: "Class Ten pass. That rule belongs to the CPL", ok: false },
+        { claim: "There is an upper age limit to register", backing: "DGCA states there is no maximum age", ok: false },
+        { claim: "DGCA requires Chemistry", backing: "Physics and Mathematics only", ok: false },
+        { claim: "The pass mark is 70% per paper", backing: "Correct. No aggregate across papers", ok: true },
+      ],
+    },
+  },
+
+  "dgca-board-verification-certificate": {
+    type: "matrix",
+    title: "Board Verification Certificate: who actually needs one",
+    source: "DGCA Pariksha, Flight Crew registration",
+    data: {
+      columns: ["", "NEW candidate", "OLD candidate"],
+      rows: [
+        ["Definition", "Never allotted a computer number", "Allotted before the Pariksha portal"],
+        ["Board Verification Certificate", "Mandatory before registration", "Not required"],
+        ["Hard copy by post", "Required", "Not required"],
+        ["Profile updates", "Only after the number is allotted", "Via profile management"],
+      ],
+    },
+  },
+
+  "dgca-ground-classes-vs-self-study": {
+    type: "absence",
+    title: "What DGCA requires before you can appear",
+    source: "CAR Section 7, Series B, Part I",
+    data: {
+      rows: [
+        { claim: "A computer number", backing: "Required by the CAR", ok: true },
+        { claim: "The educational qualification for your licence", backing: "Required by the CAR", ok: true },
+        { claim: "Attendance at a ground school", backing: "Not on the list", ok: false },
+        { claim: "A DGCA-approved coaching institute", backing: "DGCA approves and ranks none", ok: false },
+      ],
+    },
+  },
+
+  "foreign-licence-conversion-checklist": {
+    type: "steps",
+    title: "Converting a foreign licence: the order that saves months",
+    source: "CAR Section 7, Series G, Part I",
+    data: {
+      steps: [
+        { n: "1", label: "Check currency first", note: "10 hours as Pilot-in-Command in the preceding 24 months" },
+        { n: "2", label: "Start the written examinations", note: "Longest lead time of anything on this list" },
+        { n: "3", label: "Assemble documents and equivalency", note: "Handle in parallel with study" },
+        { n: "4", label: "Skill test with a DGCA-approved examiner", note: "In India, after the papers" },
+        { n: "5", label: "Licence issue", note: "Conversion waives no examination requirement" },
+      ],
+    },
+  },
+
+  "air-hostess-salary-in-india-2026": {
+    type: "matrix",
+    title: "Cabin crew pay: the components, and why each varies",
+    source: "Air India cabin crew careers page, retrieved 4 September 2026",
+    data: {
+      columns: ["Component", "What it is", "Why it varies"],
+      rows: [
+        ["Fixed base", "Guaranteed monthly amount", "Airline, grade and contract type"],
+        ["Flying allowance", "Paid per hour actually flown", "Your roster; a light month is a lighter payslip"],
+        ["Layover allowance", "Meals and expenses on night stops", "Route network and overnights held"],
+        ["International component", "Additional pay on international flying", "Which fleet and routes you hold"],
+      ],
+    },
+  },
+
+  "rtr-a-exam-dgca-takeover-2026": {
+    type: "matrix",
+    title: "RTR(A): what changed when DGCA took over from WPC",
+    source: "Radio Telephone Operator (Restricted) Certificate and Licence Rules, 2025",
+    data: {
+      columns: ["", "Before (WPC)", "After (DGCA)"],
+      rows: [
+        ["Examining authority", "Wireless Planning and Coordination Wing, DoT", "Directorate General of Civil Aviation"],
+        ["Governing rules", "Telecom licensing provisions", "RTR Rules 2025 with DGCA CARs for flight crew licensing"],
+        ["Where you register", "WPC process", "DGCA process"],
+      ],
+    },
+  },
+
+  "how-to-choose-dgca-ground-classes": {
+    type: "steps",
+    title: "Four things to verify before paying a ground school",
+    source: "DGCA approves and ranks no ground coaching institute",
+    data: {
+      steps: [
+        { n: "1", label: "Ask who teaches each paper", note: "By name, and what they have actually flown or examined" },
+        { n: "2", label: "Ask for worked numericals, corrected", note: "Navigation is method, not answers" },
+        { n: "3", label: "Ask what the fee covers", note: "Per subject or full course, retests, materials" },
+        { n: "4", label: "Distrust any DGCA approval claim", note: "DGCA approves no ground coaching institute" },
+      ],
+    },
+  },
 };

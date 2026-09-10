@@ -4,7 +4,7 @@ import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import { BLOG_POSTS, sortBlogsByDate, getReadingMinutes } from '@/lib/blogData'
 import { TOPICS, postsInTopic } from '@/lib/blogTopics'
-import { isGenericCover } from '@/lib/blogImages'
+import { imagesFor, isGenericCover } from '@/lib/blogImages'
 import { BlogMasthead, IconArrow, formatDate } from '@/components/blog/EditorialKit'
 import type { BlogPost } from '@/types/blog'
 
@@ -28,6 +28,29 @@ function Meta({ post }: { post: BlogPost }) {
 }
 
 function Cover({ post, className }: { post: BlogPost; className?: string }) {
+  // The diagram wins over coverImage. Fourteen of sixteen posts point at the
+  // same site-wide hero photograph, which isGenericCover correctly rejects, so
+  // the listing used to fall back to a category tile for almost every card. A
+  // diagram built from the post's own facts is both specific and useful.
+  const diagram = imagesFor(post.slug).find(
+    (img) => img.slot === 'cover' && img.ready && img.file.endsWith('.svg'),
+  )
+  if (diagram) {
+    // Strip object-cover from the caller's classes: a diagram must be shown
+    // whole, and Tailwind resolves the conflict by stylesheet order rather than
+    // by which class was appended last.
+    const fit = (className || '').replace(/\bobject-cover\b/g, '').trim()
+    return (
+      <img
+        src={diagram.file}
+        alt={diagram.alt}
+        loading="lazy"
+        decoding="async"
+        className={`${fit} bg-background object-contain object-top`}
+      />
+    )
+  }
+
   if (post.coverImage && !isGenericCover(post.coverImage)) {
     return (
       <img

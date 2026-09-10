@@ -714,6 +714,38 @@ const DIAGRAM_COVERS = {
     alt: 'Table contrasting a cadet programme with self-sponsored training on who selects you, where you train, cost disclosure, and what happens if you are not selected.',
     caption: 'The two routes fail in different ways.',
   },
+  'dgca-exam-fees': {
+    alt: 'Rs 2,500 per paper for the Flight Crew Licence online examination, with rows showing that refunds are never given, no separate OLODE fee is published, no computer number fee is mentioned, and four CPL papers first time comes to Rs 10,000.',
+    caption: 'The one fee DGCA publishes, and the three it does not. Legal basis: Rule 48, Aircraft Rules 1937.',
+  },
+  'dgca-exam-misconceptions': {
+    alt: 'Table of common beliefs against what DGCA states: PPL needs a Class Ten pass not 10+2 with Physics and Maths, there is no maximum age, Chemistry is not required, and the 70 per cent pass mark per paper is correct.',
+    caption: 'Three of the four things most often repeated are wrong.',
+  },
+  'dgca-board-verification-certificate': {
+    alt: 'Table comparing NEW and OLD DGCA candidates on definition, whether a Board Verification Certificate is mandatory, whether a hard copy must be posted, and how profile updates work.',
+    caption: 'The certificate is mandatory for new candidates and not required for old ones.',
+  },
+  'dgca-ground-classes-vs-self-study': {
+    alt: 'Table showing that DGCA requires a computer number and the educational qualification before you may appear, while ground school attendance is not on the list and DGCA approves or ranks no coaching institute.',
+    caption: 'What the regulation asks for, and what it does not. Source: CAR Section 7, Series B, Part I.',
+  },
+  'foreign-licence-conversion-checklist': {
+    alt: 'Five ordered steps for converting a foreign licence: check currency of 10 hours pilot-in-command in 24 months, start the written examinations, assemble documents and equivalency, take the skill test with a DGCA-approved examiner, then licence issue.',
+    caption: 'The examinations have the longest lead time, so they start first.',
+  },
+  'air-hostess-salary-in-india-2026': {
+    alt: 'Table of cabin crew pay components: fixed base, flying allowance paid per hour flown, layover allowance for night stops, and an international component, each with what makes it vary.',
+    caption: 'Pay is assembled from parts, which is why one headline number tells you little.',
+  },
+  'rtr-a-exam-dgca-takeover-2026': {
+    alt: 'Table comparing the RTR(A) examination before and after the transfer: examining authority moved from the Wireless Planning and Coordination Wing to DGCA, and the governing rules from telecom licensing provisions to the Radio Telephone Operator Rules 2025.',
+    caption: 'What changed when DGCA took the examination over from WPC.',
+  },
+  'how-to-choose-dgca-ground-classes': {
+    alt: 'Four checks before paying a ground school: ask who teaches each paper by name, ask for worked numericals corrected on method, ask exactly what the fee covers, and distrust any claim of DGCA approval.',
+    caption: 'DGCA approves no ground coaching institute, so any such claim is a red flag.',
+  },
 }
 
 export function imagesFor(slug) {
