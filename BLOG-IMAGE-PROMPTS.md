@@ -798,3 +798,45 @@ A vertical stack of five identical rounded rows, each with an empty circular che
 ```
 
 ---
+
+## Cadet Pilot Programme vs Self-Sponsored CPL: What Actually Differs
+
+`/blog/cadet-pilot-programme-vs-self-sponsored-cpl` — 4 images. Cover left as the site-wide fallback (`/assets/hero-aircraft-1600w.jpg`), no cover prompt needed.
+
+### 1. Inline, after heading 3
+
+- **Save to:** `public/blog/cadet-pilot-programme-vs-self-sponsored-cpl/one-licence-two-paths.webp`
+- **Alt text:** Two separate paths, one beginning at a selection panel and one beginning at a training desk, converging into the same single gate representing one DGCA commercial pilot licence.
+
+```
+Two distinct flat-icon paths on a light ground: the left path starts at a small panel/podium shape, the right path starts at a small desk-and-lamp shape. Both paths curve inward and meet at a single simple gate shape in the centre. Even line weight, calm and symmetrical, the convergence is the whole point. Flat vector illustration, minimal clean style, professional Indian aviation training context, deep green and warm amber accents on a light neutral ground, generous negative space, absolutely NO text, words, letters, numbers or signage anywhere in the image. 1200 x 675.
+```
+
+### 2. Inline, after heading 4
+
+- **Save to:** `public/blog/cadet-pilot-programme-vs-self-sponsored-cpl/forked-path.webp`
+- **Alt text:** A single starting point splitting into two paths, the upper one passing through a selection-panel icon before a training icon, the lower one passing through the training icon alone, both paths ending at the same finish flag.
+
+```
+A single point on the left splitting into two horizontal paths. The upper path passes through a small panel/podium icon then a small graduation-style icon. The lower path passes through only the graduation-style icon. Both paths reconverge at one small flag icon on the right. Flat, even spacing, no hierarchy implied by height or colour. Flat vector illustration, minimal clean style, professional Indian aviation training context, deep green and warm amber accents on a light neutral ground, generous negative space, absolutely NO text, words, letters, numbers or signage anywhere in the image. 1200 x 675.
+```
+
+### 3. Inline, after heading 5
+
+- **Save to:** `public/blog/cadet-pilot-programme-vs-self-sponsored-cpl/unpublished-cost.webp`
+- **Alt text:** An empty price tag outline with a question mark inside it, positioned beside a single small coin labelled implicitly as the one fixed, known cost.
+
+```
+On the left, one small solid coin icon, clearly defined. On the right, a larger price-tag outline drawn only in thin line (not filled), with a simple question-mark shape inside it. The contrast between the one solid known item and the one empty outlined item is the entire composition. Flat vector illustration, minimal clean style, professional Indian aviation training context, deep green and warm amber accents on a light neutral ground, generous negative space, absolutely NO text, words, letters, numbers or signage anywhere in the image. 1200 x 675.
+```
+
+### 4. Inline, after heading 6
+
+- **Save to:** `public/blog/cadet-pilot-programme-vs-self-sponsored-cpl/bond-document.webp`
+- **Alt text:** A signed document with a small clock icon overlaid on one corner, representing a fixed time commitment attached to an agreement.
+
+```
+A single flat document/page shape with a small pen-stroke signature mark at the bottom, and a small round clock icon overlapping its top corner. Calm, procedural, not urgent. Flat vector illustration, minimal clean style, professional Indian aviation training context, deep green and warm amber accents on a light neutral ground, generous negative space, absolutely NO text, words, letters, numbers or signage anywhere in the image. 1200 x 675.
+```
+
+---

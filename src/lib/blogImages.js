@@ -34,6 +34,7 @@ export const BLOG_IMAGES = {
     {
       slot: 'cover',
       file: '/blog/dgca-exam-fees-cover.webp',
+      ready: true,
       alt: 'A single coin dropping into a slot beside a sealed examination envelope.',
       prompt:
         'A single stylised coin falling into a narrow slot on a plain payment terminal, beside a sealed examination envelope. One coin only, mid-air, casting a soft shadow. The composition should read as a single non-refundable payment rather than a pile of money.',
@@ -42,6 +43,7 @@ export const BLOG_IMAGES = {
       slot: 'inline',
       after: 1,
       file: '/blog/dgca-exam-fees-four-papers.webp',
+      ready: true,
       alt: 'Four identical examination papers in a row, each with its own small coin above it.',
       caption: 'Four papers, four separate fees.',
       prompt:
@@ -51,6 +53,7 @@ export const BLOG_IMAGES = {
       slot: 'inline',
       after: 3,
       file: '/blog/dgca-exam-fees-rejected.webp',
+      ready: true,
       alt: 'An application form marked with a cross, with the coin beside it already gone.',
       prompt:
         'A single application form on a desk with a bold cross mark stamped across a corner, and beside it an empty coin-shaped outline where a coin used to be. Quiet, matter-of-fact, not alarming. Conveys a fee that is not returned when a form is rejected.',
@@ -59,6 +62,7 @@ export const BLOG_IMAGES = {
       slot: 'inline',
       after: 2,
       file: '/blog/dgca-exam-fees-not-the-fee.webp',
+      ready: true,
       alt: 'Three cost blocks beside the exam fee, each a different size and none of them the fee.',
       caption: 'Class fees, books and travel are not the exam fee.',
       prompt:
@@ -68,6 +72,7 @@ export const BLOG_IMAGES = {
       slot: 'inline',
       after: 4,
       file: '/blog/dgca-exam-fees-before-you-pay.webp',
+      ready: true,
       alt: 'A short pre-payment checklist beside a payment button.',
       caption: 'The checks that are cheaper than a resit.',
       prompt:
@@ -124,6 +129,7 @@ export const BLOG_IMAGES = {
     {
       slot: 'cover',
       file: '/blog/dgca-exam-validity-cover.webp',
+      ready: true,
       alt: 'Two hourglasses of visibly different sizes standing side by side.',
       prompt:
         'Two hourglasses side by side on a flat surface, one distinctly smaller than the other, sand part-run in both. The size difference is the entire idea: two validity windows, one half the length of the other.',
@@ -132,6 +138,7 @@ export const BLOG_IMAGES = {
       slot: 'inline',
       after: 1,
       file: '/blog/dgca-exam-validity-window.webp',
+      ready: true,
       alt: 'A horizontal time bar with a shaded window and a paper sitting inside it.',
       caption: 'A pass is only useful while its window is open.',
       prompt:
@@ -141,6 +148,7 @@ export const BLOG_IMAGES = {
       slot: 'inline',
       after: 3,
       file: '/blog/dgca-exam-validity-stagger.webp',
+      ready: true,
       alt: 'Four papers placed at different points along a timeline, some overlapping.',
       prompt:
         'Four small exam paper icons placed at different positions along a horizontal timeline, each with a soft shaded bar extending to its right, the bars overlapping unevenly. Conveys staging attempts so the windows still overlap at the end.',
@@ -149,6 +157,7 @@ export const BLOG_IMAGES = {
       slot: 'inline',
       after: 2,
       file: '/blog/dgca-exam-attempts-no-limit.webp',
+      ready: true,
       alt: 'An open counter with no ceiling above it.',
       caption: 'What is published about attempts, and what is not.',
       prompt:
@@ -169,6 +178,7 @@ export const BLOG_IMAGES = {
     {
       slot: 'cover',
       file: '/blog/dgca-olode-cover.webp',
+      ready: true,
       alt: 'Two doors side by side opening onto the same room.',
       prompt:
         'Two simple doorways standing side by side, one wide open and one ajar, both opening onto an identical plain room containing a single desk. Flat, symmetrical. Two routes, one destination.',
@@ -177,6 +187,7 @@ export const BLOG_IMAGES = {
       slot: 'inline',
       after: 1,
       file: '/blog/dgca-olode-calendar-vs-ondemand.webp',
+      ready: true,
       alt: 'A month grid with a few marked days beside a single always-open door.',
       caption: 'Scheduled sittings on one side, on-demand on the other.',
       prompt:
@@ -186,6 +197,7 @@ export const BLOG_IMAGES = {
       slot: 'inline',
       after: 3,
       file: '/blog/dgca-olode-same-rules.webp',
+      ready: true,
       alt: 'Two identical rulebooks, one on each side of a mirror line.',
       prompt:
         'Two identical closed books lying symmetrically either side of a faint vertical mirror line, drawn identically down to the binding. Emphasises that the rules do not change between the two routes.',
@@ -194,6 +206,7 @@ export const BLOG_IMAGES = {
       slot: 'inline',
       after: 2,
       file: '/blog/dgca-olode-eligibility-identical.webp',
+      ready: true,
       alt: 'Two identical entry gates, mirrored.',
       caption: 'Eligibility does not change with the route.',
       prompt:
@@ -203,6 +216,7 @@ export const BLOG_IMAGES = {
       slot: 'inline',
       after: 4,
       file: '/blog/dgca-olode-before-you-book.webp',
+      ready: true,
       alt: 'A booking slot being selected from a row of open slots.',
       caption: 'What to settle before you book.',
       prompt:
@@ -214,6 +228,7 @@ export const BLOG_IMAGES = {
     {
       slot: 'cover',
       file: '/blog/dgca-misconceptions-cover.webp',
+      ready: true,
       alt: 'Several speech bubbles crowding out one small verified document.',
       prompt:
         'A cluster of overlapping empty speech bubbles in muted grey filling most of the frame, and in front of them one small crisp document with a check-mark seal in the accent colour. Repetition versus a source. Bubbles must be completely empty.',
@@ -222,6 +237,7 @@ export const BLOG_IMAGES = {
       slot: 'inline',
       after: 2,
       file: '/blog/dgca-misconceptions-two-doors.webp',
+      ready: true,
       alt: 'Two entry gates of different heights, one much lower than the other.',
       caption: 'Two licences, two different entry requirements.',
       prompt:
@@ -231,6 +247,7 @@ export const BLOG_IMAGES = {
       slot: 'inline',
       after: 4,
       file: '/blog/dgca-misconceptions-check-yourself.webp',
+      ready: true,
       alt: 'A magnifying glass held over an official-looking document.',
       prompt:
         'A magnifying glass held over a plain official document bearing only an abstract seal and faint horizontal placeholder lines that are clearly not readable text. Calm, instructional. Conveys checking a claim at its source.',
@@ -239,6 +256,7 @@ export const BLOG_IMAGES = {
       slot: 'inline',
       after: 1,
       file: '/blog/dgca-misconceptions-repetition.webp',
+      ready: true,
       alt: 'The same shape copied across a page, with one different.',
       caption: 'Repetition is not verification.',
       prompt:
@@ -248,6 +266,7 @@ export const BLOG_IMAGES = {
       slot: 'inline',
       after: 3,
       file: '/blog/dgca-misconceptions-age-open-door.webp',
+      ready: true,
       alt: 'An open doorway with no bar across it.',
       caption: 'No stated upper limit.',
       prompt:
@@ -258,7 +277,8 @@ export const BLOG_IMAGES = {
   'dgca-board-verification-certificate': [
     {
       slot: 'cover',
-      file: '/blog/dgca-bvc-cover.webp',
+      file: '/blog/dgca-bvc-cover_converted.webp',
+      ready: true,
       alt: 'A mark sheet with an embossed seal being handed across a counter.',
       prompt:
         'A single document with a raised circular seal in the corner being passed across a plain counter between two pairs of hands. Warm, procedural, unhurried. The seal is the subject.',
@@ -267,6 +287,7 @@ export const BLOG_IMAGES = {
       slot: 'inline',
       after: 1,
       file: '/blog/dgca-bvc-who-needs-it.webp',
+      ready: true,
       alt: 'Two queues, one routed through a verification desk and one going straight past.',
       caption: 'One route goes through verification; the other does not.',
       prompt:
@@ -283,7 +304,8 @@ export const BLOG_IMAGES = {
     {
       slot: 'inline',
       after: 2,
-      file: '/blog/dgca-bvc-documents-covered.webp',
+      file: '/blog/dgca-bvc-documents-covered_converted.webp',
+      ready: true,
       alt: 'A fanned set of four certificates, each with a corner seal.',
       caption: 'Which documents the certificate covers.',
       prompt:
@@ -293,6 +315,7 @@ export const BLOG_IMAGES = {
       slot: 'inline',
       after: 4,
       file: '/blog/dgca-bvc-international-route.webp',
+      ready: true,
       alt: 'A second, longer path branching off through an extra desk.',
       caption: 'An international qualification takes a longer route.',
       prompt:
@@ -303,7 +326,8 @@ export const BLOG_IMAGES = {
   'cpl-eligibility-after-12th': [
     {
       slot: 'cover',
-      file: '/blog/cpl-eligibility-cover.webp',
+      file: '/blog/cpl-eligibility-cover_converted.webp',
+      ready: true,
       alt: 'A school desk with two subject icons on it, and a runway visible through the window.',
       prompt:
         'A school desk by a window, two small abstract subject icons resting on it — an atom and a geometric compass — and through the window a runway with a light aircraft on it. Warm daylight, hopeful, uncluttered.',
@@ -311,7 +335,8 @@ export const BLOG_IMAGES = {
     {
       slot: 'inline',
       after: 1,
-      file: '/blog/cpl-eligibility-two-subjects.webp',
+      file: '/blog/cpl-eligibility-two-subjects_converted.webp',
+      ready: true,
       alt: 'Two keys of different shapes fitting one lock.',
       caption: 'Two subjects, one requirement.',
       prompt:
@@ -320,7 +345,8 @@ export const BLOG_IMAGES = {
     {
       slot: 'inline',
       after: 3,
-      file: '/blog/cpl-eligibility-no-age-limit.webp',
+      file: '/blog/cpl-eligibility-no-age-limit_converted.webp',
+      ready: true,
       alt: 'Figures of visibly different ages standing at the same starting line.',
       prompt:
         'Four simple silhouetted figures of clearly different ages standing shoulder to shoulder at a single starting line on a runway. Equal footing, no hierarchy. No faces, no text.',
@@ -328,7 +354,8 @@ export const BLOG_IMAGES = {
     {
       slot: 'inline',
       after: 2,
-      file: '/blog/cpl-eligibility-pcm-myth.webp',
+      file: '/blog/cpl-eligibility-pcm-myth_converted.webp',
+      ready: true,
       alt: 'Three subject icons with one lifted away from the other two.',
       caption: 'Physics and Mathematics is not the same as PCM.',
       prompt:
@@ -337,7 +364,8 @@ export const BLOG_IMAGES = {
     {
       slot: 'inline',
       after: 4,
-      file: '/blog/cpl-eligibility-first-steps.webp',
+      file: '/blog/cpl-eligibility-first-steps_converted.webp',
+      ready: true,
       alt: 'Three numbered steps leading from a school desk to a licence card.',
       caption: 'What to do first, while you are still in school.',
       prompt:
@@ -348,7 +376,8 @@ export const BLOG_IMAGES = {
   'atpl-eligibility-india': [
     {
       slot: 'cover',
-      file: '/blog/atpl-eligibility-cover.webp',
+      file: '/blog/atpl-eligibility-cover_converted.webp',
+      ready: true,
       alt: 'Two licence cards stacked, the upper one resting on the lower.',
       prompt:
         'Two blank rounded licence cards, one resting on and slightly overlapping the other, the upper one raised on a subtle shadow. Conveys that the second is issued on top of the first. Cards entirely blank.',
@@ -365,7 +394,8 @@ export const BLOG_IMAGES = {
     {
       slot: 'inline',
       after: 3,
-      file: '/blog/atpl-twin-engine.webp',
+      file: '/blog/atpl-twin-engine_converted.webp',
+      ready: true,
       alt: 'A twin-engine aircraft silhouette beside a single-engine one, with the single greyed out.',
       prompt:
         'Two aircraft silhouettes side by side in flat profile: a twin-engine aircraft in full accent colour and a single-engine aircraft rendered in pale grey. Clear, calm contrast with no cross or prohibition symbol.',
@@ -373,7 +403,8 @@ export const BLOG_IMAGES = {
     {
       slot: 'inline',
       after: 2,
-      file: '/blog/atpl-eligibility-three-mistakes.webp',
+      file: '/blog/atpl-eligibility-three-mistakes_converted.webp',
+      ready: true,
       alt: 'Three stumbling points marked along an otherwise clear path.',
       caption: 'The three things people get wrong.',
       prompt:
@@ -382,7 +413,8 @@ export const BLOG_IMAGES = {
     {
       slot: 'inline',
       after: 4,
-      file: '/blog/atpl-eligibility-after-the-papers.webp',
+      file: '/blog/atpl-eligibility-after-the-papers_converted.webp',
+      ready: true,
       alt: 'A cleared paper handing over to a flight-hours logbook.',
       caption: 'The papers are one step, not the last one.',
       prompt:
@@ -394,6 +426,7 @@ export const BLOG_IMAGES = {
     {
       slot: 'cover',
       file: '/blog/foreign-conversion-cover.webp',
+      ready: true,
       alt: 'A licence card passing between two stylised landmasses, with a clock behind it.',
       prompt:
         'A blank licence card in mid-air between two simplified abstract landmass shapes, with a large soft clock face behind it, low contrast. The clock is the quiet warning: conversion runs against time.',
@@ -402,6 +435,7 @@ export const BLOG_IMAGES = {
       slot: 'inline',
       after: 1,
       file: '/blog/foreign-conversion-currency-window.webp',
+      ready: true,
       alt: 'A closing window with flight hours stacked inside it.',
       caption: 'Currency is the clause that closes first.',
       prompt:
@@ -411,6 +445,7 @@ export const BLOG_IMAGES = {
       slot: 'inline',
       after: 3,
       file: '/blog/foreign-conversion-order.webp',
+      ready: true,
       alt: 'A checklist with steps connected in a deliberate order.',
       prompt:
         'A vertical checklist of five rounded rows with empty tick boxes, connected by a thin line that loops from the third row back up to the first. Conveys an order of operations that is not simply top to bottom. Rows carry icons, never text.',
@@ -419,6 +454,7 @@ export const BLOG_IMAGES = {
       slot: 'inline',
       after: 2,
       file: '/blog/foreign-conversion-which-licences.webp',
+      ready: true,
       alt: 'Two licence cards accepted and one set aside.',
       caption: 'Which licences this route covers.',
       prompt:
@@ -428,6 +464,7 @@ export const BLOG_IMAGES = {
       slot: 'inline',
       after: 4,
       file: '/blog/foreign-conversion-not-waived.webp',
+      ready: true,
       alt: 'A gate that stays shut on one path while another opens.',
       caption: 'Conversion waives nothing on the examination side.',
       prompt:
@@ -483,7 +520,8 @@ export const BLOG_IMAGES = {
   'how-to-choose-dgca-ground-classes': [
     {
       slot: 'cover',
-      file: '/blog/choose-ground-classes-cover.webp',
+      file: '/blog/choose-ground-classes-cover_converted.webp',
+      ready: true,
       alt: 'A hand holding a checklist in front of three identical institute buildings.',
       prompt:
         'Three identical simple institute buildings in a row, deliberately indistinguishable from one another, with a clipboard held up in the foreground bearing empty tick boxes. The point is that the buildings tell you nothing.',
@@ -491,7 +529,8 @@ export const BLOG_IMAGES = {
     {
       slot: 'inline',
       after: 2,
-      file: '/blog/choose-ground-classes-per-paper.webp',
+      file: '/blog/choose-ground-classes-per-paper_converted.webp',
+      ready: true,
       alt: 'A bundle of items beside the same items sold individually.',
       caption: 'A package and single papers are not the same purchase.',
       prompt:
@@ -500,7 +539,8 @@ export const BLOG_IMAGES = {
     {
       slot: 'inline',
       after: 4,
-      file: '/blog/choose-ground-classes-red-flags.webp',
+      file: '/blog/choose-ground-classes-red-flags_converted.webp',
+      ready: true,
       alt: 'A row of small flags with one raised higher than the rest.',
       prompt:
         'A row of small triangular pennant flags on thin poles, all in muted grey except one in a warm accent standing noticeably taller. Restrained, not alarming.',
@@ -528,7 +568,8 @@ export const BLOG_IMAGES = {
   'how-to-choose-a-flying-school-in-india': [
     {
       slot: 'cover',
-      file: '/blog/choose-flying-school-cover.webp',
+      file: '/blog/choose-flying-school-cover_converted.webp',
+      ready: true,
       alt: 'A light aircraft on an apron with a logbook and a weather vane in the foreground.',
       prompt:
         'A single-engine training aircraft parked on an apron at golden hour, with an open blank logbook and a small weather vane in the foreground. The foreground objects are what the article is about; the aircraft is context.',
@@ -536,7 +577,8 @@ export const BLOG_IMAGES = {
     {
       slot: 'inline',
       after: 2,
-      file: '/blog/choose-flying-school-utilisation.webp',
+      file: '/blog/choose-flying-school-utilisation_converted.webp',
+      ready: true,
       alt: 'Four aircraft in a row, two in the air and two grounded.',
       caption: 'A fleet on the ground is not a fleet.',
       prompt:
@@ -545,7 +587,8 @@ export const BLOG_IMAGES = {
     {
       slot: 'inline',
       after: 4,
-      file: '/blog/choose-flying-school-weather.webp',
+      file: '/blog/choose-flying-school-weather_converted.webp',
+      ready: true,
       alt: 'A year arc with some months shaded for weather that suppresses flying.',
       prompt:
         'A wide flat arc divided into twelve equal unlabelled segments, four of them shaded in a cool grey with small rain and haze motifs above them. Conveys a season that costs flying days.',
@@ -553,7 +596,8 @@ export const BLOG_IMAGES = {
     {
       slot: 'inline',
       after: 1,
-      file: '/blog/choose-flying-school-approval-list.webp',
+      file: '/blog/choose-flying-school-approval-list_converted.webp',
+      ready: true,
       alt: 'A regulator list on one side and a glossy brochure on the other.',
       caption: 'Check the list, not the brochure.',
       prompt:
@@ -562,7 +606,8 @@ export const BLOG_IMAGES = {
     {
       slot: 'inline',
       after: 3,
-      file: '/blog/choose-flying-school-logbook.webp',
+      file: '/blog/choose-flying-school-logbook_converted.webp',
+      ready: true,
       alt: 'An open logbook with a pen resting on a filled column.',
       caption: 'Records are the thing you are actually buying.',
       prompt:

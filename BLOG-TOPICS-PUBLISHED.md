@@ -39,6 +39,7 @@ Once a reserved page ships, strike its row and the query returns to the pool.
 | 2026-09-05 | `/blog/foreign-licence-conversion-checklist` | Converting a Foreign Pilot Licence: The Document and Currency Checklist | Licences & Eligibility |
 | 2026-09-09 | `/blog/dgca-exam-pass-rate` | DGCA Exam Pass Rate: What the Data Actually Shows | DGCA |
 | 2026-09-09 | `/blog/rtr-a-exam-dgca-takeover-2026` | RTR(A) Exam 2026: What Changed Now That DGCA Runs It, Not WPC | DGCA |
+| 2026-09-10 | `/blog/cadet-pilot-programme-vs-self-sponsored-cpl` | Cadet Pilot Programme vs Self-Sponsored CPL: What Actually Differs | Career |
 
 _Rows for 2026-09-04 and 2026-09-05 above (`dgca-olode-vs-regular-exams` through `foreign-licence-conversion-checklist`) were backfilled on 2026-09-09: this session found them already live in `src/lib/blogData.js` and `public/sitemap.xml` but missing from this ledger. The Reserved rows for OLODE and exam misconceptions below were stale as a result — both have already shipped as blog posts, not page articles, so those two Reserved rows are struck through._
 
