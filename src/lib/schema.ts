@@ -408,6 +408,30 @@ export const PAGE_FAQS: Record<string, { q: string; a: string }[]> = {
     { q: "What will my login ID be after allotment?", a: "Your allotted Computer Number with the prefix \"P-\"." },
     { q: "Which profile details can I change myself?", a: "Mobile number, email ID and correspondence address. Everything else requires prior approval from the CEO, DGCA, requested through the \"Raise query\" tab." },
   ],
+  "/apply": [
+    { q: "Is this form a DGCA application?", a: "No. Registering as a Flight Crew candidate and obtaining a computer number happens only on the DGCA examination portal, and no institute can do it on your behalf. This form starts a conversation with the academics team." },
+    { q: "Does sending it commit me to anything?", a: "No. Nothing is charged and nothing is reserved. Fees, schedule and batch are confirmed in writing before any payment." },
+    { q: "Do I need documents ready before I send it?", a: "No. Documents make the counselling call more useful, but none are needed to send the enquiry itself." },
+    { q: "Does Flying Star Aviator provide the flying training?", a: "No. It is a DGCA ground school and career-guidance organisation in Dwarka, New Delhi. Flying training happens at partner FTOs under separate arrangements you make with the FTO." },
+    { q: "What if I am not sure which licence I am aiming for?", a: "Choose the career-guidance option. Working out whether a PPL, a CPL or neither fits your situation is part of what the call is for." },
+    { q: "Can I call instead of filling this in?", a: "Yes. Phone +91 99535 36199, Monday to Saturday, 9:00 AM to 6:00 PM." },
+  ],
+  "/courses/cpl/fees": [
+    { q: "What does a CPL cost in India?", a: "There is no published figure. DGCA publishes examination and licensing charges, not training prices, and flying schools quote rather than publish. Any single number you see is a provider quote or a restatement of one." },
+    { q: "Why does this page not show a price range?", a: "A range requires assuming a fleet, an aircraft type, a location, an hours figure, a completion time and a level of bundling. Publishing the range without those assumptions presents a guess as a fact." },
+    { q: "Which costs does DGCA actually publish?", a: "The charges payable to DGCA itself: examination charges per paper, the computer number application, and licence issue. Training costs are not among them." },
+    { q: "What is usually the largest component?", a: "Flying hours at the FTO, by a wide margin over everything else on the list." },
+    { q: "What is most often left out of a quote?", a: "Accommodation, travel, equipment, retests and the cost of delay. None of them are hidden; they are simply not the flying school's to quote." },
+    { q: "Should I pay for ground classes or flying first?", a: "The DGCA papers do not require flying hours, so ground study can run first or alongside. A Class 1 medical is the cheapest step most capable of changing the plan, so it is worth doing before committing money to anything else." },
+  ],
+  "/atpl/brochure": [
+    { q: "What is an ATPL?", a: "The Airline Transport Pilot Licence is the senior DGCA flight crew licence, required to act as pilot-in-command of an aircraft certificated for two pilots in scheduled air transport." },
+    { q: "Is the ATPL just a longer CPL?", a: "No. They are separate licences with separate theory papers, sat at different points in a career. Most candidates hold a CPL and are already flying commercially when they sit the ATPL papers." },
+    { q: "How many flying hours does an ATPL need?", a: "The requirement is set out in Schedule II to the Aircraft Rules 1937. This site does not restate the figure, because publicly circulating copies of the Rules truncate before the schedules. Read it from the current official text." },
+    { q: "Is there a downloadable brochure PDF?", a: "No. The brochure is this page, so it can be searched, linked to and quoted rather than sitting inside a file." },
+    { q: "Does Flying Star Aviator provide ATPL flying experience?", a: "No. It prepares candidates for the DGCA ATPL theory papers. Flying experience is accrued at an operator or an approved training organisation." },
+    { q: "Is a type rating part of the ATPL?", a: "No. A type rating is a separate qualification taken after the licence, and it is frequently confused with it." },
+  ],
 };
 
 /** /pilot-training/<topic> FAQs come straight from the array the page renders. */

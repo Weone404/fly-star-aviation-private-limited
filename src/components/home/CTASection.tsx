@@ -424,7 +424,7 @@ export function CTASection() {
                 className="w-full sm:w-auto group"
                 asChild
               >
-                <Link to="/contact">
+                <Link to="/apply">
                   Apply Now
                   <ArrowRight
                     className="h-5 w-5 ml-2 transition-transform duration-200 group-hover:translate-x-1"

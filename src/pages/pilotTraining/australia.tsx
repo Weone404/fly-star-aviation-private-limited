@@ -35,7 +35,7 @@ import {
 const trainingHighlights = [
     {
         icon: Award,
-        title: "CASA-  Excellence",
+        title: "CASA-approved Excellence",
         description: "World-renowned aviation industry with globally recognised licences",
     },
     {
@@ -189,7 +189,7 @@ const stepByStepGuide = [
     {
         step: 3,
         title: "Choose the Right Flight School",
-        description: "Select a CASA-  Australian flight school like Airways Aviation, known for structured Diploma in Aviation programs, modern aircraft, and global career",
+        description: "Select a CASA-approved Australian flight school like Airways Aviation, known for structured Diploma in Aviation programs, modern aircraft, and global career",
     },
     {
         step: 4,
@@ -268,7 +268,7 @@ const aircraftFleet = [
 ];
 
 const benefitsOfTraining = [
-    "CASA-  and globally recognised training",
+    "CASA-approved and globally recognised training",
     "Includes Diploma in Aviation for added qualification",
     "Diverse weather and airspace experience",
     "Modern aircraft and high safety standards",
@@ -316,7 +316,7 @@ const faqs = [
     },
     {
         question: "Is the CASA licence recognized globally?",
-        answer: "Yes, CASA-  training provides globally recognised credentials. With internationally respected CASA qualifications, students gain the skills, confidence, and global eligibility to launch successful airline careers worldwide.",
+        answer: "Yes, CASA-approved training provides globally recognised credentials. With internationally respected CASA qualifications, students gain the skills, confidence, and global eligibility to launch successful airline careers worldwide.",
     },
 ];
 
@@ -324,10 +324,10 @@ export default function PilotTrainingAustraliaPage() {
     return (
         <Layout>
             
-                <title>Pilot Training Australia | CASA-  Commercial Pilot Training & Diploma</title>
+                <title>Pilot Training Australia | CASA-approved Commercial Pilot Training & Diploma</title>
                 <meta
                     name="description"
-                    content="Train in Australia with CASA-  flight schools. 13-14 months CPL training with Diploma in Aviation, 221 flying hours, modern fleet. DGCA license conversion available. Apply now."
+                    content="Train in Australia with CASA-approved flight schools. 13-14 months CPL training with Diploma in Aviation, 221 flying hours, modern fleet. DGCA license conversion available. Apply now."
                 />
             
 
@@ -706,7 +706,7 @@ export default function PilotTrainingAustraliaPage() {
                             Aviation Academies in Australia
                         </h2>
                         <p className="text-muted-foreground max-w-2xl mx-auto">
-                            CASA-  flight schools featuring modern fleets and qualified instructors
+                            CASA-approved flight schools featuring modern fleets and qualified instructors
                         </p>
                     </motion.div>
 
@@ -954,7 +954,7 @@ export default function PilotTrainingAustraliaPage() {
                             Begin Your Aviation Career in Australia Today
                         </h2>
                         <p className="text-primary-foreground/80 text-lg mb-8">
-                            With CASA-  training, Diploma in Aviation qualification, superior weather conditions,
+                            With CASA-approved training, Diploma in Aviation qualification, superior weather conditions,
                             diverse flying environments, and qualified instructors, Australia provides everything essential to
                             establish a thriving aviation career. Take the initial step toward realizing your aspiration of
                             becoming a professional pilot with internationally acknowledged certification and straightforward

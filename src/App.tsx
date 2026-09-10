@@ -16,6 +16,9 @@ const queryClient = new QueryClient({
 });
 
 import Index from "./pages/Index";
+import Apply from "./pages/Apply";
+import CplFees from "./pages/Courses/CplFees";
+import AtplBrochure from "./pages/Courses/AtplBrochure";
 
 const ContactPopup = lazy(() => import('../src/pages/Contactpopup'));
 const SpecialOfferBanner = lazy(() => import("./pages/Specialofferbanner"));
@@ -132,6 +135,9 @@ function AppInner() {
         <Route path="/services/components-spares" element={<Componentsspares />} />
 
         {/* COURSES */}
+        <Route path="/apply" element={<Apply />} />
+        <Route path="/courses/cpl/fees" element={<CplFees />} />
+        <Route path="/atpl/brochure" element={<AtplBrochure />} />
         <Route path="/courses/cpl" element={<Cpl />} />
         <Route path="/courses/atpl" element={<Atpl />} />
         <Route path="/air-transport-pilots-license-atpl" element={<Atpl />} />

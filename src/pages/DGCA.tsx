@@ -43,7 +43,7 @@ const computerNumberUses = [
   {
     icon: Plane,
     title: "Flying School Registration",
-    description: "Register at any DGCA-  flying training organization",
+    description: "Register at any DGCA-approved flying training organization",
   },
 ];
 
@@ -278,7 +278,7 @@ export default function DGCAComputerNumberPage() {
                   "Appear for any DGCA ground theory exam",
                   "Apply for CPL or PPL",
                   "Track exam & academic records",
-                  "Register at DGCA-  flying schools",
+                  "Register at DGCA-approved flying schools",
                 ].map((item, i) => (
                   <li key={i} className="flex items-center gap-3 text-muted-foreground">
                     <CheckCircle className="h-5 w-5 text-primary flex-shrink-0" />

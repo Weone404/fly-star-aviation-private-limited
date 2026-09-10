@@ -191,7 +191,7 @@ const skillsRequired = [
 const admissionSteps = [
     "Hold a valid Commercial Pilot Licence (CPL) with multi-engine endorsement",
     "Accumulate minimum 1,500 total flight hours (500 as PIC)",
-    "Pass Class-1 Medical Assessment from a DGCA-  doctor",
+    "Pass Class-1 Medical Assessment from a DGCA-empanelled doctor",
     "Clear all DGCA ATPL theory examinations (Frozen ATPL)",
     "Complete the ATPL practical skill test with a DGCA examiner",
 ];
@@ -268,13 +268,13 @@ export default function ATPLCoursePage() {
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4">
                             <Button variant="gold" size="lg" asChild>
-                                <Link to="/contact">
+                                <Link to="/apply">
                                     Apply Now
                                     <ArrowRight className="h-4 w-4 ml-2" />
                                 </Link>
                             </Button>
                             <Button variant="outline-white" size="lg" asChild>
-                                <Link to="/contact">Get ATPL Course Fees</Link>
+                                <Link to="/atpl/brochure">Get ATPL Course Fees</Link>
                             </Button>
                             <Button variant="outline-white" size="lg" asChild>
                                 <Link to="/contact">Talk to Counselor</Link>
@@ -655,7 +655,7 @@ export default function ATPLCoursePage() {
                         <h2 className="text-3xl md:text-4xl font-bold mb-4">ATPL Course Fees in India</h2>
                         <p className="text-muted-foreground max-w-2xl mx-auto">
                             The total ATPL licence cost depends on flying hours, aircraft type, and training facilities. Below is a
-                            representative breakdown from a DGCA-  Flying Training Organisation.
+                            representative breakdown from a DGCA-approved Flying Training Organisation.
                         </p>
                     </motion.div>
 
@@ -981,13 +981,13 @@ export default function ATPLCoursePage() {
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <Button variant="gold" size="lg" asChild>
-                                <Link to="/contact">
+                                <Link to="/apply">
                                     Apply Now
                                     <ArrowRight className="h-4 w-4 ml-2" />
                                 </Link>
                             </Button>
                             <Button variant="outline-white" size="lg" asChild>
-                                <Link to="/contact">Get ATPL Course Fees</Link>
+                                <Link to="/atpl/brochure">Get ATPL Course Fees</Link>
                             </Button>
                             <Button variant="outline-white" size="lg" asChild>
                                 <a href="tel:+919953536199">Talk to Counselor</a>

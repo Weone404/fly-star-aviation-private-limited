@@ -2,6 +2,60 @@
 
 All entries: what changed, and why. Newest first.
 
+## 2026-09-10 - The FAQ answers that were never in the HTML, and three pages that did not exist
+
+**The defect first.** Every non-blog page renders its FAQ through the shared
+Accordion, which was built on Radix. Radix unmounts closed content, and
+`scripts/prerender.js` serializes the live DOM with `page.content()` without
+opening anything. So eighteen pages shipped their FAQ *questions* and none of
+their *answers*, while `/dgca/computer-number` published FAQPage schema
+asserting answers that were not on the page. The blog path was fixed months ago
+with native `<details>`; the page path never was, and nothing tested it.
+
+Proven both ways before and after. Rendering the old Radix component closed put
+the question in the markup and left the answer out entirely. The rebuilt
+component is native `<details>`/`<summary>`, and the prerendered output now
+carries 14 `<details>` on `/dgca/computer-number`, 10 on `/rtr`, 8 on
+`/pilot-training/india`, 6 on `/courses/atpl` and `/become-a-pilot/become-pilot`,
+5 on `/courses/cpl`, with the answer text present in the served HTML.
+
+The exported names and props are unchanged, so no page JSX moved. `type="single"`
+maps to the `<details name>` group; a browser without that support allows more
+than one open at a time, which degrades behaviour and never content.
+`src/test/faqPrerender.test.tsx` renders a closed item and asserts the answer is
+in the markup, and refuses any page that imports a collapsing primitive directly.
+
+**Three pages that were linked but never existed**
+- `/apply` - a real enquiry form posting to the existing `/api/contact`, with the
+  honeypot the backend already checks. City and qualification travel inside the
+  message rather than widening the public write surface with new columns. States
+  plainly that it is not a DGCA application and that flying training happens at
+  partner FTOs.
+- `/courses/cpl/fees` - the absence answer applied to cost. Fifteen components,
+  who sets each, whether anyone publishes it, and seven questions that make two
+  quotes comparable. **No figures at all**, because every rupee amount in
+  circulation traces to a provider quote and DGCA publishes examination charges,
+  not training prices.
+- `/atpl/brochure` - the brochure as a page rather than a download. Says what the
+  ATPL permits, how it differs from a CPL, and what a ground school does not
+  provide. Schedule II hour requirements are named as the governing text and
+  deliberately not restated, because the banked copy is not citable.
+
+**Repairs found along the way**
+- 48 places across 8 files read `DGCA-  `, `FAA-  `, `CASA-  `, `CAA-  ` or
+  `SACAA-  ` - an earlier claims pass removed the word "approved" and left the
+  sentence broken, including in eight `routeMeta` titles and descriptions that
+  Google was serving. Restored as "approved" where it describes a third-party
+  organisation, and as "empanelled" for medical examiners, which is the accurate
+  term.
+- One "Apply Now" button on `/courses/cpl` pointed at `/rtr`. The dead-link
+  repair made links resolve without checking they resolved anywhere sensible.
+  All 20 Apply CTAs now point at `/apply`; "Get CPL Course Fees" and "Get ATPL
+  Course Fees" point at the pages that answer them instead of at `/contact`.
+
+Sitemap 69 to 72 URLs, feed 16 items, 132 tests passing, build and prerender
+green. Not pushed - the owner pushes.
+
 ## 2026-09-09 — Every remaining regulator citation, checked against what the document actually says
 
 Eleven citation lines across seven pages named DGCA, ICAO, FAA or SACAA and

@@ -185,38 +185,38 @@ const routeMeta: Record<string, RouteMeta> = {
     canonical: `${BASE_URL}/pilot-training`,
   },
   "/pilot-training/india": {
-    title: "Pilot Training India | DGCA-  Commercial Pilot Training",
+    title: "Pilot Training India | DGCA-approved Commercial Pilot Training",
     description: "DGCA-approved commercial pilot training in India with expert faculty and practical flight preparation.",
     canonical: `${BASE_URL}/pilot-training/india`,
   },
   "/pilot-training/usa": {
-    title: "Pilot Training USA | FAA-  Commercial Pilot Training",
+    title: "Pilot Training USA | FAA-approved Commercial Pilot Training",
     description: "FAA-approved pilot training programs in the USA for aspiring commercial pilots.",
     canonical: `${BASE_URL}/pilot-training/usa`,
   },
   "/pilot-training/australia": {
-    title: "Pilot Training Australia | CASA-  Commercial Pilot Training & Diploma",
+    title: "Pilot Training Australia | CASA-approved Commercial Pilot Training & Diploma",
     description: "CASA-approved pilot training in Australia with integrated flight and ground training.",
     canonical: `${BASE_URL}/pilot-training/australia`,
   },
   "/training-in-australia": {
-    title: "Pilot Training Australia | CASA-  Commercial Pilot Training & Diploma",
+    title: "Pilot Training Australia | CASA-approved Commercial Pilot Training & Diploma",
     description: "CASA-approved pilot training in Australia with integrated flight and ground training.",
     canonical: `${BASE_URL}/training-in-australia`,
   },
   "/pilot-training/new-zealand": {
-    title: "Pilot Training New Zealand | CAA-  Commercial Pilot Training",
+    title: "Pilot Training New Zealand | CAA-approved Commercial Pilot Training",
     description: "Pilot training options in New Zealand for Indian students seeking an international aviation career.",
     canonical: `${BASE_URL}/pilot-training/new-zealand`,
   },
   "/pilot-training/south-africa": {
-    title: "Pilot Training South Africa | SACAA-  Commercial Pilot Training",
-    description: "Train in South Africa with SACAA-  flight schools. 14-15 months CPL training, 200-210 flying hours, cost-effective programs. DGCA license conversion available. Apply now.",
+    title: "Pilot Training South Africa | SACAA-approved Commercial Pilot Training",
+    description: "Train in South Africa with SACAA-approved flight schools. 14-15 months CPL training, 200-210 flying hours, cost-effective programs. DGCA license conversion available. Apply now.",
     canonical: `${BASE_URL}/pilot-training/south-africa`,
   },
   "/training-in-south-africa": {
-    title: "Pilot Training South Africa | SACAA-  Commercial Pilot Training",
-    description: "Train in South Africa with SACAA-  flight schools. 14-15 months CPL training, 200-210 flying hours, cost-effective programs. DGCA license conversion available. Apply now.",
+    title: "Pilot Training South Africa | SACAA-approved Commercial Pilot Training",
+    description: "Train in South Africa with SACAA-approved flight schools. 14-15 months CPL training, 200-210 flying hours, cost-effective programs. DGCA license conversion available. Apply now.",
     canonical: `${BASE_URL}/training-in-south-africa`,
   },
   "/become-a-pilot/become-pilot": {
@@ -240,7 +240,7 @@ const routeMeta: Record<string, RouteMeta> = {
     canonical: `${BASE_URL}/guide-on-how-to-become-a-pilot`,
   },
   "/training-in-india/": {
-    title: "Pilot Training India | DGCA-  Commercial Pilot Training",
+    title: "Pilot Training India | DGCA-approved Commercial Pilot Training",
     description: "DGCA-approved commercial pilot training in India with expert faculty and practical flight preparation.",
     canonical: `${BASE_URL}/training-in-india/`,
   },
@@ -399,6 +399,21 @@ const routeMeta: Record<string, RouteMeta> = {
     title: "Indian Pilot Training Glossary | Flying Star Aviator",
     description: "CPL, ATPL, PPL, RTR(A), computer number, OLODE, BVC and more — what each term means under DGCA's published rules, defined in plain English.",
     canonical: `${BASE_URL}/glossary`,
+  },
+  "/apply": {
+    title: "Apply to Flying Star Aviator | DGCA Ground Classes, Dwarka",
+    description: "Send an enquiry to the academics team. What happens after you send it, what to have ready, and why this is not a DGCA application.",
+    canonical: `${BASE_URL}/apply`,
+  },
+  "/courses/cpl/fees": {
+    title: "CPL Fees in India: Every Cost Component, and Who Publishes a Price",
+    description: "DGCA publishes examination charges, not training prices. Every component of CPL cost, who sets it, whether anyone publishes it, and the questions that make two quotes comparable.",
+    canonical: `${BASE_URL}/courses/cpl/fees`,
+  },
+  "/atpl/brochure": {
+    title: "ATPL Ground Classes Brochure | Flying Star Aviator",
+    description: "The ATPL brochure on the page rather than behind a download: what the licence permits, how it differs from a CPL, and what a ground school does and does not provide.",
+    canonical: `${BASE_URL}/atpl/brochure`,
   },
   "/rtr": {
     title: "RTR Full Form - Radio Telephony Restricted | Complete Guide 2026",

@@ -35,7 +35,7 @@ import {
 const trainingHighlights = [
     {
         icon: Award,
-        title: "SACAA-  Training",
+        title: "SACAA-approved Training",
         description: "Internationally recognized training standards with global career opportunities",
     },
     {
@@ -193,7 +193,7 @@ const stepByStepGuide = [
     {
         step: 3,
         title: "Choose the Right Flight School",
-        description: "Select a SACAA-  flight school in South Africa. Compare fleet, instructor experience, and training environment to find your ideal fit.",
+        description: "Select a SACAA-approved flight school in South Africa. Compare fleet, instructor experience, and training environment to find your ideal fit.",
     },
     {
         step: 4,
@@ -343,7 +343,7 @@ const aircraftFleet = [
 
 const benefitsOfTraining = [
     "Excellent weather with 300+ flying days per year for fast course completion",
-    "SACAA-  training with globally recognised licence pathways",
+    "SACAA-approved training with globally recognised licence pathways",
     "Diverse flying environments that build strong real-world skills",
     "Cost-effective training compared to many international destinations",
     "Modern training fleets with experienced instructors",
@@ -385,7 +385,7 @@ const faqs = [
     },
     {
         question: "Is the SACAA license recognized internationally?",
-        answer: "Yes, SACAA-  training provides globally recognised licence pathways. The training ensures compliance with both SACAA and DGCA standards, preparing students for licence conversion in India and global airline careers.",
+        answer: "Yes, SACAA-approved training provides globally recognised licence pathways. The training ensures compliance with both SACAA and DGCA standards, preparing students for licence conversion in India and global airline careers.",
     },
     {
         question: "What makes South Africa cost-effective for pilot training?",
@@ -397,10 +397,10 @@ export default function PilotTrainingSouthAfricaPage() {
     return (
         <Layout>
             
-                <title>Pilot Training South Africa | SACAA-  Commercial Pilot Training</title>
+                <title>Pilot Training South Africa | SACAA-approved Commercial Pilot Training</title>
                 <meta
                     name="description"
-                    content="Train in South Africa with SACAA-  flight schools. 14-15 months CPL training, 200-210 flying hours, cost-effective programs. DGCA license conversion available. Apply now."
+                    content="Train in South Africa with SACAA-approved flight schools. 14-15 months CPL training, 200-210 flying hours, cost-effective programs. DGCA license conversion available. Apply now."
                 />
             
 
@@ -616,7 +616,7 @@ export default function PilotTrainingSouthAfricaPage() {
                         viewport={{ once: true }}
                         className="text-center text-muted-foreground mt-8"
                     >
-                        Comprehensive SACAA-  CPL program with PPL, Night Rating, IR, and Multi-Engine training,
+                        Comprehensive SACAA-approved CPL program with PPL, Night Rating, IR, and Multi-Engine training,
                         aligned for DGCA licence conversion, covering ground school, simulator, and flight hours.
                     </motion.p>
                 </div>
@@ -778,7 +778,7 @@ export default function PilotTrainingSouthAfricaPage() {
                             Pilot Academies in South Africa
                         </h2>
                         <p className="text-muted-foreground max-w-2xl mx-auto">
-                            SACAA-  flying schools with modern fleets and experienced instructors
+                            SACAA-approved flying schools with modern fleets and experienced instructors
                         </p>
                     </motion.div>
 
@@ -1032,7 +1032,7 @@ export default function PilotTrainingSouthAfricaPage() {
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <Button variant="gold" size="lg" asChild>
-                                <Link to="/contact">
+                                <Link to="/apply">
                                     Apply Now
                                     <ArrowRight className="h-4 w-4 ml-2" />
                                 </Link>

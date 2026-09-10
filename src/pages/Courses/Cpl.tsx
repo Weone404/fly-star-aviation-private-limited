@@ -364,13 +364,13 @@ export default function CPLCoursePage() {
                             </p>
                             <div className="flex flex-col sm:flex-row gap-4">
                                 <Button variant="gold" size="lg" asChild>
-                                    <Link to="/rtr">
+                                    <Link to="/apply">
                                         Apply Now
                                         <ArrowRight className="h-4 w-4 ml-2" />
                                     </Link>
                                 </Button>
                                 <Button variant="outline-white" size="lg" asChild>
-                                    <Link to="/contact">Get CPL Course Fees</Link>
+                                    <Link to="/courses/cpl/fees">Get CPL Course Fees</Link>
                                 </Button>
                                 <Button variant="outline-white" size="lg" asChild>
                                     <Link to="/contact">Talk to Counselor</Link>
@@ -961,13 +961,13 @@ export default function CPLCoursePage() {
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <Button variant="gold" size="lg" asChild>
-                                <Link to="/contact">
+                                <Link to="/apply">
                                     Apply Now
                                     <ArrowRight className="h-4 w-4 ml-2" />
                                 </Link>
                             </Button>
                             <Button variant="outline-white" size="lg" asChild>
-                                <Link to="/contact">Get CPL Course Fees</Link>
+                                <Link to="/courses/cpl/fees">Get CPL Course Fees</Link>
                             </Button>
                             <Button variant="outline-white" size="lg" asChild>
                                 <a href="tel:+919953536199">Talk to Counselor</a>

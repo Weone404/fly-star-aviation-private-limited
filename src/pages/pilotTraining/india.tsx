@@ -31,7 +31,7 @@ import {
 const trainingHighlights = [
     {
         icon: Award,
-        title: "DGCA-  Training",
+        title: "DGCA-approved Training",
         description: "Aligned with Indian aviation standards and regulations",
     },
     {
@@ -186,7 +186,7 @@ const stepByStepGuide = [
     {
         step: 5,
         title: "Choose The Right Flight School",
-        description: "Select a DGCA-  FTO based on fleet, instructor experience, placement outcomes and student support services.",
+        description: "Select a DGCA-approved FTO based on fleet, instructor experience, placement outcomes and student support services.",
     },
     {
         step: 6,
@@ -274,7 +274,7 @@ const aircraftFleet = [
 ];
 
 const benefitsOfTraining = [
-    "DGCA-  training aligned with Indian aviation standards",
+    "DGCA-approved training aligned with Indian aviation standards",
     "Close to home with quality training facilities",
     "Experienced instructors and modern aircraft",
     "Diverse weather and terrain for real-world exposure",
@@ -313,7 +313,7 @@ const faqs = [
     },
     {
         question: "Is the DGCA license recognized internationally?",
-        answer: "Yes, the DGCA-  Commercial Pilot License is recognized globally and qualifies graduates for airline careers within India and across international aviation networks.",
+        answer: "Yes, the DGCA-approved Commercial Pilot License is recognized globally and qualifies graduates for airline careers within India and across international aviation networks.",
     },
 ];
 
@@ -321,10 +321,10 @@ export default function PilotTrainingIndiaPage() {
     return (
         <Layout>
             
-                <title>Pilot Training India | DGCA-  Commercial Pilot Training</title>
+                <title>Pilot Training India | DGCA-approved Commercial Pilot Training</title>
                 <meta
                     name="description"
-                    content="Start your pilot journey with DGCA-  flight schools in India. 14-16 months CPL training, 200 flying hours, modern aircraft fleet. Get complete course details and apply now."
+                    content="Start your pilot journey with DGCA-approved flight schools in India. 14-16 months CPL training, 200 flying hours, modern aircraft fleet. Get complete course details and apply now."
                 />
             
 
@@ -662,7 +662,7 @@ export default function PilotTrainingIndiaPage() {
                             Pilot Academies in India
                         </h2>
                         <p className="text-muted-foreground max-w-2xl mx-auto">
-                            DGCA-  flying schools with modern fleets and experienced instructors
+                            DGCA-approved flying schools with modern fleets and experienced instructors
                         </p>
                     </motion.div>
 
@@ -919,7 +919,7 @@ export default function PilotTrainingIndiaPage() {
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <Button variant="gold" size="lg" asChild>
-                                <Link to="/contact">
+                                <Link to="/apply">
                                     Apply Now
                                     <ArrowRight className="h-4 w-4 ml-2" />
                                 </Link>

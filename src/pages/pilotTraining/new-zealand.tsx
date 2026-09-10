@@ -34,7 +34,7 @@ import {
 const trainingHighlights = [
     {
         icon: Award,
-        title: "CAA-  Training",
+        title: "CAA-approved Training",
         description: "World-class flight academies with internationally recognized licences",
     },
     {
@@ -110,7 +110,7 @@ const courseFlow = [
     {
         stage: "1",
         title: "CAA Theory Ground Class",
-        description: "Students begin with CAA-  ground classes and written exams, building a strong foundation in aviation theory before starting their flight training.",
+        description: "Students begin with CAA-approved ground classes and written exams, building a strong foundation in aviation theory before starting their flight training.",
     },
     {
         stage: "2",
@@ -189,7 +189,7 @@ const stepByStepGuide = [
     {
         step: 3,
         title: "Choose the Right Flight School",
-        description: "Compare CAA-  NZ schools on course structure, fleet, instructor experience, student outcomes, and living support to pick the best fit for your goals",
+        description: "Compare CAA-approved NZ schools on course structure, fleet, instructor experience, student outcomes, and living support to pick the best fit for your goals",
     },
     {
         step: 4,
@@ -327,10 +327,10 @@ export default function PilotTrainingNewZealandPage() {
     return (
         <Layout>
             
-                <title>Pilot Training New Zealand | CAA-  Commercial Pilot Training</title>
+                <title>Pilot Training New Zealand | CAA-approved Commercial Pilot Training</title>
                 <meta
                     name="description"
-                    content="Train in New Zealand with CAA-  flight schools. 12-14 months CPL training, 220-240 flying hours, diverse flying environments. DGCA license conversion available. Apply now."
+                    content="Train in New Zealand with CAA-approved flight schools. 12-14 months CPL training, 220-240 flying hours, diverse flying environments. DGCA license conversion available. Apply now."
                 />
             
 
@@ -705,7 +705,7 @@ export default function PilotTrainingNewZealandPage() {
                             Pilot Academies in New Zealand
                         </h2>
                         <p className="text-muted-foreground max-w-2xl mx-auto">
-                            CAA-  flying schools with modern fleets and experienced instructors
+                            CAA-approved flying schools with modern fleets and experienced instructors
                         </p>
                     </motion.div>
 
@@ -960,7 +960,7 @@ export default function PilotTrainingNewZealandPage() {
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <Button variant="gold" size="lg" asChild>
-                                <Link to="/contact">
+                                <Link to="/apply">
                                     Apply Now
                                     <ArrowRight className="h-4 w-4 ml-2" />
                                 </Link>

@@ -44,6 +44,9 @@ describe("Vercel config", () => {
     "/faq",
     "/glossary",
     "/rtr",
+    "/apply",
+    "/courses/cpl/fees",
+    "/atpl/brochure",
   ])("routes %s to the SPA", (path) => {
     expect(matchesSpa(path)).toBe(true);
   });
