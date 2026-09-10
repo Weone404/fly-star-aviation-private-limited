@@ -10,6 +10,38 @@ with no read path. Both survived because nothing surfaced them.
 
 ---
 
+## Current sitting - updated 2026-09-10
+
+Everything below this block was written on 2026-09-04, before the merge and
+before the site went live. It is kept as the record of that state. This is what
+is actually outstanding now, in order.
+
+1. **Push.** `main` is 6 commits ahead of `origin/main`, clean tree. Only the
+   owner pushes.
+2. **Live checks from the Mac, one sitting, three jobs.** `npm run smoke`;
+   the security re-verification against production (`/api/contacts` refusing,
+   DELETE answering 405, one admin login, Talk-to-Counselor on `/courses/cpl`,
+   a test enquiry through the form); and the sitemap, feed and llms.txt greps.
+   The agent's container and the device VM are both refused by their own egress
+   allowlist, so this run is the only live evidence the campaign has, and it is
+   what closes the open security verification item.
+3. **Google Search Console.** Resubmit the sitemap at 72 URLs, then URL
+   Inspection on `/apply`, `/courses/cpl/fees`, `/atpl/brochure` and the
+   pass-rate post.
+4. **Entity word.** Decided: stopgap. Human-read surfaces only; Organization
+   schema and the llms.txt entity block stay frozen.
+5. **Analytics env vars.** The site has traffic and measures nothing.
+6. **India Code PDF** into the repo folder, for Schedule II and Rule 39C.
+7. **Ground-class fee**, as a first-party dated figure, if the fees page should
+   carry one.
+8. **The 26 lead replies.**
+
+Also outstanding, agent side, and not started: a `Claude outputs/` folder sits
+untracked in the repo root and should be moved or deleted by whoever put it
+there.
+
+---
+
 ## Where this actually stands
 
 **Done.** Crawlable architecture with a regression test guarding it · 15 recovered
