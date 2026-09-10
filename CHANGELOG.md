@@ -2,6 +2,36 @@
 
 All entries: what changed, and why. Newest first.
 
+## 2026-09-10 - Verified live, from the owner's machine
+
+The campaign's first VERIFIED LIVE evidence. Every check below is a real
+response from the real host, run from the owner's Mac, not from a container
+that cannot reach the edge.
+
+**Security verification item: CLOSED.** The merge-day fixes were repo-verified
+only, because the environment that checked them could not reach production.
+Re-run against production: `/api/contacts` answers 404, not a JSON dump of real
+people's names and phone numbers; `DELETE /api/blogs/<id>` answers 405. "Closed
+in the repo" and "closed on the internet" are now the same fact.
+
+**Deploy confirmed.** `npm run smoke`: 74 checks passed, 72 sitemap URLs, 2
+expected redirects, 19 blog URLs. Live counts match what was committed exactly -
+sitemap 72, feed 16, llms.txt 62 links - so Vercel is serving 419a4dc.
+`/apply`, `/courses/cpl/fees` and `/atpl/brochure` all answer 200.
+
+**Invariant 5 confirmed on the edge.** `/dgca/computer-number` serves 14
+`<details>` elements, and the FAQ answer "Its validity is lifetime" appears
+twice in the served HTML: once in the visible FAQ, once in the FAQPage JSON-LD.
+That is the schema-to-visible-text parity the invariant demands, and this
+morning it was one occurrence - the schema alone, asserting an answer the page
+did not contain.
+
+**Provenance relabelled.** Claims previously carried as INDETERMINATE - that the
+deploy served, that the sitemap and feed the build produced are the ones on the
+edge, that the render gate holds in production - are now VERIFIED LIVE against
+the evidence above. Claims about robots.txt and llms.txt content remain
+repo-verified: the files were read from the repo, not fetched from the host.
+
 ## 2026-09-10 - The FAQ answers that were never in the HTML, and three pages that did not exist
 
 **The defect first.** Every non-blog page renders its FAQ through the shared

@@ -16,15 +16,12 @@ Everything below this block was written on 2026-09-04, before the merge and
 before the site went live. It is kept as the record of that state. This is what
 is actually outstanding now, in order.
 
-1. **Push.** `main` is 6 commits ahead of `origin/main`, clean tree. Only the
-   owner pushes.
-2. **Live checks from the Mac, one sitting, three jobs.** `npm run smoke`;
-   the security re-verification against production (`/api/contacts` refusing,
-   DELETE answering 405, one admin login, Talk-to-Counselor on `/courses/cpl`,
-   a test enquiry through the form); and the sitemap, feed and llms.txt greps.
-   The agent's container and the device VM are both refused by their own egress
-   allowlist, so this run is the only live evidence the campaign has, and it is
-   what closes the open security verification item.
+1. ~~**Push.**~~ DONE 2026-09-10. `419a4dc` is on `origin/main`, confirmed by
+   `git ls-remote`.
+2. ~~**Live checks from the Mac.**~~ DONE 2026-09-10. smoke 74/74; sitemap 72,
+   feed 16, llms 62 live; `/api/contacts` 404 and DELETE 405, so the security
+   verification item is CLOSED; `/dgca/computer-number` serves 14 `<details>`
+   with the FAQ answer present in both the visible text and the JSON-LD.
 3. **Google Search Console.** Resubmit the sitemap at 72 URLs, then URL
    Inspection on `/apply`, `/courses/cpl/fees`, `/atpl/brochure` and the
    pass-rate post.
