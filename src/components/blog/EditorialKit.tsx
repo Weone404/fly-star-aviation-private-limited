@@ -445,17 +445,23 @@ export function ArticleFigure({ image }: { image: BlogImage }) {
   const [copied, setCopied] = useState(false)
 
   if (image.ready) {
+    // Diagrams are SVG with a content-fitted height, so they must not be cropped
+    // to a fixed 16:9 box the way the photographic illustrations are.
+    const isDiagram = image.file.endsWith('.svg')
     return (
       <figure className="my-8">
         <img
           src={image.file}
           alt={image.alt}
-          width={1200}
-          height={675}
+          {...(isDiagram ? {} : { width: 1200, height: 675 })}
           loading="lazy"
           decoding="async"
           sizes="(min-width: 1280px) 46rem, (min-width: 768px) 42rem, 100vw"
-          className="w-full rounded-xl border border-border bg-muted object-cover"
+          className={
+            isDiagram
+              ? 'w-full h-auto rounded-xl border border-border bg-background'
+              : 'w-full rounded-xl border border-border bg-muted object-cover'
+          }
         />
         {image.caption && (
           <figcaption className="mt-2 text-sm text-muted-foreground">{image.caption}</figcaption>
