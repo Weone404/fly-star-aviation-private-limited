@@ -717,6 +717,17 @@ export default function DGCAComputerNumberPage() {
               </Link>
             </li>
             <li>
+              <Link to="/dgca/exam-calendar" className="group block">
+                <span className="font-semibold text-primary group-hover:underline">
+                  DGCA exam dates 2026: the full programme of examinations
+                </span>
+                <span className="block text-sm text-muted-foreground mt-1">
+                  Every Regular, Online On-Demand and FIR/AFIR session for the year,
+                  transcribed from the regulator's own document.
+                </span>
+              </Link>
+            </li>
+            <li>
               <Link to="/dgca/fto-ranking" className="group block">
                 <span className="font-semibold text-primary group-hover:underline">
                   How DGCA ranks flying schools, and how to use the ranking

@@ -410,6 +410,11 @@ const routeMeta: Record<string, RouteMeta> = {
     description: "Airline-published eligibility, duration and structure separated from the cost, bond and pay figures that circulate but are not published. Cadet route against self-sponsored training.",
     canonical: `${BASE_URL}/cadet-pilot-programme`,
   },
+  "/dgca/exam-calendar": {
+    title: "DGCA Exam Dates 2026: Full Programme of Examinations",
+    description: "Every 2026 DGCA examination session transcribed from the regulator's own programme: four Regular sessions, eight Online On-Demand sessions, twelve FIR and AFIR sessions. Dates are DGCA-tentative.",
+    canonical: `${BASE_URL}/dgca/exam-calendar`,
+  },
   "/dgca/fto-ranking": {
     title: "DGCA FTO Ranking: How Flying Schools Are Scored and Graded",
     description: "DGCA scores approved Flying Training Organisations out of 100 across five weighted parameters and grades them A+ to C, twice a year. The bands, the weights, and how to use them when choosing a school.",

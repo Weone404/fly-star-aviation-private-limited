@@ -50,6 +50,7 @@ describe("Vercel config", () => {
     "/pilot-salary-india",
     "/cadet-pilot-programme",
     "/dgca/fto-ranking",
+    "/dgca/exam-calendar",
   ])("routes %s to the SPA", (path) => {
     expect(matchesSpa(path)).toBe(true);
   });

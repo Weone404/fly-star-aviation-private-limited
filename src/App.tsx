@@ -20,6 +20,7 @@ import Apply from "./pages/Apply";
 import PilotSalaryIndia from "./pages/PilotSalaryIndia";
 import CadetPilotProgramme from "./pages/CadetPilotProgramme";
 import DgcaFtoRanking from "./pages/dgca/fto-ranking";
+import DgcaExamCalendar from "./pages/dgca/exam-calendar";
 import CplFees from "./pages/Courses/CplFees";
 import AtplBrochure from "./pages/Courses/AtplBrochure";
 
@@ -142,6 +143,7 @@ function AppInner() {
         <Route path="/pilot-salary-india" element={<PilotSalaryIndia />} />
         <Route path="/cadet-pilot-programme" element={<CadetPilotProgramme />} />
         <Route path="/dgca/fto-ranking" element={<DgcaFtoRanking />} />
+        <Route path="/dgca/exam-calendar" element={<DgcaExamCalendar />} />
         <Route path="/courses/cpl/fees" element={<CplFees />} />
         <Route path="/atpl/brochure" element={<AtplBrochure />} />
         <Route path="/courses/cpl" element={<Cpl />} />

@@ -23,9 +23,13 @@ const NOTICE = "DGCA Public Notice F. No: DGCA-16017/10/2025-DFT, 30 September 2
 const NOTICE_URL =
   "https://www.dgca.gov.in/digigov-portal/Upload?flag=iframeAttachView&attachId=OXOBBPO50KNsVklXF1f0cQ%3D%3D&baseLocale=en_US";
 
+/** Press Information Bureau, Ministry of Civil Aviation, 24 April 2026. */
+const PIB = "Press Information Bureau, Ministry of Civil Aviation, 24 April 2026";
+const PIB_URL = "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2255276&reg=48&lang=2";
+
 const GRADES: string[][] = [
   ["A+", "85% and above", "No organisation reached this band in the first ranking."],
-  ["A", "70% to 84.99%", "None in the first ranking; one in the second."],
+  ["A", "70% to 84.99%", "None in the first ranking; one organisation in the second."],
   ["B", "50% to 69.99%", "The largest band in both rankings so far."],
   ["C", "Below 50%", "Receives an improvement notice from DGCA."],
 ];
@@ -141,11 +145,20 @@ export default function DgcaFtoRankingPage() {
                 framework began.
               </p>
               <p className="mt-4 text-muted-foreground leading-relaxed">
-                A second ranking was released in April 2026 and, according to press
-                reporting of the announcement, placed one organisation in band A for the
-                first time. We have not read the second list in the original DGCA
-                document, so we do not restate its contents here. Read it from DGCA
-                directly.
+                The second ranking was released on 24 April 2026 by the Ministry of
+                Civil Aviation and covered 35 organisations: one in band A, seventeen in
+                band B and seventeen in band C. Avyanna Aviation Pvt. Ltd is the first
+                and so far only organisation to reach band A. That is one A grade in a
+                sector of thirty-five, which is the single most useful thing this
+                framework has told prospective students.
+              </p>
+              <p className="mt-4 text-muted-foreground leading-relaxed">
+                The ministry stated alongside the release that Commercial Pilot Licence
+                issuance has grown more than 2.5 times over the last eight years, and
+                projected a requirement of roughly 30,000 additional pilots over the next
+                decade. The second figure is a projection rather than a measurement, and
+                is worth treating as such when anyone quotes it back to you as a reason
+                to enrol.
               </p>
               <p className="mt-4 text-muted-foreground leading-relaxed">
                 Flying Star Aviator is a ground school and career-guidance organisation
@@ -227,6 +240,14 @@ export default function DgcaFtoRankingPage() {
                   first ranking.{" "}
                   <a href={NOTICE_URL} rel="nofollow" className="underline hover:text-primary">
                     Read it at DGCA
+                  </a>
+                  .
+                </li>
+                <li>
+                  {PIB} - the second-phase ranking: 35 organisations, one in band A,
+                  seventeen in B, seventeen in C.{" "}
+                  <a href={PIB_URL} rel="nofollow" className="underline hover:text-primary">
+                    Read the release
                   </a>
                   .
                 </li>

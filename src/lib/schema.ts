@@ -437,8 +437,16 @@ export const PAGE_FAQS: Record<string, { q: string; a: string }[]> = {
     { q: "What do the bands mean?", a: "A+ is 85 per cent and above, A is 70 to 84.99, B is 50 to 69.99, and C is below 50. An organisation in band C receives an improvement notice from DGCA." },
     { q: "What is the score made of?", a: "Operational aspects 40 per cent, FTO performance 20, safety standards 20, compliance standards 10, and assistance to students 10." },
     { q: "Which single factor carries the most weight?", a: "Operational ratios. Student-to-aircraft, student-to-instructor and fleet-to-engineer ratios are worth ten percentage points each, thirty between them." },
-    { q: "Did any school get an A grade?", a: "Not in the first ranking, which covered September 2024 to August 2025: thirteen organisations were in band B and twenty-two in band C, with none in A or A+." },
+    { q: "Did any school get an A grade?", a: "Not in the first ranking, which covered September 2024 to August 2025: thirteen organisations were in band B and twenty-two in band C, with none in A or A+. In the second ranking, released 24 April 2026, one organisation of thirty-five reached band A: Avyanna Aviation Pvt. Ltd." },
     { q: "Is Flying Star Aviator in the ranking?", a: "No. It is a ground school and career-guidance organisation, not a Flying Training Organisation, so it is not ranked and has no grade." },
+  ],
+  "/dgca/exam-calendar": [
+    { q: "When are the DGCA exams in 2026?", a: "DGCA publishes a Programme of Examinations for the year. It sets four Regular sessions, eight Online On-Demand sessions, twelve FIR/AFIR sessions and a FATA examination. The dates are stated by DGCA as tentative and subject to change for gazetted holidays." },
+    { q: "How many regular DGCA exam sessions are there in a year?", a: "Four in the 2026 programme: 10 to 14 March, 16 to 20 June, 22 to 26 September and 15 to 19 December." },
+    { q: "What is the difference between a Regular session and OLOD?", a: "Regular sessions run four times a year over five days. Online On-Demand sessions run more often, eight times in 2026, over three days each. Eligibility and rules are the same; the scheduling is not." },
+    { q: "What is FIR/AFIR in the calendar?", a: "Flight Instructor Rating and Assistant Flight Instructor Rating examinations. There are twelve sessions in the 2026 programme, roughly one a month, and they are not the CPL or ATPL papers." },
+    { q: "Are these dates final?", a: "No. The DGCA document states the dates are tentative and subject to change in case of gazetted holidays, festivity and similar. Confirm on pariksha.dgca.gov.in before planning around any of them." },
+    { q: "Where do I apply?", a: "Through the DGCA examination portal at pariksha.dgca.gov.in, using your computer number. No institute can apply on your behalf." },
   ],
   "/cadet-pilot-programme": [
     { q: "What is a cadet pilot programme?", a: "A programme that selects candidates before training begins and routes them through schools the airline has chosen, ending in a Commercial Pilot Licence." },
