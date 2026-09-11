@@ -7,11 +7,14 @@ import { Textarea } from "@/components/ui/textarea";
 import { Phone, Mail, MapPin, Clock, Send, CheckCircle, MessageCircle } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
+const GOOGLE_MAPS_URL =
+  "https://www.google.com/maps/place/Flying+Star+Aviator+Private+Limited/@28.5852283,77.0658253,641m/data=!3m2!1e3!4b1!4m6!3m5!1s0x390d1bfa2be4aefb:0x48a070e238521650!8m2!3d28.5852283!4d77.0684002!16s%2Fg%2F11h3mlfkx4?entry=ttu&g_ep=EgoyMDI2MDkwOC4wIKXMDSoASAFQAw%3D%3D";
+
 // ─── Static data outside component ───────────────────────────────────────────
 const contactInfo = [
   { icon: Phone, label: "Phone", value: "+91 99535 36199, 9953566619", href: "tel:+919953536199" },
   { icon: Mail, label: "Email", value: "info@flyingstaraviator.com", href: "mailto:info@flyingstaraviator.com" },
-  { icon: MapPin, label: "Address", value: "C705, Sector 7, Block C Palam Extension, Dwarka, Delhi, 110077", href: "#" },
+  { icon: MapPin, label: "Address", value: "C705, Sector 7, Block C Palam Extension, Dwarka, Delhi, 110077", href: GOOGLE_MAPS_URL },
   { icon: Clock, label: "Working Hours", value: "Mon - Sat: 9:00 AM - 6:00 PM", href: "#" },
 ];
 
@@ -400,7 +403,7 @@ _Sent via flyingstaraviator.com contact form_`;
               {/* Google Map */}
               <div className="rounded-2xl overflow-hidden border border-border h-72 bg-muted shadow-sm">
                 <a
-                  href="https://www.google.com/maps/place/Flying+Star+Aviator+Private+Limited"
+                  href={GOOGLE_MAPS_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block w-full h-full"
