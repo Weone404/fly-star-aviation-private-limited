@@ -840,3 +840,36 @@ A single flat document/page shape with a small pen-stroke signature mark at the 
 ```
 
 ---
+
+## Frozen ATPL Explained: What the Term Actually Means Under DGCA Rules
+
+`/blog/frozen-atpl-meaning-india` — 3 images. Cover left as the site-wide fallback (`/assets/hero-aircraft-1600w.jpg`), no cover prompt needed.
+
+### 1. Inline, after heading 1
+
+- **Save to:** `public/blog/frozen-atpl-meaning-india/theory-cleared-hours-pending.webp`
+- **Alt text:** A certificate with a small padlock icon resting on top of it, beside an hourglass with sand only partway fallen, representing theory completed and hours still accumulating.
+
+```
+On the left, a single flat certificate/scroll shape with a small padlock icon resting on top of it. On the right, a simple hourglass icon shown with sand only partway fallen from the top chamber to the bottom. Calm, procedural composition, generous space between the two elements. Flat vector illustration, minimal clean style, professional Indian aviation training context, deep green and warm amber accents on a light neutral ground, generous negative space, absolutely NO text, words, letters, numbers or signage anywhere in the image. 1200 x 675.
+```
+
+### 2. Inline, after heading 3
+
+- **Save to:** `public/blog/frozen-atpl-meaning-india/two-frameworks-one-term.webp`
+- **Alt text:** Two separate rulebook icons side by side, one representing a foreign framework and one the Indian framework, with a single shared term icon floating between them and a question mark over the Indian rulebook.
+
+```
+Two identical flat rulebook/document-stack icons positioned left and right, mirrored, with visible distance between them. A single small speech-bubble or word-balloon icon (empty, no text) floats exactly midway between the two, with faint connecting lines reaching toward each rulebook. A small question-mark shape sits above the right-hand rulebook only. Flat vector illustration, minimal clean style, professional Indian aviation training context, deep green and warm amber accents on a light neutral ground, generous negative space, absolutely NO text, words, letters, numbers or signage anywhere in the image. 1200 x 675.
+```
+
+### 3. Inline, after heading 8
+
+- **Save to:** `public/blog/frozen-atpl-meaning-india/cpl-to-command-sequence.webp`
+- **Alt text:** Five simple connected waypoint markers along a single upward path, representing a licence, a set of examination papers, a hiring point, an accumulating hourglass, and a final command insignia at the top.
+
+```
+A single gently upward-sloping path from bottom-left to top-right, with five small evenly spaced waypoint markers along it: a licence-card icon, a stacked-papers icon, a small podium/panel icon, an hourglass icon, and a four-stripe captain's-insignia icon at the very top. Even spacing, no single marker emphasised over the others except the final one sitting highest. Flat vector illustration, minimal clean style, professional Indian aviation training context, deep green and warm amber accents on a light neutral ground, generous negative space, absolutely NO text, words, letters, numbers or signage anywhere in the image. 1200 x 675.
+```
+
+---
