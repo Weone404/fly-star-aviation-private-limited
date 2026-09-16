@@ -22,7 +22,7 @@ export const PAGE_META: Record<string, PageMeta> = {
   "/": {
     title: "Flying Star Aviator | Best Pilot Training Institute in India",
     description:
-      "Join Flying Star Aviator — India's best DGCA-approved CPL & ATPL ground classes in Delhi. Start your pilot career today.",
+      "Best pilot training institute in Delhi for DGCA Ground Classes & Commercial Pilot License (CPL). Expert instructors, structured courses, 98% placement rate.",
   },
   "/about": {
     title: "About Us | Flying Star Aviator Private Limited",

@@ -16,7 +16,7 @@ const BASE_URL = "https://www.flystar.co.in";
 const routeMeta: Record<string, RouteMeta> = {
   "/": {
     title: "Flying Star Aviator | DGCA-Approved Pilot Training in India",
-    description: "DGCA-approved pilot training in Delhi for CPL and ATPL aspirants. Learn with expert instructors, structured classes, and career-focused support.",
+    description: "Best pilot training institute in Delhi for DGCA Ground Classes & Commercial Pilot License (CPL). Expert instructors, structured courses, 98% placement rate.",
     canonical: `${BASE_URL}/`,
   },
   "/about": {
