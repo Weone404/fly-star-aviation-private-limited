@@ -36,9 +36,10 @@
   </noscript>
 
   <!-- ✅ Preload hero image — tells browser about LCP image immediately -->
-  <link rel="preload" as="image" href="/assets/hero-aircraft-1600w.jpg"
+  <link rel="preload" as="image"
     imagesrcset="/assets/hero-aircraft-800w.jpg 800w, /assets/hero-aircraft-1600w.jpg 1600w, /assets/hero-aircraft-2400w.jpg 2400w"
-    imagesizes="100vw" />
+    imagesizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 1920px"
+    fetchpriority="high" />
 
   <!-- ✅ Favicon -->
   <link rel="icon" href="/favicon.ico" sizes="any" />

@@ -11,7 +11,7 @@
  */
 import fs from "node:fs";
 import path from "node:path";
-import { fileURLToPath } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
@@ -59,7 +59,7 @@ function aliasPaths() {
 const MIN_SITEMAP_WORDS = 300;
 
 async function blogPaths() {
-  const mod = await import(path.join(ROOT, "src/lib/blogData.js"));
+  const mod = await import(pathToFileURL(path.join(ROOT, "src/lib/blogData.js")).href);
   const skipped = [];
   const paths = [];
 

@@ -13,7 +13,7 @@
  */
 import fs from "node:fs";
 import path from "node:path";
-import { fileURLToPath } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
@@ -39,7 +39,7 @@ function rfc822(value) {
 }
 
 async function main() {
-  const mod = await import(path.join(ROOT, "src/lib/blogData.js"));
+  const mod = await import(pathToFileURL(path.join(ROOT, "src/lib/blogData.js")).href);
 
   const items = mod.BLOG_POSTS.filter((p) => p.slug && mod.getWordCount(p) >= MIN_WORDS)
     .sort((a, b) => new Date(b.createdAt || 0) - new Date(a.createdAt || 0))
