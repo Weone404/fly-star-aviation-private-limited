@@ -1213,6 +1213,158 @@ export const STATIC_BLOG_POSTS = [
 <p>The phrase is used loosely and inconsistently, since it is not an Indian regulatory term to begin with. Read the specific posting&rsquo;s actual licence and hour requirement rather than assuming it maps onto a fixed DGCA category, and confirm current requirements on the airline&rsquo;s own careers page.</p>
 <p class="ref-links">More: the <a href="/faq">FAQ</a> for short sourced answers, the <a href="/glossary">glossary</a> for the terms, and our <a href="/editorial-policy">editorial policy</a> for how these figures are checked.</p>`,
   },
+  {
+    slug: 'dgca-cpl-eligibility-foreign-nationals-nri',
+    title: "DGCA Pilot Licence Eligibility for Foreign Nationals and NRIs: What the Rules Actually Say",
+    seoTitle: "DGCA Pilot Licence Eligibility for Foreign Nationals, NRIs",
+    metaDescription: "DGCA's Pariksha FAQ describes a security clearance process for foreign candidates, not a blanket citizenship bar. What the primary source actually confirms.",
+    keyFacts: [
+      { fact: "DGCA's Pariksha portal requires every Foreign National candidate to complete a security clearance process, filing a Security Clearance Form (Annexure A) in five copies, when applying for a computer number.", source: 'DGCA Pariksha Flight Crew FAQ (FAQ 28)', href: 'https://pariksha.dgca.gov.in/Form/PLT_FAQs' },
+      { fact: 'A passport is not mandatory for Indian candidates registering for DGCA flight crew exams, but is mandatory for every foreign candidate, including Nepalese and Bhutanese candidates.', source: 'DGCA Pariksha Flight Crew FAQ (FAQ 29, 30, 32)', href: 'https://pariksha.dgca.gov.in/Form/PLT_FAQs' },
+      { fact: 'A candidate whose 10th, 10+2 or diploma qualification is from an international school, board or university, in India or abroad, needs an academic equivalency certificate from the Association of Indian Universities.', source: 'DGCA Pariksha Flight Crew FAQ (FAQ 25, 27)', href: 'https://pariksha.dgca.gov.in/Form/PLT_FAQs' },
+      { fact: 'The DGCA theory exam fee is Rs 2,500 per paper and is not refundable under any circumstances, the same for every candidate regardless of nationality.', source: 'DGCA Pariksha Flight Crew FAQ (FAQ 13, 14)', href: 'https://pariksha.dgca.gov.in/Form/PLT_FAQs' },
+    ],
+    tags: ['DGCA Foreign National Eligibility', 'NRI Pilot Licence India', 'DGCA Security Clearance', 'AIU Equivalency Certificate'],
+    category: 'Licences & Eligibility',
+    author: 'Flying Star Aviator Academics Team',
+    authorRole: 'DGCA CPL & ATPL ground instruction, Dwarka, New Delhi',
+    createdAt: '2026-09-16',
+    updatedAt: '2026-09-16',
+    coverImage: '/assets/hero-aircraft-1600w.jpg',
+    excerpt: "TL;DR: DGCA's own Pariksha FAQ never states that a fresh CPL or ATPL applicant must be an Indian citizen. It describes a security clearance process for Foreign National candidates registering for a computer number, and a separate Association of Indian Universities equivalency requirement for anyone whose 10+2 is from a foreign or international board.",
+    intro: "Search results and coaching pages often state, without a source, that a Commercial Pilot Licence in India requires Indian citizenship. DGCA's own Pariksha portal FAQ does not make that claim; what it does set out is a specific security clearance process for candidates who are foreign nationals, and a separate academic equivalency rule for anyone whose school qualification comes from outside the Indian board system. This guide separates the two, states exactly what DGCA's FAQ confirms and does not confirm, and lays out the extra steps a foreign national, NRI or OCI candidate should expect.",
+    faqs: [
+      { q: 'Can a foreign national apply for a DGCA computer number?', a: "Yes. DGCA's Pariksha FAQ describes a defined process for it: a foreign national candidate submits a Security Clearance Form, Annexure A, in five copies, alongside the computer number application. That process would not need to exist if DGCA simply refused foreign candidates outright." },
+      { q: 'Does DGCA state that CPL applicants must be Indian citizens?', a: "We could not find that stated in DGCA's own Pariksha Flight Crew FAQ. Several training-industry pages assert a citizenship requirement, but that is a secondary source, not a DGCA document. Confirm your specific situation with the Central Examination Organization in writing before relying on either position." },
+      { q: 'What is the security clearance process for foreign candidates?', a: "A Foreign National candidate fills a Security Clearance Form, Annexure A, in five copies, and sends it to the Central Examination Organization along with the computer number application, per DGCA's Pariksha FAQ. The FAQ does not state a processing timeline." },
+      { q: 'Do NRIs and OCI cardholders count as Indian or foreign candidates for DGCA registration?', a: "DGCA's Pariksha FAQ does not define \"NRI\" or \"OCI\" as a separate category; its foreign-candidate provisions are framed around nationality, and separately around which board issued your 10+2 qualification. Confirm your own classification with the Central Examination Organization before applying." },
+      { q: 'What is an Association of Indian Universities equivalency certificate, and who needs one?', a: "It is a certificate confirming that a 10th, 10+2 or diploma qualification from an international school, board or university, in India or abroad, is equivalent to what an Indian board would have issued. DGCA's Pariksha FAQ requires it for any candidate in that position, regardless of nationality." },
+      { q: 'Do Nepalese and Bhutanese candidates need a passport to register?', a: "Yes. DGCA's Pariksha FAQ states a valid passport is mandatory for Nepal and Bhutan candidates, the same as for any other foreign candidate, even though citizens of both countries otherwise travel to India without one under separate treaty arrangements." },
+      { q: 'Is the DGCA exam fee different for a foreign candidate?', a: 'Not according to the Pariksha FAQ, which states a flat Rs 2,500 per paper for the Flight Crew Licence examination, non-refundable, with no separate rate stated for foreign candidates.' },
+      { q: 'I already hold a pilot licence from another country. Do these registration rules apply to me?', a: 'No. A different DGCA process applies: converting an existing foreign licence to an Indian one. See our conversion checklist; the registration rules on this page cover a candidate applying to DGCA for the first time, not a licence conversion.' },
+      { q: 'Does a foreign national need a different medical certificate?', a: 'We did not find a DGCA document stating a different medical standard by nationality. The Class 1 and Class 2 medical framework that applies to any Flight Crew candidate appears to apply the same way; confirm with a DGCA-empanelled medical examiner if your situation is unusual.' }
+    ],
+    content:
+      `<p>DGCA&rsquo;s own Pariksha FAQ never states that a fresh CPL or ATPL applicant must be an Indian citizen. It describes a security clearance process for Foreign National candidates registering for a computer number, and a separate Association of Indian Universities equivalency requirement for anyone whose 10+2 is from a foreign or international board. Those two requirements are often confused with each other.</p>
+
+<h2>Can a foreign national register for a DGCA pilot licence exam at all?</h2>
+<p>Yes, on what DGCA&rsquo;s own Pariksha FAQ actually says. It sets out a defined security clearance process for Foreign National candidates applying for a computer number &mdash; it does not say foreign nationals are refused registration outright. The FAQ describes an extra document a foreign candidate files, not a bar on filing at all.</p>
+<p>Specifically, the FAQ states that &ldquo;All Foreign National candidates have to undergo Security clearance process while applying for Allotment of Computer Number,&rdquo; and that this is done by completing a Security Clearance Form, Annexure A, &ldquo;in quintuplicate&rdquo; &mdash; five copies &mdash; sent to the Central Examination Organization along with the computer number application. That is a procedure, not a prohibition. If DGCA meant to exclude foreign nationals from registering, a security-clearance procedure for them would not need to exist.</p>
+<p>What the FAQ does not cover is anything outside DGCA&rsquo;s own exam-registration process: a student visa, a Foreigner Regional Registration Office (FRRO) requirement, or immigration status generally. Those sit with India&rsquo;s immigration authorities, not with the Central Examination Organization, and this article does not attempt to state that separate process because we have not verified it against a primary source for this piece.</p>
+
+<figure class="img-slot" data-src="/blog/dgca-cpl-eligibility-foreign-nationals-nri/security-clearance-layer.webp" data-dimensions="1200x675">
+  <span>A standard registration document with a second, smaller shield-shaped clearance stamp layered on top of it, representing an extra step added to the same underlying process rather than a separate barrier</span>
+</figure>
+
+<table><thead><tr><th>Registration requirement</th><th>Indian candidate</th><th>Foreign national candidate</th></tr></thead><tbody>
+<tr><td>Passport</td><td>Not mandatory</td><td>Mandatory</td></tr>
+<tr><td>Security clearance</td><td>Not required</td><td>Security Clearance Form (Annexure A), submitted in five copies</td></tr>
+<tr><td>Indian mobile number</td><td>Assumed</td><td>Mandatory before registration</td></tr>
+<tr><td>Board Verification Certificate</td><td>Mandatory for NEW candidates</td><td>Mandatory for NEW candidates</td></tr>
+<tr><td>Exam fee per paper</td><td>&#8377;2,500, non-refundable</td><td>&#8377;2,500, non-refundable</td></tr>
+</tbody></table>
+<p class="source-note">Source: DGCA <a href="https://pariksha.dgca.gov.in/Form/PLT_FAQs" target="_blank" rel="noopener nofollow">Pariksha Flight Crew FAQ</a>, FAQ 13, 14, 28, 29, 30, 31, 34 and 35, as fetched 22 August 2026. Re-check the live FAQ before relying on any single figure &mdash; DGCA updates this page.</p>
+
+<h2>Does DGCA state that CPL applicants must be Indian citizens?</h2>
+<p>We could not find that stated anywhere in DGCA&rsquo;s Pariksha Flight Crew FAQ. Several training-industry pages assert a citizenship requirement, sometimes adding that a valid student visa is an acceptable substitute, but neither claim traces back to a DGCA document in the text we hold. Treat both as unverified until DGCA confirms one in writing.</p>
+<p>This matters because the two claims point candidates in opposite directions. If a blanket citizenship bar were real, a foreign national reading it would stop looking for a registration path. What the primary source actually shows is a defined procedure for exactly that candidate &mdash; which only makes sense if some foreign nationals do use it.</p>
+<table><thead><tr><th>Claim in circulation</th><th>Where it appears</th><th>Confirmed in the DGCA Pariksha FAQ for this article?</th></tr></thead><tbody>
+<tr><td>A CPL applicant must be an Indian citizen</td><td>Training-industry pages</td><td>No &mdash; not stated in the FAQ text we hold</td></tr>
+<tr><td>A valid student visa is an acceptable alternative to citizenship</td><td>Training-industry pages</td><td>No</td></tr>
+<tr><td>Foreign National candidates go through a defined security clearance process to register</td><td>DGCA Pariksha FAQ, FAQ 28</td><td>Yes</td></tr>
+</tbody></table>
+<p>If you find a DGCA CAR or circular that states a citizenship condition directly, it supersedes this page &mdash; tell us and we will correct it. Until then, the honest position is that the FAQ describes a process for foreign candidates rather than a refusal of them, and a blanket citizenship rule is not something we can back with a DGCA source.</p>
+
+<h2>What extra steps does DGCA require of a foreign national candidate?</h2>
+<p>Four things beyond what an Indian candidate files: a passport, an Indian mobile number obtained before registration, the Security Clearance Form in five copies, and &mdash; like every NEW candidate, Indian or foreign &mdash; a Board Verification Certificate for the education mark sheet being used.</p>
+<p>DGCA&rsquo;s FAQ states plainly that a passport &ldquo;is not mandatory&rdquo; for Indian candidates, but is required for &ldquo;All Foreign candidates,&rdquo; since the passport address doubles as the candidate&rsquo;s permanent address on file. Separately, it states that an Indian mobile number is mandatory for foreign candidates before they can complete registration on the Pariksha portal at all &mdash; a practical detail worth knowing before you start the form, since a candidate without one yet will need to arrange it first.</p>
+<p>None of this changes the underlying licensing path. Once registered, a foreign national candidate sits the same theory papers, at the same 70% pass mark per paper, pays the same &#8377;2,500 per paper, and needs the same RTR(A) radio telephony qualification as any other candidate &mdash; DGCA now conducts RTR(A) directly, a change covered in our <a href="/blog/rtr-a-exam-dgca-takeover-2026">RTR(A) exam guide</a>. We did not find a nationality-specific provision anywhere in RTR(A)&rsquo;s own rules, so treat that examination as identical regardless of where you started.</p>
+
+<h2>Do NRIs or OCI cardholders use the foreign-candidate process, or the Indian one?</h2>
+<p>DGCA&rsquo;s Pariksha FAQ does not define &ldquo;NRI&rdquo; or &ldquo;OCI&rdquo; as its own category. Its provisions run along two separate axes instead &mdash; nationality, which decides whether the security clearance and passport rules apply, and the board that issued your 10th or 10+2 qualification, which decides whether you need an equivalency certificate. An NRI or OCI candidate can sit on either side of either axis, or both, depending on their own paperwork.</p>
+<p>Practically, this splits into a few real situations:</p>
+<ul>
+<li><strong>An Indian citizen living abroad, educated on an Indian-curriculum school abroad or in India,</strong> is unlikely to trigger the Foreign National security-clearance provisions, since those are framed around nationality rather than residence. The board-equivalency question below may still apply if the school itself was not on an Indian board.</li>
+<li><strong>An OCI cardholder who is not an Indian citizen</strong> should check their own status against the Foreign National provisions directly with the Central Examination Organization, since the FAQ text we hold does not carve out a separate OCI category.</li>
+<li><strong>Anyone, of any nationality, whose 10th or 10+2 is from a non-Indian board</strong> falls under the equivalency-certificate requirement covered next, independent of the nationality question entirely.</li>
+</ul>
+<p>The confusion we see most often is candidates assuming these are one rule. They are not. A foreign passport and a foreign school board are two separate facts about a candidate, and DGCA appears to test for each one separately.</p>
+
+<h2>What is the Association of Indian Universities equivalency certificate, and who actually needs one?</h2>
+<p>It is a certificate confirming that a 10th, 10+2, diploma or equivalent qualification issued by a school, board or university outside the Indian board system is academically equivalent to what an Indian board would have issued. DGCA&rsquo;s Pariksha FAQ requires it from &ldquo;Applicants who have acquired the Basic Qualification&hellip; from other than Council of Boards of Secondary Education, State/Central Govt. Education Board i.e. any International School / Board / University situated in India or abroad.&rdquo; The Association of Indian Universities is based at AIU House, 16, Kotla Marg, New Delhi &ndash; 110022.</p>
+<p>Read that requirement carefully: it is triggered by the board, not by the candidate&rsquo;s passport or residence. An Indian citizen who studied at an international-curriculum school in Delhi needs the same equivalency certificate as a foreign national who studied abroad, if the board is outside that Indian list. Nationality decides the security-clearance question above; the board decides this one.</p>
+<table><thead><tr><th>Qualification board</th><th>Needs an AIU equivalency certificate?</th></tr></thead><tbody>
+<tr><td>Council of Boards of School Education, or a State or Central Government education board (for example CBSE, ICSE, a state board)</td><td>Not listed as needing one &mdash; the FAQ names only international boards</td></tr>
+<tr><td>An international school, board or university situated in India</td><td>Required</td></tr>
+<tr><td>An international school, board or university situated abroad</td><td>Required</td></tr>
+<tr><td>A diploma, from any recognised institution</td><td>Also needs a separate 10+2-equivalent certificate</td></tr>
+</tbody></table>
+<p class="source-note">Source: DGCA Pariksha Flight Crew FAQ, FAQ 25, 26 and 27, as fetched 22 August 2026.</p>
+<p>Do not confuse this with the Board Verification Certificate, which is a different document altogether &mdash; a certificate from your own board confirming your mark sheet is genuine, required of every NEW candidate regardless of which board issued it. We cover that one on its own in our Board Verification Certificate guide, linked below. A candidate on a foreign board can need both documents at once: the AIU certificate to establish equivalency, and a Board Verification Certificate to confirm the mark sheet itself is genuine.</p>
+
+<figure class="img-slot" data-src="/blog/dgca-cpl-eligibility-foreign-nationals-nri/equivalency-certificate-bridge.webp" data-dimensions="1200x675">
+  <span>Two distinct certificate icons on either side of a page, connected by a bridging arrow in the middle, representing a foreign qualification being formally linked to an Indian equivalent rather than replaced by it</span>
+</figure>
+
+<h2>Do Nepalese and Bhutanese candidates need a passport to register with DGCA?</h2>
+<p>Yes. DGCA&rsquo;s Pariksha FAQ states plainly that passport possession &ldquo;is mandatory&rdquo; for Nepal and Bhutan candidates, on the same footing as any other foreign candidate for this specific registration process.</p>
+<p>This is worth flagging because it runs against a common assumption. Citizens of Nepal and Bhutan can ordinarily travel to and work in India without a passport, under long-standing bilateral treaty arrangements, and it would be reasonable to expect that exemption to carry over here. DGCA&rsquo;s exam-registration FAQ does not extend it: for the specific purpose of Pariksha registration, the passport requirement applies to Nepal and Bhutan candidates the same way it applies to any other foreign candidate.</p>
+
+<h2>What if I already hold a foreign pilot licence &mdash; do these rules even apply to me?</h2>
+<p>No, not this set. A candidate who already holds a valid pilot licence from another country&rsquo;s aviation authority is converting an existing licence to an Indian one, which is a different DGCA process with its own document list, currency requirements and skill test, not the fresh-registration path this page describes.</p>
+<p>Everything above concerns a candidate applying to DGCA for the first time, with no existing licence to convert &mdash; the computer number, the security clearance where nationality requires it, and the equivalency certificate where the school board requires it. If you already hold a foreign CPL or ATPL and want to fly on an Indian one, see our <a href="/blog/foreign-licence-conversion-checklist">foreign licence conversion checklist</a> instead, which covers the recency-of-experience rule, the written examinations a conversion still requires, and the skill test with a DGCA-approved examiner.</p>
+
+<h2>What does the registration path look like end to end for a foreign national or NRI candidate?</h2>
+<p>In sequence, independent of whether any single step above applies to you specifically:</p>
+<ol>
+<li><strong>Confirm your educational qualification and board.</strong> 10+2 with Physics and Mathematics from a recognised board, per DGCA CAR Section 7, Series B, Part I, covered in full in our <a href="/blog/cpl-eligibility-after-12th">CPL eligibility guide</a>. If the board is outside the Indian list, start the Association of Indian Universities equivalency process now &mdash; it is not something you want discovered late.</li>
+<li><strong>Get a Board Verification Certificate</strong> for your 10th, 10+2, diploma or equivalent mark sheet, required of every NEW candidate. See our <a href="/blog/dgca-board-verification-certificate">Board Verification Certificate guide</a> for exactly how that is obtained.</li>
+<li><strong>Check your medical eligibility early.</strong> We did not find a DGCA document stating a different medical standard by nationality; the Class 1 or Class 2 medical framework that applies to any Flight Crew candidate appears to apply the same way. Confirm anything unusual in your own case with a DGCA-empanelled medical examiner before committing money to training.</li>
+<li><strong>Apply for a computer number</strong> through pariksha.dgca.gov.in. If you are a Foreign National candidate, attach the Security Clearance Form, Annexure A, in five copies, a valid passport, and register with an Indian mobile number obtained beforehand. See our <a href="/dgca/computer-number">computer number guide</a> for the general process every candidate follows.</li>
+<li><strong>Sit the theory papers</strong> at 70% per paper once your computer number is allotted, at &#8377;2,500 per paper, non-refundable. A cleared paper stays valid five years.</li>
+<li><strong>Add RTR(A)</strong>, the radio telephony examination DGCA now conducts directly, as its own separate qualification.</li>
+<li><strong>Complete flight training and the flight-experience requirement</strong> at a DGCA-approved Flying Training Organisation, which sits outside DGCA&rsquo;s exam-registration FAQ and outside the scope of this article.</li>
+</ol>
+<p>Nothing in that sequence is optional for a genuine applicant, and nothing in it is about nationality alone &mdash; each candidate simply adds whichever steps their own passport and school board actually trigger.</p>
+
+<figure class="img-slot" data-src="/blog/dgca-cpl-eligibility-foreign-nationals-nri/registration-sequence.webp" data-dimensions="1200x675">
+  <span>Six simple connected waypoint markers along a single path, representing qualification check, verification certificate, medical, computer number application, theory papers, and radio telephony examination in order</span>
+</figure>
+
+<h2>What should you verify before relying on any of this?</h2>
+<p>Four checks, before you act on your own situation rather than the general case described here:</p>
+<ul>
+<li><strong>Re-read the live Pariksha FAQ yourself</strong> at pariksha.dgca.gov.in before applying &mdash; DGCA updates this page, and this article is sourced to the FAQ as it read on 22 August 2026.</li>
+<li><strong>Raise your specific nationality and board combination with the Central Examination Organization directly</strong>, through the Help Desk tab on the portal, rather than assuming a general article covers your exact paperwork.</li>
+<li><strong>Do not confuse this page with a licence conversion.</strong> If you already hold a foreign licence, the document list and process are different, and are covered in our conversion checklist, linked above.</li>
+<li><strong>Treat any visa or immigration step as a separate process</strong> handled by India&rsquo;s immigration authorities, not by DGCA&rsquo;s exam registration &mdash; this article does not cover it because we have not verified it against a primary source.</li>
+</ul>
+
+<h2>The short version</h2>
+<p>DGCA&rsquo;s Pariksha Flight Crew FAQ does not state that a fresh CPL or ATPL applicant must be an Indian citizen. It states a defined security clearance process for Foreign National candidates &mdash; a Security Clearance Form filed in five copies, alongside a mandatory passport and an Indian mobile number obtained in advance &mdash; which is a procedure, not a refusal. Separately, and regardless of nationality, any candidate whose 10th or 10+2 is from a board outside the Indian system needs an Association of Indian Universities equivalency certificate, a different document doing a different job. NRIs and OCI cardholders sit somewhere on both of those axes depending on their own citizenship and school board, not on a single fixed rule. Confirm your own case against the live FAQ and with the Central Examination Organization directly before you commit money or time to a training plan built on an unverified assumption.</p>
+
+<h2>Frequently asked questions</h2>
+<h3>Can a foreign national apply for a DGCA computer number?</h3>
+<p>Yes. DGCA&rsquo;s Pariksha FAQ describes a defined process for it: a foreign national candidate submits a Security Clearance Form, Annexure A, in five copies, alongside the computer number application. That process would not need to exist if DGCA simply refused foreign candidates outright.</p>
+<h3>Does DGCA state that CPL applicants must be Indian citizens?</h3>
+<p>We could not find that stated in DGCA&rsquo;s own Pariksha Flight Crew FAQ. Several training-industry pages assert a citizenship requirement, but that is a secondary source, not a DGCA document. Confirm your specific situation with the Central Examination Organization in writing before relying on either position.</p>
+<h3>What is the security clearance process for foreign candidates?</h3>
+<p>A Foreign National candidate fills a Security Clearance Form, Annexure A, in five copies, and sends it to the Central Examination Organization along with the computer number application, per DGCA&rsquo;s Pariksha FAQ. The FAQ does not state a processing timeline.</p>
+<h3>Do NRIs and OCI cardholders count as Indian or foreign candidates for DGCA registration?</h3>
+<p>DGCA&rsquo;s Pariksha FAQ does not define &ldquo;NRI&rdquo; or &ldquo;OCI&rdquo; as a separate category; its foreign-candidate provisions are framed around nationality, and separately around which board issued your 10+2 qualification. Confirm your own classification with the Central Examination Organization before applying.</p>
+<h3>What is an Association of Indian Universities equivalency certificate, and who needs one?</h3>
+<p>It is a certificate confirming that a 10th, 10+2 or diploma qualification from an international school, board or university, in India or abroad, is equivalent to what an Indian board would have issued. DGCA&rsquo;s Pariksha FAQ requires it for any candidate in that position, regardless of nationality.</p>
+<h3>Do Nepalese and Bhutanese candidates need a passport to register?</h3>
+<p>Yes. DGCA&rsquo;s Pariksha FAQ states a valid passport is mandatory for Nepal and Bhutan candidates, the same as for any other foreign candidate, even though citizens of both countries otherwise travel to India without one under separate treaty arrangements.</p>
+<h3>Is the DGCA exam fee different for a foreign candidate?</h3>
+<p>Not according to the Pariksha FAQ, which states a flat Rs 2,500 per paper for the Flight Crew Licence examination, non-refundable, with no separate rate stated for foreign candidates.</p>
+<h3>I already hold a pilot licence from another country. Do these registration rules apply to me?</h3>
+<p>No. A different DGCA process applies: converting an existing foreign licence to an Indian one. See our conversion checklist; the registration rules on this page cover a candidate applying to DGCA for the first time, not a licence conversion.</p>
+<h3>Does a foreign national need a different medical certificate?</h3>
+<p>We did not find a DGCA document stating a different medical standard by nationality. The Class 1 and Class 2 medical framework that applies to any Flight Crew candidate appears to apply the same way; confirm with a DGCA-empanelled medical examiner if your situation is unusual.</p>
+<p class="ref-links">More: the <a href="/faq">FAQ</a> for short sourced answers, the <a href="/glossary">glossary</a> for the terms, and our <a href="/editorial-policy">editorial policy</a> for how these figures are checked.</p>
+`,
+  },
 ];
 
 /**

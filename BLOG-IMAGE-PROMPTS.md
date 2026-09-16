@@ -873,3 +873,36 @@ A single gently upward-sloping path from bottom-left to top-right, with five sma
 ```
 
 ---
+
+## DGCA Pilot Licence Eligibility for Foreign Nationals and NRIs: What the Rules Actually Say
+
+`/blog/dgca-cpl-eligibility-foreign-nationals-nri` — 3 images. Cover left as the site-wide fallback (`/assets/hero-aircraft-1600w.jpg`), no cover prompt needed.
+
+### 1. Inline, after heading 1
+
+- **Save to:** `public/blog/dgca-cpl-eligibility-foreign-nationals-nri/security-clearance-layer.webp`
+- **Alt text:** A standard registration document with a second, smaller shield-shaped clearance stamp layered on top of it, representing an extra step added to the same underlying process rather than a separate barrier.
+
+```
+A single flat registration-form icon, upright and centred, with a smaller shield-shaped stamp icon overlapping its top-right corner, layered on top rather than blocking it. The composition should read as one process with an extra step added, not two competing objects. Flat vector illustration, minimal clean style, professional Indian aviation training context, deep green and warm amber accents on a light neutral ground, generous negative space, absolutely NO text, words, letters, numbers or signage anywhere in the image. 1200 x 675.
+```
+
+### 2. Inline, after heading 5
+
+- **Save to:** `public/blog/dgca-cpl-eligibility-foreign-nationals-nri/equivalency-certificate-bridge.webp`
+- **Alt text:** Two distinct certificate icons on either side of a page, connected by a bridging arrow in the middle, representing a foreign qualification being formally linked to an Indian equivalent rather than replaced by it.
+
+```
+Two flat certificate/scroll icons, one on the left and one on the right, of slightly different styling, with a single curved bridging arrow connecting the two directly across the middle. Even spacing, calm and procedural. The point is a link between two things, not a replacement of one by the other. Flat vector illustration, minimal clean style, professional Indian aviation training context, deep green and warm amber accents on a light neutral ground, generous negative space, absolutely NO text, words, letters, numbers or signage anywhere in the image. 1200 x 675.
+```
+
+### 3. Inline, after heading 8
+
+- **Save to:** `public/blog/dgca-cpl-eligibility-foreign-nationals-nri/registration-sequence.webp`
+- **Alt text:** Six simple connected waypoint markers along a single path, representing qualification check, verification certificate, medical, computer number application, theory papers, and radio telephony examination in order.
+
+```
+A single gently upward path from bottom-left to top-right, with six small evenly spaced waypoint markers along it: a graduation-cap icon, a certificate icon, a small medical-cross icon, a computer-screen icon, a stacked-papers icon, and a radio-headset icon at the very top. Even spacing, no single marker emphasised over the others. Flat vector illustration, minimal clean style, professional Indian aviation training context, deep green and warm amber accents on a light neutral ground, generous negative space, absolutely NO text, words, letters, numbers or signage anywhere in the image. 1200 x 675.
+```
+
+---
