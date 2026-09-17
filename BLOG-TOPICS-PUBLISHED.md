@@ -42,6 +42,7 @@ Once a reserved page ships, strike its row and the query returns to the pool.
 | 2026-09-10 | `/blog/cadet-pilot-programme-vs-self-sponsored-cpl` | Cadet Pilot Programme vs Self-Sponsored CPL: What Actually Differs | Career |
 | 2026-09-15 | `/blog/frozen-atpl-meaning-india` | Frozen ATPL Explained: What the Term Actually Means Under DGCA Rules | Career |
 | 2026-09-16 | `/blog/dgca-cpl-eligibility-foreign-nationals-nri` | DGCA Pilot Licence Eligibility for Foreign Nationals and NRIs: What the Rules Actually Say | Licences & Eligibility |
+| 2026-09-17 | `/blog/jobs-after-cpl-india` | Jobs After CPL in India: What a Commercial Pilot Licence Actually Qualifies You For | Career |
 
 _Rows for 2026-09-04 and 2026-09-05 above (`dgca-olode-vs-regular-exams` through `foreign-licence-conversion-checklist`) were backfilled on 2026-09-09: this session found them already live in `src/lib/blogData.js` and `public/sitemap.xml` but missing from this ledger. The Reserved rows for OLODE and exam misconceptions below were stale as a result — both have already shipped as blog posts, not page articles, so those two Reserved rows are struck through._
 
