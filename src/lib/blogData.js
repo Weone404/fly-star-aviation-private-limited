@@ -1517,6 +1517,179 @@ export const STATIC_BLOG_POSTS = [
 <p>Yes, that is the common pattern: pilots build hours in instructing, charter, cargo or regional roles, then apply to airlines once they meet that specific airline&rsquo;s own published or informally understood hour and experience expectations.</p>
 <p class="ref-links">More: the <a href="/faq">FAQ</a> for short sourced answers, the <a href="/glossary">glossary</a> for the terms, and our <a href="/editorial-policy">editorial policy</a> for how these figures are checked.</p>`,
   },
+  {
+    slug: 'type-rating-cost-in-india',
+    title: 'Type Rating Cost in India: Why No Two Quotes Match',
+    seoTitle: 'Type Rating Cost in India: Why No Two Quotes Ever Match',
+    metaDescription: 'No DGCA document sets or publishes a type rating fee. What actually drives the cost, self-funded vs airline-sponsored routes, and what a quote should include.',
+    keyFacts: [
+      { fact: 'A type rating is an aircraft-type-specific endorsement added to a Commercial or Airline Transport Pilot Licence after approved training and a skill test on that type; it does not replace the CPL or ATPL itself.', source: 'General DGCA/ICAO licensing structure; no single CAR clause is cited here, as none is banked for this article' },
+      { fact: 'A Commercial Pilot Licence candidate needs a computer number, 10+2 with Physics and Mathematics, cleared theory papers, a Class 1 medical and RTR(A) before the CPL itself is issued; a type rating is a separate step that comes after.', source: 'CAR Section 7, Series B, Part I' },
+      { fact: 'We could not find a DGCA document, circular or published fee schedule that sets or discloses what a type rating costs in India; every figure quoted publicly comes from an individual training provider.', source: 'This research run, 2026-09-19 — no primary DGCA source located' },
+    ],
+    tags: ['Type Rating Cost India', 'A320 Type Rating Fees', 'Pilot Training Cost', 'TRTO India'],
+    category: 'Career',
+    author: 'Flying Star Aviator Academics Team',
+    authorRole: 'DGCA CPL & ATPL ground instruction, Dwarka, New Delhi',
+    createdAt: '2026-09-19',
+    updatedAt: '2026-09-19',
+    coverImage: '/assets/hero-aircraft-1600w.jpg',
+    excerpt: "TL;DR: No DGCA document sets or publishes what a type rating costs in India. Each Type Rating Training Organisation prices its own course, so the wide range of figures you find online are marketing numbers, not a regulated fee. What actually moves the cost is aircraft type, simulator location, group size and whether an airline or you are paying.",
+    intro: "A CPL or a frozen ATPL is not enough to sit in a cockpit on your own; you also need a type rating for the specific aircraft an airline flies. Ask five people what that costs and you will get five different answers, none matching. This guide sets out why the number never settles, what DGCA actually regulates in this process and what it leaves to the market, and the questions worth asking before you sign anything.",
+    faqs: [
+      { q: 'Does DGCA set the price of a type rating in India?', a: 'No. We could not find any DGCA document, circular or fee schedule that sets or publishes a type rating cost. DGCA approves the Type Rating Training Organisation and the syllabus it must follow, and it issues the endorsement once you pass the skill test. What the course itself costs is set independently by each training provider.' },
+      { q: 'Why do type rating cost figures online vary so much?', a: 'Because none of them come from a regulator. Each figure is one training provider or one candidate\'s own quote, and quotes move with aircraft type, whether the simulator is based in India or abroad, group versus individual scheduling, and what the package includes or excludes. Treat any single number you read, including on this site, as one source\'s figure rather than a market rate.' },
+      { q: 'What is a Type Rating Training Organisation (TRTO)?', a: 'A training organisation approved by DGCA to deliver type-specific training on a particular aircraft, ending in the skill test DGCA requires before it adds that type rating to your licence. It is a separate approval from your CPL flying school or your DGCA ground classes provider.' },
+      { q: 'Is a self-funded type rating better than an airline-sponsored one?', a: 'Neither is categorically better; they trade different things. Self-funded means you choose the type and the provider and owe no service bond, but you carry the full cost upfront with no guarantee it leads to a job on that type. Airline-sponsored usually ties the type to the airline\'s own fleet and often comes with a service bond, but shifts timing and sometimes cost onto the airline.' },
+      { q: 'What is a service bond, and is it standard?', a: 'A service bond is a contractual commitment to work for the sponsoring airline for an agreed period after training, usually with a repayment clause if you leave early. It is common wherever an airline funds or subsidises a type rating, but its length and repayment terms are set by each airline\'s own contract, not by DGCA, so read the actual document rather than assuming a standard figure.' },
+      { q: 'Which aircraft types get rated in India?', a: 'Type ratings in India are generally offered on the aircraft families Indian carriers actually operate, most visibly the Airbus A320 family and the Boeing 737 family among narrow-body jets, alongside various turboprops used by regional operators. Availability depends on which type rating training organisations currently hold DGCA approval for that type and their own capacity, so confirm current availability directly with a TRTO rather than assuming a type is offered.' },
+      { q: 'What should a type rating quote include?', a: 'Ask for a line-by-line breakdown: ground theory, the number of simulator sessions and their duration, examiner and skill-test fees, study material, accommodation if training is away from home, and any line training required after the simulator phase. A quote that states only one lump figure makes it impossible to compare providers or to know what happens if you need an extra session.' },
+      { q: 'Do I need a type rating before I can apply for airline jobs in India?', a: 'Not always at the point of application. Some airlines hire CPL holders without a type rating and provide or sponsor one after selection, particularly through cadet programmes; others prefer or require a candidate to already hold a rating on their fleet type. Confirm the specific requirement on the airline\'s own careers page rather than assuming either pattern applies everywhere.' }
+    ],
+    content:
+      `<p>No DGCA document sets or publishes what a type rating costs in India. Each Type Rating Training Organisation prices its own course, so the figures you find online disagree because they are each provider&rsquo;s own marketing number, not a regulated fee. What actually drives the cost is the aircraft type, where the simulator is based, whether you train in a group or alone, and whether an airline or you are the one paying.</p>
+
+<h2>What is a type rating, and why does a CPL or ATPL holder need one?</h2>
+<p>A type rating is an endorsement added to your Commercial or Airline Transport Pilot Licence once you complete approved training on a specific aircraft type and pass a skill test on it. It is not a separate licence and it does not replace the CPL or ATPL; it is a permission layered on top, limited to the aircraft family named on it.</p>
+<p>The licence tells DGCA and an employer that you are qualified to hold and exercise pilot privileges in general. The type rating tells them you are qualified on this particular aircraft&rsquo;s systems, handling and procedures &mdash; an Airbus A320 and a Boeing 737 are different enough, cockpit to cockpit, that a rating on one does not carry over to the other. Getting to the point of needing a type rating already assumes the earlier steps are done: a computer number, 10+2 with Physics and Mathematics, cleared theory papers, a Class 1 medical and RTR(A), all covered in more detail in our <a href="/blog/jobs-after-cpl-india">guide to jobs after CPL</a>.</p>
+
+<table><thead><tr><th>Stage</th><th>What it establishes</th></tr></thead><tbody>
+<tr><td>CPL or ATPL theory and licence</td><td>General pilot privileges under DGCA</td></tr>
+<tr><td>Class 1 medical, RTR(A)</td><td>Fitness to fly, and radio telephony privileges</td></tr>
+<tr><td>Type rating</td><td>Privilege to fly one specific aircraft type</td></tr>
+<tr><td>Line training</td><td>Supervised operating experience with an airline, after the rating</td></tr>
+</tbody></table>
+<p class="source-note">Source: DGCA CAR Section 7, Series &lsquo;B&rsquo;, Part I for the licensing steps; the type-rating and line-training sequence described here reflects standard DGCA/ICAO licensing structure and is not sourced to a single banked CAR clause.</p>
+
+<h2>Does DGCA set or publish a type rating fee?</h2>
+<p>We looked for one and did not find it. There is no DGCA circular, fee notification or published schedule stating what a type rating should or does cost. DGCA&rsquo;s role in this process is regulatory, not commercial: it approves the Type Rating Training Organisation, sets the syllabus and hours that training must cover, and conducts or oversees the skill test that results in the endorsement. What the training organisation charges for that course is a commercial decision, made independently by each provider.</p>
+<p>This is not unusual by aviation-regulator standards. DGCA does not publish flying-school fees, ground-class fees or cadet-programme package costs either, for the same reason: those are prices set by private organisations operating in a market, not licensing fees set by the regulator. Our own <a href="/blog/cadet-pilot-programme-vs-self-sponsored-cpl">cadet programme comparison</a> found the same gap when it tried to source a centralised type-rating figure and came up empty.</p>
+
+<figure class="img-slot" data-src="/blog/type-rating-cost-in-india/regulator-vs-market-split.webp" data-dimensions="1200x675">
+  <span>A single vertical line dividing two columns, the left labelled with a small regulator seal icon over the words approval and skill test, the right labelled with a small price-tag icon over the words course fee, showing DGCA's role stopping where the training provider's pricing begins</span>
+</figure>
+
+<table><thead><tr><th>Set by DGCA</th><th>Set by the training market</th></tr></thead><tbody>
+<tr><td>Which organisations may deliver type-rating training</td><td>What that organisation charges for its course</td></tr>
+<tr><td>The syllabus and minimum training content</td><td>Whether training runs in a group or one-to-one</td></tr>
+<tr><td>The skill test that results in the endorsement</td><td>Where the simulator is based, in India or abroad</td></tr>
+<tr><td>Adding the endorsement to your licence</td><td>Whether an airline subsidises or bonds the cost</td></tr>
+</tbody></table>
+
+<h2>Why do type rating cost figures online disagree so much?</h2>
+<p>Because every figure traces back to one provider&rsquo;s quote for one specific course, not to a market average or a regulated rate. Search for a type rating cost in India and you will find numbers that differ by a factor of two or three from each other, all stated with the same confidence. None of them cite a DGCA source, because there is not one to cite.</p>
+<p>What genuinely moves the number, provider to provider, is a short list of real variables:</p>
+<ul>
+<li><strong>Aircraft type.</strong> A wide-body rating generally costs more than a narrow-body one, and a turboprop rating usually costs less than either, reflecting simulator availability and demand.</li>
+<li><strong>Where the simulator is based.</strong> Full-flight simulators for a given type are limited in number. Training on a simulator based abroad adds travel and accommodation on top of the course fee itself; training on one based in India usually does not.</li>
+<li><strong>Group size.</strong> A rating course run for a cohort of candidates, as many cadet programmes do, generally costs less per person than a course booked individually, because simulator time is shared across more paying candidates.</li>
+<li><strong>What the quote includes.</strong> Some providers price ground theory, simulator sessions, the skill test and study material as one package; others price each separately and let the total grow with extra sessions, retests, or accommodation.</li>
+<li><strong>Who is paying.</strong> A self-funded candidate negotiates or accepts one provider&rsquo;s retail price. An airline sponsoring a cohort typically negotiates a bulk rate with its own partner TRTO, which is not the price an individual candidate would be quoted.</li>
+</ul>
+<p>None of that supports a single number, which is exactly why we are not printing one here as if it were a verified figure. Figures anywhere from roughly ten lakh rupees to well above thirty lakh circulate across training-provider marketing pages for a narrow-body rating, with no two sources agreeing and no DGCA document behind any of them. Treat every one of those numbers as that provider&rsquo;s own quote for their own course, not an industry rate, and get a written, itemised quote before you compare anything.</p>
+
+<h2>What is a Type Rating Training Organisation, and how is it different from your CPL ground school or FTO?</h2>
+<p>A Type Rating Training Organisation, usually abbreviated TRTO, is an organisation DGCA has separately approved to deliver training on a specific aircraft type and to prepare candidates for the resulting skill test. This is a distinct approval from the one your CPL ground classes provider or your Flying Training Organisation holds.</p>
+<p>The distinction matters because candidates sometimes assume a good CPL experience predicts a good type-rating experience, or that the same organisation handles both. It often does not. Ground classes teach the DGCA theory papers; your FTO handles flight hours on light training aircraft; a TRTO trains you on a specific airliner or turboprop&rsquo;s systems and handling, almost always on a full-flight simulator rather than the real aircraft, because the real aircraft is in revenue service. Each is a separate purchase, from a separate provider, at a separate stage of the path.</p>
+
+<h2>Self-funded vs airline-sponsored type rating: what actually differs?</h2>
+<p>Two routes exist, and they trade different things rather than one being better outright.</p>
+<table><thead><tr><th>Factor</th><th>Self-funded</th><th>Airline-sponsored</th></tr></thead><tbody>
+<tr><td>Who chooses the aircraft type</td><td>You do, based on what you expect to be hired for</td><td>The sponsoring airline, matched to its own fleet</td></tr>
+<tr><td>Who chooses the TRTO</td><td>You do, and can compare quotes</td><td>Usually fixed to the airline's partner TRTO</td></tr>
+<tr><td>Upfront cost to you</td><td>The full course fee, paid or financed by you</td><td>Often reduced, deferred, or fully covered by the airline</td></tr>
+<tr><td>Service bond</td><td>None, since no employer funded it</td><td>Typical, tied to the sponsoring airline for an agreed period</td></tr>
+<tr><td>Job guarantee attached</td><td>None; you apply with the rating already in hand</td><td>Usually a defined route to a role, contingent on completing training and standards</td></tr>
+<tr><td>Risk if you change your mind on the airline</td><td>Low; the rating is yours to use with any operator flying that type</td><td>A bond repayment obligation may apply if you leave early</td></tr>
+</tbody></table>
+<p>A self-funded rating is a bet on your own judgement about which aircraft type and which airlines will actually be hiring when you finish, since nothing obliges an employer to want the specific type you chose. An airline-sponsored rating removes that guessing at the cost of a bond and less choice over the provider. Our <a href="/blog/cadet-pilot-programme-vs-self-sponsored-cpl">comparison of cadet programmes against the self-sponsored route</a> covers the same trade-off one level up, at the whole-training-path stage rather than just the type rating.</p>
+
+<h2>What is a service bond, and what should you check before signing one?</h2>
+<p>A service bond is a contractual commitment to work for the airline that funded or subsidised your training for an agreed period, usually with a defined repayment obligation if you leave before that period ends. It is common wherever an employer is paying for expensive training, type ratings included, and it is not unique to aviation or to India.</p>
+<p>What we will not do is state a standard bond length or a standard repayment amount, because neither is set by DGCA and both vary by airline and by contract. Before signing any bond tied to a type rating, get clear written answers to these questions rather than relying on what a coaching site or a forum thread says is typical:</p>
+<ol>
+<li><strong>What is the exact bond period</strong>, stated in the contract itself, not summarised secondhand?</li>
+<li><strong>What is the repayment formula</strong> if you leave early &mdash; a fixed amount, a pro-rated amount based on time served, or the full training cost?</li>
+<li><strong>Does the bond cover only the type rating</strong>, or does it bundle in other training costs, salary during training, or accommodation?</li>
+<li><strong>What happens if the airline, not you, ends the employment</strong> &mdash; through a layoff, a fleet change, or a company decision? A one-sided bond that only binds you is worth flagging before you sign, not after.</li>
+<li><strong>Is the repayment figure capped or does it grow with time</strong>, and is that stated as a fixed number or tied to some other calculation?</li>
+</ol>
+<p>A bond is not inherently unfair; it is how an employer protects an investment it made in you. The point is to read the actual document, not the summary someone else gives you of what bonds usually look like.</p>
+
+<figure class="img-slot" data-src="/blog/type-rating-cost-in-india/self-funded-vs-sponsored-fork.webp" data-dimensions="1200x675">
+  <span>A single path splitting into two forks, the left fork ending at a small standalone pilot figure holding a wallet, the right fork ending at a small pilot figure standing beside a larger airline-branded aircraft tail fin, representing the self-funded and airline-sponsored routes diverging from the same starting point</span>
+</figure>
+
+<h2>Which aircraft types get rated in India?</h2>
+<p>Type ratings offered in India generally track the aircraft families Indian carriers actually fly. Among narrow-body jets, the Airbus A320 family and the Boeing 737 family are the two most visible, since those are the aircraft the largest Indian operators use on their core networks. Regional and turboprop operators use other types, and ratings for those aircraft exist through providers who hold DGCA approval for that specific type.</p>
+<table><thead><tr><th>Aircraft category</th><th>Typical operator use in India</th></tr></thead><tbody>
+<tr><td>Airbus A320 family (A319/A320/A321)</td><td>Full-service and low-cost narrow-body carriers</td></tr>
+<tr><td>Boeing 737 family</td><td>Narrow-body carriers operating this family</td></tr>
+<tr><td>Regional turboprops</td><td>Regional and feeder operators on shorter routes</td></tr>
+<tr><td>Wide-body types</td><td>Long-haul operations, generally a later-career rating</td></tr>
+</tbody></table>
+<p>We are deliberately not naming a specific count of DGCA-approved TRTOs or a specific list of which organisation is approved for which type here, because that list changes as approvals are granted, renewed or withdrawn, and we do not have a current, verifiable source for it at the time of writing. Confirm current TRTO approval and type availability directly with the provider and, where possible, against DGCA&rsquo;s own published list before you commit.</p>
+
+<h2>What should a type rating quote actually include?</h2>
+<p>Fee is a poor way to compare providers unless you know exactly what it buys. A lump-sum quote hides more than it reveals. Ask for an itemised breakdown instead.</p>
+<table><thead><tr><th>Line item</th><th>Commonly included</th><th>Commonly excluded, ask directly</th></tr></thead><tbody>
+<tr><td>Ground theory on the type</td><td>Usually included</td><td>&mdash;</td></tr>
+<tr><td>Simulator sessions</td><td>A defined number is usually included</td><td>Extra sessions if you need more practice, at additional cost</td></tr>
+<tr><td>Skill test / examiner fee</td><td>Sometimes included, sometimes separate</td><td>Retest fee, if the first attempt does not succeed</td></tr>
+<tr><td>Study material</td><td>Sometimes included</td><td>Often a separate purchase</td></tr>
+<tr><td>Travel and accommodation</td><td>Rarely included if the simulator is abroad</td><td>Often the candidate's own cost, confirm before booking</td></tr>
+<tr><td>Line training after the simulator phase</td><td>Rarely included in the base type-rating fee</td><td>Usually a separate stage, sometimes with a separate provider or airline</td></tr>
+</tbody></table>
+<p>A provider who gives you a single number without breaking it down this way is not necessarily dishonest, but you cannot compare that number to anyone else&rsquo;s without knowing what sits inside it. Ask for the breakdown before you compare quotes, not after you have paid one of them.</p>
+
+<h2>Questions to ask a TRTO before you pay</h2>
+<p>Borrowing the same approach our <a href="/blog/dgca-ground-classes-vs-self-study">ground classes guide</a> uses for choosing a theory provider, here is the equivalent list for a type rating:</p>
+<ul>
+<li><strong>Is your DGCA TRTO approval current for this specific aircraft type?</strong> Ask to see it, not just be told it exists.</li>
+<li><strong>Where is the simulator based, and is that fixed or does it change by batch?</strong> A simulator location that moves between courses can change your real cost significantly.</li>
+<li><strong>How many simulator sessions are included, and what happens if I need more?</strong> Get the extra-session price in writing before you start, not after you discover you need one.</li>
+<li><strong>What is the retest policy and fee if the skill test does not succeed the first time?</strong> This is one of the most commonly under-quoted costs.</li>
+<li><strong>Does this quote include line training, or is that a separate stage with a separate cost?</strong> Passing the simulator skill test is not the same as being operationally ready; confirm what comes after.</li>
+<li><strong>If this is airline-sponsored, what exactly does the bond cover and for how long?</strong> Ask for the contract clause, not a verbal summary.</li>
+</ul>
+
+<h2>How does a type rating fit into your overall budget from CPL to cockpit?</h2>
+<p>A type rating is one stage in a longer sequence, and it is usually the single largest cost after your CPL flight training itself. Budgeting for it in isolation, without accounting for what comes before and after, is a common planning mistake.</p>
+<ol>
+<li><strong>CPL theory and flight training,</strong> at your FTO and ground classes provider, ending in a Commercial Pilot Licence.</li>
+<li><strong>RTR(A) and a Class 1 medical,</strong> both required before you are fully employable, covered in our <a href="/blog/jobs-after-cpl-india">jobs after CPL guide</a>.</li>
+<li><strong>A first flying role,</strong> often instructing, charter, or cargo work, to build hours and a documented flying history.</li>
+<li><strong>A type rating,</strong> self-funded on a type you judge will be in demand, or attached to a cadet or direct-hire offer from a specific airline.</li>
+<li><strong>Line training,</strong> supervised operating experience with the airline once the type rating itself is issued.</li>
+</ol>
+<p>Treating the type rating as a single line item rather than the whole sequence is how candidates underestimate the total cost of reaching a paid airline seat. See our <a href="/blog/frozen-atpl-meaning-india">guide to what "frozen ATPL" actually means</a> for how the ATPL theory stage relates to this same sequence, and our <a href="/courses/cpl">CPL course page</a> for the training stage that comes before any of this.</p>
+
+<figure class="img-slot" data-src="/blog/type-rating-cost-in-india/five-stage-budget-timeline.webp" data-dimensions="1200x675">
+  <span>A horizontal timeline of five equally spaced circles labelled CPL training, RTR(A) and medical, first flying role, type rating, and line training, each circle the same size to show that the type rating is one stage among several rather than the final cost</span>
+</figure>
+
+<h2>Frequently asked questions</h2>
+<h3>Does DGCA set the price of a type rating in India?</h3>
+<p>No. We could not find any DGCA document, circular or fee schedule that sets or publishes a type rating cost. DGCA approves the Type Rating Training Organisation and the syllabus it must follow, and it issues the endorsement once you pass the skill test. What the course itself costs is set independently by each training provider.</p>
+<h3>Why do type rating cost figures online vary so much?</h3>
+<p>Because none of them come from a regulator. Each figure is one training provider or one candidate&rsquo;s own quote, and quotes move with aircraft type, whether the simulator is based in India or abroad, group versus individual scheduling, and what the package includes or excludes. Treat any single number you read, including on this site, as one source&rsquo;s figure rather than a market rate.</p>
+<h3>What is a Type Rating Training Organisation (TRTO)?</h3>
+<p>A training organisation approved by DGCA to deliver type-specific training on a particular aircraft, ending in the skill test DGCA requires before it adds that type rating to your licence. It is a separate approval from your CPL flying school or your DGCA ground classes provider.</p>
+<h3>Is a self-funded type rating better than an airline-sponsored one?</h3>
+<p>Neither is categorically better; they trade different things. Self-funded means you choose the type and the provider and owe no service bond, but you carry the full cost upfront with no guarantee it leads to a job on that type. Airline-sponsored usually ties the type to the airline&rsquo;s own fleet and often comes with a service bond, but shifts timing and sometimes cost onto the airline.</p>
+<h3>What is a service bond, and is it standard?</h3>
+<p>A service bond is a contractual commitment to work for the sponsoring airline for an agreed period after training, usually with a repayment clause if you leave early. It is common wherever an airline funds or subsidises a type rating, but its length and repayment terms are set by each airline&rsquo;s own contract, not by DGCA, so read the actual document rather than assuming a standard figure.</p>
+<h3>Which aircraft types get rated in India?</h3>
+<p>Type ratings in India are generally offered on the aircraft families Indian carriers actually operate, most visibly the Airbus A320 family and the Boeing 737 family among narrow-body jets, alongside various turboprops used by regional operators. Availability depends on which type rating training organisations currently hold DGCA approval for that type and their own capacity, so confirm current availability directly with a TRTO rather than assuming a type is offered.</p>
+<h3>What should a type rating quote include?</h3>
+<p>Ask for a line-by-line breakdown: ground theory, the number of simulator sessions and their duration, examiner and skill-test fees, study material, accommodation if training is away from home, and any line training required after the simulator phase. A quote that states only one lump figure makes it impossible to compare providers or to know what happens if you need an extra session.</p>
+<h3>Do I need a type rating before I can apply for airline jobs in India?</h3>
+<p>Not always at the point of application. Some airlines hire CPL holders without a type rating and provide or sponsor one after selection, particularly through cadet programmes; others prefer or require a candidate to already hold a rating on their fleet type. Confirm the specific requirement on the airline&rsquo;s own careers page rather than assuming either pattern applies everywhere.</p>
+
+<h2>The short version</h2>
+<p>No DGCA document sets or publishes what a type rating costs in India, and every figure you find online is one training provider&rsquo;s own quote, not a regulated rate. What actually moves the number is aircraft type, where the simulator sits, group size, what the quote includes, and whether an airline or you are funding it. Self-funded and airline-sponsored routes trade different things: choice and no bond against reduced upfront cost and a service bond you should read in full before signing. Ask any TRTO for an itemised quote, confirm its current DGCA approval for the specific type, and budget the rating as one stage in a longer sequence rather than a single number in isolation.</p>
+<p class="ref-links">More: the <a href="/faq">FAQ</a> for short sourced answers, the <a href="/glossary">glossary</a> for the terms, and our <a href="/editorial-policy">editorial policy</a> for how these figures are checked.</p>`,
+  },
 ];
 
 /**

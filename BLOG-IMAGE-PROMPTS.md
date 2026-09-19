@@ -948,3 +948,36 @@ A simple five-step upward staircase shape, each step exactly the same height, wi
 ```
 
 ---
+
+## Type Rating Cost in India: Why No Two Quotes Ever Match
+
+`/blog/type-rating-cost-in-india` — 3 images. Cover left as the site-wide fallback (`/assets/hero-aircraft-1600w.jpg`), no cover prompt needed.
+
+### 1. Inline, after heading 2
+
+- **Save to:** `public/blog/type-rating-cost-in-india/regulator-vs-market-split.webp`
+- **Alt text:** A single vertical line dividing two columns, the left labelled with a small regulator seal icon over the words approval and skill test, the right labelled with a small price-tag icon over the words course fee, showing DGCA's role stopping where the training provider's pricing begins.
+
+```
+A single thin vertical line dividing the frame into two equal columns. The left column holds one small official seal/stamp icon above a small checkmark-in-a-circle icon. The right column holds one small price-tag icon, centred, roughly the same size as the icons on the left. No element crosses the dividing line. Flat vector illustration, minimal clean style, professional Indian aviation training context, deep green and warm amber accents on a light neutral ground, generous negative space, absolutely NO text, words, letters, numbers or signage anywhere in the image. 1200 x 675.
+```
+
+### 2. Inline, after heading 7
+
+- **Save to:** `public/blog/type-rating-cost-in-india/self-funded-vs-sponsored-fork.webp`
+- **Alt text:** A single path splitting into two forks, the left fork ending at a small standalone pilot figure holding a wallet, the right fork ending at a small pilot figure standing beside a larger airline-branded aircraft tail fin, representing the self-funded and airline-sponsored routes diverging from the same starting point.
+
+```
+A single flat path starting at the bottom centre and splitting into two diverging forks partway up. The left fork ends at a small standalone pilot-figure icon holding a simple wallet shape. The right fork ends at a small pilot-figure icon standing beside a larger, plain aircraft tail-fin shape. Balanced, symmetrical fork, no arrows. Flat vector illustration, minimal clean style, professional Indian aviation training context, deep green and warm amber accents on a light neutral ground, generous negative space, absolutely NO text, words, letters, numbers or signage anywhere in the image. 1200 x 675.
+```
+
+### 3. Inline, after heading 12
+
+- **Save to:** `public/blog/type-rating-cost-in-india/five-stage-budget-timeline.webp`
+- **Alt text:** A horizontal timeline of five equally spaced circles labelled CPL training, RTR(A) and medical, first flying role, type rating, and line training, each circle the same size to show that the type rating is one stage among several rather than the final cost.
+
+```
+A single horizontal line running left to right with five identical, evenly spaced circular waypoint markers on it: a small graduation-cap icon, a small medical-cross-and-headset icon, a small light-aircraft icon, a small larger-aircraft icon, and a small clipboard icon, each circle exactly the same size with no single marker enlarged or emphasised. Flat vector illustration, minimal clean style, professional Indian aviation training context, deep green and warm amber accents on a light neutral ground, generous negative space, absolutely NO text, words, letters, numbers or signage anywhere in the image. 1200 x 675.
+```
+
+---
