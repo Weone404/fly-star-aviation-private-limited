@@ -1690,6 +1690,160 @@ export const STATIC_BLOG_POSTS = [
 <p>No DGCA document sets or publishes what a type rating costs in India, and every figure you find online is one training provider&rsquo;s own quote, not a regulated rate. What actually moves the number is aircraft type, where the simulator sits, group size, what the quote includes, and whether an airline or you are funding it. Self-funded and airline-sponsored routes trade different things: choice and no bond against reduced upfront cost and a service bond you should read in full before signing. Ask any TRTO for an itemised quote, confirm its current DGCA approval for the specific type, and budget the rating as one stage in a longer sequence rather than a single number in isolation.</p>
 <p class="ref-links">More: the <a href="/faq">FAQ</a> for short sourced answers, the <a href="/glossary">glossary</a> for the terms, and our <a href="/editorial-policy">editorial policy</a> for how these figures are checked.</p>`,
   },
+  {
+    slug: 'dgca-pariksha-portal-guide',
+    title: 'DGCA Pariksha Portal Guide: Registration, Login and Document Rules',
+    seoTitle: 'DGCA Pariksha Portal Guide 2026: Rules DGCA Actually States',
+    metaDescription: 'DGCA Pariksha carries a beta disclaimer and exact photo, signature and document rules. What the FAQ states on uploads, link expiry and new vs old candidates.',
+    keyFacts: [
+      { fact: 'The Pariksha portal requires a photograph of exactly 45mm height by 35mm width under 70kb, and a signature of 20mm height by 45mm width under 20kb, both in JPEG/JPG format only; supporting documents must be uploaded as PDF.', source: 'DGCA Pariksha Flight Crew FAQ', href: 'https://pariksha.dgca.gov.in/Form/PLT_FAQs' },
+      { fact: 'A Pariksha registration activation link expires 24 hours after submission, with no extension; a candidate who misses it must register again from the start.', source: 'DGCA Pariksha Flight Crew FAQ', href: 'https://pariksha.dgca.gov.in/Form/PLT_FAQs' },
+      { fact: 'As of August 2026, the Pariksha portal carried its own "under beta testing" disclaimer, with DGCA and NIELIT disclaiming responsibility for actions performed on the platform during that phase.', source: 'pariksha.dgca.gov.in landing page, banked 2026-08-22; this session could not re-fetch the live page to confirm the disclaimer still stands, since pariksha.dgca.gov.in was unreachable from this network at time of writing' },
+    ],
+    tags: ['DGCA Pariksha Portal', 'DGCA Computer Number Registration', 'Pariksha DGCA Login', 'DGCA Document Upload'],
+    category: 'DGCA',
+    author: 'Flying Star Aviator Academics Team',
+    authorRole: 'DGCA CPL & ATPL ground instruction, Dwarka, New Delhi',
+    createdAt: '2026-09-22',
+    updatedAt: '2026-09-22',
+    coverImage: '/assets/hero-aircraft-1600w.jpg',
+    excerpt: 'TL;DR: The DGCA Pariksha portal, run by NIELIT, currently carries a beta-testing disclaimer and enforces exact photo (45x35mm), signature (20x45mm) and document format rules. Registration links expire in 24 hours. New candidates owe a hard copy and a Board Verification Certificate; old candidates do not. Only mobile, email and address are self-editable.',
+    intro: "Every DGCA computer number, exam registration and profile update for Flight Crew and AME candidates now runs through one system: the Pariksha portal. It states exact document specifications, and it currently carries a beta-testing disclaimer that changes how carefully a candidate should treat it. This guide sources every rule below to DGCA's own Pariksha FAQ, not to a coaching site's paraphrase of it.",
+    faqs: [
+      { q: 'What is the DGCA Pariksha portal?', a: 'Pariksha, at pariksha.dgca.gov.in, is the single online system the Central Examination Organisation uses for Flight Crew and Aircraft Maintenance Engineer computer number allotment, exam registration, admit cards and examination history. It is developed and maintained by NIELIT, not by DGCA’s own IT wing.' },
+      { q: 'Is the DGCA Pariksha portal still in beta?', a: 'As of August 2026, the portal’s own landing page carried an "under beta testing" disclaimer, with DGCA and NIELIT disclaiming responsibility for actions performed on it during that phase. Re-check the live portal for its current status before relying on this.' },
+      { q: 'What are the exact photo and signature specifications for Pariksha?', a: 'A photograph must be 45mm height by 35mm width, matt finish, white background, under 70kb, in JPEG/JPG format. A signature must be 20mm height by 45mm width, white background, under 20kb, in JPEG/JPG format. Supporting documents must be uploaded as PDF, not JPEG.' },
+      { q: 'How long does a Pariksha registration link stay valid?', a: '24 hours from submission. If it is not activated within that window, the registration is not carried forward, and the candidate must register again from the start.' },
+      { q: 'What is the difference between a NEW and OLD candidate on Pariksha?', a: 'A NEW candidate has no Flight Crew computer number from CEO to date and owes a hard copy of the registration form plus a Board Verification Certificate. An OLD candidate was already allotted a computer number before Pariksha launched and owes neither.' },
+      { q: 'Which Pariksha profile fields can I edit myself?', a: 'Only mobile number, email ID and correspondence address, through the profile management link. Every other field, including name and qualification details, needs prior approval from CEO, DGCA, requested through the "Raise Query" tab.' },
+      { q: 'Do foreign nationals register differently on Pariksha?', a: 'Yes. Indian candidates do not need a passport to register; every foreign national candidate does, including Nepal and Bhutan nationals. Foreign candidates also need an Indian mobile number and must submit a security clearance form, Annexure A, in quintuplicate by post to CEO.' },
+      { q: 'What happens if my Pariksha computer number application is rejected?', a: 'You receive an email stating the reason for rejection. Log in with your existing credentials, correct or comply with every item listed, and resubmit; you do not start a fresh application from zero.' },
+    ],
+    content:
+      `<p>The Pariksha portal, at pariksha.dgca.gov.in, is where every DGCA computer number application, exam registration and profile update for Flight Crew and Aircraft Maintenance Engineer candidates now happens. It carries a stated &ldquo;under beta testing&rdquo; disclaimer, runs strict document specifications that reject a large share of first uploads, and separates candidates into two categories with different paperwork rules. This guide sets out what the portal actually requires, sourced to DGCA&rsquo;s own Pariksha FAQ, so an upload does not fail on a rule nobody told you about.</p>
+
+<h2>What is the DGCA Pariksha portal?</h2>
+<p>Pariksha is the single online system through which the Central Examination Organisation (CEO), the DGCA office responsible for Flight Crew and AME licence examinations, now handles registration, computer number allotment, admit cards and examination history. Our <a href="/dgca">DGCA overview</a> covers where this office and this portal sit inside the wider licensing process. It is an integration of two older, separate DGCA systems, and it is developed and maintained by NIELIT, the National Institute of Electronics and Information Technology, not by DGCA&rsquo;s own IT wing.</p>
+<p>Before Pariksha, Flight Crew and AME candidates used separate portals for different parts of the process. Pariksha brought computer number applications, exam registration, document submission and result history under one login, identified by the candidate&rsquo;s own computer number once one is allotted. That consolidation is also why a single account now governs both a candidate&rsquo;s licence-exam registrations and their profile data, which is part of why the platform&rsquo;s own rules on what you can and cannot edit yourself matter more than they would on a simpler booking site.</p>
+
+<figure class="img-slot" data-src="/blog/dgca-pariksha-portal-guide/two-systems-merge-into-one.webp" data-dimensions="1200x675">
+  <span>Two separate small login-window icons on the left merging into one larger login-window icon on the right, connected by a single converging line, representing two older DGCA systems combining into the single Pariksha portal</span>
+</figure>
+
+<h2>What does &ldquo;under beta testing&rdquo; mean for candidates using Pariksha?</h2>
+<p>As of August 2026, the Pariksha portal itself carries an on-site disclaimer stating it is under beta testing, with DGCA and NIELIT disclaiming responsibility for actions performed on the platform during that phase. That is not a minor footnote: it means the system you are trusting with your Board Verification Certificate, your computer number application and your exam registration is, by its own operator&rsquo;s description, not yet in a finished, stable state.</p>
+<p>Practically, that changes what a sensible candidate does differently from how they would treat a fully mature government portal. Screenshot every confirmation screen. Save the PDF form Pariksha emails you after registration, rather than assuming you can always re-download it later. Note the exact date and time you submitted anything, in case a dispute over a missed deadline or a rejected upload needs evidence later. None of this is DGCA telling you to distrust the portal; it is DGCA and NIELIT&rsquo;s own stated position that responsibility for actions taken on it, during this phase, sits with the platform&rsquo;s current limitations as much as with the candidate.</p>
+<p class="source-note">Source: pariksha.dgca.gov.in landing page, beta-testing disclaimer, as recorded August 2026. Re-check the live portal for its current disclaimer before relying on this framing, since a beta status is, by definition, not permanent.</p>
+
+<h2>Who has to register on the Pariksha portal?</h2>
+<p>Every candidate holding, or applying for, a DGCA computer number must register on Pariksha, and that includes both Aircraft Maintenance Engineer and Flight Crew candidates, not pilots alone. A single computer number covers every category of Flight Crew examination DGCA conducts, so a candidate does not register separately per licence type; the same number, and the same Pariksha profile, carries across CPL, ATPL and the other Flight Crew examination categories once the qualification details on the profile are updated to match.</p>
+<table><thead><tr><th>Who</th><th>Registers on Pariksha</th></tr></thead><tbody>
+<tr><td>Flight Crew candidates (CPL, ATPL and related categories)</td><td>Yes, for computer number, exam registration and history</td></tr>
+<tr><td>Aircraft Maintenance Engineer (AME) candidates</td><td>Yes, same portal, same CEO office</td></tr>
+<tr><td>A candidate already holding a computer number issued before Pariksha launched</td><td>Yes, as an &ldquo;OLD&rdquo; candidate, with a lighter document requirement</td></tr>
+<tr><td>A candidate with no computer number yet</td><td>Yes, as a &ldquo;NEW&rdquo; candidate, with the full document and hard-copy requirement</td></tr>
+</tbody></table>
+<p>A candidate is authorised to hold only one computer number, and its validity is lifetime once allotted, so the registration you complete now is not something you repeat for a later licence category. Getting the computer number itself right the first time is its own process, with its own document checklist; our <a href="/dgca/computer-number">DGCA computer number guide</a> covers that application in detail. This article covers the portal you use to do it, and the rules that trip candidates up once they are on it.</p>
+
+<h2>What are the DGCA photo and signature specifications, and why do uploads get rejected?</h2>
+<p>Pariksha states exact dimensions, file size limits and file formats for the photograph and signature every candidate uploads, and a mismatch against any one of those figures is a common, entirely avoidable reason a form gets sent back. The specification is precise, not a rough guideline.</p>
+<table><thead><tr><th>Item</th><th>Dimensions</th><th>Maximum file size</th><th>Format</th></tr></thead><tbody>
+<tr><td>Photograph</td><td>45mm height &times; 35mm width, white background, no border, face approximately 70% of the frame, matt finish</td><td>70kb</td><td>JPEG/JPG only</td></tr>
+<tr><td>Signature</td><td>20mm height &times; 45mm width, white background, no border</td><td>20kb</td><td>JPEG/JPG only</td></tr>
+<tr><td>Supporting documents (mark sheets, certificates, forms)</td><td>Per the document size table in Pariksha&rsquo;s own User Manual, not the photo or signature spec</td><td>Per document type; check the User Manual</td><td>PDF only</td></tr>
+</tbody></table>
+<p class="source-note">Source: DGCA Pariksha Flight Crew FAQ, questions 37&ndash;41.</p>
+<p>Three mistakes account for most upload rejections we have seen described in candidate queries: uploading a photograph or signature as a PNG or a scanned PDF instead of JPEG/JPG, which the portal does not accept for those two fields specifically; uploading a document as a JPEG when Pariksha requires PDF for documents generally; and a photograph or signature that exceeds the file size ceiling because it was scanned at a higher resolution than the portal allows. None of these are portal bugs. They are the stated specification, and checking a file against the exact numbers above before uploading it is faster than resubmitting after a rejection.</p>
+
+<figure class="img-slot" data-src="/blog/dgca-pariksha-portal-guide/photo-signature-spec-cards.webp" data-dimensions="1200x675">
+  <span>Two small rectangular card outlines side by side, the left card taller than it is wide representing a photograph and the right card wider and shorter representing a signature, each with a small checkmark, showing the two upload fields with their own distinct shapes</span>
+</figure>
+
+<h2>Why did my Pariksha registration link expire, and what do I do now?</h2>
+<p>After you submit the registration form, Pariksha sends an activation link to your registered email address, and that link stays valid for 24 hours only. If it is not activated within that window, the registration does not carry forward automatically; the candidate has to register again from the start, on a fresh submission.</p>
+<p>This is one of the more punishing rules on the portal precisely because it is easy to miss. A candidate who submits a registration late at night, intending to open the confirmation email the next morning, can lose the whole submission before ever seeing it fail. If you are registering on Pariksha, check the inbox and the spam folder for that activation email within the same session you submitted the form, not the next day.</p>
+<p class="source-note">Source: DGCA Pariksha Flight Crew FAQ, questions 43&ndash;44.</p>
+
+<h2>What is the difference between a &ldquo;new&rdquo; candidate and an &ldquo;old&rdquo; candidate on Pariksha?</h2>
+<p>Pariksha defines a NEW candidate as one with no Flight Crew computer number from CEO to date, and an OLD candidate as one already allotted a computer number before this portal launched. The distinction changes what paperwork you owe the portal, most visibly on hard copies and the Board Verification Certificate.</p>
+<table><thead><tr><th>Requirement</th><th>NEW candidate</th><th>OLD candidate</th></tr></thead><tbody>
+<tr><td>Send a printed hard copy of the registration form to CEO by post</td><td>Required, with photograph pasted and documents attached as listed</td><td>Not required</td></tr>
+<tr><td>Board Verification Certificate for 10th/12th/Diploma mark sheets</td><td>Mandatory before registration</td><td>Not mandatory</td></tr>
+<tr><td>Profile update timing</td><td>Can update profile only after the computer number is allotted</td><td>Can proceed on saved data and correct mismatches afterward via profile management</td></tr>
+</tbody></table>
+<p class="source-note">Source: DGCA Pariksha Flight Crew FAQ, questions 16&ndash;21 and 33&ndash;36, 51&ndash;52.</p>
+<p>The hard copy, when required, goes by Speed Post or Registered Post to the Central Examination Organization, East Block III, Level III, R.K. Puram, New Delhi 110066. This is the same office named across DGCA&rsquo;s Flight Crew examination rules, and it is the physical address the portal&rsquo;s own FAQ gives, not a courier address a private coaching provider hands you.</p>
+
+<figure class="img-slot" data-src="/blog/dgca-pariksha-portal-guide/new-vs-old-candidate-paths.webp" data-dimensions="1200x675">
+  <span>Two parallel horizontal paths, the upper path longer with an extra small envelope icon marking a postal step that the lower, shorter path does not have, representing the additional hard-copy step a new candidate owes that an old candidate does not</span>
+</figure>
+
+<h2>Do I need a Board Verification Certificate to register?</h2>
+<p>A Board Verification Certificate, or BVC, is a certificate your school or diploma board issues to confirm your mark sheet is genuine, and it is mandatory for every NEW candidate before registering on Pariksha, for the 10th, 12th, 12th-equivalent or Diploma mark sheet on file. It applies to Indian and foreign candidates alike; nobody is exempt from it on the basis of nationality. OLD candidates, already registered before Pariksha, do not need one.</p>
+<p>Where your qualification comes from a board that is not a Council of Boards of Secondary Education member or a State or Central Government education board &mdash; an international school, board or university situated in India or abroad, for instance &mdash; you additionally need an equivalency certificate from the Association of Indian Universities, at AIU House, 16, Kotla Marg, New Delhi 110022, confirming your qualification is recognised as equivalent to the Indian standard. Diploma holders need the equivalent certificate from the relevant state Directorate of Technical Education instead. We cover the fuller mechanics of the BVC itself, including how long it typically takes a board to issue one, in our <a href="/blog/dgca-board-verification-certificate">Board Verification Certificate guide</a>.</p>
+<p class="source-note">Source: DGCA Pariksha Flight Crew FAQ, questions 25&ndash;27 and 33&ndash;36.</p>
+
+<h2>Which profile details can I edit myself, and which need DGCA approval?</h2>
+<p>Once you have a Pariksha profile, only three fields are yours to change directly: mobile number, email ID and correspondence address, through the profile management link. Everything else on your profile &mdash; your name, your qualification details, your licence category, and anything not on that short list &mdash; requires prior approval from CEO, DGCA before it can change.</p>
+<table><thead><tr><th>Field</th><th>Who can change it</th><th>How</th></tr></thead><tbody>
+<tr><td>Mobile number</td><td>You, directly</td><td>Profile management link</td></tr>
+<tr><td>Email ID</td><td>You, directly</td><td>Profile management link</td></tr>
+<tr><td>Correspondence address</td><td>You, directly</td><td>Profile management link</td></tr>
+<tr><td>Everything else (name, qualification, licence category, and so on)</td><td>Only with CEO, DGCA approval</td><td>&ldquo;Raise Query&rdquo; tab in profile management, after login</td></tr>
+</tbody></table>
+<p class="source-note">Source: DGCA Pariksha Flight Crew FAQ, questions 53&ndash;55.</p>
+<p>This matters most for a candidate who notices an error in their own qualification record months after registering, expecting a quick self-edit. It is not a self-edit. It is a query, submitted through the portal, that goes to a person at CEO for review, which is worth building into your timeline if you catch an error close to an exam application deadline.</p>
+
+<figure class="img-slot" data-src="/blog/dgca-pariksha-portal-guide/self-edit-vs-approval-fields.webp" data-dimensions="1200x675">
+  <span>A short vertical list of three small identical rounded field icons on the left marked with a simple pencil, and a fourth, larger field icon on the right marked with a small padlock, showing three self-editable fields against everything else requiring approval</span>
+</figure>
+
+<h2>What happens if my computer number application is rejected, or approved?</h2>
+<p>Either outcome reaches you the same way: an email to your registered email ID. A rejection email states the reason for the rejection. An approval email states the computer number itself. There is no separate portal notification you need to hunt for; the email is the record. Once you are through registration, admit cards for a specific session are a separate matter from the profile itself; check the session dates on our <a href="/dgca/exam-calendar">DGCA exam calendar</a> before assuming when yours will appear.</p>
+<p>If your application is rejected, you do not start over from a blank form. You log in through Candidate Login using your existing credentials, that is, the email ID registered with Pariksha, and correct or comply with every item the rejection email listed, then resubmit. Once a computer number is allotted, your login ID for the portal becomes that computer number itself, with the prefix &ldquo;P-&rdquo; added in front of it, replacing whatever temporary ID you used to track a NEW-candidate application beforehand.</p>
+<p class="source-note">Source: DGCA Pariksha Flight Crew FAQ, questions 46&ndash;50.</p>
+
+<h2>What if my school board is not in Pariksha&rsquo;s dropdown list?</h2>
+<p>Select &ldquo;OTHERS&rdquo; and continue. Pariksha&rsquo;s own FAQ names this as the expected path when a candidate&rsquo;s school board or institute does not appear in the dropdown, rather than treating it as an error that blocks registration. Combine this with the BVC and AIU-equivalence rules above if your board is one DGCA is less likely to already recognise by name: the &ldquo;OTHERS&rdquo; selection gets you past the form field, but the underlying qualification-recognition documents are what CEO actually checks.</p>
+<p class="source-note">Source: DGCA Pariksha Flight Crew FAQ, question 45.</p>
+
+<h2>Do foreign nationals and NRIs register differently on Pariksha?</h2>
+<p>Yes, on three specific points: passport, security clearance and a working Indian mobile number. Indian candidates do not need a passport to register. Every foreign national candidate does, since the address on the passport is used as the candidate&rsquo;s permanent address on file, and Nepal and Bhutan nationals are named specifically as also requiring a valid passport, rather than being treated as a special case exempt from it.</p>
+<table><thead><tr><th>Requirement</th><th>Indian candidates</th><th>Foreign national candidates</th></tr></thead><tbody>
+<tr><td>Passport</td><td>Not mandatory</td><td>Mandatory, including Nepal and Bhutan nationals</td></tr>
+<tr><td>Security clearance (Annexure A form)</td><td>Not required</td><td>Required, submitted in quintuplicate to CEO by post</td></tr>
+<tr><td>Indian mobile number</td><td>Standard requirement for any candidate</td><td>Mandatory before registration</td></tr>
+</tbody></table>
+<p class="source-note">Source: DGCA Pariksha Flight Crew FAQ, questions 28&ndash;32.</p>
+<p>The security clearance requirement is easy to underestimate on timeline: it is a physical form, filled in five copies, sent by post to CEO alongside the computer number application, not a checkbox completed inside the portal itself. Candidates outside India applying for a first computer number should build weeks, not days, of postal transit into their planning around this step. Our <a href="/blog/dgca-cpl-eligibility-foreign-nationals-nri">guide to DGCA eligibility for foreign nationals and NRIs</a> covers the licensing side of this in more depth; this section is specifically about what Pariksha itself asks a foreign candidate to submit.</p>
+
+<h2>How do I get help if something goes wrong on the portal?</h2>
+<p>Pariksha&rsquo;s FAQ names a &ldquo;Help Desk&rdquo; tab, available after login, as the route for raising a query to CEO, and lists a help desk phone number: 011-26196307. For password issues specifically, the &ldquo;forgot password&rdquo; option on the login page, using the email ID registered with Pariksha, is the stated self-service route before you would need to raise a query at all.</p>
+<p>Two things worth building into your own record-keeping, given the beta status covered earlier: note the date and a brief description whenever you raise a query, and keep the confirmation. A portal that discloses it is still under beta testing is one where a paper trail on your side is doing work the platform itself may not yet reliably do.</p>
+<p class="source-note">Source: DGCA Pariksha Flight Crew FAQ, questions 23, 56, 57 and 59.</p>
+
+<h2>Frequently asked questions</h2>
+<h3>What is the DGCA Pariksha portal?</h3>
+<p>Pariksha, at pariksha.dgca.gov.in, is the single online system the Central Examination Organisation uses for Flight Crew and Aircraft Maintenance Engineer computer number allotment, exam registration, admit cards and examination history. It is developed and maintained by NIELIT, not by DGCA’s own IT wing.</p>
+<h3>Is the DGCA Pariksha portal still in beta?</h3>
+<p>As of August 2026, the portal’s own landing page carried an "under beta testing" disclaimer, with DGCA and NIELIT disclaiming responsibility for actions performed on it during that phase. Re-check the live portal for its current status before relying on this.</p>
+<h3>What are the exact photo and signature specifications for Pariksha?</h3>
+<p>A photograph must be 45mm height by 35mm width, matt finish, white background, under 70kb, in JPEG/JPG format. A signature must be 20mm height by 45mm width, white background, under 20kb, in JPEG/JPG format. Supporting documents must be uploaded as PDF, not JPEG.</p>
+<h3>How long does a Pariksha registration link stay valid?</h3>
+<p>24 hours from submission. If it is not activated within that window, the registration is not carried forward, and the candidate must register again from the start.</p>
+<h3>What is the difference between a NEW and OLD candidate on Pariksha?</h3>
+<p>A NEW candidate has no Flight Crew computer number from CEO to date and owes a hard copy of the registration form plus a Board Verification Certificate. An OLD candidate was already allotted a computer number before Pariksha launched and owes neither.</p>
+<h3>Which Pariksha profile fields can I edit myself?</h3>
+<p>Only mobile number, email ID and correspondence address, through the profile management link. Every other field, including name and qualification details, needs prior approval from CEO, DGCA, requested through the "Raise Query" tab.</p>
+<h3>Do foreign nationals register differently on Pariksha?</h3>
+<p>Yes. Indian candidates do not need a passport to register; every foreign national candidate does, including Nepal and Bhutan nationals. Foreign candidates also need an Indian mobile number and must submit a security clearance form, Annexure A, in quintuplicate by post to CEO.</p>
+<h3>What happens if my Pariksha computer number application is rejected?</h3>
+<p>You receive an email stating the reason for rejection. Log in with your existing credentials, correct or comply with every item listed, and resubmit; you do not start a fresh application from zero.</p>
+
+<h2>The short version</h2>
+<p>Pariksha is DGCA&rsquo;s single online system, run by NIELIT, for Flight Crew and AME computer numbers, exam registration and profile management, and it currently carries its own beta-testing disclaimer. Most rejected uploads trace back to the stated photo (45&times;35mm, 70kb, JPEG) and signature (20&times;45mm, 20kb, JPEG) specifications, or documents submitted in the wrong format; documents need PDF. Registration links expire in 24 hours with no extension. NEW candidates owe a hard copy and a Board Verification Certificate that OLD candidates do not. Only your mobile number, email and correspondence address are self-editable; everything else needs CEO approval through a raised query. Foreign nationals additionally need a passport, security clearance and an Indian mobile number. Check every figure against the portal&rsquo;s own current FAQ before you submit anything, since a platform still in beta is, by its own description, one that changes.</p>
+<p class="ref-links">More: the <a href="/faq">FAQ</a> for short sourced answers, the <a href="/glossary">glossary</a> for the terms, and our <a href="/editorial-policy">editorial policy</a> for how these figures are checked.</p>`,
+  },
 ];
 
 /**

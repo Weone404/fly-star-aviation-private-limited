@@ -981,3 +981,45 @@ A single horizontal line running left to right with five identical, evenly space
 ```
 
 ---
+
+## DGCA Pariksha Portal Guide: Registration, Login and Document Rules
+
+`/blog/dgca-pariksha-portal-guide` — 4 images. Cover left as the site-wide fallback (`/assets/hero-aircraft-1600w.jpg`), no cover prompt needed.
+
+### 1. Inline, after heading 1
+
+- **Save to:** `public/blog/dgca-pariksha-portal-guide/two-systems-merge-into-one.webp`
+- **Alt text:** Two separate small login-window icons on the left merging into one larger login-window icon on the right, connected by a single converging line, representing two older DGCA systems combining into the single Pariksha portal.
+
+```
+Two separate small rounded login-window icon shapes on the left side of the frame, each with a simple horizontal line inside representing a form field, connected by two converging lines to a single larger login-window icon shape on the right, same style, slightly larger. Clear before-and-after read, left to right. Flat vector illustration, minimal clean style, professional Indian aviation training context, deep green and warm amber accents on a light neutral ground, generous negative space, absolutely NO text, words, letters, numbers or signage anywhere in the image. 1200 x 675.
+```
+
+### 2. Inline, after heading 4
+
+- **Save to:** `public/blog/dgca-pariksha-portal-guide/photo-signature-spec-cards.webp`
+- **Alt text:** Two small rectangular card outlines side by side, the left card taller than it is wide representing a photograph and the right card wider and shorter representing a signature, each with a small checkmark, showing the two upload fields with their own distinct shapes.
+
+```
+Two small rectangular card outlines side by side with visible spacing between them: the left card noticeably taller than it is wide, holding a small simple portrait-silhouette icon and a small checkmark in its corner; the right card noticeably wider than it is tall, holding a small flowing signature-line icon and a small checkmark in its corner. Flat vector illustration, minimal clean style, professional Indian aviation training context, deep green and warm amber accents on a light neutral ground, generous negative space, absolutely NO text, words, letters, numbers or signage anywhere in the image. 1200 x 675.
+```
+
+### 3. Inline, after heading 6
+
+- **Save to:** `public/blog/dgca-pariksha-portal-guide/new-vs-old-candidate-paths.webp`
+- **Alt text:** Two parallel horizontal paths, the upper path longer with an extra small envelope icon marking a postal step that the lower, shorter path does not have, representing the additional hard-copy step a new candidate owes that an old candidate does not.
+
+```
+Two parallel horizontal dashed paths stacked one above the other, both starting at the same left edge. The upper path is visibly longer and has one extra small envelope icon partway along it that the lower path does not have; the lower path ends earlier, at a shorter length. No other decoration. Flat vector illustration, minimal clean style, professional Indian aviation training context, deep green and warm amber accents on a light neutral ground, generous negative space, absolutely NO text, words, letters, numbers or signage anywhere in the image. 1200 x 675.
+```
+
+### 4. Inline, after heading 8
+
+- **Save to:** `public/blog/dgca-pariksha-portal-guide/self-edit-vs-approval-fields.webp`
+- **Alt text:** A short vertical list of three small identical rounded field icons on the left marked with a simple pencil, and a fourth, larger field icon on the right marked with a small padlock, showing three self-editable fields against everything else requiring approval.
+
+```
+A vertical stack of three small identical rounded rectangle field icons on the left, each with a tiny pencil icon beside it, and to the right, at the same height as the stack overall, one larger rounded rectangle field icon with a small padlock icon beside it instead of a pencil. Clear visual contrast between the pencil-marked group and the single padlock-marked shape. Flat vector illustration, minimal clean style, professional Indian aviation training context, deep green and warm amber accents on a light neutral ground, generous negative space, absolutely NO text, words, letters, numbers or signage anywhere in the image. 1200 x 675.
+```
+
+---
