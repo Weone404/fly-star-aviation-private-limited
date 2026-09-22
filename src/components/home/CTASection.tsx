@@ -120,7 +120,7 @@ const SEARCH_TOPICS = [
   { label: "Flight Training", to: "/pilot-training" },
   { label: "Flying Schools", to: "/pilot-training/india" },
   { label: "RTR(A) Classes", to: "/rtr" },
-  { label: "Aviation Career", to: "/careers" },
+  { label: "Aviation Career", to: "/courses/airline-preparation" },
   { label: "Airline Pilot Training", to: "/courses/airline-preparation" },
 ];
 

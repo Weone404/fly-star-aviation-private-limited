@@ -18,28 +18,9 @@ const OMITTED = new Set([
   // The home page is the file's own header and summary.
   "/",
   // Alias of a listed page.
-  "/contact-us",
   // Legacy keyword URLs kept alive for inbound links; each renders a page that
   // is already listed under its canonical address. Listing them again would be
   // the ceremonial expansion the campaign refuses.
-  "/air-transport-pilots-license-atpl",
-  "/best-atpl-classes-in-india",
-  "/commercial-pilot-training",
-  "/best-cpl-ground-classes",
-  "/commercial-pilot-training-in-dwarka",
-  "/courses-and-careers",
-  "/pilot-course",
-  "/top-aviation-courses-and-careers-after-12th",
-  "/careers",
-  "/dgca-ground-classes-training-classes",
-  "/cpl-atpl-ground-classes-2",
-  "/training-in-australia",
-  "/training-in-south-africa",
-  "/how-to-become-a-pilot",
-  "/how-to-become-a-pilot-in-india-after-12th",
-  "/guide-on-how-to-become-a-pilot",
-  "/training-in-india/",
-  "/how-to-become-a-pilot-in-india/",
   // Navigation surface, not content.
   "/sitemap",
   // Not for crawlers.

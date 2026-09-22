@@ -124,7 +124,6 @@ function AppInner() {
         <Route path="/" element={<Index />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/contact-us" element={<Contact />} />
 
         {/* SERVICES */}
         <Route path="/services" element={<Services />} />
@@ -147,18 +146,8 @@ function AppInner() {
         <Route path="/atpl/brochure" element={<AtplBrochure />} />
         <Route path="/courses/cpl" element={<Cpl />} />
         <Route path="/courses/atpl" element={<Atpl />} />
-        <Route path="/air-transport-pilots-license-atpl" element={<Atpl />} />
-        <Route path="/best-atpl-classes-in-india" element={<Atpl />} />
         <Route path="/courses/cabin-crew" element={<CabinCrewPage />} />
         <Route path="/courses/ground-staff" element={<GroundStaffPage />} />
-        <Route path="/commercial-pilot-training" element={<Cpl />} />
-        <Route path="/best-cpl-ground-classes" element={<Cpl />} />
-        <Route path="/commercial-pilot-training-in-dwarka" element={<Cpl />} />
-        <Route path="/courses-and-careers" element={<Cpl />} />
-        <Route path="/pilot-course" element={<AirlinePreparationPage />} />
-        <Route path="/top-aviation-courses-and-careers-after-12th" element={<AirlinePreparationPage />} />
-        <Route path="/careers" element={<AirlinePreparationPage />} />
-        <Route path="/commercial-pilot-training-cpl" element={<Cpl />} />
         <Route path="/courses/Air-india-pilot-interview" element={<Airindiapilotinterviewpage />} />
         <Route path="/courses/Indigo-pilot-interview" element={<IndigoPilotInterviewPage />} />
         <Route path="/courses/airline-preparation" element={<AirlinePreparationPage />} />
@@ -174,8 +163,6 @@ function AppInner() {
         <Route path="/dgca/medical" element={<Medical />} />
         <Route path="/dgca/computer-number" element={<ComputerNumber />} />
         <Route path="/dgca/ground-classes" element={<Groundclasses />} />
-        <Route path="/dgca-ground-classes-training-classes" element={<Groundclasses />} />
-        <Route path="/cpl-atpl-ground-classes-2" element={<Groundclasses />} />
 
         {/* PILOT TRAINING */}
         <Route path="/pilot-training" element={<PilotTraining />} />
@@ -184,27 +171,17 @@ function AppInner() {
         <Route path="/pilot-training/new-zealand" element={<NewZealand />} />
         <Route path="/pilot-training/south-africa" element={<SouthAfrica />} />
         <Route path="/pilot-training/australia" element={<Australia />} />
-        <Route path="/training-in-australia" element={<Australia />} />
-        <Route path="/training-in-south-africa" element={<SouthAfrica />} />
         <Route path="/pilot-training/cpl" element={<PilotTrainingTopic />} />
         <Route path="/pilot-training/ppl" element={<PilotTrainingTopic />} />
         <Route path="/pilot-training/maldives" element={<PilotTrainingTopic />} />
         <Route path="/pilot-training/sri-lanka" element={<PilotTrainingTopic />} />
         <Route path="/pilot-training/guide-to-conversion" element={<PilotTrainingTopic />} />
         <Route path="/pilot-training/:topic" element={<PilotTraining />} />
-        <Route path="/training-in-india" element={<PilotTraining />} />
 
         {/* BECOME A PILOT */}
         <Route path="/become-a-pilot/airline-transport-pilot-licence" element={<Airlinetransportpilotlicence />} />
         <Route path="/become-a-pilot/commercial-pilot-licence" element={<Commercialpilotlicence />} />
         <Route path="/become-a-pilot/become-pilot" element={<Becomepilot />} />
-        <Route path="/how-to-become-a-pilot" element={<Becomepilot />} />
-        <Route path="/how-to-become-a-pilot-in-india-after-12th" element={<Becomepilot />} />
-        <Route path="/guide-on-how-to-become-a-pilot" element={<Becomepilot />} />
-        <Route path="/training-in-india/" element={<PilotTraining />} />
-        <Route path="/training-in-india" element={<PilotTraining />} />
-        <Route path="/how-to-become-a-pilot-in-india/" element={<Becomepilot />} />
-        <Route path="/how-to-become-a-pilot-in-india" element={<Becomepilot />} />
 
         {/* LOCATIONS */}
         <Route path="/locations" element={<Locations />} />

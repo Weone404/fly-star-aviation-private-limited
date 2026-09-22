@@ -36,6 +36,111 @@
       "dest": "/llms.txt"
     },
     {
+      "src": "/index.html",
+      "status": 308,
+      "dest": "/"
+    },
+    {
+      "src": "/air-transport-pilots-license-atpl",
+      "status": 308,
+      "dest": "/courses/atpl"
+    },
+    {
+      "src": "/best-atpl-classes-in-india",
+      "status": 308,
+      "dest": "/courses/atpl"
+    },
+    {
+      "src": "/commercial-pilot-training",
+      "status": 308,
+      "dest": "/courses/cpl"
+    },
+    {
+      "src": "/best-cpl-ground-classes",
+      "status": 308,
+      "dest": "/courses/cpl"
+    },
+    {
+      "src": "/commercial-pilot-training-in-dwarka",
+      "status": 308,
+      "dest": "/courses/cpl"
+    },
+    {
+      "src": "/courses-and-careers",
+      "status": 308,
+      "dest": "/courses/cpl"
+    },
+    {
+      "src": "/commercial-pilot-training-cpl",
+      "status": 308,
+      "dest": "/courses/cpl"
+    },
+    {
+      "src": "/dgca-ground-classes-training-classes",
+      "status": 308,
+      "dest": "/dgca/ground-classes"
+    },
+    {
+      "src": "/cpl-atpl-ground-classes-2",
+      "status": 308,
+      "dest": "/dgca/ground-classes"
+    },
+    {
+      "src": "/how-to-become-a-pilot",
+      "status": 308,
+      "dest": "/become-a-pilot/become-pilot"
+    },
+    {
+      "src": "/how-to-become-a-pilot-in-india",
+      "status": 308,
+      "dest": "/become-a-pilot/become-pilot"
+    },
+    {
+      "src": "/how-to-become-a-pilot-in-india-after-12th",
+      "status": 308,
+      "dest": "/become-a-pilot/become-pilot"
+    },
+    {
+      "src": "/guide-on-how-to-become-a-pilot",
+      "status": 308,
+      "dest": "/become-a-pilot/become-pilot"
+    },
+    {
+      "src": "/training-in-india",
+      "status": 308,
+      "dest": "/pilot-training/india"
+    },
+    {
+      "src": "/training-in-australia",
+      "status": 308,
+      "dest": "/pilot-training/australia"
+    },
+    {
+      "src": "/training-in-south-africa",
+      "status": 308,
+      "dest": "/pilot-training/south-africa"
+    },
+    {
+      "src": "/contact-us",
+      "status": 308,
+      "dest": "/contact"
+    },
+    {
+      "src": "/pilot-course",
+      "status": 308,
+      "dest": "/courses/airline-preparation"
+    },
+    {
+      "src": "/top-aviation-courses-and-careers-after-12th",
+      "status": 308,
+      "dest": "/courses/airline-preparation"
+    },
+    {
+      "src": "/careers",
+      "status": 308,
+      "dest": "/courses/airline-preparation"
+    },
+    {
       "src": "/((?:about|contact|contact-us|services(?:/.*)?|courses(?:/.*)?|dgca(?:/.*)?|pilot-training(?:/.*)?|become-a-pilot(?:/.*)?|locations(?:/.*)?|blogs(?:/.*)?|admin(?:/.*)?|rtr|apply|atpl/brochure|pilot-salary-india|cadet-pilot-programme|sitemap|editorial-policy|faq|glossary|how-to-become-a-pilot(?:/.*)?|how-to-become-a-pilot-in-india(?:-after-12th)?(?:/.*)?|training-in-(?:india|australia|south-africa)(?:/.*)?|air-transport-pilots-license-atpl|best-atpl-classes-in-india|commercial-pilot-training(?:-.*)?|best-cpl-ground-classes|careers|pilot-course|top-aviation-courses-and-careers-after-12th|courses-and-careers|cpl-atpl-ground-classes-2|dgca-ground-classes-training-classes|guide-on-how-to-become-a-pilot))",
       "dest": "/index.html"
     },

@@ -5,8 +5,8 @@
  */
 export const SITE_ORIGIN = "https://www.flystar.co.in";
 
-// Keyword-alias routes (see App.tsx) render the same component as a primary
-// page. Map each alias to its canonical path so duplicate content consolidates.
+// Legacy keyword URLs are redirected at the edge. Keep this map for metadata
+// normalization and sitemap exclusion so those URLs cannot become new pages.
 export const ALIAS_CANONICAL: Record<string, string> = {
   "/contact-us": "/contact",
   "/air-transport-pilots-license-atpl": "/courses/atpl",
@@ -23,7 +23,7 @@ export const ALIAS_CANONICAL: Record<string, string> = {
   "/cpl-atpl-ground-classes-2": "/dgca/ground-classes",
   "/training-in-australia": "/pilot-training/australia",
   "/training-in-south-africa": "/pilot-training/south-africa",
-  "/training-in-india": "/pilot-training",
+  "/training-in-india": "/pilot-training/india",
   "/how-to-become-a-pilot": "/become-a-pilot/become-pilot",
   "/how-to-become-a-pilot-in-india": "/become-a-pilot/become-pilot",
   "/how-to-become-a-pilot-in-india-after-12th": "/become-a-pilot/become-pilot",

@@ -116,6 +116,32 @@ describe("render gate", () => {
     expect(advertised, `sitemap.xml should list destinations, not redirect sources: ${advertised.join(", ")}`).toEqual([]);
   });
 
+  it("permanently redirects duplicate keyword URLs to their primary pages", () => {
+    const config = JSON.parse(readFileSync(resolve(ROOT, "vercel.json"), "utf8"));
+    const redirects = new Map(
+      config.routes
+        .filter((r: { src?: string; dest?: string; status?: number }) => r.status === 308)
+        .map((r: { src: string; dest: string }) => [r.src, r.dest]),
+    );
+    const expected = {
+      "/best-cpl-ground-classes": "/courses/cpl",
+      "/commercial-pilot-training": "/courses/cpl",
+      "/commercial-pilot-training-in-dwarka": "/courses/cpl",
+      "/courses-and-careers": "/courses/cpl",
+      "/commercial-pilot-training-cpl": "/courses/cpl",
+      "/best-atpl-classes-in-india": "/courses/atpl",
+      "/air-transport-pilots-license-atpl": "/courses/atpl",
+      "/cpl-atpl-ground-classes-2": "/dgca/ground-classes",
+      "/dgca-ground-classes-training-classes": "/dgca/ground-classes",
+      "/how-to-become-a-pilot": "/become-a-pilot/become-pilot",
+      "/how-to-become-a-pilot-in-india": "/become-a-pilot/become-pilot",
+      "/training-in-india": "/pilot-training/india",
+    };
+    for (const [source, destination] of Object.entries(expected)) {
+      expect(redirects.get(source), `${source} must redirect permanently`).toBe(destination);
+    }
+  });
+
   it("keeps every canonical inside routeMeta pointing at its own path", () => {
     const file = readFileSync(resolve(ROOT, "src/lib/routeMeta.ts"), "utf8");
     const entries = [...file.matchAll(/"(\/[^"]*)":\s*\{[^}]*?canonical:\s*`\$\{BASE_URL\}([^`]*)`/g)];
@@ -123,8 +149,25 @@ describe("render gate", () => {
     const mismatched = entries
       .filter(([, path, canonical]) => path !== canonical && `${path}/` !== canonical)
       .map(([, path, canonical]) => `${path} → ${canonical}`);
-    // Alias routes intentionally self-canonicalise here; useMeta resolves them
-    // through ALIAS_CANONICAL at render time. Flag only genuine typos.
+    // Every route in routeMeta is a primary page; aliases are edge redirects
+    // and therefore do not belong in this metadata map.
     expect(mismatched).toEqual([]);
+  });
+
+  it("canonicalizes keyword aliases to their real page address", async () => {
+    const { getRouteMeta } = await import("../lib/routeMeta.ts");
+    const aliases = {
+      "/contact-us": "/contact",
+      "/best-atpl-classes-in-india": "/courses/atpl",
+      "/commercial-pilot-training": "/courses/cpl",
+      "/pilot-course": "/courses/airline-preparation",
+      "/how-to-become-a-pilot": "/become-a-pilot/become-pilot",
+      "/training-in-india": "/pilot-training/india",
+    };
+
+    for (const [alias, canonical] of Object.entries(aliases)) {
+      expect(getRouteMeta(alias)?.canonical).toBe(`https://www.flystar.co.in${canonical}`);
+      expect(getRouteMeta(alias)?.ogUrl).toBe(`https://www.flystar.co.in${canonical}`);
+    }
   });
 });

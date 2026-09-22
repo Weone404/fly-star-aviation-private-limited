@@ -1,4 +1,5 @@
 import { getBlogPost } from "./blogData.js";
+import { resolvePath } from "./routes";
 
 export interface RouteMeta {
   title: string;
@@ -28,11 +29,6 @@ const routeMeta: Record<string, RouteMeta> = {
     title: "Contact Us | Flying Star Aviator",
     description: "Get in touch with Flying Star Aviator. Visit us in Dwarka, Delhi or call +91 9953536199.",
     canonical: `${BASE_URL}/contact`,
-  },
-  "/contact-us": {
-    title: "Contact Us | Flying Star Aviator",
-    description: "Get in touch with Flying Star Aviator. Visit us in Dwarka, Delhi or call +91 9953536199.",
-    canonical: `${BASE_URL}/contact-us`,
   },
   "/services": {
     title: "Aviation Services | Flying Star Aviator",
@@ -89,51 +85,6 @@ const routeMeta: Record<string, RouteMeta> = {
     description: "Airline Transport Pilot License ground training for pilots advancing their aviation career.",
     canonical: `${BASE_URL}/courses/atpl`,
   },
-  "/air-transport-pilots-license-atpl": {
-    title: "ATPL Course Details | Airline Transport Pilot License Training India",
-    description: "Airline Transport Pilot License ground training for pilots advancing their aviation career.",
-    canonical: `${BASE_URL}/air-transport-pilots-license-atpl`,
-  },
-  "/best-atpl-classes-in-india": {
-    title: "ATPL Course Details | Airline Transport Pilot License Training India",
-    description: "Airline Transport Pilot License ground training for pilots advancing their aviation career.",
-    canonical: `${BASE_URL}/best-atpl-classes-in-india`,
-  },
-  "/commercial-pilot-training": {
-    title: "Commercial Pilot License Course in India | CPL Training",
-    description: "Best DGCA CPL ground classes in Delhi. Air Navigation, Meteorology, Air Regulations & more. Enroll now.",
-    canonical: `${BASE_URL}/commercial-pilot-training`,
-  },
-  "/best-cpl-ground-classes": {
-    title: "Commercial Pilot License Course in India | CPL Training",
-    description: "Best DGCA CPL ground classes in Delhi. Air Navigation, Meteorology, Air Regulations & more. Enroll now.",
-    canonical: `${BASE_URL}/best-cpl-ground-classes`,
-  },
-  "/commercial-pilot-training-in-dwarka": {
-    title: "Commercial Pilot License Course in India | CPL Training",
-    description: "Best DGCA CPL ground classes in Delhi. Air Navigation, Meteorology, Air Regulations & more. Enroll now.",
-    canonical: `${BASE_URL}/commercial-pilot-training-in-dwarka`,
-  },
-  "/courses-and-careers": {
-    title: "Commercial Pilot License Course in India | CPL Training",
-    description: "Best DGCA CPL ground classes in Delhi. Air Navigation, Meteorology, Air Regulations & more. Enroll now.",
-    canonical: `${BASE_URL}/courses-and-careers`,
-  },
-  "/pilot-course": {
-    title: "Airline Preparation Course in India | Pilot Interview & CRM Training",
-    description: "Pilot interview preparation and airline readiness training to advance your aviation career.",
-    canonical: `${BASE_URL}/pilot-course`,
-  },
-  "/top-aviation-courses-and-careers-after-12th": {
-    title: "Airline Preparation Course in India | Pilot Interview & CRM Training",
-    description: "Pilot interview preparation and airline readiness training to advance your aviation career.",
-    canonical: `${BASE_URL}/top-aviation-courses-and-careers-after-12th`,
-  },
-  "/careers": {
-    title: "Airline Preparation Course in India | Pilot Interview & CRM Training",
-    description: "Pilot interview preparation and airline readiness training to advance your aviation career.",
-    canonical: `${BASE_URL}/careers`,
-  },
   "/courses/Air-india-pilot-interview": {
     title: "Air India Pilot Interview Preparation 2026 | Flying Star Aviator",
     description: "Air India pilot interview coaching, psychometric assessments and personality preparation for airline entry.",
@@ -169,16 +120,6 @@ const routeMeta: Record<string, RouteMeta> = {
     description: "Top DGCA ground classes for CPL and ATPL aspirants with expert instructors and structured coaching.",
     canonical: `${BASE_URL}/dgca/ground-classes`,
   },
-  "/dgca-ground-classes-training-classes": {
-    title: "DGCA Ground Classes | CPL Ground Training in India - Complete Guide",
-    description: "Top DGCA ground classes for CPL and ATPL aspirants with expert instructors and structured coaching.",
-    canonical: `${BASE_URL}/dgca-ground-classes-training-classes`,
-  },
-  "/cpl-atpl-ground-classes-2": {
-    title: "DGCA Ground Classes | CPL Ground Training in India - Complete Guide",
-    description: "Top DGCA ground classes for CPL and ATPL aspirants with expert instructors and structured coaching.",
-    canonical: `${BASE_URL}/cpl-atpl-ground-classes-2`,
-  },
   "/pilot-training": {
     title: "Pilot Training | Flying Star Aviator",
     description: "Complete pilot training guidance for India, USA, Australia, New Zealand & South Africa.",
@@ -199,11 +140,6 @@ const routeMeta: Record<string, RouteMeta> = {
     description: "CASA-approved pilot training in Australia with integrated flight and ground training.",
     canonical: `${BASE_URL}/pilot-training/australia`,
   },
-  "/training-in-australia": {
-    title: "Pilot Training Australia | CASA-approved Commercial Pilot Training & Diploma",
-    description: "CASA-approved pilot training in Australia with integrated flight and ground training.",
-    canonical: `${BASE_URL}/training-in-australia`,
-  },
   "/pilot-training/new-zealand": {
     title: "Pilot Training New Zealand | CAA-approved Commercial Pilot Training",
     description: "Pilot training options in New Zealand for Indian students seeking an international aviation career.",
@@ -214,40 +150,10 @@ const routeMeta: Record<string, RouteMeta> = {
     description: "Train in South Africa with SACAA-approved flight schools. 14-15 months CPL training, 200-210 flying hours, cost-effective programs. DGCA license conversion available. Apply now.",
     canonical: `${BASE_URL}/pilot-training/south-africa`,
   },
-  "/training-in-south-africa": {
-    title: "Pilot Training South Africa | SACAA-approved Commercial Pilot Training",
-    description: "Train in South Africa with SACAA-approved flight schools. 14-15 months CPL training, 200-210 flying hours, cost-effective programs. DGCA license conversion available. Apply now.",
-    canonical: `${BASE_URL}/training-in-south-africa`,
-  },
   "/become-a-pilot/become-pilot": {
     title: "How to Become a Pilot in India 2026 | Complete Guide, Eligibility & Career Path",
     description: "Step-by-step guide to becoming a commercial pilot in India after 12th. Eligibility, fees & process.",
     canonical: `${BASE_URL}/become-a-pilot/become-pilot`,
-  },
-  "/how-to-become-a-pilot": {
-    title: "How to Become a Pilot in India 2026 | Complete Guide, Eligibility & Career Path",
-    description: "Step-by-step guide to becoming a commercial pilot in India after 12th. Eligibility, fees & process.",
-    canonical: `${BASE_URL}/how-to-become-a-pilot`,
-  },
-  "/how-to-become-a-pilot-in-india-after-12th": {
-    title: "How to Become a Pilot in India 2026 | Complete Guide, Eligibility & Career Path",
-    description: "Step-by-step guide to becoming a commercial pilot in India after 12th. Eligibility, fees & process.",
-    canonical: `${BASE_URL}/how-to-become-a-pilot-in-india-after-12th`,
-  },
-  "/guide-on-how-to-become-a-pilot": {
-    title: "How to Become a Pilot in India 2026 | Complete Guide, Eligibility & Career Path",
-    description: "Step-by-step guide to becoming a commercial pilot in India after 12th. Eligibility, fees & process.",
-    canonical: `${BASE_URL}/guide-on-how-to-become-a-pilot`,
-  },
-  "/training-in-india/": {
-    title: "Pilot Training India | DGCA-approved Commercial Pilot Training",
-    description: "DGCA-approved commercial pilot training in India with expert faculty and practical flight preparation.",
-    canonical: `${BASE_URL}/training-in-india/`,
-  },
-  "/how-to-become-a-pilot-in-india/": {
-    title: "How to Become a Pilot in India 2026 | Complete Guide, Eligibility & Career Path",
-    description: "Step-by-step guide to becoming a commercial pilot in India after 12th. Eligibility, fees & process.",
-    canonical: `${BASE_URL}/how-to-become-a-pilot-in-india/`,
   },
   "/locations": {
     title: "Our Locations | Flying Star Aviator",
@@ -479,12 +385,26 @@ const normalizedRouteMeta: Record<string, RouteMeta> = Object.fromEntries(
 
 export function getRouteMeta(pathname: string): RouteMeta {
   const normalized = normalizePath(pathname);
-  return (
-    getBlogMeta(normalized) ||
-    normalizedRouteMeta[normalized] || {
-      title: "Flying Star Aviator | Best Pilot Training Institute in India",
-      description: "Join Flying Star Aviator — India's best DGCA-approved CPL & ATPL ground classes in Delhi.",
-      canonical: `${BASE_URL}${normalized}`,
-    }
-  );
+  const resolvedPath = resolvePath(normalized);
+
+  const blogMeta = getBlogMeta(resolvedPath);
+  if (blogMeta) {
+    return blogMeta;
+  }
+
+  const routeMetaEntry = normalizedRouteMeta[resolvedPath] || normalizedRouteMeta[normalized];
+  if (routeMetaEntry) {
+    return {
+      ...routeMetaEntry,
+      canonical: `${BASE_URL}${resolvedPath === "/" ? "/" : resolvedPath}`,
+      ogUrl: `${BASE_URL}${resolvedPath === "/" ? "/" : resolvedPath}`,
+    };
+  }
+
+  return {
+    title: "Flying Star Aviator | Best Pilot Training Institute in India",
+    description: "Join Flying Star Aviator — India's best DGCA-approved CPL & ATPL ground classes in Delhi.",
+    canonical: `${BASE_URL}${resolvedPath === "/" ? "/" : resolvedPath}`,
+    ogUrl: `${BASE_URL}${resolvedPath === "/" ? "/" : resolvedPath}`,
+  };
 }
