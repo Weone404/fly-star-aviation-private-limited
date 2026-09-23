@@ -1844,6 +1844,153 @@ export const STATIC_BLOG_POSTS = [
 <p>Pariksha is DGCA&rsquo;s single online system, run by NIELIT, for Flight Crew and AME computer numbers, exam registration and profile management, and it currently carries its own beta-testing disclaimer. Most rejected uploads trace back to the stated photo (45&times;35mm, 70kb, JPEG) and signature (20&times;45mm, 20kb, JPEG) specifications, or documents submitted in the wrong format; documents need PDF. Registration links expire in 24 hours with no extension. NEW candidates owe a hard copy and a Board Verification Certificate that OLD candidates do not. Only your mobile number, email and correspondence address are self-editable; everything else needs CEO approval through a raised query. Foreign nationals additionally need a passport, security clearance and an Indian mobile number. Check every figure against the portal&rsquo;s own current FAQ before you submit anything, since a platform still in beta is, by its own description, one that changes.</p>
 <p class="ref-links">More: the <a href="/faq">FAQ</a> for short sourced answers, the <a href="/glossary">glossary</a> for the terms, and our <a href="/editorial-policy">editorial policy</a> for how these figures are checked.</p>`,
   },
+  {
+    slug: 'pilot-without-maths-nios-route-india',
+    title: 'Can You Become a Pilot Without Maths? The NIOS Route Explained',
+    seoTitle: 'Pilot Without Maths in 12th? The NIOS Route Explained 2026',
+    metaDescription: 'DGCA needs 10+2 Physics and Maths for CPL, not which board issued them. How Commerce or Arts students add both later through NIOS, sourced, costed and timed.',
+    keyFacts: [
+      { fact: 'DGCA CPL theory papers require a computer number from the Central Examination Organization and a pass in 10+2 standard with Physics and Mathematics from a recognised board; Chemistry is not part of the stated requirement.', source: 'DGCA Pariksha Flight Crew FAQ', href: 'https://pariksha.dgca.gov.in/Form/PLT_FAQs' },
+      { fact: 'NIOS charges Rs. 720 per subject to register a change or addition of subject at Senior Secondary level, and Rs. 250 per subject for the On-Demand Examination theory paper plus Rs. 100 for a practical component where one applies.', source: 'nios.ac.in, Procedure for Change of Subject/Additional Subject and On-Demand Examination pages' },
+      { fact: 'NIOS\'s On-Demand Examination does not run in April, May, October or November, and a learner cannot sit the same subject\'s exam twice within one calendar month.', source: 'nios.ac.in, On-Demand Examination page' },
+      { fact: 'A candidate who has already passed Secondary, Senior Secondary or any higher course from any board or university may register with NIOS for additional subjects of their choice.', source: 'nios.ac.in, Procedure for Change of Subject/Additional Subject' },
+      { fact: 'NIOS was established in November 1989 and vested with authority to register, examine and certify students up to pre-degree level by a Government of India Gazette notification dated 14 September 1990; the Association of Indian Universities has granted its courses equivalence with other recognised boards.', source: 'nios.ac.in, About Us / Profile page' },
+    ],
+    tags: ['pilot without maths', 'nios physics maths for pilot', 'cpl eligibility without pcm'],
+    category: 'Licences & Eligibility',
+    author: 'Flying Star Aviator Academics Team',
+    authorRole: 'DGCA CPL & ATPL ground instruction, Dwarka, New Delhi',
+    createdAt: '2026-09-23',
+    updatedAt: '2026-09-23',
+    coverImage: '/assets/hero-aircraft-1600w.jpg',
+    excerpt: 'TL;DR: DGCA requires 10+2 with Physics and Mathematics for CPL theory papers, not which board issued them. A Commerce or Arts 12th-pass candidate can add both subjects through NIOS\'s On-Demand Examination system for roughly Rs. 2,720 in NIOS fees, in about six to eight weeks outside four closed months.',
+    intro: "DGCA's Commercial Pilot Licence theory requirement is a 10+2 pass with Physics and Mathematics from a recognised board, and it does not say those two subjects have to be on your original 12th certificate. A candidate who took Commerce or Arts can add them afterward through the National Institute of Open Schooling. This guide sets out the registration steps, the fees, the exam calendar restrictions, and what DGCA still expects once you have the certificate, sourced to NIOS's own published rules.",
+    faqs: [
+      { q: 'Can you become a commercial pilot in India without Maths in 12th?', a: 'Yes, if you add Physics and Mathematics afterward. DGCA requires a 10+2 pass with Physics and Mathematics from a recognised board to appear for CPL theory papers, but does not require those two subjects to be on your original 12th certificate. A Commerce or Arts 12th-pass candidate can add both through the National Institute of Open Schooling (NIOS).' },
+      { q: 'Does DGCA require PCM (Physics, Chemistry, Mathematics) for a CPL?', a: 'No. DGCA\'s own Pariksha FAQ states the requirement as a pass in 10+2 with Physics and Mathematics. Chemistry is not part of the stated requirement.' },
+      { q: 'Is NIOS a recognised board for DGCA\'s CPL eligibility?', a: 'DGCA\'s requirement says a recognised board or university, without naming a list, so it has not published NIOS by name either way. NIOS is a Government of India board with statutory authority to examine and certify, and the Association of Indian Universities has granted its courses equivalence with other boards for university admission. Get your specific NIOS mark sheet checked at DGCA\'s computer-number stage before relying on it.' },
+      { q: 'How do you add Physics and Maths through NIOS after a Commerce or Arts 12th?', a: 'Register with NIOS for Physics (subject code 312) and Mathematics (code 311) as additional subjects, which costs Rs. 720 per subject, then sit them through NIOS\'s On-Demand Examination (ODE) system once your registration is complete, at Rs. 250 per subject for theory.' },
+      { q: 'What is the NIOS On-Demand Examination (ODE) system?', a: 'A facility that lets a registered NIOS learner apply online and sit an exam once ready, instead of waiting for the annual board exam cycle. No sittings run in April, May, October or November, and a learner cannot retake the same subject twice in one calendar month.' },
+      { q: 'How much does the NIOS additional-subject route cost in total?', a: 'Roughly Rs. 2,720 in NIOS\'s own fees for both subjects: Rs. 720 registration per subject plus Rs. 250 per subject for the theory ODE, assuming no separate practical component and a first-attempt pass. This does not include any DGCA computer number fee, DGCA exam fees, or ground-class tuition.' },
+      { q: 'How long does the NIOS route take?', a: 'Roughly six to eight weeks from registration to result if both subjects are cleared on the first attempt outside the four closed months (April, May, October, November). A retake in either subject typically pushes the timeline to three to four months.' },
+      { q: 'What do you do with the NIOS certificate once you have it?', a: 'Submit it, alongside your original 12th board certificate, as part of your DGCA computer number application. DGCA requires a Board Verification Certificate confirming the mark sheet\'s authenticity from the issuing board, NIOS included, before registration is complete.' },
+      { q: 'Can you register for NIOS Senior Secondary from scratch if you have not passed 12th yet?', a: 'Yes, but that is a separate, slower route with its own eligibility floor: a minimum age of 15 years as on 31st July of the admission year, and typically a Class 10 pass from a recognised board already in hand. It functions as a genuine two-year-equivalent course, not a shortcut.' },
+    ],
+    content:
+      `<p>Yes. DGCA&rsquo;s Commercial Pilot Licence theory requirement is a 10+2 pass with Physics and Mathematics from a recognised board, and it says nothing about which board issued those two subjects. A candidate who took Commerce or Arts in Class 12 can add Physics and Mathematics afterward through the National Institute of Open Schooling (NIOS), sit NIOS&rsquo;s own exams for those two subjects, and use that certificate to register with DGCA. This guide sets out exactly how, sourced to NIOS&rsquo;s own published rules.</p>
+
+<h2>Does DGCA actually require Maths in 12th to become a pilot?</h2>
+<p>Not in the sense most candidates assume. DGCA requires a pass in 10+2 standard with Physics and Mathematics from a recognised board before you can appear for Commercial Pilot Licence theory papers &mdash; it does not require that you passed those subjects in the same year, at the same school, or on the same certificate as the rest of your 12th board exam.</p>
+<p>Our <a href="/blog/cpl-eligibility-after-12th">CPL eligibility after 12th guide</a> covers the full DGCA requirement in detail: a computer number from the Central Examination Organisation, the 10+2 Physics-and-Mathematics qualification, and no maximum age. What that guide does not cover, and what candidates in Commerce or Arts streams actually need, is the mechanics of adding Physics and Mathematics after the fact. That is what this article is for.</p>
+<table><thead><tr><th>DGCA CPL theory requirement</th><th>What DGCA states</th></tr></thead><tbody>
+<tr><td>Computer number</td><td>Allotted by the Central Examination Organisation before any paper can be attempted</td></tr>
+<tr><td>Educational qualification</td><td>10+2 with Physics and Mathematics from a recognised board or university, or its equivalent</td></tr>
+<tr><td>Chemistry</td><td>Not stated as a requirement &mdash; the common &ldquo;PCM&rdquo; claim online is inaccurate</td></tr>
+<tr><td>Pass mark</td><td>70% per paper, no aggregate</td></tr>
+<tr><td>Validity of a cleared paper</td><td>Five years</td></tr>
+</tbody></table>
+<p class="source-note">Source: DGCA Pariksha Flight Crew FAQ, questions 7 and 12; CAR Section 7, Series B, Part I.</p>
+
+<h2>What is the NIOS route, in one paragraph?</h2>
+<p>NIOS is a Government of India board that lets a candidate who has already passed 12th through any other board add Physics and Mathematics as standalone subjects, sit exams for just those two subjects through its On-Demand Examination system, and receive a NIOS mark sheet naming them. You do not repeat your whole 12th board exam, and you do not enrol in a full second year of school.</p>
+<p>The National Institute of Open Schooling was established in November 1989 under the National Policy on Education 1986, then called the National Open School. A Government of India Gazette notification (No. F.5-24/90 Sch.3, dated 14 September 1990, published in the Gazette of India on 20 October 1990) vested it with authority to register, examine and certify students up to pre-degree level. It was renamed the National Institute of Open Schooling in July 2002. It functions today as an autonomous board under the Ministry of Education, alongside CBSE and the state boards, not as a private coaching provider.</p>
+<p class="source-note">Source: nios.ac.in, About Us / Profile page.</p>
+
+<figure class="img-slot" data-src="/blog/pilot-without-maths-nios-route-india/two-paths-converge.webp" data-dimensions="1200x675">
+  <span>Two diverging paths on the left, one labelled Commerce or Arts stream and one labelled Physics and Mathematics stream, converging into a single path on the right labelled DGCA CPL theory eligible, representing the NIOS route rejoining the standard eligibility path</span>
+</figure>
+
+<h2>Is NIOS a &ldquo;recognised board&rdquo; DGCA will accept?</h2>
+<p>DGCA&rsquo;s own published requirement says &ldquo;a recognised board or university&rdquo; without naming a list, and DGCA has not published a document naming NIOS specifically as acceptable or unacceptable for this purpose. What is verifiable: NIOS is a Government of India board with statutory authority to examine and certify, and the Association of Indian Universities has separately granted equivalence to NIOS courses with those of other recognised boards for the purpose of admission to university-level study.</p>
+<p>That is a real basis for treating a NIOS certificate as satisfying &ldquo;a recognised board,&rdquo; and it is why ground schools generally accept it. It is not the same as a DGCA document naming NIOS. If you are about to spend money on flight training on the strength of a NIOS Physics-and-Mathematics certificate, get your specific mark sheet checked against DGCA&rsquo;s current requirement at the computer-number stage first, before committing further money elsewhere.</p>
+<p class="source-note">Source: DGCA Pariksha Flight Crew FAQ, question 7 (requirement wording); nios.ac.in About Us / Profile page (AIU equivalence).</p>
+
+<h2>How do you add Physics and Mathematics through NIOS after a Commerce or Arts 12th?</h2>
+<p>NIOS&rsquo;s own published procedure states that a candidate who has already passed Secondary, Senior Secondary, or any higher course from any board or university may register for any NIOS subjects of their choice &ldquo;to update knowledge and educational qualifications.&rdquo; Physics and Mathematics both sit inside the standard Senior Secondary subject list, under subject codes 312 and 311. The process runs in two stages: registering for the subjects, then sitting the exam.</p>
+
+<h3>Step 1: Register with NIOS for Physics and Mathematics as additional subjects</h3>
+<p>You apply through NIOS&rsquo;s admission and subject-change process, submitting proof of your existing 12th pass (from whichever board you actually studied under) along with the registration form. NIOS charges Rs. 720 per subject for a subject change or addition at the Senior Secondary level. Once registered, you hold a NIOS enrolment number and are, from that point, a bonafide NIOS learner for those subjects.</p>
+<p>A subject addition is only permitted within four years of your NIOS registration, and a subject you have already passed cannot be swapped for a different one &mdash; you can apply once to improve a score in a subject you already cleared, but that is a separate process from adding a new subject you never took.</p>
+<p class="source-note">Source: nios.ac.in, Procedure for Change of Subject/Additional Subject.</p>
+
+<h3>Step 2: Sit the exam through NIOS&rsquo;s On-Demand Examination system</h3>
+<p>Once registered, you do not wait for the next annual board exam cycle. NIOS runs a separate On-Demand Examination (ODE) facility that lets a registered learner apply online and choose an exam date once they are ready, rather than sitting alongside first-time Class 12 candidates on a fixed annual calendar. Both Mathematics and Physics have been available on the Senior Secondary ODE subject list since the facility started in October 2007.</p>
+<p>The ODE fee is Rs. 250 per subject for the theory paper, plus Rs. 100 for the practical component per subject where the subject carries one. You must hold a valid NIOS enrolment number and identity card to register for an ODE sitting; you cannot sit an ODE exam as a NIOS subject before you are formally enrolled in that subject.</p>
+<p class="source-note">Source: nios.ac.in, On-Demand Examination page; NIOS Regional Centre On-Demand Examination pages.</p>
+
+<figure class="img-slot" data-src="/blog/pilot-without-maths-nios-route-india/two-step-process.webp" data-dimensions="1200x675">
+  <span>A simple two-step horizontal process diagram, step one labelled Register for Physics and Mathematics as additional NIOS subjects with a form icon, step two labelled Sit the On-Demand Examination with a calendar and pencil icon, connected by a single arrow</span>
+</figure>
+
+<h2>What does the NIOS additional-subject route cost, and how long does it take?</h2>
+<p>Registration plus one sitting of both subjects runs to roughly Rs. 2,720 in NIOS&rsquo;s own published fees &mdash; Rs. 720 times two subjects for registration, plus Rs. 250 times two for the theory exams, assuming neither subject carries a separate practical component and you clear both on the first attempt. Timing is set mostly by the On-Demand Examination calendar, not by a fixed academic year.</p>
+<table><thead><tr><th>Step</th><th>Fee</th><th>What it buys</th></tr></thead><tbody>
+<tr><td>Subject registration/addition (per subject)</td><td>Rs. 720</td><td>Enrolment in that NIOS subject, with an enrolment number</td></tr>
+<tr><td>On-Demand Examination, theory (per subject)</td><td>Rs. 250</td><td>One sitting of the theory paper for that subject</td></tr>
+<tr><td>On-Demand Examination, practical (per subject, where applicable)</td><td>Rs. 100</td><td>One sitting of the practical component</td></tr>
+</tbody></table>
+<p class="source-note">Source: nios.ac.in, On-Demand Examination page and Procedure for Change of Subject/Additional Subject page.</p>
+<p>These are NIOS&rsquo;s fees for its own registration and examination process. They are separate from, and do not include, any DGCA computer number fee, DGCA exam paper fee, Board Verification Certificate processing, or ground-class tuition you may separately pay a flying school or ground-training provider. Do not treat the Rs. 2,720 figure above as the cost of becoming eligible for a CPL &mdash; it is the cost of adding two subjects to your academic record, nothing more.</p>
+
+<h2>What are the On-Demand Examination rules you need to plan around?</h2>
+<p>NIOS&rsquo;s ODE facility runs on a monthly cycle with published restrictions, and missing one of them is the most common reason a candidate loses a month they did not expect to lose. Build your own timeline around these rather than assuming the exam is available whenever you are ready.</p>
+<table><thead><tr><th>Rule</th><th>What it means for you</th></tr></thead><tbody>
+<tr><td>No ODE sittings in April, May, October or November</td><td>Four months a year are unavailable for a fresh attempt; plan registration outside these windows if you want the fastest route through</td></tr>
+<tr><td>One attempt per subject per calendar month</td><td>You cannot retake Physics twice in the same month if your first attempt in that window goes badly</td></tr>
+<tr><td>Must hold a valid NIOS enrolment number and identity card</td><td>You cannot register for an ODE sitting before your subject registration (Step 1) is complete</td></tr>
+<tr><td>Results published in the last week of the month following the exam</td><td>Build roughly a month of result-wait time into your planning after each sitting</td></tr>
+</tbody></table>
+<p class="source-note">Source: nios.ac.in, On-Demand Examination page.</p>
+<p>A candidate who registers for both subjects, sits Mathematics and Physics in the same eligible month, and clears both on the first attempt is realistically looking at registration plus roughly six to eight weeks to a result, outside the four blocked months. A candidate who needs a retake in either subject should expect that timeline to run closer to three to four months, since a failed attempt cannot be repeated inside the same month and the next eligible window may fall weeks later depending on when in the calendar you started.</p>
+
+<h2>What happens after you clear Physics and Mathematics through NIOS?</h2>
+<p>Your NIOS mark sheet for the two subjects, alongside your original 12th board certificate for everything else, becomes the educational-qualification document you submit when you apply for a DGCA computer number. DGCA&rsquo;s registration process requires a Board Verification Certificate for the mark sheets of NEW candidates, confirming the certificate is genuine and was actually issued by the board named on it &mdash; NIOS included, since the requirement applies to the issuing board, not to a shorter list of &ldquo;approved&rdquo; ones. Our <a href="/blog/dgca-board-verification-certificate">Board Verification Certificate guide</a> and <a href="/dgca/computer-number">DGCA computer number guide</a> cover that step, and our <a href="/dgca">DGCA overview</a> covers where the computer number sits inside the wider process toward a CPL.</p>
+<p>From there, the path is the same as any other CPL candidate&rsquo;s: computer number, Class 1 medical, RTR(A) radio telephony licence, DGCA theory papers at 70% per paper, and the flight-hour requirements under Schedule II of the Aircraft Rules, 1937, run separately at a Flying Training Organisation. Our <a href="/rtr">RTR(A) guide</a> and <a href="/courses/cpl">CPL course page</a> cover those later stages. Having Physics and Mathematics on a NIOS certificate rather than your original board certificate changes nothing about any of those subsequent steps.</p>
+
+<figure class="img-slot" data-src="/blog/pilot-without-maths-nios-route-india/after-nios-timeline.webp" data-dimensions="1200x675">
+  <span>A horizontal timeline with five small labelled markers in sequence: NIOS certificate, Board Verification Certificate, DGCA computer number, Class 1 medical and RTR(A), DGCA theory papers, showing where the NIOS step sits relative to the rest of the licensing process</span>
+</figure>
+
+<h2>What if you have not passed 12th at all yet?</h2>
+<p>If you have not yet cleared Class 12 in any stream, direct NIOS Senior Secondary admission is a separate, slower route from the additional-subject process this article covers, and it comes with its own eligibility floor: a minimum age of 15 years as on 31st July of the year of admission, and, for most candidates, a Secondary (Class 10) pass certificate from a recognised board already in hand before Senior Secondary registration is considered.</p>
+<p>That means NIOS Senior Secondary, taken from scratch, functions like any other board&rsquo;s Class 12 &mdash; a genuine two-year-equivalent course of study, not a shortcut. The additional-subject route covered in the rest of this article applies specifically to candidates who have already passed 12th through some board, in some stream, and need only Physics and Mathematics added to what they already hold. If you have not passed 12th anywhere yet, talk to a NIOS Regional Centre about direct Senior Secondary registration in the Physics-Mathematics combination from the outset, which avoids the two-stage process entirely.</p>
+<p class="source-note">Source: nios.ac.in Admission Procedure page; NIOS Regional Centre FAQ pages.</p>
+
+<h2>What mistakes do candidates make on this route?</h2>
+<p>Three mistakes account for most of the delay we see candidates run into with this route, and all three are avoidable by reading NIOS&rsquo;s own published rules before registering rather than after.</p>
+<ul>
+<li><strong>Registering for the ODE before completing subject registration.</strong> The two are separate steps. You cannot sit the On-Demand Examination for a subject you have not yet formally added to your NIOS record.</li>
+<li><strong>Assuming the exam is available every month.</strong> April, May, October and November are closed to fresh ODE sittings. A candidate who registers in September expecting to sit in October loses that month by the rule itself, not by any error on their part.</li>
+<li><strong>Treating the NIOS fee schedule as the full cost of CPL eligibility.</strong> The Rs. 720 registration and Rs. 250&ndash;350 exam fees per subject cover only the NIOS side. DGCA&rsquo;s own computer number and exam fees, and any ground-class tuition, are separate and are covered in our <a href="/blog/dgca-exam-fees">DGCA exam fees guide</a>.</li>
+</ul>
+<p>A fourth, less common but costlier mistake: paying a flying school or ground-training provider before your NIOS mark sheet has actually cleared DGCA&rsquo;s Board Verification Certificate check at the computer-number stage. Get that confirmation first. It costs you a few weeks of waiting; skipping it can cost you a training fee paid against a qualification DGCA has not yet verified.</p>
+
+<h2>Frequently asked questions</h2>
+<h3>Can you become a commercial pilot in India without Maths in 12th?</h3>
+<p>Yes, if you add Physics and Mathematics afterward. DGCA requires a 10+2 pass with Physics and Mathematics from a recognised board to appear for CPL theory papers, but does not require those two subjects to be on your original 12th certificate. A Commerce or Arts 12th-pass candidate can add both through the National Institute of Open Schooling (NIOS).</p>
+<h3>Does DGCA require PCM (Physics, Chemistry, Mathematics) for a CPL?</h3>
+<p>No. DGCA's own Pariksha FAQ states the requirement as a pass in 10+2 with Physics and Mathematics. Chemistry is not part of the stated requirement.</p>
+<h3>Is NIOS a recognised board for DGCA's CPL eligibility?</h3>
+<p>DGCA's requirement says a recognised board or university, without naming a list, so it has not published NIOS by name either way. NIOS is a Government of India board with statutory authority to examine and certify, and the Association of Indian Universities has granted its courses equivalence with other boards for university admission. Get your specific NIOS mark sheet checked at DGCA's computer-number stage before relying on it.</p>
+<h3>How do you add Physics and Maths through NIOS after a Commerce or Arts 12th?</h3>
+<p>Register with NIOS for Physics (subject code 312) and Mathematics (code 311) as additional subjects, which costs Rs. 720 per subject, then sit them through NIOS's On-Demand Examination (ODE) system once your registration is complete, at Rs. 250 per subject for theory.</p>
+<h3>What is the NIOS On-Demand Examination (ODE) system?</h3>
+<p>A facility that lets a registered NIOS learner apply online and sit an exam once ready, instead of waiting for the annual board exam cycle. No sittings run in April, May, October or November, and a learner cannot retake the same subject twice in one calendar month.</p>
+<h3>How much does the NIOS additional-subject route cost in total?</h3>
+<p>Roughly Rs. 2,720 in NIOS's own fees for both subjects: Rs. 720 registration per subject plus Rs. 250 per subject for the theory ODE, assuming no separate practical component and a first-attempt pass. This does not include any DGCA computer number fee, DGCA exam fees, or ground-class tuition.</p>
+<h3>How long does the NIOS route take?</h3>
+<p>Roughly six to eight weeks from registration to result if both subjects are cleared on the first attempt outside the four closed months (April, May, October, November). A retake in either subject typically pushes the timeline to three to four months.</p>
+<h3>What do you do with the NIOS certificate once you have it?</h3>
+<p>Submit it, alongside your original 12th board certificate, as part of your DGCA computer number application. DGCA requires a Board Verification Certificate confirming the mark sheet's authenticity from the issuing board, NIOS included, before registration is complete.</p>
+<h3>Can you register for NIOS Senior Secondary from scratch if you have not passed 12th yet?</h3>
+<p>Yes, but that is a separate, slower route with its own eligibility floor: a minimum age of 15 years as on 31st July of the admission year, and typically a Class 10 pass from a recognised board already in hand. It functions as a genuine two-year-equivalent course, not a shortcut.</p>
+
+<h2>The short version</h2>
+<p>DGCA requires 10+2 with Physics and Mathematics from a recognised board for CPL theory eligibility, and does not require those two subjects to appear on your original 12th certificate. A candidate who took Commerce or Arts can register with the National Institute of Open Schooling to add Physics (312) and Mathematics (311) as additional subjects, then sit them through NIOS&rsquo;s On-Demand Examination system for roughly Rs. 2,720 in NIOS fees across both subjects. Registration and the exam are two separate steps; ODE sittings are closed in April, May, October and November; and a failed attempt cannot be retaken in the same calendar month. DGCA has not published a document naming NIOS specifically as an acceptable board, though NIOS is a Government of India board with AIU equivalence recognised for university admission &mdash; get your specific mark sheet checked at the DGCA computer-number stage before spending further money on flight training. Everything after that point &mdash; computer number, medical, RTR(A), theory papers, flying hours &mdash; is the same process every CPL candidate goes through.</p>
+<p class="ref-links">More: the <a href="/faq">FAQ</a> for short sourced answers, the <a href="/glossary">glossary</a> for the terms, and our <a href="/editorial-policy">editorial policy</a> for how these figures are checked.</p>
+`,
+  },
+
 ];
 
 /**
