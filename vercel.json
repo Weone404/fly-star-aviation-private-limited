@@ -41,6 +41,11 @@
       "dest": "/"
     },
     {
+      "src": "/Courses/cpl",
+      "status": 301,
+      "dest": "/courses/cpl"
+    },
+    {
       "src": "/air-transport-pilots-license-atpl",
       "status": 308,
       "dest": "/courses/atpl"
