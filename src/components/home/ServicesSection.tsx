@@ -43,7 +43,7 @@ const services = [
     icon: Plane,
     title: "Chartered Services",
     description: "High-end charter flight services for business, events, and emergency requirements.",
-    href: "/services/chartered",
+    href: "/services/charter-services",
     color: "from-primary to-aviation-green-light",
   },
   {

@@ -34,7 +34,7 @@ const services = [
     title: "Chartered Services",
     description: "Premium charter flight services for corporate travel, special events, medical emergencies, and leisure trips. Available 24/7 across India.",
     features: ["Corporate Charters", "Medical Evacuation", "VIP Travel", "Tourism Packages"],
-    href: "/services/chartered",
+    href: "/services/charter-services",
     color: "from-primary to-aviation-green-light",
   },
   {
