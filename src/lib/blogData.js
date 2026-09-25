@@ -1990,6 +1990,143 @@ export const STATIC_BLOG_POSTS = [
 <p class="ref-links">More: the <a href="/faq">FAQ</a> for short sourced answers, the <a href="/glossary">glossary</a> for the terms, and our <a href="/editorial-policy">editorial policy</a> for how these figures are checked.</p>
 `,
   },
+  {
+    slug: 'cadet-pilot-programme-eligibility-dgca-vs-airline',
+    title: 'Cadet Pilot Programme Eligibility in India: What DGCA Requires, and What the Airline Adds',
+    seoTitle: 'Cadet Pilot Eligibility: DGCA Rules vs Airline Criteria',
+    metaDescription: "DGCA sets no age limit or marks cutoff for cadet pilot eligibility in India. What airlines add on top, and how to tell a DGCA rule from their policy.",
+    tags: ['cadet pilot programme eligibility india', 'indigo cadet pilot programme 2026', 'air india cadet pilot programme'],
+    category: 'Career',
+    author: 'Flying Star Aviator Academics Team',
+    authorRole: 'DGCA CPL & ATPL ground instruction, Dwarka, New Delhi',
+    createdAt: '2026-09-25',
+    updatedAt: '2026-09-25',
+    coverImage: '/assets/hero-aircraft-1600w.jpg',
+    excerpt: "TL;DR: DGCA sets no maximum age and no percentage cutoff to register as a Flight Crew candidate. Age bands, minimum marks, height and BMI figures attached to a named cadet programme come from the airline or its partner academy, not from DGCA, and they change from cycle to cycle. Confirm them on the programme's own page, not on a coaching site.",
+    intro: "Every cadet pilot programme thread eventually asks the same two questions: am I eligible, and who decides that. The honest answer splits the eligibility question in two. One half is DGCA's, fixed by regulation and the same for every candidate. The other half is the airline's or its training partner's, reset by them every intake and published nowhere but their own site. This guide keeps the two apart, states what DGCA actually requires with its source, and explains why the specific numbers attached to a named programme are not ours to print.",
+    faqs: [
+      { q: 'Does DGCA set an age limit for cadet pilot programmes like IndiGo’s?', a: 'No. DGCA’s Pariksha Flight Crew FAQ states there is no maximum age to register as a Flight Crew candidate. An age band attached to a named cadet programme is set by the airline or its training partner as a recruitment condition, not a DGCA licensing rule, and it can change between intakes.' },
+      { q: 'What is the difference between a cadet pilot programme and a self-sponsored CPL?', a: 'Both lead to the same DGCA Commercial Pilot Licence, on the same theory papers and the same 70% pass mark. A cadet programme selects you before training and usually attaches a service bond to a sponsoring airline; a self-sponsored CPL lets you choose your own Flying Training Organisation with no placement attached. See our full comparison for the sequencing differences.' },
+      { q: 'Does an aptitude test like ADAPT affect my DGCA pilot licence?', a: 'No. An aptitude or psychometric assessment run by an airline or its academy is a recruitment step for that specific programme. It has no bearing on your DGCA computer number, your theory papers, or the licence DGCA eventually issues, which follows the same CAR Section 7 process regardless of how you got into flying training.' },
+      { q: 'What minimum marks does DGCA require in 10+2 for a cadet programme?', a: 'DGCA’s own requirement is a pass in 10+2 with Physics and Mathematics from a recognised board, with no percentage stated. A minimum-percentage cutoff attached to a specific cadet programme is that programme’s own screening criterion, published on its own page, not a DGCA figure.' },
+      { q: 'Can I apply to a cadet programme without a DGCA computer number?', a: 'DGCA registration and a cadet programme’s application are two separate processes, and the sequence differs by programme. Either way, no CPL theory paper can be booked without a computer number from the Central Examination Organization, so getting one is not optional at some point in the process.' },
+      { q: 'What happens if I am not selected for a cadet programme?', a: 'Nothing closes on the DGCA side. Eligibility to register, sit the theory papers and pursue a self-sponsored CPL at a Flying Training Organisation of your choosing is unaffected by any airline’s selection outcome, because DGCA licensing and an individual airline’s recruitment are two separate systems.' },
+      { q: 'Do all airlines use the same eligibility criteria for their cadet programmes?', a: 'No, and DGCA does not standardise them. Each airline or its partner academy sets its own age band, academic cutoff, medical screening beyond the DGCA class required, and selection stages, and any of those can change between one intake and the next.' },
+      { q: 'Where can I find the current, official eligibility criteria for a specific airline’s cadet programme?', a: 'On that airline’s own careers page or its named training partner’s page, not on a third-party coaching site. Figures copied onto aggregator pages go stale the moment a programme updates its own criteria, and nothing obliges a copy to be corrected.' },
+      { q: 'Does a service bond apply to a self-sponsored CPL as well as a cadet programme?', a: 'A service bond is a feature of the sponsoring relationship in a cadet programme, tying training investment to a commitment to fly for that airline afterward. A self-sponsored candidate who trains independently and applies for jobs afterward is not bound by any such contract, because there is no sponsor to bond to.' },
+      { q: 'Is RTR(A) part of a cadet programme’s selection process, or a separate DGCA exam?', a: 'RTR(A), the Radio Telephony Restricted (Aeronautical) licence, is a separate DGCA examination with its own syllabus and practical component, required for a CPL regardless of whether you trained through a cadet programme or self-sponsored. It is not one of the recruitment stages an airline runs before selection.' }
+    ],
+    content:
+      `<p>DGCA sets no maximum age and no minimum percentage to register as a Flight Crew candidate for a Commercial Pilot Licence. The age band, the marks cutoff, the height and BMI figures, and the aptitude test attached to a named cadet pilot programme come from the airline or its training partner, not from the regulator, and they are reset at that airline's discretion between intakes. Confusing the two is the single most common cadet-programme misunderstanding, and it sends eligible candidates away from programmes they could actually apply to.</p>
+
+<h2>What does DGCA actually require before you can pursue any pilot licence?</h2>
+<p>Two conditions, stated in DGCA Civil Aviation Requirements Section 7, Series B, Part I, and confirmed on the Pariksha Flight Crew FAQ: a computer number from the Central Examination Organization, and a <a href="/blog/cpl-eligibility-after-12th">pass in 10+2 with Physics and Mathematics</a> from a recognised board. Neither a cadet programme nor a self-sponsored route changes this. Both lead to the <a href="/dgca">same DGCA licensing process</a>, examined the same way.</p>
+<table><thead><tr><th>Condition</th><th>What DGCA states</th><th>Source</th></tr></thead><tbody>
+<tr><td>Computer number</td><td>Required before applying for any theory paper, allotted by the Central Examination Organization</td><td>Pariksha Flight Crew FAQ</td></tr>
+<tr><td>Educational qualification</td><td>Pass in 10+2 with Physics and Mathematics from a recognised board. No percentage stated</td><td>CAR Section 7, Series B, Part I; Pariksha FAQ 7</td></tr>
+<tr><td>Maximum age</td><td>None stated, for registration as a Flight Crew candidate</td><td>Pariksha FAQ 8</td></tr>
+<tr><td>Medical, for a CPL</td><td>Class 1 medical certificate</td><td>CAR Section 7, Series B, Part I</td></tr>
+<tr><td>Theory pass mark</td><td>70% in each paper, no aggregate across papers</td><td>CAR Section 7, Series B, Part I</td></tr>
+<tr><td>Radio telephony</td><td>RTR(A), a separate examination with its own syllabus and practical component</td><td>CAR Section 7, Series B, Part I</td></tr>
+</tbody></table>
+<p class="source-note">Source: DGCA CAR Section 7, Series &lsquo;B&rsquo;, Part I, and the DGCA Pariksha Flight Crew FAQ (<a href="https://pariksha.dgca.gov.in/Form/PLT_FAQs" target="_blank" rel="noopener">pariksha.dgca.gov.in</a>).</p>
+<p>Notice what is absent from that list: an age band, a minimum aggregate percentage, a height, a BMI range, and an aptitude test score. None of those are DGCA conditions for a pilot licence. They belong to the next section, and they belong to the airline.</p>
+
+<h2>What is a cadet pilot programme, and how is it different from a self-sponsored CPL?</h2>
+<p>A cadet pilot programme is a selection process run by an airline, usually with a named training-partner academy, that picks candidates before their flying training begins and typically ties them to that airline afterward through a service bond. A self-sponsored CPL is the same licence pursued independently, at a Flying Training Organisation you choose yourself, with no airline attached and no placement guaranteed.</p>
+<p>Both candidates sit the same DGCA theory papers at the same 70% pass mark, hold the same class of medical, and clear the same RTR(A) examination. The licence DGCA issues at the end does not record which route you took. What differs is entirely on the recruitment side: who selected you, when, and what you owe them afterward. Our <a href="/blog/cadet-pilot-programme-vs-self-sponsored-cpl">full comparison of the two routes</a> covers the sequencing and the bond question in depth; this guide focuses on the eligibility question specifically.</p>
+
+<figure class="img-slot" data-src="/blog/cadet-pilot-programme-eligibility-dgca-vs-airline/two-gates-diagram.webp" data-dimensions="1200x675">
+  <span>Two separate freestanding archway shapes side by side with visible space between them: the left archway smaller, holding three small plain icons (an identity-card outline, an open-book outline, a medical-cross outline); the right archway taller and clearly a different structure, holding four small plain icons (a calendar outline, a ruler outline, a speech-bubble outline, a handshake outline), showing two independent gates rather than one stacked on the other</span>
+</figure>
+
+<h2>What do IndiGo and Air India add on top of DGCA's requirements?</h2>
+<p>Both run named cadet pathways, IndiGo's with a partner training academy and Air India's through its own Cadet Pilot Programme, and both publish eligibility criteria on their own pages that go beyond DGCA's two conditions: an age band, a minimum aggregate or subject-wise percentage in 10+2, English proficiency, a height or medical-fitness screen, and a multi-stage selection process that typically includes an aptitude assessment, a group exercise and a personal interview.</p>
+<p>This guide does not reprint the specific numbers each programme currently uses. Every one of those figures is the airline's own criterion, changes between intakes, and is published, when it is published at all, on that airline's or academy's own site rather than in any DGCA document. A number copied from a search result or a coaching page is one step removed from the source and can already be out of date by the time you read it. Go to the programme's own page for the current figure, and treat anything you read elsewhere, including comparisons like this one, as a starting point for that check rather than a substitute for it.</p>
+
+<h3>The stages a cadet selection process typically runs through</h3>
+<p>The specific names and order vary by airline and by year, but the shape is consistent across most cadet programmes run in India, and knowing the shape is useful even without the exact figures.</p>
+<table><thead><tr><th>Stage</th><th>What it typically checks</th><th>Who sets the bar</th></tr></thead><tbody>
+<tr><td>Application and document screening</td><td>Age, academic record, nationality and basic eligibility as the programme defines it</td><td>Airline or academy</td></tr>
+<tr><td>Aptitude or psychometric assessment</td><td>Hand-eye coordination, multitasking, spatial reasoning and reaction time under a computer-based test</td><td>Airline or academy</td></tr>
+<tr><td>Group exercise</td><td>Communication and teamwork in a task done alongside other shortlisted candidates</td><td>Airline or academy</td></tr>
+<tr><td>Personal interview</td><td>Motivation, communication and suitability, assessed by the airline's own panel</td><td>Airline</td></tr>
+<tr><td>Medical clearance</td><td>DGCA's Class 1 standard, and often an additional screen the airline sets on top of it</td><td>DGCA sets the class; airline may add its own screen</td></tr>
+<tr><td>Offer and service bond</td><td>Terms tying sponsored training to a post-training commitment to that airline</td><td>Airline</td></tr>
+</tbody></table>
+<p class="source-note">Structure only, not a specific programme's published stages. Confirm current stage names, order and any fee directly on the programme's own page before you apply.</p>
+
+<figure class="img-slot" data-src="/blog/cadet-pilot-programme-eligibility-dgca-vs-airline/selection-stages-timeline.webp" data-dimensions="1200x675">
+  <span>A horizontal line with six identical small circular waypoint markers spaced evenly along it, each holding a different plain icon in sequence: a document outline, a computer-screen outline, three small figure outlines grouped together, two facing speech-bubble outlines, a medical-cross outline, and a handshake outline, all markers the same neutral size and colour to show a general shape rather than a fixed, ranked sequence</span>
+</figure>
+
+<h2>Is the age limit for a cadet programme a DGCA rule?</h2>
+<p>No. DGCA's Pariksha Flight Crew FAQ states plainly that there is no maximum age to register as a Flight Crew candidate. An age band attached to a named cadet programme, such as a lower and upper bound at the point of application, is that programme's own recruitment condition. It can be narrower than what DGCA allows, it can shift between intakes, and it says nothing about your eligibility to register with DGCA directly or to pursue a self-sponsored CPL outside that programme's window.</p>
+<p>This is worth stating plainly because it is the single most common source of candidates ruling themselves out early. Someone outside a specific programme's current age band is not "too old to fly" in any regulatory sense. They are outside one airline's current recruitment criterion for one programme, in one year. The self-sponsored route, and very likely a different programme's own age band, remain open on exactly the same DGCA terms as anyone else's.</p>
+
+<h2>Does an aptitude test like ADAPT set a DGCA standard?</h2>
+<p>No. Aptitude or psychometric testing, of the kind several airline cadet programmes run under their own name for the stage (IndiGo's partner academy has run one under the name ADAPT), is a recruitment tool the airline or its academy chooses and scores on its own criteria. DGCA does not administer it, does not set a passing threshold for it, and does not record its result anywhere in your Flight Crew file.</p>
+<p>A weak result on one airline's aptitude assessment closes that one selection round. It does not touch your computer number, your theory paper eligibility, your medical, or your ability to pursue a CPL through a Flying Training Organisation on a self-sponsored basis. Keeping this distinction clear matters most right after a rejection, when it is easy to read a recruitment outcome as a verdict on your fitness to fly rather than what it actually is: one airline's assessment, on one day, against its own bar.</p>
+
+<h2>DGCA rule or airline policy: a side-by-side check</h2>
+<p>Use this table as a quick filter whenever you read an eligibility claim about a named cadet programme. If the row says DGCA, the figure is fixed and sourced above. If it says airline, treat any specific number you see for it as unverified until you confirm it on that programme's own page.</p>
+<table><thead><tr><th>Topic</th><th>DGCA's position</th><th>What a cadet programme commonly adds</th></tr></thead><tbody>
+<tr><td>Maximum age to fly</td><td>None stated, for registration as a Flight Crew candidate</td><td>An age band at the point of application, set by the airline or academy</td></tr>
+<tr><td>Marks in 10+2</td><td>A pass with Physics and Mathematics; no percentage stated</td><td>Often a minimum aggregate or subject-wise percentage</td></tr>
+<tr><td>Medical standard</td><td>Class 1 medical certificate for a CPL</td><td>May add its own screening or fitness checks beyond the DGCA class</td></tr>
+<tr><td>English requirement</td><td>Not a stated DGCA registration condition</td><td>Often a stated English-proficiency expectation</td></tr>
+<tr><td>Aptitude test result</td><td>Not recorded against your DGCA file</td><td>A scored, pass/fail stage set entirely by the airline or academy</td></tr>
+<tr><td>Selection outcome</td><td>Has no bearing on DGCA eligibility</td><td>Determines whether you proceed with that specific sponsor</td></tr>
+</tbody></table>
+
+<figure class="img-slot" data-src="/blog/cadet-pilot-programme-eligibility-dgca-vs-airline/dgca-vs-airline-split.webp" data-dimensions="1200x675">
+  <span>A single frame split vertically down the middle by a thin solid line: the left half holds a short vertical stack of three small solid-outline icon shapes (a document, an open book, a medical cross); the right half holds a taller vertical stack of dashed-outline icon shapes only, with no solid fill, showing one side as fixed and the other as open and unfilled</span>
+</figure>
+
+<h2>Does clearing a cadet programme's selection get you a different licence than a self-sponsored CPL?</h2>
+<p>No. Both routes end at the same DGCA Commercial Pilot Licence, issued after the same computer number process, the same theory papers at the same 70% pass mark, the same Class 1 medical, and the same RTR(A) examination. A cadet programme changes who sponsored your training, who you are contractually bound to afterward, and often the sequence in which you clear the requirements. It does not change what the requirements are or what DGCA hands you at the end.</p>
+<p>Where the two routes genuinely diverge is <a href="/blog/jobs-after-cpl-india">what happens after the licence is issued</a>. A cadet programme typically places you with its sponsoring airline, subject to the programme's own conditions being met and the bond terms accepted. A self-sponsored CPL holder applies independently, and DGCA sets no minimum-hours threshold for that hiring either; each airline states its own hiring bar, separately from anything covered here.</p>
+
+<h2>What happens on the DGCA side if you are not selected for a cadet programme?</h2>
+<p>Nothing changes. Your eligibility to register for a DGCA computer number, to appear for the theory papers, and to pursue a CPL at a Flying Training Organisation of your own choosing is entirely unaffected by any airline's recruitment outcome. DGCA licensing and an individual airline's cadet selection are two separate systems that happen to share an entry qualification, not one pipeline with a single gate.</p>
+<p>This matters in practical terms because a rejection from one cadet cycle is sometimes read as a closed door to flying altogether, and it is not that. If you already hold, or can obtain, a computer number and the 10+2 Physics and Mathematics qualification, the self-sponsored route is open to you on the same terms as anyone else, on your own timeline, at an FTO you choose, starting with the same <a href="/courses/cpl">CPL ground-class preparation</a> any candidate needs. A future cadet cycle, from the same airline or a different one, is also not foreclosed; eligibility criteria reset with each intake and are not tied to a prior rejection in any DGCA record, because DGCA keeps no such record of airline recruitment outcomes.</p>
+
+<h2>How to verify a specific programme's current eligibility criteria before you apply</h2>
+<p>Treat every age band, marks cutoff, fee and stage name you read about a named cadet programme, on this page or anywhere else, as provisional until you have checked it in the right place.</p>
+<ol>
+<li><strong>Go to the airline's own careers page, or its named training partner's page.</strong> Not a coaching site, not a forum thread, not a search-engine summary. If a page cannot show you who publishes it, do not rely on a number from it.</li>
+<li><strong>Check the date on whatever criteria you find.</strong> Cadet programmes revise their intake criteria between cycles. A figure that was correct for last year's intake is not automatically correct for this one.</li>
+<li><strong>Separate the DGCA conditions from the airline's own, using the table above as a filter.</strong> If a claim concerns your age, your marks percentage, height, BMI or an aptitude-test score, it is the airline's criterion, not DGCA's, and it needs airline-side confirmation regardless of how confidently it is stated elsewhere.</li>
+<li><strong>Confirm your DGCA-side prerequisites independently.</strong> A computer number and the 10+2 Physics and Mathematics qualification are yours to arrange whether or not a specific cadet programme selects you, and neither depends on that programme's criteria.</li>
+<li><strong>Ask the programme directly if a public page leaves a question open.</strong> An admissions or recruitment office can confirm a current figure faster and more reliably than any secondary source, including this one.</li>
+</ol>
+
+<h2>Frequently asked questions</h2>
+<h3>Does DGCA set an age limit for cadet pilot programmes like IndiGo’s?</h3>
+<p>No. DGCA’s Pariksha Flight Crew FAQ states there is no maximum age to register as a Flight Crew candidate. An age band attached to a named cadet programme is set by the airline or its training partner as a recruitment condition, not a DGCA licensing rule, and it can change between intakes.</p>
+<h3>What is the difference between a cadet pilot programme and a self-sponsored CPL?</h3>
+<p>Both lead to the same DGCA Commercial Pilot Licence, on the same theory papers and the same 70% pass mark. A cadet programme selects you before training and usually attaches a service bond to a sponsoring airline; a self-sponsored CPL lets you choose your own Flying Training Organisation with no placement attached. See our full comparison for the sequencing differences.</p>
+<h3>Does an aptitude test like ADAPT affect my DGCA pilot licence?</h3>
+<p>No. An aptitude or psychometric assessment run by an airline or its academy is a recruitment step for that specific programme. It has no bearing on your DGCA computer number, your theory papers, or the licence DGCA eventually issues, which follows the same CAR Section 7 process regardless of how you got into flying training.</p>
+<h3>What minimum marks does DGCA require in 10+2 for a cadet programme?</h3>
+<p>DGCA’s own requirement is a pass in 10+2 with Physics and Mathematics from a recognised board, with no percentage stated. A minimum-percentage cutoff attached to a specific cadet programme is that programme’s own screening criterion, published on its own page, not a DGCA figure.</p>
+<h3>Can I apply to a cadet programme without a DGCA computer number?</h3>
+<p>DGCA registration and a cadet programme’s application are two separate processes, and the sequence differs by programme. Either way, no CPL theory paper can be booked without a computer number from the Central Examination Organization, so getting one is not optional at some point in the process.</p>
+<h3>What happens if I am not selected for a cadet programme?</h3>
+<p>Nothing closes on the DGCA side. Eligibility to register, sit the theory papers and pursue a self-sponsored CPL at a Flying Training Organisation of your choosing is unaffected by any airline’s selection outcome, because DGCA licensing and an individual airline’s recruitment are two separate systems.</p>
+<h3>Do all airlines use the same eligibility criteria for their cadet programmes?</h3>
+<p>No, and DGCA does not standardise them. Each airline or its partner academy sets its own age band, academic cutoff, medical screening beyond the DGCA class required, and selection stages, and any of those can change between one intake and the next.</p>
+<h3>Where can I find the current, official eligibility criteria for a specific airline’s cadet programme?</h3>
+<p>On that airline’s own careers page or its named training partner’s page, not on a third-party coaching site. Figures copied onto aggregator pages go stale the moment a programme updates its own criteria, and nothing obliges a copy to be corrected.</p>
+<h3>Does a service bond apply to a self-sponsored CPL as well as a cadet programme?</h3>
+<p>A service bond is a feature of the sponsoring relationship in a cadet programme, tying training investment to a commitment to fly for that airline afterward. A self-sponsored candidate who trains independently and applies for jobs afterward is not bound by any such contract, because there is no sponsor to bond to.</p>
+<h3>Is RTR(A) part of a cadet programme’s selection process, or a separate DGCA exam?</h3>
+<p>RTR(A), the Radio Telephony Restricted (Aeronautical) licence, is a separate DGCA examination with its own syllabus and practical component, required for a CPL regardless of whether you trained through a cadet programme or self-sponsored. It is not one of the recruitment stages an airline runs before selection.</p>
+
+<h2>The short version</h2>
+<p>DGCA's eligibility conditions for a pilot licence are fixed, sourced, and the same whether you pursue a cadet programme or a self-sponsored CPL: a computer number, 10+2 with Physics and Mathematics, a Class 1 medical for a CPL, theory papers at 70% each, and a separate RTR(A) examination. Everything else commonly attached to a named cadet programme, age bands, marks cutoffs, height and BMI figures, aptitude-test names and scores, service bonds, comes from the airline or its training partner, resets with each intake, and belongs on that programme's own page rather than in a DGCA document or a generic guide. Learn the DGCA half with confidence from a source you can check, and go straight to the airline for the rest.</p>
+<p class="ref-links">More: the <a href="/faq">FAQ</a> for short sourced answers, the <a href="/glossary">glossary</a> for the terms, and our <a href="/editorial-policy">editorial policy</a> for how these figures are checked.</p>`,
+  },
 
 ];
 

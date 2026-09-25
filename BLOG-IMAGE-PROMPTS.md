@@ -1056,3 +1056,36 @@ A single horizontal line running left to right with five small evenly spaced cir
 ```
 
 ---
+
+## Cadet Pilot Programme Eligibility in India: What DGCA Requires, and What the Airline Adds
+
+`/blog/cadet-pilot-programme-eligibility-dgca-vs-airline` — 3 images. Cover left as the site-wide fallback (`/assets/hero-aircraft-1600w.jpg`), no cover prompt needed.
+
+### 1. Inline, after heading 2 (What is a cadet pilot programme...)
+
+- **Save to:** `public/blog/cadet-pilot-programme-eligibility-dgca-vs-airline/two-gates-diagram.webp`
+- **Alt text:** Two separate freestanding archway shapes side by side with visible space between them: the left archway smaller, holding three small plain icons (an identity-card outline, an open-book outline, a medical-cross outline); the right archway taller and clearly a different structure, holding four small plain icons (a calendar outline, a ruler outline, a speech-bubble outline, a handshake outline), showing two independent gates rather than one stacked on the other.
+
+```
+Two separate freestanding archway or gate outlines side by side with clear open space between them, not touching or overlapping. The left archway is smaller and simpler, containing three small plain icon shapes inside it: an identity-card outline, an open-book outline, and a medical-cross outline. The right archway is taller and reads as a clearly different, separate structure, containing four small plain icon shapes: a calendar outline, a ruler outline, a speech-bubble outline, and a handshake outline. The two archways must read as independent and unequal in size, never as one stacked on top of the other. Flat vector illustration, minimal clean style, professional Indian aviation training context, deep green and warm amber accents on a light neutral ground, generous negative space, absolutely NO text, words, letters, numbers or signage anywhere in the image. 1200 x 675.
+```
+
+### 2. Inline, after heading 4 (What do IndiGo and Air India add...)
+
+- **Save to:** `public/blog/cadet-pilot-programme-eligibility-dgca-vs-airline/selection-stages-timeline.webp`
+- **Alt text:** A horizontal line with six identical small circular waypoint markers spaced evenly along it, each holding a different plain icon in sequence: a document outline, a computer-screen outline, three small figure outlines grouped together, two facing speech-bubble outlines, a medical-cross outline, and a handshake outline, all markers the same neutral size and colour to show a general shape rather than a fixed, ranked sequence.
+
+```
+A single horizontal line running left to right with six small identical circular waypoint markers spaced evenly along it, all the same neutral size and outline weight, none enlarged or emphasised. Each marker holds one small plain icon in this order: a document outline, a computer-screen outline, a cluster of three tiny figure outlines, two small facing speech-bubble outlines, a medical-cross outline, and a handshake outline. The uniform styling across all six markers is the point. Flat vector illustration, minimal clean style, professional Indian aviation training context, deep green and warm amber accents on a light neutral ground, generous negative space, absolutely NO text, words, letters, numbers or signage anywhere in the image. 1200 x 675.
+```
+
+### 3. Inline, after heading 6 (DGCA rule or airline policy: a side-by-side check)
+
+- **Save to:** `public/blog/cadet-pilot-programme-eligibility-dgca-vs-airline/dgca-vs-airline-split.webp`
+- **Alt text:** A single frame split vertically down the middle by a thin solid line: the left half holds a short vertical stack of three small solid-outline icon shapes (a document, an open book, a medical cross); the right half holds a taller vertical stack of dashed-outline icon shapes only, with no solid fill, showing one side as fixed and the other as open and unfilled.
+
+```
+A single frame divided exactly in half by one thin solid vertical line. The left half contains a short vertical stack of three small icon shapes drawn with solid, continuous outlines: a document, an open book, and a medical cross. The right half contains a taller vertical stack of the same style of icon shapes but drawn with dashed, broken outlines only and no solid fill, visibly more numerous than the left stack. The contrast between solid-filled and dashed-empty is the entire composition. Flat vector illustration, minimal clean style, professional Indian aviation training context, deep green and warm amber accents on a light neutral ground, generous negative space, absolutely NO text, words, letters, numbers or signage anywhere in the image. 1200 x 675.
+```
+
+---
