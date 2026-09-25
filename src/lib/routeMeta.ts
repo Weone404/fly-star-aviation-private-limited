@@ -76,8 +76,9 @@ const routeMeta: Record<string, RouteMeta> = {
     canonical: `${BASE_URL}/services/components-spares`,
   },
   "/courses/cpl": {
-    title: "Commercial Pilot License Course in India | CPL Training",
-    description: "Best DGCA CPL ground classes in Delhi. Air Navigation, Meteorology, Air Regulations & more. Enroll now.",
+    title: "Commercial Pilot Licence (CPL) Ground Classes | Flying Star Aviator",
+    description:
+      "Explore CPL ground classes, DGCA theory exam preparation, eligibility, subjects and guidance on the commercial pilot licensing pathway with Flying Star Aviator.",
     canonical: `${BASE_URL}/courses/cpl`,
   },
   "/courses/atpl": {

@@ -40,9 +40,9 @@ export const PAGE_META: Record<string, PageMeta> = {
       "Get in touch with Flying Star Aviator. Visit us in Dwarka, Delhi or call +91 9953536199.",
   },
   "/courses/cpl": {
-    title: "CPL Ground Classes in Delhi | Flying Star Aviator",
+    title: "Commercial Pilot Licence (CPL) Ground Classes | Flying Star Aviator",
     description:
-      "Best DGCA CPL ground classes in Delhi. Air Navigation, Meteorology, Air Regulations & more. Enroll now.",
+      "Explore CPL ground classes, DGCA theory exam preparation, eligibility, subjects and guidance on the commercial pilot licensing pathway with Flying Star Aviator.",
   },
   "/courses/atpl": {
     title: "ATPL Ground Training | Flying Star Aviator",

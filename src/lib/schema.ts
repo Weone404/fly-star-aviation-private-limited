@@ -7,7 +7,7 @@
  * correct schema instead of the old homepage graph.
  */
 import { SITE_ORIGIN, canonicalUrl } from "./routes";
-import { PAGE_META } from "./pageMeta";
+import { getRouteMeta } from "./routeMeta";
 import { getBlogPost, getWordCount, getReadingMinutes } from "./blogData.js";
 import { PILOT_TRAINING_TOPICS } from "./pilotTrainingTopics";
 import { FAQ_HUB_QUESTIONS } from "./faqHub";
@@ -77,12 +77,12 @@ function labelFor(slug: string): string {
 
 /** Page name from the meta map (title before the " | " brand suffix). */
 function nameFor(path: string, fallback: string): string {
-  const title = PAGE_META[path]?.title;
+  const title = getRouteMeta(path).title;
   return title ? title.split("|")[0].trim() : fallback;
 }
 
 function descFor(path: string, fallback: string): string {
-  return PAGE_META[path]?.description || fallback;
+  return getRouteMeta(path).description || fallback;
 }
 
 interface JsonLdNode {
@@ -126,6 +126,8 @@ function breadcrumb(path: string): JsonLdNode {
 
 function courseNode(path: string): JsonLdNode {
   const url = canonicalUrl(path);
+  const isCplGroundCourse = path === "/courses/cpl";
+
   return {
     "@type": "Course",
     "@id": `${url}#course`,
@@ -135,21 +137,25 @@ function courseNode(path: string): JsonLdNode {
     provider: { "@id": ORG_ID },
     educationalLevel: "Professional",
     inLanguage: "en-IN",
-    hasCourseInstance: {
-      "@type": "CourseInstance",
-      courseMode: ["OnSite", "Online"],
-      inLanguage: ["en", "hi"],
-      location: {
-        "@type": "Place",
-        name: "Flying Star Aviator, Dwarka",
-        address: {
-          "@type": "PostalAddress",
-          addressLocality: "New Delhi",
-          addressRegion: "Delhi",
-          addressCountry: "IN",
-        },
-      },
-    },
+    ...(isCplGroundCourse
+      ? {
+          hasCourseInstance: {
+            "@type": "CourseInstance",
+            courseMode: ["OnSite"],
+            inLanguage: ["en", "hi"],
+            location: {
+              "@type": "Place",
+              name: "Flying Star Aviator, Dwarka, New Delhi",
+              address: {
+                "@type": "PostalAddress",
+                addressLocality: "New Delhi",
+                addressRegion: "Delhi",
+                addressCountry: "IN",
+              },
+            },
+          },
+        }
+      : {}),
   };
 }
 
@@ -416,14 +422,23 @@ export const PAGE_FAQS: Record<string, { q: string; a: string }[]> = {
     { q: "What if I am not sure which licence I am aiming for?", a: "Choose the career-guidance option. Working out whether a PPL, a CPL or neither fits your situation is part of what the call is for." },
     { q: "Can I call instead of filling this in?", a: "Yes. Phone +91 99535 36199, Monday to Saturday, 9:00 AM to 6:00 PM." },
   ],
+  "/courses/cpl": [
+    { q: "What is a Commercial Pilot Licence (CPL)?", a: "A Commercial Pilot Licence (CPL) is a professional pilot licence that enables a pilot to fly aircraft for remuneration under the rules set by the Directorate General of Civil Aviation (DGCA). A CPL is part of the broader licensing pathway and requires separate compliance with DGCA eligibility, medical, theory and flying requirements." },
+    { q: "What does Flying Star provide for CPL aspirants?", a: "Flying Star Aviator provides DGCA ground classes, subject preparation and guidance on the CPL pathway. It does not directly issue licences, provide aircraft flying hours or act as a Flying Training Organisation." },
+    { q: "What are the eligibility requirements for a CPL in India?", a: "Eligibility, medical and licensing requirements are set by DGCA and can change. Students should confirm the current rules before applying, including academic, medical and flying requirements, as well as the relevant exams and training pathway." },
+    { q: "Which subjects are covered in CPL ground classes?", a: "CPL ground classes typically cover the DGCA theory subjects relevant to the Commercial Pilot Licence pathway, such as Air Navigation, Aviation Meteorology, Air Regulations and Technical subjects. The exact syllabus should be checked against the current DGCA examination requirements." },
+    { q: "How does CPL flying training work?", a: "Applicants must complete the applicable flying-training requirements through an appropriately approved Flying Training Organisation, subject to the current DGCA rules. Ground-school preparation is one part of the pathway; flying training and licensing are separate steps and may be completed through different approved organisations and authorities." },
+    { q: "How much does CPL training cost in India?", a: "CPL costs vary by FTO, aircraft type, location, flying-hour requirements, fuel and operating costs, accommodation, examinations and other factors. Students should request current written quotations directly from relevant providers and verify official DGCA charges before making a decision." },
+    { q: "Does Flying Star provide aircraft flying training?", a: "No. Flying Star Aviator is positioned as a DGCA ground-school and guidance provider for CPL aspirants. Flying training is a separate requirement that applicants complete through an approved Flying Training Organisation in line with current DGCA regulations." },
+    { q: "What should students verify before choosing an FTO?", a: "Students should review the current DGCA approval status, the FTO's published training structure, aircraft and instructor availability, the training schedule, fee schedule, and any current regulatory conditions before enrolling at a particular organisation." },
+  ],
   "/courses/cpl/fees": [
     { q: "What does a CPL cost in India?", a: "There is no published figure. DGCA publishes examination and licensing charges, not training prices, and flying schools quote rather than publish. Any single number you see is a provider quote or a restatement of one." },
     { q: "Why does this page not show a price range?", a: "A range requires assuming a fleet, an aircraft type, a location, an hours figure, a completion time and a level of bundling. Publishing the range without those assumptions presents a guess as a fact." },
     { q: "Which costs does DGCA actually publish?", a: "The charges payable to DGCA itself: examination charges per paper, the computer number application, and licence issue. Training costs are not among them." },
     { q: "What is usually the largest component?", a: "Flying hours at the FTO, by a wide margin over everything else on the list." },
     { q: "What is most often left out of a quote?", a: "Accommodation, travel, equipment, retests and the cost of delay. None of them are hidden; they are simply not the flying school's to quote." },
-    { q: "Should I pay for ground classes or flying first?", a: "The DGCA papers do not require flying hours, so ground study can run first or alongside. A Class 1 medical is the cheapest step most capable of changing the plan, so it is worth doing before committing money to anything else." },
-  ],
+    { q: "Should I pay for ground classes or flying first?", a: "The DGCA papers do not require flying hours, so ground study can run first or alongside. A Class 1 medical is the cheapest step most capable of changing the plan, so it is worth doing before committing money to anything else." },  ],
   "/pilot-salary-india": [
     { q: "How much does a pilot earn in India?", a: "There is no authoritative published figure. No Indian airline publishes a pilot pay scale, DGCA publishes licensing requirements rather than salaries, and no government statistic reports pilot pay separately." },
     { q: "Why does this page not give a number?", a: "Because every number in circulation traces back to a training provider or a content site, none of which names a primary source. Publishing our own estimate would add one more unsourced page." },
