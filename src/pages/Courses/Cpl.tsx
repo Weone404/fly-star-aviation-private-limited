@@ -172,25 +172,25 @@ const cplServices = [
     {
         icon: BookOpen,
         title: "DGCA Ground Classes",
-        description: "Structured subject preparation for the CPL theory papers and the commercial pilot licence pathway.",
+        description: "Academic preparation for the DGCA theory papers that form part of CPL training in India.",
         href: "/dgca/ground-classes",
     },
     {
         icon: FileCheck,
         title: "DGCA Exam Preparation",
-        description: "Guidance for the current DGCA theory examination structure and study plan.",
+        description: "Structured subject preparation for the DGCA examination pathway and study planning.",
         href: "/dgca",
     },
     {
         icon: GraduationCap,
         title: "CPL Pathway Guidance",
-        description: "Advice on the overall CPL process, eligibility checks and how the route fits together.",
+        description: "Overview of the CPL process, eligibility checks, and how ground training fits with flying training.",
         href: "/become-a-pilot/commercial-pilot-licence",
     },
     {
         icon: Briefcase,
         title: "Career Guidance",
-        description: "A realistic overview of pilot careers, airline criteria and next steps after ground-school preparation.",
+        description: "A practical overview of pilot career steps, airline criteria, and the role of ground classes in the process.",
         href: "/about",
     },
 ];
@@ -198,58 +198,62 @@ const cplServices = [
 const trainingSteps = [
     {
         step: 1,
-        title: "Check current DGCA requirements",
-        description: "Review the latest DGCA eligibility, medical and examination requirements before starting the application process.",
+        title: "Obtain a DGCA Computer Number",
+        description: "Register on the DGCA flight crew examination system before applying for pilot examinations.",
     },
     {
         step: 2,
-        title: "Prepare for the theory papers",
-        description: "Build a strong base in the relevant DGCA subjects through structured ground classes and guided revision.",
+        title: "Complete Required Medical Assessments",
+        description: "Complete the Class 2 and Class 1 medical checks required for pilot licensing in India.",
     },
     {
         step: 3,
-        title: "Register for the examinations",
-        description: "Apply for the relevant DGCA examinations through the official process and keep the supporting documentation current.",
+        title: "Complete DGCA CPL Ground Classes",
+        description: "Study the academic subjects required for the DGCA theory examinations in a structured ground-school setting.",
     },
     {
         step: 4,
-        title: "Complete flying training",
-        description: "Satisfy the flight-training requirements through an approved Flying Training Organisation as required by DGCA rules.",
+        title: "Complete CPL Theory Examinations and RTR(A)",
+        description: "Clear the applicable DGCA theory papers and complete the radiotelephony requirement set by the WPC Wing.",
     },
     {
         step: 5,
-        title: "Meet licence conditions",
-        description: "Complete the remaining licensing and operational steps required by the regulator and the approved training pathway.",
+        title: "Complete Required Flight Training at an Approved FTO",
+        description: "Fulfill the aircraft flying-hour requirements through an approved Flying Training Organisation.",
     },
     {
         step: 6,
-        title: "Move into the next role",
-        description: "Career progression depends on recruitment, qualifications, experience, ratings and airline/operator requirements.",
+        title: "Complete Skill Tests and CPL Issuance",
+        description: "Complete the necessary flight checks and licensing steps before the DGCA issues the CPL.",
     },
 ];
 
 const courseOverview = [
-    { label: "Course focus", value: "DGCA ground classes / theory preparation" },
-    { label: "Training model", value: "Ground-school learning and pathway guidance" },
-    { label: "Separate requirement", value: "Flying training through an approved FTO" },
-    { label: "Typical support", value: "Subject preparation, counselling and study guidance" },
-    { label: "Not included automatically", value: "Aircraft hours, simulator training, medical certification and licence issuance" },
+    { label: "Course Name", value: "Commercial Pilot License (CPL) Program" },
+    { label: "Regulating Authority", value: "Directorate General of Civil Aviation (DGCA), India" },
+    { label: "Training Mode", value: "DGCA ground classes plus flight training at an approved FTO" },
+    { label: "Minimum Eligibility", value: "10+2 with Physics and Mathematics or an equivalent accepted pathway" },
+    { label: "Minimum Age", value: "18 years at the time of licence issuance" },
+    { label: "Flight Training Hours", value: "200 hours of required flight training at an approved FTO" },
+    { label: "Ground Training Location", value: "Flying Star Aviator, Dwarka, New Delhi" },
+    { label: "Career Outcomes", value: "Airline First Officer, charter or corporate pilot, cargo pilot, flight instructor" },
 ];
 
 const groundSubjects = [
-    { name: "Air Navigation", focus: "Pilot navigation and operational procedures" },
-    { name: "Aviation Meteorology", focus: "Weather, forecasts and operational planning" },
-    { name: "Air Regulations", focus: "Rules, procedures and compliance" },
-    { name: "Technical General", focus: "Aerodynamics, aircraft systems and theory" },
-    { name: "Technical Specific", focus: "Aircraft-specific technical knowledge" },
+    { name: "Air Navigation", focus: "Practical navigation, flight planning, instruments and route planning", passing: "DGCA assessment requirement" },
+    { name: "Aviation Meteorology", focus: "Weather systems, clouds, winds, forecasting and operational meteorology", passing: "DGCA assessment requirement" },
+    { name: "Air Regulations", focus: "Aviation laws, air traffic procedures and rules of the air", passing: "DGCA assessment requirement" },
+    { name: "Technical General", focus: "Aircraft systems, principles of flight, engines and performance", passing: "DGCA assessment requirement" },
+    { name: "Technical Specific", focus: "Aircraft type-specific systems and operational knowledge", passing: "DGCA assessment requirement" },
+    { name: "RTR(A) Exam", focus: "Radio Telephony Restricted (Aeronautical) requirement associated with WPC", passing: "Pass requirement set by WPC" },
 ];
 
 const careerOptions = [
-    { title: "Airline First Officer", icon: Plane },
-    { title: "Charter Pilot", icon: Plane },
-    { title: "Cargo Pilot", icon: Briefcase },
-    { title: "Corporate Aviation Pilot", icon: Briefcase },
-    { title: "Flight Instructor", icon: GraduationCap },
+    { title: "Commercial Airline First Officer", icon: Plane },
+    { title: "Corporate & Business Jet Pilot", icon: Plane },
+    { title: "Cargo Airline Operations", icon: Briefcase },
+    { title: "Charter Flight Services", icon: Briefcase },
+    { title: "Flight Instructor (AFIR / FIR)", icon: GraduationCap },
 ];
 
 const salaryFactors = [
@@ -275,20 +279,23 @@ export default function CPLCoursePage() {
                                 DGCA CPL ground classes and exam preparation
                             </span>
                             <h1 className="text-4xl md:text-6xl font-bold mb-6">
-                                Commercial Pilot Licence (CPL) Ground Classes &amp; Exam Preparation
+                                Commercial Pilot License (CPL) Training in India: DGCA Requirements, Ground School, and Process
                             </h1>
                             <p className="text-xl text-primary-foreground/80 mb-8">
-                                Prepare for DGCA CPL theory examinations with structured ground classes, subject-focused preparation and guidance on the commercial pilot licensing pathway.
+                                A Commercial Pilot Licence (CPL) is a qualification issued by India&apos;s Directorate General of Civil Aviation (DGCA) that permits a pilot to fly aircraft for remuneration. To earn a CPL in India, candidates must be at least 18 years old, complete 10+2 with Physics and Mathematics, pass the required DGCA medical and examinations, and complete the required flight training.
                             </p>
                             <div className="flex flex-col sm:flex-row gap-4">
                                 <Button variant="gold" size="lg" asChild>
                                     <Link to="/apply">
-                                        Enquire About CPL Ground Classes
+                                        Apply Now
                                         <ArrowRight className="h-4 w-4 ml-2" />
                                     </Link>
                                 </Button>
                                 <Button variant="outline-white" size="lg" asChild>
-                                    <Link to="/courses/cpl/fees">View Course Details</Link>
+                                    <Link to="/courses/cpl/fees">Get Detailed CPL Fee Structure</Link>
+                                </Button>
+                                <Button variant="outline-white" size="lg" asChild>
+                                    <Link to="/apply">Speak with a Pilot Counselor</Link>
                                 </Button>
                             </div>
                             <div className="mt-6">
@@ -306,8 +313,8 @@ export default function CPLCoursePage() {
             </section>
 
             <CitableAnswer
-                heading="What is a Commercial Pilot Licence (CPL) and how do you get one in India?"
-                answer="A Commercial Pilot Licence (CPL) is the licence that allows a pilot to fly for remuneration under the rules and conditions set by India’s Directorate General of Civil Aviation (DGCA). The full pathway includes meeting current DGCA eligibility and medical requirements, preparing for the required theory papers, completing the relevant flying-training requirements through an approved Flying Training Organisation, and satisfying the licensing conditions set by the regulator. Ground-school preparation is an important part of that process, but it is not the same as the separate flying-training and licensing steps that a student must complete through approved training organisations and authorities."
+                heading="What is a Commercial Pilot Licence (CPL) and How Do You Get One in India?"
+                answer="A Commercial Pilot Licence (CPL) is a DGCA-issued qualification that allows a pilot to fly for remuneration in India. The pathway usually includes eligibility checks, medical clearances, DGCA theory preparation, radiotelephony requirements, and flight training at an approved Flying Training Organisation (FTO)."
                 faqs={cplFaqs}
                 sources={[
                     { label: "DGCA — Pilot licensing and approvals", url: "https://www.dgca.gov.in/" },
@@ -324,9 +331,9 @@ export default function CPLCoursePage() {
                         viewport={{ once: true }}
                         className="text-center mb-16"
                     >
-                        <h2 className="text-3xl md:text-4xl font-bold mb-4">What Flying Star Provides for CPL Aspirants</h2>
+                        <h2 className="text-3xl md:text-4xl font-bold mb-4">What Are the DGCA Eligibility Requirements for CPL Ground Training?</h2>
                         <p className="text-muted-foreground max-w-3xl mx-auto text-lg">
-                            Flying Star Aviator supports students with DGCA ground classes, subject preparation and guidance on the CPL pathway. The service scope is focused on ground-school preparation and career guidance, not aircraft training or licence issuance.
+                            CPL ground classes cover the academic preparation required for DGCA theory papers. They are not the same as the aircraft flying hours completed at an approved FTO. The ground-school stage is one part of the CPL route, while flying training is a separate step carried out under a recognised training organisation.
                         </p>
                     </motion.div>
 
@@ -346,7 +353,7 @@ export default function CPLCoursePage() {
                                 <h3 className="text-lg font-bold mb-2">{service.title}</h3>
                                 <p className="text-sm text-muted-foreground mb-4">{service.description}</p>
                                 <Link to={service.href} className="inline-flex items-center text-sm font-semibold text-primary">
-                                    Learn more <ChevronRight className="h-4 w-4 ml-1" />
+                                    View {service.title} <ChevronRight className="h-4 w-4 ml-1" />
                                 </Link>
                             </motion.div>
                         ))}
@@ -362,9 +369,9 @@ export default function CPLCoursePage() {
                         viewport={{ once: true }}
                         className="text-center mb-16"
                     >
-                        <h2 className="text-3xl md:text-4xl font-bold mb-4">Flying Training and CPL Licensing</h2>
+                        <h2 className="text-3xl md:text-4xl font-bold mb-4">What is the Step-by-Step Process to Earn a CPL in India?</h2>
                         <p className="text-muted-foreground max-w-3xl mx-auto text-lg">
-                            Ground-school preparation is only one part of the CPL pathway. Applicants must separately complete the applicable flying-training requirements through an appropriately approved Flying Training Organisation and satisfy the current DGCA licensing conditions before a Commercial Pilot Licence can be issued.
+                            The CPL route in India involves meeting eligibility requirements, securing a DGCA computer number, completing medical checks, preparing for the DGCA theory papers, fulfilling radiotelephony requirements, and completing the required flight training at an approved FTO before licensing.
                         </p>
                     </motion.div>
 
@@ -397,9 +404,9 @@ export default function CPLCoursePage() {
                         viewport={{ once: true }}
                         className="text-center mb-12"
                     >
-                        <h2 className="text-3xl md:text-4xl font-bold mb-4">CPL subjects and theory preparation</h2>
+                        <h2 className="text-3xl md:text-4xl font-bold mb-4">What Does the DGCA CPL Theory Examination Syllabus Cover?</h2>
                         <p className="text-muted-foreground max-w-2xl mx-auto">
-                            CPL theory preparation focuses on the DGCA subjects relevant to the Commercial Pilot Licence pathway. Students should check the current DGCA examination structure before proceeding.
+                            CPL ground classes provide academic preparation for the DGCA theory papers that form part of the licensing pathway. These subjects are separate from the practical flight training completed at an approved Flying Training Organisation.
                         </p>
                     </motion.div>
 
@@ -407,8 +414,9 @@ export default function CPLCoursePage() {
                         <table className="w-full border-collapse">
                             <thead className="bg-muted/50">
                                 <tr>
-                                    <th className="px-6 py-4 text-left font-semibold">Subject</th>
-                                    <th className="px-6 py-4 text-left font-semibold">Focus</th>
+                                    <th className="px-6 py-4 text-left font-semibold">Subject Paper</th>
+                                    <th className="px-6 py-4 text-left font-semibold">Key Modules Covered</th>
+                                    <th className="px-6 py-4 text-left font-semibold">Passing Score</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -416,6 +424,7 @@ export default function CPLCoursePage() {
                                     <tr key={subject.name} className={index % 2 === 0 ? "bg-card" : "bg-muted/20"}>
                                         <td className="px-6 py-4 font-medium">{subject.name}</td>
                                         <td className="px-6 py-4 text-muted-foreground">{subject.focus}</td>
+                                        <td className="px-6 py-4 text-muted-foreground">{subject.passing}</td>
                                     </tr>
                                 ))}
                             </tbody>
@@ -432,18 +441,18 @@ export default function CPLCoursePage() {
                         viewport={{ once: true }}
                         className="text-center mb-12"
                     >
-                        <h2 className="text-3xl md:text-4xl font-bold mb-4">How CPL requirements work</h2>
+                        <h2 className="text-3xl md:text-4xl font-bold mb-4">What is the Difference Between CPL Ground Classes and Flying Training?</h2>
                         <p className="text-muted-foreground max-w-3xl mx-auto">
-                            Eligibility, medical, examination and licensing requirements are regulated by DGCA and can change. Students should confirm the latest requirements through the relevant official authority before applying.
+                            CPL ground classes provide the academic preparation needed for DGCA theory papers. Flying training is a separate phase that takes place at an approved Flying Training Organisation and covers the required aircraft hours, practical flight experience, and licensing checks.
                         </p>
                     </motion.div>
 
                     <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
                         {[
-                            { title: "Academic requirements", text: "Students must satisfy the relevant educational criteria set out by the current DGCA rules and verify them before applying." },
-                            { title: "Medical requirements", text: "Medical clearance is a separate requirement and must satisfy the applicable DGCA medical standards for pilot licensing." },
-                            { title: "Theory preparation", text: "Ground classes support the required DGCA theory examinations and the subject knowledge needed for the pathway." },
-                            { title: "Flying and licensing", text: "The flying requirements and the final licence conditions are distinct from ground-school preparation and must be completed through approved training structures." },
+                            { title: "Educational Qualification", text: "Must have passed 10+2 (or equivalent) with Physics and Mathematics from a recognized board. Note: Non-maths/science students can clear these subjects through NIOS open school." },
+                            { title: "Age Requirement", text: "Minimum 17 years to start ground classes; 18 years to obtain the CPL license." },
+                            { title: "Medical Fitness", text: "Must possess a valid DGCA Class 2 Medical Certificate prior to flying training, followed by a DGCA Class 1 Medical Certificate." },
+                            { title: "Language Proficiency", text: "Must be fluent in written and spoken English." },
                         ].map((item, index) => (
                             <motion.div
                                 key={item.title}
@@ -462,21 +471,20 @@ export default function CPLCoursePage() {
             </section>
 
             <CitableTable
-                heading="How much does CPL training cost in India?"
-                intro="The total cost varies significantly by Flying Training Organisation, aircraft type, location, flying-hour requirements, fuel and operating costs, accommodation, examination costs and other factors. A CPL candidate should compare current written quotations from approved training providers before enrolling."
-                columns={["Cost component", "What it usually involves", "Important point"]}
+                heading="What is the Cost Breakdown for CPL Training in India?"
+                intro="The total cost of CPL training varies depending on the flying school, aircraft type, hourly aircraft rates, training duration, and other applicable fees. Ground classes are only one part of the total cost; flight training and medical and examination charges are separate items."
+                columns={["Training Component", "Indicative Cost Range (₹)", "Details"]}
                 rows={[
-                    ["Ground-school preparation", "DGCA theory classes and study support", "Separate from flying training; quoted by the ground-school provider"],
-                    ["Flying training at an FTO", "Aircraft hours and flight instruction", "Typically the largest variable cost; quoted separately by the FTO"],
-                    ["DGCA examination and licence charges", "Exam application, computer-number and licence-related charges", "Verify current official DGCA charges before paying"],
-                    ["Medical examination", "Medical assessment and required fitness checks", "Separate from academic and flying-training costs"],
-                    ["RTR(A) and related requirements", "Radio telephony-related licensing requirements where applicable", "May be required as part of the pathway depending on the current rules"],
-                    ["Accommodation and living costs", "Meals, transport and local living expenses", "Can materially change the total outlay"],
-                    ["Type rating and later airline training", "Additional aircraft-specific training after CPL", "Not automatically included as part of CPL licensing"],
+                    ["DGCA CPL Ground Classes", "Indicative range varies by institute", "Academic preparation for the DGCA theory examinations"],
+                    ["Flying Training (200 Hours)", "Indicative range varies by FTO and aircraft type", "Aircraft rental, instructor charges, and flight-hour requirements"],
+                    ["DGCA Medical Examinations", "Indicative range varies by assessment provider", "Class 2 and Class 1 medical evaluations"],
+                    ["DGCA Exam & Licensing Fees", "Indicative range varies by exam and licensing stage", "Computer number, exam charges and licence-related fees"],
+                    ["RTR(A) Training & WPC Exam", "₹15,000 – ₹40,000 (verify before payment)", "Radiotelephony preparation and examination fees"],
+                    ["Approx. Total CPL Cost", "Indicative total varies significantly by training provider", "Includes ground training, flying hours and additional requirements"],
                 ]}
                 note={
                     <>
-                        Licensing, medical, examination and flying requirements can change. Students should verify the latest requirements through the relevant official authority before applying. For current written quotations, ask the training provider and the approved FTO directly.
+                        A candidate should compare current written quotations from approved training providers before enrolling. The total cost depends on the chosen FTO, aircraft type, flying-hour requirements, location and additional training or living costs.
                     </>
                 }
                 sources={[
@@ -495,9 +503,9 @@ export default function CPLCoursePage() {
                         viewport={{ once: true }}
                         className="text-center mb-16"
                     >
-                        <h2 className="text-3xl md:text-4xl font-bold mb-4">Career pathway after a CPL</h2>
+                        <h2 className="text-3xl md:text-4xl font-bold mb-4">Career Options &amp; Growth Opportunities After CPL</h2>
                         <p className="text-muted-foreground max-w-3xl mx-auto text-lg">
-                            A CPL can form part of the qualification pathway for commercial flying roles. Progression depends on factors such as airline or operator recruitment, aircraft type, type ratings where applicable, flight experience, checks and vacancies.
+                            With the global and Indian aviation markets expanding rapidly, earning a CPL opens doors to high-paying, dynamic career paths.
                         </p>
                     </motion.div>
 
@@ -527,7 +535,7 @@ export default function CPLCoursePage() {
                     >
                         <h3 className="text-2xl font-bold mb-4">Career progression is not automatic</h3>
                         <p className="text-muted-foreground max-w-2xl mx-auto">
-                            A CPL does not automatically lead to a captain role. Progression depends on airline or operator requirements, aircraft type, additional training or ratings, flight experience, checks and hiring conditions.
+                            With the global and Indian aviation markets expanding rapidly, earning a CPL opens doors to high-paying, dynamic career paths. Progression depends on airline or operator requirements, aircraft type, additional training or ratings, flight experience, checks and hiring conditions.
                         </p>
                     </motion.div>
                 </div>
@@ -541,7 +549,7 @@ export default function CPLCoursePage() {
                         viewport={{ once: true }}
                         className="text-center mb-12"
                     >
-                        <h2 className="text-3xl md:text-4xl font-bold mb-4">Quick course overview</h2>
+                        <h2 className="text-3xl md:text-4xl font-bold mb-4">Quick CPL Course Overview</h2>
                     </motion.div>
 
                     <motion.div
@@ -554,7 +562,7 @@ export default function CPLCoursePage() {
                             <table className="w-full">
                                 <thead className="bg-primary text-primary-foreground">
                                     <tr>
-                                        <th className="px-6 py-4 text-left font-semibold">Field</th>
+                                        <th className="px-6 py-4 text-left font-semibold">Feature</th>
                                         <th className="px-6 py-4 text-left font-semibold">Details</th>
                                     </tr>
                                 </thead>
@@ -580,13 +588,13 @@ export default function CPLCoursePage() {
                         viewport={{ once: true }}
                         className="max-w-3xl mx-auto"
                     >
-                        <h2 className="text-3xl md:text-4xl font-bold mb-6">Why the right preparation matters</h2>
-                        <p className="text-muted-foreground text-lg mb-4">
-                            Students benefit most from a clear understanding of the DGCA theory papers, the licensing pathway and the separation between ground-school learning and flying training.
-                        </p>
-                        <p className="text-muted-foreground text-lg">
-                            A well-structured preparation plan helps students understand the process, avoid confusion between academic and flying requirements, and make better decisions before enrolling at a training organisation.
-                        </p>
+                        <h2 className="text-3xl md:text-4xl font-bold mb-6">Why Choose Flying Star Aviator for CPL Ground Classes?</h2>
+                        <ul className="space-y-4 text-muted-foreground text-lg list-disc pl-6">
+                            <li><strong className="text-foreground">Proven Track Record:</strong> Training aspiring pilots in Dwarka, Delhi with a high DGCA exam pass rate.</li>
+                            <li><strong className="text-foreground">Experienced Faculty:</strong> Learn directly from seasoned airline captains, navigation specialists and meteorology experts.</li>
+                            <li><strong className="text-foreground">Modern Infrastructure:</strong> Air-conditioned classrooms equipped with audio-visual learning tools and exam simulation software.</li>
+                            <li><strong className="text-foreground">End-to-End Assistance:</strong> Full support with DGCA Computer Number registration, medical appointments and flying school selection in India or abroad.</li>
+                        </ul>
                     </motion.div>
                 </div>
             </section>
@@ -599,9 +607,9 @@ export default function CPLCoursePage() {
                         viewport={{ once: true }}
                         className="text-center mb-12"
                     >
-                        <h2 className="text-3xl md:text-4xl font-bold mb-4">Frequently Asked Questions</h2>
+                        <h2 className="text-3xl md:text-4xl font-bold mb-4">Frequently Asked Questions About CPL Training in India</h2>
                         <p className="text-muted-foreground max-w-2xl mx-auto">
-                            Common questions about CPL theory preparation, the commercial pilot licensing pathway and the roles of ground classes versus flying training.
+                            Common questions about the CPL process, DGCA theory preparation, flying-training requirements, and how ground classes fit into the broader licensing pathway.
                         </p>
                     </motion.div>
 
@@ -631,6 +639,24 @@ export default function CPLCoursePage() {
                 </div>
             </section>
 
+            <section className="py-20 bg-background">
+                <div className="container">
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="max-w-3xl mx-auto"
+                    >
+                        <h2 className="text-3xl md:text-4xl font-bold mb-6 text-center">Contact Information</h2>
+                        <div className="rounded-2xl border border-border bg-card p-8 space-y-3 text-muted-foreground">
+                            <p><strong className="text-foreground">Institute Location:</strong> C705, Sector 7, Block C, Palam Extension, Dwarka, Delhi, 110077</p>
+                            <p><strong className="text-foreground">Phone:</strong> +91 99535 36199 / +91 99535 66619</p>
+                            <p><strong className="text-foreground">Email:</strong> <a href="mailto:info@flyingstaraviator.com" className="underline">info@flyingstaraviator.com</a></p>
+                        </div>
+                    </motion.div>
+                </div>
+            </section>
+
             <section className="py-20 aviation-gradient text-primary-foreground">
                 <div className="container">
                     <motion.div
@@ -654,6 +680,9 @@ export default function CPLCoursePage() {
                             </Button>
                             <Button variant="outline-white" size="lg" asChild>
                                 <Link to="/courses/cpl/fees">View Course Details</Link>
+                            </Button>
+                            <Button variant="outline-white" size="lg" asChild>
+                                <a href="tel:+919953536199">Call +91 99535 36199</a>
                             </Button>
                         </div>
                     </motion.div>
