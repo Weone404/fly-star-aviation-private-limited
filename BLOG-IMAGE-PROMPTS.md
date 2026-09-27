@@ -1089,3 +1089,37 @@ A single frame divided exactly in half by one thin solid vertical line. The left
 ```
 
 ---
+
+
+## Hidden Costs of Pilot Training in India: What a Quote Leaves Out
+
+`/blog/hidden-costs-of-pilot-training-india` — 3 images. Cover left as the site-wide fallback (`/assets/hero-aircraft-1600w.jpg`), no cover prompt needed.
+
+### 1. Inline, after heading 2 (What does DGCA actually regulate about the cost of becoming a pilot?)
+
+- **Save to:** `public/blog/hidden-costs-of-pilot-training-india/regulated-vs-market-split.webp`
+- **Alt text:** A single frame split vertically by a thin solid line: the left side, smaller, holds one plain rupee-coin icon labelled with a small padlock, representing the one regulated fee; the right side, wider, holds six identical plain outline icons in a loose grid, none of them carrying a padlock (a graduation cap, an aircraft silhouette, a medical cross, a headset, a building outline, a suitcase), representing the many unregulated cost categories, all in the same neutral line-art style.
+
+```
+A single frame split vertically by one thin solid line into two unequal halves. The smaller left half holds one plain rupee-coin icon with a small padlock shape overlapping its edge, standing alone. The wider right half holds six small plain outline icons arranged in a loose, uneven grid, none of them carrying a padlock: a graduation cap, a simple aircraft silhouette, a medical cross, a headset, a building outline, and a suitcase. All icons are the same neutral line weight and size; only the single left-hand icon carries the padlock. Flat vector illustration, minimal clean style, professional Indian aviation training context, deep green and warm amber accents on a light neutral ground, generous negative space, absolutely NO text, words, letters, numbers or signage anywhere in the image. 1200 x 675.
+```
+
+### 2. Inline, after the "least predictable line item" section (below the cost-category table)
+
+- **Save to:** `public/blog/hidden-costs-of-pilot-training-india/cost-timeline-strip.webp`
+- **Alt text:** A horizontal strip with seven evenly spaced plain circular waypoints connected by a thin line, each holding a small line-art icon in order: an enrolment-form icon, an open-book icon, an aircraft-silhouette icon, a medical-cross icon, a headset-microphone icon, a document-with-seal icon, and a type-rating badge icon, all the same neutral colour and size to show a sequence of cost stages rather than a fixed price at each one.
+
+```
+A single horizontal line running left to right with seven small identical circular waypoint markers spaced evenly along it, all the same neutral size and outline weight. Each marker holds one small plain icon in this order: an enrolment-form icon, an open-book icon, a simple aircraft silhouette, a medical-cross icon, a headset-with-microphone icon, a document-with-wax-seal icon, and a small badge shape for the last marker. No marker is enlarged, coloured differently, or otherwise emphasised over the others. Flat vector illustration, minimal clean style, professional Indian aviation training context, deep green and warm amber accents on a light neutral ground, generous negative space, absolutely NO text, words, letters, numbers or signage anywhere in the image. 1200 x 675.
+```
+
+### 3. Inline, after the "questions to ask" table
+
+- **Save to:** `public/blog/hidden-costs-of-pilot-training-india/quote-checklist-clipboard.webp`
+- **Alt text:** A plain clipboard outline icon centred in the frame, holding a short vertical list of five identical small checkbox squares, two of the boxes shown ticked and three shown empty, with no text inside the boxes, rendered in flat neutral line art with no colour fill.
+
+```
+A single plain clipboard outline icon centred in the frame, holding a short vertical stack of five identical small square checkboxes down its middle. Two of the five checkboxes, the top two, show a simple tick mark inside them; the remaining three are empty outlines. No text, labels or numbers appear anywhere on the clipboard. Flat vector illustration, minimal clean style, professional Indian aviation training context, deep green and warm amber accents on a light neutral ground, generous negative space, absolutely NO text, words, letters, numbers or signage anywhere in the image. 1200 x 675.
+```
+
+---
