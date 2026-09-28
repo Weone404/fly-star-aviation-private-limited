@@ -1,5 +1,5 @@
 # Flying Star Aviator Private Limited
-> DGCA-approved Commercial Pilot Licence (CPL) and ATPL ground-class training institute in Dwarka, New Delhi, India. Operating since 2008, Flying Star Aviator prepares aspiring pilots for DGCA examinations and airline careers, and also provides B2B aviation services (aircraft management, MRO, CAMO, charter).
+> Commercial Pilot Licence (CPL) and ATPL ground-training institute in Dwarka, New Delhi, India. Operating since 2008, Flying Star Aviator provides DGCA theory preparation, examination guidance and pilot-training pathway counselling, and also provides B2B aviation services (aircraft management, MRO, CAMO, charter).
 
 ## Pilot training & courses
 - [CPL Ground Classes](https://www.flystar.co.in/courses/cpl): DGCA Commercial Pilot Licence ground training — Air Navigation, Meteorology, Air Regulations, Technical General.
@@ -10,7 +10,7 @@
 - [Pilot Training Overview](https://www.flystar.co.in/pilot-training): Training pathways in India, USA, Australia, New Zealand and South Africa.
 - [How to Become a Pilot](https://www.flystar.co.in/become-a-pilot/become-pilot): Step-by-step guide to becoming a commercial pilot in India after Class 12.
 - [PPL Training in India](https://www.flystar.co.in/pilot-training/ppl): Private Pilot Licence eligibility — a Class Ten pass, not 10+2 with Physics and Mathematics; Composite Paper and Aircraft & Engine subjects; 70% pass mark; passed papers valid two and a half years.
-- [CPL Flight Training in India](https://www.flystar.co.in/pilot-training/cpl): How ground training and flying training divide between a ground school and a DGCA-approved Flying Training Organisation, the 200-hour minimum, and DGCA theory requirements.
+- [CPL pathway in India](https://www.flystar.co.in/pilot-training/cpl): How ground training and flying training divide between a ground school and an appropriately approved Flying Training Organisation, with current DGCA requirements to be verified before training.
 - [Converting a Foreign Licence to a DGCA Licence](https://www.flystar.co.in/pilot-training/guide-to-conversion): DGCA conversion under CAR Section 7, Series G, Part I — the 10-hours-PIC-in-24-months currency rule, Indian written examinations and a skill test with a DGCA-approved examiner.
 - [Pilot Training in the Maldives](https://www.flystar.co.in/pilot-training/maldives): Verifying a school against the Maldives Civil Aviation Authority's published list of approved flight training organisations, and what DGCA conversion then requires.
 - [Pilot Training in Sri Lanka](https://www.flystar.co.in/pilot-training/sri-lanka): CAASL Commercial Pilot Licence requirements — minimum age 18, Class I medical, English Language Proficiency at ELPC Level 4 or higher — and the route back to an Indian licence.
@@ -82,9 +82,8 @@
 - [Apply](https://www.flystar.co.in/apply): Enquiry form for ground classes and career guidance, with what happens after you send it and what to have ready. Not a DGCA application: registering as a Flight Crew candidate happens only on the DGCA portal.
 
 ## Key facts
-- A DGCA Commercial Pilot Licence (CPL) in India requires a minimum of 200 hours of flight time, a Class 1 medical, and passes in DGCA theory subjects (Air Navigation, Meteorology, Air Regulations, Technical General) plus the RTR(A) licence.
-- Minimum age for a CPL is 18; candidates need Class 12 with Physics and Mathematics.
-- A DGCA Class 1 medical is mandatory for a CPL; a Class 2 medical is the minimum to begin flying training.
+- A CPL pathway includes ground training, medical, examination, radiotelephony and aircraft flying stages. Flight-experience requirements and applicable licensing conditions must be verified against the current DGCA regulations; flying training is completed at an appropriately approved FTO.
+- Educational, age and medical requirements depend on the current applicable DGCA rules and should be verified before enrolment.
 - Flying Star Aviator has provided DGCA CPL/ATPL ground classes in Dwarka, Delhi since 2008.
 - Flying Star Aviator Private Limited operates a single training centre, in Dwarka, New Delhi. It is a ground-training institute and does not own a flying school; flying hours are logged at partner DGCA-approved Flying Training Organisations.
 - DGCA ground classes are NOT mandatory to appear for DGCA theory examinations. Per DGCA CAR Section 7, Series B, Part I, a CPL candidate needs a computer number issued by the Central Examination Organisation and a 10+2 pass with Physics and Mathematics. Ground school attendance is not a listed eligibility condition.

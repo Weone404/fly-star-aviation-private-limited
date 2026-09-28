@@ -16,8 +16,8 @@ const BASE_URL = "https://www.flystar.co.in";
 
 const routeMeta: Record<string, RouteMeta> = {
   "/": {
-    title: "Flying Star Aviator | DGCA-Approved Pilot Training in India",
-    description: "Best pilot training institute in Delhi for DGCA Ground Classes & Commercial Pilot License (CPL). Expert instructors, structured courses, 98% placement rate.",
+    title: "Flying Star Aviator | CPL & ATPL Ground Training in India",
+    description: "CPL and ATPL ground training in Dwarka, New Delhi, with DGCA theory preparation, examination guidance and pilot-training pathway counselling.",
     canonical: `${BASE_URL}/`,
   },
   "/about": {
@@ -76,9 +76,9 @@ const routeMeta: Record<string, RouteMeta> = {
     canonical: `${BASE_URL}/services/components-spares`,
   },
   "/courses/cpl": {
-    title: "Commercial Pilot Licence (CPL) Ground Classes | Flying Star Aviator",
+    title: "Commercial Pilot Licence (CPL) Ground Training in India | Flying Star Aviator",
     description:
-      "Explore CPL ground classes, DGCA theory exam preparation, eligibility, subjects and guidance on the commercial pilot licensing pathway with Flying Star Aviator.",
+      "Learn about CPL eligibility, DGCA requirements, ground training, syllabus, costs, the licensing process and career pathways in India. Flying Star Aviator provides ground training and examination preparation; flying training is completed through an approved FTO.",
     canonical: `${BASE_URL}/courses/cpl`,
   },
   "/courses/atpl": {
@@ -168,7 +168,7 @@ const routeMeta: Record<string, RouteMeta> = {
   },
   "/pilot-training/cpl": {
     title: "CPL Flight Training in India: The Flying Half of the Licence",
-    description: "Ground school and flying school are different institutions. What DGCA requires for the theory papers, the 200-hour minimum and how the two halves sequence.",
+    description: "Ground school and flying school are different institutions. What DGCA requires for the theory papers, how current flight-experience rules apply and how the two halves sequence.",
     canonical: `${BASE_URL}/pilot-training/cpl`,
   },
   "/pilot-training/guide-to-conversion": {
@@ -208,7 +208,7 @@ const routeMeta: Record<string, RouteMeta> = {
   },
   "/locations/hyderabad": {
     title: "Pilot Training for Hyderabad Candidates | Flying Star Aviator",
-    description: "We have no centre in Hyderabad. Ground classes run from Dwarka, Delhi; flying through partner schools. Same DGCA papers, same 200-hour minimum.",
+    description: "We have no centre in Hyderabad. Ground classes run from Dwarka, Delhi; flying through partner schools. Current DGCA flight-experience requirements should be verified before training.",
     canonical: `${BASE_URL}/locations/hyderabad`,
   },
   "/locations/usa": {
@@ -403,8 +403,8 @@ export function getRouteMeta(pathname: string): RouteMeta {
   }
 
   return {
-    title: "Flying Star Aviator | Best Pilot Training Institute in India",
-    description: "Join Flying Star Aviator — India's best DGCA-approved CPL & ATPL ground classes in Delhi.",
+    title: "Flying Star Aviator | CPL & ATPL Ground Training in India",
+    description: "Flying Star Aviator Private Limited provides CPL and ATPL ground training, DGCA theory preparation and pilot-training pathway guidance in Dwarka, New Delhi.",
     canonical: `${BASE_URL}${resolvedPath === "/" ? "/" : resolvedPath}`,
     ogUrl: `${BASE_URL}${resolvedPath === "/" ? "/" : resolvedPath}`,
   };

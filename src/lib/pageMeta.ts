@@ -13,16 +13,16 @@ export interface PageMeta {
 }
 
 export const DEFAULT_META: PageMeta = {
-  title: "Flying Star Aviator | Best Pilot Training in India",
+  title: "Flying Star Aviator | CPL & ATPL Ground Training in India",
   description:
-    "Flying Star Aviator — DGCA-approved CPL & ATPL ground classes in Delhi since 2008.",
+    "Flying Star Aviator Private Limited provides CPL and ATPL ground training, DGCA theory preparation and pilot-training pathway guidance in Dwarka, New Delhi.",
 };
 
 export const PAGE_META: Record<string, PageMeta> = {
   "/": {
-    title: "Flying Star Aviator | Best Pilot Training Institute in India",
+    title: "Flying Star Aviator | CPL & ATPL Ground Training in India",
     description:
-      "Best pilot training institute in Delhi for DGCA Ground Classes & Commercial Pilot License (CPL). Expert instructors, structured courses, 98% placement rate.",
+      "CPL and ATPL ground training in Dwarka, New Delhi, with DGCA theory preparation, examination guidance and pilot-training pathway counselling.",
   },
   "/about": {
     title: "About Us | Flying Star Aviator Private Limited",
@@ -40,9 +40,9 @@ export const PAGE_META: Record<string, PageMeta> = {
       "Get in touch with Flying Star Aviator. Visit us in Dwarka, Delhi or call +91 9953536199.",
   },
   "/courses/cpl": {
-    title: "Commercial Pilot Licence (CPL) Ground Classes | Flying Star Aviator",
+    title: "Commercial Pilot Licence (CPL) Ground Training in India | Flying Star Aviator",
     description:
-      "Explore CPL ground classes, DGCA theory exam preparation, eligibility, subjects and guidance on the commercial pilot licensing pathway with Flying Star Aviator.",
+      "Learn about CPL eligibility, DGCA requirements, ground training, syllabus, costs, the licensing process and career pathways in India. Flying Star Aviator provides ground training and examination preparation; flying training is completed through an approved FTO.",
   },
   "/courses/atpl": {
     title: "ATPL Ground Training | Flying Star Aviator",
@@ -191,7 +191,7 @@ export const PAGE_META: Record<string, PageMeta> = {
   "/locations/hyderabad": {
     title: "Pilot Training for Hyderabad Candidates | Flying Star Aviator",
     description:
-      "We have no centre in Hyderabad. Ground classes run from Dwarka, Delhi; the flying phase is through partner schools. Same DGCA papers, same 200-hour minimum.",
+      "We have no centre in Hyderabad. Ground classes run from Dwarka, Delhi; the flying phase is through partner schools. Current DGCA flight-experience requirements should be verified before training.",
   },
 
   // ── DGCA sub-pages ──────────────────────────────────────────────────────────

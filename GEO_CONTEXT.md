@@ -19,23 +19,17 @@ guessed. Items marked [CONFIRM] need the owner's answer._
   Justdial (listed there as "Flying Star Aviation Pvt Ltd")
 
 ### [CONFIRM] — open questions blocking full precision
-1. **NAP name mismatch.** Site says "Flying Star Aviator Private Limited",
-   Justdial says "Flying Star Aviation Pvt Ltd", repo folder says
-   "fly-star-aviation-private-limited".
-   **Authoritative source: the MCA record** — mca.gov.in -> MCA Services ->
-   View Company Master Data -> search "Flying Star". The registered name + CIN
-   is the legal truth (the GST certificate carries the same string). Whatever
-   MCA returns becomes canonical for site schema, GBP and every directory; any
-   directory that disagrees gets logged for correction in the off-site phase.
+1. **NAP name mismatch.** The owner confirmed **Flying Star Aviator Private
+   Limited** as the canonical legal organization name for site-owned entity
+   data. Justdial still uses "Flying Star Aviation Pvt Ltd"; preserve that
+   third-party URL/handle but do not use it as the site's legal organization
+   name. MCA/GST evidence can still be used later to reconcile the directory.
 2. **DGCA-approved FTO, or ground-training institute?**
-   **Authoritative source: the approved Flying Training Organisations list on
-   dgca.gov.in.** Not on it = ground training institute. That is the stronger
-   position, not the weaker one: "DGCA CPL/ATPL ground classes in Delhi" is
-   thinner-competition exact intent, and a ground school can credibly write
-   advisor content ("how to choose a flying school") that FTOs cannot — and
-   answer engines cite neutral advisors over self-promoters.
-   Until confirmed on that list, the writer NEVER claims FTO status, flight
-   training, or a fleet. Accuracy and credibility gate, not a style preference.
+   The owner confirmed the current site positioning is **ground-training
+   institute only**. Until an official DGCA approved-FTO listing is supplied,
+   the writer must not claim FTO status, aircraft flight training, a fleet or
+   ownership of flying operations. Aircraft flying is described as taking place
+   through appropriately approved FTOs.
 3. **Named expert for author bylines** — name + verifiable credentials
    (e.g. "CPL holder, X hours, Y years instructing"). Required by CLAUDE.md
    rule 5 before any guide is published.
@@ -187,3 +181,41 @@ number.**
 ## Tone
 Informational, expert, plain English — a senior flight instructor explaining
 things to a serious aspirant. Never a salesperson.
+
+## Delta audit (2026-09-28)
+The July 30, 2026 baseline identified client-side rendering and 404s for
+sitemap URLs as the dominant technical risks. A live verification on
+2026-09-28 found:
+
+- `https://www.flystar.co.in/robots.txt` returns 200 and explicitly allows
+  GPTBot, OAI-SearchBot, ChatGPT-User, ClaudeBot, PerplexityBot,
+  Google-Extended, Applebot-Extended, CCBot, Amazonbot and
+  meta-externalagent. No blocked AI crawler was observed.
+- `https://www.flystar.co.in/llms.txt` returns 200. All 68 unique URLs listed
+  in the local `public/llms.txt` returned HTTP 200 in the verification sweep.
+- All 83 URLs in `public/sitemap.xml` returned HTTP 200. The previous
+  routeMeta/render-gate failures were not reproduced in this sweep.
+- GPTBot requests to `/`, `/courses/cpl` and `/dgca/ground-classes` returned
+  prerendered HTML with approximately 32,928, 23,254 and 16,612 characters of
+  visible body text respectively. The July “Loading Fly Star Aviator” shell
+  finding is therefore closed for the currently tested routes.
+- The CPL page now has a visible review date (`2026-09-25`), answer-first
+  content, source links, a ground-school/FTO distinction and unique FAQ data.
+  Its remaining verification risks are the unqualified “200 hours” table value,
+  the “high DGCA exam pass rate” claim, and named faculty-experience claims in
+  `src/pages/Courses/Cpl.tsx`; no supporting evidence for those claims was
+  found in the repository.
+- Entity accuracy remains open. `index.html` describes the organization as
+  providing “DGCA CPL Flight Training” and uses “Best”/“leading” language,
+  while the verified business context currently identifies the company as a
+  ground-training institute unless DGCA’s approved FTO list confirms otherwise.
+  Justdial uses the variant “Flying Star Aviation Pvt Ltd”; the MCA record is
+  still required to establish the canonical legal name.
+- The thinnest live page observed in the sample was
+  `https://www.flystar.co.in/services/charter-services`, whose extracted
+  content was only a phone number. This remains a content-quality risk even
+  though the URL is technically live.
+
+These observations are evidence for the 2026-09-28 delta report, not a
+replacement for the `[CONFIRM]` items above. No page content was rewritten as
+part of this audit.
