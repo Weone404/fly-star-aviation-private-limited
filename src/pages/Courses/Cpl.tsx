@@ -475,7 +475,7 @@ export default function CPLCoursePage() {
                 columns={["Training Component", "Indicative Cost Range (₹)", "Details"]}
                 rows={[
                     ["DGCA CPL Ground Classes", "Indicative range varies by institute", "Academic preparation for the DGCA theory examinations"],
-                    ["Flying Training (200 Hours)", "Indicative range varies by FTO and aircraft type", "Aircraft rental, instructor charges, and flight-hour requirements"],
+                    ["Flying Training at an Approved FTO", "Indicative range varies by FTO and aircraft type", "Aircraft rental, instructor charges, and flight-hour requirements"],
                     ["DGCA Medical Examinations", "Indicative range varies by assessment provider", "Class 2 and Class 1 medical evaluations"],
                     ["DGCA Exam & Licensing Fees", "Indicative range varies by exam and licensing stage", "Computer number, exam charges and licence-related fees"],
                     ["RTR(A) Training & WPC Exam", "₹15,000 – ₹40,000 (verify before payment)", "Radiotelephony preparation and examination fees"],
