@@ -1123,3 +1123,49 @@ A single plain clipboard outline icon centred in the frame, holding a short vert
 ```
 
 ---
+
+## DGCA Class 1 Medical in Delhi NCR: Initial vs Renewal, and Where Each Is Done
+
+`/blog/dgca-class-1-medical-centres-delhi-ncr` — 4 images. Cover left as the site-wide fallback (`/assets/hero-aircraft-1600w.jpg`), no cover prompt needed.
+
+### 1. Inline, after heading 2 (What is the difference between an initial, a re-initial and a renewal Class 1 medical?)
+
+- **Save to:** `public/blog/dgca-class-1-medical-centres-delhi-ncr/three-medical-types-flow.webp`
+- **Dimensions:** 1200x675
+- **Alt text:** A left-to-right flow of three connected stages: a Class 2 medical followed by an initial Class 1 medical at a named centre, then repeating annual renewals, with a separate branch marked re-initial for a lapsed assessment
+
+```
+A clean left-to-right flow of three large rounded stage shapes joined by arrows. The left shape holds a simple clinic-building icon, the centre shape holds a stethoscope icon, and the right shape holds a circular repeat-arrow icon. From the arrow between the centre and right shapes, a short branch curves downward to a fourth, smaller shape holding a single reset-arrow icon, set below and slightly right. The three main shapes are the same size; the branch shape is visibly smaller. Calm, orderly mood, like a procedure diagram in a training manual. Must NOT contain any text, letters, numbers, a human face, a hospital cross sign, or any logo. Flat vector illustration, minimal clean style, professional Indian aviation training context, deep green and warm amber accents on a light neutral ground, generous negative space, absolutely NO text, words, letters, numbers or signage anywhere in the image. 1200 x 675.
+```
+
+### 2. Inline, after heading 3 (Where can you take an initial Class 1 medical in Delhi NCR?)
+
+- **Save to:** `public/blog/dgca-class-1-medical-centres-delhi-ncr/ncr-centres-of-thirteen.webp`
+- **Dimensions:** 1200x675
+- **Alt text:** A simple outline map of India with thirteen small markers, four of them grouped tightly around Delhi and Gurugram and highlighted in amber, the other nine spread across Mumbai, Chennai, Bengaluru, Hyderabad, Indore, Pune and Jorhat in green
+
+```
+A plain outline silhouette of India, centred, filling about two thirds of the frame with empty space either side. Thirteen small identical circular markers sit on it. Four markers form a tight cluster in the north, near the top-centre of the country, filled warm amber. The remaining nine are filled deep green and spread at plausible city positions: two on the west coast, one on the south-east coast, two in the south, one in the centre, one in the west-centre, one in the far north-east, and one more in the south. No state borders, no city names. Mood: precise and uncluttered, like a reference map. Must NOT contain any text, letters, numbers, flags, aircraft, or decorative compass roses. Flat vector illustration, minimal clean style, professional Indian aviation training context, deep green and warm amber accents on a light neutral ground, generous negative space, absolutely NO text, words, letters, numbers or signage anywhere in the image. 1200 x 675.
+```
+
+### 3. Inline, after heading 5 (How long is a Class 1 medical valid, and when can you renew it?)
+
+- **Save to:** `public/blog/dgca-class-1-medical-centres-delhi-ncr/renewal-window-timeline.webp`
+- **Dimensions:** 1200x675
+- **Alt text:** A horizontal timeline showing a shaded renewal window opening 45 days before an expiry marker and closing at the expiry marker, with a longer pale bar after the expiry marker ending at a two-year line from the last medical
+
+```
+A single horizontal timeline line running across the centre of the frame. Left of centre, a bold amber shaded band sits on the line, ending exactly at a tall vertical expiry marker placed just right of centre. To the right of the expiry marker, a long, pale, low-contrast green bar continues along the line and ends at a second, shorter vertical marker near the right edge. A small calendar-page icon sits above the start of the amber band and a small padlock icon above the final marker. Mood: calm and legible, a planning diagram. Must NOT contain any text, letters, numbers, dates, clocks with numerals, or tick labels. Flat vector illustration, minimal clean style, professional Indian aviation training context, deep green and warm amber accents on a light neutral ground, generous negative space, absolutely NO text, words, letters, numbers or signage anywhere in the image. 1200 x 675.
+```
+
+### 4. Inline, after heading 8 (Where does the Class 2 medical fit, and where is it taken near Dwarka?)
+
+- **Save to:** `public/blog/dgca-class-1-medical-centres-delhi-ncr/class-2-to-class-1-sequence.webp`
+- **Dimensions:** 1200x675
+- **Alt text:** A three-step staircase rising from left to right: a Class 2 clinic building at the bottom step, an initial Class 1 centre in the middle, and a commercial licence document at the top, with a small pause marker between the second and third steps
+
+```
+A three-step staircase rising from the lower left to the upper right, drawn as flat blocks. On the bottom step stands a small low clinic building; on the middle step stands a larger hospital-style building with a wide entrance; on the top step lies a plain upright document card with a simple wing-shaped emblem and no writing. Between the middle and top steps, a small circular pause-symbol marker floats just above the gap. Mood: steady progress, no drama. Must NOT contain any text, letters, numbers, people, a red cross, or brand logos. Flat vector illustration, minimal clean style, professional Indian aviation training context, deep green and warm amber accents on a light neutral ground, generous negative space, absolutely NO text, words, letters, numbers or signage anywhere in the image. 1200 x 675.
+```
+
+---

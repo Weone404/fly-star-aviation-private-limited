@@ -48,6 +48,7 @@ Once a reserved page ships, strike its row and the query returns to the pool.
 | 2026-09-23 | `/blog/pilot-without-maths-nios-route-india` | Can You Become a Pilot Without Maths? The NIOS Route Explained | Licences & Eligibility |
 | 2026-09-25 | `/blog/cadet-pilot-programme-eligibility-dgca-vs-airline` | Cadet Pilot Programme Eligibility in India: What DGCA Requires, and What the Airline Adds | Career |
 | 2026-09-27 | `/blog/hidden-costs-of-pilot-training-india` | Hidden Costs of Pilot Training in India: What a Quote Leaves Out | Career |
+| 2026-10-01 | `/blog/dgca-class-1-medical-centres-delhi-ncr` | DGCA Class 1 Medical in Delhi NCR: Initial vs Renewal, and Where Each Is Done | Medical |
 
 _Rows for 2026-09-04 and 2026-09-05 above (`dgca-olode-vs-regular-exams` through `foreign-licence-conversion-checklist`) were backfilled on 2026-09-09: this session found them already live in `src/lib/blogData.js` and `public/sitemap.xml` but missing from this ledger. The Reserved rows for OLODE and exam misconceptions below were stale as a result — both have already shipped as blog posts, not page articles, so those two Reserved rows are struck through._
 

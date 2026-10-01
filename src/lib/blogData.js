@@ -2252,6 +2252,205 @@ export const STATIC_BLOG_POSTS = [
 <p>DGCA publishes and regulates one figure in the entire cost of becoming a pilot: Rs 2,500 per theory paper, non-refundable. Every other category &mdash; ground classes, flying hours, accommodation, medical fees, RTR(A) preparation, a type rating, financing &mdash; is priced by a private organisation with no regulator setting or auditing the number, which is exactly why no two "total cost" figures online ever match. Budget for the exam fee with confidence, since it is sourced and fixed, and treat every other line item as a quote to interrogate rather than a figure to accept, using the questions above before you sign anything.</p>
 <p class="ref-links">More: the <a href="/faq">FAQ</a> for short sourced answers, the <a href="/glossary">glossary</a> for the terms, and our <a href="/editorial-policy">editorial policy</a> for how these figures are checked.</p>`,
   },
+  {
+    slug: 'dgca-class-1-medical-centres-delhi-ncr',
+    title: 'DGCA Class 1 Medical in Delhi NCR: Initial vs Renewal, and Where Each Is Done',
+    seoTitle: 'DGCA Class 1 Medical in Delhi NCR: Initial vs Renewal Guide',
+    metaDescription: 'DGCA Class 1 medical: 13 initial centres, 4 in Delhi NCR, plus renewal rules, the 45-day window and the NOC, from DGCA\'s list updated 27 August 2026.',
+    tags: ['DGCA Class 1 medical', 'Class 1 medical centres Delhi', 'Class 1 medical renewal'],
+    category: 'Medical',
+    author: 'Flying Star Aviator Academics Team',
+    authorRole: 'DGCA CPL & ATPL ground instruction, Dwarka, New Delhi',
+    createdAt: '2026-10-01',
+    updatedAt: '2026-10-01',
+    coverImage: '/assets/hero-aircraft-1600w.jpg',
+    excerpt: 'TL;DR: A DGCA Class 1 medical is the fitness assessment required for a commercial licence. The first one is taken at one of 13 named centres, four in Delhi NCR. Renewals run from 45 days before expiry to expiry, at Air Force centres or empanelled examiners. A last medical older than two years needs a fresh initial.',
+    intro: 'A Class 1 medical decides whether a commercial licence is possible at all, yet the rules for where and when to take it are scattered across public lists that change. This guide reads DGCA\'s own Class 1 and Class 2 lists, updated on 27 August 2026, and sets out the initial, re-initial and renewal routes, with the Delhi NCR centres picked out.',
+    faqs: [
+      { q: 'What is the difference between an initial and a renewal DGCA Class 1 medical?', a: 'An initial Class 1 is the first one, taken by a person with a valid Class 2, at one of 13 named centres. A renewal keeps a current assessment valid and can be done at 18 Air Force centres or by DGCA empanelled Class 1 examiners, from 45 days before expiry until the expiry date.' },
+      { q: 'Where can I take the DGCA Class 1 medical in Delhi NCR?', a: 'DGCA\'s list of 27 August 2026 names four Delhi NCR centres for an initial Class 1: AFCME at Subroto Park, Indraprastha Apollo Hospital at Sarita Vihar, Max Multi Specialty Centre at Panchsheel Park, and Medanta in Gurugram. Renewals can also be done at Air Force stations and by empanelled examiners.' },
+      { q: 'How many centres conduct the initial Class 1 medical?', a: 'Thirteen: three Indian Air Force boarding centres and ten DGCA approved aeromedical evaluation centres, per DGCA\'s list updated on 27 August 2026. Four are in Delhi NCR. The others are in Mumbai, Chennai, Bengaluru, Hyderabad, Indore, Pune and Jorhat.' },
+      { q: 'Do I need a Class 2 medical before a Class 1?', a: 'DGCA\'s list describes an initial Class 1 as taken by "a person with a valid Class 2 medical" applying for the first time. So the Class 2 comes first. DGCA publishes a separate list of empanelled Class 2 examiners, grouped by region, which includes Dwarka addresses.' },
+      { q: 'How long is a DGCA Class 1 medical valid?', a: 'DGCA\'s list states one year for a person under 60 in multi-crew commercial air transport operations, and six months for a person above 40 in single-crew commercial air transport or instructional duties. It attributes this to CAR Section 7 Series C Part I, Revision 7. Confirm the exact wording in the CAR.' },
+      { q: 'When can I renew my Class 1 medical?', a: 'From 45 days before the date of expiry up to the date of expiry, per DGCA\'s list of 27 August 2026. A renewal may also be done after the validity has lapsed, but not beyond two years since the date of the last medical. After that you need a fresh initial.' },
+      { q: 'What happens if my last Class 1 medical is more than two years old?', a: 'You take a fresh, or re-initial, Class 1 medical rather than a renewal. DGCA\'s list restricts it to the IAF boarding centres (Bengaluru, New Delhi, Jorhat) and DGCA empanelled civil hospitals, and it requires a No Objection Certificate from the DGCA Medical Directorate.' },
+      { q: 'What is the NOC for a Class 1 medical?', a: 'A No Objection Certificate from the DGCA Medical Directorate, needed before a re-initial, a "Post TU" or a special medical. DGCA\'s list says the application is made on the eGCA portal and links a user manual. An ordinary initial or on-time renewal is not listed as needing one.' },
+      { q: 'How much does the DGCA Class 1 medical cost?', a: 'DGCA\'s published centre list gives no fee, so we state none. The fee is set by each centre. Ask the centre for the amount in writing, including what it covers, before you book, and treat any figure quoted by a third-party website as unverified.' }
+    ],
+    content:
+      `<p>A DGCA Class 1 medical is the fitness assessment you need before a commercial pilot licence can be issued. You take it first as an "initial" medical at one of 13 named centres, four of which are in Delhi NCR. After that, renewals are done at 18 Air Force centres or by empanelled examiners, within a set window before expiry.</p>
+
+<h2>What is the DGCA Class 1 medical, and who needs it?</h2>
+<p>The Class 1 medical is the higher of the two medical grades a pilot candidate meets on the way to a commercial licence. DGCA's own list describes it as "a requirement for commercial license". You do not take it first: the same list says an initial Class 1 is for a person who already holds a valid Class 2.</p>
+<p>That sequence matters for planning. The order is Class 2 first, then the initial Class 1 at a centre DGCA names, then renewals for as long as you fly commercially. Every figure in this article comes from DGCA's own published lists of Class 1 centres and Class 2 examiners, both marked as updated on 27 August 2026. Where we add judgement of our own, we say so.</p>
+<table>
+<thead><tr><th>Stage</th><th>What it is</th><th>Who it applies to</th></tr></thead>
+<tbody>
+<tr><td>Class 2 medical</td><td>The first medical, done before the Class 1</td><td>A candidate who has not yet had any Class 1 assessment</td></tr>
+<tr><td>Initial Class 1</td><td>The first Class 1 assessment</td><td>A person with a valid Class 2 applying for Class 1 for the first time</td></tr>
+<tr><td>Re-initial Class 1</td><td>A fresh initial, because the last Class 1 is old</td><td>A person whose last Class 1 medical is more than two years old</td></tr>
+<tr><td>Renewal Class 1</td><td>Renewal of an assessment that is current, or only recently expired</td><td>A pilot holding a Class 1 assessment</td></tr>
+</tbody>
+</table>
+<p class="source-note">Source: <a href="https://public-prd-dgca.s3.ap-south-1.amazonaws.com/InventoryList/personal/medical/class1/Class1.pdf" rel="noopener">DGCA, list of approved aeromedical evaluation centres and empanelled Class 1 examiners, updated 27 August 2026</a>. The list is the public document; check it again before you book, because DGCA revises it.</p>
+
+<h2>What is the difference between an initial, a re-initial and a renewal Class 1 medical?</h2>
+<p>An initial medical is your first Class 1 and is done only at the named centres. A re-initial is a fresh initial required when your last Class 1 is more than two years old. A renewal keeps a current assessment alive and can be done at a wider set of places, including empanelled examiners.</p>
+<p>The distinction decides where you may go, so identify your type before you ring anyone. DGCA's list tells candidates to check "whether the intended medical is an initial or a renewal medical" before seeking an appointment.</p>
+<h3>Initial medical</h3>
+<p>An initial medical is done "when a person with a valid Class 2 medical applies for the first time for a Class 1 Medical". For most CPL candidates this is the only type they meet in their first years.</p>
+<h3>Re-initial medical</h3>
+<p>If your last Class 1 medical is more than two years old, you do not renew. You sit a fresh initial. The list restricts this to the IAF boarding centres (the Institute of Aerospace Medicine in Bengaluru, AFCME in New Delhi and the Medical Evaluation Cell (East) in Jorhat) and to DGCA empanelled civil hospitals, citing a DGCA public notice dated 22 October 2025. A re-initial also needs a No Objection Certificate, covered below.</p>
+<h3>Renewal medical</h3>
+<p>A renewal is for a pilot whose Class 1 assessment is current, or has lapsed by less than two years since the last medical. It can be done at an Air Force centre or by a DGCA empanelled Class 1 examiner, which is why there are many more renewal locations than initial ones.</p>
+
+<figure class="img-slot" data-src="/blog/dgca-class-1-medical-centres-delhi-ncr/three-medical-types-flow.webp" data-dimensions="1200x675">
+  <span>&lt;A left-to-right flow of three connected stages: a Class 2 medical followed by an initial Class 1 medical at a named centre, then to repeating annual renewals, with a separate branch marked re-initial for a lapsed assessment&gt;</span>
+</figure>
+
+<h2>Where can you take an initial Class 1 medical in Delhi NCR?</h2>
+<p>Four of the 13 initial Class 1 centres are in Delhi NCR: the Air Force Central Medical Establishment at Subroto Park, Indraprastha Apollo Hospital at Sarita Vihar, Max Multi Specialty Centre at Panchsheel Park, and Medanta in Gurugram. The other nine are in Mumbai, Chennai, Bengaluru, Hyderabad, Indore, Pune and Jorhat.</p>
+<p>DGCA's list says Class 1 examinations "are conducted at Thirteen (13) Centres", three of them Indian Air Force boarding centres and ten DGCA approved Aeromedical Evaluation Centres. The table gives every centre by city and the examinations it is authorised for.</p>
+<table>
+<thead><tr><th>No.</th><th>Centre</th><th>City</th><th>Authorised for</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>Air Force Central Medical Establishment (AFCME), Subroto Park</td><td>New Delhi</td><td>Class 1, 2 and 3, all types</td></tr>
+<tr><td>2</td><td>Medical Evaluation Cell (East), 5 Air Force Hospital</td><td>Jorhat, Assam</td><td>Class 1, 2 and 3, all types</td></tr>
+<tr><td>3</td><td>Medical Evaluation Centre, Institute of Aerospace Medicine, IAF</td><td>Bengaluru</td><td>Class 1, 2 and 3, all types</td></tr>
+<tr><td>4</td><td>Dr. Balabhai Nanavati Hospital, Vile Parle (West)</td><td>Mumbai</td><td>Class 1 initial and re-initial only</td></tr>
+<tr><td>5</td><td>Apollo APHC Block, Greams Road</td><td>Chennai</td><td>Class 1, 2 and 3, all types</td></tr>
+<tr><td>6</td><td>Indraprastha Apollo Hospital, Sarita Vihar</td><td>New Delhi</td><td>Class 1, 2 and 3, all types</td></tr>
+<tr><td>7</td><td>Apollo Hospitals, Bannerghatta Road</td><td>Bengaluru</td><td>Class 1, 2 and 3, all types</td></tr>
+<tr><td>8</td><td>Apollo Hospitals, Vijay Nagar</td><td>Indore</td><td>Class 1, 2 and 3, all types</td></tr>
+<tr><td>9</td><td>Apollo Hospitals, Jubilee Hills</td><td>Hyderabad</td><td>Class 1, 2 and 3, all types</td></tr>
+<tr><td>10</td><td>Max Multi Specialty Centre, Panchsheel Park North</td><td>New Delhi</td><td>Class 1, 2 and 3, all types</td></tr>
+<tr><td>11</td><td>Medanta - The Medicity, Sector 38</td><td>Gurugram</td><td>Class 1, 2 and 3, all types</td></tr>
+<tr><td>12</td><td>Grant Medical Foundation, Ruby Hall Clinic</td><td>Pune</td><td>Class 1, 2 and 3, all types</td></tr>
+<tr><td>13</td><td>V M Medical Centre - Mirra's Aeromedical Centre, Worli</td><td>Mumbai</td><td>Class 1, 2 and 3, all types</td></tr>
+</tbody>
+</table>
+<p class="source-note">Source: <a href="https://public-prd-dgca.s3.ap-south-1.amazonaws.com/InventoryList/personal/medical/class1/Class1.pdf" rel="noopener">DGCA centre list, updated 27 August 2026</a>. Rows 1, 6, 10 and 11 are the Delhi NCR centres. The list gives each centre's own email and telephone; we do not reproduce contact details because they change.</p>
+<p>Two readings of the table are worth making. First, the Air Force centre at Subroto Park is the only one of the four run by the Air Force, and DGCA lists it under "Class 1 IAF Boarding Centres" alongside Bengaluru and Jorhat. Second, only one centre, Nanavati in Mumbai, is limited to Class 1 initial and re-initial medicals. The other twelve are authorised for every class and type.</p>
+
+<figure class="img-slot" data-src="/blog/dgca-class-1-medical-centres-delhi-ncr/ncr-centres-of-thirteen.webp" data-dimensions="1200x675">
+  <span>&lt;A simple outline map of India with thirteen small markers, four of them grouped tightly around Delhi and Gurugram and highlighted in amber, the other nine spread across Mumbai, Chennai, Bengaluru, Hyderabad, Indore, Pune and Jorhat in green&gt;</span>
+</figure>
+
+<h2>Where can you take a Class 1 renewal medical in Delhi NCR?</h2>
+<p>Renewals are conducted at 18 Indian Air Force centres and by 55 DGCA empanelled civil Class 1 examiners, according to the list's own header. Five of the 18 Air Force centres are in Delhi NCR: AFCME, Air Force Station Palam, Hindon in Ghaziabad, Rajokri and Gurgaon. The examiner table also carries Delhi, Gurugram, Noida and Dwarka addresses.</p>
+<p>This is the widest choice a pilot has. A renewal does not have to be done at a hospital on the initial list. A candidate based in Dwarka, for example, can find the examiner table lists at least three entries with Dwarka addresses, and Air Force Station Palam is also on the Air Force list.</p>
+<table>
+<thead><tr><th>Renewal route</th><th>Number on the list</th><th>Delhi NCR examples on the list</th></tr></thead>
+<tbody>
+<tr><td>Indian Air Force centres</td><td>18</td><td>AFCME Subroto Park; Air Force Station Palam; No. 1 Aero Medical Training Centre, Hindon, Ghaziabad; Air Force Station Rajokri; Air Force Station Gurgaon</td></tr>
+<tr><td>DGCA empanelled civil Class 1 examiners</td><td>55 stated in the header</td><td>Entries with addresses in Delhi, Gurugram, Noida and Dwarka</td></tr>
+</tbody>
+</table>
+<p class="source-note">Source: <a href="https://public-prd-dgca.s3.ap-south-1.amazonaws.com/InventoryList/personal/medical/class1/Class1.pdf" rel="noopener">DGCA centre list, updated 27 August 2026</a>. The header states 55 examiners; the numbered table we read runs to entry 53. We have not reconciled the difference, so use the list itself rather than our count.</p>
+<p>One practical check before you book with an examiner: the list carries an empanelment period against each name, for example "31 Dec 2026 to 31 Dec 2029" or "07 Apr 2026 to 06 Apr 2029". An examiner is only valid for your purpose while that period runs. Read the dates on the current list, not on an old copy.</p>
+
+<h2>How long is a Class 1 medical valid, and when can you renew it?</h2>
+<p>DGCA's list states that a Class 1 assessment is valid for one year for a person under 60 in multi-crew commercial air transport operations, or six months for a person above 40 in single-crew commercial air transport operations or on instructional duties. A renewal can be done from 45 days before expiry up to the expiry date.</p>
+<p>The list attributes these periods to Paragraph 5 of CAR Section 7 Series C Part I, Issue II dated 12 October 2017, Revision 7 dated 1 October 2025. We cite the periods as DGCA's list reports them and have not re-read the CAR itself for this article. The CAR is the controlling text, so confirm there before relying on a figure at the boundary of an age band.</p>
+<table>
+<thead><tr><th>Question</th><th>What DGCA's list says</th></tr></thead>
+<tbody>
+<tr><td>Validity, under 60, multi-crew commercial air transport</td><td>One year</td></tr>
+<tr><td>Validity, above 40, single-crew commercial air transport or instructional duties</td><td>Six months</td></tr>
+<tr><td>When the renewal may be done</td><td>Any time from 45 days before the date of expiry to the date of expiry</td></tr>
+<tr><td>Renewal after the validity has lapsed</td><td>Permitted, but not beyond two years since the date of the last medical</td></tr>
+<tr><td>Last Class 1 more than two years old</td><td>A fresh initial (re-initial) at an IAF boarding centre or a DGCA empanelled civil hospital</td></tr>
+</tbody>
+</table>
+<p class="source-note">Source: <a href="https://public-prd-dgca.s3.ap-south-1.amazonaws.com/InventoryList/personal/medical/class1/Class1.pdf" rel="noopener">DGCA centre list, updated 27 August 2026</a>, citing CAR Section 7 Series C Part I, Revision 7.</p>
+<h3>A worked example of the 45-day window</h3>
+<p>Take an illustrative assessment that expires on 30 June 2027. Counting back 45 days gives 16 May 2027. The renewal may be done on any day from 16 May 2027 to 30 June 2027. Doing it on 10 May is outside the window, and the earlier 2023 version of DGCA's list said an early or late renewal needed a No Objection Certificate. The current list is not as explicit on that point, so ask the centre.</p>
+<h3>A worked example of the two-year line</h3>
+<p>Take an illustrative last medical dated 10 January 2026. Per the list, a renewal after the validity has lapsed is still a renewal as long as it falls no later than two years after that date, which is 10 January 2028. After that date the same pilot needs a fresh initial. The practical lesson is plain: a lapsed medical is simpler to fix in the first two years than after, because a fresh initial narrows the choice of centre and adds an NOC step.</p>
+
+<figure class="img-slot" data-src="/blog/dgca-class-1-medical-centres-delhi-ncr/renewal-window-timeline.webp" data-dimensions="1200x675">
+  <span>&lt;A horizontal timeline showing a shaded renewal window opening 45 days before an expiry marker and closing at the expiry marker, with a longer pale bar after the expiry marker ending at a two-year line from the last medical&gt;</span>
+</figure>
+
+<h2>What is the No Objection Certificate for a Class 1 medical?</h2>
+<p>A No Objection Certificate, or NOC, is a clearance from the DGCA Medical Directorate that an aircrew member must obtain before a re-initial, a post-temporary-unfit or a special medical. DGCA's list says the application is made through the eGCA portal, and it publishes a user manual for the process.</p>
+<p>The NOC applies to the unusual cases, not to an ordinary first Class 1 or an on-time renewal. A candidate who takes an initial medical after a valid Class 2 does not need one under the list's wording. A candidate whose last Class 1 is more than two years old does.</p>
+<p>The list names three situations that need it: re-initial, "Post TU" medicals (which we read as after a period of temporary unfitness), and special medicals. For all three it refers to CAR Section 7 Series C Part I. If you are in one of these categories, start the NOC application early, because the medical itself cannot be scheduled around it.</p>
+<p>The list also gives the Medical Directorate's own contact numbers for queries. We do not reproduce them here; take them from the current list.</p>
+
+<h2>What changed between the 2023 list and the 2026 list?</h2>
+<p>Comparing the 27 August 2026 list with an earlier DGCA edition dated 2 March 2023 shows three changes: the renewal window now opens 45 days before expiry instead of one month, the re-initial centres are now two groups rather than six named Air Force sites, and the CAR revision cited moved from Revision 5 to Revision 7.</p>
+<p>This is the reason to be wary of any guide, including this one, that was written from an older copy. Many pages still online repeat the earlier wording.</p>
+<table>
+<thead><tr><th>Point</th><th>List dated 2 March 2023</th><th>List dated 27 August 2026</th></tr></thead>
+<tbody>
+<tr><td>Renewal window</td><td>From one month before expiry to expiry; earlier or later needed an NOC</td><td>From 45 days before expiry to expiry</td></tr>
+<tr><td>Re-initial locations</td><td>Six named Air Force sites, with an approved NOC</td><td>IAF boarding centres (IAM Bengaluru, AFCME New Delhi, MEC (East) Jorhat) and DGCA empanelled civil hospitals, per a public notice of 22 October 2025</td></tr>
+<tr><td>CAR revision cited</td><td>Revision 5, 5 April 2021</td><td>Revision 7, 1 October 2025</td></tr>
+</tbody>
+</table>
+<p class="source-note">Sources: <a href="https://public-prd-dgca.s3.ap-south-1.amazonaws.com/InventoryList/personal/medical/class1/Class1.pdf" rel="noopener">DGCA list, updated 27 August 2026</a> and <a href="https://public-prd-dgca.s3.ap-south-1.amazonaws.com/InventoryList/personal/medical/class1/c1exam.pdf" rel="noopener">DGCA list, updated 2 March 2023</a>.</p>
+
+<h2>Where does the Class 2 medical fit, and where is it taken near Dwarka?</h2>
+<p>The Class 2 medical comes first. DGCA publishes a separate list of empanelled Class 2 examiners, grouped by Northern, Southern, Western and Eastern region and updated on 27 August 2026. The Northern region section includes entries with Dwarka, Delhi and Gurugram addresses, so a Delhi NCR candidate can usually avoid travelling.</p>
+<p>The Class 2 list is a table of individual doctors, each with a clinic or hospital address, contact details and an empanelment end date. We do not name them. The point for planning is the contrast with the Class 1 initial: a Class 1 initial is confined to 13 centres, while the Class 2 list spreads across four regions.</p>
+<p>For a candidate in West Delhi, the Class 2 list shows at least five entries with Dwarka addresses, which makes Class 2 the easy step geographically. The harder step is the initial Class 1, where the nearest named centres are Sarita Vihar, Panchsheel Park, Subroto Park or Gurugram.</p>
+<p class="source-note">Source: <a href="https://public-prd-dgca.s3.ap-south-1.amazonaws.com/InventoryList/personal/medical/class2/Class2.pdf" rel="noopener">DGCA, list of empanelled Class 2 medical examiners, updated 27 August 2026</a>. Class 2 validity periods are not stated in that list, so we give none.</p>
+
+<figure class="img-slot" data-src="/blog/dgca-class-1-medical-centres-delhi-ncr/class-2-to-class-1-sequence.webp" data-dimensions="1200x675">
+  <span>&lt;A three-step staircase rising from left to right: a Class 2 clinic building at the bottom step, an initial Class 1 centre in the middle, and a commercial licence document at the top, with a small pause marker between the second and third steps&gt;</span>
+</figure>
+
+<h2>When in your training should you take the Class 1 medical?</h2>
+<p>DGCA's list does not say when in your training to take it. It states only that Class 1 is a requirement for a commercial licence. Our own view, not a DGCA rule, is to take the initial Class 1 before paying for flying, because a finding then decides whether the rest of the spend makes sense.</p>
+<p>This is judgement, so weigh it as such. Three practical reasons support it:</p>
+<ol>
+<li>A medical finding is binary for the licence. A candidate who cannot hold a Class 1 cannot hold a commercial licence, whatever else they complete.</li>
+<li>The initial Class 1 is the most restricted step by location. Booking takes lead time, and the centres are few.</li>
+<li>Theory study does not wait on the medical. The CPL theory papers require a computer number and 10+2 with Physics and Mathematics, and ground school attendance is not required. See <a href="/blog/cpl-eligibility-after-12th">CPL eligibility after 12th</a> for the sourced detail. You can study while the medical is scheduled.</li>
+</ol>
+<p>The counter-argument is cost and timing: if you are still deciding whether to proceed, an early Class 1 can lapse before you use it. A Class 1 assessment is valid for a limited period, so an early one only helps if you intend to proceed within that period, or are willing to renew it.</p>
+
+<h2>What does DGCA's list not tell you?</h2>
+<p>It publishes no fee, no list of tests, and no list of conditions that cause a finding of unfit. It also does not state how long an initial appointment takes to obtain. Any page that quotes a Class 1 medical fee, a test list or a waiting time is relying on something other than this document.</p>
+<p>We have not quoted a fee or a test list in this article for that reason. <a href="/dgca/medical">Our DGCA medical page</a> and the CAR itself are where those answers belong, and each should be read against its date.</p>
+<table>
+<thead><tr><th>Question candidates ask</th><th>In DGCA's list?</th><th>Where to look</th></tr></thead>
+<tbody>
+<tr><td>Which centres do an initial Class 1?</td><td>Yes, 13 named centres</td><td>The centre list, updated 27 August 2026</td></tr>
+<tr><td>How long is a Class 1 valid?</td><td>Yes, citing CAR Section 7 Series C Part I</td><td>The CAR for the controlling wording</td></tr>
+<tr><td>What does a Class 1 medical cost?</td><td>No</td><td>The centre, in writing</td></tr>
+<tr><td>Which tests are included?</td><td>No</td><td>The CAR and the centre</td></tr>
+<tr><td>What causes a finding of unfit?</td><td>No</td><td>The CAR and the examining centre</td></tr>
+</tbody>
+</table>
+<p>Ask the centre for the fee in writing, including what is covered, before you book. That is the same discipline we recommend for any training cost. Our guide to the <a href="/dgca">DGCA exam process</a> covers the theory side of the same planning.</p>
+
+<h2>Frequently asked questions</h2>
+<h3>What is the difference between an initial and a renewal DGCA Class 1 medical?</h3>
+<p>An initial Class 1 is the first one, taken by a person with a valid Class 2, at one of 13 named centres. A renewal keeps a current assessment valid and can be done at 18 Air Force centres or by DGCA empanelled Class 1 examiners, from 45 days before expiry until the expiry date.</p>
+<h3>Where can I take the DGCA Class 1 medical in Delhi NCR?</h3>
+<p>DGCA's list of 27 August 2026 names four Delhi NCR centres for an initial Class 1: AFCME at Subroto Park, Indraprastha Apollo Hospital at Sarita Vihar, Max Multi Specialty Centre at Panchsheel Park, and Medanta in Gurugram. Renewals can also be done at Air Force stations and by empanelled examiners.</p>
+<h3>How many centres conduct the initial Class 1 medical?</h3>
+<p>Thirteen: three Indian Air Force boarding centres and ten DGCA approved aeromedical evaluation centres, per DGCA's list updated on 27 August 2026. Four are in Delhi NCR. The others are in Mumbai, Chennai, Bengaluru, Hyderabad, Indore, Pune and Jorhat.</p>
+<h3>Do I need a Class 2 medical before a Class 1?</h3>
+<p>DGCA's list describes an initial Class 1 as taken by "a person with a valid Class 2 medical" applying for the first time. So the Class 2 comes first. DGCA publishes a separate list of empanelled Class 2 examiners, grouped by region, which includes Dwarka addresses.</p>
+<h3>How long is a DGCA Class 1 medical valid?</h3>
+<p>DGCA's list states one year for a person under 60 in multi-crew commercial air transport operations, and six months for a person above 40 in single-crew commercial air transport or instructional duties. It attributes this to CAR Section 7 Series C Part I, Revision 7. Confirm the exact wording in the CAR.</p>
+<h3>When can I renew my Class 1 medical?</h3>
+<p>From 45 days before the date of expiry up to the date of expiry, per DGCA's list of 27 August 2026. A renewal may also be done after the validity has lapsed, but not beyond two years since the date of the last medical. After that you need a fresh initial.</p>
+<h3>What happens if my last Class 1 medical is more than two years old?</h3>
+<p>You take a fresh, or re-initial, Class 1 medical rather than a renewal. DGCA's list restricts it to the IAF boarding centres (Bengaluru, New Delhi, Jorhat) and DGCA empanelled civil hospitals, and it requires a No Objection Certificate from the DGCA Medical Directorate.</p>
+<h3>What is the NOC for a Class 1 medical?</h3>
+<p>A No Objection Certificate from the DGCA Medical Directorate, needed before a re-initial, a "Post TU" or a special medical. DGCA's list says the application is made on the eGCA portal and links a user manual. An ordinary initial or on-time renewal is not listed as needing one.</p>
+<h3>How much does the DGCA Class 1 medical cost?</h3>
+<p>DGCA's published centre list gives no fee, so we state none. The fee is set by each centre. Ask the centre for the amount in writing, including what it covers, before you book, and treat any figure quoted by a third-party website as unverified.</p>
+
+<h2>The short version</h2>
+<p>Take the Class 2 medical first. Take the initial Class 1 at one of 13 named centres, four of which are in Delhi NCR. Renew it between 45 days before expiry and expiry. If your last Class 1 is more than two years old, expect a fresh initial and an NOC. Always read the current DGCA list, because it changes, and treat any fee or test list from another site as unverified.</p>
+<p>If you are planning the theory papers alongside the medical, see <a href="/dgca/ground-classes">DGCA ground classes in Dwarka</a> for how we teach them, and <a href="/courses/cpl">the CPL course page</a> for the full sequence.</p>
+<p class="ref-links">More: the <a href="/faq">FAQ</a> for short sourced answers, the <a href="/glossary">glossary</a> for the terms, and our <a href="/editorial-policy">editorial policy</a> for how these figures are checked.</p>`,
+  },
 ];
 
 /**
