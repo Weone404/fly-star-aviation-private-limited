@@ -15,7 +15,7 @@ export default {
     },
     extend: {
       fontFamily: {
-        poppins: ["Poppins", "sans-serif"],
+        poppins: ["Segoe UI Variable", "Segoe UI", "Inter", "Arial", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",

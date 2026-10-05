@@ -125,8 +125,7 @@ export default function ContactPopup(): JSX.Element {
     return (
         <>
             <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800&family=Nunito:wght@300;400;500;600&display=swap');
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+            *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
         :root {
           --sky: #1a3a6b; --sky-deep: #0f2347; --sky-light: #2554a0;
@@ -139,7 +138,7 @@ export default function ContactPopup(): JSX.Element {
 
         /* ── Demo shell ── */
         .fsa-demo {
-          font-family: 'Nunito', sans-serif;
+          font-family: "Segoe UI Variable", "Segoe UI", sans-serif;
           min-height: 100vh;
           background: linear-gradient(140deg, var(--sky-deep) 0%, var(--sky) 55%, #1d4fa0 100%);
           display: flex; flex-direction: column;

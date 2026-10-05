@@ -33,10 +33,8 @@ const VISIBLE = 4;
 const AUTO_SLIDE = 3200;
 
 const CSS = `
-  @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&display=swap');
-
   .prs-section {
-    font-family: 'DM Sans', 'Poppins', sans-serif;
+    font-family: "Segoe UI Variable", "Segoe UI", sans-serif;
     background: #f5f8f5;
     padding: 96px 0 108px;
     overflow: hidden;
@@ -90,7 +88,7 @@ const CSS = `
     50%       { transform: scale(1.5); opacity: 0.65; }
   }
   .prs-header h2 {
-    font-family: 'Syne', 'Montserrat', sans-serif;
+    font-family: "Segoe UI Variable", "Segoe UI", sans-serif;
     font-size: clamp(1.9rem, 4.2vw, 3.2rem);
     font-weight: 800;
     color: #0a2d1a;
@@ -105,7 +103,7 @@ const CSS = `
   /* ── Counter ── */
   .prs-counter { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; }
   .prs-counter-num {
-    font-family: 'Syne', sans-serif;
+    font-family: "Segoe UI Variable", "Segoe UI", sans-serif;
     font-size: 3rem; font-weight: 800;
     color: #0a2d1a; line-height: 1; letter-spacing: -0.04em;
   }

@@ -7,8 +7,6 @@ const ADMIN_USERNAME = "admin";
 const ADMIN_PASSWORD = "weoneaviation";
 
 const globalStyles = `
-  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500&display=swap');
-
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body { background: #060e1c !important; }
 

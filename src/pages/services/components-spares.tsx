@@ -125,7 +125,7 @@ export default function ComponentsAndSpares() {
 
     return (
         <Layout>
-            <div style={{ fontFamily: "'Poppins', sans-serif", background: "hsl(150,30%,5%)", minHeight: "100vh", color: "#fff" }}>
+            <div style={{ fontFamily: "'Segoe UI Variable', 'Segoe UI', sans-serif", background: "hsl(150,30%,5%)", minHeight: "100vh", color: "#fff" }}>
 
                 {/* ── Hero ── */}
                 <div style={{

@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 
 const MAP_IMAGE = "/assets/world-map.webp";
 
@@ -89,7 +88,39 @@ const countries = [
 ];
 
 export function WorldMapSection() {
-  const [activeCountry, setActiveCountry] = useState(null);
+  const [activeCountry, setActiveCountry] = useState<string | null>(null);
+  const headingRef = useRef<HTMLDivElement>(null);
+  const mapRef = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReducedMotion) {
+      setVisible(true);
+      return;
+    }
+
+    const elements = [headingRef.current, mapRef.current].filter(Boolean) as Element[];
+    if (!elements.length) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const shouldReveal = entries.some((entry) => entry.isIntersecting);
+        if (shouldReveal) {
+          setVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.12 }
+    );
+
+    elements.forEach((element) => observer.observe(element));
+    return () => observer.disconnect();
+  }, []);
+
+  const revealStyle = visible
+    ? { opacity: 1, transform: "translateY(0)" }
+    : { opacity: 0, transform: "translateY(30px)" };
 
   return (
     <section style={{
@@ -111,11 +142,14 @@ export function WorldMapSection() {
       <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 24px", position: "relative" }}>
 
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          style={{ textAlign: "center", marginBottom: "60px" }}
+        <div
+          ref={headingRef}
+          style={{
+            textAlign: "center",
+            marginBottom: "60px",
+            transition: "opacity 0.6s ease, transform 0.6s ease",
+            ...revealStyle,
+          }}
         >
           <span style={{
             display: "inline-block", fontSize: "12px", fontWeight: 700,
@@ -141,17 +175,20 @@ export function WorldMapSection() {
             From the skies of India to New Zealand and beyond — we bring world-class aviation
             education to aspiring <a href="https://www.weoneaviation.com/" style={{ color: "#38bdf8", textDecoration: "underline" }}>pilots</a> on every continent.
           </p>
-        </motion.div>
+        </div>
 
         {/* Map */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.97 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
+        <div
+          ref={mapRef}
           style={{
-            position: "relative", borderRadius: "20px", overflow: "hidden",
+            position: "relative",
+            borderRadius: "20px",
+            overflow: "hidden",
             border: "1px solid rgba(56,189,248,0.15)",
-            background: "#060f1e", marginBottom: "48px",
+            background: "#060f1e",
+            marginBottom: "48px",
+            transition: "opacity 0.7s ease, transform 0.7s ease",
+            ...revealStyle,
           }}
         >
           <svg viewBox="0 0 1000 500" style={{ width: "100%", display: "block", minHeight: "300px" }}>
@@ -243,30 +280,30 @@ export function WorldMapSection() {
               );
             })}
           </svg>
-        </motion.div>
+        </div>
 
         {/* Country Cards */}
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))", gap: "16px" }}>
           {countries.map((country, index) => {
             const isActive = activeCountry === country.id;
             return (
-              <motion.a
+              <a
                 key={country.id}
                 href={country.href}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.07 }}
                 onMouseEnter={() => setActiveCountry(country.id)}
                 onMouseLeave={() => setActiveCountry(null)}
                 style={{
-                  display: "block", padding: "20px", borderRadius: "14px",
+                  display: "block",
+                  padding: "20px",
+                  borderRadius: "14px",
                   border: isActive ? "1px solid rgba(56,189,248,0.6)" : "1px solid rgba(255,255,255,0.07)",
                   background: isActive
                     ? "linear-gradient(135deg, rgba(56,189,248,0.12), rgba(129,140,248,0.08))"
                     : "rgba(255,255,255,0.03)",
-                  textDecoration: "none", transition: "all 0.3s ease",
+                  textDecoration: "none",
+                  transition: `all 0.3s ease, opacity 0.4s ease ${index * 50}ms`,
                   transform: isActive ? "translateY(-2px)" : "none",
+                  opacity: visible ? 1 : 0,
                   boxShadow: isActive ? "0 8px 32px rgba(56,189,248,0.15)" : "none",
                 }}
               >
@@ -286,20 +323,25 @@ export function WorldMapSection() {
                 }}>
                   Explore Program <span style={{ fontSize: "14px" }}>→</span>
                 </div>
-              </motion.a>
+              </a>
             );
           })}
         </div>
 
         {/* Stats */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+        <div
           style={{
-            marginTop: "48px", display: "grid", gridTemplateColumns: "repeat(3, 1fr)",
-            gap: "1px", background: "rgba(56,189,248,0.1)", borderRadius: "16px",
-            overflow: "hidden", border: "1px solid rgba(56,189,248,0.1)",
+            marginTop: "48px",
+            display: "grid",
+            gridTemplateColumns: "repeat(3, 1fr)",
+            gap: "1px",
+            background: "rgba(56,189,248,0.1)",
+            borderRadius: "16px",
+            overflow: "hidden",
+            border: "1px solid rgba(56,189,248,0.1)",
+            opacity: visible ? 1 : 0,
+            transform: visible ? "translateY(0)" : "translateY(20px)",
+            transition: "opacity 0.5s ease, transform 0.5s ease",
           }}
         >
           {[
@@ -320,7 +362,7 @@ export function WorldMapSection() {
               </div>
             </div>
           ))}
-        </motion.div>
+        </div>
 
       </div>
     </section>
