@@ -1,11 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
+    --font-sans: "Segoe UI Variable", "Segoe UI", "Inter", Arial, sans-serif;
     /* Aviation Green Theme */
     --background: 0 0% 100%;
     --foreground: 150 30% 10%;
@@ -114,11 +113,22 @@
   }
 
   body {
-    @apply bg-background text-foreground font-poppins antialiased;
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-sans);
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-poppins font-bold tracking-tight;
+    @apply font-bold tracking-tight;
+    font-family: var(--font-sans);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
 
@@ -326,7 +336,7 @@
   border-radius: 14px;
   background: var(--surface);
   color: var(--ink-faint);
-  font-family: Poppins, ui-sans-serif, system-ui, sans-serif;
+  font-family: "Segoe UI Variable", "Segoe UI", sans-serif;
   font-size: 0.82rem;
   line-height: 1.5;
 }
@@ -342,7 +352,7 @@
 .prose-editorial figure img { border-radius: 14px; width: 100%; height: auto; }
 .prose-editorial figcaption {
   margin-top: 0.6rem;
-  font-family: Poppins, ui-sans-serif, system-ui, sans-serif;
+  font-family: "Segoe UI Variable", "Segoe UI", sans-serif;
   font-size: 0.8rem;
   color: var(--ink-faint);
   text-align: center;

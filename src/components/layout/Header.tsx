@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { createPortal } from "react-dom";
-import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronDown, Phone, Plane } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -187,26 +186,19 @@ export function Header() {
                     {item.children && <ChevronDown className="h-5 w-5" />}
                   </Link>
 
-                  <AnimatePresence>
-                    {item.children && activeDropdown === item.name && (
-                      <motion.div
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 10 }}
-                        className="absolute top-full left-0 w-72 bg-background rounded-xl shadow-hover border p-2"
-                      >
-                        {item.children.map((child) => (
-                          <Link
-                            key={child.href}
-                            to={child.href}
-                            className="block px-4 py-3 text-lg font-medium rounded-lg hover:bg-secondary hover:text-primary"
-                          >
-                            {child.name}
-                          </Link>
-                        ))}
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+                  {item.children && activeDropdown === item.name && (
+                    <div className="absolute top-full left-0 w-72 bg-background rounded-xl shadow-hover border p-2 transition-all duration-200 ease-out animate-in fade-in">
+                      {item.children.map((child) => (
+                        <Link
+                          key={child.href}
+                          to={child.href}
+                          className="block px-4 py-3 text-lg font-medium rounded-lg hover:bg-secondary hover:text-primary"
+                        >
+                          {child.name}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
                 </div>
               ))}
             </nav>
@@ -233,58 +225,53 @@ export function Header() {
 
       </header>
       {createPortal(
-        <AnimatePresence>
-          {isMobileMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-x-0 z-[60] xl:hidden"
-              style={{
-                top: mobileMenuTop,
-                height: `calc(100dvh - ${mobileMenuTop}px)`,
-              }}
-              onClick={closeMobileMenu}
+        isMobileMenuOpen ? (
+          <div
+            className="fixed inset-x-0 z-[60] xl:hidden transition-opacity duration-200"
+            style={{
+              top: mobileMenuTop,
+              height: `calc(100dvh - ${mobileMenuTop}px)`,
+            }}
+            onClick={closeMobileMenu}
+          >
+            <div className="absolute inset-0 bg-black/20" aria-hidden="true" />
+            <nav
+              id="mobile-navigation"
+              aria-label="Mobile navigation"
+              onClick={(event) => event.stopPropagation()}
+              className="relative mx-auto h-full w-full overflow-y-auto overscroll-contain border-t bg-background px-4 py-4 shadow-hover"
             >
-              <div className="absolute inset-0 bg-black/20" aria-hidden="true" />
-              <nav
-                id="mobile-navigation"
-                aria-label="Mobile navigation"
-                onClick={(event) => event.stopPropagation()}
-                className="relative mx-auto h-full w-full overflow-y-auto overscroll-contain border-t bg-background px-4 py-4 shadow-hover"
-              >
-                {navigation.map((item) => (
-                  <div key={item.name}>
-                    <Link
-                      to={item.href}
-                      onClick={closeMobileMenu}
-                      className="block px-4 py-3 text-lg font-semibold rounded-lg hover:bg-secondary"
-                    >
-                      {item.name}
-                    </Link>
-                    {item.children && (
-                      <div className="ml-4 space-y-1">
-                        {item.children.map((child) => (
-                          <Link
-                            key={child.href}
-                            to={child.href}
-                            onClick={closeMobileMenu}
-                            className="block px-4 py-2 text-lg text-muted-foreground hover:text-primary"
-                          >
-                            {child.name}
-                          </Link>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                ))}
-                <Button variant="aviation" size="lg" className="w-full mt-4" onClick={closeMobileMenu}>
-                  Get Free Counselling
-                </Button>
-              </nav>
-            </motion.div>
-          )}
-        </AnimatePresence>,
+              {navigation.map((item) => (
+                <div key={item.name}>
+                  <Link
+                    to={item.href}
+                    onClick={closeMobileMenu}
+                    className="block px-4 py-3 text-lg font-semibold rounded-lg hover:bg-secondary"
+                  >
+                    {item.name}
+                  </Link>
+                  {item.children && (
+                    <div className="ml-4 space-y-1">
+                      {item.children.map((child) => (
+                        <Link
+                          key={child.href}
+                          to={child.href}
+                          onClick={closeMobileMenu}
+                          className="block px-4 py-2 text-lg text-muted-foreground hover:text-primary"
+                        >
+                          {child.name}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ))}
+              <Button variant="aviation" size="lg" className="w-full mt-4" onClick={closeMobileMenu}>
+                Get Free Counselling
+              </Button>
+            </nav>
+          </div>
+        ) : null,
         document.body,
       )}
     </>

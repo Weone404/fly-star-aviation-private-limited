@@ -74,6 +74,9 @@ export default defineConfig(({ mode }) => ({
 
           // Lucide icons — large library, separate chunk
           "vendor-icons": ["lucide-react"],
+
+          // Motion library is only needed on animation-heavy routes
+          "vendor-motion": ["framer-motion"],
         },
       },
     },

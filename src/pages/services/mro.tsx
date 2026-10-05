@@ -119,7 +119,7 @@ export default function MROServices() {
     return (
         <Layout>
             <div style={{
-                fontFamily: "'Poppins', sans-serif",
+                fontFamily: "'Segoe UI Variable', 'Segoe UI', sans-serif",
                 background: "hsl(150,30%,5%)",
                 minHeight: "100vh",
                 color: "#fff",
