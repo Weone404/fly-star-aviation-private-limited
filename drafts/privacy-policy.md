@@ -38,8 +38,11 @@ number, email address, and any message content.
 **Information collected automatically.** Standard web-server and analytics data:
 IP address, browser and device type, pages visited, referring page, and
 timestamps.
-[CONFIRM: which analytics or tracking tools are actually installed — e.g.
-Google Analytics, Meta Pixel, Google Ads tags. Each one must be named here.]
+[CONFIRM before publication: source currently includes Google Analytics 4
+(measurement ID `G-KF8SKVR2W9`), Google Tag Manager (`GTM-KMN4PFR3`), Microsoft
+Clarity, and Matomo Cloud. Verify which are active in production, including
+third-party tags configured inside Google Tag Manager, and name each in the
+published policy.]
 
 **Cookies.** [CONFIRM: which cookies are set, by whom, and for what purpose.
 If advertising or analytics cookies are used, a consent mechanism is likely
