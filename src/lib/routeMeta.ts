@@ -86,15 +86,15 @@ const routeMeta: Record<string, RouteMeta> = {
     description: "Airline Transport Pilot License ground training for pilots advancing their aviation career.",
     canonical: `${BASE_URL}/courses/atpl`,
   },
-  "/courses/Air-india-pilot-interview": {
+  "/courses/air-india-pilot-interview": {
     title: "Air India Pilot Interview Preparation 2026 | Flying Star Aviator",
     description: "Air India pilot interview coaching, psychometric assessments and personality preparation for airline entry.",
-    canonical: `${BASE_URL}/courses/Air-india-pilot-interview`,
+    canonical: `${BASE_URL}/courses/air-india-pilot-interview`,
   },
-  "/courses/Indigo-pilot-interview": {
+  "/courses/indigo-pilot-interview": {
     title: "IndiGo Pilot Interview Preparation (JFO 2026) | Flying Star Aviator",
     description: "IndiGo pilot interview coaching with mock interviews, CRM training, and HR preparation.",
-    canonical: `${BASE_URL}/courses/Indigo-pilot-interview`,
+    canonical: `${BASE_URL}/courses/indigo-pilot-interview`,
   },
   "/courses/airline-preparation": {
     title: "Airline Preparation Course in India | Pilot Interview & CRM Training",

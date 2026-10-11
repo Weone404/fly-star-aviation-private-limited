@@ -19,15 +19,15 @@ const navigation: NavItem[] = [
 
   {
     name: "Courses",
-    href: "/Courses/cpl",
+    href: "/courses/cpl",
     children: [
       { name: "CPL – Commercial Pilot License", href: "/courses/cpl" },
       { name: "ATPL – Airline Transport Pilot License", href: "/courses/atpl" },
       { name: "Airline Preparation Classes", href: "/courses/airline-preparation" },
       { name: "Cabin Crew Course", href: "/courses/cabin-crew" },
       { name: "Airport Ground Staff Course", href: "/courses/ground-staff" },
-      { name: "Adapt test Air India", href: "/courses/Air-india-pilot-interview" },
-      { name: "Adapt test IndiGo", href: "/courses/Indigo-pilot-interview" },
+      { name: "Adapt test Air India", href: "/courses/air-india-pilot-interview" },
+      { name: "Adapt test IndiGo", href: "/courses/indigo-pilot-interview" },
 
     ],
   },

@@ -232,12 +232,12 @@ export const PAGE_META: Record<string, PageMeta> = {
     description:
       "Airline interview and assessment preparation to help pilots land their first airline job.",
   },
-  "/courses/Air-india-pilot-interview": {
+  "/courses/air-india-pilot-interview": {
     title: "Air India Pilot Interview Preparation | Flying Star Aviator",
     description:
       "Targeted preparation for the Air India pilot interview and assessment process.",
   },
-  "/courses/Indigo-pilot-interview": {
+  "/courses/indigo-pilot-interview": {
     title: "IndiGo Pilot Interview Preparation | Flying Star Aviator",
     description:
       "Targeted preparation for the IndiGo pilot interview and assessment process.",

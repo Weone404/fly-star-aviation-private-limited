@@ -148,8 +148,8 @@ function AppInner() {
         <Route path="/courses/atpl" element={<Atpl />} />
         <Route path="/courses/cabin-crew" element={<CabinCrewPage />} />
         <Route path="/courses/ground-staff" element={<GroundStaffPage />} />
-        <Route path="/courses/Air-india-pilot-interview" element={<Airindiapilotinterviewpage />} />
-        <Route path="/courses/Indigo-pilot-interview" element={<IndigoPilotInterviewPage />} />
+        <Route path="/courses/air-india-pilot-interview" element={<Airindiapilotinterviewpage />} />
+        <Route path="/courses/indigo-pilot-interview" element={<IndigoPilotInterviewPage />} />
         <Route path="/courses/airline-preparation" element={<AirlinePreparationPage />} />
 
         {/* DGCA */}

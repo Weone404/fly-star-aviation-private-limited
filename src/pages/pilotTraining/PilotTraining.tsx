@@ -12,7 +12,7 @@ const licenses = [
     duration: "18-24 months",
     cost: "₹35-50 Lakhs",
     hours: "200 flying hours",
-    href: "/Courses/Cpl",
+    href: "/courses/cpl",
     features: [
       "Fly commercial aircraft",
       "Employment eligibility",
@@ -27,7 +27,7 @@ const licenses = [
     duration: "6-12 months",
     cost: "₹10-15 Lakhs",
     hours: "40 flying hours",
-    href: "/Courses/Atpl",
+    href: "/courses/atpl",
     features: [
       "Fly for personal use",
       "Foundation for CPL",

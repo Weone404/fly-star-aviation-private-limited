@@ -25,8 +25,8 @@
 - [What an Airline Transport Pilot Licence Is](https://www.flystar.co.in/become-a-pilot/airline-transport-pilot-licence): What an ATPL permits and how it differs from a CPL.
 - [Cabin Crew Course](https://www.flystar.co.in/courses/cabin-crew): Cabin crew training and what the role requires. Not a pilot licence pathway.
 - [Airport Ground Staff Course](https://www.flystar.co.in/courses/ground-staff): Ground staff training covering passenger handling, baggage and customer service. Not a pilot licence pathway.
-- [Air India Pilot Interview Preparation](https://www.flystar.co.in/courses/Air-india-pilot-interview): Preparation for the Air India pilot selection process.
-- [IndiGo Pilot Interview Preparation](https://www.flystar.co.in/courses/Indigo-pilot-interview): Preparation for the IndiGo pilot selection process.
+- [Air India Pilot Interview Preparation](https://www.flystar.co.in/courses/air-india-pilot-interview): Preparation for the Air India pilot selection process.
+- [IndiGo Pilot Interview Preparation](https://www.flystar.co.in/courses/indigo-pilot-interview): Preparation for the IndiGo pilot selection process.
 
 ## DGCA guides
 - [DGCA Guides Index](https://www.flystar.co.in/dgca): Index of the DGCA guides on this site - examinations, medical, computer number and ground classes.

@@ -46,6 +46,31 @@
       "dest": "/courses/cpl"
     },
     {
+      "src": "/Courses/Cpl",
+      "status": 301,
+      "dest": "/courses/cpl"
+    },
+    {
+      "src": "/Courses/atpl",
+      "status": 301,
+      "dest": "/courses/atpl"
+    },
+    {
+      "src": "/Courses/Atpl",
+      "status": 301,
+      "dest": "/courses/atpl"
+    },
+    {
+      "src": "/courses/Air-india-pilot-interview",
+      "status": 301,
+      "dest": "/courses/air-india-pilot-interview"
+    },
+    {
+      "src": "/courses/Indigo-pilot-interview",
+      "status": 301,
+      "dest": "/courses/indigo-pilot-interview"
+    },
+    {
       "src": "/air-transport-pilots-license-atpl",
       "status": 308,
       "dest": "/courses/atpl"
