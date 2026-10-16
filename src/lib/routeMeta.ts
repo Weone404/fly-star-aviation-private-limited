@@ -312,6 +312,11 @@ const routeMeta: Record<string, RouteMeta> = {
     description: "No Indian airline publishes a pilot pay scale and DGCA publishes none. What is genuinely published, what moves the number, and how to test any salary claim before planning a career on it.",
     canonical: `${BASE_URL}/pilot-salary-india`,
   },
+  "/pilot-salary-in-india": {
+    title: "Pilot Salary in India 2026: Career Earnings, Ranks & Training Costs",
+    description: "Commercial pilot salary in India explained by career stage, airline, pay components, overseas comparison, and training costs. Includes the key distinction between CPL eligibility and airline employment.",
+    canonical: `${BASE_URL}/pilot-salary-in-india`,
+  },
   "/cadet-pilot-programme": {
     title: "Cadet Pilot Programmes in India: What Airlines Actually Publish",
     description: "Airline-published eligibility, duration and structure separated from the cost, bond and pay figures that circulate but are not published. Cadet route against self-sponsored training.",

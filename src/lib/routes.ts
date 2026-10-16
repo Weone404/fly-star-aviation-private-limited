@@ -28,6 +28,7 @@ export const ALIAS_CANONICAL: Record<string, string> = {
   "/how-to-become-a-pilot-in-india": "/become-a-pilot/become-pilot",
   "/how-to-become-a-pilot-in-india-after-12th": "/become-a-pilot/become-pilot",
   "/guide-on-how-to-become-a-pilot": "/become-a-pilot/become-pilot",
+  "/pilot-salary-in-india": "/pilot-salary-india",
 };
 
 /** Resolve a raw pathname to its canonical path (trailing slash + alias normalized). */

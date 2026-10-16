@@ -139,6 +139,7 @@ function AppInner() {
         {/* COURSES */}
         <Route path="/apply" element={<Apply />} />
         <Route path="/pilot-salary-india" element={<PilotSalaryIndia />} />
+        <Route path="/pilot-salary-in-india" element={<PilotSalaryIndia />} />
         <Route path="/cadet-pilot-programme" element={<CadetPilotProgramme />} />
         <Route path="/dgca/fto-ranking" element={<DgcaFtoRanking />} />
         <Route path="/dgca/exam-calendar" element={<DgcaExamCalendar />} />

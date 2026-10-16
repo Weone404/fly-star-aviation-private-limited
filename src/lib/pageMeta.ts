@@ -144,6 +144,11 @@ export const PAGE_META: Record<string, PageMeta> = {
     description:
       "Radio Telephony Restricted (Aeronautical) exam preparation with Flying Star Aviator.",
   },
+  "/pilot-salary-in-india": {
+    title: "Pilot Salary in India 2026 | Flying Star Aviator",
+    description:
+      "Commercial pilot salary in India by career stage, airline, allowances and training costs, with the essential distinction between earning a CPL and securing airline employment.",
+  },
 
   // ── Pilot training sub-pages ────────────────────────────────────────────────
   "/pilot-training/cpl": {

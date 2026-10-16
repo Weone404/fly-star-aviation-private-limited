@@ -450,6 +450,14 @@ export const PAGE_FAQS: Record<string, { q: string; a: string }[]> = {
     { q: "What actually changes what a pilot earns?", a: "The seat, the employer, the hours actually rostered, the debt taken on for a type rating, and how long it takes to get the first flying job after licence issue." },
     { q: "How should I test a salary claim I read?", a: "Ask who published it and whether they sell training, whether it names an airline or document, whether it is gross or net, which seat and fleet it describes, whether it nets off training debt, and what date it carries." },
   ],
+  "/pilot-salary-in-india": [
+    { q: "How much does a pilot earn in India?", a: "There is no authoritative published figure. No Indian airline publishes a pilot pay scale, DGCA publishes licensing requirements rather than salaries, and no government statistic reports pilot pay separately." },
+    { q: "Why does this page not give a number?", a: "Because every number in circulation traces back to a training provider or a content site, none of which names a primary source. Publishing our own estimate would add one more unsourced page." },
+    { q: "Do airlines publish anything useful?", a: "They publish joining criteria. IndiGo, for example, states an age range of 18 to 32 and 10+2 with Physics and Mathematics for its cadet programme. It does not state pay, bond or cost." },
+    { q: "What about employee costs in annual reports?", a: "Listed carriers disclose aggregate employee benefit expense. It covers every employee in the company and cannot be divided into a pilot salary." },
+    { q: "What actually changes what a pilot earns?", a: "The seat, the employer, the hours actually rostered, the debt taken on for a type rating, and how long it takes to get the first flying job after licence issue." },
+    { q: "How should I test a salary claim I read?", a: "Ask who published it and whether they sell training, whether it names an airline or document, whether it is gross or net, which seat and fleet it describes, whether it nets off training debt, and what date it carries." },
+  ],
   "/dgca/fto-ranking": [
     { q: "Does DGCA rank flying schools?", a: "Yes. A ranking framework for approved Flying Training Organisations took effect on 1 October 2025. Each FTO is scored out of 100 and placed in band A+, A, B or C, and rankings are published twice a year." },
     { q: "What do the bands mean?", a: "A+ is 85 per cent and above, A is 70 to 84.99, B is 50 to 69.99, and C is below 50. An organisation in band C receives an improvement notice from DGCA." },
