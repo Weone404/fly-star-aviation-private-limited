@@ -43,6 +43,16 @@ The second path needs a rebuild to become crawlable, because prerendering happen
 at build time. Until a rebuild runs, an admin-published post is served by the SPA
 at runtime but has no static HTML, no meta tags and no sitemap entry.
 
+### Canonical URL redirects
+
+`vercel.json` permanently redirects `/pilot-salary-in-india` to the canonical
+`https://www.flystar.co.in/pilot-salary-india` URL, redirects the apex host to
+HTTPS `www`, and upgrades HTTP requests on `www` to HTTPS. The host redirects
+preserve the requested path. Vercel project-level domain assignments or
+dashboard redirects can take precedence or add another redirect, so verify the
+Preview deployment and custom-domain settings before treating hostname
+normalization as live.
+
 **The rebuild trigger is wired.** `backend/server.js` calls the hook after a
 successful create, update or delete on `/api/blogs`. To turn it on:
 

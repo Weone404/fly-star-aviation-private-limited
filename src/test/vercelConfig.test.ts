@@ -15,6 +15,12 @@ function loadRoutes() {
   return Array.isArray(config.routes) ? config.routes : [];
 }
 
+function loadRedirects() {
+  const configPath = resolve(__dirname, "../../vercel.json");
+  const config = JSON.parse(readFileSync(configPath, "utf8"));
+  return Array.isArray(config.redirects) ? config.redirects : [];
+}
+
 const spaRoutes = () =>
   loadRoutes().filter(
     (r) => r && typeof r === "object" && r.dest === "/index.html" && typeof r.src === "string"
@@ -96,16 +102,23 @@ describe("Vercel config", () => {
 
   it("permanently redirects the salary alias to the canonical page before filesystem handling", () => {
     const routes = loadRoutes();
-    const redirectIndex = routes.findIndex((r) => r && r.src === "/pilot-salary-in-india");
-    const filesystemIndex = routes.findIndex((r) => r && r.handle === "filesystem");
-    const redirect = routes[redirectIndex];
+    const redirectRules = loadRedirects();
+    const aliasRedirects = redirectRules.filter(
+      (redirect) => redirect && redirect.source === "/pilot-salary-in-india",
+    );
+    const [redirect] = aliasRedirects;
 
-    expect(redirectIndex).toBeGreaterThanOrEqual(0);
-    expect(redirect?.status).toBe(308);
-    expect(redirect?.dest).toBe("/pilot-salary-india");
-    expect(redirectIndex).toBeLessThan(filesystemIndex);
-    expect(new URL(getRouteMeta("/pilot-salary-india").canonical).pathname).toBe(redirect?.dest);
-    expect(ALIAS_CANONICAL["/pilot-salary-in-india"]).toBe(redirect?.dest);
+    expect(aliasRedirects).toHaveLength(1);
+    expect(redirectRules.indexOf(redirect)).toBe(0);
+    expect(redirect?.permanent).toBe(true);
+    expect(new URL(redirect?.destination).pathname).toBe("/pilot-salary-india");
+    expect(new URL(redirect?.destination).origin).toBe("https://www.flystar.co.in");
+    expect(new URL(getRouteMeta("/pilot-salary-india").canonical).pathname).toBe(
+      new URL(redirect?.destination).pathname,
+    );
+    expect(ALIAS_CANONICAL["/pilot-salary-in-india"]).toBe(
+      new URL(redirect?.destination).pathname,
+    );
     expect(getRouteMeta("/pilot-salary-in-india").canonical).toBe(
       "https://www.flystar.co.in/pilot-salary-india",
     );
@@ -113,12 +126,85 @@ describe("Vercel config", () => {
       "https://www.flystar.co.in/pilot-salary-india",
     );
     expect(
-      routes.some((route) => route && route.src === redirect?.dest && route.status >= 300 && route.status < 400),
+      loadRedirects().some(
+        (rule) =>
+          rule &&
+          rule.source === "/pilot-salary-india" &&
+          new URL(rule.destination).pathname === new URL(redirect.destination).pathname,
+      ),
     ).toBe(false);
+    expect(matchesSpa("/pilot-salary-in-india")).toBe(false);
 
     const routeMeta = readFileSync(resolve(__dirname, "../lib/routeMeta.ts"), "utf8");
     const sitemap = readFileSync(resolve(__dirname, "../../public/sitemap.xml"), "utf8");
+    const llms = readFileSync(resolve(__dirname, "../../public/llms.txt"), "utf8");
     expect(routeMeta).not.toMatch(/^\s*"\/pilot-salary-in-india":\s*\{/m);
     expect(sitemap).not.toContain("https://www.flystar.co.in/pilot-salary-in-india");
+    expect(llms).not.toContain("https://www.flystar.co.in/pilot-salary-in-india");
+    expect(sitemap).toContain("https://www.flystar.co.in/pilot-salary-india");
+    expect(llms).toContain("https://www.flystar.co.in/pilot-salary-india");
+    expect(routes.some((route) => route && route.src === "/(.*)" && route.status === 404)).toBe(
+      true,
+    );
+  });
+
+  it("permanently redirects apex requests to HTTPS www without creating a loop", () => {
+    const apexRules = loadRedirects().filter(
+      (redirect) =>
+        redirect &&
+        redirect.has?.some(
+          (condition) =>
+            condition.type === "host" && condition.value === "flystar.co.in",
+        ),
+    );
+
+    expect(apexRules).toHaveLength(1);
+    expect(apexRules[0].source).toBe("/:path*");
+    expect(apexRules[0].destination).toBe(
+      "https://www.flystar.co.in/:path*",
+    );
+    expect(apexRules[0].permanent).toBe(true);
+    expect(
+      loadRedirects().some(
+        (redirect) =>
+          redirect &&
+          redirect.destination === apexRules[0].destination &&
+          redirect.has?.some(
+            (condition) =>
+              condition.type === "host" && condition.value === "www.flystar.co.in",
+          ) &&
+          !redirect.has?.some(
+            (condition) =>
+              condition.type === "header" &&
+              condition.key.toLowerCase() === "x-forwarded-proto" &&
+              condition.value === "http",
+          ),
+      ),
+    ).toBe(false);
+  });
+
+  it("permanently upgrades HTTP www requests without matching HTTPS www requests", () => {
+    const httpWwwRules = loadRedirects().filter(
+      (redirect) =>
+        redirect &&
+        redirect.has?.some(
+          (condition) =>
+            condition.type === "host" && condition.value === "www.flystar.co.in",
+        ) &&
+        redirect.has?.some(
+          (condition) =>
+            condition.type === "header" &&
+            condition.key.toLowerCase() === "x-forwarded-proto" &&
+            condition.value === "http",
+        ),
+    );
+
+    expect(httpWwwRules).toHaveLength(1);
+    expect(httpWwwRules[0].source).toBe("/:path*");
+    expect(httpWwwRules[0].destination).toBe(
+      "https://www.flystar.co.in/:path*",
+    );
+    expect(httpWwwRules[0].permanent).toBe(true);
+    expect(httpWwwRules[0].has).toHaveLength(2);
   });
 });
