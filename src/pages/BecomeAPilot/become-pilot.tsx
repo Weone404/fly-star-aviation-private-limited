@@ -276,10 +276,6 @@ const faqs = [
 export default function BecomePilotPage() {
     return (
         <Layout>
-            
-                <title>How to Become a Pilot in India 2026 | Complete Guide, Eligibility & Career Path</title>
-                <meta name="description" content="Complete guide to becoming a pilot in India. Learn about eligibility, DGCA requirements, training costs (₹35-65L), flying schools, salary (₹1.5L-10L+/month) & career paths." />
-            
 
             {/* Hero Section */}
             <section className="relative py-24 aviation-gradient text-primary-foreground">

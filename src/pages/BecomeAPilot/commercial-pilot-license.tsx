@@ -182,13 +182,6 @@ const basicRequirements = [
 export default function CPLCourseDetailsPage() {
     return (
         <Layout>
-            
-                <title>Commercial Pilot License Course Details | CPL Training in India</title>
-                <meta
-                    name="description"
-                    content="Complete guide to Commercial Pilot License course in India. Learn about CPL training, syllabus, fees, eligibility, admission process, and career opportunities."
-                />
-            
 
             {/* Hero Section */}
             <section className="relative py-24 aviation-gradient text-primary-foreground">

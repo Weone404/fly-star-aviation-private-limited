@@ -156,13 +156,6 @@ export default function AirIndiaPilotInterviewPage() {
     return (
         <Layout>
 
-                <title>Air India Pilot Interview Preparation 2026 | Flying Star Aviator</title>
-                <meta
-                    name="description"
-                    content="Crack the Air India pilot selection process with Flying Star Aviator and We One Aviation. Structured preparation for CPL holders & Type Rated pilots – Psychometric, GD, HR & Technical interviews. Enroll now."
-                />
-
-
             {/* Hero Section */}
             <section className="relative py-24 aviation-gradient text-primary-foreground">
                 <div className="container">

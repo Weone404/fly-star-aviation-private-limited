@@ -180,13 +180,6 @@ const afterApproval = [
 export default function DGCAComputerNumberPage() {
   return (
     <Layout>
-      
-        <title>DGCA Computer Number - Complete Guide for Pilot Aspirants</title>
-        <meta
-          name="description"
-          content="Get your DGCA Computer Number - the first step to become a pilot in India. Complete guide on application process, documents required, and approval timeline."
-        />
-      
 
       {/* Hero Section */}
       <section className="relative py-24 aviation-gradient text-primary-foreground">

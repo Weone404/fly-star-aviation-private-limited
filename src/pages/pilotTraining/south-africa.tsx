@@ -396,13 +396,6 @@ const faqs = [
 export default function PilotTrainingSouthAfricaPage() {
     return (
         <Layout>
-            
-                <title>Pilot Training South Africa | SACAA-approved Commercial Pilot Training</title>
-                <meta
-                    name="description"
-                    content="Train in South Africa with SACAA-approved flight schools. 14-15 months CPL training, 200-210 flying hours, cost-effective programs. DGCA license conversion available. Apply now."
-                />
-            
 
             {/* Hero Section */}
             <section className="relative py-24 aviation-gradient text-primary-foreground">

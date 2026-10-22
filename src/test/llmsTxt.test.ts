@@ -17,10 +17,6 @@ const BASE = "https://www.flystar.co.in";
 const OMITTED = new Set([
   // The home page is the file's own header and summary.
   "/",
-  // Alias of a listed page.
-  // Legacy keyword URLs kept alive for inbound links; each renders a page that
-  // is already listed under its canonical address. Listing them again would be
-  // the ceremonial expansion the campaign refuses.
   // Navigation surface, not content.
   "/sitemap",
   // Not for crawlers.
@@ -49,6 +45,12 @@ function sitemapPaths(): string[] {
 }
 
 describe("llms.txt", () => {
+  it("lists the canonical salary URL and omits its alias", () => {
+    const paths = llmsPaths();
+    expect(paths).toContain("/pilot-salary-india");
+    expect(paths).not.toContain("/pilot-salary-in-india");
+  });
+
   it("lists every route in routeMeta, or names it as a deliberate omission", () => {
     const listed = new Set(llmsPaths());
     const missing = routeMetaPaths()

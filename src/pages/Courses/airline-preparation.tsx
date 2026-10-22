@@ -194,13 +194,6 @@ const faqs = [
 export default function AirlinePreparationPage() {
     return (
         <Layout>
-            
-                <title>Airline Preparation Course in India | Pilot Interview & CRM Training</title>
-                <meta
-                    name="description"
-                    content="Prepare for your airline career with our comprehensive Airline Preparation Course. Covers CRM, flight planning, simulator training, and interview preparation for aspiring commercial pilots."
-                />
-            
 
             {/* ── Hero Section ─────────────────────────────────────────── */}
             <section className="relative py-24 aviation-gradient text-primary-foreground">

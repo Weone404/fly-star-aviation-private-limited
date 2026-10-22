@@ -317,13 +317,6 @@ export default function RTRPage() {
     return (
         <Layout>
 
-                <title>RTR Full Form - Radio Telephony Restricted | Complete Guide 2026</title>
-                <meta
-                    name="description"
-                    content="Complete guide to RTR (Radio Telephony Restricted) - meaning, importance, types, eligibility, exam pattern, preparation tips. Essential license for pilots and ATCs in India."
-                />
-
-
             {/* Hero Section */}
             <section className="relative py-24 aviation-gradient text-primary-foreground">
                 <div className="container">

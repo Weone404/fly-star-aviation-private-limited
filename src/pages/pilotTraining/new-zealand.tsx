@@ -326,13 +326,6 @@ const faqs = [
 export default function PilotTrainingNewZealandPage() {
     return (
         <Layout>
-            
-                <title>Pilot Training New Zealand | CAA-approved Commercial Pilot Training</title>
-                <meta
-                    name="description"
-                    content="Train in New Zealand with CAA-approved flight schools. 12-14 months CPL training, 220-240 flying hours, diverse flying environments. DGCA license conversion available. Apply now."
-                />
-            
 
             {/* Hero Section */}
             <section className="relative py-24 aviation-gradient text-primary-foreground">
@@ -975,4 +968,3 @@ export default function PilotTrainingNewZealandPage() {
         </Layout>
     );
 }
-

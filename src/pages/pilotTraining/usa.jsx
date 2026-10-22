@@ -391,13 +391,6 @@ const faqs = [
 export default function PilotTrainingUSAPage() {
     return (
         <Layout>
-            
-                <title>Pilot Training USA | FAA-Approved Commercial Pilot Training</title>
-                <meta
-                    name="description"
-                    content="Train in the USA with FAA-approved flight schools. 10-12 months CPL training, 235-260 flying hours, modern fleet. DGCA license conversion available. Apply now."
-                />
-            
 
             {/* Hero Section */}
             <section className="relative py-24 aviation-gradient text-primary-foreground">

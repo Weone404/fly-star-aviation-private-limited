@@ -323,13 +323,6 @@ const faqs = [
 export default function PilotTrainingAustraliaPage() {
     return (
         <Layout>
-            
-                <title>Pilot Training Australia | CASA-approved Commercial Pilot Training & Diploma</title>
-                <meta
-                    name="description"
-                    content="Train in Australia with CASA-approved flight schools. 13-14 months CPL training with Diploma in Aviation, 221 flying hours, modern fleet. DGCA license conversion available. Apply now."
-                />
-            
 
             {/* Hero Section */}
             <section className="relative py-24 aviation-gradient text-primary-foreground">

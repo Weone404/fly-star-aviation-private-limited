@@ -9,23 +9,28 @@ export function useMeta() {
   useEffect(() => {
     const { title, description, canonical, ogTitle, ogDescription, ogImage, twitterImage } = getRouteMeta(location.pathname);
 
-    document.title = title;
+    const titleTags = Array.from(document.head.querySelectorAll("title"));
+    const titleTag = titleTags.shift() ?? document.createElement("title");
+    titleTags.forEach((duplicate) => duplicate.remove());
+    titleTag.textContent = title;
+    if (!titleTag.isConnected) document.head.appendChild(titleTag);
 
     const setMeta = (selector: string, attrName: string, attrValue: string) => {
-      let element = document.head.querySelector(selector) as HTMLMetaElement | HTMLLinkElement | null;
+      const elements = Array.from(document.head.querySelectorAll(selector));
+      let element = elements.shift();
+      elements.forEach((duplicate) => duplicate.remove());
       if (!element) {
         if (selector.startsWith("link")) {
           element = document.createElement("link");
           element.setAttribute("rel", "canonical");
-          document.head.appendChild(element);
         } else {
           element = document.createElement("meta");
           const attr = selector.match(/\[(name|property)="([^"]+)"\]/);
           if (attr && attr[1] && attr[2]) {
             element.setAttribute(attr[1], attr[2]);
           }
-          document.head.appendChild(element);
         }
+        document.head.appendChild(element);
       }
       element.setAttribute(attrName, attrValue);
     };
@@ -40,16 +45,7 @@ export function useMeta() {
     setMeta('meta[name="twitter:title"]', "content", title);
     setMeta('meta[name="twitter:description"]', "content", description);
     setMeta('meta[name="twitter:image"]', "content", twitterImage || ogImage || "/assets/hero-aircraft-1600w.jpg");
-
-    const canonicalLink = document.head.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
-    if (canonicalLink) {
-      canonicalLink.setAttribute("href", canonical);
-    } else {
-      const link = document.createElement("link");
-      link.setAttribute("rel", "canonical");
-      link.setAttribute("href", canonical);
-      document.head.appendChild(link);
-    }
+    setMeta('link[rel~="canonical"]', "href", canonical);
 
     const keywords = document.querySelector('meta[name="keywords"]');
     if (keywords) {

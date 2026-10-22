@@ -1,6 +1,8 @@
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { describe, expect, it } from "vitest";
+import { getRouteMeta } from "../lib/routeMeta";
+import { ALIAS_CANONICAL } from "../lib/routes";
 
 /**
  * These assert BEHAVIOUR, not a literal regex string. The previous version
@@ -90,5 +92,33 @@ describe("Vercel config", () => {
     const redirect = loadRoutes().find((r) => r && r.src === "/dgca/board-verification");
     expect(redirect?.status).toBe(301);
     expect(redirect?.dest).toBe("/blog/dgca-board-verification-certificate");
+  });
+
+  it("permanently redirects the salary alias to the canonical page before filesystem handling", () => {
+    const routes = loadRoutes();
+    const redirectIndex = routes.findIndex((r) => r && r.src === "/pilot-salary-in-india");
+    const filesystemIndex = routes.findIndex((r) => r && r.handle === "filesystem");
+    const redirect = routes[redirectIndex];
+
+    expect(redirectIndex).toBeGreaterThanOrEqual(0);
+    expect(redirect?.status).toBe(308);
+    expect(redirect?.dest).toBe("/pilot-salary-india");
+    expect(redirectIndex).toBeLessThan(filesystemIndex);
+    expect(new URL(getRouteMeta("/pilot-salary-india").canonical).pathname).toBe(redirect?.dest);
+    expect(ALIAS_CANONICAL["/pilot-salary-in-india"]).toBe(redirect?.dest);
+    expect(getRouteMeta("/pilot-salary-in-india").canonical).toBe(
+      "https://www.flystar.co.in/pilot-salary-india",
+    );
+    expect(getRouteMeta("/pilot-salary-in-india").ogUrl).toBe(
+      "https://www.flystar.co.in/pilot-salary-india",
+    );
+    expect(
+      routes.some((route) => route && route.src === redirect?.dest && route.status >= 300 && route.status < 400),
+    ).toBe(false);
+
+    const routeMeta = readFileSync(resolve(__dirname, "../lib/routeMeta.ts"), "utf8");
+    const sitemap = readFileSync(resolve(__dirname, "../../public/sitemap.xml"), "utf8");
+    expect(routeMeta).not.toMatch(/^\s*"\/pilot-salary-in-india":\s*\{/m);
+    expect(sitemap).not.toContain("https://www.flystar.co.in/pilot-salary-in-india");
   });
 });

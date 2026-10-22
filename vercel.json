@@ -3,6 +3,11 @@
   "trailingSlash": false,
   "routes": [
     {
+      "src": "/pilot-salary-in-india",
+      "status": 308,
+      "dest": "/pilot-salary-india"
+    },
+    {
       "handle": "filesystem"
     },
     {

@@ -232,13 +232,6 @@ SectionHeading.displayName = "SectionHeading";
 export default function DGCAGroundClassesPage(): JSX.Element {
     return (
         <Layout>
-            
-                <title>DGCA Ground Classes | CPL Ground Training in India - Complete Guide</title>
-                <meta
-                    name="description"
-                    content="Complete guide to DGCA ground classes for CPL in India. Structured ground training for Air Navigation, Meteorology, Regulations, Technical subjects. Online & offline classes available."
-                />
-            
 
             {/* ── Hero ── */}
             <section className="relative py-24 aviation-gradient text-primary-foreground">

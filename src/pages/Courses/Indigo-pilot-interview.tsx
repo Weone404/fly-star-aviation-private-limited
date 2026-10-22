@@ -201,10 +201,6 @@ const faqs = [
 export default function IndiGoPilotInterviewPage() {
     return (
         <Layout>
-            
-                <title>IndiGo Pilot Interview Preparation (JFO 2026) | Flying Star Aviator</title>
-                <meta name="description" content="Ace the IndiGo JFO 2026 selection process with Flying Star Aviator and We One Aviation. Structured preparation for ADAPT test, Group Discussion, HR & Technical Interview. CPL & A320 Type Rated programs available." />
-            
 
             {/* Hero Section */}
             <section className="relative py-24 aviation-gradient text-primary-foreground">

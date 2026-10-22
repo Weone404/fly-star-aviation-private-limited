@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Phone, Mail, MapPin, Clock, Send, CheckCircle, MessageCircle } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { saveContactEnquiry } from "@/lib/saveContactEnquiry";
 
 const GOOGLE_MAPS_URL =
   "https://www.google.com/maps/place/Flying+Star+Aviator+Private+Limited/@28.5852283,77.0658253,641m/data=!3m2!1e3!4b1!4m6!3m5!1s0x390d1bfa2be4aefb:0x48a070e238521650!8m2!3d28.5852283!4d77.0684002!16s%2Fg%2F11h3mlfkx4?entry=ttu&g_ep=EgoyMDI2MDkwOC4wIKXMDSoASAFQAw%3D%3D";
@@ -71,7 +72,15 @@ const ContactCard = memo(({ item, delay }: { item: typeof contactInfo[0]; delay:
 ContactCard.displayName = "ContactCard";
 
 /** Success state shown after submission */
-const SuccessState = memo(({ onReset }: { onReset: () => void }) => (
+const SuccessState = memo(({
+  onReset,
+  saveFailed,
+  whatsappUrl,
+}: {
+  onReset: () => void;
+  saveFailed: boolean;
+  whatsappUrl: string;
+}) => (
   <motion.div
     key="success"
     variants={scaleIn}
@@ -80,16 +89,31 @@ const SuccessState = memo(({ onReset }: { onReset: () => void }) => (
     exit="hidden"
     className="flex flex-col items-center justify-center text-center py-16 px-8 rounded-2xl border border-green-200 bg-green-50 dark:bg-green-950/20 dark:border-green-800"
   >
-    <div className="w-20 h-20 rounded-full bg-green-100 dark:bg-green-900/40 flex items-center justify-center mb-6">
-      <CheckCircle className="h-10 w-10 text-green-600" />
+    <div className={`w-20 h-20 rounded-full flex items-center justify-center mb-6 ${saveFailed ? "bg-amber-100 dark:bg-amber-900/40" : "bg-green-100 dark:bg-green-900/40"}`}>
+      {saveFailed ? (
+        <MessageCircle className="h-10 w-10 text-amber-700 dark:text-amber-300" />
+      ) : (
+        <CheckCircle className="h-10 w-10 text-green-600" />
+      )}
     </div>
-    <h3 className="text-2xl font-bold mb-3 text-green-700 dark:text-green-400">
-      WhatsApp Opened!
+    <h3 className={`text-2xl font-bold mb-3 ${saveFailed ? "text-amber-800 dark:text-amber-300" : "text-green-700 dark:text-green-400"}`}>
+      Continue in WhatsApp
     </h3>
-    <p className="text-muted-foreground mb-2">Your details have been pre-filled in WhatsApp.</p>
+    {saveFailed ? (
+      <p role="alert" className="text-sm text-destructive mb-2">
+        We could not save your enquiry online. WhatsApp is still available; press Send there to contact us.
+      </p>
+    ) : (
+      <p className="text-muted-foreground mb-2">Your details are ready in WhatsApp.</p>
+    )}
     <p className="text-sm text-muted-foreground mb-8">
       Just press <strong>Send</strong> to complete your enquiry.
     </p>
+    <Button asChild className="mb-4">
+      <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
+        Open WhatsApp
+      </a>
+    </Button>
     <Button variant="outline" onClick={onReset}>
       Submit Another Enquiry
     </Button>
@@ -112,6 +136,8 @@ function validate(formData: typeof INITIAL_FORM): Record<string, string> {
 export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [saveFailed, setSaveFailed] = useState(false);
+  const [whatsappUrl, setWhatsappUrl] = useState("");
   const [formData, setFormData] = useState(INITIAL_FORM);
   // Honeypot value. Always "" for a real visitor; bots fill it.
   const [honeypot, setHoneypot] = useState("");
@@ -129,24 +155,14 @@ export default function ContactPage() {
   );
 
   const saveToMongoDB = useCallback(async () => {
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: formData.name,
-          phone: formData.phone,
-          email: formData.email,
-          interest: formData.interest || "Not specified",
-          message: formData.message || "No additional message",
-          company: honeypot,
-        }),
-      });
-      const data = await res.json();
-      if (!data.success) console.warn("⚠️ MongoDB save warning:", data.error);
-    } catch (err) {
-      console.error("❌ MongoDB save failed:", err); // Fail silently — WA still opens
-    }
+    return saveContactEnquiry({
+      name: formData.name,
+      phone: formData.phone,
+      email: formData.email,
+      interest: formData.interest || "Not specified",
+      message: formData.message || "No additional message",
+      company: honeypot,
+    });
   }, [formData, honeypot]);
 
   const handleSubmit = useCallback(
@@ -159,7 +175,8 @@ export default function ContactPage() {
       }
 
       setIsSubmitting(true);
-      await saveToMongoDB();
+      const saveSucceeded = await saveToMongoDB();
+      setSaveFailed(!saveSucceeded);
 
       const { name, phone, email, interest, message } = formData;
       const text = `🛩️ *New Enquiry - Flying Star Aviator*
@@ -173,15 +190,30 @@ export default function ContactPage() {
 _Sent via flyingstaraviator.com contact form_`;
 
       const waURL = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`;
+      setWhatsappUrl(waURL);
 
       setTimeout(() => {
         setIsSubmitting(false);
         setSubmitted(true);
-        window.open(waURL, "_blank");
-        toast({
-          title: "✈️ Redirecting to WhatsApp!",
-          description: "Your details are pre-filled. Just press Send in WhatsApp.",
-        });
+        const whatsappWindow = window.open(waURL, "_blank");
+        if (!saveSucceeded) {
+          toast({
+            title: "Your enquiry was not saved online",
+            description: "Use Open WhatsApp below and press Send to contact us.",
+            variant: "destructive",
+          });
+        } else if (!whatsappWindow) {
+          toast({
+            title: "WhatsApp did not open",
+            description: "Use Open WhatsApp below to continue your enquiry.",
+            variant: "destructive",
+          });
+        } else {
+          toast({
+            title: "Continue in WhatsApp",
+            description: "Press Send in WhatsApp to complete your enquiry.",
+          });
+        }
       }, 1200);
     },
     [formData, saveToMongoDB, toast]
@@ -189,6 +221,8 @@ _Sent via flyingstaraviator.com contact form_`;
 
   const handleReset = useCallback(() => {
     setSubmitted(false);
+    setSaveFailed(false);
+    setWhatsappUrl("");
     setFormData(INITIAL_FORM);
     setErrors({});
   }, []);
@@ -245,7 +279,12 @@ _Sent via flyingstaraviator.com contact form_`;
 
               <AnimatePresence mode="wait">
                 {submitted ? (
-                  <SuccessState key="success" onReset={handleReset} />
+                  <SuccessState
+                    key="success"
+                    onReset={handleReset}
+                    saveFailed={saveFailed}
+                    whatsappUrl={whatsappUrl}
+                  />
                 ) : (
                   <motion.form
                     key="form"

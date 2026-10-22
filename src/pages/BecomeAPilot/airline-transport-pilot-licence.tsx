@@ -119,10 +119,6 @@ const whyChooseUs = [
 export default function ATPLCourseDetailsPage() {
     return (
         <Layout>
-            
-                <title>ATPL Course Details | Airline Transport Pilot License Training India</title>
-                <meta name="description" content="Complete guide to ATPL course in India. DGCA-approved ground classes covering Air Navigation, Meteorology, Radio Aids, and Flight Planning. Become an airline captain." />
-            
 
             {/* ── Hero ── */}
             <section className="relative py-16 md:py-24 aviation-gradient text-primary-foreground">

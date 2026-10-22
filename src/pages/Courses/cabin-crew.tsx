@@ -125,13 +125,6 @@ const faqs = [
 export default function CabinCrewPage() {
     return (
         <Layout>
-            
-                <title>Cabin Crew Jobs | Join Esteemed Airlines Worldwide</title>
-                <meta
-                    name="description"
-                    content="Launch your cabin crew career with AAP Aviation. Permanent contracts, global opportunities with Etihad, SAS & more. For experienced and inexperienced crew."
-                />
-            
 
             {/* Hero Section */}
             <section className="relative py-24 aviation-gradient text-primary-foreground">

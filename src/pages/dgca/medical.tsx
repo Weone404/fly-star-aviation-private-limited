@@ -259,13 +259,6 @@ const StepCard = memo(function StepCard({
 export default function DGCAMedicalGuidePage(): JSX.Element {
     return (
         <Layout>
-            
-                <title>DGCA Class 1 & Class 2 Medical Guide | Medical Requirements for Pilots in India</title>
-                <meta
-                    name="description"
-                    content="Complete guide to DGCA Class I and Class II medical examinations for pilots in India. Requirements, procedures, validity, and steps to obtain medical certificates."
-                />
-            
 
             {/* ── Hero ── */}
             <section className="relative py-24 aviation-gradient text-primary-foreground">

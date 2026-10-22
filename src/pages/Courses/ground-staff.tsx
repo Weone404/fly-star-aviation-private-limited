@@ -203,10 +203,6 @@ const admissionProcess = [
 export default function AirportGroundStaffCoursePage() {
     return (
         <Layout>
-            
-                <title>Airport Ground Staff Course in India | Aviation Ground Staff Training</title>
-                <meta name="description" content="Join the airport ground staff course - 11 months certification program. Learn passenger handling, baggage management, customer service. Salary 2-6 LPA. Apply now." />
-            
 
             {/* Hero Section */}
             <section className="relative py-24 aviation-gradient text-primary-foreground">

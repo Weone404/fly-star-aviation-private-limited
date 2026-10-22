@@ -1,5 +1,7 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Phone, Mail, MapPin, Clock, Send, CheckCircle, MessageCircle, X, LucideIcon } from "lucide-react";
+import { saveContactEnquiry } from "@/lib/saveContactEnquiry";
+import { useToast } from "@/hooks/use-toast";
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 interface ContactInfoItem {
@@ -18,6 +20,58 @@ interface FormData {
 }
 
 type FormErrors = Partial<Record<keyof FormData, string>>;
+
+const TABBABLE_SELECTOR = [
+    "a[href]",
+    "area[href]",
+    "button",
+    "input:not([type='hidden'])",
+    "select",
+    "textarea",
+    "iframe",
+    "object",
+    "embed",
+    "[contenteditable='true']",
+    "[tabindex]",
+].join(",");
+
+function isAvailableInDialog(element: HTMLElement, dialog: HTMLElement): boolean {
+    if (!element.isConnected || !dialog.contains(element) || element.matches(":disabled")) return false;
+
+    for (let current: HTMLElement | null = element; current; current = current.parentElement) {
+        if (
+            current.hidden ||
+            current.hasAttribute("inert") ||
+            current.getAttribute("aria-hidden") === "true"
+        ) {
+            return false;
+        }
+
+        const style = window.getComputedStyle(current);
+        if (style.display === "none" || style.visibility === "hidden" || style.visibility === "collapse") {
+            return false;
+        }
+
+        if (current === dialog) break;
+    }
+
+    return true;
+}
+
+function getTabbableElements(dialog: HTMLElement): HTMLElement[] {
+    return Array.from(dialog.querySelectorAll<HTMLElement>(TABBABLE_SELECTOR))
+        .map((element, index) => ({ element, index }))
+        .filter(({ element }) => element.tabIndex >= 0 && isAvailableInDialog(element, dialog))
+        .sort((a, b) => {
+            const aIndex = a.element.tabIndex;
+            const bIndex = b.element.tabIndex;
+            if (aIndex > 0 && bIndex > 0) return aIndex - bIndex || a.index - b.index;
+            if (aIndex > 0) return -1;
+            if (bIndex > 0) return 1;
+            return a.index - b.index;
+        })
+        .map(({ element }) => element);
+}
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
 const contactInfo: ContactInfoItem[] = [
@@ -40,6 +94,8 @@ export default function ContactPopup(): JSX.Element {
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
     const [submitted, setSubmitted] = useState<boolean>(false);
+    const [saveFailed, setSaveFailed] = useState<boolean>(false);
+    const [whatsappUrl, setWhatsappUrl] = useState<string>("");
     const [focused, setFocused] = useState<keyof FormData | null>(null);
     const [formData, setFormData] = useState<FormData>({
         name: "", phone: "", email: "", interest: interestOptions[0], message: "",
@@ -47,8 +103,110 @@ export default function ContactPopup(): JSX.Element {
     const [errors, setErrors] = useState<FormErrors>({});
     // Honeypot value. Always "" for a real visitor; bots fill it.
     const [honeypot, setHoneypot] = useState("");
-
+    const { toast } = useToast();
+    const launcherRef = useRef<HTMLButtonElement>(null);
+    const dialogRef = useRef<HTMLDivElement>(null);
+    const focusReturnRef = useRef<HTMLButtonElement | null>(null);
+    const lastFocusedRef = useRef<HTMLElement | null>(null);
+    const successHeadingRef = useRef<HTMLHeadingElement>(null);
+    const wasOpenRef = useRef(false);
     const handleClose = (): void => { setIsOpen(false); };
+
+    useEffect(() => {
+        if (!isOpen) {
+            if (wasOpenRef.current) {
+                wasOpenRef.current = false;
+                focusReturnRef.current?.focus();
+                focusReturnRef.current = null;
+                lastFocusedRef.current = null;
+            }
+            return;
+        }
+
+        wasOpenRef.current = true;
+        const dialog = dialogRef.current;
+        if (!dialog) return;
+
+        const focusInside = (preferred?: HTMLElement | null): void => {
+            const target = preferred && isAvailableInDialog(preferred, dialog)
+                ? preferred
+                : getTabbableElements(dialog)[0] ?? dialog;
+            target.focus();
+        };
+
+        const handleKeyDown = (event: KeyboardEvent): void => {
+            if (event.key === "Escape") {
+                event.preventDefault();
+                handleClose();
+                return;
+            }
+            if (event.key !== "Tab") return;
+
+            const tabbable = getTabbableElements(dialog);
+            const active = document.activeElement;
+            const activeIndex = tabbable.indexOf(active as HTMLElement);
+
+            if (!tabbable.length) {
+                event.preventDefault();
+                dialog.focus();
+            } else if (activeIndex < 0) {
+                event.preventDefault();
+                (event.shiftKey ? tabbable[tabbable.length - 1] : tabbable[0]).focus();
+            } else if (event.shiftKey && activeIndex === 0) {
+                event.preventDefault();
+                tabbable[tabbable.length - 1].focus();
+            } else if (!event.shiftKey && activeIndex === tabbable.length - 1) {
+                event.preventDefault();
+                tabbable[0].focus();
+            }
+        };
+
+        const handleFocusIn = (event: FocusEvent): void => {
+            const target = event.target;
+            if (!(target instanceof HTMLElement)) return;
+            if (dialog.contains(target) && isAvailableInDialog(target, dialog)) {
+                if (target !== dialog) lastFocusedRef.current = target;
+                return;
+            }
+            focusInside(lastFocusedRef.current);
+        };
+
+        const observer = new MutationObserver(() => {
+            const active = document.activeElement;
+            if (
+                !(active instanceof HTMLElement) ||
+                !isAvailableInDialog(active, dialog)
+            ) {
+                focusInside();
+            }
+        });
+
+        observer.observe(dialog, {
+            attributes: true,
+            attributeFilter: ["aria-hidden", "class", "disabled", "hidden", "inert", "style", "tabindex"],
+            childList: true,
+            subtree: true,
+        });
+        document.addEventListener("keydown", handleKeyDown, true);
+        document.addEventListener("focusin", handleFocusIn, true);
+        focusInside();
+
+        return () => {
+            observer.disconnect();
+            document.removeEventListener("keydown", handleKeyDown, true);
+            document.removeEventListener("focusin", handleFocusIn, true);
+        };
+    }, [isOpen]);
+
+    useEffect(() => {
+        if (!isOpen) return;
+        if (submitted) {
+            successHeadingRef.current?.focus();
+            return;
+        }
+        const dialog = dialogRef.current;
+        if (dialog) getTabbableElements(dialog)[0]?.focus();
+    }, [isOpen, submitted]);
 
     const handleChange = (
         e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -74,26 +232,12 @@ export default function ContactPopup(): JSX.Element {
     // ✅ FIX: Changed from `${import.meta.env.VITE_API_URL}/api/contact`
     //         to a relative URL "/api/contact" — same as the Contact page.
     //         The env variable was undefined/empty, causing the fetch to fail silently.
-    const saveToMongoDB = async (): Promise<void> => {
-        try {
-            const res = await fetch("/api/contact", {  // ✅ relative URL — works on Vercel
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    ...formData,
-                    message: formData.message || "No additional message",
-                    company: honeypot,
-                }),
-            });
-            const data = await res.json();
-            if (data.success) {
-                console.log("✅ Saved to MongoDB:", data.message);
-            } else {
-                console.warn("⚠️ MongoDB save warning:", data.error);
-            }
-        } catch (err) {
-            console.error("❌ MongoDB save failed:", err);
-        }
+    const saveToMongoDB = async (): Promise<boolean> => {
+        return saveContactEnquiry({
+            ...formData,
+            message: formData.message || "No additional message",
+            company: honeypot,
+        });
     };
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
@@ -102,24 +246,45 @@ export default function ContactPopup(): JSX.Element {
         if (Object.keys(ve).length) { setErrors(ve); return; }
 
         setIsSubmitting(true);
-        await saveToMongoDB();
+        const saveSucceeded = await saveToMongoDB();
+        setSaveFailed(!saveSucceeded);
 
         const { name, phone, email, interest, message } = formData;
         const text = `🛩️ *New Enquiry - Flying Star Aviator*\n\n👤 *Name:* ${name}\n📞 *Phone:* ${phone}\n📧 *Email:* ${email}\n🎯 *Interested In:* ${interest}\n💬 *Message:* ${message || "No additional message"}\n\n_Sent via flyingstaraviator.com contact form_`;
         const waURL = `https://wa.me/919953536199?text=${encodeURIComponent(text)}`;
+        setWhatsappUrl(waURL);
 
         setTimeout(() => {
             setIsSubmitting(false);
             setSubmitted(true);
-            window.open(waURL, "_blank");
+            const whatsappWindow = window.open(waURL, "_blank");
+            if (!saveSucceeded) {
+                toast({
+                    title: "Your enquiry was not saved online",
+                    description: "Use Open WhatsApp below and press Send to contact us.",
+                    variant: "destructive",
+                });
+            } else if (!whatsappWindow) {
+                toast({
+                    title: "WhatsApp did not open",
+                    description: "Use Open WhatsApp below to continue your enquiry.",
+                    variant: "destructive",
+                });
+            } else {
+                toast({
+                    title: "Continue in WhatsApp",
+                    description: "Press Send in WhatsApp to complete your enquiry.",
+                });
+            }
         }, 1200);
     };
 
     const handleReset = (): void => {
         setSubmitted(false);
+        setSaveFailed(false);
+        setWhatsappUrl("");
         setFormData({ name: "", phone: "", email: "", interest: interestOptions[0], message: "" });
         setIsOpen(false);
-        startTimer();
     };
 
     return (
@@ -175,6 +340,16 @@ export default function ContactPopup(): JSX.Element {
           cursor: pointer; transition: background 0.2s, transform 0.1s;
         }
         .fsa-preview-btn:hover { background: var(--gold-light); transform: translateY(-1px); }
+        .fsa-launcher {
+          position: fixed; right: 20px; bottom: 20px; z-index: 40;
+          display: inline-flex; align-items: center; gap: 8px;
+          padding: 12px 18px; border: 0; border-radius: 999px;
+          background: var(--wa); color: var(--white);
+          box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+          font: 700 13px "Segoe UI", sans-serif; cursor: pointer;
+        }
+        .fsa-launcher:hover { background: #1dbc5a; }
+        .fsa-launcher:focus-visible { outline: 3px solid var(--gold-light); outline-offset: 3px; }
 
         /* ── Overlay ── */
         .fsa-overlay {
@@ -394,11 +569,35 @@ export default function ContactPopup(): JSX.Element {
         }
       `}</style>
 
-            {/* ── Popup ── */}
-            {isOpen && (
-                <div className="fsa-overlay" onClick={(e: React.MouseEvent<HTMLDivElement>) => e.target === e.currentTarget && handleClose()}>
-                    <div className="fsa-modal">
-                        <button className="fsa-close" onClick={handleClose}><X /></button>
+          <button
+              ref={launcherRef}
+              type="button"
+              className="fsa-launcher"
+              aria-haspopup="dialog"
+              aria-controls="fsa-contact-dialog"
+              aria-expanded={isOpen}
+              onClick={() => {
+                  focusReturnRef.current = launcherRef.current;
+                  setIsOpen(true);
+              }}
+          >
+              <MessageCircle size={16} />
+              Enquire now
+          </button>
+
+          {/* ── Popup ── */}
+          {isOpen && (
+              <div className="fsa-overlay" onClick={(e: React.MouseEvent<HTMLDivElement>) => e.target === e.currentTarget && handleClose()}>
+                  <div
+                      ref={dialogRef}
+                      id="fsa-contact-dialog"
+                      className="fsa-modal"
+                      role="dialog"
+                      aria-modal="true"
+                      aria-labelledby="fsa-contact-title"
+                      tabIndex={-1}
+                  >
+                      <button type="button" className="fsa-close" aria-label="Close enquiry form" onClick={handleClose}><X /></button>
 
                         {/* Left sidebar */}
                         <div className="fsa-sidebar">
@@ -431,16 +630,27 @@ export default function ContactPopup(): JSX.Element {
                         <div className="fsa-panel">
                             {submitted ? (
                                 <div className="fsa-success">
-                                    <div className="fsa-success-ring"><CheckCircle /></div>
-                                    <h3 className="fsa-success-h">WhatsApp Opened!</h3>
-                                    <p className="fsa-success-p">Your details have been pre-filled in WhatsApp.</p>
+                                    <div className="fsa-success-ring">
+                                        {saveFailed ? <MessageCircle /> : <CheckCircle />}
+                                    </div>
+                                    <h3 ref={successHeadingRef} id="fsa-contact-title" className="fsa-success-h" tabIndex={-1}>Continue in WhatsApp</h3>
+                                    {saveFailed ? (
+                                        <p className="fsa-success-p" role="alert" style={{ color: "var(--error)" }}>
+                                            We could not save your enquiry online. WhatsApp is still available; press Send there to contact us.
+                                        </p>
+                                    ) : (
+                                        <p className="fsa-success-p">Your details are ready in WhatsApp.</p>
+                                    )}
                                     <p className="fsa-success-hint">Just press <strong>Send</strong> to complete your enquiry.</p>
+                                    <a className="fsa-reset" href={whatsappUrl} target="_blank" rel="noopener noreferrer">
+                                        Open WhatsApp
+                                    </a>
                                     <button className="fsa-reset" onClick={handleReset}>Submit Another Enquiry</button>
                                 </div>
                             ) : (
                                 <>
                                     <p className="fsa-panel-tag">✈ Get in touch</p>
-                                    <h2 className="fsa-panel-title">Send Us a Message</h2>
+                                    <h2 id="fsa-contact-title" className="fsa-panel-title">Send Us a Message</h2>
                                     <p className="fsa-panel-sub">
                                         Fill out the form — your details will be sent directly to our WhatsApp for a faster response.
                                     </p>

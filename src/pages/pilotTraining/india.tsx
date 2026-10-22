@@ -320,13 +320,6 @@ const faqs = [
 export default function PilotTrainingIndiaPage() {
     return (
         <Layout>
-            
-                <title>Pilot Training India | DGCA-approved Commercial Pilot Training</title>
-                <meta
-                    name="description"
-                    content="Start your pilot journey with DGCA-approved flight schools in India. 14-16 months CPL training, 200 flying hours, modern aircraft fleet. Get complete course details and apply now."
-                />
-            
 
             {/* Hero Section */}
             <section className="relative py-24 aviation-gradient text-primary-foreground">

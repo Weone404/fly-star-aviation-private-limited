@@ -279,13 +279,6 @@ SectionHeading.displayName = "SectionHeading";
 export default function DGCAPage() {
     return (
         <Layout>
-            
-                <title>DGCA Full Form - Directorate General of Civil Aviation | Role & Functions</title>
-                <meta
-                    name="description"
-                    content="Complete guide to DGCA (Directorate General of Civil Aviation) - India's top aviation regulatory authority. Learn about DGCA's role, functions, importance, and impact on Indian aviation industry."
-                />
-            
 
             {/* ── Hero ── */}
             <section className="relative py-24 aviation-gradient text-primary-foreground">
