@@ -4,15 +4,14 @@ import { describe, expect, it } from "vitest";
 import { parseBlogApiOrigin } from "../../scripts/blogApiOrigin.mjs";
 
 describe("blog API origin validation", () => {
-  it("accepts safe origins and rejects malformed origins", () => {
+  it("accepts safe HTTPS origins and rejects malformed origins", () => {
     expect(parseBlogApiOrigin("https://preview.example.invalid")).toBe("https://preview.example.invalid");
-    expect(parseBlogApiOrigin("http://localhost:5000")).toBe("http://localhost:5000");
-    expect(parseBlogApiOrigin("http://localhost:5000", { requireHttps: true })).toBeNull();
-    expect(parseBlogApiOrigin("https://user:password@preview.example.invalid")).toBeNull();
+    expect(parseBlogApiOrigin("http://localhost:5000")).toBeNull();
+    expect(parseBlogApiOrigin("******preview.example.invalid")).toBeNull();
   });
 
   it.each([
-    "https://user:password@preview.example.invalid",
+    "******preview.example.invalid",
     "https://preview.example.invalid/path",
     "https://preview.example.invalid?token=secret",
     "https://preview.example.invalid#token",
@@ -45,7 +44,7 @@ describe("blog API origin validation", () => {
 
     expect(result.error).toBeUndefined();
     expect(result.status).toBe(1);
-    expect(result.stderr).toContain("API must be a valid origin");
+    expect(result.stderr).toContain("VITE_API_URL must be a valid HTTPS origin");
     expect(result.stderr).not.toContain("onrender.com");
   });
 
@@ -53,8 +52,11 @@ describe("blog API origin validation", () => {
     ["missing", undefined],
     ["empty", ""],
     ["malformed", "not-a-url"],
-    ["containing credentials and query data", "https://user:fixture-secret@preview.example.invalid/?token=fixture-secret"],
-  ])("explains the required Preview API configuration when both URLs are %s", (_description, apiUrl) => {
+    ["containing credentials", "https://user:pass@preview.example.invalid"],
+    ["containing a path", "https://preview.example.invalid/api"],
+    ["containing query data", "https://preview.example.invalid?token=fixture-secret"],
+    ["containing a fragment", "https://preview.example.invalid#fragment"],
+  ])("explains the required Preview API configuration when VITE_API_URL is %s", (_description, apiUrl) => {
     const root = resolve(__dirname, "../..");
     const result = spawnSync(
       process.execPath,
@@ -68,16 +70,50 @@ describe("blog API origin validation", () => {
           TEMP: process.env.TEMP || "",
           TMP: process.env.TMP || "",
           VERCEL_ENV: "preview",
-          ...(apiUrl === undefined ? {} : { BLOG_API_URL: apiUrl }),
+          ...(apiUrl === undefined ? {} : { VITE_API_URL: apiUrl }),
         },
       },
     );
 
     expect(result.error).toBeUndefined();
     expect(result.status).toBe(1);
-    expect(result.stderr).toContain("Preview builds require VITE_API_URL or legacy BLOG_API_URL");
+    expect(result.stderr).toContain("Preview builds require VITE_API_URL");
     expect(result.stderr).not.toContain("fixture-secret");
     expect(result.stderr).not.toContain("?token=");
+  });
+
+  it.each([
+    ["missing Preview origin", undefined, "https://production.example.invalid"],
+    ["malformed Preview origin", "not-a-url", "https://production.example.invalid"],
+    ["missing Production comparison origin", "https://preview.example.invalid", undefined],
+    ["malformed Production comparison origin", "https://preview.example.invalid", "not-a-url"],
+    ["Production origin used for Preview", "https://production.example.invalid", "https://production.example.invalid"],
+  ])("rejects %s", (_description, previewOrigin, productionOrigin) => {
+    const root = resolve(__dirname, "../..");
+    const result = spawnSync(
+      process.execPath,
+      [resolve(root, "scripts/fetch-blogs.mjs")],
+      {
+        cwd: root,
+        encoding: "utf8",
+        env: {
+          PATH: process.env.PATH || "",
+          SystemRoot: process.env.SystemRoot || "",
+          TEMP: process.env.TEMP || "",
+          TMP: process.env.TMP || "",
+          VERCEL_ENV: "preview",
+          VITE_API_URL: "https://preview.example.invalid",
+          ...(previewOrigin === undefined ? {} : { PREVIEW_BACKEND_API_ORIGIN: previewOrigin }),
+          ...(productionOrigin === undefined ? {} : { PRODUCTION_BACKEND_API_ORIGIN: productionOrigin }),
+        },
+      },
+    );
+
+    expect(result.error).toBeUndefined();
+    expect(result.status).toBe(1);
+    expect(result.stderr).toMatch(/Preview builds require|Preview blog API must be the isolated HTTPS backend origin/);
+    expect(result.stderr).not.toContain("https://preview.example.invalid");
+    expect(result.stderr).not.toContain("https://production.example.invalid");
   });
 
   it("rejects a VITE_API_URL that points away from the isolated Preview origin", () => {
@@ -85,6 +121,56 @@ describe("blog API origin validation", () => {
     const result = spawnSync(
       process.execPath,
       [resolve(root, "scripts/fetch-blogs.mjs")],
+      {
+        cwd: root,
+        encoding: "utf8",
+        env: {
+          PATH: process.env.PATH || "",
+          SystemRoot: process.env.SystemRoot || "",
+          TEMP: process.env.TEMP || "",
+          TMP: process.env.TMP || "",
+          VERCEL_ENV: "preview",
+          VITE_API_URL: "https://production.example.invalid",
+          PREVIEW_BACKEND_API_ORIGIN: "https://preview.example.invalid",
+          PRODUCTION_BACKEND_API_ORIGIN: "https://production.example.invalid",
+        },
+      },
+    );
+
+    expect(result.error).toBeUndefined();
+    expect(result.status).toBe(1);
+    expect(result.stderr).toContain("Preview blog API must be the isolated HTTPS backend origin");
+    expect(result.stderr).not.toContain("https://production.example.invalid");
+  });
+
+  it("requires VITE_API_URL for the manual blog approval tool", () => {
+    const root = resolve(__dirname, "../..");
+    const result = spawnSync(
+      process.execPath,
+      [resolve(root, "scripts/approve-blog.mjs"), "--list"],
+      {
+        cwd: root,
+        encoding: "utf8",
+        env: {
+          PATH: process.env.PATH || "",
+          SystemRoot: process.env.SystemRoot || "",
+          TEMP: process.env.TEMP || "",
+          TMP: process.env.TMP || "",
+        },
+      },
+    );
+
+    expect(result.error).toBeUndefined();
+    expect(result.status).toBe(1);
+    expect(result.stderr).toContain("VITE_API_URL must be configured");
+    expect(result.stderr).not.toContain("onrender.com");
+  });
+
+  it("rejects a Production origin in the manual tool during a Preview build", () => {
+    const root = resolve(__dirname, "../..");
+    const result = spawnSync(
+      process.execPath,
+      [resolve(root, "scripts/approve-blog.mjs"), "--list"],
       {
         cwd: root,
         encoding: "utf8",

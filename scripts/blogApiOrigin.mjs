@@ -1,4 +1,4 @@
-export function parseBlogApiOrigin(value, { requireHttps = false } = {}) {
+export function parseBlogApiOrigin(value) {
   if (typeof value !== "string" || !value) return null;
 
   let parsed;
@@ -8,7 +8,6 @@ export function parseBlogApiOrigin(value, { requireHttps = false } = {}) {
     return null;
   }
 
-  const localHttpHost = ["localhost", "127.0.0.1", "[::1]"].includes(parsed.hostname.toLowerCase());
   if (
     parsed.username ||
     parsed.password ||
@@ -16,11 +15,24 @@ export function parseBlogApiOrigin(value, { requireHttps = false } = {}) {
     parsed.search ||
     parsed.hash ||
     parsed.origin !== value ||
-    (parsed.protocol !== "https:" && !(parsed.protocol === "http:" && localHttpHost && !requireHttps)) ||
-    (requireHttps && parsed.protocol !== "https:")
+    parsed.protocol !== "https:"
   ) {
     return null;
   }
 
   return parsed.origin;
+}
+
+export function isIsolatedPreviewBlogApiOrigin(apiOrigin, previewOrigin, productionOrigin) {
+  const api = parseBlogApiOrigin(apiOrigin);
+  const preview = parseBlogApiOrigin(previewOrigin);
+  const production = parseBlogApiOrigin(productionOrigin);
+  return Boolean(
+    api &&
+      preview &&
+      production &&
+      api === preview &&
+      api !== production &&
+      new URL(api).hostname.toLowerCase() !== "fly-star-aviation-private-limited.onrender.com",
+  );
 }

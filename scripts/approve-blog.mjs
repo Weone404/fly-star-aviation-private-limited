@@ -17,18 +17,36 @@
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { readApprovals, writeApprovals } from "./approvals.mjs";
+import { isIsolatedPreviewBlogApiOrigin, parseBlogApiOrigin } from "./blogApiOrigin.mjs";
 import { postHash, tidySlug, plainWords } from "./blogGate.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const API = process.env.BLOG_API_URL || process.env.VITE_API_URL || "https://fly-star-aviation-private-limited.onrender.com";
+const API_ORIGIN = parseBlogApiOrigin(process.env.VITE_API_URL);
 
 const args = process.argv.slice(2);
 const noteIdx = args.indexOf("--note");
 const note = noteIdx > -1 ? args[noteIdx + 1] : undefined;
 const slugArg = args.find((a) => !a.startsWith("--") && a !== note);
 
+if (!API_ORIGIN) {
+  console.error("[blogs:approve] VITE_API_URL must be configured as a valid HTTPS origin without credentials, path, query, or fragment.");
+  process.exit(1);
+}
+
+if (
+  process.env.VERCEL_ENV === "preview" &&
+  !isIsolatedPreviewBlogApiOrigin(
+    API_ORIGIN,
+    process.env.PREVIEW_BACKEND_API_ORIGIN,
+    process.env.PRODUCTION_BACKEND_API_ORIGIN,
+  )
+) {
+  console.error("[blogs:approve] Preview blog API must be the isolated HTTPS backend origin.");
+  process.exit(1);
+}
+
 async function fetchPosts() {
-  const res = await fetch(`${API}/api/blogs`, { signal: AbortSignal.timeout(60000) });
+  const res = await fetch(`${API_ORIGIN}/api/blogs`, { signal: AbortSignal.timeout(60000) });
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
   const json = await res.json();
   if (!Array.isArray(json)) throw new Error("response was not an array");
@@ -39,8 +57,8 @@ async function main() {
   let posts;
   try {
     posts = await fetchPosts();
-  } catch (err) {
-    console.error(`Could not reach ${API}: ${err.message}`);
+  } catch {
+    console.error("[blogs:approve] Could not reach the configured blog API origin.");
     console.error("Run this from a machine or network that can reach the blog API.");
     process.exit(1);
   }

@@ -26,7 +26,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { partition } from "./blogGate.mjs";
 import { readApprovals } from "./approvals.mjs";
-import { parseBlogApiOrigin } from "./blogApiOrigin.mjs";
+import { isIsolatedPreviewBlogApiOrigin, parseBlogApiOrigin } from "./blogApiOrigin.mjs";
 import { sanitizePostFields } from "./sanitize.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -36,15 +36,15 @@ const REPORT = path.join(ROOT, "blog-gate-report.json");
 const GATE = path.join(ROOT, "blog-gate.json");
 
 const PREVIEW_BUILD = process.env.VERCEL_ENV === "preview";
-const API = process.env.VITE_API_URL || process.env.BLOG_API_URL;
-const API_ORIGIN = parseBlogApiOrigin(API, { requireHttps: process.env.VERCEL_ENV === "production" });
+const API = process.env.VITE_API_URL;
+const API_ORIGIN = parseBlogApiOrigin(API);
 const TIMEOUT_MS = Number(process.env.BLOG_FETCH_TIMEOUT_MS || 45000);
 
 if (!API_ORIGIN) {
   console.error(
     PREVIEW_BUILD
-      ? "[fetch-blogs] Preview builds require VITE_API_URL or legacy BLOG_API_URL to be an HTTPS backend origin without credentials, path, query, or fragment."
-      : "[fetch-blogs] API must be a valid origin without credentials, path, query, or fragment."
+      ? "[fetch-blogs] Preview builds require VITE_API_URL to be an HTTPS backend origin without credentials, path, query, or fragment."
+      : "[fetch-blogs] VITE_API_URL must be a valid HTTPS origin without credentials, path, query, or fragment."
   );
   process.exit(1);
 }
@@ -52,19 +52,11 @@ if (!API_ORIGIN) {
 if (PREVIEW_BUILD) {
   const configuredPreviewOrigin = process.env.PREVIEW_BACKEND_API_ORIGIN;
   const productionApi = process.env.PRODUCTION_BACKEND_API_ORIGIN;
-  if (!API || !configuredPreviewOrigin || !productionApi) {
-    console.error("[fetch-blogs] Preview builds require VITE_API_URL or legacy BLOG_API_URL for an isolated preview backend.");
+  if (!configuredPreviewOrigin || !productionApi) {
+    console.error("[fetch-blogs] Preview builds require VITE_API_URL, PREVIEW_BACKEND_API_ORIGIN, and PRODUCTION_BACKEND_API_ORIGIN.");
     process.exit(1);
   }
-  const configuredPreviewBackend = parseBlogApiOrigin(configuredPreviewOrigin, { requireHttps: true });
-  const productionBackend = parseBlogApiOrigin(productionApi, { requireHttps: true });
-  if (
-    !configuredPreviewBackend ||
-    !productionBackend ||
-    API_ORIGIN !== configuredPreviewBackend ||
-    API_ORIGIN === productionBackend ||
-    new URL(API_ORIGIN).hostname.toLowerCase() === "fly-star-aviation-private-limited.onrender.com"
-  ) {
+  if (!isIsolatedPreviewBlogApiOrigin(API_ORIGIN, configuredPreviewOrigin, productionApi)) {
     console.error("[fetch-blogs] Preview blog API must be the isolated HTTPS backend origin.");
     process.exit(1);
   }
@@ -76,7 +68,7 @@ const approvals = readApprovals(ROOT);
 async function main() {
   let posts;
   try {
-    const res = await fetch(`${API}/api/blogs`, {
+    const res = await fetch(`${API_ORIGIN}/api/blogs`, {
       signal: AbortSignal.timeout(TIMEOUT_MS),
       headers: { accept: "application/json" },
     });
