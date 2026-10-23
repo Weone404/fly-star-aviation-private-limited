@@ -198,7 +198,12 @@ function blogPostFor(path: string) {
   const match = path.match(/^\/(?:blogs|blog)\/([^/]+)$/);
   if (!match) return null;
   const post = getBlogPost(match[1]) as Record<string, unknown> | null;
-  return post && post.content ? (post as BlogPost) : null;
+  if (!post || !hasBlogPostContent(post)) return null;
+  return post;
+}
+
+function hasBlogPostContent(post: Record<string, unknown>): post is Record<string, unknown> & BlogPost {
+  return typeof post.title === "string" && typeof post.content === "string" && post.content.length > 0;
 }
 
 interface BlogPost {

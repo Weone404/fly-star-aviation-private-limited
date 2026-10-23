@@ -1,7 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-// @ts-expect-error - plain CommonJS backend module, no types
 import { isHoneypotTripped, createRateLimiter, clientIp, HONEYPOT_FIELD } from "../../backend/enquiryGuard.js";
-// @ts-expect-error - plain CommonJS backend module, no types
 import { buildEnquiryEmail, notificationConfig, notifyEnquiry } from "../../backend/notifyEnquiry.js";
 
 /**

@@ -121,7 +121,7 @@ describe("contact popup", () => {
     fireEvent.click(screen.getByRole("button", { name: "Enquire now" }));
 
     const dialog = screen.getByRole("dialog", { name: "Send Us a Message" });
-    const name = screen.getByPlaceholderText("Rahul Sharma");
+    const name = screen.getByPlaceholderText("Rahul Sharma") as HTMLInputElement;
     const email = screen.getByPlaceholderText("rahul@email.com");
 
     act(() => { name.focus(); });

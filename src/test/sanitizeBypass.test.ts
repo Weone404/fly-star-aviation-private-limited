@@ -1,6 +1,5 @@
 import { describe, expect, it } from "vitest";
 import { sanitizeHtml } from "../lib/sanitizeHtml";
-// @ts-expect-error - plain .mjs build script, no types
 import { sanitizeHtml as sanitizeNode } from "../../scripts/sanitize.mjs";
 
 /**

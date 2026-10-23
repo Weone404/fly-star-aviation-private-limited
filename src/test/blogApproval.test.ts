@@ -1,6 +1,5 @@
 import { describe, expect, it } from "vitest";
 import { APPROVED_POSTS, REFUSED_POSTS, isApproved } from "../lib/blogApproval";
-// @ts-expect-error - plain .mjs build script, no types
 import { assess, partition, postHash, HASHED_FIELDS } from "../../scripts/blogGate.mjs";
 
 const gate = { minWords: 300, denySlugs: [], denyIds: [], spamMarkers: [] };

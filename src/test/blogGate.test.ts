@@ -1,5 +1,4 @@
 import { describe, expect, it } from "vitest";
-// @ts-expect-error — plain .mjs build script, no types
 import { assess, tidySlug, plainWords, partition } from "../../scripts/blogGate.mjs";
 
 const gate = {

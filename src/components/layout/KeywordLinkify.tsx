@@ -33,6 +33,19 @@ const NEVER_LINKIFY_COMPONENTS = new Set([
   "SheetTitle",
 ]);
 
+function componentName<T>(type: T): string {
+  if (typeof type === "function") {
+    const displayName = "displayName" in type && typeof type.displayName === "string"
+      ? type.displayName
+      : "";
+    return displayName || type.name;
+  }
+  if (typeof type === "object" && type !== null && "displayName" in type) {
+    return typeof type.displayName === "string" ? type.displayName : "";
+  }
+  return "";
+}
+
 export function KeywordLinkify({ children }: KeywordLinkifyProps) {
   let linkKeyCounter = 0;
   const { pathname } = useLocation();
@@ -95,10 +108,10 @@ export function KeywordLinkify({ children }: KeywordLinkifyProps) {
 
     if (isValidElement(node)) {
       const elementType = node.type;
+      const name = componentName(elementType);
       const isProtectedElement =
         (typeof elementType === "string" && NEVER_LINKIFY_TAGS.has(elementType)) ||
-        (typeof elementType === "function" &&
-          NEVER_LINKIFY_COMPONENTS.has(elementType.displayName || elementType.name)) ||
+        NEVER_LINKIFY_COMPONENTS.has(name) ||
         elementType === Link ||
         elementType === "a" ||
         elementType === "title" ||
@@ -106,8 +119,7 @@ export function KeywordLinkify({ children }: KeywordLinkifyProps) {
         elementType === "link" ||
         elementType === "script" ||
         elementType === "style" ||
-        (typeof elementType === "function" &&
-          (elementType.displayName === "Helmet" || elementType.name === "Helmet"));
+        name === "Helmet";
 
       if (isProtectedElement) {
         return node;
@@ -129,4 +141,3 @@ export function KeywordLinkify({ children }: KeywordLinkifyProps) {
 
   return <>{linkifyNode(children)}</>;
 }
-
