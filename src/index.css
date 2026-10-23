@@ -1,6 +1,5 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@config "../tailwind.config.js";
 
 @layer base {
   :root {
@@ -281,7 +280,8 @@
 
   /* Mega Menu Styles */
   .mega-menu {
-    @apply absolute top-full left-0 w-full bg-background border-t border-border shadow-hover opacity-0 invisible transition-all duration-300;
+    @apply absolute top-full left-0 w-full bg-background border-t border-border opacity-0 invisible transition-all duration-300;
+    box-shadow: var(--shadow-hover);
   }
 
   .mega-menu.open {
