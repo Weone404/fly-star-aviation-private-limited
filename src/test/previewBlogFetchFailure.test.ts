@@ -66,8 +66,6 @@ describe("Preview blog build fetch", () => {
             TMP: process.env.TMP || "",
             VERCEL_ENV: "preview",
             VITE_API_URL: "https://preview.example.invalid",
-            PREVIEW_BACKEND_API_ORIGIN: "https://preview.example.invalid",
-            PRODUCTION_BACKEND_API_ORIGIN: "https://production.example.invalid",
           },
         },
       );
@@ -142,8 +140,6 @@ describe("Preview blog build fetch", () => {
             TMP: process.env.TMP || "",
             VERCEL_ENV: "preview",
             VITE_API_URL: "https://preview.example.invalid",
-            PREVIEW_BACKEND_API_ORIGIN: "https://preview.example.invalid",
-            PRODUCTION_BACKEND_API_ORIGIN: "https://production.example.invalid",
           },
         },
       );

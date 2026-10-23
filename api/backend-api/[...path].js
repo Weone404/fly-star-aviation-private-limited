@@ -1,6 +1,6 @@
 import https from "node:https";
+import { PRODUCTION_BACKEND_HOSTNAME } from "../../scripts/blogApiOrigin.mjs";
 
-const PRODUCTION_BACKEND_HOSTNAME = "fly-star-aviation-private-limited.onrender.com";
 const HOP_BY_HOP_HEADERS = new Set([
     "connection",
     "keep-alive",

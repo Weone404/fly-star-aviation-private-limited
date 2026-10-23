@@ -11,8 +11,8 @@ backend in `backend/` · Vercel.
 | `NODE_ENV` | Backend service environment (Render) | Set to `production`; otherwise the session cookie does not get the `Secure` flag |
 | `VITE_API_URL` | Frontend build environment (Vercel) | Canonical public HTTPS backend origin for the frontend and all build-time blog data fetching; never put credentials in it |
 | `BACKEND_API_ORIGIN` | Vercel Production environment | Required HTTPS origin for the production `/backend-api/` proxy; no production fallback is used when missing |
-| `PREVIEW_BACKEND_API_ORIGIN` | Vercel Preview environment | Required HTTPS origin for preview proxy requests; must differ from `PRODUCTION_BACKEND_API_ORIGIN` |
-| `PRODUCTION_BACKEND_API_ORIGIN` | Vercel Preview environment | Required HTTPS origin guard; preview requests/builds fail closed if the preview origin equals this production origin |
+| `PREVIEW_BACKEND_API_ORIGIN` | Vercel Preview environment | Required HTTPS origin for `/backend-api/` proxy requests; must differ from `PRODUCTION_BACKEND_API_ORIGIN` |
+| `PRODUCTION_BACKEND_API_ORIGIN` | Vercel Preview environment | Required HTTPS origin guard for `/backend-api/` proxy requests |
 | `FLYSTAR_DEPLOYMENT_ENV` | Backend service environment (Render) | Required in production: `production` selects `MONGODB_URI`; `preview` selects only `PREVIEW_MONGODB_URI`; any other value fails closed |
 | `ADMIN_TRUSTED_ORIGINS` | Render backend environment (optional in production; required on isolated preview backend) | Comma-separated exact HTTPS origins. When set, replaces code defaults; on preview set only the exact Vercel preview origin |
 | `ADMIN_USERNAME` | Backend service environment (Render) | Required to enable admin login; non-empty; use a fresh value |
@@ -36,12 +36,13 @@ Admin browser requests use the same-origin `/backend-api/` proxy so the
 `HttpOnly`, `Secure` (in production), `SameSite=Lax` session cookie remains
 first-party in browsers. The Vercel function selects `BACKEND_API_ORIGIN` only
 for production and `PREVIEW_BACKEND_API_ORIGIN` only for previews. It returns
-`503` if the applicable origin is missing or invalid and never falls back
-between environments. Preview proxying and blog fetching also require
-`PRODUCTION_BACKEND_API_ORIGIN` and reject an equal Preview origin. Preview blog
-fetching uses only `VITE_API_URL`; this HTTPS origin must match
-`PREVIEW_BACKEND_API_ORIGIN` and differ from the Production origin. The
-production Render hostname is rejected.
+`503` if the applicable proxy origin is missing or invalid and never falls back
+between environments. Preview proxy requests require
+`PREVIEW_BACKEND_API_ORIGIN` and `PRODUCTION_BACKEND_API_ORIGIN`, and reject an
+equal Preview origin. Build-time blog fetching instead uses only
+`VITE_API_URL`; the repository's Preview guard rejects the known Production
+backend hostname. If either proxy guard is also supplied to the build, it must
+be a valid HTTPS origin and must agree with `VITE_API_URL`.
 If the configured Preview blog API fails or returns an invalid response, the
 Preview build stops and leaves the prior generated blog module untouched; it
 does not silently build from stale fetched data.
@@ -141,12 +142,12 @@ formats, not credentials; do not paste actual values into this document.
   separate Preview Render service origin, with HTTPS and no path, query,
   fragment, username, or password.
 - [ ] Set `PRODUCTION_BACKEND_API_ORIGIN=https://<production-render-host>` as
-  the production-origin comparison guard only. Preview proxy requests must use
-  `PREVIEW_BACKEND_API_ORIGIN`, never this guard value.
+  the production-origin comparison guard for Preview proxy requests only.
 - [ ] Set `VITE_API_URL` to the isolated Preview backend origin, matching
-  `PREVIEW_BACKEND_API_ORIGIN`. This explicitly overrides tracked
-  `.env.production`, whose public default is production-like. The value must
-  contain no credentials, path, query, or fragment.
+  `PREVIEW_BACKEND_API_ORIGIN` when the Preview `/backend-api/` proxy is used.
+  Build-time blog fetching uses this same HTTPS bare origin and rejects the
+  known Production hostname. This explicitly overrides tracked `.env.production`,
+  whose public default is production-like.
 - [ ] Do **not** set Preview `BACKEND_API_ORIGIN` or production `MONGODB_URI`.
   If the Vercel `api/contact.js` function is enabled in Preview, set only
   `PREVIEW_MONGODB_URI` to the isolated Preview database; otherwise leave it
@@ -286,8 +287,10 @@ tested through the deployed preview.
 ## 3. Build
 `npm run build` runs `prebuild`, `vite build`, and `postbuild`. The `prebuild`
 blog fetch uses only the canonical `VITE_API_URL`; it never defaults to the
-Production backend. Without this setting, the fetch script exits before making
-a network request or writing generated files. A
+Production backend. In Preview, it rejects the known Production backend
+hostname, so the fetch needs no additional origin variables. Without a valid
+`VITE_API_URL`, the script exits before making a network request or writing
+generated files. A
 Production API origin must never be used for local validation. **Do not run this
 command unqualified in a working tree or ordinary CI job.** Validate in a
 disposable copy using the isolated Preview backend or a network-restricted local
@@ -330,14 +333,14 @@ Production behavior, or Render/Vercel settings.
 
 For a real Preview-data build, use a disposable clean copy without
 `.env.production`, `backend/.env`, or Production credentials. Install with
-`npm ci --ignore-scripts`, explicitly set `VITE_API_URL` and
-`PREVIEW_BACKEND_API_ORIGIN` to the isolated Preview backend. Set
-`PRODUCTION_BACKEND_API_ORIGIN` only as the comparison guard. Restrict network
-egress to the isolated Preview backend and deny the Production backend before
-running `npm run build` in that copy. All configured origins must be HTTPS
-origin-only URLs without credentials, paths, queries, or fragments. The Preview
-backend must use its separate Preview database; the Production origin is a
-comparison guard and must never be contacted. The command's generators rewrite files
+`npm ci --ignore-scripts`, and set `VITE_API_URL` to the verified isolated
+Preview backend. If validating the `/backend-api/` proxy too, also set
+`PREVIEW_BACKEND_API_ORIGIN` and `PRODUCTION_BACKEND_API_ORIGIN` as described
+above. Restrict network egress to the isolated Preview backend and deny the
+Production backend before running `npm run build` in that copy. All configured
+origins must be HTTPS origins without credentials, paths, queries, or
+fragments. The Preview backend must use its separate Preview database; the
+Production backend must never be contacted. The command's generators rewrite files
 under `public/`, `src/lib/`, and the build output, so review changes only in the
 disposable copy. If isolated service configuration and egress controls cannot
 be confirmed, do not run a build against any remote service; use the approved

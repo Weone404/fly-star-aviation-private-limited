@@ -15,12 +15,13 @@ the generated admin bundles.
    `scripts/verify-admin-client.mjs` checks the client bundles.
 
 The Preview blog fetch is intentionally fail-closed: configure canonical
-`VITE_API_URL`, `PREVIEW_BACKEND_API_ORIGIN`, and
-`PRODUCTION_BACKEND_API_ORIGIN` as documented in [DEPLOYMENT.md](./DEPLOYMENT.md)
-before running a Preview build. `VITE_API_URL` is the only API origin used for
-blog fetching; it must match the isolated Preview backend, never Production.
-The sitemap and feed generators use the generated blog data. They write files under
-`public/`, so run the lifecycle in a disposable copy when validating changes.
+`VITE_API_URL` to the isolated Preview backend before running a Preview build.
+The build rejects the known Production backend hostname. The additional
+`PREVIEW_BACKEND_API_ORIGIN` and `PRODUCTION_BACKEND_API_ORIGIN` settings are
+required by the `/backend-api/` proxy, not by the build-time blog fetch. The
+sitemap and feed generators use the generated blog data. They write files
+under `public/`, so run the lifecycle in a disposable copy when validating
+changes.
 
 ## Routes and metadata
 

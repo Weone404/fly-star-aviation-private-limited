@@ -52,11 +52,11 @@ if (!API_ORIGIN) {
 if (PREVIEW_BUILD) {
   const configuredPreviewOrigin = process.env.PREVIEW_BACKEND_API_ORIGIN;
   const productionApi = process.env.PRODUCTION_BACKEND_API_ORIGIN;
-  if (!configuredPreviewOrigin || !productionApi) {
-    console.error("[fetch-blogs] Preview builds require VITE_API_URL, PREVIEW_BACKEND_API_ORIGIN, and PRODUCTION_BACKEND_API_ORIGIN.");
-    process.exit(1);
-  }
-  if (!isIsolatedPreviewBlogApiOrigin(API_ORIGIN, configuredPreviewOrigin, productionApi)) {
+  if (
+    (configuredPreviewOrigin && !parseBlogApiOrigin(configuredPreviewOrigin)) ||
+    (productionApi && !parseBlogApiOrigin(productionApi)) ||
+    !isIsolatedPreviewBlogApiOrigin(API_ORIGIN, configuredPreviewOrigin, productionApi)
+  ) {
     console.error("[fetch-blogs] Preview blog API must be the isolated HTTPS backend origin.");
     process.exit(1);
   }

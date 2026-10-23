@@ -1,7 +1,11 @@
 import { spawnSync } from "node:child_process";
 import { resolve } from "node:path";
 import { describe, expect, it } from "vitest";
-import { parseBlogApiOrigin } from "../../scripts/blogApiOrigin.mjs";
+import {
+  isIsolatedPreviewBlogApiOrigin,
+  parseBlogApiOrigin,
+  PRODUCTION_BACKEND_HOSTNAME,
+} from "../../scripts/blogApiOrigin.mjs";
 
 describe("blog API origin validation", () => {
   it("accepts safe HTTPS origins and rejects malformed origins", () => {
@@ -23,6 +27,38 @@ describe("blog API origin validation", () => {
 
   it("rejects API URLs containing credentials", () => {
     expect(parseBlogApiOrigin("https://user@preview.example.invalid")).toBeNull();
+  });
+
+  it("uses the verified Production hostname to identify Preview API separation", () => {
+    const previewApi = "https://preview.example.invalid";
+    const productionApi = `https://${PRODUCTION_BACKEND_HOSTNAME}`;
+    expect(isIsolatedPreviewBlogApiOrigin(previewApi)).toBe(true);
+    expect(isIsolatedPreviewBlogApiOrigin(productionApi)).toBe(false);
+  });
+
+  it("blocks the known Production backend during a Preview build without extra origin variables", () => {
+    const root = resolve(__dirname, "../..");
+    const result = spawnSync(
+      process.execPath,
+      [resolve(root, "scripts/fetch-blogs.mjs")],
+      {
+        cwd: root,
+        encoding: "utf8",
+        env: {
+          PATH: process.env.PATH || "",
+          SystemRoot: process.env.SystemRoot || "",
+          TEMP: process.env.TEMP || "",
+          TMP: process.env.TMP || "",
+          VERCEL_ENV: "preview",
+          VITE_API_URL: `https://${PRODUCTION_BACKEND_HOSTNAME}`,
+        },
+      },
+    );
+
+    expect(result.error).toBeUndefined();
+    expect(result.status).toBe(1);
+    expect(result.stderr).toContain("Preview blog API must be the isolated HTTPS backend origin");
+    expect(result.stderr).not.toContain(PRODUCTION_BACKEND_HOSTNAME);
   });
 
   it("requires an explicit API origin instead of defaulting to Production", () => {
@@ -83,11 +119,10 @@ describe("blog API origin validation", () => {
   });
 
   it.each([
-    ["missing Preview origin", undefined, "https://production.example.invalid"],
     ["malformed Preview origin", "not-a-url", "https://production.example.invalid"],
-    ["missing Production comparison origin", "https://preview.example.invalid", undefined],
     ["malformed Production comparison origin", "https://preview.example.invalid", "not-a-url"],
     ["Production origin used for Preview", "https://production.example.invalid", "https://production.example.invalid"],
+    ["Preview URL differs from the configured Preview origin", "https://other-preview.example.invalid", "https://production.example.invalid"],
   ])("rejects %s", (_description, previewOrigin, productionOrigin) => {
     const root = resolve(__dirname, "../..");
     const result = spawnSync(
@@ -103,7 +138,7 @@ describe("blog API origin validation", () => {
           TMP: process.env.TMP || "",
           VERCEL_ENV: "preview",
           VITE_API_URL: "https://preview.example.invalid",
-          ...(previewOrigin === undefined ? {} : { PREVIEW_BACKEND_API_ORIGIN: previewOrigin }),
+          PREVIEW_BACKEND_API_ORIGIN: previewOrigin,
           ...(productionOrigin === undefined ? {} : { PRODUCTION_BACKEND_API_ORIGIN: productionOrigin }),
         },
       },

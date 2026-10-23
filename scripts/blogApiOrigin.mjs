@@ -1,3 +1,5 @@
+export const PRODUCTION_BACKEND_HOSTNAME = "fly-star-aviation-private-limited.onrender.com";
+
 export function parseBlogApiOrigin(value) {
   if (typeof value !== "string" || !value) return null;
 
@@ -25,14 +27,14 @@ export function parseBlogApiOrigin(value) {
 
 export function isIsolatedPreviewBlogApiOrigin(apiOrigin, previewOrigin, productionOrigin) {
   const api = parseBlogApiOrigin(apiOrigin);
-  const preview = parseBlogApiOrigin(previewOrigin);
-  const production = parseBlogApiOrigin(productionOrigin);
+  const preview = previewOrigin === undefined ? api : parseBlogApiOrigin(previewOrigin);
+  const production = productionOrigin === undefined ? null : parseBlogApiOrigin(productionOrigin);
   return Boolean(
     api &&
       preview &&
-      production &&
       api === preview &&
+      (productionOrigin === undefined || production) &&
       api !== production &&
-      new URL(api).hostname.toLowerCase() !== "fly-star-aviation-private-limited.onrender.com",
+      new URL(api).hostname.toLowerCase() !== PRODUCTION_BACKEND_HOSTNAME,
   );
 }
