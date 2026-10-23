@@ -36,17 +36,14 @@ const REPORT = path.join(ROOT, "blog-gate-report.json");
 const GATE = path.join(ROOT, "blog-gate.json");
 
 const PREVIEW_BUILD = process.env.VERCEL_ENV === "preview";
-const API = PREVIEW_BUILD
-  ? process.env.BLOG_API_URL
-  : process.env.BLOG_API_URL ||
-    process.env.VITE_API_URL;
+const API = process.env.VITE_API_URL || process.env.BLOG_API_URL;
 const API_ORIGIN = parseBlogApiOrigin(API, { requireHttps: process.env.VERCEL_ENV === "production" });
 const TIMEOUT_MS = Number(process.env.BLOG_FETCH_TIMEOUT_MS || 45000);
 
 if (!API_ORIGIN) {
   console.error(
     PREVIEW_BUILD
-      ? "[fetch-blogs] Preview builds require BLOG_API_URL to be an HTTPS backend origin without credentials, path, query, or fragment."
+      ? "[fetch-blogs] Preview builds require VITE_API_URL or legacy BLOG_API_URL to be an HTTPS backend origin without credentials, path, query, or fragment."
       : "[fetch-blogs] API must be a valid origin without credentials, path, query, or fragment."
   );
   process.exit(1);
@@ -56,7 +53,7 @@ if (PREVIEW_BUILD) {
   const configuredPreviewOrigin = process.env.PREVIEW_BACKEND_API_ORIGIN;
   const productionApi = process.env.PRODUCTION_BACKEND_API_ORIGIN;
   if (!API || !configuredPreviewOrigin || !productionApi) {
-    console.error("[fetch-blogs] Preview builds require BLOG_API_URL for an isolated preview backend.");
+    console.error("[fetch-blogs] Preview builds require VITE_API_URL or legacy BLOG_API_URL for an isolated preview backend.");
     process.exit(1);
   }
   const configuredPreviewBackend = parseBlogApiOrigin(configuredPreviewOrigin, { requireHttps: true });
@@ -68,7 +65,7 @@ if (PREVIEW_BUILD) {
     API_ORIGIN === productionBackend ||
     new URL(API_ORIGIN).hostname.toLowerCase() === "fly-star-aviation-private-limited.onrender.com"
   ) {
-    console.error("[fetch-blogs] Preview BLOG_API_URL must be an isolated HTTPS backend origin.");
+    console.error("[fetch-blogs] Preview blog API must be the isolated HTTPS backend origin.");
     process.exit(1);
   }
 }

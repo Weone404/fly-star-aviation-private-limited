@@ -51,9 +51,10 @@ describe("blog API origin validation", () => {
 
   it.each([
     ["missing", undefined],
+    ["empty", ""],
     ["malformed", "not-a-url"],
     ["containing credentials and query data", "https://user:fixture-secret@preview.example.invalid/?token=fixture-secret"],
-  ])("explains the required Preview API configuration when BLOG_API_URL is %s", (_description, apiUrl) => {
+  ])("explains the required Preview API configuration when both URLs are %s", (_description, apiUrl) => {
     const root = resolve(__dirname, "../..");
     const result = spawnSync(
       process.execPath,
@@ -74,8 +75,35 @@ describe("blog API origin validation", () => {
 
     expect(result.error).toBeUndefined();
     expect(result.status).toBe(1);
-    expect(result.stderr).toContain("Preview builds require BLOG_API_URL to be an HTTPS backend origin");
+    expect(result.stderr).toContain("Preview builds require VITE_API_URL or legacy BLOG_API_URL");
     expect(result.stderr).not.toContain("fixture-secret");
     expect(result.stderr).not.toContain("?token=");
+  });
+
+  it("rejects a VITE_API_URL that points away from the isolated Preview origin", () => {
+    const root = resolve(__dirname, "../..");
+    const result = spawnSync(
+      process.execPath,
+      [resolve(root, "scripts/fetch-blogs.mjs")],
+      {
+        cwd: root,
+        encoding: "utf8",
+        env: {
+          PATH: process.env.PATH || "",
+          SystemRoot: process.env.SystemRoot || "",
+          TEMP: process.env.TEMP || "",
+          TMP: process.env.TMP || "",
+          VERCEL_ENV: "preview",
+          VITE_API_URL: "https://production.example.invalid",
+          PREVIEW_BACKEND_API_ORIGIN: "https://preview.example.invalid",
+          PRODUCTION_BACKEND_API_ORIGIN: "https://production.example.invalid",
+        },
+      },
+    );
+
+    expect(result.error).toBeUndefined();
+    expect(result.status).toBe(1);
+    expect(result.stderr).toContain("Preview blog API must be the isolated HTTPS backend origin");
+    expect(result.stderr).not.toContain("https://production.example.invalid");
   });
 });

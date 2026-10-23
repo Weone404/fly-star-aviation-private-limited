@@ -14,12 +14,13 @@ the generated admin bundles.
 3. `postbuild`: `scripts/prerender.js` writes static HTML, then
    `scripts/verify-admin-client.mjs` checks the client bundles.
 
-The Preview blog fetch is intentionally fail-closed: configure
-`BLOG_API_URL`, `VITE_API_URL`, `PREVIEW_BACKEND_API_ORIGIN`, and
+The Preview blog fetch is intentionally fail-closed: configure canonical
+`VITE_API_URL`, `PREVIEW_BACKEND_API_ORIGIN`, and
 `PRODUCTION_BACKEND_API_ORIGIN` as documented in [DEPLOYMENT.md](./DEPLOYMENT.md)
-before running a Preview build. Never allow a Preview build to fetch Production
-blog data. The sitemap and feed generators write files under `public/`, so run
-the lifecycle in a disposable copy when validating changes.
+before running a Preview build. `BLOG_API_URL` is only a legacy fallback when
+`VITE_API_URL` is unset. The selected origin must match the isolated Preview
+backend, never Production. The sitemap and feed generators write files under
+`public/`, so run the lifecycle in a disposable copy when validating changes.
 
 ## Routes and metadata
 

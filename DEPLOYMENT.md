@@ -9,8 +9,8 @@ backend in `backend/` · Vercel.
 | Variable | Where | Requirement and notes |
 |---|---|---|
 | `NODE_ENV` | Backend service environment (Render) | Set to `production`; otherwise the session cookie does not get the `Secure` flag |
-| `VITE_API_URL` | Frontend build environment (Vercel) | Public backend base URL used by build-time blog fetching when `BLOG_API_URL` is unset; never put credentials in it |
-| `BLOG_API_URL` | Vercel build environment | Explicit backend origin for `scripts/fetch-blogs.mjs`; required for Preview builds and must point to the isolated Preview backend there. Every other build must explicitly set `BLOG_API_URL` or `VITE_API_URL`; there is no Production default |
+| `VITE_API_URL` | Frontend build environment (Vercel) | Canonical public backend origin for the frontend and build-time blog fetching; never put credentials in it |
+| `BLOG_API_URL` | Vercel build environment (legacy, optional) | Fallback backend origin for `scripts/fetch-blogs.mjs` only when `VITE_API_URL` is unset. In Preview, the selected origin must match `PREVIEW_BACKEND_API_ORIGIN` and differ from `PRODUCTION_BACKEND_API_ORIGIN` |
 | `BACKEND_API_ORIGIN` | Vercel Production environment | Required HTTPS origin for the production `/backend-api/` proxy; no production fallback is used when missing |
 | `PREVIEW_BACKEND_API_ORIGIN` | Vercel Preview environment | Required HTTPS origin for preview proxy requests; must differ from `PRODUCTION_BACKEND_API_ORIGIN` |
 | `PRODUCTION_BACKEND_API_ORIGIN` | Vercel Preview environment | Required HTTPS origin guard; preview requests/builds fail closed if the preview origin equals this production origin |
@@ -40,7 +40,10 @@ for production and `PREVIEW_BACKEND_API_ORIGIN` only for previews. It returns
 `503` if the applicable origin is missing or invalid and never falls back
 between environments. Preview proxying and blog fetching also require
 `PRODUCTION_BACKEND_API_ORIGIN` and reject an equal Preview origin. Preview blog
-fetching requires `BLOG_API_URL` and rejects the production Render hostname.
+fetching uses `VITE_API_URL` first, with `BLOG_API_URL` as a legacy fallback
+only when `VITE_API_URL` is unset; the selected HTTPS origin must match
+`PREVIEW_BACKEND_API_ORIGIN` and differ from the Production origin. The
+production Render hostname is rejected.
 If the configured Preview blog API fails or returns an invalid response, the
 Preview build stops and leaves the prior generated blog module untouched; it
 does not silently build from stale fetched data.
@@ -142,10 +145,13 @@ formats, not credentials; do not paste actual values into this document.
 - [ ] Set `PRODUCTION_BACKEND_API_ORIGIN=https://<production-render-host>` as
   the production-origin comparison guard only. Preview proxy requests must use
   `PREVIEW_BACKEND_API_ORIGIN`, never this guard value.
-- [ ] Set `BLOG_API_URL` and `VITE_API_URL` to the same Preview backend origin
-  as `PREVIEW_BACKEND_API_ORIGIN`. This explicitly overrides tracked
-  `.env.production`, whose public default is production-like. These values must
-  contain no credentials.
+- [ ] Set `VITE_API_URL` to the isolated Preview backend origin, matching
+  `PREVIEW_BACKEND_API_ORIGIN`. This explicitly overrides tracked
+  `.env.production`, whose public default is production-like. The value must
+  contain no credentials, path, query, or fragment.
+- [ ] Leave `BLOG_API_URL` unset unless a legacy build integration requires it.
+  If set, use the same isolated Preview backend origin; `VITE_API_URL` takes
+  precedence.
 - [ ] Do **not** set Preview `BACKEND_API_ORIGIN` or production `MONGODB_URI`.
   If the Vercel `api/contact.js` function is enabled in Preview, set only
   `PREVIEW_MONGODB_URI` to the isolated Preview database; otherwise leave it
@@ -284,9 +290,10 @@ tested through the deployed preview.
 
 ## 3. Build
 `npm run build` runs `prebuild`, `vite build`, and `postbuild`. The `prebuild`
-blog fetch requires an explicitly configured `BLOG_API_URL` or `VITE_API_URL`;
-it never defaults to the Production backend. Without either setting, the fetch
-script exits before making a network request or writing generated files. A
+blog fetch uses the canonical `VITE_API_URL`, with `BLOG_API_URL` as a legacy
+fallback only when `VITE_API_URL` is unset; it never defaults to the Production
+backend. Without either setting, the fetch script exits before making a network
+request or writing generated files. A
 Production API origin must never be used for local validation. **Do not run this
 command unqualified in a working tree or ordinary CI job.** Validate in a
 disposable copy using the isolated Preview backend or a network-restricted local
@@ -329,14 +336,15 @@ Production behavior, or Render/Vercel settings.
 
 For a real Preview-data build, use a disposable clean copy without
 `.env.production`, `backend/.env`, or Production credentials. Install with
-`npm ci --ignore-scripts`, explicitly set `BLOG_API_URL`, `VITE_API_URL`, and
-`PREVIEW_BACKEND_API_ORIGIN` to the isolated Preview backend, and set
+`npm ci --ignore-scripts`, explicitly set `VITE_API_URL` and
+`PREVIEW_BACKEND_API_ORIGIN` to the isolated Preview backend, and optionally
+set `BLOG_API_URL` to that same origin only for legacy integrations. Set
 `PRODUCTION_BACKEND_API_ORIGIN` only as the comparison guard. Restrict network
 egress to the isolated Preview backend and deny the Production backend before
-running `npm run build` in that copy. All four variables must be origin-only
-URLs without credentials, paths, queries, or fragments. The Preview backend
-must use its separate Preview database; the production origin is a comparison
-guard and must never be contacted. The command's generators rewrite files
+running `npm run build` in that copy. All configured origins must be HTTPS
+origin-only URLs without credentials, paths, queries, or fragments. The Preview
+backend must use its separate Preview database; the Production origin is a
+comparison guard and must never be contacted. The command's generators rewrite files
 under `public/`, `src/lib/`, and the build output, so review changes only in the
 disposable copy. If isolated service configuration and egress controls cannot
 be confirmed, do not run a build against any remote service; use the approved
