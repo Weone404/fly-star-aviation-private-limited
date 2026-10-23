@@ -1,14 +1,13 @@
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
-import { describe, expect, it } from "vitest";
+import { once } from "node:events";
+import { PassThrough, Readable } from "node:stream";
+import { describe, expect, it, vi } from "vitest";
+import { BLOG_POSTS } from "../lib/blogData.js";
 import { getRouteMeta } from "../lib/routeMeta";
 import { ALIAS_CANONICAL } from "../lib/routes";
+import backendProxy, { createBackendProxyHandler } from "../../api/backend-api/[...path].js";
 
-/**
- * These assert BEHAVIOUR, not a literal regex string. The previous version
- * pinned the SPA allowlist as an exact string, so any legitimate addition to it
- * (e.g. blog/ or a new top-level page) failed the suite for the wrong reason.
- */
 function loadRoutes() {
   const configPath = resolve(__dirname, "../../vercel.json");
   const config = JSON.parse(readFileSync(configPath, "utf8"));
@@ -31,66 +30,234 @@ function matchesSpa(path: string): boolean {
 }
 
 describe("Vercel config", () => {
-  it("has an SPA allowlist and a real 404 fallback", () => {
-    expect(spaRoutes().length).toBeGreaterThan(0);
-    expect(
-      loadRoutes().find((r) => r && r.src === "/(.*)" && r.status === 404)
-    ).toBeTruthy();
+  it("serves prerendered files and sends unmatched routes to a genuine 404", () => {
+    const routes = loadRoutes();
+    const filesystemIndex = routes.findIndex((route) => route?.handle === "filesystem");
+    const notFoundIndex = routes.findIndex((route) => route?.src === "/(.*)" && route.status === 404);
+
+    expect(filesystemIndex).toBeGreaterThanOrEqual(0);
+    expect(notFoundIndex).toBeGreaterThan(filesystemIndex);
+    expect(notFoundIndex).toBe(routes.length - 1);
+    expect(routes.filter((route) => route?.dest === "/index.html")).toEqual([]);
   });
 
-  it.each([
-    "/about",
-    "/contact",
-    "/courses/cpl",
-    "/courses/cabin-crew",
-    "/dgca/computer-number",
-    "/pilot-training/india",
-    "/become-a-pilot/commercial-pilot-licence",
-    "/locations/delhi",
-    "/blogs",
-    "/editorial-policy",
-    "/faq",
-    "/glossary",
-    "/rtr",
-    "/apply",
-    "/courses/cpl/fees",
-    "/atpl/brochure",
-    "/pilot-salary-india",
-    "/cadet-pilot-programme",
-    "/dgca/fto-ranking",
-    "/dgca/exam-calendar",
-  ])("routes %s to the SPA", (path) => {
-    expect(matchesSpa(path)).toBe(true);
-  });
+  it("redirects only known legacy blog IDs to their canonical slugs", () => {
+    const routes = loadRoutes();
+    const filesystemIndex = routes.findIndex((route) => route?.handle === "filesystem");
+    const bySource = new Map(routes.map((route) => [route.src, route]));
+    const legacyPosts = BLOG_POSTS.filter((post) => post._id && post.slug);
+    expect(legacyPosts).toHaveLength(BLOG_POSTS.filter((post) => post._id).length);
 
-  /**
-   * /blog/<slug> is deliberately NOT in the SPA allowlist.
-   *
-   * A blog post is served only if prerender wrote a file for it, which happens
-   * only for posts on the approval list in src/lib/blogApproval.ts. Routing
-   * /blog/* to the SPA would give every unapproved slug an HTTP 200 with a
-   * "not found" body — a soft 404 that Google can index, and a live-looking URL
-   * on this domain for anything written to the open write endpoint.
-   *
-   * Failing closed costs one thing: an approved post that fails to prerender
-   * 404s instead of degrading to a client-side render. renderGate.test.ts and
-   * scripts/smoke.mjs both exist to catch that first.
-   */
-  it("does not route /blog/<slug> to the SPA — unapproved posts must hard-404", () => {
-    expect(matchesSpa("/blog/dgca-ground-classes-vs-self-study")).toBe(false);
-    expect(matchesSpa("/blog/anything-someone-wrote-to-the-api")).toBe(false);
-  });
-
-  it("still routes the legacy /blogs/<id> form to the SPA so old links resolve", () => {
-    expect(matchesSpa("/blogs/1")).toBe(true);
-  });
-
-  it.each(["/not-a-page", "/random/deep/path", "/wp-admin"])(
-    "leaves %s to the 404 fallback",
-    (path) => {
-      expect(matchesSpa(path)).toBe(false);
+    for (const post of legacyPosts) {
+      expect(bySource.get(`/blogs/${post._id}`)).toEqual({
+        src: `/blogs/${post._id}`,
+        status: 308,
+        dest: `/blog/${post.slug}`,
+      });
+      expect(routes.findIndex((route) => route.src === `/blogs/${post._id}`)).toBeLessThan(filesystemIndex);
     }
-  );
+
+    for (const id of ["19", "999999", "not-an-id"]) {
+      expect(bySource.has(`/blogs/${id}`)).toBe(false);
+    }
+    expect(routes.some((route) => route.src === "/blogs/([0-9]+)")).toBe(false);
+  });
+
+  it("keeps the API pass-through ahead of the terminal 404", () => {
+    const routes = loadRoutes();
+    const apiIndex = routes.findIndex((route) => route?.src === "/api/(.*)");
+    const notFoundIndex = routes.findIndex((route) => route?.src === "/(.*)" && route.status === 404);
+
+    expect(routes[apiIndex]).toEqual({ src: "/api/(.*)", dest: "/api/$1" });
+    expect(apiIndex).toBeGreaterThanOrEqual(0);
+    expect(apiIndex).toBeLessThan(notFoundIndex);
+  });
+
+  it("routes browser admin API requests through the preview-guarded function", () => {
+    const routes = loadRoutes();
+    const proxyIndex = routes.findIndex((route) => route?.src === "/backend-api/(.*)");
+    const filesystemIndex = routes.findIndex((route) => route?.handle === "filesystem");
+
+    expect(routes[proxyIndex]).toEqual({
+      src: "/backend-api/(.*)",
+      dest: "/api/backend-api/$1",
+    });
+    expect(proxyIndex).toBeGreaterThanOrEqual(0);
+    expect(proxyIndex).toBeLessThan(filesystemIndex);
+  });
+
+  it("blocks backend API requests on Vercel preview deployments", () => {
+    vi.stubEnv("VERCEL_ENV", "preview");
+    const response = {
+      statusCode: 0,
+      body: undefined as unknown,
+      status(status: number) {
+        this.statusCode = status;
+        return this;
+      },
+      json(body: unknown) {
+        this.body = body;
+        return this;
+      },
+    };
+
+    try {
+      backendProxy(
+        {
+          method: "GET",
+          query: { path: ["api", "admin", "session"] },
+          headers: {},
+          url: "/api/backend-api/api/admin/session",
+        },
+        response,
+      );
+
+      expect(response.statusCode).toBe(503);
+      expect(response.body).toEqual({ error: "Backend API is not configured for this deployment." });
+    } finally {
+      vi.unstubAllEnvs();
+    }
+  });
+
+  it("preserves proxy methods, query, body, cookies, and status", async () => {
+    vi.stubEnv("VERCEL_ENV", "preview");
+    vi.stubEnv("PREVIEW_BACKEND_API_ORIGIN", "https://isolated-preview.onrender.com");
+    vi.stubEnv("PRODUCTION_BACKEND_API_ORIGIN", "https://production.example");
+    let requestOptions: Record<string, unknown> | undefined;
+    let requestBody = "";
+    const outgoing = new PassThrough() as PassThrough & {
+      setTimeout: (timeout: number, callback: () => void) => void;
+    };
+    outgoing.setTimeout = vi.fn();
+    outgoing.on("data", (chunk: Buffer) => { requestBody += chunk.toString(); });
+
+    const mockedRequest = (
+      options: Record<string, unknown>,
+      callback: (response: Readable & { statusCode: number; headers: Record<string, unknown> }) => void,
+    ) => {
+      requestOptions = options;
+      const upstream = Object.assign(Readable.from(["upstream response"]), {
+        statusCode: 202,
+        headers: {
+          "content-type": "text/plain",
+          "set-cookie": ["session=redacted; HttpOnly", "preference=redacted; Path=/"],
+        },
+      });
+      callback(upstream);
+      return outgoing;
+    };
+    const incoming = Object.assign(Readable.from(["request body"]), {
+      method: "POST",
+      query: { path: ["api", "blogs"] },
+      headers: {
+        host: "preview.vercel.app",
+        cookie: "session=redacted",
+        "content-type": "text/plain",
+      },
+      url: "/api/backend-api/api/blogs?draft=1",
+    });
+    const response = Object.assign(new PassThrough(), {
+      statusCode: 0,
+      headers: {} as Record<string, unknown>,
+      setHeader(name: string, value: unknown) {
+        this.headers[name] = value;
+      },
+    });
+    let responseBody = "";
+    response.on("data", (chunk: Buffer) => { responseBody += chunk.toString(); });
+    const responseFinished = once(response, "end");
+
+    try {
+      createBackendProxyHandler(mockedRequest)(incoming, response);
+      await responseFinished;
+
+      expect(requestOptions).toMatchObject({
+        hostname: "isolated-preview.onrender.com",
+        method: "POST",
+        path: "/api/blogs?draft=1",
+      });
+      expect(requestOptions?.headers).toMatchObject({
+        cookie: "session=redacted",
+        "content-type": "text/plain",
+      });
+      expect(requestBody).toBe("request body");
+      expect(response.statusCode).toBe(202);
+      expect(response.headers["set-cookie"]).toEqual([
+        "session=redacted; HttpOnly",
+        "preference=redacted; Path=/",
+      ]);
+      expect(responseBody).toBe("upstream response");
+    } finally {
+      vi.unstubAllEnvs();
+    }
+  });
+
+  it("refuses to route preview deployments to the production backend", () => {
+    vi.stubEnv("VERCEL_ENV", "preview");
+    vi.stubEnv("PREVIEW_BACKEND_API_ORIGIN", "https://fly-star-aviation-private-limited.onrender.com");
+    vi.stubEnv("PRODUCTION_BACKEND_API_ORIGIN", "https://fly-star-aviation-private-limited.onrender.com");
+    const response = {
+      statusCode: 0,
+      status(status: number) {
+        this.statusCode = status;
+        return this;
+      },
+      json() {
+        return this;
+      },
+    };
+    const outboundRequest = vi.fn();
+
+    try {
+      createBackendProxyHandler(outboundRequest)(
+        {
+          method: "GET",
+          query: { path: ["api", "blogs"] },
+          headers: {},
+          url: "/api/backend-api/api/blogs",
+        },
+        response,
+      );
+
+      expect(response.statusCode).toBe(503);
+      expect(outboundRequest).not.toHaveBeenCalled();
+    } finally {
+      vi.unstubAllEnvs();
+    }
+  });
+
+  it("requires distinct, explicit preview and production backend origins", () => {
+    vi.stubEnv("VERCEL_ENV", "preview");
+    vi.stubEnv("PREVIEW_BACKEND_API_ORIGIN", "https://preview.example");
+    vi.stubEnv("PRODUCTION_BACKEND_API_ORIGIN", "https://preview.example");
+    const response = {
+      statusCode: 0,
+      status(status: number) {
+        this.statusCode = status;
+        return this;
+      },
+      json() {
+        return this;
+      },
+    };
+    const outboundRequest = vi.fn();
+
+    try {
+      createBackendProxyHandler(outboundRequest)(
+        {
+          method: "GET",
+          query: { path: ["api", "blogs"] },
+          headers: {},
+          url: "/api/backend-api/api/blogs",
+        },
+        response,
+      );
+      expect(response.statusCode).toBe(503);
+      expect(outboundRequest).not.toHaveBeenCalled();
+    } finally {
+      vi.unstubAllEnvs();
+    }
+  });
 
   it("redirects the dead board-verification URL to the page that now answers it", () => {
     // Retargeted 2026-09-04: it pointed at the computer-number guide as the

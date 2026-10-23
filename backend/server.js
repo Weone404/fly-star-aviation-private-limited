@@ -5,12 +5,28 @@ const https = require("https");
 const { formidable } = require('formidable');
 const cloudinary = require("cloudinary").v2;
 const { MongoClient, ObjectId } = require("mongodb");
-require("dotenv").config({ path: __dirname + "/.env" });
+if (process.env.NODE_ENV !== "production" && process.env.NODE_ENV !== "test") {
+    require("dotenv").config({ path: __dirname + "/.env" });
+}
 
 const Contact = require("./models/Contact");
 const { notifyEnquiry } = require("./notifyEnquiry");
 const { isHoneypotTripped, createRateLimiter, clientIp } = require("./enquiryGuard");
 const blogStore = require("./blogStore");
+const {
+    createAdminLoginHandler,
+    createAdminLogoutHandler,
+    createInMemoryAdminSessionStore,
+    createMongoAdminSessionStore,
+    configureAdminSessionStore,
+    createAdminSessionStatusHandler,
+    createAdminAuthIndexes,
+    createRequireAdminSession,
+    createInMemoryLoginAttemptStore,
+    createMongoLoginAttemptStore,
+    requireTrustedOrigin,
+    TRUSTED_ORIGINS,
+} = require("./adminAuth");
 
 const app = express();
 
@@ -53,44 +69,91 @@ function triggerRebuild(reason) {
 }
 
 // ── MongoDB Native Client (for blogs) ─────────────────────────────────────────
-const mongoClient = new MongoClient(process.env.MONGODB_URI);
-
+let mongoClient;
 let db;
 let mongoConnected = false;
+
+function getDatabaseUri(env = process.env) {
+    if (env.NODE_ENV === "test") return null;
+    if (env.NODE_ENV !== "production") return env.MONGODB_URI || null;
+    if (env.FLYSTAR_DEPLOYMENT_ENV === "production") return env.MONGODB_URI || null;
+    if (env.FLYSTAR_DEPLOYMENT_ENV === "preview") return env.PREVIEW_MONGODB_URI || null;
+    return null;
+}
+
+function isPreviewDeployment(env = process.env) {
+    return env.FLYSTAR_DEPLOYMENT_ENV === "preview";
+}
+
+function respondDatabaseUnavailable(res) {
+    return res.status(503).json({
+        success: false,
+        message: "The configured blog database is temporarily unavailable.",
+    });
+}
 
 // Public, unauthenticated endpoint — see AUDIT.md §6. These are the only guards.
 const enquiryLimiter = createRateLimiter({ max: 5, windowMs: 10 * 60 * 1000 });
 
-mongoClient.connect()
-    .then(() => {
-        db = mongoClient.db("flystarDB");   // ✅ flystar database — separate from WeOne
-        mongoConnected = true;
-        console.log("✅ MongoDB Native Client Connected → flystar DB");
-    })
-    .catch(err => {
-        mongoConnected = false;
-        console.error("❌ MongoDB Native Client Error:", err.message);
-        console.log("⚠️  Using file-based blog storage fallback");
-    });
-
 // ── Middleware ────────────────────────────────────────────────────────────────
 app.use(cors({
     origin: [
-        "http://localhost:5173",
-        "http://localhost:8080",
-        "https://www.flystar.co.in",
-        "https://flystar.co.in",
+        ...TRUSTED_ORIGINS,
         "https://fly-star-aviation-private-limited.onrender.com",
-        "https://fly-star-aviation-private-limited.vercel.app",
-    ]
+    ],
+    credentials: true,
 }));
 app.use(express.json());
 
+const adminSessionStore = process.env.NODE_ENV === "test"
+    ? createInMemoryAdminSessionStore()
+    : createMongoAdminSessionStore(() => mongoConnected && db
+        ? db.collection("admin_sessions")
+        : null);
+const adminLoginAttemptStore = process.env.NODE_ENV === "test"
+    ? createInMemoryLoginAttemptStore()
+    : createMongoLoginAttemptStore(() => mongoConnected && db
+        ? db.collection("admin_login_attempts")
+        : null);
+configureAdminSessionStore(adminSessionStore);
+const requireAdminSession = createRequireAdminSession({ store: adminSessionStore });
+app.post("/api/admin/session", requireTrustedOrigin, createAdminLoginHandler({
+    store: adminSessionStore,
+    attemptStore: adminLoginAttemptStore,
+}));
+app.get("/api/admin/session", createAdminSessionStatusHandler({ store: adminSessionStore }));
+app.delete("/api/admin/session", requireTrustedOrigin, createAdminLogoutHandler({ store: adminSessionStore }));
+
 // ── Mongoose (for contacts) ───────────────────────────────────────────────────
-mongoose
-    .connect(process.env.MONGODB_URI)
-    .then(() => console.log("✅ Mongoose Connected"))
-    .catch((err) => console.error("❌ Mongoose Connection Error:", err));
+function connectDatabases() {
+    const mongoUri = getDatabaseUri();
+    if (!mongoUri) {
+        console.error(isPreviewDeployment()
+            ? "Preview database is not configured; Preview blog requests will fail closed."
+            : "Database connection is not configured; local file-based blog storage remains available.");
+        return;
+    }
+
+    mongoClient = new MongoClient(mongoUri);
+    mongoClient.connect()
+        .then(async () => {
+            const connectedDb = mongoClient.db("flystarDB");
+            await createAdminAuthIndexes(connectedDb);
+            db = connectedDb;
+            mongoConnected = true;
+            console.log("MongoDB Native Client connected.");
+        })
+        .catch((err) => {
+            mongoConnected = false;
+            console.error("MongoDB Native Client connection or auth index initialization failed:", err.name);
+            console.log("Using file-based blog storage fallback.");
+        });
+
+    mongoose
+        .connect(mongoUri)
+        .then(() => console.log("Mongoose connected."))
+        .catch((err) => console.error("Mongoose connection failed:", err.name));
+}
 
 // ════════════════════════════════════════════════════════════════════════════
 // CONTACT ROUTES
@@ -152,8 +215,8 @@ app.post("/api/contact", async (req, res) => {
 // That is personal data of prospective students under India's DPDP Act, 2023.
 // Nothing in the frontend called this route (verified by grep across src/, api/
 // and index.html), so it was removed outright rather than protected. Removal is
-// not an access-control change: there is still no auth middleware anywhere, by
-// the owner's standing decision.
+// It remains removed. Blog write endpoints now use server-side admin sessions;
+// enquiry reads still require a separately authorized workflow.
 //
 // To read enquiries, query the contacts collection directly. If a UI is wanted
 // later, it needs authentication first — do not restore this route as it was.
@@ -165,9 +228,8 @@ app.post("/api/contact", async (req, res) => {
 // ── GET /api/blogs — fetch all blogs ─────────────────────────────────────────
 app.get("/api/blogs", async (req, res) => {
     try {
-        let blogs;
         if (mongoConnected && db) {
-            blogs = await db.collection("blogs").find({}).sort({ createdAt: -1 }).toArray();
+            const blogs = await db.collection("blogs").find({}).sort({ createdAt: -1 }).toArray();
             const serialized = blogs.map(b => ({
                 ...b,
                 _id: b._id.toString(),
@@ -175,15 +237,30 @@ app.get("/api/blogs", async (req, res) => {
             }));
             return res.status(200).json(serialized);
         } else {
-            // Fallback to file-based storage
-            blogs = blogStore.getAllBlogs();
+            if (isPreviewDeployment()) return respondDatabaseUnavailable(res);
+            const blogs = blogStore.getAllBlogs();
             return res.status(200).json(blogs);
         }
     } catch (e) {
-        console.error("GET /api/blogs error:", e.message);
-        // Last resort: return file-based blogs
+        console.error("GET /api/blogs failed:", e.name);
+        if (isPreviewDeployment()) return respondDatabaseUnavailable(res);
         const blogs = blogStore.getAllBlogs();
         return res.status(200).json(blogs);
+    }
+});
+
+app.get("/api/admin/blogs", createRequireAdminSession({ requireOrigin: false, store: adminSessionStore }), async (_req, res) => {
+    try {
+        if (mongoConnected && db) {
+            const blogs = await db.collection("blogs").find({}).sort({ createdAt: -1 }).toArray();
+            return res.status(200).json(blogs);
+        }
+        if (isPreviewDeployment()) return respondDatabaseUnavailable(res);
+        return res.status(200).json(blogStore.getAllBlogs());
+    } catch (e) {
+        console.error("GET /api/admin/blogs failed:", e.name);
+        if (isPreviewDeployment()) return respondDatabaseUnavailable(res);
+        return res.status(500).json({ success: false, message: "Could not load admin blog data." });
     }
 });
 
@@ -195,10 +272,9 @@ app.get("/api/blogs/:id", async (req, res) => {
             return res.status(400).json({ success: false, message: "Blog identifier is required" });
         }
 
-        let blog = null;
-
         if (mongoConnected && db) {
             const blogsCollection = db.collection("blogs");
+            let blog = null;
             if (mongoose.Types.ObjectId.isValid(identifier)) {
                 blog = await blogsCollection.findOne({ _id: new ObjectId(identifier) });
             }
@@ -214,23 +290,28 @@ app.get("/api/blogs/:id", async (req, res) => {
                     createdAt: blog.createdAt ? blog.createdAt.toString() : new Date().toString(),
                 });
             }
+            if (isPreviewDeployment()) {
+                return res.status(404).json({ success: false, message: "Blog not found" });
+            }
+        } else if (isPreviewDeployment()) {
+            return respondDatabaseUnavailable(res);
         }
 
-        // File storage uses UUIDs, so try its id first and then its slug as well.
-        blog = blogStore.getBlogById(identifier) || blogStore.getBlogBySlug(identifier);
+        const blog = blogStore.getBlogById(identifier) || blogStore.getBlogBySlug(identifier);
         if (!blog) {
             return res.status(404).json({ success: false, message: "Blog not found" });
         }
 
         return res.status(200).json(blog);
     } catch (e) {
-        console.error("GET /api/blogs/:id error:", e);
+        console.error("GET /api/blogs/:id failed:", e.name);
+        if (isPreviewDeployment()) return respondDatabaseUnavailable(res);
         return res.status(500).json({ success: false, message: "Unexpected error loading blog" });
     }
 });
 
 // ── POST /api/blogs — create new blog ────────────────────────────────────────
-app.post("/api/blogs", (req, res) => {
+app.post("/api/blogs", requireAdminSession, (req, res) => {
     const form = formidable({
         keepExtensions: true,
         maxFileSize: 5 * 1024 * 1024,
@@ -298,9 +379,11 @@ app.post("/api/blogs", (req, res) => {
                     triggerRebuild("blog created");
                     return res.status(200).json({ success: true, id: result.insertedId.toString() });
                 } catch (mongoErr) {
-                    console.warn("MongoDB save failed, using file storage:", mongoErr.message);
+                    console.warn("MongoDB save failed:", mongoErr.name);
+                    if (isPreviewDeployment()) return respondDatabaseUnavailable(res);
                 }
             }
+            if (isPreviewDeployment()) return respondDatabaseUnavailable(res);
             // Fallback to file-based storage
             const blog = blogStore.createBlog(blogData);
             console.log("✅ Blog saved to file storage");
@@ -313,7 +396,7 @@ app.post("/api/blogs", (req, res) => {
 });
 
 // ── PUT /api/blogs/:id — update existing blog ─────────────────────────────────
-app.put("/api/blogs/:id", (req, res) => {
+app.put("/api/blogs/:id", requireAdminSession, (req, res) => {
     const form = formidable({
         keepExtensions: true,
         maxFileSize: 5 * 1024 * 1024,
@@ -367,9 +450,11 @@ app.put("/api/blogs/:id", (req, res) => {
                     console.log("✅ Blog updated in MongoDB");
                     return res.status(200).json({ success: true, message: "Blog updated" });
                 } catch (mongoErr) {
-                    console.warn("MongoDB update failed, using file storage:", mongoErr.message);
+                    console.warn("MongoDB update failed:", mongoErr.name);
+                    if (isPreviewDeployment()) return respondDatabaseUnavailable(res);
                 }
             }
+            if (isPreviewDeployment()) return respondDatabaseUnavailable(res);
             // Fallback to file-based storage
             const updated = blogStore.updateBlog(req.params.id, update);
             if (!updated) {
@@ -396,7 +481,7 @@ app.put("/api/blogs/:id", (req, res) => {
 //
 // It answers 405 rather than being removed, so an old client gets a clear
 // refusal instead of a confusing 404. Do not re-enable without authentication.
-app.delete("/api/blogs/:id", (req, res) => {
+app.delete("/api/blogs/:id", requireAdminSession, (req, res) => {
     return res.status(405).json({
         success: false,
         message: "Deleting posts through the API is disabled. Delete directly in the database.",
@@ -514,19 +599,56 @@ app.get("/api/meta", (req, res) => {
 });
 
 // ── Health check ──────────────────────────────────────────────────────────────
+app.get("/healthz", (_req, res) => {
+    const ready = mongoConnected && mongoose.connection.readyState === 1;
+    return res.status(ready ? 200 : 503).json({ status: ready ? "ready" : "not-ready" });
+});
 app.get("/", (req, res) => res.send("🚀 Flying Star Aviator API is running"));
 
 // ── Start Server ──────────────────────────────────────────────────────────────
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, "0.0.0.0", () => {
-    console.log(`🚀 Server running on http://localhost:${PORT}`);
+function start() {
+    connectDatabases();
+    const port = process.env.PORT || 5000;
+    app.listen(port, "0.0.0.0", () => {
+        console.log(`Server running on port ${port}.`);
 
-    // Keep Render backend alive — ping every 14 minutes
-    setInterval(() => {
-        https.get("https://fly-star-aviation-private-limited.onrender.com/", () => {
-            console.log("✅ Keep-alive ping sent");
-        }).on("error", () => {
-            console.log("⚠️ Keep-alive ping failed");
-        });
-    }, 14 * 60 * 1000);
-});
+        const renderHealthUrl = getRenderHealthUrl();
+        if (process.env.RENDER_EXTERNAL_URL && !renderHealthUrl) {
+            console.error("RENDER_EXTERNAL_URL must be an HTTPS origin; backend keep-alive is disabled.");
+        }
+        if (renderHealthUrl) {
+            setInterval(() => {
+                https.get(renderHealthUrl, (res) => res.resume())
+                    .on("error", () => console.warn("Backend keep-alive ping failed."));
+            }, 14 * 60 * 1000);
+        }
+    });
+}
+
+function getRenderHealthUrl(env = process.env) {
+    if (!env.RENDER_EXTERNAL_URL) return null;
+    try {
+        const healthUrl = new URL(env.RENDER_EXTERNAL_URL);
+        if (
+            healthUrl.protocol !== "https:" ||
+            healthUrl.origin !== env.RENDER_EXTERNAL_URL ||
+            healthUrl.username ||
+            healthUrl.password ||
+            healthUrl.pathname !== "/" ||
+            healthUrl.search ||
+            healthUrl.hash
+        ) {
+            return null;
+        }
+        return healthUrl;
+    } catch {
+        return null;
+    }
+}
+
+if (require.main === module) start();
+
+module.exports = app;
+module.exports.start = start;
+module.exports.getRenderHealthUrl = getRenderHealthUrl;
+module.exports.getDatabaseUri = getDatabaseUri;

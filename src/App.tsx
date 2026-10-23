@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { useMeta } from "./hooks/useMeta";
 import { useSchema } from "./hooks/useSchema";
+import { getAdminSession } from "./lib/adminApi";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -81,11 +82,27 @@ const AdminLogin = lazy(() => import("./pages/admin/login/page"));
 // ─── Protected Route ──────────────────────────────────────────────────────────
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const location = useLocation();
-  const isLoggedIn =
-    typeof window !== "undefined" &&
-    sessionStorage.getItem("weone_admin") === "true";
+  const [status, setStatus] = useState<"checking" | "authenticated" | "unauthenticated" | "error">("checking");
 
-  if (!isLoggedIn) {
+  useEffect(() => {
+    let active = true;
+    getAdminSession()
+      .then((authenticated) => {
+        if (active) setStatus(authenticated ? "authenticated" : "unauthenticated");
+      })
+      .catch(() => {
+        if (active) setStatus("error");
+      });
+    return () => {
+      active = false;
+    };
+  }, []);
+
+  if (status === "checking") return <PageLoader />;
+  if (status === "error") {
+    return <div role="alert">Unable to verify admin access. Please reload or contact the site administrator.</div>;
+  }
+  if (status === "unauthenticated") {
     return <Navigate to="/admin/login" state={{ from: location }} replace />;
   }
 
@@ -139,7 +156,7 @@ function AppInner() {
         {/* COURSES */}
         <Route path="/apply" element={<Apply />} />
         <Route path="/pilot-salary-india" element={<PilotSalaryIndia />} />
-        <Route path="/pilot-salary-in-india" element={<PilotSalaryIndia />} />
+        <Route path="/pilot-salary-in-india" element={<Navigate to="/pilot-salary-india" replace />} />
         <Route path="/cadet-pilot-programme" element={<CadetPilotProgramme />} />
         <Route path="/dgca/fto-ranking" element={<DgcaFtoRanking />} />
         <Route path="/dgca/exam-calendar" element={<DgcaExamCalendar />} />
@@ -155,7 +172,6 @@ function AppInner() {
 
         {/* DGCA */}
         <Route path="/dgca" element={<DGCA />} />
-        <Route path="/dgca/:topic" element={<DGCA />} />
         <Route path="/rtr" element={<Rtr />} />
         <Route path="/editorial-policy" element={<EditorialPolicy />} />
         <Route path="/faq" element={<FaqHub />} />
@@ -177,7 +193,6 @@ function AppInner() {
         <Route path="/pilot-training/maldives" element={<PilotTrainingTopic />} />
         <Route path="/pilot-training/sri-lanka" element={<PilotTrainingTopic />} />
         <Route path="/pilot-training/guide-to-conversion" element={<PilotTrainingTopic />} />
-        <Route path="/pilot-training/:topic" element={<PilotTraining />} />
 
         {/* BECOME A PILOT */}
         <Route path="/become-a-pilot/airline-transport-pilot-licence" element={<Airlinetransportpilotlicence />} />
@@ -229,7 +244,7 @@ const App = () => {
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <Toaster />
-        <BrowserRouter future={{ v7_startTransition: false, v7_relativeSplatPath: false }}>
+        <BrowserRouter>
           <AppInner />
         </BrowserRouter>
       </TooltipProvider>

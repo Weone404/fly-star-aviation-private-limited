@@ -1,11 +1,8 @@
 // src/pages/AdminBlog.tsx
 import { useState, useEffect, useCallback } from 'react'
-import ReactQuill from 'react-quill'
-import 'react-quill/dist/quill.snow.css'
 import { useNavigate } from 'react-router-dom'
 import { sortBlogsByDate } from '@/lib/blogData'
-
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000'
+import { adminApiFetch, getAdminSession, logoutAdminSession } from '@/lib/adminApi'
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 interface Blog {
@@ -54,16 +51,6 @@ const categoryColour = (cat = ''): string => {
     return map[(cat || '').toLowerCase()] || 'bg-gray-100 text-gray-600'
 }
 
-const modules = {
-    toolbar: [
-        [{ header: [1, 2, 3, false] }],
-        ['bold', 'italic', 'underline', 'strike'],
-        [{ list: 'ordered' }, { list: 'bullet' }],
-        ['link', 'image'],
-        ['clean'],
-    ],
-}
-
 // ─── Component ────────────────────────────────────────────────────────────────
 export default function AdminBlog() {
     const navigate = useNavigate()
@@ -81,8 +68,15 @@ export default function AdminBlog() {
 
     // ── Auth ────────────────────────────────────────────────────────────────
     useEffect(() => {
-        const isLoggedIn = sessionStorage.getItem('weone_admin')
-        if (!isLoggedIn) navigate('/admin/login', { replace: true })
+        let active = true
+        getAdminSession()
+            .then((authenticated) => {
+                if (active && !authenticated) navigate('/admin/login', { replace: true })
+            })
+            .catch(() => {
+                if (active) navigate('/admin/login', { replace: true })
+            })
+        return () => { active = false }
     }, [navigate])
 
     // ── Fetch blogs ─────────────────────────────────────────────────────────
@@ -90,12 +84,14 @@ export default function AdminBlog() {
         setBlogsLoading(true)
         setBlogsError('')
         try {
-            const res = await fetch(`${API_URL}/api/blogs`)
+            const res = await adminApiFetch('/api/admin/blogs')
+            if (!res.ok) throw new Error(`Backend request failed with HTTP ${res.status}.`)
             const data = await res.json()
             const loadedBlogs = Array.isArray(data) ? data : data.blogs ?? []
             setBlogs(sortBlogsByDate(loadedBlogs))
-        } catch {
-            setBlogsError('Could not load blogs. Make sure your backend is running.')
+        } catch (error) {
+            const message = error instanceof Error ? error.message : 'Unknown backend error.'
+            setBlogsError(`Could not load blogs: ${message}`)
         } finally {
             setBlogsLoading(false)
         }
@@ -142,10 +138,14 @@ export default function AdminBlog() {
         fetchBlogs()
     }
 
-    const handleLogout = () => {
-        sessionStorage.removeItem('weone_admin')
-        document.cookie = 'weone_admin=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT'
-        navigate('/admin/login', { replace: true })
+    const handleLogout = async () => {
+        try {
+            await logoutAdminSession()
+            navigate('/admin/login', { replace: true })
+        } catch (error) {
+            const message = error instanceof Error ? error.message : 'Unknown backend error.'
+            setStatus(`Could not end the admin session: ${message}`)
+        }
     }
 
     // ── Submit ──────────────────────────────────────────────────────────────
@@ -166,10 +166,10 @@ export default function AdminBlog() {
             if (form.imageFile) formData.append('coverImage', form.imageFile)
 
             const isEdit = view === 'edit'
-            const url = isEdit ? `${API_URL}/api/blogs/${editingId}` : `${API_URL}/api/blogs`
+            const url = isEdit ? `/api/blogs/${editingId}` : '/api/blogs'
             const method = isEdit ? 'PUT' : 'POST'
 
-            const res = await fetch(url, { method, body: formData })
+            const res = await adminApiFetch(url, { method, body: formData })
             const text = await res.text()
 
             let data: { success: boolean; message?: string }
@@ -472,15 +472,15 @@ export default function AdminBlog() {
                         <p className="text-xs text-gray-400 mt-1">{form.excerpt.length}/160 characters recommended</p>
                     </div>
 
-                    {/* Rich text content */}
+                    {/* HTML source editor avoids the unmaintained Quill dependency. */}
                     <div>
-                        <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5">Blog Content *</label>
-                        <ReactQuill
-                            theme="snow"
+                        <label htmlFor="blog-content" className="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5">Blog Content (HTML) *</label>
+                        <textarea
+                            id="blog-content"
+                            className="w-full min-h-96 border border-gray-200 p-3 rounded-lg font-mono text-sm focus:outline-none focus:ring-2 focus:ring-blue-300 bg-white"
                             value={form.content}
-                            onChange={v => setField('content', v)}
-                            modules={modules}
-                            placeholder="Write your blog content here..."
+                            onChange={e => setField('content', e.target.value)}
+                            placeholder="Write blog content as HTML..."
                         />
                     </div>
 

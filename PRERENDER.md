@@ -1,69 +1,83 @@
 # Static Prerendering
 
-The site is a client-side React SPA. To give crawlers, social bots and AI
-engines real per-page HTML (title, description, canonical, Open Graph tags and
-rendered body content), we prerender every sitemap URL at build time.
+The site is a client-side React SPA. The supported `npm run build` lifecycle
+generates route data, builds the client bundle, prerenders route HTML, and scans
+the generated admin bundles.
 
-## How it works
+## Supported build lifecycle
 
-1. `vite build` produces `dist/` (the normal SPA build).
-2. `scripts/prerender.mjs` starts `vite preview`, opens a headless Chromium
-   (via `puppeteer-core`), visits every `<loc>` in `dist/sitemap.xml`, waits for
-   React + the `useMeta` hook to finish, and writes the fully-rendered HTML to
-   `dist/<route>/index.html`.
-3. On Vercel, static files are served **before** the SPA catch-all rewrite in
-   `vercel.json`, so `/services/mro` is served from `dist/services/mro/index.html`
-   directly — no JavaScript required to see the content or metadata.
+`package.json` wires the normal build as:
 
-Page metadata is the local map in `src/lib/pageMeta.ts` (read synchronously by
-`src/hooks/useMeta.ts`). There is **no** runtime dependency on the Render meta
-API anymore — add or edit titles/descriptions there.
+1. `prebuild`: `scripts/fetch-blogs.mjs`, `scripts/generate-sitemap.mjs`, and
+   `scripts/generate-feed.mjs`.
+2. `build`: Vite creates `dist/`.
+3. `postbuild`: `scripts/prerender.js` writes static HTML, then
+   `scripts/verify-admin-client.mjs` checks the client bundles.
 
-## Commands
+The Preview blog fetch is intentionally fail-closed: configure
+`BLOG_API_URL`, `VITE_API_URL`, `PREVIEW_BACKEND_API_ORIGIN`, and
+`PRODUCTION_BACKEND_API_ORIGIN` as documented in [DEPLOYMENT.md](./DEPLOYMENT.md)
+before running a Preview build. Never allow a Preview build to fetch Production
+blog data. The sitemap and feed generators write files under `public/`, so run
+the lifecycle in a disposable copy when validating changes.
+
+## Routes and metadata
+
+`scripts/prerender.js` builds its route list from `src/lib/routeMeta.ts` and
+`getBlogRoutes()` in `src/lib/blogData.js`. It serves the built `dist/` locally
+and writes rendered snapshots under `dist/<route>/index.html`. It does not read
+the sitemap to choose prerender routes.
+
+`scripts/generate-sitemap.mjs` generates `public/sitemap.xml` from
+`src/lib/routeMeta.ts` and eligible substantive blog posts. Keep the route
+metadata and sitemap in sync; `src/test/renderGate.test.ts` checks that
+sitemap entries have a prerender route. The React `useMeta` hook reads
+`src/lib/routeMeta.ts` to set title, description, canonical, Open Graph, and
+Twitter metadata. Structured data is provided by the schema builder.
+
+Vercel serves matching static files before the terminal 404 route in
+`vercel.json`, so a generated route file can return rendered HTML without
+requiring the client app to create the page first.
+
+## Commands and alternate script
 
 ```bash
-npm run build:prerender   # vite build + prerender all sitemap routes
-npm run prerender         # prerender only (expects an existing dist/)
+npm run build          # supported lifecycle: prebuild, Vite, postbuild
+npm run prerender      # separate legacy scripts/prerender.mjs; expects dist/
 ```
 
-## Chromium resolution
+`npm run build:prerender` also invokes the separate `scripts/prerender.mjs`
+after a direct Vite build. It does not run the `prebuild` or `postbuild`
+lifecycle and must not be treated as equivalent release validation. The
+`postbuild`-wired `scripts/prerender.js` is the supported production path.
 
-`scripts/prerender.mjs` looks for Chromium in this order:
+`vercel.json` contains routing rules, not a `buildCommand`. Verify in Vercel
+Project Settings that the configured build command is `npm run build`; do not
+assume the alternate script or a historical dashboard override is active.
+Vercel settings have not been inspected as part of this candidate work.
 
-1. `PUPPETEER_EXECUTABLE_PATH` env var
-2. A Playwright-managed Chromium (`~/.cache/ms-playwright` / `~/Library/Caches/ms-playwright`) — used on dev machines
-3. System Chrome/Chromium
-4. **`@sparticuz/chromium`** — a Chromium built for minimal serverless Linux
-   (Vercel/Lambda) that runs without extra system libraries. Used automatically
-   in CI when no local browser is found.
+## Chromium
 
-## Deploying on Vercel
+`scripts/prerender.js` uses `PRERENDER_EXECUTABLE_PATH` when set. On Windows,
+set it to an installed Chrome/Chromium executable or the script skips
+prerendering. On other platforms it can use the bundled
+`@sparticuz/chromium`; when an external executable fails, it attempts the
+bundled binary. The prerender browser resolves external hostnames as unavailable
+and only allows page requests to its own local static server. Build-time blog
+fetching remains a separate, explicitly configured step before Vite builds; the
+browser cannot fall back to a remote API, tracker, font, or image host. Metadata
+and HTML URLs are still rendered as authored, but remote assets are not fetched
+during prerender.
 
-**No dashboard changes are needed.** `vercel.json` sets:
+## Adding a route
 
-```
-"buildCommand": "vite build && (node scripts/prerender.mjs || true)"
-```
+1. Add the route to `src/App.tsx`.
+2. Add its render-gate metadata to `src/lib/routeMeta.ts`.
+3. Add appropriate schema through the existing schema builder when needed.
+4. Run the supported build lifecycle in a safe environment and verify the
+   route's generated HTML and metadata.
+5. The sitemap is generated from the route metadata; do not edit it by hand.
+6. Add relevant internal links and update `public/llms.txt` where appropriate.
 
-So every deploy runs `vite build`, then prerenders all sitemap routes using the
-bundled `@sparticuz/chromium`. The `|| true` makes prerender **best-effort**: if
-the browser can't start for any reason, the build still succeeds and ships the
-working SPA (no prerendered HTML that deploy) — never a broken deploy.
-
-> If a stale Build Command is set in the Vercel dashboard, clear it so the
-> `vercel.json` `buildCommand` takes effect.
-
-After a deploy, confirm prerendering is live:
-
-```
-curl -s https://www.flystar.co.in/services/mro | grep -i "<title>"
-```
-
-It should show the **MRO** page title, not the homepage title.
-
-## When you add a new route
-
-1. Add it to `public/sitemap.xml` (with `<lastmod>`).
-2. Add a title/description entry in `src/lib/pageMeta.ts`.
-3. If it's a keyword alias of an existing page, add it to `ALIAS_CANONICAL` in
-   `src/hooks/useMeta.ts` so it canonicalizes correctly.
+For release validation steps, including isolated Preview variables and the
+restriction against Production API access, follow [DEPLOYMENT.md](./DEPLOYMENT.md).

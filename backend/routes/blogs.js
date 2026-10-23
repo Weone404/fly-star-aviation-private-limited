@@ -1,11 +1,8 @@
 // backend/routes/blogs.js
 //
-// ── How to wire this into your server.js ─────────────────────────────────────
-//
-//   const blogRoutes = require('./routes/blogs')
-//   app.use('/api/blogs', blogRoutes)
-//
-// ─────────────────────────────────────────────────────────────────────────────
+// This router is intentionally not mounted by backend/server.js. Keep it out
+// of the active server unless its separate behavior is explicitly required.
+// The active server owns Preview fail-closed reads and disabled blog deletion.
 
 const express = require('express')
 const router = express.Router()
@@ -13,6 +10,8 @@ const multer = require('multer')
 const { v2: cloudinary } = require('cloudinary')
 const { getLookupQuery, isValidObjectId } = require('../blogLookup')
 const Blog = require('../models/Blog')   // ← your existing Mongoose Blog model
+const { createRequireAdminSession } = require('../adminAuth')
+const requireAdminSession = createRequireAdminSession()
 
 // ── Cloudinary (reads from your existing backend/.env) ───────────────────────
 cloudinary.config({
@@ -72,7 +71,7 @@ router.get('/:id', async (req, res) => {
 })
 
 // ── POST /api/blogs  — create new blog ───────────────────────────────────────
-router.post('/', upload.single('coverImage'), async (req, res) => {
+router.post('/', requireAdminSession, upload.single('coverImage'), async (req, res) => {
     try {
         const { title, excerpt, content, category } = req.body
 
@@ -93,7 +92,7 @@ router.post('/', upload.single('coverImage'), async (req, res) => {
 })
 
 // ── PUT /api/blogs/:id  — update existing blog ───────────────────────────────
-router.put('/:id', upload.single('coverImage'), async (req, res) => {
+router.put('/:id', requireAdminSession, upload.single('coverImage'), async (req, res) => {
     try {
         const { title, excerpt, content, category } = req.body
 
@@ -117,15 +116,12 @@ router.put('/:id', upload.single('coverImage'), async (req, res) => {
     }
 })
 
-// ── DELETE /api/blogs/:id  — delete blog ─────────────────────────────────────
-router.delete('/:id', async (req, res) => {
-    try {
-        const blog = await Blog.findByIdAndDelete(req.params.id)
-        if (!blog) return res.status(404).json({ success: false, message: 'Blog not found.' })
-        res.json({ success: true, message: 'Blog deleted.' })
-    } catch (err) {
-        res.status(500).json({ success: false, message: err.message })
-    }
+// ── DELETE /api/blogs/:id — disabled; preserve the active server policy ───────
+router.delete('/:id', (_req, res) => {
+    return res.status(405).json({
+        success: false,
+        message: 'Deleting posts through the API is disabled. Delete directly in the database.',
+    })
 })
 
 module.exports = router

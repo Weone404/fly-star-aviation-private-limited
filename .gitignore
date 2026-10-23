@@ -24,6 +24,8 @@ dist-ssr
 *.sw?
 .vercel
 .env*
+backend/.env
+!backend/.env.example
 flystar-routine-prompt.txt
 blog-gate-report.json
 

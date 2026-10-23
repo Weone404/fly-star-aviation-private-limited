@@ -37,6 +37,80 @@
   ],
   "routes": [
     {
+      "src": "/pilot-salary-in-india",
+      "status": 308,
+      "dest": "/pilot-salary-india"
+    },
+    {
+      "src": "/blogs/7",
+      "status": 308,
+      "dest": "/blog/air-hostess-salary-in-india-2026"
+    },
+    {
+      "src": "/blogs/8",
+      "status": 308,
+      "dest": "/blog/dgca-ground-classes-vs-self-study"
+    },
+    {
+      "src": "/blogs/9",
+      "status": 308,
+      "dest": "/blog/how-to-choose-a-flying-school-in-india"
+    },
+    {
+      "src": "/blogs/10",
+      "status": 308,
+      "dest": "/blog/dgca-olode-vs-regular-exams"
+    },
+    {
+      "src": "/blogs/11",
+      "status": 308,
+      "dest": "/blog/dgca-exam-misconceptions"
+    },
+    {
+      "src": "/blogs/12",
+      "status": 308,
+      "dest": "/blog/dgca-board-verification-certificate"
+    },
+    {
+      "src": "/blogs/13",
+      "status": 308,
+      "dest": "/blog/dgca-exam-fees"
+    },
+    {
+      "src": "/blogs/14",
+      "status": 308,
+      "dest": "/blog/dgca-exam-subjects-by-licence"
+    },
+    {
+      "src": "/blogs/15",
+      "status": 308,
+      "dest": "/blog/atpl-eligibility-india"
+    },
+    {
+      "src": "/blogs/16",
+      "status": 308,
+      "dest": "/blog/cpl-eligibility-after-12th"
+    },
+    {
+      "src": "/blogs/17",
+      "status": 308,
+      "dest": "/blog/dgca-exam-attempts-and-validity"
+    },
+    {
+      "src": "/blogs/18",
+      "status": 308,
+      "dest": "/blog/foreign-licence-conversion-checklist"
+    },
+    {
+      "src": "/blogs/20",
+      "status": 308,
+      "dest": "/blog/jobs-after-cpl-india"
+    },
+    {
+      "src": "/backend-api/(.*)",
+      "dest": "/api/backend-api/$1"
+    },
+    {
       "handle": "filesystem"
     },
     {
@@ -178,10 +252,6 @@
       "src": "/careers",
       "status": 308,
       "dest": "/courses/airline-preparation"
-    },
-    {
-      "src": "/((?:about|contact|contact-us|services(?:/.*)?|courses(?:/.*)?|dgca(?:/.*)?|pilot-training(?:/.*)?|become-a-pilot(?:/.*)?|locations(?:/.*)?|blogs(?:/.*)?|admin(?:/.*)?|rtr|apply|atpl/brochure|pilot-salary-india|cadet-pilot-programme|sitemap|editorial-policy|faq|glossary|how-to-become-a-pilot(?:/.*)?|how-to-become-a-pilot-in-india(?:-after-12th)?(?:/.*)?|training-in-(?:india|australia|south-africa)(?:/.*)?|air-transport-pilots-license-atpl|best-atpl-classes-in-india|commercial-pilot-training(?:-.*)?|best-cpl-ground-classes|careers|pilot-course|top-aviation-courses-and-careers-after-12th|courses-and-careers|cpl-atpl-ground-classes-2|dgca-ground-classes-training-classes|guide-on-how-to-become-a-pilot))",
-      "dest": "/index.html"
     },
     {
       "src": "/(.*)",

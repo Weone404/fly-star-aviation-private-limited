@@ -73,9 +73,17 @@ async function prerender() {
   // route renders. Only pass those args alongside the binary they belong to.
   const externalBinary = Boolean(process.env.PRERENDER_EXECUTABLE_PATH);
   const chromiumPath = process.env.PRERENDER_EXECUTABLE_PATH || (isWindows ? null : await chromium.executablePath());
+  const isolatedBrowserArgs = [
+    "--disable-background-networking",
+    "--disable-component-update",
+    "--disable-sync",
+    "--disable-extensions",
+    "--no-first-run",
+    "--host-resolver-rules=MAP * ~NOTFOUND, EXCLUDE localhost, EXCLUDE 127.0.0.1, EXCLUDE ::1",
+  ];
   const launchArgs = externalBinary
-    ? ["--no-sandbox", "--disable-setuid-sandbox", "--disable-dev-shm-usage", "--disable-gpu"]
-    : chromium.args;
+    ? ["--no-sandbox", "--disable-setuid-sandbox", "--disable-dev-shm-usage", "--disable-gpu", ...isolatedBrowserArgs]
+    : [...chromium.args, ...isolatedBrowserArgs];
 
   if (isWindows && !chromiumPath) {
     console.log(
@@ -121,6 +129,18 @@ async function prerender() {
 
   const browser = await launchBrowser();
   const page = await browser.newPage();
+  await page.setRequestInterception(true);
+  page.on("request", (request) => {
+    const url = new URL(request.url());
+    const isLocalPrerenderRequest =
+      url.protocol === "http:" &&
+      ["localhost", "127.0.0.1", "[::1]"].includes(url.hostname) &&
+      Number(url.port) === SERVER_PORT;
+    const action = isLocalPrerenderRequest ? request.continue() : request.abort();
+    action.catch((error) => {
+      console.error(`[prerender] failed to ${isLocalPrerenderRequest ? "continue" : "block"} ${url.origin} request: ${error.name || "Error"}`);
+    });
+  });
 
   for (const route of routes) {
     const url = `http://localhost:${SERVER_PORT}${route}`;

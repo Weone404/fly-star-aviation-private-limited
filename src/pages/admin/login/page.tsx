@@ -1,10 +1,9 @@
-﻿"use client";
+"use client";
 
 import { useState, useEffect, FormEvent } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import { adminApiFetch, getAdminSession } from "@/lib/adminApi";
 
-const ADMIN_USERNAME = "admin";
-const ADMIN_PASSWORD = "weoneaviation";
 
 const globalStyles = `
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -310,8 +309,10 @@ export default function AdminLogin() {
     const location = useLocation();
 
     // Read the route the user was trying to reach; fall back to /admin/blog
-    const from =
-        (location.state as { from?: Location })?.from?.pathname || "/admin/blog";
+    const requestedPath = (location.state as { from?: { pathname?: string } })?.from?.pathname;
+    const from = requestedPath?.startsWith("/") && !requestedPath.startsWith("//")
+        ? requestedPath
+        : "/admin/blog";
 
     const [username, setUsername] = useState<string>("");
     const [password, setPassword] = useState<string>("");
@@ -321,30 +322,45 @@ export default function AdminLogin() {
     const [mounted, setMounted] = useState<boolean>(false);
 
     useEffect(() => {
-        setMounted(true);
-        if (typeof window !== "undefined") {
-            const isLoggedIn = sessionStorage.getItem("weone_admin") === "true";
-            if (isLoggedIn) {
-                navigate(from, { replace: true });
-            }
-        }
+        let active = true;
+        getAdminSession()
+            .then((authenticated) => {
+                if (active && authenticated) navigate(from, { replace: true });
+            })
+            .catch(() => {
+                if (active) setError("Unable to verify the admin session. Please try again.");
+            })
+            .finally(() => {
+                if (active) setMounted(true);
+            });
+        return () => {
+            active = false;
+        };
     }, [navigate, from]);
 
-    const handleLogin = (e: FormEvent<HTMLFormElement>) => {
+    const handleLogin = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setError("");
         setLoading(true);
 
-        setTimeout(() => {
-            if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
-                sessionStorage.setItem("weone_admin", "true");
-                document.cookie = "weone_admin=true; path=/";
-                navigate(from, { replace: true });
-            } else {
+        try {
+            const response = await adminApiFetch("/api/admin/session", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ username, password }),
+            });
+            if (response.status === 401) {
                 setError("Invalid username or password. Please try again.");
-                setLoading(false);
+            } else if (!response.ok) {
+                setError("Admin authentication is unavailable. Contact the site administrator.");
+            } else {
+                navigate(from, { replace: true });
             }
-        }, 600);
+        } catch {
+            setError("Unable to reach the admin authentication service. Please try again.");
+        } finally {
+            setLoading(false);
+        }
     };
 
     if (!mounted) return null;

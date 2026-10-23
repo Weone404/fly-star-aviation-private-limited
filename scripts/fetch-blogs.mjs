@@ -26,6 +26,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { partition } from "./blogGate.mjs";
 import { readApprovals } from "./approvals.mjs";
+import { parseBlogApiOrigin } from "./blogApiOrigin.mjs";
 import { sanitizePostFields } from "./sanitize.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -34,11 +35,39 @@ const OUT = path.join(ROOT, "src/lib/blogData.remote.js");
 const REPORT = path.join(ROOT, "blog-gate-report.json");
 const GATE = path.join(ROOT, "blog-gate.json");
 
-const API =
-  process.env.BLOG_API_URL ||
-  process.env.VITE_API_URL ||
-  "https://fly-star-aviation-private-limited.onrender.com";
+const PREVIEW_BUILD = process.env.VERCEL_ENV === "preview";
+const API = PREVIEW_BUILD
+  ? process.env.BLOG_API_URL
+  : process.env.BLOG_API_URL ||
+    process.env.VITE_API_URL;
+const API_ORIGIN = parseBlogApiOrigin(API, { requireHttps: process.env.VERCEL_ENV === "production" });
 const TIMEOUT_MS = Number(process.env.BLOG_FETCH_TIMEOUT_MS || 45000);
+
+if (!API_ORIGIN) {
+  console.error("[fetch-blogs] API must be a valid origin without credentials, path, query, or fragment.");
+  process.exit(1);
+}
+
+if (PREVIEW_BUILD) {
+  const configuredPreviewOrigin = process.env.PREVIEW_BACKEND_API_ORIGIN;
+  const productionApi = process.env.PRODUCTION_BACKEND_API_ORIGIN;
+  if (!API || !configuredPreviewOrigin || !productionApi) {
+    console.error("[fetch-blogs] Preview builds require BLOG_API_URL for an isolated preview backend.");
+    process.exit(1);
+  }
+  const configuredPreviewBackend = parseBlogApiOrigin(configuredPreviewOrigin, { requireHttps: true });
+  const productionBackend = parseBlogApiOrigin(productionApi, { requireHttps: true });
+  if (
+    !configuredPreviewBackend ||
+    !productionBackend ||
+    API_ORIGIN !== configuredPreviewBackend ||
+    API_ORIGIN === productionBackend ||
+    new URL(API_ORIGIN).hostname.toLowerCase() === "fly-star-aviation-private-limited.onrender.com"
+  ) {
+    console.error("[fetch-blogs] Preview BLOG_API_URL must be an isolated HTTPS backend origin.");
+    process.exit(1);
+  }
+}
 
 const gate = JSON.parse(fs.readFileSync(GATE, "utf8"));
 const approvals = readApprovals(ROOT);
@@ -60,26 +89,39 @@ async function main() {
     const kept = fs.existsSync(OUT);
     console.warn("");
     console.warn("  ############################################################");
-    console.warn("  #  BLOG FETCH FAILED — sitemap may be missing blog posts   #");
+    console.warn(
+      PREVIEW_BUILD
+        ? "  #  PREVIEW BLOG FETCH FAILED — BUILD STOPPED              #"
+        : "  #  BLOG FETCH FAILED — sitemap may be missing blog posts   #"
+    );
     console.warn("  ############################################################");
-    console.warn(`  #  API:    ${API}`);
-    console.warn(`  #  Reason: ${err.message}`);
-    console.warn(`  #  Action: ${kept ? "kept the previously generated file" : "wrote an empty remote set"}`);
-    console.warn("  #  The build CONTINUES — static posts are unaffected.");
+    console.warn(`  #  API origin: ${API_ORIGIN}`);
+    console.warn("  #  Reason: request failed or returned an invalid response");
+    console.warn(
+      PREVIEW_BUILD
+        ? `  #  Action: ${kept ? "left prior generated data untouched" : "left generated data absent"}`
+        : `  #  Action: ${kept ? "kept the previously generated file" : "wrote an empty remote set"}`
+    );
+    if (!PREVIEW_BUILD) {
+      console.warn("  #  The build CONTINUES — static posts are unaffected.");
+    }
     console.warn("  ############################################################");
     console.warn("");
 
-    if (!kept) fs.writeFileSync(OUT, emit([], "API unreachable and no previous file existed"));
+    if (!PREVIEW_BUILD && !kept) {
+      fs.writeFileSync(OUT, emit([], "API unreachable and no previous file existed"));
+    }
 
     fs.writeFileSync(
       REPORT,
       JSON.stringify(
         {
           fetchedAt: new Date().toISOString(),
-          api: API,
+          api: API_ORIGIN,
           outcome: "fetch-failed",
-          error: err.message,
+          error: "request-failed",
           keptPreviousFile: kept,
+          buildBlocked: PREVIEW_BUILD,
           total: null,
           merged: null,
           accepted: [],
@@ -90,6 +132,10 @@ async function main() {
         2
       ) + "\n"
     );
+    if (PREVIEW_BUILD) {
+      process.exitCode = 1;
+      return;
+    }
     return;
   }
 
@@ -102,7 +148,7 @@ async function main() {
     JSON.stringify(
       {
         fetchedAt: new Date().toISOString(),
-        api: API,
+        api: API_ORIGIN,
         outcome: "ok",
         total: posts.length,
         merged: clean.length,
