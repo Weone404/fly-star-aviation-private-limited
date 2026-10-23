@@ -44,7 +44,11 @@ const API_ORIGIN = parseBlogApiOrigin(API, { requireHttps: process.env.VERCEL_EN
 const TIMEOUT_MS = Number(process.env.BLOG_FETCH_TIMEOUT_MS || 45000);
 
 if (!API_ORIGIN) {
-  console.error("[fetch-blogs] API must be a valid origin without credentials, path, query, or fragment.");
+  console.error(
+    PREVIEW_BUILD
+      ? "[fetch-blogs] Preview builds require BLOG_API_URL to be an HTTPS backend origin without credentials, path, query, or fragment."
+      : "[fetch-blogs] API must be a valid origin without credentials, path, query, or fragment."
+  );
   process.exit(1);
 }
 

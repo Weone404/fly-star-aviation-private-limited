@@ -48,4 +48,34 @@ describe("blog API origin validation", () => {
     expect(result.stderr).toContain("API must be a valid origin");
     expect(result.stderr).not.toContain("onrender.com");
   });
+
+  it.each([
+    ["missing", undefined],
+    ["malformed", "not-a-url"],
+    ["containing credentials and query data", "https://user:fixture-secret@preview.example.invalid/?token=fixture-secret"],
+  ])("explains the required Preview API configuration when BLOG_API_URL is %s", (_description, apiUrl) => {
+    const root = resolve(__dirname, "../..");
+    const result = spawnSync(
+      process.execPath,
+      [resolve(root, "scripts/fetch-blogs.mjs")],
+      {
+        cwd: root,
+        encoding: "utf8",
+        env: {
+          PATH: process.env.PATH || "",
+          SystemRoot: process.env.SystemRoot || "",
+          TEMP: process.env.TEMP || "",
+          TMP: process.env.TMP || "",
+          VERCEL_ENV: "preview",
+          ...(apiUrl === undefined ? {} : { BLOG_API_URL: apiUrl }),
+        },
+      },
+    );
+
+    expect(result.error).toBeUndefined();
+    expect(result.status).toBe(1);
+    expect(result.stderr).toContain("Preview builds require BLOG_API_URL to be an HTTPS backend origin");
+    expect(result.stderr).not.toContain("fixture-secret");
+    expect(result.stderr).not.toContain("?token=");
+  });
 });
