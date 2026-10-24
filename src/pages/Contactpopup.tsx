@@ -290,8 +290,6 @@ export default function ContactPopup(): JSX.Element {
     return (
         <>
             <style>{`
-            *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
         :root {
           --sky: #1a3a6b; --sky-deep: #0f2347; --sky-light: #2554a0;
           --gold: #f0a500; --gold-light: #fbbf24;

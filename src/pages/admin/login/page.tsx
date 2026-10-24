@@ -6,7 +6,6 @@ import { adminApiFetch, getAdminSession } from "@/lib/adminApi";
 
 
 const globalStyles = `
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body { background: #060e1c !important; }
 
   .al-root {
