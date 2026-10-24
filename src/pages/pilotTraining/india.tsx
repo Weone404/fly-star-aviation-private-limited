@@ -31,23 +31,23 @@ import {
 const trainingHighlights = [
     {
         icon: Award,
-        title: "DGCA-approved Training",
-        description: "Aligned with Indian aviation standards and regulations",
+        title: "Separate training stages",
+        description: "Ground classes and theory exams are separate from aircraft flight training at an FTO.",
     },
     {
         icon: Plane,
-        title: "Modern Fleet",
-        description: "Train on Cessna 172, Tecnam, Piper Archer, and Diamond aircraft",
+        title: "Choose an FTO for flying",
+        description: "Aircraft, instructors and operating schedules depend on the FTO selected for flight training.",
     },
     {
         icon: Sun,
-        title: "300+ Flying Days",
-        description: "Excellent weather conditions across major bases",
+        title: "Compare locations",
+        description: "Weather, airport access and aircraft availability vary; confirm current conditions with each FTO.",
     },
     {
         icon: MapPin,
-        title: "Close to Home",
-        description: "Quality training facilities across India",
+        title: "Ground classes in Delhi",
+        description: "Flying Star's own centre is in Dwarka, New Delhi; it does not operate a flying school.",
     },
 ];
 
@@ -55,56 +55,54 @@ const eligibilityRequirements = [
     {
         icon: Calendar,
         title: "Age",
-        description: "Minimum 17 years to begin pilot training and 18 years for a Commercial Pilot License.",
+        description: "Check current DGCA age criteria for the licence and training stages you plan to undertake.",
     },
     {
         icon: BookOpen,
         title: "Education",
-        description: "10+2 with (Physics & Math) or equivalent is required. Non-science students can qualify via NIOS.",
+        description: "Verify current education and subject requirements with DGCA, including accepted equivalency routes.",
     },
     {
         icon: Shield,
         title: "Medical",
-        description: "Must hold a valid DGCA Class 1 Medical Certificate issued by DGCA medical examiner to ensure physical fitness for flying.",
+        description: "Review current DGCA medical certification requirements and confirm the required steps before committing to training.",
     },
     {
         icon: FileCheck,
         title: "Valid Passport",
-        description: "A current passport is mandatory for identification and for students pursuing any part of their training abroad.",
+        description: "For training outside India, confirm passport, visa and identification requirements with the destination authority and provider.",
     },
     {
         icon: FileCheck,
         title: "Police Clearance Certificate (PCC)",
-        description: "A valid Police Clearance Certificate (PCC), valid for 6 months, is required to begin flight training at any Indian FTO.",
+        description: "Ask the selected FTO which background documents it currently requires and verify any validity period before applying.",
     },
 ];
 
 const courseDetails = {
-    duration: "14-16 MONTHS",
-    flyingHours: "200 Hrs",
-    courseFee: "INR 58lakhs - 60lakhs",
+    duration: "Varies by provider",
+    flyingHours: "Check current DGCA rules",
+    courseFee: "Provider quote",
 };
 
 const courseCoverage = [
-    "Study Material",
-    "Flight Training",
-    "Checkride Flights",
-    "License Insurance",
+    "Ground classes and theory-exam preparation",
+    "Aircraft flight training through a separately selected FTO",
+    "Check the FTO's current DGCA approval before enrolling",
+    "Confirm in writing which services and charges each quote includes",
 ];
 
 const additionalCosts = [
-    "Extra Flying Hours (if required)",
-    "Theory Classes",
-    "Accommodation & Living Costs",
-    "Written Exams",
-    "Personal Insurance",
-    "Medicals",
+    "Aircraft hourly rate and included instructor or briefing time",
+    "Multi-engine, simulator, repeat-flight and test charges",
+    "DGCA examination, medical, travel and accommodation charges",
+    "Refund, delay and aircraft-availability terms",
 ];
 
 const trainingStages = [
     {
         stage: "DGCA Theory Ground Class",
-        duration: "3-4 Months",
+        duration: "Varies by provider",
         flyingHours: "N/A",
         highlights: [
             "Air Navigation",
@@ -115,49 +113,22 @@ const trainingStages = [
         ],
     },
     {
-        stage: "SPL + Oral Exam",
-        duration: "1-2 Months",
-        flyingHours: "0 hrs",
+        stage: "DGCA theory examinations and radio telephony",
+        duration: "Varies by candidate and examination schedule",
+        flyingHours: "Not applicable",
         highlights: [
-            "Radio Telephony (RT) Basics",
-            "Pre-Flight Briefings & Safety Checks",
-            "Oral Exam Preparation",
+            "Check current DGCA and WPC requirements",
+            "Plan examinations using the current official schedules",
         ],
     },
     {
-        stage: "Solo Flight Training",
-        duration: "2 Months",
-        flyingHours: "15-20 hrs",
+        stage: "Practical flight training at an approved FTO",
+        duration: "Set by the FTO and candidate progress",
+        flyingHours: "Verify current DGCA requirements",
         highlights: [
-            "Circuit flying",
-            "Take-offs and landings",
-            "Basic manoeuvres",
-            "Radio communication practice",
-            "Emergency procedures",
-        ],
-    },
-    {
-        stage: "Hour Building + Checks",
-        duration: "6 months",
-        flyingHours: "20-185 hrs",
-        highlights: [
-            "Cross-country flights",
-            "Navigation exercises",
-            "Instrument flying",
-            "Flight planning",
-            "Progress checks with CFI",
-        ],
-    },
-    {
-        stage: "Multi-Engine Rating + Checks",
-        duration: "2 Months",
-        flyingHours: "185-200 hrs",
-        highlights: [
-            "Asymmetric flight handling",
-            "Engine failure drills",
-            "Multi-engine instrument flying",
-            "Emergency procedures",
-            "DGCA skill test and endorsement",
+            "Confirm the FTO's current DGCA approval and scope",
+            "Review its syllabus, aircraft availability and written quote",
+            "Check current skill-test and licence-application requirements",
         ],
     },
 ];
@@ -166,7 +137,7 @@ const stepByStepGuide = [
     {
         step: 1,
         title: "Medicals",
-        description: "Obtain a valid DGCA Class 1 medical (for CPL pathway) from an authorised AME to confirm fitness for professional flying.",
+        description: "Check current DGCA medical requirements and complete the applicable medical assessment before committing to flight training.",
     },
     {
         step: 2,
@@ -186,7 +157,7 @@ const stepByStepGuide = [
     {
         step: 5,
         title: "Choose The Right Flight School",
-        description: "Select a DGCA-approved FTO based on fleet, instructor experience, placement outcomes and student support services.",
+        description: "Compare current DGCA approval and scope, aircraft and instructor availability, student support, and written costs.",
     },
     {
         step: 6,
@@ -207,113 +178,105 @@ const stepByStepGuide = [
 
 const flyingSchools = [
     {
-        name: "Flying School 01",
-        location: "Maharashtra, India",
-        duration: "14 - 16 Months",
-        fleetSize: "17 Aircrafts",
-        aircraft: "Cessna 172, Tecnam (ME), Piper Archer",
-        flyingHours: "200 Hrs",
+        name: "Verify current approval",
+        context: "Before you enrol",
+        questions: [
+            "Check the current DGCA listing and the FTO's approved scope.",
+            "Ask which aircraft and instructors are currently available.",
+            "Compare its syllabus with current DGCA requirements.",
+        ],
     },
     {
-        name: "Flying School 02",
-        location: "Gujarat, India",
-        duration: "14 - 16 Months",
-        fleetSize: "10 Aircrafts",
-        aircraft: "Tecnam P-Mentor",
-        flyingHours: "200 Hrs",
+        name: "Compare training delivery",
+        context: "With each FTO",
+        questions: [
+            "Ask about recent completion timelines and factors that can delay training.",
+            "Check aircraft serviceability and instructor availability.",
+            "Confirm aircraft type and training availability.",
+        ],
     },
     {
-        name: "Flying School 03",
-        location: "Rajasthan, India / Gujarat, India",
-        duration: "14 - 16 Months",
-        fleetSize: "18 Aircrafts",
-        aircraft: "Cessna 172, Diamond (DA42)",
-        flyingHours: "200 Hrs",
+        name: "Get a written quote",
+        context: "Before paying",
+        questions: [
+            "Confirm what happens if weather, aircraft or instructor availability causes delays.",
+            "Check whether instructor, simulator and multi-engine charges are included.",
+            "List repeat-flight, test and refund terms.",
+        ],
     },
 ];
 
 const trainingLocations = [
     {
-        name: "Maharashtra",
-        flyingDays: "270+ Days",
-        weather: "Tropical & humid",
+        name: "Weather and season",
+        question: "How do seasonal weather conditions affect the flying schedule?",
     },
     {
-        name: "Gujarat",
-        flyingDays: "300+ Days",
-        weather: "Dry & clear",
+        name: "Airport and airspace",
+        question: "How do local airport and airspace operations affect training?",
     },
     {
-        name: "Rajasthan",
-        flyingDays: "320+ Days",
-        weather: "Arid & sunny",
+        name: "Aircraft availability",
+        question: "How are aircraft serviceability and instructor availability managed?",
     },
 ];
 
 const aircraftFleet = [
     {
-        name: "Cessna 172",
-        description: "Single-engine Four-seat trainer and cross-country aircraft, ideal for PPL training, night flying, and navigation practice. Perfect for students to gain real flight experience.",
+        name: "Single-engine training",
+        description: "Ask the FTO which aircraft are currently available and how they are used in its approved training scope.",
     },
     {
-        name: "Tecnam (ME)",
-        description: "A modern twin-engine trainer used for Multi-Engine Rating and Instrument flight training, offering advanced avionics, fuel efficiency, and an ideal platform for transitioning to complex aircraft operations.",
+        name: "Multi-engine training",
+        description: "Confirm whether multi-engine training is offered, which aircraft are used, and what the quoted rate includes.",
     },
     {
-        name: "Piper Archer",
-        description: "A reliable four-seat trainer equipped with modern avionics, ideal for PPL and CPL training. Known for its stable handling and performance, it helps students master navigation, cross-country, and instrument flying skills.",
-    },
-    {
-        name: "Tecnam P-Mentor",
-        description: "A next-generation training aircraft featuring advanced glass cockpit avionics, ideal for ab-initio to CPL training. Efficient, safe, and designed for modern flight training with capabilities for basic instrument and navigation exercises.",
-    },
-    {
-        name: "Diamond (DA42)",
-        description: "Used for advanced multi-engine and instrument training, the DA42 features modern avionics and high performance, preparing students for complex flight operations and airline-level proficiency.",
+        name: "Instrument training",
+        description: "Ask how instrument training is delivered and whether simulator or aircraft time is included in the written quote.",
     },
 ];
 
 const benefitsOfTraining = [
-    "DGCA-approved training aligned with Indian aviation standards",
-    "Close to home with quality training facilities",
-    "Experienced instructors and modern aircraft",
-    "Diverse weather and terrain for real-world exposure",
-    "300+ flying days a year across major bases",
-    "Seamless DGCA licence conversion for airline readiness",
+    "Ground classes and practical flight training are separate stages.",
+    "Flying Star provides CPL ground classes from its Dwarka, New Delhi centre.",
+    "Candidates complete practical flying through a separately selected FTO.",
+    "Verify an FTO's current DGCA approval and scope before enrolment.",
+    "Compare provider quotes and ask which services and charges are included.",
+    "Check current DGCA licensing and conversion requirements before planning.",
 ];
 
 const faqs = [
     {
         question: "What is the minimum age requirement for pilot training in India?",
-        answer: "You must be at least 17 years old to begin pilot training and 18 years old to obtain a Commercial Pilot License (CPL) in India.",
+        answer: "Age criteria can depend on the licence and training stage. Check the current DGCA requirements before enrolling.",
     },
     {
         question: "What educational qualifications do I need?",
-        answer: "You need to have completed 10+2 with Physics and Mathematics or an equivalent qualification. Non-science students can qualify through NIOS.",
+        answer: "Check DGCA's current educational and subject requirements, including any accepted equivalency route, before enrolling.",
     },
     {
         question: "How long does it take to complete pilot training in India?",
-        answer: "The complete Commercial Pilot Training program typically takes 14-16 months, including ground theory, flight training, and all required examinations.",
+        answer: "There is no single timeline for every candidate. Ground-class schedules, examination availability, FTO aircraft and instructor availability, and candidate progress affect completion time.",
     },
     {
         question: "What is the total cost of pilot training in India?",
-        answer: "The course fee ranges from INR 58 lakhs to 60 lakhs, covering study material, flight training, checkride flights, and license insurance. Additional costs include extra flying hours (if required), accommodation, written exams, personal insurance, and medicals.",
+        answer: "There is no single regulator-set total CPL training price. Ground schools and FTOs set separate prices; compare written quotes and check which services and charges each includes. See the CPL fees guide for a component-by-component checklist.",
     },
     {
         question: "How many flying hours are required for CPL?",
-        answer: "Students must complete 200 hours of structured flight training, including Instrument Rating (IR) and Multi-Engine training under DGCA regulations.",
+        answer: "Flight-experience requirements are set by current DGCA rules and may change. Check the latest official requirements and confirm how the selected FTO's syllabus addresses them.",
     },
     {
         question: "What medical certificate is required?",
-        answer: "You must hold a valid DGCA Class 1 Medical Certificate issued by a DGCA medical examiner to ensure physical fitness for flying.",
+        answer: "Medical certification requirements depend on the licence sought. Check current DGCA requirements and use an authorised medical examiner.",
     },
     {
         question: "Which locations in India are best for pilot training?",
-        answer: "Maharashtra, Gujarat, and Rajasthan are popular locations offering 270-320+ flying days per year with diverse weather conditions ranging from tropical and humid to dry and arid.",
+        answer: "Compare an FTO's current approval, aircraft and instructor availability, operating conditions, and written quote. A location's weather alone does not guarantee a particular training timeline.",
     },
     {
         question: "Is the DGCA license recognized internationally?",
-        answer: "Yes, the DGCA-approved Commercial Pilot License is recognized globally and qualifies graduates for airline careers within India and across international aviation networks.",
+        answer: "Licence privileges and acceptance depend on the destination regulator's rules. Check the current conversion and validation requirements with the relevant authority before relying on a licence abroad.",
     },
 ];
 
@@ -336,7 +299,22 @@ export default function PilotTrainingIndiaPage() {
                             Commercial Pilot Training in India
                         </h1>
                         <p className="text-xl text-primary-foreground/80 mb-8">
-                            The aviation industry in India is expanding at a rapid rate, providing aspiring pilots with a solid platform through the DGCA flight schools and the Commercial Pilot Training course. With the availability of modern aircraft and training equipment, India is an excellent place to start your flying journey.
+                            A DGCA CPL pathway includes ground classes and theory exams, followed by practical flight training at a separately selected, DGCA-approved Flying Training Organisation (FTO). Flying Star provides ground classes in Dwarka, New Delhi; it does not operate an FTO.
+                        </p>
+                        <p className="text-primary-foreground/80 mb-8">
+                            Explore our{" "}
+                            <Link to="/courses/cpl" className="underline underline-offset-4">
+                                DGCA CPL ground classes
+                            </Link>
+                            , the{" "}
+                            <Link to="/courses/cpl/fees" className="underline underline-offset-4">
+                                CPL fees guide
+                            </Link>
+                            , and the{" "}
+                            <Link to="/become-a-pilot/become-pilot" className="underline underline-offset-4">
+                                pilot eligibility and licensing steps
+                            </Link>
+                            .
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4">
                             <Button variant="gold" size="lg" asChild>
@@ -402,7 +380,7 @@ export default function PilotTrainingIndiaPage() {
                         className="text-center mb-16"
                     >
                         <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                            Commercial Pilot Eligibility
+                            CPL Eligibility: Verify Current DGCA Requirements
                         </h2>
                         <p className="text-muted-foreground max-w-2xl mx-auto">
                             Check if you meet the requirements to begin your pilot training journey in India.
@@ -439,9 +417,11 @@ export default function PilotTrainingIndiaPage() {
                         viewport={{ once: true }}
                         className="text-center mb-16"
                     >
-                        <h2 className="text-3xl md:text-4xl font-bold mb-4">Course Overview</h2>
+                        <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                            CPL Ground Classes and Flight Training: Separate Stages
+                        </h2>
                         <p className="text-muted-foreground max-w-2xl mx-auto">
-                            Commercial Pilot License With Multi Engine Instrument Rating (CPL-MEIR)
+                            CPL-MEIR describes a licensing and training pathway. Flying Star provides ground classes; practical flight training is completed separately through an appropriately approved FTO.
                         </p>
                     </motion.div>
 
@@ -456,7 +436,7 @@ export default function PilotTrainingIndiaPage() {
                             <h3 className="font-bold text-lg mb-2">Course Duration</h3>
                             <p className="text-2xl font-bold text-primary mb-2">{courseDetails.duration}</p>
                             <p className="text-sm text-muted-foreground">
-                                Training timelines may exceed based on performance
+                                Timelines depend on the candidate, provider and training availability
                             </p>
                         </motion.div>
 
@@ -471,7 +451,7 @@ export default function PilotTrainingIndiaPage() {
                             <h3 className="font-bold text-lg mb-2">Flying Hours</h3>
                             <p className="text-2xl font-bold text-primary mb-2">{courseDetails.flyingHours}</p>
                             <p className="text-sm text-muted-foreground">
-                                From SPL to CPL including IR and Multi-Engine training
+                                Requirements can change; verify the current DGCA rules and the FTO's syllabus
                             </p>
                         </motion.div>
 
@@ -483,10 +463,10 @@ export default function PilotTrainingIndiaPage() {
                             className="p-8 rounded-2xl border border-border bg-card text-center"
                         >
                             <DollarSign className="h-12 w-12 text-primary mx-auto mb-4" />
-                            <h3 className="font-bold text-lg mb-2">Course Fee</h3>
+                            <h3 className="font-bold text-lg mb-2">Training Quote</h3>
                             <p className="text-2xl font-bold text-primary mb-2">{courseDetails.courseFee}</p>
                             <p className="text-sm text-muted-foreground">
-                                Comprehensive training package with license support
+                                Ground-school and FTO flight-training prices are separate
                             </p>
                         </motion.div>
                     </div>
@@ -498,7 +478,7 @@ export default function PilotTrainingIndiaPage() {
                             viewport={{ once: true }}
                             className="p-8 rounded-2xl border border-border bg-card"
                         >
-                            <h3 className="text-xl font-bold mb-6">This Course Covers</h3>
+                            <h3 className="text-xl font-bold mb-6">Ground School and Flight Training</h3>
                             <ul className="space-y-3">
                                 {courseCoverage.map((item, i) => (
                                     <li key={i} className="flex items-center gap-3 text-muted-foreground">
@@ -515,7 +495,7 @@ export default function PilotTrainingIndiaPage() {
                             viewport={{ once: true }}
                             className="p-8 rounded-2xl border border-border bg-card"
                         >
-                            <h3 className="text-xl font-bold mb-6">Additional Costs</h3>
+                            <h3 className="text-xl font-bold mb-6">Costs to Confirm with Each Provider</h3>
                             <ul className="space-y-3">
                                 {additionalCosts.map((item, i) => (
                                     <li key={i} className="flex items-center gap-3 text-muted-foreground">
@@ -533,9 +513,8 @@ export default function PilotTrainingIndiaPage() {
                         viewport={{ once: true }}
                         className="text-center text-muted-foreground mt-8"
                     >
-                        The pilot training program combines classroom theory with in-flight training, guiding students
-                        step by step through all license stages to build confidence, proficiency and achieve their
-                        Commercial Pilot license.
+                        Flying Star Aviator provides CPL ground classes. Practical flight training is completed
+                        separately through an appropriately approved FTO.
                     </motion.p>
                 </div>
             </section>
@@ -652,10 +631,10 @@ export default function PilotTrainingIndiaPage() {
                         className="text-center mb-16"
                     >
                         <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                            Pilot Academies in India
+                            How to Compare a Flying Training Organisation
                         </h2>
                         <p className="text-muted-foreground max-w-2xl mx-auto">
-                            DGCA-approved flying schools with modern fleets and experienced instructors
+                            Check each organisation's current DGCA approval, training scope, aircraft availability and written quote before enrolling.
                         </p>
                     </motion.div>
 
@@ -675,26 +654,16 @@ export default function PilotTrainingIndiaPage() {
                                 <h3 className="font-bold text-xl mb-2">{school.name}</h3>
                                 <p className="text-muted-foreground mb-6 flex items-center gap-2">
                                     <MapPin className="h-4 w-4" />
-                                    {school.location}
+                                    {school.context}
                                 </p>
-                                <div className="space-y-3 mb-6">
-                                    <div className="flex justify-between text-sm">
-                                        <span className="text-muted-foreground">Course Duration:</span>
-                                        <span className="font-semibold">{school.duration}</span>
-                                    </div>
-                                    <div className="flex justify-between text-sm">
-                                        <span className="text-muted-foreground">Fleet Size:</span>
-                                        <span className="font-semibold">{school.fleetSize}</span>
-                                    </div>
-                                    <div className="flex justify-between text-sm">
-                                        <span className="text-muted-foreground">Aircraft:</span>
-                                        <span className="font-semibold text-right">{school.aircraft}</span>
-                                    </div>
-                                    <div className="flex justify-between text-sm">
-                                        <span className="text-muted-foreground">Flying Hours:</span>
-                                        <span className="font-semibold">{school.flyingHours}</span>
-                                    </div>
-                                </div>
+                                <ul className="mb-6 space-y-3 text-sm text-muted-foreground">
+                                    {school.questions.map((question) => (
+                                        <li key={question} className="flex gap-2">
+                                            <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                                            {question}
+                                        </li>
+                                    ))}
+                                </ul>
                                 <Button variant="outline" className="w-full" asChild>
                                     <Link to="/contact">
                                         Know More
@@ -717,10 +686,10 @@ export default function PilotTrainingIndiaPage() {
                         className="text-center mb-16"
                     >
                         <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                            Popular Pilot Training Locations in India
+                            What to Check at Each FTO Location
                         </h2>
                         <p className="text-muted-foreground max-w-2xl mx-auto">
-                            Choose from locations offering excellent weather conditions and flying days
+                            Compare local weather, airport access and aircraft and instructor availability directly with the FTO.
                         </p>
                     </motion.div>
 
@@ -739,11 +708,8 @@ export default function PilotTrainingIndiaPage() {
                                 </div>
                                 <h3 className="font-bold text-xl mb-2">{location.name}</h3>
                                 <p className="text-sm text-muted-foreground mb-4">
-                                    <span className="font-semibold text-primary">No. Of Flying Days:</span>{" "}
-                                    {location.flyingDays}
-                                </p>
-                                <p className="text-sm text-muted-foreground">
-                                    <span className="font-semibold">Weather:</span> {location.weather}
+                                    <span className="font-semibold text-primary">Question to ask:</span>{" "}
+                                    {location.question}
                                 </p>
                             </motion.div>
                         ))}
@@ -761,10 +727,10 @@ export default function PilotTrainingIndiaPage() {
                         className="text-center mb-16"
                     >
                         <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                            Types Of Fleets Available For Flight Training In India
+                            Aircraft Questions to Ask an FTO
                         </h2>
                         <p className="text-muted-foreground max-w-2xl mx-auto">
-                            Train on modern, well-maintained aircraft with advanced avionics
+                            Aircraft type, serviceability and training availability depend on the FTO.
                         </p>
                     </motion.div>
 
@@ -799,7 +765,7 @@ export default function PilotTrainingIndiaPage() {
                         className="text-center mb-16"
                     >
                         <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                            Benefits Of Training In India
+                            Before Choosing a Pilot Training Provider
                         </h2>
                     </motion.div>
 
@@ -838,16 +804,13 @@ export default function PilotTrainingIndiaPage() {
                         </div>
                         <div className="p-8 rounded-2xl border border-border bg-card">
                             <p className="text-muted-foreground text-lg mb-4">
-                                The Commercial Pilot Training program in India offers aspiring pilots a clear roadmap to secure a DGCA-Commercial Pilot Licence (CPL) along with Multi-Engine and Instrument Ratings.
+                                DGCA sets the licensing requirements and issues licences. Ground schools prepare candidates for theory examinations; an approved Flying Training Organisation (FTO) delivers practical aircraft training.
                             </p>
                             <p className="text-muted-foreground text-lg mb-4">
-                                The training is conducted in DGCA-approved Flying Training Organizations, where students receive intensive ground school training along with actual flying experience in different types of weather conditions.
-                            </p>
-                            <p className="text-muted-foreground text-lg mb-4">
-                                The training is designed to meet the highest standards of national aviation regulations, providing students with quality knowledge.
+                                Flying Star Aviator provides CPL and ATPL ground classes from its Dwarka, New Delhi centre. It does not operate an FTO or provide aircraft flight training.
                             </p>
                             <p className="text-muted-foreground text-lg">
-                                Upon completing the Commercial Pilot Training program, students are awarded a DGCA-approved license, opening up opportunities for airline careers in India as well as the rest of the world.
+                                Before paying an FTO, verify its current approval and scope with DGCA, confirm what its written quote includes, and check the current licensing requirements with the regulator.
                             </p>
                         </div>
                     </motion.div>
@@ -908,7 +871,7 @@ export default function PilotTrainingIndiaPage() {
                             Start Your Pilot Journey Today
                         </h2>
                         <p className="text-primary-foreground/80 text-lg mb-8">
-                            With the training facilities of DGCA, modern aircraft, experienced instructors, and excellent weather conditions, India provides everything you need to succeed in your aviation career. Start your journey today to achieve your dreams of becoming a professional pilot.
+                            Start by comparing ground-class options and current DGCA licensing requirements. Practical flight training is a separate stage completed through an FTO you select.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <Button variant="gold" size="lg" asChild>

@@ -73,33 +73,18 @@ async function blogPaths() {
       skipped.push(`${post.slug} (${words} words)`);
       continue;
     }
-    paths.push(`/blog/${post.slug}`);
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(post.updatedAt)) {
+      throw new Error(`Invalid updatedAt date for blog post ${post.slug}`);
+    }
+    paths.push({ path: `/blog/${post.slug}`, lastmod: post.updatedAt });
   }
 
   for (const s of skipped) console.log(`[sitemap] blog post not advertised: ${s}`);
   return paths;
 }
 
-function isoToday() {
-  return new Date().toISOString().slice(0, 10);
-}
-
-/** Keep the existing lastmod for URLs whose entry has not changed. */
-function previousLastmod() {
-  if (!fs.existsSync(OUT)) return new Map();
-  const xml = fs.readFileSync(OUT, "utf8");
-  return new Map(
-    [...xml.matchAll(/<loc>([^<]+)<\/loc><lastmod>([^<]+)<\/lastmod>/g)].map((m) => [
-      m[1].replace(ORIGIN, "") || "/",
-      m[2],
-    ])
-  );
-}
-
 async function main() {
   const aliases = aliasPaths();
-  const previous = previousLastmod();
-  const today = isoToday();
 
   const paths = new Set(["/"]);
   for (const p of routeMetaEntries()) {
@@ -109,15 +94,21 @@ async function main() {
     if (aliases.has(clean)) continue;
     paths.add(clean);
   }
-  for (const p of await blogPaths()) paths.add(p);
+  const blogLastmod = new Map();
+  for (const { path: blogPath, lastmod } of await blogPaths()) {
+    paths.add(blogPath);
+    blogLastmod.set(blogPath, lastmod);
+  }
 
   const sorted = [...paths].sort((a, b) => (a === "/" ? -1 : b === "/" ? 1 : a.localeCompare(b)));
 
   const body = sorted
     .map((p) => {
       const loc = p === "/" ? `${ORIGIN}/` : `${ORIGIN}${p}`;
-      const lastmod = previous.get(p) || today;
-      return `  <url><loc>${loc}</loc><lastmod>${lastmod}</lastmod></url>`;
+      const lastmod = blogLastmod.get(p);
+      return lastmod
+        ? `  <url><loc>${loc}</loc><lastmod>${lastmod}</lastmod></url>`
+        : `  <url><loc>${loc}</loc></url>`;
     })
     .join("\n");
 
