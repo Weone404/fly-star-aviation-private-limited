@@ -19,7 +19,7 @@ const navigation: NavItem[] = [
 
   {
     name: "Courses",
-    href: "/Courses/cpl",
+    href: "/courses/cpl",
     children: [
       { name: "CPL – Commercial Pilot License", href: "/courses/cpl" },
       { name: "ATPL – Airline Transport Pilot License", href: "/courses/atpl" },

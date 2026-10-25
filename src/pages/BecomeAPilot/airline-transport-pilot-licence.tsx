@@ -99,21 +99,17 @@ const careerRoles = [
 ];
 
 const programFeatures = [
-    { icon: Users, title: "Experienced Instructors", description: "15+ years of aviation industry experience" },
+    { icon: Users, title: "Experienced Instructors", description: "Ground instructors drawn from the aviation industry" },
     { icon: BookOpen, title: "Comprehensive Study Material", description: "1000+ questions, updated notes, largest book collection" },
     { icon: Target, title: "Weekly Test Series", description: "Regular assessments for every subject" },
-    { icon: Trophy, title: "100% Pass Rate", description: "Every batch clears exams on first attempt" },
-    { icon: Globe, title: "International Recognition", description: "DGCA-approved, globally recognized training" },
+        { icon: Globe, title: "International Recognition", description: "DGCA-approved, globally recognized training" },
     { icon: Clock, title: "Flexible Learning", description: "Online/offline classes with lifetime material access" },
 ];
 
 const whyChooseUs = [
-    "Largest community of aspiring pilots in India since 2009 (10,000+ students)",
-    "More than 1,000 students successfully placed in airlines",
-    "Largest team of experienced instructors from aviation industry",
+    "Instructors drawn from the aviation industry",
     "Dedicated research team creating visual learning resources",
     "Interactive classroom activities with stress management programs",
-    "World-class accommodation facilities within walking distance",
 ];
 
 export default function ATPLCourseDetailsPage() {

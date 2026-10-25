@@ -42,6 +42,11 @@
       "dest": "/pilot-salary-india"
     },
     {
+      "src": "/Courses/cpl",
+      "status": 308,
+      "dest": "/courses/cpl"
+    },
+    {
       "src": "/blogs/7",
       "status": 308,
       "dest": "/blog/air-hostess-salary-in-india-2026"
