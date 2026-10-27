@@ -1693,25 +1693,25 @@ export const STATIC_BLOG_POSTS = [
   {
     slug: 'dgca-pariksha-portal-guide',
     title: 'DGCA Pariksha Portal Guide: Registration, Login and Document Rules',
-    seoTitle: 'DGCA Pariksha Portal Guide 2026: Rules DGCA Actually States',
-    metaDescription: 'DGCA Pariksha carries a beta disclaimer and exact photo, signature and document rules. What the FAQ states on uploads, link expiry and new vs old candidates.',
+    seoTitle: 'DGCA Pariksha Portal: Login, Registration & Documents',
+    metaDescription: "DGCA Pariksha guide: registration, login, photo/signature specs, document uploads, activation links and NEW vs OLD candidate rules, sourced to DGCA's FAQ.",
     keyFacts: [
       { fact: 'The Pariksha portal requires a photograph of exactly 45mm height by 35mm width under 70kb, and a signature of 20mm height by 45mm width under 20kb, both in JPEG/JPG format only; supporting documents must be uploaded as PDF.', source: 'DGCA Pariksha Flight Crew FAQ', href: 'https://pariksha.dgca.gov.in/Form/PLT_FAQs' },
       { fact: 'A Pariksha registration activation link expires 24 hours after submission, with no extension; a candidate who misses it must register again from the start.', source: 'DGCA Pariksha Flight Crew FAQ', href: 'https://pariksha.dgca.gov.in/Form/PLT_FAQs' },
-      { fact: 'As of August 2026, the Pariksha portal carried its own "under beta testing" disclaimer, with DGCA and NIELIT disclaiming responsibility for actions performed on the platform during that phase.', source: 'pariksha.dgca.gov.in landing page, banked 2026-08-22; this session could not re-fetch the live page to confirm the disclaimer still stands, since pariksha.dgca.gov.in was unreachable from this network at time of writing' },
+      { fact: 'The DGCA Pariksha homepage checked on 24 October 2026 describes the portal as its online registration and examination portal for future CEO examinations for AME and Flight Crew candidates; the page text checked did not display a beta-testing disclaimer.', source: 'DGCA Pariksha homepage, checked 2026-10-24: https://pariksha.dgca.gov.in/' },
     ],
     tags: ['DGCA Pariksha Portal', 'DGCA Computer Number Registration', 'Pariksha DGCA Login', 'DGCA Document Upload'],
     category: 'DGCA',
     author: 'Flying Star Aviator Academics Team',
     authorRole: 'DGCA CPL & ATPL ground instruction, Dwarka, New Delhi',
     createdAt: '2026-09-22',
-    updatedAt: '2026-09-22',
+    updatedAt: '2026-10-24',
     coverImage: '/assets/hero-aircraft-1600w.jpg',
-    excerpt: 'TL;DR: The DGCA Pariksha portal, run by NIELIT, currently carries a beta-testing disclaimer and enforces exact photo (45x35mm), signature (20x45mm) and document format rules. Registration links expire in 24 hours. New candidates owe a hard copy and a Board Verification Certificate; old candidates do not. Only mobile, email and address are self-editable.',
-    intro: "Every DGCA computer number, exam registration and profile update for Flight Crew and AME candidates now runs through one system: the Pariksha portal. It states exact document specifications, and it currently carries a beta-testing disclaimer that changes how carefully a candidate should treat it. This guide sources every rule below to DGCA's own Pariksha FAQ, not to a coaching site's paraphrase of it.",
+    excerpt: 'The DGCA Pariksha Flight Crew FAQ sets the photo, signature and document-upload rules. Registration activation links expire after 24 hours. New and existing candidates have different supporting-document requirements; check the current portal and FAQ before submitting.',
+    intro: "DGCA describes Pariksha as its online registration and examination portal for future CEO examinations for AME and Flight Crew candidates, integrating the earlier VIMAN and UDAAN systems. The Flight Crew FAQ sets out the registration and document requirements covered here; check the current portal notices before submitting an application.",
     faqs: [
       { q: 'What is the DGCA Pariksha portal?', a: 'Pariksha, at pariksha.dgca.gov.in, is the single online system the Central Examination Organisation uses for Flight Crew and Aircraft Maintenance Engineer computer number allotment, exam registration, admit cards and examination history. It is developed and maintained by NIELIT, not by DGCA’s own IT wing.' },
-      { q: 'Is the DGCA Pariksha portal still in beta?', a: 'As of August 2026, the portal’s own landing page carried an "under beta testing" disclaimer, with DGCA and NIELIT disclaiming responsibility for actions performed on it during that phase. Re-check the live portal for its current status before relying on this.' },
+      { q: 'Does the DGCA Pariksha portal currently display a beta-testing disclaimer?', a: 'The DGCA Pariksha homepage checked on 24 October 2026 did not display a beta-testing disclaimer. An earlier snapshot recorded on 22 August 2026 did; treat that as a historical observation, not the portal’s current status.' },
       { q: 'What are the exact photo and signature specifications for Pariksha?', a: 'A photograph must be 45mm height by 35mm width, matt finish, white background, under 70kb, in JPEG/JPG format. A signature must be 20mm height by 45mm width, white background, under 20kb, in JPEG/JPG format. Supporting documents must be uploaded as PDF, not JPEG.' },
       { q: 'How long does a Pariksha registration link stay valid?', a: '24 hours from submission. If it is not activated within that window, the registration is not carried forward, and the candidate must register again from the start.' },
       { q: 'What is the difference between a NEW and OLD candidate on Pariksha?', a: 'A NEW candidate has no Flight Crew computer number from CEO to date and owes a hard copy of the registration form plus a Board Verification Certificate. An OLD candidate was already allotted a computer number before Pariksha launched and owes neither.' },
@@ -1720,7 +1720,7 @@ export const STATIC_BLOG_POSTS = [
       { q: 'What happens if my Pariksha computer number application is rejected?', a: 'You receive an email stating the reason for rejection. Log in with your existing credentials, correct or comply with every item listed, and resubmit; you do not start a fresh application from zero.' },
     ],
     content:
-      `<p>The Pariksha portal, at pariksha.dgca.gov.in, is where every DGCA computer number application, exam registration and profile update for Flight Crew and Aircraft Maintenance Engineer candidates now happens. It carries a stated &ldquo;under beta testing&rdquo; disclaimer, runs strict document specifications that reject a large share of first uploads, and separates candidates into two categories with different paperwork rules. This guide sets out what the portal actually requires, sourced to DGCA&rsquo;s own Pariksha FAQ, so an upload does not fail on a rule nobody told you about.</p>
+      `<p>DGCA describes Pariksha, at pariksha.dgca.gov.in, as its online registration and examination portal for future Central Examination Organisation examinations for Flight Crew and Aircraft Maintenance Engineer candidates. It integrates the earlier VIMAN and UDAAN systems. The Flight Crew FAQ specifies the document requirements and distinguishes new from existing candidates; check the current portal notices and FAQ before submitting an application.</p>
 
 <h2>What is the DGCA Pariksha portal?</h2>
 <p>Pariksha is the single online system through which the Central Examination Organisation (CEO), the DGCA office responsible for Flight Crew and AME licence examinations, now handles registration, computer number allotment, admit cards and examination history. Our <a href="/dgca">DGCA overview</a> covers where this office and this portal sit inside the wider licensing process. It is an integration of two older, separate DGCA systems, and it is developed and maintained by NIELIT, the National Institute of Electronics and Information Technology, not by DGCA&rsquo;s own IT wing.</p>
@@ -1730,10 +1730,10 @@ export const STATIC_BLOG_POSTS = [
   <span>Two separate small login-window icons on the left merging into one larger login-window icon on the right, connected by a single converging line, representing two older DGCA systems combining into the single Pariksha portal</span>
 </figure>
 
-<h2>What does &ldquo;under beta testing&rdquo; mean for candidates using Pariksha?</h2>
-<p>As of August 2026, the Pariksha portal itself carries an on-site disclaimer stating it is under beta testing, with DGCA and NIELIT disclaiming responsibility for actions performed on the platform during that phase. That is not a minor footnote: it means the system you are trusting with your Board Verification Certificate, your computer number application and your exam registration is, by its own operator&rsquo;s description, not yet in a finished, stable state.</p>
-<p>Practically, that changes what a sensible candidate does differently from how they would treat a fully mature government portal. Screenshot every confirmation screen. Save the PDF form Pariksha emails you after registration, rather than assuming you can always re-download it later. Note the exact date and time you submitted anything, in case a dispute over a missed deadline or a rejected upload needs evidence later. None of this is DGCA telling you to distrust the portal; it is DGCA and NIELIT&rsquo;s own stated position that responsibility for actions taken on it, during this phase, sits with the platform&rsquo;s current limitations as much as with the candidate.</p>
-<p class="source-note">Source: pariksha.dgca.gov.in landing page, beta-testing disclaimer, as recorded August 2026. Re-check the live portal for its current disclaimer before relying on this framing, since a beta status is, by definition, not permanent.</p>
+<h2>Did Pariksha previously display a beta-testing disclaimer?</h2>
+<p>A snapshot recorded on 22 August 2026 noted an &ldquo;under beta testing&rdquo; disclaimer on the Pariksha homepage. When checked again on 24 October 2026, the current homepage described the portal as the online registration and examination portal for future CEO examinations for AME and Flight Crew candidates, and its page text did not display that disclaimer. The earlier notice is historical context, not a statement of the portal&rsquo;s current status.</p>
+<p>For any online application, keep a copy of submitted details and confirmation messages, note when you raise a query, and follow the current notices and user manual published by DGCA and the portal. If instructions differ, the latest official notice or user manual takes precedence over an older guide.</p>
+<p class="source-note">Sources: earlier Pariksha homepage snapshot recorded 2026-08-22; DGCA Pariksha homepage and Flight Crew FAQ checked 2026-10-24. The current homepage text checked did not display a beta-testing disclaimer: <a href="https://pariksha.dgca.gov.in/" target="_blank" rel="noopener nofollow">Pariksha portal</a>.</p>
 
 <h2>Who has to register on the Pariksha portal?</h2>
 <p>Every candidate holding, or applying for, a DGCA computer number must register on Pariksha, and that includes both Aircraft Maintenance Engineer and Flight Crew candidates, not pilots alone. A single computer number covers every category of Flight Crew examination DGCA conducts, so a candidate does not register separately per licence type; the same number, and the same Pariksha profile, carries across CPL, ATPL and the other Flight Crew examination categories once the qualification details on the profile are updated to match.</p>
@@ -1819,14 +1819,14 @@ export const STATIC_BLOG_POSTS = [
 
 <h2>How do I get help if something goes wrong on the portal?</h2>
 <p>Pariksha&rsquo;s FAQ names a &ldquo;Help Desk&rdquo; tab, available after login, as the route for raising a query to CEO, and lists a help desk phone number: 011-26196307. For password issues specifically, the &ldquo;forgot password&rdquo; option on the login page, using the email ID registered with Pariksha, is the stated self-service route before you would need to raise a query at all.</p>
-<p>Two things worth building into your own record-keeping, given the beta status covered earlier: note the date and a brief description whenever you raise a query, and keep the confirmation. A portal that discloses it is still under beta testing is one where a paper trail on your side is doing work the platform itself may not yet reliably do.</p>
+<p>Keep the date and a brief description whenever you raise a query, along with its confirmation or response. This makes it easier to refer back to the correspondence if you need to follow up.</p>
 <p class="source-note">Source: DGCA Pariksha Flight Crew FAQ, questions 23, 56, 57 and 59.</p>
 
 <h2>Frequently asked questions</h2>
 <h3>What is the DGCA Pariksha portal?</h3>
 <p>Pariksha, at pariksha.dgca.gov.in, is the single online system the Central Examination Organisation uses for Flight Crew and Aircraft Maintenance Engineer computer number allotment, exam registration, admit cards and examination history. It is developed and maintained by NIELIT, not by DGCA’s own IT wing.</p>
-<h3>Is the DGCA Pariksha portal still in beta?</h3>
-<p>As of August 2026, the portal’s own landing page carried an "under beta testing" disclaimer, with DGCA and NIELIT disclaiming responsibility for actions performed on it during that phase. Re-check the live portal for its current status before relying on this.</p>
+<h3>Does the DGCA Pariksha portal currently display a beta-testing disclaimer?</h3>
+<p>The DGCA Pariksha homepage checked on 24 October 2026 did not display a beta-testing disclaimer. An earlier snapshot recorded on 22 August 2026 did; treat that as a historical observation, not the portal’s current status.</p>
 <h3>What are the exact photo and signature specifications for Pariksha?</h3>
 <p>A photograph must be 45mm height by 35mm width, matt finish, white background, under 70kb, in JPEG/JPG format. A signature must be 20mm height by 45mm width, white background, under 20kb, in JPEG/JPG format. Supporting documents must be uploaded as PDF, not JPEG.</p>
 <h3>How long does a Pariksha registration link stay valid?</h3>
@@ -1841,7 +1841,7 @@ export const STATIC_BLOG_POSTS = [
 <p>You receive an email stating the reason for rejection. Log in with your existing credentials, correct or comply with every item listed, and resubmit; you do not start a fresh application from zero.</p>
 
 <h2>The short version</h2>
-<p>Pariksha is DGCA&rsquo;s single online system, run by NIELIT, for Flight Crew and AME computer numbers, exam registration and profile management, and it currently carries its own beta-testing disclaimer. Most rejected uploads trace back to the stated photo (45&times;35mm, 70kb, JPEG) and signature (20&times;45mm, 20kb, JPEG) specifications, or documents submitted in the wrong format; documents need PDF. Registration links expire in 24 hours with no extension. NEW candidates owe a hard copy and a Board Verification Certificate that OLD candidates do not. Only your mobile number, email and correspondence address are self-editable; everything else needs CEO approval through a raised query. Foreign nationals additionally need a passport, security clearance and an Indian mobile number. Check every figure against the portal&rsquo;s own current FAQ before you submit anything, since a platform still in beta is, by its own description, one that changes.</p>
+<p>DGCA describes Pariksha as its online registration and examination portal for future CEO examinations for Flight Crew and AME candidates. The homepage checked on 24 October 2026 did not display a beta-testing disclaimer, although an earlier snapshot recorded one on 22 August; that earlier notice should be treated as historical. The Flight Crew FAQ sets the photo (45&times;35mm, 70kb, JPEG) and signature (20&times;45mm, 20kb, JPEG) specifications, requires supporting documents in PDF, and explains the 24-hour registration-link window and different NEW and OLD candidate requirements. Check the current portal notices and FAQ before submitting an application.</p>
 <p class="ref-links">More: the <a href="/faq">FAQ</a> for short sourced answers, the <a href="/glossary">glossary</a> for the terms, and our <a href="/editorial-policy">editorial policy</a> for how these figures are checked.</p>`,
   },
   {
