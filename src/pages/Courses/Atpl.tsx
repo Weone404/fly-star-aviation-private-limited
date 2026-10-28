@@ -406,8 +406,8 @@ export default function ATPLCoursePage() {
                         <span className="text-xs font-bold tracking-widest uppercase text-primary block mb-2">Why ATPL</span>
                         <h2 className="text-3xl md:text-4xl font-bold mb-4">Benefits of Becoming an ATPL Pilot</h2>
                         <p className="text-muted-foreground max-w-2xl mx-auto">
-                            An ATPL opens doors to the highest-paying and most prestigious pilot roles across domestic and
-                            international aviation. Aviation is expanding rapidly, creating strong demand for certified captains.
+                            Career options depend on licence privileges, experience and employer criteria. Pay varies by role and
+                            employer.
                         </p>
                     </motion.div>
 
@@ -433,8 +433,8 @@ export default function ATPLCoursePage() {
                         viewport={{ once: true }}
                         className="text-center text-muted-foreground mt-8"
                     >
-                        Completing an ATPL course allows pilots to take command of commercial aircraft and explore the highest tier
-                        of aviation career opportunities.
+                        Completing ATPL ground classes is theory preparation; it does not itself confer a licence or guarantee
+                        employment or command.
                     </motion.p>
                 </div>
             </section>
