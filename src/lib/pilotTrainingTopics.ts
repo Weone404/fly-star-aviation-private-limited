@@ -26,6 +26,7 @@ export interface Section {
 
 export interface Topic {
   h1: string;
+  lastUpdated?: string;
   question: string;
   answer: string;
   sources: { label: string; url: string }[];
@@ -38,6 +39,7 @@ export const PILOT_TRAINING_TOPICS: Record<string, Topic> = {
   /* ─────────────────────────────── PPL ─────────────────────────────── */
   ppl: {
     h1: "PPL Training in India: Eligibility, Exams and What It Does Not Get You",
+    lastUpdated: "2026-11-02",
     question: "What does a Private Pilot Licence require in India?",
     answer:
       "A Private Pilot Licence lets you fly privately, not for hire or reward. To sit the DGCA theory papers for a PPL you need a computer number from the Central Examination Organization and a pass in Class 10 or equivalent — not 10+2 with Physics and Mathematics, which is the Commercial Pilot Licence rule. The pass mark is 70%.",
@@ -86,6 +88,12 @@ export const PILOT_TRAINING_TOPICS: Record<string, Topic> = {
           "Ask your FTO for the current Schedule II requirement in writing, and confirm which class of medical you need before you begin, not after.",
         ],
       },
+      {
+        h2: "What do PPL course fees in India cover?",
+        body: [
+          "DGCA does not set a standard PPL course fee. PPL aircraft-training costs are quoted by training providers, so ask an appropriately approved Flying Training Organisation (FTO) for a current, itemised quote and check what aircraft time, instruction, examinations and other charges it includes. Flying Star Aviator provides ground training, not aircraft flying training; this page is an informational guide, not an offer of a PPL course.",
+        ],
+      },
     ],
     faqs: [
       {
@@ -107,6 +115,10 @@ export const PILOT_TRAINING_TOPICS: Record<string, Topic> = {
       {
         q: "Is a PPL required before a CPL?",
         a: "No. A PPL is a separate licence, not a prerequisite for a CPL. Many candidates take one first to build experience, but DGCA does not require it.",
+      },
+      {
+        q: "How do I compare PPL course fees in India?",
+        a: "Request a current itemised quote from an appropriately approved Flying Training Organisation and check which aircraft time, instruction, examinations and other charges are included. DGCA examination and licensing charges are separate from a provider's training quote.",
       },
     ],
     related: [
@@ -448,4 +460,3 @@ export const PILOT_TRAINING_TOPICS: Record<string, Topic> = {
     ],
   },
 };
-

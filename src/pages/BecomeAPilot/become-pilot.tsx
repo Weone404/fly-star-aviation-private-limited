@@ -322,7 +322,7 @@ export default function BecomePilotPage() {
                 sources={[
                     { label: "DGCA CAR Section 7, Series 'B', Part I \u2014 Examinations for Flight Crew Licences" },
                 ]}
-                lastUpdated="2026-07-30"
+                lastUpdated="2026-11-02"
             />
 
             {/* Career Paths Overview */}
@@ -369,6 +369,23 @@ export default function BecomePilotPage() {
                                 </Link>
                             </motion.div>
                         ))}
+                    </div>
+                    <div className="max-w-3xl mx-auto mt-10 text-muted-foreground leading-relaxed">
+                        <h3 className="text-xl font-bold text-foreground mb-3">Pilot career options after training</h3>
+                        <p>
+                            Pilot career opportunities after a CPL depend on licence privileges, ratings, experience,
+                            medical status and employer criteria. Read our guide to{" "}
+                            <Link to="/blog/jobs-after-cpl-india" className="underline hover:text-primary">
+                                pilot jobs and career paths after CPL in India
+                            </Link>
+                            . Candidates researching an international pilot career should also review the current
+                            licensing and conversion requirements for the country where they plan to train or work.
+                            See our guide to{" "}
+                            <Link to="/pilot-training/guide-to-conversion" className="underline hover:text-primary">
+                                foreign pilot licence conversion to DGCA
+                            </Link>
+                            .
+                        </p>
                     </div>
                 </div>
             </section>

@@ -733,6 +733,21 @@ export default function RTRPage() {
                             </motion.div>
                         ))}
                     </div>
+                    <div className="max-w-3xl mx-auto mt-12">
+                        <h3 className="text-xl md:text-2xl font-bold mb-4">
+                            How to prepare for the RTR(A) examination
+                        </h3>
+                        <p className="text-muted-foreground leading-relaxed mb-4">
+                            RTR(A) exam preparation should follow the latest examination notice from the WPC Wing.
+                            When comparing an RTR(A) course or classes, ask which examination components, study
+                            materials and practice sessions are included; schedules and requirements can change.
+                        </p>
+                        <p className="text-muted-foreground leading-relaxed">
+                            Radio communication practice for pilots can include clear message structure, standard
+                            aviation phraseology and routine or urgent exchanges. Confirm the current syllabus and
+                            assessment format with the relevant authority before relying on older preparation material.
+                        </p>
+                    </div>
                 </div>
             </section>
 

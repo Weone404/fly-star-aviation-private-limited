@@ -52,11 +52,11 @@ const quickOverview: OverviewRow[] = [
 ];
 
 const cplSubjects: Subject[] = [
-    { icon: Compass, name: "Air Navigation", description: "Navigation principles, charts, flight planning, and dead reckoning techniques" },
-    { icon: Cloud, name: "Aviation Meteorology", description: "Weather patterns, atmospheric conditions, and meteorological decision-making" },
-    { icon: Shield, name: "Air Regulations", description: "Aviation laws, DGCA regulations, licensing requirements, and safety protocols" },
-    { icon: Wrench, name: "Technical General", description: "Aircraft systems, engines, instruments, and general aviation mechanics" },
-    { icon: Award, name: "Technical Specific", description: "Specific aircraft type systems and operational procedures" },
+    { icon: Compass, name: "Air Navigation", description: "DGCA Air Navigation classes and flight-planning classes cover navigation principles, charts, flight planning, and dead reckoning techniques." },
+    { icon: Cloud, name: "Aviation Meteorology", description: "DGCA Meteorology preparation covers weather patterns, atmospheric conditions, and aviation weather." },
+    { icon: Shield, name: "Air Regulations", description: "DGCA Air Regulations classes cover aviation laws, licensing requirements, and topics in the current DGCA syllabus." },
+    { icon: Wrench, name: "Technical General", description: "Technical General DGCA classes cover aircraft systems, engines, instruments, and general aviation mechanics." },
+    { icon: Award, name: "Technical Specific", description: "Technical Specific DGCA classes cover aircraft-type systems and operational procedures where applicable." },
     { icon: Radio, name: "Radio Telephony Restricted (RTR)", description: "Aviation communication procedures and radio telephony protocols" },
 ];
 

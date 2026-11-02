@@ -3,7 +3,7 @@ import { Layout } from "@/components/layout/Layout";
 import { Breadcrumb } from "@/components/ui/breadcrumb-nav";
 import { CitableAnswer } from "@/components/CitableAnswer";
 import { Button } from "@/components/ui/button";
-import { Link, useParams } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import {
   Accordion,
   AccordionContent,
@@ -87,7 +87,9 @@ function SectionBlock({ s }: { s: Section }) {
 }
 
 export default function PilotTrainingTopic() {
-  const { topic } = useParams();
+  const { pathname } = useLocation();
+  const segments = pathname.split("/").filter(Boolean);
+  const topic = segments[segments.length - 1];
   const data = topic ? PILOT_TRAINING_TOPICS[topic] : undefined;
 
   if (!data) {
@@ -102,6 +104,12 @@ export default function PilotTrainingTopic() {
       </Layout>
     );
   }
+
+  const lastUpdated = data.lastUpdated ?? LAST_UPDATED;
+  const lastUpdatedLabel = new Date(`${lastUpdated}T00:00:00Z`).toLocaleDateString(
+    "en-US",
+    { year: "numeric", month: "long", day: "numeric", timeZone: "UTC" },
+  );
 
   return (
     <Layout>
@@ -124,7 +132,7 @@ export default function PilotTrainingTopic() {
                 Flying Star Aviator Academics Team
               </Link>{" "}
               · Last updated{" "}
-              <time dateTime={LAST_UPDATED}>September 4, 2026</time>
+              <time dateTime={lastUpdated}>{lastUpdatedLabel}</time>
             </p>
           </div>
         </header>
@@ -133,7 +141,7 @@ export default function PilotTrainingTopic() {
           heading={data.question}
           answer={data.answer}
           sources={data.sources}
-          lastUpdated={LAST_UPDATED}
+          lastUpdated={lastUpdated}
         />
 
         <article className="py-12">
