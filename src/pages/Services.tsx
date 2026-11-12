@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { GraduationCap, Plane, Shield, Briefcase, Wrench, Building2, ArrowRight } from "lucide-react";
+import { GraduationCap, Plane, Shield, Briefcase, Building2, ArrowRight } from "lucide-react";
 
 const services = [
   {
@@ -10,7 +10,7 @@ const services = [
     title: "Pilot Training",
     description: "Comprehensive CPL & PPL training programs with experienced instructors, modern aircraft fleet, and world-class simulators. We offer both integrated and modular training paths.",
     features: ["CPL & PPL Courses", "Type Rating", "Simulator Training", "Multi-Engine Rating"],
-    href: "/services/pilot-training",
+    href: "/dgca/ground-classes",
     color: "from-primary to-aviation-green-light",
   },
   {
@@ -26,7 +26,7 @@ const services = [
     title: "Aviation Placement",
     description: "Guaranteed job assistance with leading airlines in India and abroad. We provide interview preparation, resume building, and direct placement support.",
     features: ["Resume Building", "Interview Prep", "Airline Tie-ups", "Career Counseling"],
-    href: "/services/placement",
+    href: "/courses/airline-preparation",
     color: "from-accent to-yellow-400",
   },
   {
@@ -42,16 +42,8 @@ const services = [
     title: "Aircraft Sale & Purchase",
     description: "Expert consultation for buying, selling, and leasing aircraft. Access to global inventory with complete documentation and legal support.",
     features: ["Pre-Buy Inspection", "Documentation", "Market Analysis", "Lease Options"],
-    href: "/services/aircraft-sale",
+    href: "/services/aircraft-sourcing-sale",
     color: "from-aviation-runway to-gray-600",
-  },
-  {
-    icon: Wrench,
-    title: "Aircraft Management",
-    description: "Complete aircraft management solutions including maintenance scheduling, crew management, regulatory compliance, and operational oversight.",
-    features: ["Maintenance", "Crew Management", "Compliance", "Operations"],
-    href: "/services/management",
-    color: "from-primary to-aviation-green-light",
   },
 ];
 

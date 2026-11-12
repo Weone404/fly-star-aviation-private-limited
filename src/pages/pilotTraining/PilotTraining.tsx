@@ -12,7 +12,7 @@ const licenses = [
     duration: "18-24 months",
     cost: "₹35-50 Lakhs",
     hours: "200 flying hours",
-    href: "/Courses/Cpl",
+    href: "/courses/cpl",
     features: [
       "Fly commercial aircraft",
       "Employment eligibility",
@@ -27,7 +27,7 @@ const licenses = [
     duration: "6-12 months",
     cost: "₹10-15 Lakhs",
     hours: "40 flying hours",
-    href: "/Courses/Atpl",
+    href: "/pilot-training/ppl",
     features: [
       "Fly for personal use",
       "Foundation for CPL",
@@ -227,7 +227,7 @@ export default function PilotTrainingPage() {
                 set by DGCA for obtaining a pilot license in India.
               </p>
               <Button variant="aviation" asChild>
-                <Link to="/pilot-training/eligibility">
+                <Link to="/become-a-pilot/become-pilot">
                   Check Full Eligibility
                   <ArrowRight className="h-4 w-4 ml-2" />
                 </Link>
@@ -291,7 +291,7 @@ export default function PilotTrainingPage() {
 
           <div className="text-center mt-10">
             <Button variant="outline" size="lg" asChild>
-              <Link to="/pilot-training/syllabus">
+              <Link to="/courses/cpl">
                 View Complete Syllabus
                 <ArrowRight className="h-4 w-4 ml-2" />
               </Link>
