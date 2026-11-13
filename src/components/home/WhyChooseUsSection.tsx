@@ -16,31 +16,27 @@ const reasons = [
     icon: Award,
     title: "Experienced Aviation Mentors",
     description:
-      "Our instructors bring years of aviation knowledge and practical experience into the classroom. Instead of relying solely on textbooks, they explain aviation concepts using real operational examples that help students understand subjects more effectively.",
+      "Learn from seasoned instructors with extensive operational backgrounds who translate complex aviation theory into practical cockpit knowledge.",
   },
   {
     icon: BookOpen,
     title: "Updated DGCA Curriculum",
     description:
-      "Aviation regulations continue to evolve. Our training materials are regularly updated to reflect the latest DGCA syllabus, examination patterns, and industry practices, ensuring students prepare with relevant and accurate information.",
+      "Training materials and lesson plans are continuously updated in accordance with the latest DGCA examination formats and syllabus revisions.",
   },
   {
     icon: Users,
     title: "Personalized Learning Experience",
     description:
-      "Every student learns differently. We maintain focused classroom sessions, regular assessments, and one-on-one mentoring to identify strengths and improve weaker areas before examinations.",
+      "Small batch sizes, interactive doubt-clearing sessions, and individual mentoring tailored to each student's learning pace.",
   },
 ];
 
 const structuredProcess = [
-  "Foundation Classes",
-  "Subject-wise Concept Building",
+  "Foundational Classes",
+  "Conceptual Lectures",
   "Weekly Assessments",
-  "Mock Examinations",
-  "Performance Reviews",
-  "Doubt-Clearing Sessions",
-  "Revision Programs",
-  "Career Guidance",
+  "Full-Length Exam Simulations",
 ];
 
 const trainingStages = [
@@ -136,9 +132,7 @@ export function WhyChooseUsSection() {
             Why Choose Flystar Aviation Academy?
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-base md:text-lg">
-            Choosing a pilot training institute is about more than comparing course fees. The
-            quality of guidance, teaching methodology, faculty experience, and career support all
-            play a significant role in your success.
+            What sets our Dwarka-based aviation institute apart in preparing future commercial pilots.
           </p>
           <p className="text-muted-foreground max-w-2xl mx-auto text-base md:text-lg mt-4">
             Flystar Aviation Academy combines academic excellence with practical aviation
@@ -258,7 +252,7 @@ export function PilotTrainingInIndiaSection() {
             India's Aviation Industry
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-foreground mb-3 md:mb-4">
-            Pilot Training in India
+            Navigating Pilot Training in India
           </h2>
         </div>
 
@@ -274,11 +268,11 @@ export function PilotTrainingInIndiaSection() {
         >
           <div className="rounded-2xl bg-card border border-border p-5 md:p-8 shadow-card">
             <p className="text-sm md:text-base text-muted-foreground leading-relaxed mb-6">
-              India has become one of the world's fastest-growing aviation markets. With increasing passenger demand, airline expansion, and fleet growth, the need for Commercial Pilot Training and structured Pilot Training in India continues to rise.
+              As India's aviation sector expands rapidly, aspiring pilots face numerous choices regarding ground training and flying schools.
             </p>
 
             <p className="text-sm md:text-base text-muted-foreground leading-relaxed mb-6">
-              Choosing the right Pilot Training Institute or Aviation Academy involves more than selecting a Pilot Course. Students comparing a Commercial Pilot Course often need clarity on How to Become a Pilot, Pilot Eligibility, CPL Eligibility, and the overall pathway to Become a Pilot with confidence.
+              Evaluating an institute requires looking beyond marketing claims to examine faculty credentials, teaching methodology, syllabus depth, and transparency in career counselling. Quality DGCA ground classes in Dwarka, Delhi provide the robust theoretical foundation necessary not only to pass DGCA exams on the first attempt but also to excel during airline simulator and interview assessments.
             </p>
 
             <h3 className="text-lg md:text-xl font-bold mb-4">Students evaluating Commercial Pilot License (CPL) pathways should consider:</h3>

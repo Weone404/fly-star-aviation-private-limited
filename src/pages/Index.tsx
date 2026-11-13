@@ -9,6 +9,7 @@ import { WorldMapSection } from "@/components/home/WorldMapSection";
 import { TestimonialsSection } from "@/components/home/TestimonialsSection";
 import { PartnersSection } from "@/components/home/PartnersSection";
 import { CTASection } from "@/components/home/CTASection";
+import { HOME_FAQS } from "@/lib/homeFaqs";
 
 const HOME_SCHEMA = {
   "@context": "https://schema.org",
@@ -16,35 +17,25 @@ const HOME_SCHEMA = {
     {
       "@type": "WebPage",
       "@id": "https://www.flystar.co.in/#webpage",
-      name: "DGCA-Approved Pilot Training in Delhi | CPL & ATPL Courses",
+      name: "DGCA Ground Classes in Delhi | CPL & ATPL Training – Flystar",
       url: "https://www.flystar.co.in/",
       isPartOf: { "@id": "https://www.flystar.co.in/#website" },
       about: { "@id": "https://www.flystar.co.in/#organization" },
       description:
-        "DGCA-approved pilot training in Delhi for CPL and ATPL aspirants with expert instructors and placement-focused guidance.",
+        "DGCA CPL and ATPL ground classes in Dwarka, Delhi. Explore aviation subjects, exam preparation, RTR(A) training and career guidance at Flying Star Aviator.",
       inLanguage: "en-IN",
     },
     {
       "@type": "FAQPage",
       "@id": "https://www.flystar.co.in/#faq-home",
-      mainEntity: [
-        {
-          "@type": "Question",
-          name: "What pilot training courses does Flying Star Aviator offer?",
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: "Flying Star Aviator offers DGCA-focused CPL and ATPL ground training programs with counselling support for pilot career pathways.",
-          },
+      mainEntity: HOME_FAQS.map(({ question, answer }) => ({
+        "@type": "Question",
+        name: question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: answer,
         },
-        {
-          "@type": "Question",
-          name: "Where is Flying Star Aviator located?",
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: "Flying Star Aviator is based in Dwarka, Delhi, and serves aspiring pilots from across India.",
-          },
-        },
-      ],
+      })),
     },
   ],
 };

@@ -37,16 +37,17 @@ export function HeroSection() {
           </div>
 
           <h1 className="mx-auto mb-4 max-w-5xl text-3xl font-bold leading-tight tracking-tight text-[#122b4a] sm:text-4xl md:mb-5 md:text-5xl lg:text-6xl">
-            Pilot Training in India:{" "}
-            <span className="text-[#164b73]">DGCA CPL &amp; ATPL Ground Classes</span>
+            DGCA Ground Classes in Delhi |{" "}
+            <span className="text-[#164b73]">CPL &amp; ATPL Training – Flystar</span>
           </h1>
 
           <p className="mx-auto mb-6 max-w-4xl text-base leading-relaxed text-slate-600 md:mb-7 md:text-lg">
-            Flying Star Aviator is a pilot training institute in India focused on DGCA CPL
-            and ATPL ground classes in Dwarka, New Delhi. This guide explains the pilot
-            training pathway and DGCA exam preparation; aircraft flying training is a
-            separate stage completed through an appropriately approved Flying Training
-            Organisation (FTO).
+            Flystar Aviation Academy is a premier pilot training institute located in
+            Dwarka, New Delhi, specializing in comprehensive DGCA CPL and ATPL ground
+            classes. We guide aspiring aviators through every stage of DGCA examination
+            preparation, aviation subjects, and structured pilot career planning. (Note:
+            Aircraft flight training is completed separately through DGCA-approved Flying
+            Training Organisations.)
           </p>
 
           <div className="flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-start sm:gap-4">
@@ -67,7 +68,7 @@ export function HeroSection() {
               className="w-full justify-center sm:w-auto"
               asChild
             >
-              <Link to="/contact">Contact Us</Link>
+              <Link to="/contact">Get Free Counselling</Link>
             </Button>
           </div>
 

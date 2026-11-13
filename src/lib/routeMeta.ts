@@ -16,8 +16,8 @@ const BASE_URL = "https://www.flystar.co.in";
 
 const routeMeta: Record<string, RouteMeta> = {
   "/": {
-    title: "Flying Star Aviator | CPL & ATPL Ground Training in India",
-    description: "CPL and ATPL ground training in Dwarka, New Delhi, with DGCA theory preparation, examination guidance and pilot-training pathway counselling.",
+    title: "DGCA Ground Classes in Delhi | CPL & ATPL – Flystar",
+    description: "DGCA CPL and ATPL ground classes in Dwarka, Delhi. Explore aviation subjects, exam preparation, RTR(A) training and career guidance at Flying Star Aviator.",
     canonical: `${BASE_URL}/`,
   },
   "/about": {

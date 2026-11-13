@@ -19,22 +19,22 @@ import Passresultsslider from "../layout/Passresultsslider";
 const services = [
   {
     icon: GraduationCap,
-    title: "Commercial Pilot License (CPL)",
-    description: "Complete guidance through every step of earning your CPL — eligibility, DGCA exams, medical requirements, flying school selection, and career planning.",
+    title: "CPL Training and Guidance",
+    description: "Comprehensive guidance through every step of earning your Commercial Pilot License—covering eligibility criteria, DGCA medical requirements, computer number registration, and flying school selection.",
     href: "/become-a-pilot/become-pilot",
     color: "from-primary to-aviation-green-light",
   },
   {
     icon: Shield,
     title: "DGCA Ground Classes",
-    description: "Concept-based training in Air Navigation, Air Regulations, Meteorology, Technical General & Specific, and Flight Planning — built for exam and real-world confidence.",
+    description: "Concept-based classroom training in Air Navigation, Air Regulations, Meteorology, Technical General & Specific, and Flight Planning, designed for DGCA examination success and real-world pilot confidence.",
     href: "/dgca",
     color: "from-aviation-sky to-blue-400",
   },
   {
     icon: Briefcase,
     title: "Airline Career Counselling",
-    description: "Personalized guidance on flying school selection, DGCA Computer Number assistance, RTR(A) preparation, and interview readiness for domestic & international airlines.",
+    description: "Tailored advisory services covering flying school selection, DGCA exam strategies, RTR(A) preparation, and airline interview readiness.",
     href: "/courses/airline-preparation",
     color: "from-accent to-yellow-400",
   },
@@ -42,21 +42,21 @@ const services = [
   {
     icon: Plane,
     title: "Chartered Services",
-    description: "High-end charter flight services for business, events, and emergency requirements.",
+    description: "Premium charter flight solutions for corporate business travel, VIP events, and urgent travel needs.",
     href: "/services/charter-services",
     color: "from-primary to-aviation-green-light",
   },
   {
     icon: Building2,
     title: "Aircraft Sale & Purchase",
-    description: "Professional advice on aircraft purchase, sale, and leasing for access to worldwide networks.",
+    description: "Professional brokerage and consulting services for acquiring or selling aircraft through verified global networks.",
     href: "/services/aircraft-sourcing-sale",
     color: "from-aviation-runway to-gray-600",
   },
   {
     icon: Wrench,
     title: "Aircraft Management",
-    description: "Comprehensive aircraft management services including maintenance, flight operations, and personnel management.",
+    description: "End-to-end aircraft management services including maintenance oversight, flight operations support, and personnel administration.",
     href: "/services/aircraft-management",
     color: "from-primary to-aviation-green-light",
   },
@@ -110,12 +110,10 @@ export function JourneyIntroSection() {
   const panel = useFadeInView(0.05);
 
   const leadParagraph =
-    "Dreaming of flying for leading airlines? Every successful aviation career begins with the right guidance, structured learning, and professional training. At Flystar Aviation Academy, we help aspiring pilots transform their passion for flying into a successful profession through industry-focused pilot training and expert mentorship.";
+    "Embarking on a commercial aviation career requires clear direction, disciplined study, and professional mentorship.";
 
   const bodyParagraphs = [
-    "Whether you are exploring how to become a pilot after 12th, searching for the best Commercial Pilot License (CPL) course, looking for DGCA Ground Classes, or need guidance on obtaining your DGCA Computer Number, Flystar provides complete support at every stage of your aviation journey.",
-    "We believe becoming a pilot is more than clearing examinations—it requires the right knowledge, disciplined preparation, practical understanding, and career planning. Our experienced aviation instructors and counselors work closely with every student to ensure they understand the complete pilot training pathway, from eligibility and licensing to airline career opportunities.",
-    "With a student-first approach, updated training methods, and a curriculum aligned with DGCA requirements, Flystar has become a trusted destination for future pilots across India.",
+    "At Flystar Aviation Academy in Dwarka, Delhi, we provide structured DGCA ground classes and career guidance to help students navigate the transition from Class 12 to the cockpit. From verifying your CPL eligibility and obtaining your DGCA Computer Number to mastering theoretical subjects and planning your flight training at an approved FTO, our experienced mentors offer transparent, step-by-step support tailored to every aspiring pilot.",
   ];
 
   const highlights = [
@@ -231,8 +229,8 @@ export function ServicesSection() {
             Complete Aviation Solutions
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-base md:text-lg">
-            From training to placement, we offer complete aviation solutions to
-            help you fulfill your dreams.
+            Alongside our core pilot training and education services, we offer
+            specialized professional aviation solutions.
           </p>
         </div>
 
@@ -315,7 +313,7 @@ const serviceDetails: ServiceDetail[] = [
     title: "Commercial Pilot License (CPL) Training",
     subtitle: "Your Path to Professional Aviation",
     description:
-      "A Commercial Pilot License is the certification required to work as a professional pilot with airlines, charter companies, cargo operators, and corporate aviation organizations.",
+      "Comprehensive foundational preparation for students aiming to join commercial airlines, cargo operators, and charter companies. Covers career planning, medical guidance, exam strategy, and FTO selection.",
     items: [
       "Career counselling",
       "DGCA examination preparation",
@@ -331,24 +329,20 @@ const serviceDetails: ServiceDetail[] = [
   },
   {
     icon: Shield,
-    title: "DGCA Ground Classes Designed for Success",
+    title: "DGCA Ground Classes",
     subtitle: "Master Aviation Theory with Confidence",
     description:
-      "Strong theoretical knowledge is the foundation of every successful pilot. Our DGCA Ground Classes are designed to help students understand aviation concepts rather than simply memorize information.",
+      "In-depth classroom training covering Air Navigation, Air Regulations, Aviation Meteorology, Technical General (Engine & Airframe), Technical Specific, and Flight Planning & Aircraft Performance.",
     items: [
       "Air Navigation",
       "Air Regulations",
       "Aviation Meteorology",
-      "Technical General",
+      "Technical General (Engine & Airframe)",
       "Technical Specific",
-      "Flight Planning",
-      "Performance",
-      "Human Performance and Limitations",
-      "Aircraft Systems",
-      "Operational Procedures",
+      "Flight Planning & Aircraft Performance",
     ],
     closing:
-      "Every class includes concept-based explanations, practical examples, revision sessions, doubt-solving classes, and regular mock examinations to help students build confidence before appearing for DGCA exams.",
+      "Includes regular mock tests and doubt-clearing sessions.",
     color: "from-aviation-sky to-blue-400",
   },
   {
@@ -356,7 +350,7 @@ const serviceDetails: ServiceDetail[] = [
     title: "DGCA Computer Number Assistance",
     subtitle: "Complete First-Step Support",
     description:
-      "Obtaining a DGCA Computer Number is one of the first official steps in becoming a pilot. However, many students face delays due to documentation errors or a lack of clarity about the application process.",
+      "Step-by-step documentation and application support to secure your DGCA Computer Number without bureaucratic delays or errors.",
     items: [
       "Eligibility verification",
       "Required documents",
@@ -374,7 +368,7 @@ const serviceDetails: ServiceDetail[] = [
     title: "Private Pilot License (PPL)",
     subtitle: "Start Your Flying Journey",
     description:
-      "A Private Pilot License (PPL) is an excellent option for students who wish to experience flying before pursuing a commercial aviation career. It also provides a strong foundation for those planning to progress toward a Commercial Pilot License.",
+      "Ideal for aviation enthusiasts or those wishing to build foundational flying experience before committing to commercial training.",
     closing:
       "With proper guidance, students can understand the differences between PPL and CPL, choose the right training route, and plan their aviation journey with confidence.",
     color: "from-primary to-aviation-green-light",
@@ -384,7 +378,7 @@ const serviceDetails: ServiceDetail[] = [
     title: "RTR(A) Classes",
     subtitle: "Master Aviation Communication",
     description:
-      "Clear and professional communication is essential in aviation. The Radio Telephony Restricted (Aeronautical) examination evaluates a pilot's ability to communicate effectively with Air Traffic Control.",
+      "Specialized training for the Radio Telephony Restricted (Aeronautical) examination, mastering standard phraseology, aviation communication procedures, and practical viva voce practice.",
     items: [
       "Aviation communication procedures",
       "Standard phraseology",
@@ -424,7 +418,7 @@ export function ServiceDetailsSection() {
             Our Training Programs In-Depth
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-base md:text-lg">
-            Explore comprehensive details about each of our specialized training programs designed to guide you through every stage of your aviation career.
+            Explore structured, syllabus-aligned courses designed for thorough DGCA examination preparation and professional readiness.
           </p>
         </div>
 
