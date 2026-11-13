@@ -76,10 +76,15 @@ const routeMeta: Record<string, RouteMeta> = {
     canonical: `${BASE_URL}/services/components-spares`,
   },
   "/courses/cpl": {
-    title: "Commercial Pilot Licence (CPL) Ground Training in India | Flying Star Aviator",
+    title: "CPL Ground Classes in Delhi | DGCA CPL | Flying Star Aviator",
     description:
-      "Learn about CPL eligibility, DGCA requirements, ground training, syllabus, costs, the licensing process and career pathways in India. Flying Star Aviator provides ground training and examination preparation; flying training is completed through an approved FTO.",
+      "DGCA CPL theory preparation at Flying Star Aviator, Dwarka, Delhi. Explore subjects, eligibility and fees, and how FTO flight training differs.",
     canonical: `${BASE_URL}/courses/cpl`,
+    ogTitle: "CPL Ground Classes in Delhi | DGCA CPL | Flying Star Aviator",
+    ogDescription:
+      "DGCA CPL theory preparation at Flying Star Aviator, Dwarka, Delhi. Explore subjects, eligibility and fees, and how FTO flight training differs.",
+    ogImage: "https://www.flystar.co.in/cpl-slider/slider1.webp",
+    twitterImage: "https://www.flystar.co.in/cpl-slider/slider1.webp",
   },
   "/courses/atpl": {
     title: "ATPL Course Details | Airline Transport Pilot License Training India",

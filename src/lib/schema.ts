@@ -126,7 +126,6 @@ function breadcrumb(path: string): JsonLdNode {
 
 function courseNode(path: string): JsonLdNode {
   const url = canonicalUrl(path);
-  const isCplGroundCourse = path === "/courses/cpl";
 
   return {
     "@type": "Course",
@@ -137,25 +136,6 @@ function courseNode(path: string): JsonLdNode {
     provider: { "@id": ORG_ID },
     educationalLevel: "Professional",
     inLanguage: "en-IN",
-    ...(isCplGroundCourse
-      ? {
-          hasCourseInstance: {
-            "@type": "CourseInstance",
-            courseMode: ["OnSite"],
-            inLanguage: ["en", "hi"],
-            location: {
-              "@type": "Place",
-              name: "Flying Star Aviator, Dwarka, New Delhi",
-              address: {
-                "@type": "PostalAddress",
-                addressLocality: "New Delhi",
-                addressRegion: "Delhi",
-                addressCountry: "IN",
-              },
-            },
-          },
-        }
-      : {}),
   };
 }
 
@@ -429,16 +409,20 @@ export const PAGE_FAQS: Record<string, { q: string; a: string }[]> = {
   ],
   "/courses/cpl": [
     { q: "What is a Commercial Pilot Licence?", a: "A Commercial Pilot Licence (CPL) is a DGCA-issued licence for pilots who meet the applicable eligibility, medical, examination and flight-experience requirements. Ground training and aircraft flying training are separate parts of the broader pathway." },
-    { q: "What are the educational requirements for a CPL in India?", a: "Candidates must meet the educational requirements in the current DGCA rules. The applicable Physics, Mathematics and accepted-equivalent requirements should be checked against the current DGCA guidance before enrolment." },
+    { q: "What are the educational requirements for a CPL in India?", a: "Candidates must meet the educational requirements in the current DGCA rules. Check the latest official guidance for required subjects, accepted boards and any equivalent qualifications before enrolment." },
     { q: "What is the minimum age for a CPL?", a: "Age requirements depend on the applicable licensing stage and current DGCA regulations. Candidates should verify the current minimum age directly with DGCA before committing to training." },
     { q: "What is the difference between CPL ground classes and flying training?", a: "CPL ground classes provide theoretical preparation for the DGCA examinations. Flying training is a separate phase conducted at an approved Flying Training Organisation (FTO) and covers aircraft flying hours, practical flight experience and licensing checks." },
     { q: "Can I complete CPL ground classes before joining a flying school?", a: "Yes. Ground school is a separate academic stage and can be completed before or alongside the flying-training phase. The flight training itself must still be completed through an approved FTO." },
     { q: "How much does CPL training cost in India?", a: "There is no single official DGCA price for CPL training. Total cost varies with the FTO, aircraft type, hourly requirements, location, medical checks and other training-related expenses." },
     { q: "How long does CPL training take?", a: "The full route varies with the candidate's preparation and the training provider, but it is typically a multi-stage process that includes theory study, medical checks, flights and licensing requirements." },
-    { q: "What subjects are covered in CPL ground classes?", a: "Common DGCA theory subjects include Air Navigation, Aviation Meteorology, Air Regulations, Technical General and Technical Specific. RTR(A) is a separate radiotelephony requirement associated with the WPC Wing." },
-    { q: "What is RTR(A) and why is it required?", a: "RTR(A) is the Radio Telephony Restricted (Aeronautical) requirement associated with the WPC Wing. It is a separate radio-telephony qualification that forms part of the broader pilot-licensing pathway." },
+    { q: "What subjects are covered in CPL ground classes?", a: "DGCA's CPL theory syllabus is organized into Air Navigation, Aviation Meteorology, Air Regulation, and Aircraft and Engine / Instruments papers. RTR(A) is a separate radio-telephony requirement; check the current DGCA notices for its process." },
+    { q: "What is RTR(A) and why is it required?", a: "RTR(A) is the Radio Telephone Operator (Restricted) aeronautical radio-telephony qualification. Its examination and registration process changed under the 2025 rules; check current DGCA Pariksha notices before applying." },
     { q: "Does Flying Star Aviator provide aircraft flying training?", a: "Flying Star Aviator provides CPL and ATPL ground training, DGCA examination preparation and pathway guidance. Aircraft flying training and applicable flight-experience requirements must be completed through an appropriately approved Flying Training Organisation (FTO)." },
     { q: "Does a CPL guarantee an airline job?", a: "No. A CPL is a licence, not a job guarantee. Employment depends on employer requirements, aircraft type, additional ratings, experience, checks, recruitment conditions and the aviation market." },
+    { q: "Can I start CPL ground classes after Class 12?", a: "Ground-class enrolment and DGCA examination eligibility are separate matters. Ask the institute about its current enrolment requirements and check DGCA's current rules before applying for examinations." },
+    { q: "What is a DGCA Computer Number?", a: "It is an identification number used for applicable DGCA Flight Crew examinations. Check the current Pariksha portal instructions and document requirements before applying." },
+    { q: "How much do CPL ground classes cost in Delhi?", a: "Fees depend on the current course scope and provider. Request a written, itemised fee schedule directly from Flying Star Aviator; aircraft flying-training costs are separate." },
+    { q: "How can I enquire about CPL ground classes?", a: "Contact Flying Star Aviator at +91 99535 36199 or +91 99535 66619, email info@flyingstaraviator.com, or visit C705, Sector 7, Block C, Palam Extension, Dwarka, Delhi 110077." },
   ],
   "/courses/cpl/fees": [
     { q: "What does a CPL cost in India?", a: "There is no published figure. DGCA publishes examination and licensing charges, not training prices, and flying schools quote rather than publish. Any single number you see is a provider quote or a restatement of one." },
@@ -507,6 +491,7 @@ function faqsFor(path: string): { q: string; a: string }[] | undefined {
 }
 
 function pageFaqNode(path: string): JsonLdNode | null {
+  if (path === "/courses/cpl") return null;
   const faqs = faqsFor(path);
   if (!faqs?.length) return null;
   return {

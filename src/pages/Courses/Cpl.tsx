@@ -19,37 +19,34 @@ import {
     GraduationCap,
     BookOpen,
     FileCheck,
-    AlertTriangle,
     Briefcase,
-    TrendingUp,
     ArrowRight,
     ChevronRight,
-    CheckCircle,
     ChevronLeft,
 } from "lucide-react";
 
-const lastReviewed = "2026-09-25";
+const lastReviewed = "2026-11-13";
 
 const heroSlides = [
     {
         image: "/cpl-slider/slider1.webp",
-        caption: "DGCA CPL ground classes",
+        caption: "Pilot beside a light aircraft",
     },
     {
         image: "/cpl-slider/silder2.webp",
-        caption: "Structured subject preparation",
+        caption: "Group beside an aircraft",
     },
     {
         image: "/cpl-slider/slider3.webp",
-        caption: "Guidance for the CPL pathway",
+        caption: "Aviation group at an airfield",
     },
     {
         image: "/cpl-slider/slider4.webp",
-        caption: "Career guidance for CPL aspirants",
+        caption: "Pilot beside a light aircraft",
     },
     {
         image: "/cpl-slider/slider5.webp",
-        caption: "Commercial pilot licence preparation",
+        caption: "Pilot standing beside an aircraft",
     },
 ];
 
@@ -69,13 +66,13 @@ function HeroImageSlider() {
         [fading]
     );
 
-    const prev = () => goTo((current - 1 + heroSlides.length) % heroSlides.length);
-    const next = () => goTo((current + 1) % heroSlides.length);
+    const prev = useCallback(() => goTo((current - 1 + heroSlides.length) % heroSlides.length), [current, goTo]);
+    const next = useCallback(() => goTo((current + 1) % heroSlides.length), [current, goTo]);
 
     useEffect(() => {
         const timer = setInterval(next, 4500);
         return () => clearInterval(timer);
-    }, [current]);
+    }, [next]);
 
     return (
         <motion.div
@@ -83,7 +80,7 @@ function HeroImageSlider() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
             className="hidden lg:flex flex-col items-center gap-4 flex-shrink-0 ml-auto"
-            style={{ width: "clamp(380px, 46vw, 600px)", marginRight: "-5rem" }}
+            style={{ width: "clamp(320px, 42vw, 540px)" }}
         >
             <div
                 className="relative w-full rounded-2xl overflow-hidden shadow-2xl"
@@ -94,6 +91,9 @@ function HeroImageSlider() {
                     src={heroSlides[current].image}
                     alt={heroSlides[current].caption}
                     className="w-full h-full object-cover"
+                    loading={current === 0 ? "eager" : "lazy"}
+                    fetchPriority={current === 0 ? "high" : "auto"}
+                    decoding="async"
                     style={{
                         opacity: fading ? 0 : 1,
                         transition: "opacity 0.3s ease",
@@ -171,81 +171,73 @@ function HeroImageSlider() {
 const cplServices = [
     {
         icon: BookOpen,
-        title: "DGCA Ground Classes",
-        description: "Academic preparation for the DGCA theory papers that form part of CPL training in India.",
+        title: "CPL Ground Classes",
+        description: "Classroom-based academic preparation for the theory subjects in the CPL pathway.",
         href: "/dgca/ground-classes",
     },
     {
         icon: FileCheck,
         title: "DGCA Exam Preparation",
-        description: "Structured subject preparation for the DGCA examination pathway and study planning.",
+        description: "Guidance on the DGCA theory examination process and preparation planning.",
         href: "/dgca",
     },
     {
         icon: GraduationCap,
-        title: "CPL Pathway Guidance",
-        description: "Overview of the CPL process, eligibility checks, and how ground training fits with flying training.",
-        href: "/become-a-pilot/commercial-pilot-licence",
+        title: "CPL Pathway",
+        description: "An overview of the licensing stages and how ground study fits alongside separate flight training.",
+        href: "/become-a-pilot/become-pilot",
     },
     {
         icon: Briefcase,
-        title: "Career Guidance",
-        description: "A practical overview of pilot career steps, airline criteria, and the role of ground classes in the process.",
-        href: "/pilot-training",
+        title: "ATPL Ground Training",
+        description: "Explore the next stage of theoretical licence preparation and its separate requirements.",
+        href: "/courses/atpl",
     },
 ];
 
 const trainingSteps = [
     {
         step: 1,
-        title: "Obtain a DGCA Computer Number",
-        description: "Register on the DGCA flight crew examination system before applying for pilot examinations.",
+        title: "Check current eligibility",
+        description: "Review DGCA's current educational, age and licensing criteria before making a training plan.",
     },
     {
         step: 2,
-        title: "Complete Required Medical Assessments",
-        description: "Complete the Class 2 and Class 1 medical checks required for pilot licensing in India.",
+        title: "Review medical requirements",
+        description: "Confirm the current medical assessment process and required medical class with DGCA.",
     },
     {
         step: 3,
-        title: "Complete DGCA CPL Ground Classes",
-        description: "Study the academic subjects required for the DGCA theory examinations in a structured ground-school setting.",
+        title: "Check Computer Number steps",
+        description: "Review the current DGCA Pariksha application instructions and prepare the required documents.",
     },
     {
         step: 4,
-        title: "Complete CPL Theory Examinations and RTR(A)",
-        description: "Clear the applicable DGCA theory papers and complete the radiotelephony requirement set by the WPC Wing.",
+        title: "Prepare for theory examinations",
+        description: "Study the applicable DGCA subjects and confirm the current examination process before applying.",
     },
     {
         step: 5,
-        title: "Complete Required Flight Training at an Approved FTO",
-        description: "Fulfill the aircraft flying-hour requirements through an approved Flying Training Organisation.",
+        title: "Check the RTR(A) process",
+        description: "RTR(A) is a separate radio-telephony requirement. Check the latest DGCA Pariksha notice and current rules before applying.",
     },
     {
         step: 6,
-        title: "Complete Skill Tests and CPL Issuance",
-        description: "Complete the necessary flight checks and licensing steps before the DGCA issues the CPL.",
+        title: "Train at an approved FTO",
+        description: "Arrange aircraft flying training separately with a Flying Training Organisation approved for your route.",
+    },
+    {
+        step: 7,
+        title: "Complete licensing checks",
+        description: "Confirm and complete the applicable skill tests, documents and licence application steps with DGCA.",
     },
 ];
 
-const courseOverview = [
-    { label: "Course Name", value: "Commercial Pilot Licence (CPL) ground training" },
-    { label: "Regulating Authority", value: "Directorate General of Civil Aviation (DGCA), India" },
-    { label: "Training Mode", value: "CPL ground classes at Flying Star Aviator; aircraft flying training is completed separately at an approved FTO" },
-    { label: "Minimum Eligibility", value: "The educational, medical and other requirements set by the current DGCA rules" },
-    { label: "Minimum Age", value: "Age requirements depend on the applicable DGCA licensing stage and should be verified before enrolment" },
-    { label: "Flight Training", value: "Flight-experience requirements are governed by the current DGCA regulations and fulfilled at an approved FTO" },
-    { label: "Ground Training Location", value: "Flying Star Aviator, Dwarka, New Delhi" },
-    { label: "Career Pathways", value: "Airline, charter, corporate, cargo or instructional roles may require additional experience, ratings and employer criteria" },
-];
-
 const groundSubjects = [
-    { name: "Air Navigation", focus: "Practical navigation, flight planning, instruments and route planning", passing: "DGCA assessment requirement" },
-    { name: "Aviation Meteorology", focus: "Weather systems, clouds, winds, forecasting and operational meteorology", passing: "DGCA assessment requirement" },
-    { name: "Air Regulations", focus: "Aviation laws, air traffic procedures and rules of the air", passing: "DGCA assessment requirement" },
-    { name: "Technical General", focus: "Aircraft systems, principles of flight, engines and performance", passing: "DGCA assessment requirement" },
-    { name: "Technical Specific", focus: "Aircraft type-specific systems and operational knowledge", passing: "DGCA assessment requirement" },
-    { name: "RTR(A) Exam", focus: "Radio Telephony Restricted (Aeronautical) requirement associated with WPC", passing: "Pass requirement set by WPC" },
+    { name: "Air Navigation", focus: "Position, route and flight planning; navigation instruments and aids; and the calculations used to plan a flight." },
+    { name: "Aviation Meteorology", focus: "Atmospheric conditions, weather systems, clouds, winds and aviation weather reports, and how weather affects flight decisions." },
+    { name: "Air Regulation", focus: "Aviation law, rules of the air, airspace, air traffic services and the procedures pilots must understand." },
+    { name: "Aircraft and Engine / Instruments", focus: "General, specific and performance knowledge of aircraft and engine systems, including the aircraft type relevant to training." },
 ];
 
 const careerOptions = [
@@ -253,13 +245,34 @@ const careerOptions = [
     { title: "Corporate & Business Jet Pilot", description: "Corporate flying involves operating aircraft for business or private operators. Aircraft-specific training, experience and operator requirements may apply beyond the CPL.", icon: Plane },
     { title: "Cargo Airline Operations", description: "Cargo pilots operate scheduled or charter freight flights. The CPL is a foundation, while the employer sets the applicable experience, ratings and aircraft requirements.", icon: Briefcase },
     { title: "Charter Flight Services", description: "Charter operations use aircraft for on-demand passenger or cargo flights. The role can require relevant experience, checks and aircraft or operator qualifications.", icon: Briefcase },
-    { title: "Flight Instructor Pathway", description: "Instructional flying is a separate pathway. A CPL alone does not automatically authorise every instructional role; the applicable instructor qualification and experience must be checked.", icon: GraduationCap },
+    { title: "Flight Instruction", description: "Instructional roles have separate qualification and experience requirements beyond the CPL; confirm the current criteria with DGCA.", icon: GraduationCap },
 ];
 
-const salaryFactors = [
-    { stage: "What is published", level: "Airlines publish joining criteria, not a universal salary scale. DGCA publishes licensing requirements, not pilot pay.", icon: FileCheck },
-    { stage: "What moves it", level: "Employer, aircraft type, seat, experience, type rating requirements and the jobs available at the time.", icon: TrendingUp },
-    { stage: "What to distrust", level: "A single number presented as a likely salary without naming the source, the seat or the date.", icon: AlertTriangle },
+const eligibilityTopics = [
+    {
+        title: "Education",
+        description: "Check the current DGCA educational criteria, including required subjects and accepted equivalencies, against your own documents.",
+        href: "/dgca/computer-number",
+        link: "Review Computer Number document guidance",
+    },
+    {
+        title: "Age and licence stage",
+        description: "Age criteria depend on the licensing stage. Verify the current minimum age and examination eligibility directly with DGCA.",
+        href: "https://www.dgca.gov.in/",
+        link: "Check current DGCA requirements",
+    },
+    {
+        title: "Medical assessment",
+        description: "The medical assessments required for training and licence issue are set by DGCA. Confirm the current process before committing to flying training.",
+        href: "/dgca/medical",
+        link: "Read about DGCA medical assessments",
+    },
+    {
+        title: "Examination registration",
+        description: "A Computer Number and the relevant examination application steps may be required before booking theory papers. Follow the latest Pariksha instructions.",
+        href: "/dgca/computer-number",
+        link: "See the DGCA Computer Number guide",
+    },
 ];
 
 export default function CPLCoursePage() {
@@ -268,7 +281,7 @@ export default function CPLCoursePage() {
     return (
         <Layout>
             <section className="relative py-24 aviation-gradient text-primary-foreground overflow-hidden">
-                <div className="container !pr-0">
+                <div className="container">
                     <div className="flex flex-col lg:flex-row items-center gap-12">
                         <motion.div
                             initial={{ opacity: 0, y: 30 }}
@@ -279,25 +292,11 @@ export default function CPLCoursePage() {
                                 DGCA CPL ground classes and exam preparation
                             </span>
                             <h1 className="text-4xl md:text-6xl font-bold mb-6">
-                                Commercial Pilot Licence (CPL) Training in India: DGCA Requirements, Ground School, and Process
+                                CPL Ground Classes in Delhi: DGCA Commercial Pilot Licence Training
                             </h1>
                             <p className="text-xl text-primary-foreground/80 mb-8">
-                                A Commercial Pilot Licence (CPL) is a DGCA-issued licence for pilots who meet the applicable eligibility, medical, examination and flight-experience requirements. Flying Star Aviator provides CPL ground training and DGCA examination preparation; aircraft flying training and applicable flight-experience requirements must be completed through an appropriately approved Flying Training Organisation (FTO).
+                                Flying Star Aviator provides CPL ground training and DGCA theory examination preparation at its Dwarka, New Delhi centre. The classes cover the academic stage of the CPL pathway; aircraft flying training and applicable flight-experience requirements are completed separately through an appropriately approved Flying Training Organisation (FTO).
                             </p>
-                            <div className="flex flex-col sm:flex-row gap-4">
-                                <Button variant="gold" size="lg" asChild>
-                                    <Link to="/apply">
-                                        Apply Now
-                                        <ArrowRight className="h-4 w-4 ml-2" />
-                                    </Link>
-                                </Button>
-                                <Button variant="outline-white" size="lg" asChild>
-                                    <Link to="/courses/cpl/fees">Get Detailed CPL Fee Structure</Link>
-                                </Button>
-                                <Button variant="outline-white" size="lg" asChild>
-                                    <Link to="/apply">Speak with a Pilot Counselor</Link>
-                                </Button>
-                            </div>
                             <div className="mt-6">
                                 <SocialShareButtons
                                     title="Commercial Pilot Licence (CPL) Ground Classes | Flying Star Aviator"
@@ -313,8 +312,8 @@ export default function CPLCoursePage() {
             </section>
 
             <CitableAnswer
-                heading="What is a Commercial Pilot Licence (CPL) and How Do You Get One in India?"
-                answer="A Commercial Pilot Licence (CPL) is a DGCA-issued qualification that allows a pilot to fly for remuneration in India. The pathway usually includes eligibility checks, medical clearances, DGCA theory preparation, radiotelephony requirements, and flight training at an approved Flying Training Organisation (FTO)."
+                heading="What Is a Commercial Pilot Licence (CPL)?"
+                answer="A Commercial Pilot Licence (CPL) is a professional pilot licence issued by the Directorate General of Civil Aviation (DGCA) to candidates who meet the current licensing requirements. The pathway includes regulatory, medical, examination and practical flight-training stages. Ground classes prepare candidates for the theory component; they do not provide aircraft flying hours or issue a licence."
                 sources={[
                     { label: "DGCA — Pilot licensing and approvals", url: "https://www.dgca.gov.in/" },
                     { label: "DGCA examination portal", url: "https://pariksha.dgca.gov.in/" },
@@ -322,7 +321,38 @@ export default function CPLCoursePage() {
                 lastUpdated={lastReviewed}
             />
 
-            <section id="what-flying-star-provides" className="py-20 bg-background">
+            <section className="py-16 bg-muted/30">
+                <div className="container max-w-4xl">
+                    <h2 className="text-3xl font-bold mb-4">How Does a CPL Differ from a PPL?</h2>
+                    <p className="text-muted-foreground mb-8">
+                        A Private Pilot Licence (PPL) and a Commercial Pilot Licence (CPL) are different licence categories with different privileges and requirements. Check the current DGCA rules for the privileges attached to each licence; a CPL pathway is intended for professional flying, while a PPL is not a substitute for a commercial licence.
+                    </p>
+                    <div className="grid md:grid-cols-2 gap-6">
+                        <article className="rounded-2xl border border-border bg-card p-6">
+                            <h3 className="font-bold text-xl mb-2">Private Pilot Licence</h3>
+                            <p className="text-muted-foreground">
+                                A separate licence category for private flying. Its privileges do not make it equivalent to a CPL for professional flying.
+                            </p>
+                        </article>
+                        <article className="rounded-2xl border border-border bg-card p-6">
+                            <h3 className="font-bold text-xl mb-2">Commercial Pilot Licence</h3>
+                            <p className="text-muted-foreground">
+                                A professional licence category. The privileges, aircraft ratings and operational limits depend on current DGCA rules and the pilot's qualifications.
+                            </p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <p className="container mx-auto max-w-3xl px-4 py-6 text-center text-muted-foreground">
+                For the wider pilot pathway from eligibility to licensing, read our{" "}
+                <Link to="/become-a-pilot/become-pilot" className="underline hover:text-primary">
+                    guide to becoming a pilot in India
+                </Link>
+                .
+            </p>
+
+            <section id="cpl-eligibility" className="py-20 bg-background">
                 <div className="container">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
@@ -330,30 +360,33 @@ export default function CPLCoursePage() {
                         viewport={{ once: true }}
                         className="text-center mb-16"
                     >
-                        <h2 className="text-3xl md:text-4xl font-bold mb-4">What Are the DGCA Eligibility Requirements for CPL Ground Training?</h2>
+                        <h2 className="text-3xl md:text-4xl font-bold mb-4">CPL Eligibility Requirements in India</h2>
                         <p className="text-muted-foreground max-w-3xl mx-auto text-lg">
-                            Flying Star Aviator is a CPL/ATPL ground-training institute. It provides academic preparation, examination guidance and pathway counselling; aircraft flying training, aircraft operations and applicable skill-test stages are completed separately through an appropriately approved FTO.
+                            Joining ground classes and being eligible for a licence are different things. Before applying, check the current DGCA requirements for education, age, medical fitness, examinations, radio telephony, flight experience and licensing.                             Requirements can change, so confirm them against current DGCA guidance.
                         </p>
                     </motion.div>
 
                     <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                        {cplServices.map((service, index) => (
+                        {eligibilityTopics.map((item, index) => (
                             <motion.div
-                                key={service.title}
+                                key={item.title}
                                 initial={{ opacity: 0, y: 30 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: index * 0.1 }}
                                 className="h-full p-6 rounded-2xl border border-border bg-card"
                             >
-                                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
-                                    <service.icon className="h-6 w-6 text-primary" />
-                                </div>
-                                <h3 className="text-lg font-bold mb-2">{service.title}</h3>
-                                <p className="text-sm text-muted-foreground mb-4">{service.description}</p>
-                                <Link to={service.href} className="inline-flex items-center text-sm font-semibold text-primary">
-                                    View {service.title} <ChevronRight className="h-4 w-4 ml-1" />
-                                </Link>
+                                <h3 className="text-lg font-bold mb-2">{item.title}</h3>
+                                <p className="text-sm text-muted-foreground mb-4">{item.description}</p>
+                                {item.href.startsWith("http") ? (
+                                    <a href={item.href} target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-sm font-semibold text-primary">
+                                        {item.link} <ChevronRight className="h-4 w-4 ml-1" />
+                                    </a>
+                                ) : (
+                                    <Link to={item.href} className="inline-flex items-center text-sm font-semibold text-primary">
+                                        {item.link} <ChevronRight className="h-4 w-4 ml-1" />
+                                    </Link>
+                                )}
                             </motion.div>
                         ))}
                     </div>
@@ -368,9 +401,9 @@ export default function CPLCoursePage() {
                         viewport={{ once: true }}
                         className="text-center mb-16"
                     >
-                        <h2 className="text-3xl md:text-4xl font-bold mb-4">What is the Step-by-Step Process to Earn a CPL in India?</h2>
+                        <h2 className="text-3xl md:text-4xl font-bold mb-4">How to Become a Commercial Pilot in India</h2>
                         <p className="text-muted-foreground max-w-3xl mx-auto text-lg">
-                            The CPL route in India involves meeting the current eligibility requirements, securing a DGCA computer number where applicable, completing medical checks, preparing for the DGCA theory papers, fulfilling radiotelephony requirements, and completing the applicable flight training at an approved FTO before licensing.
+                            The route combines eligibility checks and regulatory steps with theory preparation and separate aircraft training. The sequence and requirements should be confirmed against current DGCA instructions.
                         </p>
                     </motion.div>
 
@@ -403,9 +436,9 @@ export default function CPLCoursePage() {
                         viewport={{ once: true }}
                         className="text-center mb-12"
                     >
-                        <h2 className="text-3xl md:text-4xl font-bold mb-4">What Does the DGCA CPL Theory Examination Syllabus Cover?</h2>
+                        <h2 className="text-3xl md:text-4xl font-bold mb-4">DGCA CPL Ground Training Subjects</h2>
                         <p className="text-muted-foreground max-w-2xl mx-auto">
-                            CPL ground classes provide academic preparation for the DGCA theory papers that form part of the licensing pathway. These subjects are separate from the practical flight training completed at an approved Flying Training Organisation.
+                            The CPL theory syllabus is organized into four papers. Subject names and exam requirements can change; confirm the current list in DGCA's published requirements before planning an attempt.
                         </p>
                     </motion.div>
 
@@ -413,9 +446,8 @@ export default function CPLCoursePage() {
                         <table className="w-full border-collapse">
                             <thead className="bg-muted/50">
                                 <tr>
-                                    <th className="px-6 py-4 text-left font-semibold">Subject Paper</th>
-                                    <th className="px-6 py-4 text-left font-semibold">Key Modules Covered</th>
-                                    <th className="px-6 py-4 text-left font-semibold">Passing Score</th>
+                                    <th className="px-6 py-4 text-left font-semibold">Subject</th>
+                                    <th className="px-6 py-4 text-left font-semibold">Areas covered</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -423,16 +455,54 @@ export default function CPLCoursePage() {
                                     <tr key={subject.name} className={index % 2 === 0 ? "bg-card" : "bg-muted/20"}>
                                         <td className="px-6 py-4 font-medium">{subject.name}</td>
                                         <td className="px-6 py-4 text-muted-foreground">{subject.focus}</td>
-                                        <td className="px-6 py-4 text-muted-foreground">{subject.passing}</td>
                                     </tr>
                                 ))}
                             </tbody>
                         </table>
                     </div>
+                    <p className="max-w-4xl mx-auto mt-6 text-muted-foreground">
+                        For a licence-by-licence comparison of DGCA theory requirements, read the{" "}
+                        <Link to="/blog/dgca-exam-subjects-by-licence" className="underline hover:text-primary">
+                            DGCA theory subjects guide
+                        </Link>
+                        .
+                    </p>
+                    <p className="max-w-4xl mx-auto mt-6 text-muted-foreground">
+                        Radio Telephony Restricted (Aeronautical), or RTR(A), is a separate radio-telephony requirement, not one of these CPL theory papers. Its examining authority and registration process changed under the 2025 rules; older WPC-era guides may be outdated. Check current{" "}
+                        <a href="https://pariksha.dgca.gov.in/" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary">DGCA Pariksha notices</a>
+                        {" "}and our{" "}
+                        <Link to="/blog/rtr-a-exam-dgca-takeover-2026" className="underline hover:text-primary">updated RTR(A) guide</Link>
+                        {" "}before applying.
+                    </p>
                 </div>
             </section>
 
-            <section id="course-details" className="py-20 bg-muted/30">
+            <section className="py-20 bg-muted/30">
+                <div className="container">
+                    <div className="text-center mb-12">
+                        <h2 className="text-3xl md:text-4xl font-bold mb-4">CPL Ground Classes at Flying Star Aviator</h2>
+                        <p className="text-muted-foreground max-w-3xl mx-auto text-lg">
+                            The Dwarka centre provides academic preparation, DGCA examination guidance and pilot-pathway counselling. Class formats, schedules, fees and current availability should be confirmed directly before enrolment.
+                        </p>
+                    </div>
+                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        {cplServices.map((service) => (
+                            <article key={service.title} className="h-full p-6 rounded-2xl border border-border bg-card">
+                                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
+                                    <service.icon className="h-6 w-6 text-primary" />
+                                </div>
+                                <h3 className="text-lg font-bold mb-2">{service.title}</h3>
+                                <p className="text-sm text-muted-foreground mb-4">{service.description}</p>
+                                <Link to={service.href} className="inline-flex items-center text-sm font-semibold text-primary">
+                                    Explore {service.title} <ChevronRight className="h-4 w-4 ml-1" />
+                                </Link>
+                            </article>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            <section id="ground-vs-flight" className="py-20 bg-muted/30">
                 <div className="container">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
@@ -440,59 +510,86 @@ export default function CPLCoursePage() {
                         viewport={{ once: true }}
                         className="text-center mb-12"
                     >
-                        <h2 className="text-3xl md:text-4xl font-bold mb-4">What is the Difference Between CPL Ground Classes and Flying Training?</h2>
+                        <h2 className="text-3xl md:text-4xl font-bold mb-4">Ground Training vs Flying Training</h2>
                         <p className="text-muted-foreground max-w-3xl mx-auto">
-                            CPL ground classes provide the academic preparation needed for DGCA theory papers. Flying training is a separate phase that takes place at an approved Flying Training Organisation and covers the required aircraft hours, practical flight experience, and licensing checks.
+                            These are separate parts of the CPL pathway. Flying Star Aviator provides ground training; aircraft flying hours are completed separately at an appropriately approved Flying Training Organisation (FTO).
                         </p>
                     </motion.div>
 
-                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
-                        {[
-                        { title: "Educational Qualification", text: "The required educational subjects and accepted equivalent pathways are set by the current DGCA rules. Verify the applicable Physics and Mathematics requirement before enrolling." },
-                        { title: "Age Requirement", text: "Age requirements vary by licensing stage and current regulation. Confirm the applicable minimum age with DGCA before committing to the pathway." },
-                        { title: "Medical Fitness", text: "Pilot licensing requires the medical assessments specified by DGCA. Complete the applicable assessment with an authorised examiner and check the current class requirement." },
-                        { title: "Language Proficiency", text: "Pilot applicants must meet the language and communication standards applicable to their licence and examinations. Confirm the current requirement with DGCA." },
-                        ].map((item, index) => (
-                            <motion.div
-                                key={item.title}
-                                initial={{ opacity: 0, y: 30 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: index * 0.1 }}
-                                className="p-6 rounded-2xl border border-border bg-card"
-                            >
-                                <h3 className="text-lg font-bold mb-3">{item.title}</h3>
-                                <p className="text-sm text-muted-foreground">{item.text}</p>
-                            </motion.div>
-                        ))}
+                    <div className="max-w-5xl mx-auto overflow-x-auto rounded-2xl border border-border">
+                        <table className="w-full min-w-[640px] border-collapse bg-card">
+                            <thead className="bg-muted/50">
+                                <tr>
+                                    <th className="px-6 py-4 text-left font-semibold">Training stage</th>
+                                    <th className="px-6 py-4 text-left font-semibold">CPL ground classes</th>
+                                    <th className="px-6 py-4 text-left font-semibold">Aircraft flying training</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr className="border-t border-border">
+                                    <th scope="row" className="px-6 py-4 text-left font-medium">Focus</th>
+                                    <td className="px-6 py-4 text-muted-foreground">Aviation theory and preparation for applicable written examinations.</td>
+                                    <td className="px-6 py-4 text-muted-foreground">Practical aircraft handling and flight experience under the FTO's approved training.</td>
+                                </tr>
+                                <tr className="border-t border-border">
+                                    <th scope="row" className="px-6 py-4 text-left font-medium">Provider</th>
+                                    <td className="px-6 py-4 text-muted-foreground">A ground-training institute, such as Flying Star Aviator.</td>
+                                    <td className="px-6 py-4 text-muted-foreground">An appropriately approved Flying Training Organisation (FTO).</td>
+                                </tr>
+                                <tr className="border-t border-border">
+                                    <th scope="row" className="px-6 py-4 text-left font-medium">Outcome</th>
+                                    <td className="px-6 py-4 text-muted-foreground">Academic preparation; it does not provide flight hours or issue a CPL.</td>
+                                    <td className="px-6 py-4 text-muted-foreground">Practical training and flight experience required for the licensing pathway.</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </section>
 
             <CitableTable
-                heading="What is the Cost Breakdown for CPL Training in India?"
-                intro="The total cost of CPL training varies depending on the flying school, aircraft type, hourly aircraft rates, training duration, and other applicable fees. Ground classes are only one part of the total cost; flight training and medical and examination charges are separate items."
-                columns={["Training Component", "Indicative Cost Range (₹)", "Details"]}
+                heading="CPL Course Fees"
+                intro="Ground-class fees are separate from aircraft flying training, medical assessments and government examination or licensing charges. Costs vary by provider and inclusions; no fee figure is published here without a current, verified quotation."
+                columns={["Cost component", "What to confirm before paying"]}
                 rows={[
-                    ["DGCA CPL Ground Classes", "Indicative range varies by institute", "Academic preparation for the DGCA theory examinations"],
-                    ["Flying Training at an Approved FTO", "Indicative range varies by FTO and aircraft type", "Aircraft rental, instructor charges, and flight-hour requirements"],
-                    ["DGCA Medical Examinations", "Indicative range varies by assessment provider", "Class 2 and Class 1 medical evaluations"],
-                    ["DGCA Exam & Licensing Fees", "Indicative range varies by exam and licensing stage", "Computer number, exam charges and licence-related fees"],
-                    ["RTR(A) Training & WPC Exam", "₹15,000 – ₹40,000 (verify before payment)", "Radiotelephony preparation and examination fees"],
-                    ["Approx. Total CPL Cost", "Indicative total varies significantly by training provider", "Includes ground training, flying hours and additional requirements"],
+                    ["CPL ground classes", "Written fee, included subjects, schedule, payment terms and refund policy."],
+                    ["Flying training at an FTO", "Separate written quotation, training scope, aircraft and applicable extra charges."],
+                    ["Medical assessments", "Current assessment process and charges from the authorised provider."],
+                    ["DGCA examination and licensing", "Current charges and instructions on the official DGCA/Pariksha portal."],
+                    ["RTR(A)", "Current DGCA application, examination and any preparation charges."],
+                    ["Travel, accommodation and equipment", "Any costs relevant to your location and individual training plan."],
                 ]}
                 note={
                     <>
-                        A candidate should compare current written quotations from approved training providers before enrolling. The total cost depends on the chosen FTO, aircraft type, flying-hour requirements, location and additional training or living costs.
+                        Ask for a written, itemised fee breakdown and compare ground-school charges separately from an FTO's flying-training quote. See our{" "}
+                        <Link to="/courses/cpl/fees" className="underline hover:text-primary">CPL cost guide</Link>
+                        {" "}for more detail.
                     </>
                 }
                 sources={[
                     { label: "DGCA — official licensing and examinations", url: "https://www.dgca.gov.in/" },
                     { label: "DGCA examination portal", url: "https://pariksha.dgca.gov.in/" },
-                    { label: "Wireless Planning & Coordination Wing (WPC)", url: "https://www.wpc.gov.in/" },
+                    { label: "Ministry of Civil Aviation — Radio Telephone Operator Rules, 2025", url: "https://civilaviation.gov.in/ministry-documents/rules/telephone-operator-restricted-certificate-and-licence-rules-2025" },
                 ]}
                 lastUpdated={lastReviewed}
             />
+
+            <section className="py-20 bg-muted/30">
+                <div className="container">
+                    <div className="max-w-4xl mx-auto">
+                        <h2 className="text-3xl md:text-4xl font-bold mb-4">CPL Course Duration</h2>
+                        <p className="text-muted-foreground text-lg mb-8">
+                            There is no single completion timeline that applies to every candidate. Ground study and examination attempts, medical and document processing, FTO scheduling, aircraft availability, weather and any licence-conversion steps can affect the overall duration.
+                        </p>
+                        <ul className="space-y-4 text-muted-foreground list-disc pl-6">
+                            <li><strong className="text-foreground">Ground training:</strong> Confirm the current course schedule and subject sequence directly with the institute.</li>
+                            <li><strong className="text-foreground">Theory examinations:</strong> Progress depends on preparation and the available DGCA examination sessions.</li>
+                            <li><strong className="text-foreground">Flying training:</strong> The FTO's aircraft, instructor and scheduling availability, as well as local operating conditions, affect progress.</li>
+                            <li><strong className="text-foreground">Licensing:</strong> Medical, document-verification and application processing can add time at different stages.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
 
             <section className="py-20 bg-background">
                 <div className="container">
@@ -502,9 +599,9 @@ export default function CPLCoursePage() {
                         viewport={{ once: true }}
                         className="text-center mb-16"
                     >
-                        <h2 className="text-3xl md:text-4xl font-bold mb-4">Career Options &amp; Growth Opportunities After CPL</h2>
+                        <h2 className="text-3xl md:text-4xl font-bold mb-4">Career Opportunities After CPL</h2>
                         <p className="text-muted-foreground max-w-3xl mx-auto text-lg">
-                            With the global and Indian aviation markets expanding rapidly, earning a CPL opens doors to high-paying, dynamic career paths.
+                            A CPL may be relevant to professional flying roles, subject to licence privileges, additional qualifications, employer requirements and recruitment conditions.
                         </p>
                     </motion.div>
 
@@ -541,45 +638,6 @@ export default function CPLCoursePage() {
                 </div>
             </section>
 
-            <section className="py-20 bg-muted/30">
-                <div className="container">
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="text-center mb-12"
-                    >
-                        <h2 className="text-3xl md:text-4xl font-bold mb-4">Quick CPL Course Overview</h2>
-                    </motion.div>
-
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="max-w-3xl mx-auto"
-                    >
-                        <div className="rounded-2xl border border-border overflow-hidden">
-                            <table className="w-full">
-                                <thead className="bg-primary text-primary-foreground">
-                                    <tr>
-                                        <th className="px-6 py-4 text-left font-semibold">Feature</th>
-                                        <th className="px-6 py-4 text-left font-semibold">Details</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {courseOverview.map((row, index) => (
-                                        <tr key={row.label} className={index % 2 === 0 ? "bg-card" : "bg-muted/30"}>
-                                            <td className="px-6 py-4 font-semibold text-sm">{row.label}</td>
-                                            <td className="px-6 py-4 text-muted-foreground text-sm">{row.value}</td>
-                                        </tr>
-                                    ))}
-                                </tbody>
-                            </table>
-                        </div>
-                    </motion.div>
-                </div>
-            </section>
-
             <section className="py-20 bg-background">
                 <div className="container">
                     <motion.div
@@ -590,12 +648,23 @@ export default function CPLCoursePage() {
                     >
                         <h2 className="text-3xl md:text-4xl font-bold mb-6">Why Choose Flying Star Aviator for CPL Ground Classes?</h2>
                         <ul className="space-y-4 text-muted-foreground text-lg list-disc pl-6">
-                            <li><strong className="text-foreground">CPL ground training:</strong> Academic preparation for the DGCA theory subjects that form part of the CPL pathway.</li>
-                            <li><strong className="text-foreground">Examination preparation:</strong> Structured subject preparation, revision and guidance for planning DGCA examination attempts.</li>
-                            <li><strong className="text-foreground">Academic guidance:</strong> Counselling on how ground training fits with medical, flying-training and licensing stages.</li>
-                            <li><strong className="text-foreground">Pathway clarity:</strong> Help understanding the separate role of an approved FTO and the checks a candidate should make before enrolling.</li>
+                            <li><strong className="text-foreground">Focused scope:</strong> The page and course focus on CPL ground training and DGCA theory preparation, not aircraft flying hours.</li>
+                            <li><strong className="text-foreground">Pathway guidance:</strong> Academic and licensing-stage counselling helps candidates understand which requirements to check with DGCA.</li>
+                            <li><strong className="text-foreground">Separate cost planning:</strong> Ground-class fees and FTO flying-training quotes are treated as separate items.</li>
+                            <li><strong className="text-foreground">Dwarka location:</strong> Ground classes are based at the Flying Star Aviator centre in Dwarka, New Delhi.</li>
                         </ul>
                     </motion.div>
+                </div>
+            </section>
+
+            <section className="py-20 bg-muted/30">
+                <div className="container">
+                    <div className="max-w-3xl mx-auto">
+                        <h2 className="text-3xl md:text-4xl font-bold mb-4">Student Experiences and Training Environment</h2>
+                        <p className="text-muted-foreground">
+                            This page does not publish student testimonials, individual results, faculty biographies or classroom photographs without verified details and appropriate permission. No pass-rate, placement or student-outcome claim is made here.
+                        </p>
+                    </div>
                 </div>
             </section>
 
@@ -639,24 +708,6 @@ export default function CPLCoursePage() {
                 </div>
             </section>
 
-            <section className="py-20 bg-background">
-                <div className="container">
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="max-w-3xl mx-auto"
-                    >
-                        <h2 className="text-3xl md:text-4xl font-bold mb-6 text-center">Contact Information</h2>
-                        <div className="rounded-2xl border border-border bg-card p-8 space-y-3 text-muted-foreground">
-                            <p><strong className="text-foreground">Institute Location:</strong> C705, Sector 7, Block C, Palam Extension, Dwarka, Delhi, 110077</p>
-                            <p><strong className="text-foreground">Phone:</strong> +91 99535 36199 / +91 99535 66619</p>
-                            <p><strong className="text-foreground">Email:</strong> <a href="mailto:info@flyingstaraviator.com" className="underline">info@flyingstaraviator.com</a></p>
-                        </div>
-                    </motion.div>
-                </div>
-            </section>
-
             <section className="py-20 aviation-gradient text-primary-foreground">
                 <div className="container">
                     <motion.div
@@ -669,22 +720,24 @@ export default function CPLCoursePage() {
                             Enquire About CPL Ground Classes
                         </h2>
                         <p className="text-primary-foreground/80 text-lg mb-8">
-                            If you are planning a CPL pathway, clarify the current DGCA requirements, the ground-school scope and the separate FTO flying-training steps before enrolling. We can guide you on the ground-school side of the process and help you understand the broader route.
+                            Contact Flying Star Aviator to discuss CPL ground classes, current course availability and the separate FTO flying-training stage.
                         </p>
-                        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                            <Button variant="gold" size="lg" asChild>
-                                <Link to="/apply">
-                                    Enquire About CPL Ground Classes
-                                    <ArrowRight className="h-4 w-4 ml-2" />
-                                </Link>
-                            </Button>
-                            <Button variant="outline-white" size="lg" asChild>
-                                <Link to="/courses/cpl/fees">View Course Details</Link>
-                            </Button>
-                            <Button variant="outline-white" size="lg" asChild>
-                                <a href="tel:+919953536199">Call +91 99535 36199</a>
-                            </Button>
+                        <div className="space-y-2 mb-8 text-primary-foreground/90">
+                            <p>C705, Sector 7, Block C, Palam Extension, Dwarka, Delhi 110077</p>
+                            <p>
+                                <a href="tel:+919953536199" className="underline">+91 99535 36199</a>
+                                {" / "}
+                                <a href="tel:+919953566619" className="underline">+91 99535 66619</a>
+                                {" · "}
+                                <a href="mailto:info@flyingstaraviator.com" className="underline">info@flyingstaraviator.com</a>
+                            </p>
                         </div>
+                        <Button variant="gold" size="lg" asChild>
+                            <Link to="/contact">
+                                Contact Flying Star Aviator
+                                <ArrowRight className="h-4 w-4 ml-2" />
+                            </Link>
+                        </Button>
                     </motion.div>
                 </div>
             </section>
