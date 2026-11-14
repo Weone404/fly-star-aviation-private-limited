@@ -34,6 +34,13 @@ describe("Commercial Pilot Licence pathway page", () => {
         expect(
             screen.getAllByText(/it does not operate an FTO or provide aircraft flying training/i),
         ).toHaveLength(2);
+        const overviewTable = screen.getByRole("table");
+        expect(within(overviewTable).getAllByRole("columnheader")).toHaveLength(2);
+        expect(
+            within(overviewTable).getByRole("row", {
+                name: "Page scope CPL pathway information and ground-class preparation",
+            }),
+        ).toBeInTheDocument();
     });
 
     it("keeps visible FAQs identical to the FAQPage schema", () => {

@@ -129,12 +129,9 @@ export default function CPLCourseDetailsPage() {
                                             key={row.label}
                                             className={index % 2 === 0 ? "bg-card" : "bg-muted/30"}
                                         >
-                                            <th
-                                                className="w-1/3 px-5 py-4 text-sm font-semibold md:px-6"
-                                                scope="row"
-                                            >
-                                                {row.label}
-                                            </th>
+                                            <td className="w-1/3 px-5 py-4 text-sm font-semibold md:px-6">
+                                                <strong>{row.label}</strong>
+                                            </td>
                                             <td className="px-5 py-4 text-sm text-muted-foreground md:px-6">
                                                 {row.value}
                                             </td>
