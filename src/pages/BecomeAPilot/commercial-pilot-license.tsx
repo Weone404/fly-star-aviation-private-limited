@@ -113,13 +113,26 @@ export default function CPLCourseDetailsPage() {
                         <h2 className="mb-8 text-3xl font-bold">CPL pathway overview</h2>
                         <div className="overflow-hidden rounded-2xl border border-border shadow-card">
                             <table className="w-full border-collapse text-left">
+                                <thead className="bg-primary text-primary-foreground">
+                                    <tr>
+                                        <th className="px-5 py-4 text-sm font-semibold md:px-6" scope="col">
+                                            Topic
+                                        </th>
+                                        <th className="px-5 py-4 text-sm font-semibold md:px-6" scope="col">
+                                            Details
+                                        </th>
+                                    </tr>
+                                </thead>
                                 <tbody>
                                     {overview.map((row, index) => (
                                         <tr
                                             key={row.label}
                                             className={index % 2 === 0 ? "bg-card" : "bg-muted/30"}
                                         >
-                                            <th className="w-1/3 px-5 py-4 text-sm font-semibold md:px-6">
+                                            <th
+                                                className="w-1/3 px-5 py-4 text-sm font-semibold md:px-6"
+                                                scope="row"
+                                            >
                                                 {row.label}
                                             </th>
                                             <td className="px-5 py-4 text-sm text-muted-foreground md:px-6">
