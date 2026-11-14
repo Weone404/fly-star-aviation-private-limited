@@ -15,6 +15,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { useToast } from "@/hooks/use-toast";
+import { saveContactEnquiry } from "@/lib/saveContactEnquiry";
 import { CheckCircle, Send } from "lucide-react";
 
 const LAST_UPDATED = "2026-09-10";
@@ -128,20 +129,15 @@ export default function ApplyPage() {
         .join("\n");
 
       try {
-        const res = await fetch("/api/contact", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            name: form.name,
-            phone: form.phone,
-            email: form.email,
-            interest: form.course,
-            message: message || "No additional message",
-            company,
-          }),
+        const saved = await saveContactEnquiry({
+          name: form.name,
+          phone: form.phone,
+          email: form.email,
+          interest: form.course,
+          message: message || "No additional message",
+          company,
         });
-        const data = await res.json().catch(() => ({ success: res.ok }));
-        if (!res.ok || data.success === false) throw new Error(data.error || "Request failed");
+        if (!saved) throw new Error("Request failed");
         setSubmitted(true);
       } catch {
         toast({
