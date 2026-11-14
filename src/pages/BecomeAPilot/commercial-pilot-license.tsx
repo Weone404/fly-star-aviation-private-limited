@@ -1,792 +1,355 @@
-﻿import { motion } from "framer-motion";
+import { motion } from "framer-motion";
+import {
+    ArrowRight,
+    BookOpen,
+    CheckCircle,
+    FileCheck,
+    Plane,
+    ShieldCheck,
+} from "lucide-react";
+import { Link } from "react-router-dom";
+
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
-import {
-    Plane,
-    GraduationCap,
-    BookOpen,
-    DollarSign,
-    Briefcase,
-    TrendingUp,
-    ArrowRight,
-    CheckCircle,
-    Award,
-    Globe,
-    FileCheck,
-    Target,
-    Compass,
-    Cloud,
-    Shield,
-    Wrench,
-} from "lucide-react";
 
-const quickOverview = [
-    { label: "Course Name", value: "Commercial Pilot License (CPL)" },
-    { label: "Course Type", value: "Professional Pilot Course" },
-    { label: "Duration", value: "18–24 Months" },
-    { label: "Eligibility", value: "10+2 With Physics & Mathematics" },
-    { label: "License Type", value: "DGCA   CPL" },
-    { label: "Training Mode", value: "Ground + Flying" },
-    { label: "Career Outcome", value: "Airline Pilot / CPL Pilot" },
+const overview = [
+    { label: "Page scope", value: "CPL pathway information and ground-class preparation" },
+    { label: "Flying Star Aviator service", value: "CPL ground classes and exam preparation in Dwarka, New Delhi" },
+    { label: "Aircraft flying training", value: "Separate service; not provided by Flying Star Aviator" },
+    { label: "Duration and eligibility", value: "Check current requirements and provider schedules before planning" },
+    { label: "Fees", value: "Request current, itemised quotations from each provider" },
 ];
 
-const keyHighlights = [
-    { label: "License Name", value: "Commercial Pilot License" },
-    { label: "Authority", value: "DGCA" },
-    { label: "Recognition", value: "International" },
-    { label: "Career Path", value: "Airline, Charter, Cargo" },
-    { label: "Training Type", value: "Commercial Pilot Training" },
-];
-
-const cplBenefits = [
-    "Opportunity to work with national and international airlines",
-    "Attractive career growth and global exposure",
-    "High earning potential after gaining experience",
-    "Profession filled with adventure and responsibility",
-];
-
-const trainingComponents = [
+const pathwayStages = [
     {
         icon: BookOpen,
-        title: "Ground Theory Classes",
-        description: "Comprehensive classroom sessions covering aviation concepts",
+        title: "Theory preparation",
+        description:
+            "Ground classes support study for applicable DGCA theory examinations. Confirm the current syllabus and the provider's course coverage before enrolling.",
     },
     {
         icon: Plane,
-        title: "Flying Practice",
-        description: "Hands-on flight hours with experienced instructors",
-    },
-    {
-        icon: Target,
-        title: "Simulator Training",
-        description: "Advanced flight simulation for skill development",
-    },
-    {
-        icon: Shield,
-        title: "Safety & Technical",
-        description: "Critical safety protocols and technical knowledge",
+        title: "Aircraft training",
+        description:
+            "Aircraft instruction is a separate stage. Flying Star Aviator does not operate an FTO or provide aircraft flying training.",
     },
     {
         icon: FileCheck,
-        title: "DGCA Exam Prep",
-        description: "Complete preparation for DGCA theory examinations",
-    },
-];
-
-const groundSubjects = [
-    {
-        icon: Compass,
-        name: "Air Navigation",
-        description: "Understanding flight paths, charts, and navigation systems",
-    },
-    {
-        icon: Cloud,
-        name: "Aviation Meteorology",
-        description: "Weather patterns and their impact on flight operations",
-    },
-    {
-        icon: Shield,
-        name: "Air Regulations",
-        description: "Aviation laws, safety rules, and regulatory compliance",
-    },
-    {
-        icon: Wrench,
-        name: "Technical General",
-        description: "Aircraft systems, engines, and general mechanics",
-    },
-    {
-        icon: Award,
-        name: "Technical Specific",
-        description: "Specific aircraft type knowledge and operations",
-    },
-];
-
-const syllabusTable = [
-    { ground: "Air Navigation", flying: "Takeoff & Landing" },
-    { ground: "Meteorology", flying: "Cross-Country Flying" },
-    { ground: "Air Regulations", flying: "Night Flying" },
-    { ground: "Technical General", flying: "Instrument Flying" },
-    { ground: "Technical Specific", flying: "Emergency Handling" },
-];
-
-const admissionSteps = [
-    {
-        step: 1,
-        title: "Complete 10+2 with Physics and Mathematics",
-        description: "Meet the basic educational requirement",
-    },
-    {
-        step: 2,
-        title: "Apply for Commercial Pilot Licence Course",
-        description: "Submit your application to   training academy",
-    },
-    {
-        step: 3,
-        title: "Clear Medical Examination",
-        description: "Pass DGCA Class 1 & 2 medical fitness test",
-    },
-    {
-        step: 4,
-        title: "Enroll in the Training Program",
-        description: "Complete enrollment and payment process",
-    },
-    {
-        step: 5,
-        title: "Start Ground Classes and Flying Training",
-        description: "Begin your journey with theoretical and practical training",
-    },
-];
-
-const feeComponents = [
-    "Training fees",
-    "Flying hours charges",
-    "Exam and licensing fees",
-    "Study materials",
-];
-
-const trainingPhases = [
-    {
-        icon: BookOpen,
-        phase: "Ground Training Phase",
+        title: "Requirements and records",
         description:
-            "Students attend CPL ground classes to understand aviation subjects, regulations, and aircraft systems.",
-    },
-    {
-        icon: Plane,
-        phase: "Flying Training Phase",
-        description: "During this phase, students complete required flight hours under instructor supervision.",
-    },
-    {
-        icon: TrendingUp,
-        phase: "Skill Development Phase",
-        description: "Focus is given to navigation, communication, and handling real-time flight situations.",
+            "Eligibility, examinations, medical requirements and documentation should be checked against current DGCA material for the candidate's circumstances.",
     },
 ];
 
-const careerOptions = [
-    { role: "Airline First Officer", growth: "High", icon: Plane },
-    { role: "Charter Pilot", growth: "Medium", icon: Plane },
-    { role: "Cargo Pilot", growth: "High", icon: Briefcase },
-    { role: "Flight Instructor", growth: "Entry Level", icon: GraduationCap },
-    { role: "International Pilot", growth: "Premium", icon: Globe },
+const providerChecks = [
+    "Written description of subjects and course inclusions",
+    "Class schedule, teaching support and instructor information",
+    "Itemised fees, exclusions, additional charges and payment terms",
+    "Cancellation, refund and missed-class terms",
+    "For flight training, the provider's current approval, scope and written terms",
 ];
 
-const basicRequirements = [
-    "10+2 with Physics & Mathematics",
-    "Minimum age requirement as per DGCA",
-    "Medical fitness certificate",
-    "Strong interest in aviation",
+const faqs = [
+    {
+        question: "Does Flying Star Aviator provide aircraft flying training?",
+        answer:
+            "No. Flying Star Aviator provides CPL ground classes and theory-exam preparation in Dwarka, New Delhi; it does not operate a Flying Training Organisation (FTO) or provide aircraft flying training. Its service is classroom preparation, not aircraft instruction. Candidates considering flight training should assess that stage separately and obtain the provider's current scope, schedule, fees, and terms in writing.",
+    },
+    {
+        question: "Are CPL ground classes and aircraft flying training the same service?",
+        answer:
+            "No. CPL ground classes and aircraft flying training are separate parts of the pathway. Ground classes focus on theory preparation and exam study; aircraft training involves flight instruction. The distinction matters when comparing course descriptions and fees: confirm which provider delivers each stage and what its written quotation includes.",
+    },
+    {
+        question: "Does completing CPL ground classes guarantee a licence or airline job?",
+        answer:
+            "No. Completing a ground-class course is not the same as meeting every licensing requirement, receiving a licence, or being selected for a job. Course providers cannot guarantee examination results, licence issue, airline employment, salary, or command. Treat training completion, regulatory licensing, and employer selection as separate outcomes.",
+    },
+    {
+        question: "How should I compare CPL ground-class providers?",
+        answer:
+            "Ask for a written list of subjects covered, class schedule, teaching support, instructor credentials, fees, exclusions, additional charges, and cancellation or refund terms. Compare the same items across providers, and confirm whether missed sessions or syllabus updates are included. Keep the written quotation and terms before paying.",
+    },
 ];
 
 export default function CPLCourseDetailsPage() {
     return (
         <Layout>
-
-            {/* Hero Section */}
-            <section className="relative py-24 aviation-gradient text-primary-foreground">
+            <section className="relative py-20 aviation-gradient text-primary-foreground md:py-24">
                 <div className="container">
                     <motion.div
-                        initial={{ opacity: 0, y: 30 }}
+                        initial={{ opacity: 0, y: 24 }}
                         animate={{ opacity: 1, y: 0 }}
                         className="max-w-4xl"
                     >
-                        <span className="inline-block text-sm font-semibold bg-white/20 px-4 py-2 rounded-full mb-4">
-                            Complete Course Information
+                        <span className="mb-4 inline-block rounded-full bg-white/20 px-4 py-2 text-sm font-semibold">
+                            CPL pathway information
                         </span>
-                        <h1 className="text-4xl md:text-6xl font-bold mb-6">
+                        <h1 className="mb-6 text-4xl font-bold md:text-6xl">
                             Commercial Pilot License Course Details
                         </h1>
-                        <p className="text-xl text-primary-foreground/80 mb-6">
-                            Becoming a commercial pilot is one of the most interesting and revered career aspirations in the world. The aviation industry is growing rapidly, and the requirement for pilots is increasing every year.
+                        <p className="mb-6 text-xl text-primary-foreground/90">
+                            A Commercial Pilot Licence (CPL) pathway separates theory preparation from aircraft training through an appropriately approved Flying Training Organisation (FTO). Flying Star Aviator provides CPL ground classes and exam preparation in Dwarka, New Delhi; it does not operate an FTO or provide aircraft flying training. Verify current eligibility and licensing requirements with DGCA before enrolment.
                         </p>
-                        <p className="text-lg text-primary-foreground/80 mb-8">
-                            If you have a dream of becoming a pilot, enrolling in a commercial pilot license program is the first step towards making your dream a reality. This page provides you with complete information about the pilot course, pilot training, eligibility, admission, and other relevant information regarding CPL course fees, CPL course syllabus, and CPL course career prospects in India.
+                        <p className="text-sm text-primary-foreground/80">
+                            For current rules, consult the{" "}
+                            <a
+                                className="underline underline-offset-4 hover:text-white"
+                                href="https://pariksha.dgca.gov.in/PDFViewer.jsp?pdf=1A745E291DDC1E1BDC7FD70AEC52B711"
+                                target="_blank"
+                                rel="noreferrer"
+                            >
+                                DGCA Flight Crew CAR
+                            </a>{" "}
+                            and the latest official notices.
                         </p>
-                        <div className="flex flex-col sm:flex-row gap-4">
-                            <Button variant="gold" size="lg" asChild>
-                                <Link to="/apply">
-                                    Apply Now
-                                    <ArrowRight className="h-4 w-4 ml-2" />
-                                </Link>
-                            </Button>
-                            <Button variant="outline-white" size="lg" asChild>
-                                <Link to="/contact">Talk to Counselor</Link>
-                            </Button>
-                        </div>
                     </motion.div>
                 </div>
             </section>
 
-            {/* Quick Course Overview */}
-            <section className="py-20 bg-background">
+            <section className="bg-background py-16">
                 <div className="container">
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="text-center mb-12"
-                    >
-                        <h2 className="text-3xl md:text-4xl font-bold mb-4">Quick Course Overview</h2>
-                    </motion.div>
-
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="max-w-4xl mx-auto"
-                    >
-                        <div className="rounded-2xl border border-border overflow-hidden shadow-card">
-                            <table className="w-full">
-                                <thead className="bg-primary text-primary-foreground">
-                                    <tr>
-                                        <th className="px-6 py-4 text-left font-semibold">Course Name</th>
-                                        <th className="px-6 py-4 text-left font-semibold">Details</th>
-                                    </tr>
-                                </thead>
+                    <div className="mx-auto max-w-4xl">
+                        <h2 className="mb-8 text-3xl font-bold">CPL pathway overview</h2>
+                        <div className="overflow-hidden rounded-2xl border border-border shadow-card">
+                            <table className="w-full border-collapse text-left">
                                 <tbody>
-                                    {quickOverview.map((row, index) => (
-                                        <tr key={row.label} className={index % 2 === 0 ? "bg-card" : "bg-muted/30"}>
-                                            <td className="px-6 py-4 font-semibold text-sm">{row.label}</td>
-                                            <td className="px-6 py-4 text-muted-foreground text-sm">{row.value}</td>
-                                        </tr>
-                                    ))}
-                                </tbody>
-                            </table>
-                        </div>
-                    </motion.div>
-                </div>
-            </section>
-
-            {/* What is CPL */}
-            <section className="py-20 bg-muted/30">
-                <div className="container">
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="max-w-4xl mx-auto"
-                    >
-                        <h2 className="text-3xl md:text-4xl font-bold mb-6">What is a Commercial Pilot License?</h2>
-                        <div className="space-y-4 text-lg text-muted-foreground mb-8">
-                            <p>
-                                A commercial pilot license is a professional qualification that enables a candidate to fly aircraft for commercial use. Once a candidate completes a commercial pilot course, they can seek employment with airlines, air charter companies, cargo airlines, and training institutions.                            </p>
-                            <p>
-                                The commercial pilot license is a recognized qualification worldwide and is a requirement for a candidate who wants to establish a long-term career in aviation. Once a candidate undergoes pilot training, they are equipped with theoretical and practical skills.
-                            </p>
-                        </div>
-
-                        {/* Key Highlights Table */}
-                        <div className="rounded-2xl border border-border overflow-hidden shadow-card">
-                            <div className="bg-primary text-primary-foreground px-6 py-4">
-                                <h3 className="font-semibold text-lg">Key Highlights</h3>
-                            </div>
-                            <table className="w-full">
-                                <tbody>
-                                    {keyHighlights.map((row, index) => (
-                                        <tr key={row.label} className={index % 2 === 0 ? "bg-card" : "bg-muted/30"}>
-                                            <td className="px-6 py-4 font-semibold text-sm">{row.label}</td>
-                                            <td className="px-6 py-4 text-muted-foreground text-sm">{row.value}</td>
-                                        </tr>
-                                    ))}
-                                </tbody>
-                            </table>
-                        </div>
-                    </motion.div>
-                </div>
-            </section>
-
-            {/* Why Choose CPL */}
-            <section className="py-20 bg-background">
-                <div className="container">
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="max-w-4xl mx-auto"
-                    >
-                        <h2 className="text-3xl md:text-4xl font-bold mb-6">Why Choose a Commercial Pilot Course?</h2>
-                        <p className="text-lg text-muted-foreground mb-8">
-                            The aviation industry is expanding rapidly and providing more opportunities to become a commercial pilot. A good commercial pilot course enables students to gain sufficient technical knowledge and confidence.
-                        </p>
-
-                        <h3 className="text-2xl font-bold mb-6">Benefits of Becoming a CPL Pilot</h3>
-                        <div className="grid md:grid-cols-2 gap-4 mb-8">
-                            {cplBenefits.map((benefit, index) => (
-                                <motion.div
-                                    key={benefit}
-                                    initial={{ opacity: 0, y: 30 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: index * 0.1 }}
-                                    className="flex items-start gap-3 p-5 rounded-xl bg-card border border-border"
-                                >
-                                    <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                                    <span className="text-muted-foreground">{benefit}</span>
-                                </motion.div>
-                            ))}
-                        </div>
-
-                        <p className="text-lg text-muted-foreground">
-                            A CPL pilot is not just a job role — it is a respected profession that combines skill, precision,
-                            and passion.
-                        </p>
-                    </motion.div>
-                </div>
-            </section>
-
-            {/* Training Overview */}
-            <section className="py-20 bg-muted/30">
-                <div className="container">
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="text-center mb-16"
-                    >
-                        <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                            Commercial Pilot Training in India – Course Overview
-                        </h2>
-                        <p className="text-muted-foreground max-w-3xl mx-auto text-lg">
-                            The commercial pilot training in India is conducted as per the guidelines of the DGCA. In the training, students are given ground training and are also provided with flight hours.
-                        </p>
-                    </motion.div>
-
-                    <div className="max-w-5xl mx-auto mb-12">
-                        <h3 className="text-2xl font-bold mb-8 text-center">Key Components of Commercial Pilot Training</h3>
-                        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                            {trainingComponents.map((component, index) => (
-                                <motion.div
-                                    key={component.title}
-                                    initial={{ opacity: 0, y: 30 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: index * 0.1 }}
-                                    className="p-6 rounded-xl bg-card border border-border hover:border-primary/50 hover:shadow-hover transition-all"
-                                >
-                                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
-                                        <component.icon className="h-6 w-6 text-primary" />
-                                    </div>
-                                    <h4 className="font-bold mb-2">{component.title}</h4>
-                                    <p className="text-sm text-muted-foreground">{component.description}</p>
-                                </motion.div>
-                            ))}
-                        </div>
-                    </div>
-
-                    <motion.p
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        viewport={{ once: true }}
-                        className="text-center text-muted-foreground text-lg max-w-3xl mx-auto"
-                    >
-                        The commercial pilot license course in India ensures that students are fully prepared to handle
-                        real-world flying conditions.
-                    </motion.p>
-                </div>
-            </section>
-
-            {/* Syllabus Section */}
-            <section className="py-20 bg-background">
-                <div className="container">
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="text-center mb-12"
-                    >
-                        <h2 className="text-3xl md:text-4xl font-bold mb-4">Commercial Pilot License Syllabus</h2>
-                        <p className="text-muted-foreground max-w-3xl mx-auto text-lg">
-                            The commercial pilot license syllabus is designed to provide deep knowledge of aviation concepts
-                            and safe flying operations.
-                        </p>
-                    </motion.div>
-
-                    <div className="max-w-5xl mx-auto mb-16">
-                        <h3 className="text-2xl font-bold mb-8 text-center">Main Subjects Covered in CPL Course</h3>
-                        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-                            {groundSubjects.map((subject, index) => (
-                                <motion.div
-                                    key={subject.name}
-                                    initial={{ opacity: 0, y: 30 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: index * 0.1 }}
-                                    className="p-6 rounded-xl bg-card border border-border"
-                                >
-                                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
-                                        <subject.icon className="h-6 w-6 text-primary" />
-                                    </div>
-                                    <h4 className="font-bold mb-2">{subject.name}</h4>
-                                    <p className="text-sm text-muted-foreground">{subject.description}</p>
-                                </motion.div>
-                            ))}
-                        </div>
-                        <p className="text-center text-muted-foreground">
-                            Along with flying, students also attend CPL ground classes to prepare for DGCA theory exams. These
-                            subjects help build a strong foundation for a successful aviation career.
-                        </p>
-                    </div>
-
-                    {/* Syllabus Table */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="max-w-4xl mx-auto"
-                    >
-                        <h3 className="text-2xl font-bold mb-6 text-center">
-                            Commercial Pilot License Syllabus Overview
-                        </h3>
-                        <div className="rounded-2xl border border-border overflow-hidden shadow-card">
-                            <table className="w-full">
-                                <thead className="bg-primary text-primary-foreground">
-                                    <tr>
-                                        <th className="px-6 py-4 text-left font-semibold">Ground Training Subjects</th>
-                                        <th className="px-6 py-4 text-left font-semibold">Flying Training Skills</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {syllabusTable.map((row, index) => (
-                                        <tr key={index} className={index % 2 === 0 ? "bg-card" : "bg-muted/30"}>
-                                            <td className="px-6 py-4 text-sm">{row.ground}</td>
-                                            <td className="px-6 py-4 text-sm text-muted-foreground">{row.flying}</td>
-                                        </tr>
-                                    ))}
-                                </tbody>
-                            </table>
-                        </div>
-                    </motion.div>
-                </div>
-            </section>
-
-            {/* Admission Process - Continued in next section */}
-            <section className="py-20 bg-muted/30">
-                <div className="container">
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="text-center mb-12"
-                    >
-                        <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                            Commercial Pilot License Admission Process
-                        </h2>
-                        <p className="text-muted-foreground max-w-3xl mx-auto text-lg">
-                            The Commercial Pilot License Admission Process is simple and structured. Students must meet basic
-                            academic and medical requirements before starting training.
-                        </p>
-                    </motion.div>
-
-                    <div className="max-w-5xl mx-auto mb-8">
-                        <h3 className="text-2xl font-bold mb-8 text-center">Steps to Join a Pilot Course</h3>
-                        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                            {admissionSteps.map((item, index) => (
-                                <motion.div
-                                    key={item.step}
-                                    initial={{ opacity: 0, y: 30 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: index * 0.1 }}
-                                    className="relative p-6 rounded-xl bg-card border border-border"
-                                >
-                                    <div className="absolute -top-4 -left-4 w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold">
-                                        {item.step}
-                                    </div>
-                                    <h4 className="font-bold mb-2 pt-2">{item.title}</h4>
-                                    <p className="text-sm text-muted-foreground">{item.description}</p>
-                                </motion.div>
-                            ))}
-                        </div>
-                    </div>
-
-                    <motion.p
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        viewport={{ once: true }}
-                        className="text-center text-muted-foreground"
-                    >
-                        This process ensures that candidates are physically and mentally fit for professional pilot training.
-                    </motion.p>
-                </div>
-            </section>
-
-            {/* CPL Course Fees */}
-            <section className="py-20 bg-background">
-                <div className="container">
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="max-w-4xl mx-auto"
-                    >
-                        <h2 className="text-3xl md:text-4xl font-bold mb-6 text-center">
-                            CPL Course Fees & Cost Details
-                        </h2>
-                        <p className="text-lg text-muted-foreground mb-8 text-center">
-                            One of the most common questions students ask is about CPL course fees and overall expenses.
-                        </p>
-
-                        <div className="grid md:grid-cols-2 gap-8">
-                            <div className="p-8 rounded-2xl border border-border bg-card">
-                                <h3 className="text-xl font-bold mb-6">Estimated CPL Licence Cost</h3>
-                                <p className="text-muted-foreground mb-6">
-                                    The total CPL licence cost depends on the training location, flying hours, and aircraft
-                                    type. In India, the approximate cost range may include:
-                                </p>
-                                <ul className="space-y-3">
-                                    {feeComponents.map((item, i) => (
-                                        <li key={i} className="flex items-center gap-3 text-muted-foreground">
-                                            <CheckCircle className="h-4 w-4 text-primary flex-shrink-0" />
-                                            {item}
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-
-                            <div className="p-8 rounded-2xl bg-primary/5 border border-primary/20 flex flex-col justify-center">
-                                <p className="text-muted-foreground mb-6">
-                                    The overall commercial pilot fees may vary from academy to academy, but it is an investment
-                                    in a high-value career.
-                                </p>
-                                <Button variant="gold" size="lg" asChild className="w-full">
-                                    <Link to="/courses/cpl">
-                                        Get Detailed Fee Breakdown
-                                        <ArrowRight className="h-4 w-4 ml-2" />
-                                    </Link>
-                                </Button>
-                            </div>
-                        </div>
-                    </motion.div>
-                </div>
-            </section>
-
-            {/* Training Structure */}
-            <section className="py-20 bg-muted/30">
-                <div className="container">
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="text-center mb-16"
-                    >
-                        <h2 className="text-3xl md:text-4xl font-bold mb-4">Commercial Pilot Training Structure</h2>
-                        <p className="text-muted-foreground max-w-3xl mx-auto text-lg">
-                            A professional commercial pilot training program includes both theoretical and practical learning.
-                        </p>
-                    </motion.div>
-
-                    <div className="max-w-4xl mx-auto mb-12">
-                        <h3 className="text-2xl font-bold mb-8 text-center">Training Phases</h3>
-                        <div className="space-y-6">
-                            {trainingPhases.map((phase, index) => (
-                                <motion.div
-                                    key={phase.phase}
-                                    initial={{ opacity: 0, x: -30 }}
-                                    whileInView={{ opacity: 1, x: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: index * 0.1 }}
-                                    className="p-6 rounded-xl bg-card border border-border flex items-start gap-6"
-                                >
-                                    <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-                                        <phase.icon className="h-7 w-7 text-primary" />
-                                    </div>
-                                    <div>
-                                        <h4 className="font-bold text-lg mb-2">{phase.phase}</h4>
-                                        <p className="text-muted-foreground">{phase.description}</p>
-                                    </div>
-                                </motion.div>
-                            ))}
-                        </div>
-                    </div>
-
-                    <motion.p
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        viewport={{ once: true }}
-                        className="text-center text-muted-foreground text-lg"
-                    >
-                        This structured CPL pilot training ensures students become confident and capable professionals.
-                    </motion.p>
-                </div>
-            </section>
-
-            {/* Career Opportunities */}
-            <section className="py-20 bg-background">
-                <div className="container">
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="text-center mb-12"
-                    >
-                        <h2 className="text-3xl md:text-4xl font-bold mb-4">Career Opportunities After CPL License</h2>
-                        <p className="text-muted-foreground max-w-3xl mx-auto text-lg">
-                            After obtaining a commercial pilot license, several career paths open up.
-                        </p>
-                    </motion.div>
-
-                    <div className="max-w-5xl mx-auto mb-12">
-                        <h3 className="text-2xl font-bold mb-8 text-center">Career Options</h3>
-                        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                            {careerOptions.map((career, index) => (
-                                <motion.div
-                                    key={career.role}
-                                    initial={{ opacity: 0, y: 30 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: index * 0.1 }}
-                                    className="p-6 rounded-xl bg-card border border-border hover:border-primary/50 hover:shadow-hover transition-all group"
-                                >
-                                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                                        <career.icon className="h-6 w-6" />
-                                    </div>
-                                    <h4 className="font-bold mb-1">{career.role}</h4>
-                                    <p className="text-sm text-primary font-medium">Growth: {career.growth}</p>
-                                </motion.div>
-                            ))}
-                        </div>
-                    </div>
-
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="max-w-4xl mx-auto"
-                    >
-                        <h3 className="text-2xl font-bold mb-6 text-center">Career Growth Overview</h3>
-                        <div className="rounded-2xl border border-border overflow-hidden shadow-card">
-                            <table className="w-full">
-                                <thead className="bg-primary text-primary-foreground">
-                                    <tr>
-                                        <th className="px-6 py-4 text-left font-semibold">Job Role</th>
-                                        <th className="px-6 py-4 text-left font-semibold">Growth Level</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {careerOptions.map((career, index) => (
-                                        <tr key={career.role} className={index % 2 === 0 ? "bg-card" : "bg-muted/30"}>
-                                            <td className="px-6 py-4 text-sm font-medium">{career.role}</td>
-                                            <td className="px-6 py-4">
-                                                <span className="inline-flex items-center gap-2 text-primary font-medium text-sm">
-                                                    <TrendingUp className="h-4 w-4" />
-                                                    {career.growth}
-                                                </span>
+                                    {overview.map((row, index) => (
+                                        <tr
+                                            key={row.label}
+                                            className={index % 2 === 0 ? "bg-card" : "bg-muted/30"}
+                                        >
+                                            <th className="w-1/3 px-5 py-4 text-sm font-semibold md:px-6">
+                                                {row.label}
+                                            </th>
+                                            <td className="px-5 py-4 text-sm text-muted-foreground md:px-6">
+                                                {row.value}
                                             </td>
                                         </tr>
                                     ))}
                                 </tbody>
                             </table>
                         </div>
-                        <p className="text-center text-muted-foreground mt-6">
-                            With experience, pilots can become captains and earn a strong commercial pilot license salary along
-                            with international opportunities.
-                        </p>
-                    </motion.div>
+                    </div>
                 </div>
             </section>
 
-            {/* Why Choose Right Institute */}
-            <section className="py-20 bg-muted/30">
+            <section className="bg-muted/30 py-16">
                 <div className="container">
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="max-w-4xl mx-auto text-center"
-                    >
-                        <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                            Why Choose the Right Pilot Training Institute?
+                    <div className="mx-auto max-w-4xl">
+                        <h2 className="mb-5 text-3xl font-bold">What is a Commercial Pilot Licence?</h2>
+                        <p className="mb-5 text-lg leading-relaxed text-muted-foreground">
+                            A Commercial Pilot Licence is a professional pilot licence issued under applicable DGCA requirements. Its privileges and the requirements a candidate must meet depend on the rules in force. A ground-class course is preparation; completing it does not itself issue a licence.
+                        </p>
+                        <p className="text-lg leading-relaxed text-muted-foreground">
+                            Recognition or conversion in another country depends on that jurisdiction's current rules. Check with the relevant aviation authority before relying on an overseas recognition or conversion claim.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section className="bg-background py-16">
+                <div className="container">
+                    <div className="mx-auto max-w-5xl">
+                        <h2 className="mb-5 text-3xl font-bold">What does the CPL pathway involve?</h2>
+                        <p className="mb-8 max-w-4xl text-lg leading-relaxed text-muted-foreground">
+                            The CPL pathway has separate theory-preparation and aircraft-training components, alongside applicable DGCA examinations and licensing requirements. Flying Star Aviator provides ground classes and exam preparation; it does not operate an FTO or provide aircraft flying training. Confirm the current rules and the scope of each provider before planning the stages.
+                        </p>
+                        <div className="grid gap-5 md:grid-cols-3">
+                            {pathwayStages.map((stage) => (
+                                <article
+                                    key={stage.title}
+                                    className="rounded-2xl border border-border bg-card p-6"
+                                >
+                                    <stage.icon className="mb-4 h-7 w-7 text-primary" aria-hidden="true" />
+                                    <h3 className="mb-3 text-xl font-semibold">{stage.title}</h3>
+                                    <p className="text-muted-foreground">{stage.description}</p>
+                                </article>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section className="bg-muted/30 py-16">
+                <div className="container">
+                    <div className="mx-auto max-w-4xl">
+                        <h2 className="mb-5 text-3xl font-bold">What subjects are covered in CPL theory preparation?</h2>
+                        <p className="mb-5 text-lg leading-relaxed text-muted-foreground">
+                            Check the current DGCA syllabus and notices for the applicable CPL theory subjects; this page does not repeat an unverified subject list. Course coverage is provider-specific, so confirm in writing which subjects and study support are included in Flying Star Aviator's current ground classes.
+                        </p>
+                        <p className="text-muted-foreground">
+                            The{" "}
+                            <a
+                                className="font-medium text-primary underline underline-offset-4"
+                                href="https://pariksha.dgca.gov.in/"
+                                target="_blank"
+                                rel="noreferrer"
+                            >
+                                DGCA Pariksha portal
+                            </a>{" "}
+                            publishes examination instructions and notices. Check the latest official information before applying.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section className="bg-background py-16">
+                <div className="container">
+                    <div className="mx-auto max-w-4xl">
+                        <h2 className="mb-5 text-3xl font-bold">Who can apply for a CPL course?</h2>
+                        <p className="mb-6 text-lg leading-relaxed text-muted-foreground">
+                            Applicants should verify current education, age, medical, examination and document requirements with DGCA before enrolling; this page does not restate numeric thresholds. Confirm the ground-class provider's own enrolment conditions separately, because course enrolment and regulatory eligibility are not the same decision.
+                        </p>
+                        <div className="space-y-3">
+                            {[
+                                "Check the latest DGCA licensing and examination requirements.",
+                                "Confirm applicable medical and documentation steps with DGCA.",
+                                "Ask the ground-class provider for its current enrolment terms.",
+                                "Keep provider quotations and commitments in writing.",
+                            ].map((item) => (
+                                <div key={item} className="flex items-start gap-3">
+                                    <CheckCircle
+                                        className="mt-1 h-5 w-5 shrink-0 text-primary"
+                                        aria-hidden="true"
+                                    />
+                                    <p className="text-muted-foreground">{item}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section className="bg-muted/30 py-16">
+                <div className="container">
+                    <div className="mx-auto max-w-4xl">
+                        <h2 className="mb-5 text-3xl font-bold">How long does CPL training take?</h2>
+                        <p className="text-lg leading-relaxed text-muted-foreground">
+                            The overall timeline depends on the candidate's preparation and the schedules of the providers involved. It is not a guaranteed course duration. Ask each provider for its current schedule and check DGCA examination notices before making a plan.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section className="bg-background py-16">
+                <div className="container">
+                    <div className="mx-auto max-w-4xl">
+                        <h2 className="mb-5 text-3xl font-bold">What costs should candidates compare?</h2>
+                        <p className="mb-5 text-lg leading-relaxed text-muted-foreground">
+                            CPL training costs depend on the services and providers selected. Ground classes and aircraft training are separate services; request current, itemised quotations and confirm inclusions, exclusions, additional charges, payment timing and refund terms in writing.
+                        </p>
+                        <Link
+                            className="font-semibold text-primary underline underline-offset-4"
+                            to="/courses/cpl/fees"
+                        >
+                            Read the CPL cost guide
+                        </Link>
+                    </div>
+                </div>
+            </section>
+
+            <section className="bg-muted/30 py-16">
+                <div className="container">
+                    <div className="mx-auto max-w-4xl">
+                        <h2 className="mb-5 text-3xl font-bold">What career outcomes can candidates expect?</h2>
+                        <p className="text-lg leading-relaxed text-muted-foreground">
+                            Completing ground classes or a CPL pathway does not guarantee a licence, airline employment, salary, career progression or command. Licensing decisions follow current DGCA requirements, while hiring decisions depend on each employer's criteria. Verify regulatory questions with DGCA and recruitment requirements with the relevant employer.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section className="bg-background py-16">
+                <div className="container">
+                    <div className="mx-auto max-w-4xl">
+                        <h2 className="mb-5 text-3xl font-bold">How should candidates compare training providers?</h2>
+                        <p className="mb-6 text-lg leading-relaxed text-muted-foreground">
+                            Compare the written scope and terms of each service rather than relying on a general course label. Ask ground-class providers about syllabus coverage, timetable, teaching support, fees and exclusions. For flight training, confirm the provider's current approval, scope, availability and written terms.
+                        </p>
+                        <ul className="space-y-3">
+                            {providerChecks.map((item) => (
+                                <li key={item} className="flex items-start gap-3 text-muted-foreground">
+                                    <ShieldCheck
+                                        className="mt-1 h-5 w-5 shrink-0 text-primary"
+                                        aria-hidden="true"
+                                    />
+                                    <span>{item}</span>
+                                </li>
+                            ))}
+                        </ul>
+                        <p className="mt-6 text-muted-foreground">
+                            See the guide to{" "}
+                            <Link
+                                className="font-medium text-primary underline underline-offset-4"
+                                to="/dgca/fto-ranking"
+                            >
+                                checking DGCA FTO information
+                            </Link>{" "}
+                            and the wider{" "}
+                            <Link
+                                className="font-medium text-primary underline underline-offset-4"
+                                to="/become-a-pilot/become-pilot"
+                            >
+                                pilot pathway in India
+                            </Link>
+                            .
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section
+                aria-labelledby="cpl-faq-heading"
+                className="bg-muted/30 py-16"
+            >
+                <div className="container">
+                    <div className="mx-auto max-w-4xl">
+                        <h2 id="cpl-faq-heading" className="mb-8 text-3xl font-bold">
+                            Frequently asked questions
                         </h2>
-                        <p className="text-lg text-muted-foreground mb-6">
-                            It is very important to select the right academy for your pilot training. A good academy will provide you with proper education and exposure.
-                        </p>
-                        <p className="text-lg text-muted-foreground">
-                            A well-structured commercial pilot license course in India will give confidence to the student and prepare them for the DGCA exam.
-                        </p>
-                    </motion.div>
+                        <div className="space-y-6">
+                            {faqs.map((faq) => (
+                                <article key={faq.question} className="rounded-2xl border border-border bg-card p-6">
+                                    <h3 className="mb-3 text-xl font-semibold">{faq.question}</h3>
+                                    <p className="leading-relaxed text-muted-foreground">{faq.answer}</p>
+                                </article>
+                            ))}
+                        </div>
+                    </div>
                 </div>
             </section>
 
-            {/* Who Can Apply */}
-            <section className="py-20 bg-background">
+            <section className="bg-background py-8">
                 <div className="container">
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="max-w-4xl mx-auto"
-                    >
-                        <h2 className="text-3xl md:text-4xl font-bold mb-6 text-center">Who Can Apply for a CPL Course?</h2>
-                        <p className="text-lg text-muted-foreground mb-8 text-center">
-                            Students who have a passion for aviation and meet the eligibility criteria can apply for a CPL
-                            course.
-                        </p>
-
-                        <div className="mb-8">
-                            <h3 className="text-2xl font-bold mb-6 text-center">Basic Requirements</h3>
-                            <div className="grid md:grid-cols-2 gap-4">
-                                {basicRequirements.map((req, index) => (
-                                    <motion.div
-                                        key={req}
-                                        initial={{ opacity: 0, y: 30 }}
-                                        whileInView={{ opacity: 1, y: 0 }}
-                                        viewport={{ once: true }}
-                                        transition={{ delay: index * 0.1 }}
-                                        className="flex items-center gap-3 p-5 rounded-xl bg-card border border-border"
-                                    >
-                                        <CheckCircle className="h-5 w-5 text-primary flex-shrink-0" />
-                                        <span className="text-muted-foreground">{req}</span>
-                                    </motion.div>
-                                ))}
-                            </div>
-                        </div>
-
-                        <p className="text-center text-muted-foreground text-lg">
-                            With the right dedication and guidance, anyone can become a successful commercial pilot.
-                        </p>
-                    </motion.div>
+                    <p className="mx-auto max-w-4xl text-sm text-muted-foreground">
+                        Written by{" "}
+                        <Link
+                            className="underline underline-offset-4"
+                            to="/editorial-policy"
+                        >
+                            Flying Star Aviator Academics Team
+                        </Link>
+                        {" · "}
+                        <time dateTime="2026-11-14">Last reviewed: 14 November 2026</time>
+                    </p>
                 </div>
             </section>
 
-            {/* Final CTA */}
-            <section className="py-20 aviation-gradient text-primary-foreground">
+            <section className="py-16 aviation-gradient text-primary-foreground">
                 <div className="container">
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="max-w-3xl mx-auto text-center"
-                    >
-                        <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                            Start Your Journey as a Commercial Pilot
-                        </h2>
-                        <div className="space-y-4 text-primary-foreground/80 text-lg mb-8">
-                            <p>
-                                The commercial pilot license course is the key to a promising and exciting commercial pilot license job. It is a gateway to a lifetime career with immense scope and growth opportunities.
-                            </p>
-                            <p>
-                                Whether you are looking for the commercial pilot license course in India, the fees structure for the CPL course, or the training structure for the commercial pilot license training, taking the first step today will bring you closer to your dreams.
-                            </p>
-                            <p>
-                                Whether you are passionate about a commercial pilot license job and ready to take the first step towards a commercial pilot license training, the commercial pilot license course is the key to a commercial pilot license job.
-                            </p>
-                        </div>
-                        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                            <Button variant="gold" size="lg" asChild>
-                                <Link to="/apply">
-                                    Apply Now
-                                    <ArrowRight className="h-4 w-4 ml-2" />
-                                </Link>
-                            </Button>
-                            <Button variant="outline-white" size="lg" asChild>
-                                <Link to="/courses/cpl">Get CPL Course Fees</Link>
-                            </Button>
-                            <Button variant="outline-white" size="lg" asChild>
-                                <Link to="/contact">Talk to Counselor</Link>
-                            </Button>
-                        </div>
-                    </motion.div>
+                    <div className="mx-auto max-w-3xl text-center">
+                        <h2 className="mb-5 text-3xl font-bold">Explore CPL ground classes</h2>
+                        <p className="mb-7 text-lg text-primary-foreground/85">
+                            Flying Star Aviator provides CPL ground classes and exam preparation in Dwarka, New Delhi. Review the current course scope and written terms before enrolling.
+                        </p>
+                        <Button variant="gold" size="lg" asChild>
+                            <Link to="/dgca/ground-classes">
+                                View CPL ground classes
+                                <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
+                            </Link>
+                        </Button>
+                    </div>
                 </div>
             </section>
         </Layout>

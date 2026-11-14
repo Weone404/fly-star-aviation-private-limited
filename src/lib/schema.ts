@@ -424,6 +424,24 @@ export const PAGE_FAQS: Record<string, { q: string; a: string }[]> = {
     { q: "How much do CPL ground classes cost in Delhi?", a: "Fees depend on the current course scope and provider. Request a written, itemised fee schedule directly from Flying Star Aviator; aircraft flying-training costs are separate." },
     { q: "How can I enquire about CPL ground classes?", a: "Contact Flying Star Aviator at +91 99535 36199 or +91 99535 66619, email info@flyingstaraviator.com, or visit C705, Sector 7, Block C, Palam Extension, Dwarka, Delhi 110077." },
   ],
+  "/become-a-pilot/commercial-pilot-licence": [
+    {
+      q: "Does Flying Star Aviator provide aircraft flying training?",
+      a: "No. Flying Star Aviator provides CPL ground classes and theory-exam preparation in Dwarka, New Delhi; it does not operate a Flying Training Organisation (FTO) or provide aircraft flying training. Its service is classroom preparation, not aircraft instruction. Candidates considering flight training should assess that stage separately and obtain the provider's current scope, schedule, fees, and terms in writing.",
+    },
+    {
+      q: "Are CPL ground classes and aircraft flying training the same service?",
+      a: "No. CPL ground classes and aircraft flying training are separate parts of the pathway. Ground classes focus on theory preparation and exam study; aircraft training involves flight instruction. The distinction matters when comparing course descriptions and fees: confirm which provider delivers each stage and what its written quotation includes.",
+    },
+    {
+      q: "Does completing CPL ground classes guarantee a licence or airline job?",
+      a: "No. Completing a ground-class course is not the same as meeting every licensing requirement, receiving a licence, or being selected for a job. Course providers cannot guarantee examination results, licence issue, airline employment, salary, or command. Treat training completion, regulatory licensing, and employer selection as separate outcomes.",
+    },
+    {
+      q: "How should I compare CPL ground-class providers?",
+      a: "Ask for a written list of subjects covered, class schedule, teaching support, instructor credentials, fees, exclusions, additional charges, and cancellation or refund terms. Compare the same items across providers, and confirm whether missed sessions or syllabus updates are included. Keep the written quotation and terms before paying.",
+    },
+  ],
   "/courses/cpl/fees": [
     { q: "What does a CPL cost in India?", a: "There is no published figure. DGCA publishes examination and licensing charges, not training prices, and flying schools quote rather than publish. Any single number you see is a provider quote or a restatement of one." },
     { q: "Why does this page not show a price range?", a: "A range requires assuming a fleet, an aircraft type, a location, an hours figure, a completion time and a level of bundling. Publishing the range without those assumptions presents a guess as a fact." },

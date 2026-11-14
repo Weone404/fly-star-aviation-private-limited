@@ -279,7 +279,7 @@ const routeMeta: Record<string, RouteMeta> = {
   },
   "/become-a-pilot/commercial-pilot-licence": {
     title: "Commercial Pilot Licence (CPL) in India | Flying Star Aviator",
-    description: "How to get a DGCA Commercial Pilot Licence in India: eligibility, 200 flight hours, theory papers, medical and cost.",
+    description: "Understand the DGCA CPL pathway in India, including ground classes, separate aircraft training and where to verify current requirements.",
     canonical: `${BASE_URL}/become-a-pilot/commercial-pilot-licence`,
   },
   "/become-a-pilot/airline-transport-pilot-licence": {

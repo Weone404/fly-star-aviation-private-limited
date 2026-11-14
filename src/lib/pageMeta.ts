@@ -112,7 +112,7 @@ export const PAGE_META: Record<string, PageMeta> = {
   "/become-a-pilot/commercial-pilot-licence": {
     title: "Commercial Pilot Licence (CPL) | Flying Star Aviator",
     description:
-      "Everything you need to know about getting a CPL in India. Training, exams, cost & career scope.",
+      "Understand the DGCA CPL pathway in India, including ground classes, separate aircraft training and where to verify current requirements.",
   },
   "/become-a-pilot/airline-transport-pilot-licence": {
     title: "Airline Transport Pilot Licence (ATPL) | Flying Star Aviator",
