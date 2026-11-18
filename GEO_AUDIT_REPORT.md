@@ -51,6 +51,12 @@ The local production build and full prerender passed. All 85 sitemap URLs produc
 - No ranking, traffic, indexing, enquiry, or AI-citation improvement can be inferred from technical validation alone.
 - The site does not have a verified organic baseline in this audit. Record Search Console and GA4 baselines before measuring future change.
 
+## Post-publication follow-up (2026-11-18)
+
+- Vercel reported success for commit `71d3d61b8409257d5db026e7ea6d3eeecbb0442c`. A post-deployment crawl found all 85 sitemap URLs returned HTTP 200 without redirects; `/robots.txt` and `/sitemap.xml` returned 200. All 85 pages served unique titles/descriptions, matching canonicals, one H1 and valid JSON-LD.
+- A production browser smoke test covered `/courses/cpl`, `/courses/atpl`, `/dgca/ground-classes` and `/locations` at 320, 360, 375, 390, 430, 768, 1024 and 1440 pixels. It found a 12px horizontal overflow on `/courses/cpl` at 320px. The cause was the final CTA's 300px intrinsic width inside a 256px content column.
+- The CTA now uses reduced horizontal padding on narrow screens while retaining desktop padding. A fresh production build and 32/32 local browser checks across the four routes and eight widths passed with no horizontal overflow, exactly one H1 per page, and no page errors. The follow-up source commit's production deployment verification is pending.
+
 ## Recommended next actions
 
 1. Connect Search Console and export page-indexing categories plus query/page performance for the affected URLs. Reconcile the prior 61/29,878 figures before making indexability changes.

@@ -242,6 +242,13 @@ part of this audit.
 - Production source publication and post-push verification were still pending
   when these local checks were recorded. Search Console, GA4 and field CWV
   access remained unavailable.
+- Vercel subsequently reported success for `71d3d61b8409257d5db026e7ea6d3eeecbb0442c`;
+  a live crawl verified 85/85 sitemap routes returned HTTP 200 without
+  redirects and served the revised SEO metadata.
+- A production browser check found a 12px overflow in the `/courses/cpl` final
+  CTA at 320px. Responsive padding was added; the rebuilt output passed 32
+  browser checks across four key routes and eight widths (320-1440px). The
+  follow-up commit still requires a production deployment check.
 
 ## Phase 10 technical SEO delta (2026-11-18)
 

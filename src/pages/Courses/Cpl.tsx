@@ -732,7 +732,7 @@ export default function CPLCoursePage() {
                                 <a href="mailto:info@flyingstaraviator.com" className="underline">info@flyingstaraviator.com</a>
                             </p>
                         </div>
-                        <Button variant="gold" size="lg" asChild>
+                        <Button variant="gold" size="lg" asChild className="max-w-full px-2 sm:px-8">
                             <Link to="/contact">
                                 Contact Flying Star Aviator
                                 <ArrowRight className="h-4 w-4 ml-2" />
