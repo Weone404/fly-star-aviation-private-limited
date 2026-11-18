@@ -127,13 +127,13 @@ const routeMeta: Record<string, RouteMeta> = {
     canonical: `${BASE_URL}/dgca/ground-classes`,
   },
   "/pilot-training": {
-    title: "Pilot Training | Flying Star Aviator",
-    description: "Complete pilot training guidance for India, USA, Australia, New Zealand & South Africa.",
+    title: "Aviation Courses After 12th & Pilot Training | Flystar",
+    description: "Compare aviation courses after 12th and pilot-training pathways, including DGCA ground classes, cabin-crew training and separate FTO flight training.",
     canonical: `${BASE_URL}/pilot-training`,
   },
   "/pilot-training/india": {
     title: "Pilot Training in India: DGCA Pathway",
-    description: "Understand the DGCA pilot-training pathway in India: ground classes and theory exams are separate from flight training at an approved FTO.",
+    description: "Understand the pilot course and DGCA licensing pathway in India, including ground-school preparation and separate flight training at an FTO.",
     canonical: `${BASE_URL}/pilot-training/india`,
   },
   "/pilot-training/usa": {
@@ -309,17 +309,17 @@ const routeMeta: Record<string, RouteMeta> = {
   },
   "/glossary": {
     title: "Indian Pilot Training Glossary | Flying Star Aviator",
-    description: "CPL, ATPL, PPL, RTR(A), computer number, OLODE, BVC and more — what each term means under DGCA's published rules, defined in plain English.",
+    description: "Plain-English definitions of CPL, ATPL, PPL, RTR(A), duty time, OLODE and other Indian pilot-training terms; verify current rules with DGCA.",
     canonical: `${BASE_URL}/glossary`,
   },
   "/pilot-salary-india": {
     title: "Pilot Salary in India: Published Data vs Claims",
-    description: "Compare pilot salary claims in India, monthly gross and in-hand pay, airline roles and the sources behind estimates.",
+    description: "Compare pilot salary claims in India, including commercial pilot salary and monthly gross/in-hand pay; assess airline roles and source quality.",
     canonical: `${BASE_URL}/pilot-salary-india`,
   },
   "/cadet-pilot-programme": {
     title: "Cadet Pilot Programmes in India | Flying Star Aviator",
-    description: "Compare airline-published cadet eligibility and programme structure with self-sponsored CPL training, including what is not disclosed about cost and pay.",
+    description: "Compare cadet pilot programmes, including Air India fee terms to verify in writing, airline-published criteria and the self-sponsored CPL route.",
     canonical: `${BASE_URL}/cadet-pilot-programme`,
   },
   "/dgca/exam-calendar": {
@@ -329,7 +329,7 @@ const routeMeta: Record<string, RouteMeta> = {
   },
   "/dgca/fto-ranking": {
     title: "DGCA FTO Ranking: How Flying Schools Are Scored and Graded",
-    description: "Learn how DGCA scores approved flight training organisations across five weighted parameters and assigns grades from A+ to C.",
+    description: "Compare DGCA FTO grades, IGRUA's published course fee and written school quotes. The ranking is not a top-10 pilot-training fee list.",
     canonical: `${BASE_URL}/dgca/fto-ranking`,
   },
   "/apply": {
@@ -338,8 +338,8 @@ const routeMeta: Record<string, RouteMeta> = {
     canonical: `${BASE_URL}/apply`,
   },
   "/courses/cpl/fees": {
-    title: "CPL Fees in India: Costs & Price Sources",
-    description: "Compare pilot training fees in India, published provider prices and the costs to check in an itemised CPL training quote.",
+    title: "Pilot Course Fees in India: CPL Cost Components",
+    description: "Compare pilot training fees in India by cost component: DGCA charges, ground classes and FTO quotes. Request current, itemised terms from providers.",
     canonical: `${BASE_URL}/courses/cpl/fees`,
   },
   "/atpl/brochure": {

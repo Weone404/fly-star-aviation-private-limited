@@ -325,6 +325,12 @@ export default function DGCAMedicalGuidePage(): JSX.Element {
                 lastUpdated="2026-07-30"
             />
 
+            <p className="container mx-auto max-w-3xl px-4 py-4 text-muted-foreground">
+                If by "Medical 2" you mean the pilot medical category, this guide uses DGCA's
+                official term, Class 2 Medical. Confirm the class required for your case against
+                current DGCA guidance.
+            </p>
+
             {/* ── Quick Overview ── */}
             <section className="py-20 bg-background">
                 <div className="container">
