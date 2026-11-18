@@ -339,8 +339,8 @@ export default function ContactPopup(): JSX.Element {
         }
         .fsa-preview-btn:hover { background: var(--gold-light); transform: translateY(-1px); }
         .fsa-launcher {
-          position: fixed; right: 20px; bottom: 20px; z-index: 40;
-          display: inline-flex; align-items: center; gap: 8px;
+          display: flex; width: fit-content; margin: 16px auto;
+          align-items: center; gap: 8px;
           padding: 12px 18px; border: 0; border-radius: 999px;
           background: var(--wa); color: var(--white);
           box-shadow: 0 8px 24px rgba(0,0,0,0.2);

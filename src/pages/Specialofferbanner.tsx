@@ -56,12 +56,9 @@ export default function SpecialOfferBanner() {
     <aside
       aria-label="Special offer"
       className={[
-        'fixed z-40 transition-all duration-300',
-        visible ? 'opacity-100 translate-y-0 lg:translate-x-0' : 'opacity-0 translate-y-4 lg:translate-y-0 lg:translate-x-8',
-        // Phones and small tablets: a bar across the bottom, clear of the content.
-        'inset-x-3 bottom-3 max-w-[calc(100vw-1.5rem)]',
-        // Desktop: a card on the right edge, capped to the viewport height.
-        'lg:inset-x-auto lg:bottom-auto lg:right-0 lg:top-32 lg:w-[19rem] lg:max-w-[calc(100vw-2rem)]',
+        'mx-3 mt-4 max-w-[calc(100vw-1.5rem)] transition-all duration-300',
+        visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4',
+        'lg:ml-auto lg:mr-3 lg:w-[19rem]',
       ].join(' ')}
     >
       <div className="relative overflow-hidden rounded-xl border-2 border-amber-400 bg-[#12210f] shadow-2xl lg:rounded-l-xl lg:rounded-r-none lg:border-r-0">

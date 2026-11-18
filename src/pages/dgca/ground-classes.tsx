@@ -311,7 +311,7 @@ export default function DGCAGroundClassesPage(): JSX.Element {
                         viewport={viewport}
                         className="max-w-4xl mx-auto"
                     >
-                        <div className="rounded-2xl border border-border overflow-hidden shadow-card">
+                        <div className="rounded-2xl border border-border overflow-x-auto shadow-card">
                             <table className="w-full">
                                 <thead className="bg-primary text-primary-foreground">
                                     <tr>
@@ -489,7 +489,7 @@ export default function DGCAGroundClassesPage(): JSX.Element {
                         className="max-w-5xl mx-auto"
                     >
                         <h3 className="text-2xl font-bold mb-6 text-center">Detailed Comparison</h3>
-                        <div className="rounded-2xl border border-border overflow-hidden shadow-card">
+                        <div className="rounded-2xl border border-border overflow-x-auto shadow-card">
                             <table className="w-full">
                                 <thead className="bg-primary text-primary-foreground">
                                     <tr>

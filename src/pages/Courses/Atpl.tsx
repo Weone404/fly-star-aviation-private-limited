@@ -545,14 +545,14 @@ export default function ATPLCoursePage() {
                             initial={{ opacity: 0, x: 30 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
-                            className="w-full"
+                            className="w-full min-w-0"
                         >
                             <h3 className="text-xl font-bold mb-6">Theory Examination Subjects</h3>
                             <p className="text-muted-foreground mb-6">
                                 The ATPL syllabus is designed per DGCA Civil Aviation Requirements to prepare students for
                                 real-world airline command operations.
                             </p>
-                            <div className="rounded-2xl border border-border overflow-hidden">
+                            <div className="rounded-2xl border border-border overflow-x-auto">
                                 <table className="w-full">
                                     <thead className="aviation-gradient text-primary-foreground">
                                         <tr>
@@ -665,10 +665,10 @@ export default function ATPLCoursePage() {
                             initial={{ opacity: 0, x: -30 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
-                            className="p-8 rounded-2xl border border-border bg-card"
+                            className="p-8 rounded-2xl border border-border bg-card min-w-0"
                         >
                             <h3 className="text-xl font-bold mb-6">Fee Structure Breakdown</h3>
-                            <div className="rounded-xl border border-border overflow-hidden">
+                            <div className="rounded-xl border border-border overflow-x-auto">
                                 <table className="w-full">
                                     <thead className="aviation-gradient text-primary-foreground">
                                         <tr>
@@ -695,7 +695,7 @@ export default function ATPLCoursePage() {
                             initial={{ opacity: 0, x: 30 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
-                            className="flex flex-col gap-6"
+                            className="flex flex-col gap-6 min-w-0"
                         >
                             <div className="p-8 rounded-2xl border border-border bg-card flex-1">
                                 <h3 className="text-xl font-bold mb-6">Total ATPL Cost Includes</h3>
@@ -782,7 +782,7 @@ export default function ATPLCoursePage() {
                         viewport={{ once: true }}
                         className="max-w-3xl mx-auto"
                     >
-                        <div className="rounded-2xl border border-border overflow-hidden">
+                        <div className="rounded-2xl border border-border overflow-x-auto">
                             <table className="w-full">
                                 <thead className="aviation-gradient text-primary-foreground">
                                     <tr>
