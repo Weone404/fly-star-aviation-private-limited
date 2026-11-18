@@ -649,7 +649,7 @@ export default function DGCAGroundClassesPage(): JSX.Element {
                             <p>Whether you want to take the DGCA ground classes online or offline in Delhi, the right ground training is the smartest move you can make at the beginning of your pilot training.</p>
                             <p>Join thousands of other pilots who cleared the DGCA exam on the first attempt and are flying with the top airlines around the world.</p>
                         </div>
-                        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                        <div className="flex flex-col lg:flex-row gap-4 justify-center">
                             <Button variant="gold" size="lg" asChild>
                                 <Link to="/contact">
                                     Enroll in Ground Classes

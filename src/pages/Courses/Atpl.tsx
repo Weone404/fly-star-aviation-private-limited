@@ -304,7 +304,7 @@ export default function ATPLCoursePage() {
             />
 
             {/* ── Stats Strip ────────────────────────────────────────── */}
-            <section className="py-0 bg-card border-t-4 border-accent shadow-hover">
+            <section className="py-0 bg-card border-t-4 border-accent shadow-hover overflow-x-clip md:overflow-x-visible">
                 <div className="container">
                     <div className="grid grid-cols-2 md:grid-cols-4">
                         {[
@@ -495,7 +495,7 @@ export default function ATPLCoursePage() {
             </section>
 
             {/* ── Training Structure ─────────────────────────────────── */}
-            <section className="py-20 bg-muted/30">
+            <section className="py-20 bg-muted/30 overflow-x-clip md:overflow-x-visible">
                 <div className="container">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
@@ -545,6 +545,7 @@ export default function ATPLCoursePage() {
                             initial={{ opacity: 0, x: 30 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
+                            className="w-full"
                         >
                             <h3 className="text-xl font-bold mb-6">Theory Examination Subjects</h3>
                             <p className="text-muted-foreground mb-6">
@@ -643,7 +644,7 @@ export default function ATPLCoursePage() {
             </section>
 
             {/* ── ATPL Fees ──────────────────────────────────────────── */}
-            <section className="py-20 bg-muted/30" id="fees">
+            <section className="py-20 bg-muted/30 overflow-x-clip md:overflow-x-visible" id="fees">
                 <div className="container">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
