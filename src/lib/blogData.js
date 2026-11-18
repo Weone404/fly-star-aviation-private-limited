@@ -950,7 +950,7 @@ export const STATIC_BLOG_POSTS = [
     slug: 'cadet-pilot-programme-vs-self-sponsored-cpl',
     title: 'Cadet Pilot Programme vs Self-Sponsored CPL: What Actually Differs',
     seoTitle: 'Cadet Pilot Programme vs Self-Sponsored CPL: What Differs',
-    metaDescription: 'A cadet pilot programme and a self-sponsored CPL lead to the same DGCA licence. What differs: selection timing, cost structure, type rating and service bonds.',
+    metaDescription: 'A cadet programme and self-sponsored CPL lead to the same DGCA licence. Compare selection, costs, type ratings and service bonds.',
     keyFacts: [
       { fact: 'A cadet pilot programme and a self-sponsored CPL both require a DGCA computer number and a pass in 10+2 with Physics and Mathematics; the licensing route does not differ between them.', source: 'CAR Section 7, Series B, Part I' },
       { fact: 'The DGCA theory exam fee is Rs 2,500 per paper, fixed regardless of which route brought a candidate to the exam.', source: 'DGCA Pariksha Flight Crew FAQ', href: 'https://pariksha.dgca.gov.in/Form/PLT_FAQs' },
@@ -1370,7 +1370,7 @@ export const STATIC_BLOG_POSTS = [
     slug: 'jobs-after-cpl-india',
     title: 'Jobs After CPL in India: What a Commercial Pilot Licence Actually Qualifies You For',
     seoTitle: 'Jobs After CPL in India: What It Actually Qualifies You For',
-    metaDescription: "DGCA sets no minimum-hours rule for airline hiring; each carrier sets its own. What a CPL actually qualifies you to fly, and the real first jobs pilots take.",
+    metaDescription: "DGCA sets no minimum-hours rule for airline hiring; each carrier sets its own. See what a CPL qualifies you to fly and common first roles.",
     keyFacts: [
       { fact: 'A Commercial Pilot Licence candidate needs a computer number from the Central Examination Organization, a pass in 10+2 with Physics and Mathematics, cleared theory papers, a Class 1 medical and the RTR(A) radio telephony licence, examined separately, before the licence itself is issued.', source: 'CAR Section 7, Series B, Part I' },
       { fact: 'The DGCA theory exam fee is Rs 2,500 per paper, and a cleared CPL paper stays valid for five years.', source: 'DGCA Pariksha Flight Crew FAQ', href: 'https://pariksha.dgca.gov.in/Form/PLT_FAQs' },
@@ -1521,7 +1521,7 @@ export const STATIC_BLOG_POSTS = [
     slug: 'type-rating-cost-in-india',
     title: 'Type Rating Cost in India: Why No Two Quotes Match',
     seoTitle: 'Type Rating Cost in India: Why No Two Quotes Ever Match',
-    metaDescription: 'No DGCA document sets or publishes a type rating fee. What actually drives the cost, self-funded vs airline-sponsored routes, and what a quote should include.',
+    metaDescription: 'DGCA does not publish a type-rating fee. Learn what affects the cost, how routes differ and what a provider quote should include.',
     keyFacts: [
       { fact: 'A type rating is an aircraft-type-specific endorsement added to a Commercial or Airline Transport Pilot Licence after approved training and a skill test on that type; it does not replace the CPL or ATPL itself.', source: 'General DGCA/ICAO licensing structure; no single CAR clause is cited here, as none is banked for this article' },
       { fact: 'A Commercial Pilot Licence candidate needs a computer number, 10+2 with Physics and Mathematics, cleared theory papers, a Class 1 medical and RTR(A) before the CPL itself is issued; a type rating is a separate step that comes after.', source: 'CAR Section 7, Series B, Part I' },
@@ -1848,7 +1848,7 @@ export const STATIC_BLOG_POSTS = [
     slug: 'pilot-without-maths-nios-route-india',
     title: 'Can You Become a Pilot Without Maths? The NIOS Route Explained',
     seoTitle: 'Pilot Without Maths in 12th? The NIOS Route Explained 2026',
-    metaDescription: 'DGCA needs 10+2 Physics and Maths for CPL, not which board issued them. How Commerce or Arts students add both later through NIOS, sourced, costed and timed.',
+    metaDescription: 'DGCA requires 10+2 Physics and Maths for CPL theory. Learn how Commerce or Arts candidates may add subjects through NIOS.',
     keyFacts: [
       { fact: 'DGCA CPL theory papers require a computer number from the Central Examination Organization and a pass in 10+2 standard with Physics and Mathematics from a recognised board; Chemistry is not part of the stated requirement.', source: 'DGCA Pariksha Flight Crew FAQ', href: 'https://pariksha.dgca.gov.in/Form/PLT_FAQs' },
       { fact: 'NIOS charges Rs. 720 per subject to register a change or addition of subject at Senior Secondary level, and Rs. 250 per subject for the On-Demand Examination theory paper plus Rs. 100 for a practical component where one applies.', source: 'nios.ac.in, Procedure for Change of Subject/Additional Subject and On-Demand Examination pages' },
@@ -2131,7 +2131,7 @@ export const STATIC_BLOG_POSTS = [
     slug: 'hidden-costs-of-pilot-training-india',
     title: 'Hidden Costs of Pilot Training in India: What a Quote Leaves Out',
     seoTitle: 'Hidden Costs of Pilot Training in India: What to Ask First',
-    metaDescription: 'DGCA regulates one fee in pilot training: Rs 2,500 per exam paper. Every other cost is unregulated. What a real CPL quote should show, and what to ask first.',
+    metaDescription: 'DGCA regulates one pilot-training fee: Rs 2,500 per exam paper. Learn what a CPL quote should show and what to ask first.',
     tags: ['hidden costs of pilot training', 'pilot training cost india', 'cpl cost breakdown'],
     category: 'Career',
     author: 'Flying Star Aviator Academics Team',

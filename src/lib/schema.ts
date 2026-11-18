@@ -364,8 +364,18 @@ function topicNode(path: string, topic: Topic): JsonLdNode {
   };
 }
 
+const COURSE_PATHS = new Set([
+  "/courses/cpl",
+  "/courses/atpl",
+  "/courses/Air-india-pilot-interview",
+  "/courses/Indigo-pilot-interview",
+  "/courses/airline-preparation",
+  "/courses/cabin-crew",
+  "/courses/ground-staff",
+]);
+
 function pageNode(path: string): JsonLdNode {
-  if (path.startsWith("/courses/")) return courseNode(path);
+  if (COURSE_PATHS.has(path)) return courseNode(path);
   if (path.startsWith("/services/")) return serviceNode(path);
   return webPageNode(path);
 }

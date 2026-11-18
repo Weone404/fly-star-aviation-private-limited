@@ -55,7 +55,7 @@ draft + schema + meta + [CONFIRM] list + internal-link plan into `drafts/`.
 No code changes this session.
 
 **PHASE 4 — Apply**: run `geo-site-editor` on ONE prepared draft. Branch
-`geo/<topic>`, build the page, wire route + pageMeta + schema + sitemap +
+`geo/<topic>`, build the page, wire route + routeMeta + schema + generated sitemap +
 llms.txt + internal links, commit, print review instructions.
 
 **PHASE 5 — Track**: run `geo-visibility-tracker` in batches of 8 queries.

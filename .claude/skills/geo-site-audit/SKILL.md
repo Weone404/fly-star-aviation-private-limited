@@ -46,7 +46,7 @@ still open. Never re-derive findings that file already establishes.
 
 ### Phase 2 — Page-level review
 For the homepage + up to 10 key pages, record: title/description (from
-`src/lib/pageMeta.ts`), H1, H2s, schema emitted by `src/lib/schema.ts`,
+`src/lib/routeMeta.ts`), H1, H2s, schema emitted by `src/lib/schema.ts`,
 whether the first ~60 words answer the page's main question, FAQ present,
 sourced statistics present, visible date/author, internal anchor quality.
 

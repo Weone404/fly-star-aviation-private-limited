@@ -160,7 +160,7 @@ const IconCard = memo(({ icon: Icon, heading, body, index }: {
         <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
             <Icon className="h-6 w-6 text-primary" />
         </div>
-        <h4 className="font-bold mb-2">{heading}</h4>
+        <h3 className="font-bold mb-2">{heading}</h3>
         <p className="text-sm text-muted-foreground">{body}</p>
     </motion.div>
 ));
@@ -183,7 +183,7 @@ const IconRowCard = memo(({ icon: Icon, heading, body, index }: {
                 <Icon className="h-6 w-6 text-primary" />
             </div>
             <div>
-                <h4 className="font-bold mb-2">{heading}</h4>
+                <h3 className="font-bold mb-2">{heading}</h3>
                 <p className="text-sm text-muted-foreground">{body}</p>
             </div>
         </div>

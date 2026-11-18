@@ -16,8 +16,8 @@ exactly.
   canonical paths in `src/lib/routes.ts`.
 - Page components: `src/pages/**` (e.g. `src/pages/dgca/full-form.tsx` — 620
   lines — is the reference long-form guide template).
-- Meta: `src/lib/pageMeta.ts` (+ `src/lib/routeMeta.ts`), applied by
-  `src/hooks/useMeta.ts`. Keywords in `src/lib/seoKeywords.ts`.
+- Meta: `src/lib/routeMeta.ts`, applied by `src/hooks/useMeta.ts`. Keywords in
+  `src/lib/seoKeywords.ts`.
 - Schema: built in `src/lib/schema.ts`, injected by `src/hooks/useSchema.ts`.
   Site-wide Organization/EducationalOrganization/WebSite graph is in
   `index.html`.
@@ -45,10 +45,10 @@ A. **Add new article** (input from geo-article-writer):
       `src/pages/dgca/full-form.tsx` (same layout components, heading rhythm,
       Tailwind classes) so it is visually indistinguishable from existing pages.
    2. Add the lazy import + `<Route>` in `src/App.tsx`.
-   3. Add title/description to `src/lib/pageMeta.ts` (title <=60, desc <=155).
+   3. Add title/description to `src/lib/routeMeta.ts` (title <=60, desc <=155).
    4. Add breadcrumb labels + the page-type node in `src/lib/schema.ts`
       (Article/Course/FAQPage as appropriate).
-   5. Add the URL to `public/sitemap.xml` with today's `<lastmod>`.
+   5. Generate `public/sitemap.xml` from the route metadata and blog data.
    6. Add the page to `public/llms.txt` under the right section.
    7. Add internal links FROM 2–3 related existing pages, descriptive anchors.
 B. **Restructure existing page**: apply geo-page-optimizer output. Never change

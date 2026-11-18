@@ -15,7 +15,8 @@ machine-parseable so LLMs can extract and attribute it reliably.
   `index.html`.
 - Per-page JSON-LD (BreadcrumbList + page-type node) is built by
   `src/lib/schema.ts` and injected by `src/hooks/useSchema.ts` on every route.
-- Page names/descriptions come from `src/lib/pageMeta.ts`.
+- Page names/descriptions come from `src/lib/routeMeta.ts` through
+  `getRouteMeta`.
 - Therefore: new per-page schema belongs in `src/lib/schema.ts`, not pasted
   inline into a component — unless the page already carries its own block.
 - Prerendering (`scripts/prerender.mjs`) freezes the injected JSON-LD into the

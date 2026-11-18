@@ -22,7 +22,7 @@ const routeMeta: Record<string, RouteMeta> = {
   },
   "/about": {
     title: "About Us | Flying Star Aviator Private Limited",
-    description: "Learn about Flying Star Aviator, Delhi's leading aviation training institute since 2008.",
+    description: "Learn about Flying Star Aviator, a DGCA CPL and ATPL ground-training institute located in Dwarka, New Delhi.",
     canonical: `${BASE_URL}/about`,
   },
   "/contact": {
@@ -87,43 +87,43 @@ const routeMeta: Record<string, RouteMeta> = {
     twitterImage: "https://www.flystar.co.in/cpl-slider/slider1.webp",
   },
   "/courses/atpl": {
-    title: "ATPL Course Details | Airline Transport Pilot License Training India",
-    description: "Airline Transport Pilot License ground training for pilots advancing their aviation career.",
+    title: "ATPL Ground Classes in India | Flying Star Aviator",
+    description: "ATPL ground classes and DGCA exam preparation at Flying Star Aviator in Dwarka, Delhi. See subjects and how ground school differs from flight training.",
     canonical: `${BASE_URL}/courses/atpl`,
   },
   "/courses/Air-india-pilot-interview": {
-    title: "Air India Pilot Interview Preparation 2026 | Flying Star Aviator",
+    title: "Air India Pilot Interview Prep | Flying Star Aviator",
     description: "Air India pilot interview coaching, psychometric assessments and personality preparation for airline entry.",
     canonical: `${BASE_URL}/courses/Air-india-pilot-interview`,
   },
   "/courses/Indigo-pilot-interview": {
-    title: "IndiGo Pilot Interview Preparation (JFO 2026) | Flying Star Aviator",
+    title: "IndiGo Pilot Interview Prep | Flying Star Aviator",
     description: "IndiGo pilot interview coaching with mock interviews, CRM training, and HR preparation.",
     canonical: `${BASE_URL}/courses/Indigo-pilot-interview`,
   },
   "/courses/airline-preparation": {
-    title: "Airline Preparation Course in India | Pilot Interview & CRM Training",
+    title: "Airline Pilot Interview & CRM Course | Flying Star Aviator",
     description: "Pilot interview preparation and airline readiness training to advance your aviation career.",
     canonical: `${BASE_URL}/courses/airline-preparation`,
   },
   "/dgca": {
-    title: "DGCA Computer Number - Complete Guide for Pilot Aspirants",
-    description: "Everything you need to know about DGCA computer number, exam registration, and pilot training requirements.",
+    title: "DGCA Computer Number Guide for Pilot Aspirants",
+    description: "How to apply for a DGCA Computer Number, including registration steps, document preparation and Flight Crew exam access.",
     canonical: `${BASE_URL}/dgca`,
   },
   "/dgca/full-form": {
-    title: "DGCA Full Form - Directorate General of Civil Aviation | Role & Functions",
+    title: "DGCA Full Form: Role & Functions | Flying Star Aviator",
     description: "Understand the full form of DGCA, its roles in aviation safety, licences, and aircraft operations.",
     canonical: `${BASE_URL}/dgca/full-form`,
   },
   "/dgca/medical": {
-    title: "DGCA Class 1 & Class 2 Medical Guide | Medical Requirements for Pilots in India",
+    title: "DGCA Class 1 & 2 Medical Guide | Flying Star Aviator",
     description: "Complete guide to DGCA medical requirements for pilot licenses, Class 1 and Class 2 certification.",
     canonical: `${BASE_URL}/dgca/medical`,
   },
   "/dgca/ground-classes": {
-    title: "DGCA Ground Classes | CPL Ground Training in India - Complete Guide",
-    description: "Top DGCA ground classes for CPL and ATPL aspirants with expert instructors and structured coaching.",
+    title: "DGCA Ground Classes in Delhi | CPL & ATPL",
+    description: "CPL and ATPL ground classes in Dwarka, Delhi, with DGCA exam preparation. Review subjects and the difference from FTO flight training.",
     canonical: `${BASE_URL}/dgca/ground-classes`,
   },
   "/pilot-training": {
@@ -132,8 +132,8 @@ const routeMeta: Record<string, RouteMeta> = {
     canonical: `${BASE_URL}/pilot-training`,
   },
   "/pilot-training/india": {
-    title: "Pilot Training India | DGCA-approved Commercial Pilot Training",
-    description: "DGCA-approved commercial pilot training in India with expert faculty and practical flight preparation.",
+    title: "Pilot Training in India: DGCA Pathway",
+    description: "Understand the DGCA pilot-training pathway in India: ground classes and theory exams are separate from flight training at an approved FTO.",
     canonical: `${BASE_URL}/pilot-training/india`,
   },
   "/pilot-training/usa": {
@@ -142,53 +142,53 @@ const routeMeta: Record<string, RouteMeta> = {
     canonical: `${BASE_URL}/pilot-training/usa`,
   },
   "/pilot-training/australia": {
-    title: "Pilot Training Australia | CASA-approved Commercial Pilot Training & Diploma",
+    title: "Pilot Training in Australia | Flying Star Aviator",
     description: "CASA-approved pilot training in Australia with integrated flight and ground training.",
     canonical: `${BASE_URL}/pilot-training/australia`,
   },
   "/pilot-training/new-zealand": {
-    title: "Pilot Training New Zealand | CAA-approved Commercial Pilot Training",
+    title: "Pilot Training in New Zealand | Flying Star Aviator",
     description: "Pilot training options in New Zealand for Indian students seeking an international aviation career.",
     canonical: `${BASE_URL}/pilot-training/new-zealand`,
   },
   "/pilot-training/south-africa": {
-    title: "Pilot Training South Africa | SACAA-approved Commercial Pilot Training",
-    description: "Train in South Africa with SACAA-approved flight schools. 14-15 months CPL training, 200-210 flying hours, cost-effective programs. DGCA license conversion available. Apply now.",
+    title: "Pilot Training in South Africa | Flying Star Aviator",
+    description: "A guide to pilot training in South Africa for Indian candidates, including the training route, example flight schools and DGCA conversion considerations.",
     canonical: `${BASE_URL}/pilot-training/south-africa`,
   },
   "/become-a-pilot/become-pilot": {
-    title: "How to Become a Pilot in India 2026 | Complete Guide, Eligibility & Career Path",
+    title: "How to Become a Pilot in India | Flying Star Aviator",
     description: "Step-by-step guide to becoming a commercial pilot in India after 12th. Eligibility, fees & process.",
     canonical: `${BASE_URL}/become-a-pilot/become-pilot`,
   },
   "/locations": {
     title: "Our Locations | Flying Star Aviator",
-    description: "Find Flying Star Aviator training centers and offices across India.",
+    description: "Flying Star Aviator's ground-training centre is in Dwarka, New Delhi. The page explains ground classes and the separate FTO flying-training stage.",
     canonical: `${BASE_URL}/locations`,
   },
   "/pilot-training/ppl": {
     title: "PPL Training in India: Eligibility, Exams & Validity",
-    description: "A PPL needs a Class 10 pass, not 10+2 with PCM — that is the CPL rule. DGCA subjects, the 70% pass mark and the two-and-a-half-year paper validity explained.",
+    description: "Review DGCA PPL eligibility, theory subjects, pass marks and exam validity for pilot candidates in India.",
     canonical: `${BASE_URL}/pilot-training/ppl`,
   },
   "/pilot-training/cpl": {
     title: "CPL Flight Training in India: The Flying Half of the Licence",
-    description: "Ground school and flying school are different institutions. What DGCA requires for the theory papers, how current flight-experience rules apply and how the two halves sequence.",
+    description: "The DGCA CPL pathway separates theory exams from flight training. See how the two stages fit together and where current requirements apply.",
     canonical: `${BASE_URL}/pilot-training/cpl`,
   },
   "/pilot-training/guide-to-conversion": {
     title: "Convert a Foreign Pilot Licence to a DGCA Licence",
-    description: "DGCA conversion under CAR Section 7 Series G Part I: the 10-hours-PIC-in-24-months currency rule, Indian written exams and a skill test with a DGCA examiner.",
+    description: "DGCA foreign-licence conversion involves current experience, written exams and a skill test with a DGCA examiner.",
     canonical: `${BASE_URL}/pilot-training/guide-to-conversion`,
   },
   "/pilot-training/maldives": {
     title: "Pilot Training in the Maldives: What to Check First",
-    description: "The Maldives CAA publishes its approved flight training organisations. Verify the school on that list, and know that the licence needs DGCA conversion for India.",
+    description: "Check Maldives CAA-approved flight training organisations and the DGCA licence-conversion process for India.",
     canonical: `${BASE_URL}/pilot-training/maldives`,
   },
   "/pilot-training/sri-lanka": {
     title: "Pilot Training in Sri Lanka: CAASL Requirements Explained",
-    description: "CAASL requires age 18+, a Class I medical and English Language Proficiency at ELPC Level 4. What differs from the Indian route, and how conversion back works.",
+    description: "Review CAASL training requirements, English proficiency and converting a Sri Lankan licence to a DGCA licence.",
     canonical: `${BASE_URL}/pilot-training/sri-lanka`,
   },
   "/locations/india": {
@@ -207,13 +207,13 @@ const routeMeta: Record<string, RouteMeta> = {
     canonical: `${BASE_URL}/locations/mumbai`,
   },
   "/locations/bangalore": {
-    title: "Pilot Training for Bangalore Candidates | Flying Star Aviator",
+    title: "Pilot Training in Bangalore | Flying Star Aviator",
     description: "We have no centre in Bangalore. Ground training runs from Delhi, partner schools cover flying hours — DGCA licensing rules are national either way.",
     canonical: `${BASE_URL}/locations/bangalore`,
   },
   "/locations/hyderabad": {
-    title: "Pilot Training for Hyderabad Candidates | Flying Star Aviator",
-    description: "We have no centre in Hyderabad. Ground classes run from Dwarka, Delhi; flying through partner schools. Current DGCA flight-experience requirements should be verified before training.",
+    title: "Pilot Training in Hyderabad | Flying Star Aviator",
+    description: "Flying Star Aviator has no Hyderabad centre. Ground classes run from Dwarka; partner schools provide flight training. Verify current DGCA requirements.",
     canonical: `${BASE_URL}/locations/hyderabad`,
   },
   "/locations/usa": {
@@ -227,7 +227,7 @@ const routeMeta: Record<string, RouteMeta> = {
     canonical: `${BASE_URL}/sitemap`,
   },
   "/blogs": {
-    title: "DGCA Exam & Pilot Training Guides in India | Flying Star Aviator",
+    title: "DGCA & Pilot Training Guides | Flying Star Aviator",
     description:
       "Guides to DGCA exams, CPL and ATPL eligibility, ground classes and flying schools in India - every figure checked against the regulator's own documents.",
     canonical: `${BASE_URL}/blogs`,
@@ -239,7 +239,7 @@ const routeMeta: Record<string, RouteMeta> = {
   // cannot drift. Present here means prerendered and advertised — routeMeta is
   // the gate that scripts/prerender.js and generate-sitemap.mjs both read.
   "/blog/topic/dgca-exams": {
-    title: "DGCA Exams: Fees, Subjects, Validity and Attempts | Flying Star Aviator",
+    title: "DGCA Exams: Subjects & Fees | Flying Star Aviator",
     description:
       "Everything the DGCA theory examinations involve - subjects by licence, the fee, how long a pass stays valid, and the claims that are wrong.",
     canonical: `${BASE_URL}/blog/topic/dgca-exams`,
@@ -247,7 +247,7 @@ const routeMeta: Record<string, RouteMeta> = {
     twitterImage: "/assets/hero-aircraft-1600w.jpg",
   },
   "/blog/topic/licences-and-eligibility": {
-    title: "Pilot Licence Eligibility in India: CPL, ATPL and Conversions | Flying Star Aviator",
+    title: "Pilot Licence Eligibility in India | Flying Star Aviator",
     description:
       "What DGCA requires before you can appear for CPL and ATPL theory papers, and what converting a foreign licence actually involves.",
     canonical: `${BASE_URL}/blog/topic/licences-and-eligibility`,
@@ -255,7 +255,7 @@ const routeMeta: Record<string, RouteMeta> = {
     twitterImage: "/assets/hero-aircraft-1600w.jpg",
   },
   "/blog/topic/choosing-training": {
-    title: "Choosing Ground Classes and a Flying School in India | Flying Star Aviator",
+    title: "Choosing a Flying School in India | Flying Star Aviator",
     description:
       "How to judge DGCA ground classes and a flying training organisation before you pay - what to verify, what to ask, and what ends the conversation.",
     canonical: `${BASE_URL}/blog/topic/choosing-training`,
@@ -278,13 +278,13 @@ const routeMeta: Record<string, RouteMeta> = {
     canonical: `${BASE_URL}/courses/ground-staff`,
   },
   "/become-a-pilot/commercial-pilot-licence": {
-    title: "Commercial Pilot Licence (CPL) in India | Flying Star Aviator",
+    title: "Commercial Pilot Licence in India | Flying Star Aviator",
     description: "Understand the DGCA CPL pathway in India, including ground classes, separate aircraft training and where to verify current requirements.",
     canonical: `${BASE_URL}/become-a-pilot/commercial-pilot-licence`,
   },
   "/become-a-pilot/airline-transport-pilot-licence": {
-    title: "Airline Transport Pilot Licence (ATPL) in India | Flying Star Aviator",
-    description: "DGCA ATPL requirements in India: 1,500 flight hours, theory papers, Class 1 medical and how ATPL differs from CPL.",
+    title: "ATPL Requirements in India | Flying Star Aviator",
+    description: "Understand DGCA ATPL eligibility, theory papers, medical requirements and how the licence differs from a CPL. Verify current requirements with DGCA.",
     canonical: `${BASE_URL}/become-a-pilot/airline-transport-pilot-licence`,
   },
   "/dgca/computer-number": {
@@ -313,13 +313,13 @@ const routeMeta: Record<string, RouteMeta> = {
     canonical: `${BASE_URL}/glossary`,
   },
   "/pilot-salary-india": {
-    title: "Pilot Salary in India: What Is Actually Published, and What Is Not",
-    description: "No Indian airline publishes a pilot pay scale and DGCA publishes none. What is genuinely published, what moves the number, and how to test any salary claim before planning a career on it.",
+    title: "Pilot Salary in India: Published Data vs Claims",
+    description: "Indian airlines and DGCA do not publish pilot pay scales. Review available data and how to assess salary claims.",
     canonical: `${BASE_URL}/pilot-salary-india`,
   },
   "/cadet-pilot-programme": {
-    title: "Cadet Pilot Programmes in India: What Airlines Actually Publish",
-    description: "Airline-published eligibility, duration and structure separated from the cost, bond and pay figures that circulate but are not published. Cadet route against self-sponsored training.",
+    title: "Cadet Pilot Programmes in India | Flying Star Aviator",
+    description: "Compare airline-published cadet eligibility and programme structure with self-sponsored CPL training, including what is not disclosed about cost and pay.",
     canonical: `${BASE_URL}/cadet-pilot-programme`,
   },
   "/dgca/exam-calendar": {
@@ -329,7 +329,7 @@ const routeMeta: Record<string, RouteMeta> = {
   },
   "/dgca/fto-ranking": {
     title: "DGCA FTO Ranking: How Flying Schools Are Scored and Graded",
-    description: "DGCA scores approved Flying Training Organisations out of 100 across five weighted parameters and grades them A+ to C, twice a year. The bands, the weights, and how to use them when choosing a school.",
+    description: "Learn how DGCA scores approved flight training organisations across five weighted parameters and assigns grades from A+ to C.",
     canonical: `${BASE_URL}/dgca/fto-ranking`,
   },
   "/apply": {
@@ -338,17 +338,17 @@ const routeMeta: Record<string, RouteMeta> = {
     canonical: `${BASE_URL}/apply`,
   },
   "/courses/cpl/fees": {
-    title: "CPL Fees in India: Every Cost Component, and Who Publishes a Price",
-    description: "DGCA publishes examination charges, not training prices. Every component of CPL cost, who sets it, whether anyone publishes it, and the questions that make two quotes comparable.",
+    title: "CPL Fees in India: Costs & Price Sources",
+    description: "DGCA publishes examination charges, not CPL training prices. See cost components, who sets them and how to compare quotes.",
     canonical: `${BASE_URL}/courses/cpl/fees`,
   },
   "/atpl/brochure": {
     title: "ATPL Ground Classes Brochure | Flying Star Aviator",
-    description: "The ATPL brochure on the page rather than behind a download: what the licence permits, how it differs from a CPL, and what a ground school does and does not provide.",
+    description: "ATPL privileges, how the licence differs from a CPL, and what ground school covers versus flight training.",
     canonical: `${BASE_URL}/atpl/brochure`,
   },
   "/rtr": {
-    title: "RTR Full Form - Radio Telephony Restricted | Complete Guide 2026",
+    title: "RTR Full Form: Radio Telephony Restricted | Guide",
     description: "Essential RTR(A) exam guidance for pilot candidates and aviation students.",
     canonical: `${BASE_URL}/rtr`,
   },

@@ -5,6 +5,8 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { CTASection } from "@/components/home/CTASection";
 import { WorldMapSection } from "@/components/home/WorldMapSection";
+import { Footer } from "@/components/layout/Footer";
+import { Header } from "@/components/layout/Header";
 import PilotTrainingPage from "@/pages/pilotTraining/PilotTraining";
 import ServicesPage from "@/pages/Services";
 
@@ -46,6 +48,22 @@ describe("internal navigation", () => {
       "href",
       "/pilot-salary-india",
     );
+  });
+
+  it("uses the lowercase canonical CPL URL in the Courses navigation", () => {
+    renderWithRouter(<Header />);
+
+    expect(screen.getByRole("link", { name: "Courses" })).toHaveAttribute(
+      "href",
+      "/courses/cpl",
+    );
+  });
+
+  it("uses section-level headings for the footer groups", () => {
+    const { container } = renderWithRouter(<Footer />);
+
+    expect(container.querySelectorAll("footer h2")).toHaveLength(4);
+    expect(container.querySelector("footer h4")).toBeNull();
   });
 
   it("does not render a map marker for the unavailable Canada guide", () => {

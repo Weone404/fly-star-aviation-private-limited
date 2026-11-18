@@ -98,7 +98,7 @@
     "@context":"https://schema.org",
     "@graph":[
       {
-        "@type":"Organization",
+        "@type":"EducationalOrganization",
         "@id":"https://www.flystar.co.in/#organization",
         "name":"Flying Star Aviator Private Limited",
         "alternateName":"Flying Star Aviators",
@@ -116,7 +116,10 @@
           "https://www.youtube.com/channel/UCMgPrEdb_0Ckk7ibz7UExUA",
           "https://yourstory.com/companies/flying-star-aviators",
           "https://www.justdial.com/Delhi/Flying-Star-Aviation-Pvt-Ltd-Near-Ramphal-Chowk-Road-Palam-Extension-Dwarka-Sector-7-D-Ramphal-Chowk-Dwarka-Sector-7/011PXX11-XX11-190301143042-S5J4_BZDET"
-        ]
+        ],
+        "location":{
+          "@id":"https://www.flystar.co.in/#place"
+        }
       },
       {
         "@type":"WebSite",
@@ -127,11 +130,7 @@
         "publisher":{
           "@id":"https://www.flystar.co.in/#organization"
         },
-        "potentialAction":{
-          "@type":"SearchAction",
-          "target":"https://www.flystar.co.in/?s={search_term_string}",
-          "query-input":"required name=search_term_string"
-        }
+        "inLanguage":"en-IN"
       },
       {
         "@type":"Place",
@@ -152,71 +151,6 @@
           "longitude":77.0684002
         },
         "hasMap":"https://maps.google.com/?cid=5225956059607335504"
-      },
-      {
-        "@type":"EducationalOrganization",
-        "@id":"https://www.flystar.co.in/#localbusiness",
-        "name":"Flying Star Aviator Private Limited",
-        "url":"https://www.flystar.co.in/",
-        "logo":"https://www.flystar.co.in/flying_logo-optimized.webp",
-        "image":"https://lh3.googleusercontent.com/p/AF1QipMrTJvtIBhxipJYxisjbwA5m8a9THTO8Cox3Yim=s1360-w1360-h1020-rw",
-        "telephone":"+919953536199",
-        "email":"info@flyingstaraviator.com",
-        "priceRange":"$$$",
-        "currenciesAccepted":"INR",
-        "paymentAccepted":"Cash, Credit Card, Bank Transfer",
-        "foundingDate":"2008",
-        "areaServed":{
-          "@type":"Country",
-          "name":"India"
-        },
-        "knowsAbout":[
-          "Commercial Pilot License Training",
-          "DGCA Exam Preparation",
-          "Aviation Ground Classes",
-          "Cadet Pilot Program",
-          "ATPL Training",
-          "Airline Interview Coaching",
-          "RTR(A) Training",
-          "Type Rating Guidance"
-        ],
-        "address":{
-          "@type":"PostalAddress",
-          "streetAddress":"C705, Sector 7, Block C, Palam Extension, Dwarka",
-          "addressLocality":"New Delhi",
-          "addressRegion":"Delhi",
-          "postalCode":"110077",
-          "addressCountry":"IN"
-        },
-        "geo":{
-          "@type":"GeoCoordinates",
-          "latitude":28.5852283,
-          "longitude":77.0684002
-        },
-        "openingHoursSpecification":[
-          {
-            "@type":"OpeningHoursSpecification",
-            "dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
-            "opens":"10:00",
-            "closes":"18:00"
-          }
-        ],
-        "contactPoint":[
-          {
-            "@type":"ContactPoint",
-            "telephone":"+919953536199",
-            "email":"info@flyingstaraviator.com",
-            "contactType":"customer service",
-            "areaServed":"IN",
-            "availableLanguage":["English","Hindi"]
-          }
-        ],
-        "location":{
-          "@id":"https://www.flystar.co.in/#place"
-        },
-        "parentOrganization":{
-          "@id":"https://www.flystar.co.in/#organization"
-        }
       }
     ]
   }

@@ -301,7 +301,7 @@ export function TestimonialsSection() {
                   "{t.quote}"
                 </p>
                 <div>
-                  <h4 className="font-bold text-lg md:text-xl">{t.name}</h4>
+                  <h3 className="font-bold text-lg md:text-xl">{t.name}</h3>
                   <p className="text-accent text-sm md:text-base">{t.role}</p>
                 </div>
                 {StarRow}

@@ -41,8 +41,9 @@ AI Overviews) via technical fixes, page restructuring and new guide content.
 3. NEVER merge to main, push, or trigger a deploy unless explicitly told to in
    the conversation.
 4. Adding a page = component + route in App.tsx + `routeMeta.ts` entry
-   (render gate) + `pageMeta.ts` + schema + sitemap.xml + llms.txt + internal
-   links from 2–3 related pages. Verify the new URL is not 404 after deploy.
+   (metadata source and render gate) + schema + generated sitemap + llms.txt +
+   internal links from 2–3 related pages. Verify the new URL is not 404 after
+   deploy.
 5. Never touch analytics, contact/lead forms, `backend/`, `api/`, or admin auth
    unless the task requires it and you say so first.
 6. Run `npm run lint` (and `npm run build` when practical) before committing.

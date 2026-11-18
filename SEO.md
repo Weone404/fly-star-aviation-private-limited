@@ -78,8 +78,8 @@ Each of these is sourced, stated in a self-contained sentence, and repeated in
 | Exam fee **Rs 2,500 per paper**, non-refundable; **no OLODE fee is published** | DGCA Pariksha FAQ 13, 14 | The Rs 5,000 OLODE figure everyone repeats has no primary source |
 
 ## 4. Per-page meta
-Source of truth is `src/lib/routeMeta.ts` (which is also the render gate) with
-`src/lib/pageMeta.ts` mirroring it for client-side navigation. Rules in force:
+Source of truth is `src/lib/routeMeta.ts`, which supplies client-side metadata
+and is also the prerender/render gate. Rules in force:
 titles ≤ 60 characters with the primary keyword front-loaded; descriptions ≤ 155
 characters carrying the keyword and a reason to click; canonical on every route;
 aliases resolved through `ALIAS_CANONICAL` in `src/lib/routes.ts`.

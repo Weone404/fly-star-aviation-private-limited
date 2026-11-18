@@ -1,5 +1,5 @@
 # GEO Context — flystar.co.in
-_Single source of truth for every GEO skill. Last updated: 2026-08-22 (Phase 0)._
+_Single source of truth for every GEO skill. Last updated: 2026-11-18 (Phase 10)._
 
 ## Business identity
 _Sourced from `index.html` JSON-LD and `public/llms.txt` — verified in-repo, not
@@ -48,8 +48,8 @@ guessed. Items marked [CONFIRM] need the owner's answer._
 - Page components: `src/pages/**`. **Reference long-form template:
   `src/pages/dgca/full-form.tsx`** (620 lines). Others: `Courses/Cpl.tsx` (963),
   `dgca/ground-classes.tsx` (693), `dgca/medical.tsx` (560).
-- Meta: `src/lib/pageMeta.ts` (261 lines) + `src/lib/routeMeta.ts` (322),
-  applied by `src/hooks/useMeta.ts`. Keywords: `src/lib/seoKeywords.ts`.
+- Meta: `src/lib/routeMeta.ts`, applied by `src/hooks/useMeta.ts`; it is also
+  the prerender/render gate. Keywords: `src/lib/seoKeywords.ts`.
 - Schema: built in `src/lib/schema.ts` (BreadcrumbList + page-type node),
   injected by `src/hooks/useSchema.ts`. Site-wide Organization /
   EducationalOrganization / WebSite / Place graph is static in `index.html`.
@@ -219,3 +219,57 @@ sitemap URLs as the dominant technical risks. A live verification on
 These observations are evidence for the 2026-09-28 delta report, not a
 replacement for the `[CONFIRM]` items above. No page content was rewritten as
 part of this audit.
+
+### Phase 10 local production verification (2026-11-18)
+
+- `npm run build` completed with Chromium prerendering enabled: 85 sitemap
+  URLs were generated and rendered, and the admin-client check passed across
+  54 JavaScript bundles.
+- An audit of the generated HTML found one title and description per route,
+  unique titles and descriptions, titles no longer than 60 characters,
+  descriptions no longer than 155 characters, and one matching canonical per
+  URL. All 85 pages had one H1, no heading-level skips, and valid JSON-LD
+  (170 parsable blocks total).
+- `npm test`: 31 test files and 240 tests passed. `npm run lint` exited 0 with
+  nine existing Fast Refresh warnings and no errors.
+- The production JS entry bundle was 828.49 kB (209.27 kB gzip); the main CSS
+  bundle was 134.25 kB (21.87 kB gzip). These are build artifacts, not field
+  Core Web Vitals measurements.
+- The live image crawl observed 334 images: none missing `alt`, 16 with empty
+  `alt`, 125 lazy-loaded, 209 eager-loaded, 277 with explicit dimensions, and
+  no `srcset`. Empty `alt` usage and loading behavior need visual review before
+  broad changes.
+- Production source publication and post-push verification were still pending
+  when these local checks were recorded. Search Console, GA4 and field CWV
+  access remained unavailable.
+
+## Phase 10 technical SEO delta (2026-11-18)
+
+- Live checks: `/robots.txt` and `/sitemap.xml` returned 200; all 85 sitemap
+  URLs returned 200 without redirects. All 68 URLs in live `llms.txt` returned
+  2xx, with no redirects. The local and live `llms.txt` differed; the local
+  version should be reconciled before a later content release.
+- Every sitemap URL had one title, description and canonical; titles and
+  descriptions were unique, canonical URLs matched their page URLs, and no
+  invalid JSON-LD was observed. No sitemap page was orphaned in the rendered
+  internal-link graph. One header link used `/Courses/cpl` and redirected to
+  `/courses/cpl`; the navigation now links to the canonical lowercase path.
+- All 85 pages had one H1. Heading-level skips were attributable to footer
+  headings and three page sections; those heading levels were corrected without
+  changing visible wording. Rendered images had no missing `alt` attributes;
+  16 used empty alt text and need visual review to confirm they are decorative.
+- Duplicate per-page metadata in the unused `src/lib/pageMeta.ts` was removed.
+  `src/lib/routeMeta.ts` is the sole active metadata source and render gate.
+- The site-wide JSON-LD had two organization nodes for the same company and an
+  unimplemented `SearchAction`. These were consolidated to one
+  `EducationalOrganization` linked to the existing `Place`.
+- A public Justdial result showed address `110075` and phone `09054557842`,
+  which differ from the site's `110077` and `+91 99535 36199`. This third-party
+  NAP listing requires owner review; no off-site listing was changed.
+- Search Console, GA4 and field Core Web Vitals data were not accessible in this
+  run. No indexing, traffic or conversion conclusions are drawn from their
+  absence. The integrated browser connection timed out; local build/prerender
+  and production HTML checks are the verification path.
+- Several pages still contain unsourced regulatory, fee, duration, salary,
+  approval and pass-rate claims. Those require primary-source and owner review;
+  this technical change did not rewrite or endorse them.

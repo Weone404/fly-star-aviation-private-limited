@@ -551,10 +551,9 @@ HTTP 404 that looks exactly like a page that was never built.
 1. Component in `src/pages/…`
 2. `<Route>` in `src/App.tsx` (static routes rank above `:param` routes in React Router 6, so order is not the concern — presence is)
 3. **Entry in `src/lib/routeMeta.ts` — THE RENDER GATE**
-4. Entry in `src/lib/pageMeta.ts`
-5. Schema, if the page type needs more than the default WebPage + BreadcrumbList
-6. `<url>` in `public/sitemap.xml`
-7. Line in `public/llms.txt`
+4. Schema, if the page type needs more than the default WebPage + BreadcrumbList
+5. Generated `<url>` in `public/sitemap.xml`
+6. Line in `public/llms.txt`
 8. Inbound links from 2–3 related pages
 9. `npm run test` — `renderGate.test.ts` fails if 3 and 6 disagree
 

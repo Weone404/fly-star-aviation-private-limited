@@ -330,7 +330,7 @@ export default function ATPLCourseDetailsPage() {
                                     <div className="w-11 h-11 md:w-12 md:h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-3 md:mb-4">
                                         <feature.icon className="h-5 w-5 md:h-6 md:w-6 text-primary" />
                                     </div>
-                                    <h4 className="font-bold mb-2 text-sm md:text-base">{feature.title}</h4>
+                                    <h3 className="font-bold mb-2 text-sm md:text-base">{feature.title}</h3>
                                     <p className="text-xs md:text-sm text-muted-foreground">{feature.description}</p>
                                 </motion.div>
                             ))}
@@ -424,7 +424,7 @@ export default function ATPLCourseDetailsPage() {
                                     <div className="w-11 h-11 md:w-12 md:h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-3 md:mb-4">
                                         <subject.icon className="h-5 w-5 md:h-6 md:w-6 text-primary" />
                                     </div>
-                                    <h4 className="font-bold mb-2 text-sm md:text-base">{subject.name}</h4>
+                                    <h3 className="font-bold mb-2 text-sm md:text-base">{subject.name}</h3>
                                     <p className="text-xs md:text-sm text-muted-foreground mb-2">{subject.description}</p>
                                     <p className="text-xs text-muted-foreground/70">{subject.details}</p>
                                 </motion.div>
@@ -445,7 +445,7 @@ export default function ATPLCourseDetailsPage() {
                                     transition={{ delay: index * 0.08 }}
                                     className="rounded-xl bg-card border border-border p-5 md:p-6"
                                 >
-                                    <h4 className="font-bold text-base md:text-lg mb-3 md:mb-4 text-primary">{module.module}</h4>
+                                    <h3 className="font-bold text-base md:text-lg mb-3 md:mb-4 text-primary">{module.module}</h3>
                                     <ul className="space-y-1.5 md:space-y-2">
                                         {module.topics.map((topic, i) => (
                                             <li key={i} className="flex items-start gap-2 text-xs md:text-sm text-muted-foreground">
@@ -494,7 +494,7 @@ export default function ATPLCourseDetailsPage() {
                                     <div className="absolute top-0 left-4 -translate-y-1/2 w-9 h-9 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold text-sm shadow-lg">
                                         {item.step}
                                     </div>
-                                    <h4 className="font-bold mb-2 text-sm md:text-base">{item.title}</h4>
+                                    <h3 className="font-bold mb-2 text-sm md:text-base">{item.title}</h3>
                                     <p className="text-xs md:text-sm text-muted-foreground">{item.description}</p>
                                 </motion.div>
                             ))}
@@ -580,7 +580,7 @@ export default function ATPLCourseDetailsPage() {
                                     <div className="w-11 h-11 md:w-12 md:h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-3 md:mb-4 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
                                         <career.icon className="h-5 w-5 md:h-6 md:w-6" />
                                     </div>
-                                    <h4 className="font-bold mb-1 text-sm md:text-base">{career.role}</h4>
+                                    <h3 className="font-bold mb-1 text-sm md:text-base">{career.role}</h3>
                                     <p className="text-xs md:text-sm text-primary font-medium">{career.level}</p>
                                 </motion.div>
                             ))}

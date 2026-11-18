@@ -13,8 +13,8 @@ a salesperson.
 
 ## HARD RULES (violating these risks Google rankings)
 1. NEVER change: URL/route, meta title intent, H1, or the core topic.
-   Routes live in `src/App.tsx`; meta in `src/lib/pageMeta.ts` +
-   `src/lib/routeMeta.ts`; aliases in `src/lib/routes.ts`.
+   Routes live in `src/App.tsx`; meta in `src/lib/routeMeta.ts`; aliases in
+   `src/lib/routes.ts`.
 2. NEVER delete passages that currently rank or answer a question — reposition
    and tighten. If ranking data is unknown, treat every existing Q&A-style
    passage as protected.

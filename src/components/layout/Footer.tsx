@@ -210,7 +210,7 @@ export function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-semibold text-lg mb-4 text-accent">Quick Links</h4>
+            <h2 className="font-semibold text-lg mb-4 text-accent">Quick Links</h2>
             <ul className="space-y-2">
               {footerLinks.quickLinks.map((link) => (
                 <li key={link.name}>
@@ -224,7 +224,7 @@ export function Footer() {
 
           {/* Services */}
           <div>
-            <h4 className="font-semibold text-lg mb-4 text-accent">Our Services</h4>
+            <h2 className="font-semibold text-lg mb-4 text-accent">Our Services</h2>
             <ul className="space-y-2">
               {footerLinks.services.map((link) => (
                 <li key={link.name}>
@@ -238,7 +238,7 @@ export function Footer() {
 
           {/* Keyword Links */}
           <div className="lg:col-span-2">
-            <h4 className="font-semibold text-lg mb-4 text-accent">Popular Pilot Keywords</h4>
+            <h2 className="font-semibold text-lg mb-4 text-accent">Popular Pilot Keywords</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm text-white/70">
               {keywordLinks.slice(0, 18).map((link) => (
                 <Link key={link.keyword} to={link.href} className="block min-h-[48px] py-3 hover:text-white transition-colors">
@@ -250,7 +250,7 @@ export function Footer() {
 
           {/* Map */}
           <div className="lg:col-span-2">
-            <h4 className="font-semibold text-lg mb-4 text-accent">Our Location</h4>
+            <h2 className="font-semibold text-lg mb-4 text-accent">Our Location</h2>
             <div className="rounded-lg overflow-hidden w-full">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14013.949592847395!2d77.0683977!3d28.5851516!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d1bfa2be4aefb%3A0x48a070e238521650!2sFlying%20Star%20Aviator%20Private%20Limited%20%7C%20Best%20Cadet%20Pilot%20Training%20Institute%20in%20India%20-%20DGCA%20CPL%20Flight%20Training%20in%20Delhi!5e0!3m2!1sen!2sin!4v1772702645906!5m2!1sen!2sin"

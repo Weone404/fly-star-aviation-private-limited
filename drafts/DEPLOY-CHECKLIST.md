@@ -89,8 +89,8 @@ commit per page, in this binding order:
 4. `/dgca/exam-misconceptions` — links to both siblings, must be last
 
 Wiring plans: `drafts/wiring-plan-*.md`. Each page needs component + route +
-**`routeMeta.ts` entry (the render gate)** + `pageMeta.ts` + schema node +
-`sitemap.xml` + `llms.txt` + inbound links.
+**`routeMeta.ts` entry (metadata source and render gate)** + schema node +
+generated `sitemap.xml` + `llms.txt` + inbound links.
 
 ## B1. Before committing the policy page
 Walk the enforcement table in `drafts/wiring-plan-editorial-policy.md`. Every
