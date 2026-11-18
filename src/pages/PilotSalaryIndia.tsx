@@ -12,8 +12,8 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
-const LAST_UPDATED = "2026-09-10";
-const LAST_UPDATED_LABEL = "September 10, 2026";
+const LAST_UPDATED = "2026-11-18";
+const LAST_UPDATED_LABEL = "November 18, 2026";
 
 /** Single source of truth: the same array feeds the FAQPage JSON-LD. */
 const faqs = PAGE_FAQS["/pilot-salary-india"];
@@ -26,15 +26,14 @@ const INDIGO_URL = "https://www.goindigo.in/how-to-become-a-pilot.html";
  * A search run on 10 September 2026 for "pilot salary in India" returned ten
  * organic results, every one of them a flight school, a ground school or a
  * content site, and not one of them citing an airline disclosure, a regulator
- * publication or a government statistic. The numbers on those pages agree with
- * each other because they are copied from each other, not because anyone
- * measured anything.
+ * publication or a government statistic. This limited search does not establish
+ * that no other primary-source salary data exists.
  */
 const WHAT_IS_PUBLISHED: string[][] = [
   [
     "Airline pay scales",
-    "Not published",
-    "No Indian scheduled carrier publishes a pilot pay scale. Pay is set in individual contracts and, where they exist, collective agreements.",
+    "Not verified here",
+    "This page has not verified a current, representative Indian airline pilot pay scale. Check the terms of a specific role with the employer.",
   ],
   [
     "Airline joining criteria",
@@ -53,8 +52,8 @@ const WHAT_IS_PUBLISHED: string[][] = [
   ],
   [
     "Figures on training-provider websites",
-    "Published, sourced to nobody",
-    "Presented as fact, attributed to no airline, no regulator and no survey.",
+    "Varies by source",
+    "Check the source, date and sample before relying on an estimate.",
   ],
 ];
 
@@ -104,7 +103,7 @@ export default function PilotSalaryIndiaPage() {
 
         <CitableAnswer
           heading="How much does a pilot earn in India?"
-          answer="Nobody publishes an authoritative answer. No Indian airline publishes a pilot pay scale, DGCA publishes licensing requirements rather than salaries, and no government statistic reports pilot pay separately. Every figure circulating online comes from a training provider or a content site, none of which names a primary source. This page sets out what is genuinely published, what moves the number, and how to read a salary claim before you plan a career around it."
+          answer="Pilot salary in India varies with the employer, rank, aircraft and the terms of the job. We have not verified a representative current airline pay scale or salary range, so this guide does not present an estimate as official pay. Compare the source and date of any figure, its fixed and variable components, and whether it is gross or in-hand."
           lastUpdated={LAST_UPDATED}
         />
 
@@ -135,9 +134,8 @@ export default function PilotSalaryIndiaPage() {
                 On 10 September 2026 we searched for the phrase most aspiring pilots
                 type, and read the first ten organic results. Every one was a flight
                 school, a ground school or a content site. Not one cited an airline
-                disclosure, a regulator publication or a survey. Several quoted
-                identical ranges, which tells you they share a source, and the source
-                is each other.
+                disclosure, a regulator publication or a survey. This limited search
+                cannot establish whether a reliable source exists elsewhere.
               </p>
               <p className="mt-4 text-muted-foreground leading-relaxed">
                 Publishing our own range would add an eleventh unsourced page and make
@@ -150,12 +148,48 @@ export default function PilotSalaryIndiaPage() {
                 treat what they tell you as one data point rather than a market rate,
                 and remember that people discussing pay online are not a random sample.
               </p>
+              <h3 className="mt-6 text-xl font-semibold text-foreground">
+                Pilot salary in India per month: gross and in-hand
+              </h3>
+              <p className="mt-4 text-muted-foreground leading-relaxed">
+                A monthly gross figure is before deductions; in-hand pay is after
+                deductions. Check whether a quoted amount includes flying-related
+                pay and allowances, and whether it describes a first officer or a
+                captain. An annual package divided by twelve is not necessarily
+                the amount paid into a bank account each month.
+              </p>
+            </section>
+
+            <section aria-labelledby="indigo-pay">
+              <h2 id="indigo-pay" className="text-2xl md:text-3xl font-bold mb-4 text-foreground">
+                How should you assess an IndiGo pilot salary estimate?
+              </h2>
+              <p className="text-muted-foreground leading-relaxed">
+                Check the source, date, rank and aircraft, and distinguish fixed
+                salary from variable payments. We have not verified a current
+                IndiGo pilot salary scale; an online estimate is not an offer of
+                employment. Ask the airline for the written terms of the role,
+                including deductions and any training-related commitments.
+              </p>
+              <p className="mt-4 text-muted-foreground leading-relaxed">
+                The{" "}
+                <a href={INDIGO_URL} target="_blank" rel="noopener noreferrer" className="underline hover:text-primary">
+                  IndiGo pilot careers page
+                </a>{" "}
+                is a starting point for current programme information.
+              </p>
             </section>
 
             <section aria-labelledby="what-moves-it">
               <h2 id="what-moves-it" className="text-2xl md:text-3xl font-bold mb-6 text-foreground">
-                What actually moves the number
+                What affects commercial pilot salary?
               </h2>
+              <p className="mb-6 text-muted-foreground leading-relaxed">
+                For an airline pilot salary comparison, use the same rank and
+                time period, then check the employer, aircraft, fixed pay and
+                variable components. Salary is different from the cost of
+                financing training.
+              </p>
               <ol className="space-y-6">
                 {WHAT_MOVES_IT.map((item, i) => (
                   <li key={item.title} className="flex gap-4">
@@ -194,8 +228,8 @@ export default function PilotSalaryIndiaPage() {
                 The side of the ledger you can actually pin down
               </h2>
               <p className="text-muted-foreground leading-relaxed">
-                Earnings are unpublished, but costs are knowable, because you are the
-                one being quoted. Getting the cost side right is worth more to a
+                An individual offer and provider quotes can help you plan, although
+                neither establishes a market-wide figure. Getting the cost side right is worth more to a
                 training decision than any earnings estimate, and it is the half you
                 can verify before you commit.
               </p>

@@ -4,7 +4,7 @@ import { CitableAnswer } from "@/components/CitableAnswer";
 import { Link } from "react-router-dom";
 import { GLOSSARY } from "@/lib/glossary";
 
-const LAST_UPDATED = "2026-09-04";
+const LAST_UPDATED = "2026-11-18";
 
 /**
  * Glossary of Indian pilot-training terms.
@@ -34,7 +34,7 @@ export default function Glossary() {
                 how we source definitions
               </Link>{" "}
               · Last updated{" "}
-              <time dateTime={LAST_UPDATED}>September 4, 2026</time>
+              <time dateTime={LAST_UPDATED}>November 18, 2026</time>
             </p>
           </div>
         </header>
@@ -70,6 +70,30 @@ export default function Glossary() {
                 </div>
               ))}
             </dl>
+
+            <section className="mt-12 border-t border-border pt-8" aria-labelledby="duty-time">
+              <h2 id="duty-time" className="text-xl font-bold mb-3">
+                Duty time, flight duty period and flight time
+              </h2>
+              <p className="text-muted-foreground leading-relaxed">
+                In the DGCA flight-crew CAR issued in 2024, duty period runs
+                from reporting or starting an assigned duty until the crew
+                member is free of duties. Flight duty period is a continuous
+                duty including flight, from reporting until engines are off
+                after the last flight. Flight time runs from the aeroplane's
+                first movement for take-off until it comes to rest at the end
+                of the flight.
+              </p>
+              <p className="mt-4 text-muted-foreground leading-relaxed">
+                These measures are not interchangeable. The{" "}
+                <a href="https://www.dgca.gov.in/digigov-portal/Upload?attachId=YUKKrHOBzBr0RZyThH2OXw%3D%3D&amp;flag=iframeAttachView" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary">
+                  DGCA flight-crew CAR issued in 2024
+                </a>{" "}
+                is a dated reference; later revisions and the applicable
+                operator scheme have not been verified here. Check current
+                requirements before relying on duty or rest limits.
+              </p>
+            </section>
 
             <section className="mt-12 border-t border-border pt-8">
               <h2 className="text-xl font-bold mb-3">A note on the definitions</h2>

@@ -12,8 +12,8 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
-const LAST_UPDATED = "2026-09-10";
-const LAST_UPDATED_LABEL = "September 10, 2026";
+const LAST_UPDATED = "2026-11-18";
+const LAST_UPDATED_LABEL = "November 18, 2026";
 
 /** Single source of truth: the same array feeds the FAQPage JSON-LD. */
 const faqs = PAGE_FAQS["/dgca/fto-ranking"];
@@ -186,6 +186,34 @@ export default function DgcaFtoRankingPage() {
                   </li>
                 ))}
               </ol>
+            </section>
+
+            <section aria-labelledby="igrua">
+              <h2 id="igrua" className="text-2xl md:text-3xl font-bold mb-4 text-foreground">
+                How can you compare IGRUA and other flying schools?
+              </h2>
+              <p className="text-muted-foreground leading-relaxed">
+                Indira Gandhi Rashtriya Uran Akademi (IGRUA) lists an ab-initio
+                CPL course with instrument rating and multi-engine endorsement.
+                Its{" "}
+                <a href="https://igrua.gov.in/approved-courses" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary">
+                  official course page
+                </a>, checked on 18 November 2026, states a course fee of
+                Rs 55 lakh and lists additional expenses separately. It is not
+                a complete budget for every student or a price for other schools.
+              </p>
+              <p className="mt-4 text-muted-foreground leading-relaxed">
+                A search for the top 10 pilot training institutes in India with
+                fees does not establish an official price ranking. Compare
+                current written quotes, inclusions, approvals and refund terms;
+                check IGRUA's{" "}
+                <a href="https://igrua.gov.in/igrua-entrance" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary">
+                  entrance information
+                </a>{" "}
+                for the relevant intake. The{" "}
+                <Link to="/courses/cpl/fees" className="underline hover:text-primary">CPL cost checklist</Link>{" "}
+                helps identify costs outside a quoted fee.
+              </p>
             </section>
 
             <section aria-labelledby="limits">

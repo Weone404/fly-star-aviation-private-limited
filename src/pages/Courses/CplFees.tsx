@@ -12,8 +12,8 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
-const LAST_UPDATED = "2026-09-10";
-const LAST_UPDATED_LABEL = "September 10, 2026";
+const LAST_UPDATED = "2026-11-18";
+const LAST_UPDATED_LABEL = "November 18, 2026";
 
 /** Single source of truth: the same array feeds the FAQPage JSON-LD. */
 const faqs = PAGE_FAQS["/courses/cpl/fees"];
@@ -21,19 +21,15 @@ const faqs = PAGE_FAQS["/courses/cpl/fees"];
 /**
  * Deliberately no figures.
  *
- * Every rupee amount circulating for CPL training in India traces back to a
- * provider quote or to another blog quoting a provider quote. DGCA publishes
- * examination charges, not training prices, and no FTO price list has been
- * banked as a primary source. Publishing a range here would be an unsourced
- * number wearing a table's authority. What this page can do honestly is name
- * every component, say who sets it, and say whether anyone publishes it.
+ * A published FTO fee is specific to that course and does not establish a
+ * market range. This table identifies cost components and who sets them.
  */
 const COMPONENTS: string[][] = [
   ["Ground classes", "The school you study with", "Each school publishes or quotes its own", "Charged per subject or as a full course; ask which"],
   ["DGCA examination charges", "DGCA", "Published by DGCA", "Payable per paper, per attempt, direct to DGCA"],
   ["Computer number application", "DGCA", "Published by DGCA", "One-time, before any paper can be booked"],
   ["Class 1 medical", "DGCA-empanelled examiner", "Varies by centre", "Do this early; it can end the plan before you spend on anything else"],
-  ["Flying hours", "The FTO", "Quoted, not published", "Usually the largest single component by a wide margin"],
+  ["Flying hours", "The FTO", "Published or quoted by the provider", "Check aircraft type, included hours and additional charges"],
   ["Instructor and briefing time", "The FTO", "Sometimes inside the hourly rate, sometimes not", "Ask explicitly whether it is bundled"],
   ["Simulator time", "The FTO", "Quoted", "Cheaper per hour than the aircraft, and not always interchangeable with it"],
   ["Aircraft type used", "The FTO", "Quoted", "Single-engine and multi-engine hours are priced separately"],
@@ -85,21 +81,22 @@ export default function CplFeesPage() {
 
         <CitableAnswer
           heading="What does a CPL cost in India?"
-          answer="There is no published answer, and any page that gives you one number is quoting a provider, not a regulator. DGCA publishes its examination and licensing charges; it does not publish training prices. Flying schools quote, and quotes vary by fleet, location, aircraft type and how much of the cost is bundled. What can be stated honestly is the full list of components you will pay for, which of them anyone publishes, and the questions that turn a quote into a comparable figure."
+          answer="Pilot training fees in India vary by provider, aircraft and what is included. Some schools publish a course fee, while others provide a quotation; a published course fee is not necessarily the total cost. Compare flying, ground instruction, examinations, medicals, accommodation and any additional charges before committing."
           lastUpdated={LAST_UPDATED}
         />
 
         <CitableTable
-          heading="What you pay for, and who sets it"
+          heading="Pilot course fees in India: what you pay for and who sets it"
           intro="Read this as a checklist against any quote you are given. A quote that covers only the first and fifth rows is not a wrong quote; it is an incomplete one, and the gap is what surprises people."
           columns={["Component", "Who sets it", "Publicly published?", "What to check"]}
           rows={COMPONENTS}
           note={
             <>
-              No amounts appear in this table on purpose. Figures circulating for Indian
-              CPL training trace back to provider quotes rather than to any published
-              source, and this site does not restate an unsourced number as though it
-              were one. Where DGCA does publish a charge, it is payable to DGCA directly
+              No amounts appear in this table because the components and terms
+              vary by provider. For an example of a published school fee, see our{" "}
+              <a href="/dgca/fto-ranking#igrua" className="underline hover:text-primary">
+                IGRUA comparison
+              </a>. Where DGCA publishes a charge, it is payable to DGCA directly
               and is listed on the{" "}
               <Link to="/dgca" className="underline hover:text-primary">
                 DGCA information pages

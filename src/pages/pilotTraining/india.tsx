@@ -331,6 +331,26 @@ export default function PilotTrainingIndiaPage() {
                 </div>
             </section>
 
+            <section className="py-16 bg-background">
+                <div className="container max-w-3xl">
+                    <h2 className="text-3xl font-bold mb-4">Which aviation courses after 12th should you compare?</h2>
+                    <p className="text-muted-foreground leading-relaxed">
+                        Pilot training and cabin-crew preparation lead to different roles.
+                        A commercial pilot pathway combines theory preparation with flight
+                        training at a separate flying training organisation; cabin-crew
+                        recruitment has its own airline-specific criteria and selection.
+                        Check current eligibility with DGCA and the relevant employer
+                        before choosing a course or paying a deposit.
+                    </p>
+                    <p className="mt-4 text-muted-foreground leading-relaxed">
+                        Compare the{" "}
+                        <Link to="/become-a-pilot/become-pilot" className="underline hover:text-primary">pilot pathway</Link>,{" "}
+                        <Link to="/courses/cabin-crew" className="underline hover:text-primary">cabin-crew course</Link>{" "}
+                        and <Link to="/courses/cpl/fees" className="underline hover:text-primary">pilot training cost checklist</Link>.
+                    </p>
+                </div>
+            </section>
+
             {/* Training Highlights */}
             <section className="py-20 bg-background">
                 <div className="container">

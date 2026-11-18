@@ -12,8 +12,8 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
-const LAST_UPDATED = "2026-09-10";
-const LAST_UPDATED_LABEL = "September 10, 2026";
+const LAST_UPDATED = "2026-11-18";
+const LAST_UPDATED_LABEL = "November 18, 2026";
 
 /** Single source of truth: the same array feeds the FAQPage JSON-LD. */
 const faqs = PAGE_FAQS["/cadet-pilot-programme"];
@@ -36,9 +36,9 @@ const PUBLISHED: string[][] = [
   ["Student pilot licence", "15 days of training to obtain it", "Stated by the airline"],
   ["Training partners", "Seven chosen training schools", "Named? No. The airline states the number, not the schools"],
   ["Licence obtained", "Commercial Pilot Licence", "Stated by the airline"],
-  ["Programme cost", "Not stated", "Circulates widely; not published by the airline"],
-  ["Bond or service commitment", "Not stated", "Circulates widely; not published by the airline"],
-  ["Stipend or starting pay", "Not stated", "Not published by the airline"],
+  ["Programme cost", "Not stated", "Not found on the reviewed page"],
+  ["Bond or service commitment", "Not stated", "Not found on the reviewed page"],
+  ["Stipend or starting pay", "Not stated", "Not found on the reviewed page"],
   ["Selection criteria in detail", "Not stated", "The airline describes stages, not scoring"],
 ];
 
@@ -74,22 +74,21 @@ export default function CadetPilotProgrammePage() {
 
         <CitableAnswer
           heading="What is a cadet pilot programme, and what do airlines publish about it?"
-          answer="A cadet pilot programme selects candidates before training begins and routes them through schools the airline has chosen, ending in a Commercial Pilot Licence. Airlines publish eligibility and structure: IndiGo states an age range of 18 to 32, 10+2 with Physics and Mathematics, a maximum of two attempts per stage, and 22 months from zero flight time. What airlines do not publish is the part candidates most want to know, which is cost, bond and starting pay. This page separates the two."
+          answer="A cadet pilot programme selects candidates before training and routes them through schools chosen for the programme. Airlines set their own eligibility, selection and training terms. IndiGo's careers information was reviewed on 10 September 2026; check the current intake directly. Before committing, request the complete cost, bond and employment terms in writing."
           sources={[{ label: INDIGO_LABEL, url: INDIGO_URL }]}
           lastUpdated={LAST_UPDATED}
         />
 
         <CitableTable
           heading="What one airline publishes, line by line"
-          intro="Taken from IndiGo's own careers information because it is the most detailed publicly available account. Other carriers publish less. Rows marked not stated are not omissions on our part; the airline does not say."
+          intro="Taken from IndiGo's careers information reviewed on 10 September 2026. Rows marked not stated were not found on that page; check the airline's current intake information before applying."
           columns={["Item", "What the airline states", "Note"]}
           rows={PUBLISHED}
           note={
             <>
-              Four of the twelve rows are unpublished, and they are the four that
-              decide affordability. Any page quoting a cadet programme fee or bond
-              length is quoting something the airline has not said, so ask the airline
-              in writing before treating a number as real.
+              Four of the twelve rows were not stated on the reviewed page.
+              Ask the airline in writing about current costs, bond and employment
+              terms before treating any third-party figure as applicable.
             </>
           }
           sources={[{ label: INDIGO_LABEL, url: INDIGO_URL }]}
@@ -106,6 +105,28 @@ export default function CadetPilotProgrammePage() {
 
         <article>
           <div className="container mx-auto px-4 max-w-3xl py-12 space-y-14">
+            <section aria-labelledby="air-india-fees">
+              <h2 id="air-india-fees" className="text-2xl md:text-3xl font-bold mb-4 text-foreground">
+                How can you check Air India cadet pilot programme fees?
+              </h2>
+              <p className="text-muted-foreground leading-relaxed">
+                We have not independently verified a current Air India programme
+                fee. Ask the airline for the applicable written terms and compare
+                the training-school charges, accommodation, travel, examinations,
+                payment schedule and refund conditions. Do not treat an online
+                estimate as a quote for a particular intake.
+              </p>
+              <p className="mt-4 text-muted-foreground leading-relaxed">
+                Check{" "}
+                <a href="https://www.airindia.com/content/cadetpilot/in/en/course-details.html" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary">
+                  Air India's programme information
+                </a>{" "}
+                for current details. Our{" "}
+                <Link to="/courses/cpl/fees" className="underline hover:text-primary">CPL cost guide</Link>{" "}
+                explains how to compare the components of a training quote.
+              </p>
+            </section>
+
             <section aria-labelledby="what-to-ask">
               <h2 id="what-to-ask" className="text-2xl md:text-3xl font-bold mb-4 text-foreground">
                 What to ask before you apply

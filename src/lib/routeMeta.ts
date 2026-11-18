@@ -314,7 +314,7 @@ const routeMeta: Record<string, RouteMeta> = {
   },
   "/pilot-salary-india": {
     title: "Pilot Salary in India: Published Data vs Claims",
-    description: "Indian airlines and DGCA do not publish pilot pay scales. Review available data and how to assess salary claims.",
+    description: "Compare pilot salary claims in India, monthly gross and in-hand pay, airline roles and the sources behind estimates.",
     canonical: `${BASE_URL}/pilot-salary-india`,
   },
   "/cadet-pilot-programme": {
@@ -339,7 +339,7 @@ const routeMeta: Record<string, RouteMeta> = {
   },
   "/courses/cpl/fees": {
     title: "CPL Fees in India: Costs & Price Sources",
-    description: "DGCA publishes examination charges, not CPL training prices. See cost components, who sets them and how to compare quotes.",
+    description: "Compare pilot training fees in India, published provider prices and the costs to check in an itemised CPL training quote.",
     canonical: `${BASE_URL}/courses/cpl/fees`,
   },
   "/atpl/brochure": {
