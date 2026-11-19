@@ -137,7 +137,7 @@ export function JourneyIntroSection() {
           }}
           className="text-center max-w-3xl mx-auto mb-8 md:mb-12"
         >
-          <span className="inline-block text-sm font-semibold text-accent bg-accent/10 px-4 py-2 rounded-full mb-4">
+          <span className="inline-block text-sm font-semibold text-primary bg-accent/10 px-4 py-2 rounded-full mb-4">
             Your Journey
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-foreground mb-3 md:mb-4">
@@ -222,7 +222,7 @@ export function ServicesSection() {
           }}
           className="text-center mb-10 md:mb-16"
         >
-          <span className="inline-block text-sm font-semibold text-accent bg-accent/10 px-4 py-2 rounded-full mb-4">
+          <span className="inline-block text-sm font-semibold text-primary bg-accent/10 px-4 py-2 rounded-full mb-4">
             Our Services
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-foreground mb-3 md:mb-4">
@@ -411,7 +411,7 @@ export function ServiceDetailsSection() {
           }}
           className="text-center mb-10 md:mb-16"
         >
-          <span className="inline-block text-sm font-semibold text-accent bg-accent/10 px-4 py-2 rounded-full mb-4">
+          <span className="inline-block text-sm font-semibold text-primary bg-accent/10 px-4 py-2 rounded-full mb-4">
             Detailed Services
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-foreground mb-3 md:mb-4">
@@ -459,7 +459,7 @@ export function ServiceDetailsSection() {
                     <h3 className="text-lg md:text-xl font-bold text-foreground mb-1">
                       {service.title}
                     </h3>
-                    <p className="text-sm md:text-base text-accent font-semibold">
+                    <p className="text-sm md:text-base text-primary font-semibold">
                       {service.subtitle}
                     </p>
                   </div>
@@ -547,7 +547,7 @@ export function StepByStepPathwaySection() {
           }}
           className="text-center mb-10 md:mb-16"
         >
-          <span className="inline-block text-sm font-semibold text-accent bg-accent/10 px-4 py-2 rounded-full mb-4">
+          <span className="inline-block text-sm font-semibold text-primary bg-accent/10 px-4 py-2 rounded-full mb-4">
             {stepBlock.eyebrow}
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-foreground mb-3 md:mb-4">
@@ -716,7 +716,7 @@ function ContentBlockSection({ block, bgClass }: { block: ContentBlock; bgClass:
           }}
           className="text-center mb-10 md:mb-16"
         >
-          <span className="inline-block text-sm font-semibold text-accent bg-accent/10 px-4 py-2 rounded-full mb-4">
+          <span className="inline-block text-sm font-semibold text-primary bg-accent/10 px-4 py-2 rounded-full mb-4">
             {block.eyebrow}
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-foreground mb-3 md:mb-4">
@@ -871,7 +871,7 @@ export function FAQSection() {
           }}
           className="text-center mb-10 md:mb-16"
         >
-          <span className="inline-block text-sm font-semibold text-accent bg-accent/10 px-4 py-2 rounded-full mb-4">
+          <span className="inline-block text-sm font-semibold text-primary bg-accent/10 px-4 py-2 rounded-full mb-4">
             FAQs
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-foreground mb-3 md:mb-4">

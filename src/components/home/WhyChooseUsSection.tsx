@@ -125,7 +125,7 @@ export function WhyChooseUsSection() {
           }}
           className="text-center mb-10 md:mb-16"
         >
-          <span className="inline-block text-sm font-semibold text-accent bg-accent/10 px-4 py-2 rounded-full mb-4">
+          <span className="inline-block text-sm font-semibold text-primary bg-accent/10 px-4 py-2 rounded-full mb-4">
             Why Choose Us
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-foreground mb-3 md:mb-4">
@@ -248,7 +248,7 @@ export function PilotTrainingInIndiaSection() {
           }}
           className="text-center mb-10 md:mb-16"
         >
-          <span className="inline-block text-sm font-semibold text-accent bg-accent/10 px-4 py-2 rounded-full mb-4">
+          <span className="inline-block text-sm font-semibold text-primary bg-accent/10 px-4 py-2 rounded-full mb-4">
             India's Aviation Industry
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-foreground mb-3 md:mb-4">
@@ -331,7 +331,7 @@ export function ChoosingRightFlyingSchoolSection() {
           }}
           className="text-center mb-10 md:mb-16"
         >
-          <span className="inline-block text-sm font-semibold text-accent bg-accent/10 px-4 py-2 rounded-full mb-4">
+          <span className="inline-block text-sm font-semibold text-primary bg-accent/10 px-4 py-2 rounded-full mb-4">
             Flying School Selection
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-foreground mb-3 md:mb-4">
@@ -409,7 +409,7 @@ export function WhyStudentsTrustFlystarSection() {
           }}
           className="text-center mb-10 md:mb-16"
         >
-          <span className="inline-block text-sm font-semibold text-accent bg-accent/10 px-4 py-2 rounded-full mb-4">
+          <span className="inline-block text-sm font-semibold text-primary bg-accent/10 px-4 py-2 rounded-full mb-4">
             Trust & Quality
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-foreground mb-3 md:mb-4">
@@ -486,7 +486,7 @@ export function LearnBeyondClassroomSection() {
           }}
           className="text-center mb-10 md:mb-16"
         >
-          <span className="inline-block text-sm font-semibold text-accent bg-accent/10 px-4 py-2 rounded-full mb-4">
+          <span className="inline-block text-sm font-semibold text-primary bg-accent/10 px-4 py-2 rounded-full mb-4">
             Practical Learning
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-foreground mb-3 md:mb-4">
@@ -563,7 +563,7 @@ export function CompletePilotTrainingSection() {
           }}
           className="text-center mb-10 md:mb-16"
         >
-          <span className="inline-block text-sm font-semibold text-accent bg-accent/10 px-4 py-2 rounded-full mb-4">
+          <span className="inline-block text-sm font-semibold text-primary bg-accent/10 px-4 py-2 rounded-full mb-4">
             Your Complete Pathway
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-foreground mb-3 md:mb-4">

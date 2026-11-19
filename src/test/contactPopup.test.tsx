@@ -166,12 +166,17 @@ describe("contact popup", () => {
   it("closes on Escape and restores focus to the launcher", () => {
     render(<ContactPopup />);
     const launcher = screen.getByRole("button", { name: "Enquire now" });
+    expect(launcher).toHaveAttribute("aria-expanded", "false");
+    expect(launcher).not.toHaveAttribute("aria-controls");
     fireEvent.click(launcher);
     const dialog = screen.getByRole("dialog", { name: "Send Us a Message" });
+    expect(launcher).toHaveAttribute("aria-expanded", "true");
+    expect(launcher).toHaveAttribute("aria-controls", dialog.id);
 
     fireEvent.keyDown(document.activeElement as HTMLElement, { key: "Escape" });
 
     expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+    expect(launcher).not.toHaveAttribute("aria-controls");
     expect(launcher).toHaveFocus();
     expect(dialog).not.toBeInTheDocument();
   });

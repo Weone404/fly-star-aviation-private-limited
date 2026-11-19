@@ -61,6 +61,7 @@ const testimonials = [
 const StarRow = (
   <div
     className="flex items-center justify-center md:justify-start gap-1 mt-3"
+    role="img"
     aria-label="5 out of 5 stars"
   >
     {Array.from({ length: 5 }).map((_, i) => (
@@ -127,7 +128,7 @@ function RevealHeader({
       }}
       className="text-center mb-10 md:mb-16"
     >
-      <span className="inline-block text-sm font-semibold bg-accent/10 text-accent px-4 py-2 rounded-full mb-4">
+      <span className="inline-block text-sm font-semibold bg-accent/10 text-primary px-4 py-2 rounded-full mb-4">
         {eyebrow}
       </span>
       <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-3 md:mb-4 text-foreground">

@@ -1,5 +1,6 @@
 ﻿import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
+import { Breadcrumb } from "@/components/ui/breadcrumb-nav";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import {
@@ -201,6 +202,7 @@ const faqs = [
 export default function IndiGoPilotInterviewPage() {
     return (
         <Layout>
+            <Breadcrumb items={[{ label: "IndiGo Pilot Interview" }]} />
 
             {/* Hero Section */}
             <section className="relative py-24 aviation-gradient text-primary-foreground">
@@ -452,7 +454,7 @@ export default function IndiGoPilotInterviewPage() {
                         viewport={{ once: true }}
                         className="text-center mb-12"
                     >
-                        <span className="inline-block text-sm font-semibold bg-amber-500/10 text-amber-600 px-4 py-2 rounded-full mb-4">
+                        <span className="inline-block text-sm font-semibold bg-amber-500/10 text-primary px-4 py-2 rounded-full mb-4">
                             🚨 New Batches Starting Soon
                         </span>
                         <h2 className="text-3xl md:text-4xl font-bold mb-4">Upcoming Batch Options</h2>
@@ -482,10 +484,10 @@ export default function IndiGoPilotInterviewPage() {
 
                     <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                         <motion.div
-                            initial={{ opacity: 0, x: -30 }}
-                            whileInView={{ opacity: 1, x: 0 }}
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            className="p-8 rounded-2xl border border-border bg-card"
+                            className="min-w-0 p-8 rounded-2xl border border-border bg-card"
                         >
                             <h3 className="text-xl font-bold mb-4">Register Early</h3>
                             <ul className="space-y-3">
@@ -504,16 +506,16 @@ export default function IndiGoPilotInterviewPage() {
                         </motion.div>
 
                         <motion.div
-                            initial={{ opacity: 0, x: 30 }}
-                            whileInView={{ opacity: 1, x: 0 }}
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            className="p-8 rounded-2xl bg-primary/5 border border-primary/20 flex flex-col justify-center"
+                            className="min-w-0 p-8 rounded-2xl bg-primary/5 border border-primary/20 flex flex-col justify-center"
                         >
                             <p className="text-muted-foreground mb-6">
                                 Seats are limited to ensure every candidate receives personalized mentoring and focused preparation.
                                 Contact us now to secure your spot before the next IndiGo recruitment cycle.
                             </p>
-                            <Button variant="gold" size="lg" asChild className="w-full">
+                            <Button variant="gold" size="lg" asChild className="w-full min-w-0 h-auto min-h-12 whitespace-normal px-4 py-3">
                                 <Link to="/contact">
                                     Reserve Your Seat
                                     <ArrowRight className="h-4 w-4 ml-2" />

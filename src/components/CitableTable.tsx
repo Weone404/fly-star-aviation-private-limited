@@ -48,7 +48,7 @@ export function CitableTable({ heading, intro, columns, rows, note, sources, las
           <p className="text-base md:text-lg leading-relaxed text-muted-foreground mb-6">{intro}</p>
         )}
 
-        <div className="overflow-x-auto rounded-lg border border-border">
+        <div className="overflow-x-auto rounded-lg border border-border" role="region" aria-label={heading} tabIndex={0}>
           <table className="w-full text-left text-sm md:text-base border-collapse">
             <thead>
               <tr className="bg-muted/50">
@@ -73,7 +73,7 @@ export function CitableTable({ heading, intro, columns, rows, note, sources, las
           </table>
         </div>
 
-        {note && <p className="mt-4 text-sm text-muted-foreground/80 italic">{note}</p>}
+        {note && <p className="mt-4 text-sm text-muted-foreground italic">{note}</p>}
 
         {sources && sources.length > 0 && (
           <p className="mt-4 text-sm text-muted-foreground">
@@ -93,7 +93,7 @@ export function CitableTable({ heading, intro, columns, rows, note, sources, las
           </p>
         )}
 
-        <p className="mt-3 text-sm text-muted-foreground/70">
+        <p className="mt-3 text-sm text-muted-foreground">
           Last updated: <time dateTime={lastUpdated}>{formatDate(lastUpdated)}</time>
         </p>
       </div>

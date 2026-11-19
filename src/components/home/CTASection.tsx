@@ -70,7 +70,7 @@ const SEARCH_TOPICS = [
 /** Small reusable heading with the accent "eyebrow" pill used across sections. */
 function Eyebrow({ children }: { children: React.ReactNode }) {
   return (
-    <span className="inline-block text-sm font-semibold text-accent bg-accent/10 px-4 py-2 rounded-full mb-4">
+    <span className="inline-block text-sm font-semibold text-primary bg-accent/10 px-4 py-2 rounded-full mb-4">
       {children}
     </span>
   );

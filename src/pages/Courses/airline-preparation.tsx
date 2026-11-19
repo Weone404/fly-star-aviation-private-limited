@@ -1,5 +1,6 @@
 ﻿import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
+import { Breadcrumb } from "@/components/ui/breadcrumb-nav";
 import { SocialShareButtons } from "@/components/SocialShareButtons";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -194,6 +195,7 @@ const faqs = [
 export default function AirlinePreparationPage() {
     return (
         <Layout>
+            <Breadcrumb items={[{ label: "Airline Preparation" }]} />
 
             {/* ── Hero Section ─────────────────────────────────────────── */}
             <section className="relative py-24 aviation-gradient text-primary-foreground">

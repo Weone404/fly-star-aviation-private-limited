@@ -14,7 +14,7 @@ export function Breadcrumb({ items }: BreadcrumbProps) {
   return (
     <div className="bg-muted/30 py-4 border-b border-border">
       <div className="container">
-        <nav className="flex items-center gap-2 text-sm flex-wrap">
+        <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-sm flex-wrap">
           <Link
             to="/"
             className="text-muted-foreground hover:text-primary transition-colors flex items-center gap-1"

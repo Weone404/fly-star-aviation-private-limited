@@ -1,6 +1,7 @@
 ﻿import { motion } from "framer-motion";
 import { useState, useEffect, useCallback } from "react";
 import { Layout } from "@/components/layout/Layout";
+import { Breadcrumb } from "@/components/ui/breadcrumb-nav";
 import { CitableAnswer } from "@/components/CitableAnswer";
 import { CitableTable } from "@/components/CitableTable";
 import { SocialShareButtons } from "@/components/SocialShareButtons";
@@ -280,6 +281,7 @@ export default function CPLCoursePage() {
 
     return (
         <Layout>
+            <Breadcrumb items={[{ label: "CPL Training" }]} />
             <section className="relative py-24 aviation-gradient text-primary-foreground overflow-hidden">
                 <div className="container">
                     <div className="flex flex-col lg:flex-row items-center gap-12">
@@ -516,7 +518,7 @@ export default function CPLCoursePage() {
                         </p>
                     </motion.div>
 
-                    <div className="max-w-5xl mx-auto overflow-x-auto rounded-2xl border border-border">
+                    <div className="max-w-5xl mx-auto overflow-x-auto rounded-2xl border border-border" role="region" aria-label="Ground and flying training comparison" tabIndex={0}>
                         <table className="w-full min-w-[640px] border-collapse bg-card">
                             <thead className="bg-muted/50">
                                 <tr>

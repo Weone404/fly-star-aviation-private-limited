@@ -108,11 +108,12 @@ function breadcrumb(path: string): JsonLdNode {
   let acc = "";
   segments.forEach((seg, i) => {
     acc += `/${seg}`;
+    if (acc === "/courses" && i < segments.length - 1) return;
     const isBlogRoot = post && i === 0;
     const isBlogLeaf = post && i === segments.length - 1;
     items.push({
       "@type": "ListItem",
-      position: i + 2,
+      position: items.length + 1,
       name: isBlogLeaf ? post.title : labelFor(seg),
       item: isBlogRoot ? `${SITE_ORIGIN}/blogs` : `${SITE_ORIGIN}${acc}`,
     });

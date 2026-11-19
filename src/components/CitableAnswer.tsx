@@ -75,7 +75,7 @@ export function CitableAnswer({ heading, answer, faqs, sources, lastUpdated }: C
           </p>
         )}
 
-        <p className="mt-4 text-sm text-muted-foreground/70">
+        <p className="mt-4 text-sm text-muted-foreground">
           Last updated:{" "}
           <time dateTime={lastUpdated}>{formatDate(lastUpdated)}</time>
         </p>

@@ -1,5 +1,6 @@
 ﻿import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
+import { Breadcrumb } from "@/components/ui/breadcrumb-nav";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import {
@@ -125,6 +126,7 @@ const faqs = [
 export default function CabinCrewPage() {
     return (
         <Layout>
+            <Breadcrumb items={[{ label: "Cabin Crew" }]} />
 
             {/* Hero Section */}
             <section className="relative py-24 aviation-gradient text-primary-foreground">
@@ -205,7 +207,7 @@ export default function CabinCrewPage() {
                         viewport={{ once: true }}
                         className="text-center"
                     >
-                        <Button variant="gold" size="lg" asChild>
+                        <Button variant="gold" size="lg" asChild className="max-w-full h-auto min-h-12 whitespace-normal py-3">
                             <Link to="/contact">
                                 Check All Cabin Crew Opportunities Here
                                 <ArrowRight className="h-4 w-4 ml-2" />

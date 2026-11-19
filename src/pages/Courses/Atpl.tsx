@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
+import { Breadcrumb } from "@/components/ui/breadcrumb-nav";
 import { CitableAnswer } from "@/components/CitableAnswer";
 import { SocialShareButtons } from "@/components/SocialShareButtons";
 import { Button } from "@/components/ui/button";
@@ -234,6 +235,7 @@ const faqs = [
 export default function ATPLCoursePage() {
     return (
         <Layout>
+            <Breadcrumb items={[{ label: "ATPL Training" }]} />
 
             {/* ── Hero ───────────────────────────────────────────────── */}
             <section className="relative py-24 aviation-gradient text-primary-foreground overflow-hidden">

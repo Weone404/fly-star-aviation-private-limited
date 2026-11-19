@@ -57,8 +57,7 @@ export default function CplFeesPage() {
     <Layout>
       <Breadcrumb
         items={[
-          { label: "Courses", href: "/courses/cpl" },
-          { label: "CPL", href: "/courses/cpl" },
+          { label: "CPL Training", href: "/courses/cpl" },
           { label: "Fees" },
         ]}
       />

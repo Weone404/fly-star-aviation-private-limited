@@ -282,7 +282,7 @@ export function Footer() {
                 </a>
               ))}
             </div>
-            <p className="text-white/50 text-sm text-center">
+            <p className="text-white/70 text-sm text-center">
               © {new Date().getFullYear()} Flying Star Aviator. All rights reserved. |
               <Link to="/editorial-policy" className="hover:text-white ml-1">Editorial Policy</Link> |
               <Link to="/sitemap" className="hover:text-white ml-1">Sitemap</Link>

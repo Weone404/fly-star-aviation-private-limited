@@ -342,12 +342,12 @@ export default function ContactPopup(): JSX.Element {
           display: flex; width: fit-content; margin: 16px auto;
           align-items: center; gap: 8px;
           padding: 12px 18px; border: 0; border-radius: 999px;
-          background: var(--wa); color: var(--white);
+          background: var(--wa); color: var(--sky-deep);
           box-shadow: 0 8px 24px rgba(0,0,0,0.2);
           font: 700 13px "Segoe UI", sans-serif; cursor: pointer;
         }
         .fsa-launcher:hover { background: #1dbc5a; }
-        .fsa-launcher:focus-visible { outline: 3px solid var(--gold-light); outline-offset: 3px; }
+        .fsa-launcher:focus-visible { outline: 3px solid var(--sky-deep); outline-offset: 3px; }
 
         /* ── Overlay ── */
         .fsa-overlay {
@@ -572,7 +572,7 @@ export default function ContactPopup(): JSX.Element {
               type="button"
               className="fsa-launcher"
               aria-haspopup="dialog"
-              aria-controls="fsa-contact-dialog"
+              aria-controls={isOpen ? "fsa-contact-dialog" : undefined}
               aria-expanded={isOpen}
               onClick={() => {
                   focusReturnRef.current = launcherRef.current;

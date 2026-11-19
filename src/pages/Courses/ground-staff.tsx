@@ -1,5 +1,6 @@
 ﻿import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
+import { Breadcrumb } from "@/components/ui/breadcrumb-nav";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import {
@@ -203,6 +204,7 @@ const admissionProcess = [
 export default function AirportGroundStaffCoursePage() {
     return (
         <Layout>
+            <Breadcrumb items={[{ label: "Ground Staff" }]} />
 
             {/* Hero Section */}
             <section className="relative py-24 aviation-gradient text-primary-foreground">
@@ -510,10 +512,10 @@ export default function AirportGroundStaffCoursePage() {
 
                     <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                         <motion.div
-                            initial={{ opacity: 0, x: -30 }}
-                            whileInView={{ opacity: 1, x: 0 }}
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            className="p-8 rounded-2xl border border-border bg-card"
+                            className="min-w-0 p-8 rounded-2xl border border-border bg-card"
                         >
                             <h3 className="text-xl font-bold mb-6">Fee Range & Inclusions</h3>
                             <div className="space-y-4 mb-6">
@@ -545,16 +547,16 @@ export default function AirportGroundStaffCoursePage() {
                         </motion.div>
 
                         <motion.div
-                            initial={{ opacity: 0, x: 30 }}
-                            whileInView={{ opacity: 1, x: 0 }}
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            className="p-8 rounded-2xl bg-primary/5 border border-primary/20 flex flex-col justify-center"
+                            className="min-w-0 p-8 rounded-2xl bg-primary/5 border border-primary/20 flex flex-col justify-center"
                         >
                             <p className="text-muted-foreground mb-6">
                                 The course fees vary from institute to institute based on infrastructure, facilities, and training
                                 quality. This investment opens doors to exciting career opportunities in India's growing aviation sector.
                             </p>
-                            <Button variant="gold" size="lg" asChild className="w-full">
+                            <Button variant="gold" size="lg" asChild className="w-full min-w-0 h-auto min-h-12 whitespace-normal px-4 py-3">
                                 <Link to="/contact">
                                     Get Detailed Fee Breakdown
                                     <ArrowRight className="h-4 w-4 ml-2" />

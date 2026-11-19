@@ -167,27 +167,55 @@ export function Header() {
 
             {/* Desktop Navigation */}
             <nav className="hidden xl:flex items-center gap-2">
-              {navigation.map((item) => (
+              {navigation.map((item, index) => (
                 <div
                   key={item.name}
                   className="relative"
                   onMouseEnter={() => item.children && setActiveDropdown(item.name)}
-                  onMouseLeave={() => setActiveDropdown(null)}
+                  onMouseLeave={(event) => {
+                    if (!event.currentTarget.contains(document.activeElement)) setActiveDropdown(null);
+                  }}
+                  onBlur={(event) => {
+                    if (!event.currentTarget.contains(event.relatedTarget)) setActiveDropdown(null);
+                  }}
+                  onKeyDown={(event) => {
+                    if (event.key === "Escape" && activeDropdown === item.name) {
+                      setActiveDropdown(null);
+                      event.currentTarget.querySelector<HTMLButtonElement>("button")?.focus();
+                    }
+                  }}
                 >
-                  <Link
-                    to={item.href}
-                    className={`flex items-center gap-1 px-5 py-3 text-xl font-semibold transition-colors ${location.pathname === item.href ||
-                      location.pathname.startsWith(item.href + "/")
-                      ? "text-primary"
-                      : "text-foreground"
-                      }`}
-                  >
-                    {item.name}
-                    {item.children && <ChevronDown className="h-5 w-5" />}
-                  </Link>
+                  <div className="flex items-center">
+                    <Link
+                      to={item.href}
+                      className={`py-3 pl-4 text-xl font-semibold transition-colors ${item.children ? "" : "pr-4"} ${location.pathname === item.href ||
+                        location.pathname.startsWith(item.href + "/")
+                        ? "text-primary"
+                        : "text-foreground"
+                        }`}
+                    >
+                      {item.name}
+                    </Link>
+                    {item.children && (
+                      <button
+                        type="button"
+                        aria-label={`${item.name} submenu`}
+                        aria-expanded={activeDropdown === item.name}
+                        aria-controls={`desktop-submenu-${index}`}
+                        className="p-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#115f32]"
+                        onClick={() => setActiveDropdown((current) => current === item.name ? null : item.name)}
+                      >
+                        <ChevronDown className="h-5 w-5" aria-hidden="true" />
+                      </button>
+                    )}
+                  </div>
 
-                  {item.children && activeDropdown === item.name && (
-                    <div className="absolute top-full left-0 w-72 bg-background rounded-xl shadow-hover border p-2 transition-all duration-200 ease-out animate-in fade-in">
+                  {item.children && (
+                    <div
+                      id={`desktop-submenu-${index}`}
+                      hidden={activeDropdown !== item.name}
+                      className="absolute top-full left-0 w-72 bg-background rounded-xl shadow-hover border p-2 transition-all duration-200 ease-out animate-in fade-in"
+                    >
                       {item.children.map((child) => (
                         <Link
                           key={child.href}

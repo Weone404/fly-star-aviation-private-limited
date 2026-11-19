@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { X } from 'lucide-react'
 
 const DISMISS_KEY = 'fsa.offer.dismissed'
 
@@ -68,7 +69,7 @@ export default function SpecialOfferBanner() {
           aria-label="Dismiss this offer"
           className="absolute right-1 top-1 z-10 grid h-11 w-11 place-items-center rounded-full text-lg font-bold text-[#12210f] transition-colors hover:bg-black/10 lg:text-white/70 lg:hover:bg-white/10"
         >
-          ×
+          <X className="h-5 w-5" aria-hidden="true" />
         </button>
 
         <Link to="/contact" className="block focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-300">

@@ -59,6 +59,36 @@ describe("internal navigation", () => {
     );
   });
 
+  it("opens and closes the desktop submenu with keyboard-accessible controls", () => {
+    renderWithRouter(<Header />);
+
+    const toggle = screen.getByRole("button", { name: "Courses submenu" });
+    expect(toggle).toHaveAttribute("aria-expanded", "false");
+    expect(screen.queryByRole("link", { name: "Adapt test IndiGo" })).not.toBeInTheDocument();
+
+    fireEvent.click(toggle);
+    expect(toggle).toHaveAttribute("aria-expanded", "true");
+    const child = screen.getByRole("link", { name: "Adapt test IndiGo" });
+    expect(child).toHaveAttribute("href", "/courses/Indigo-pilot-interview");
+    child.focus();
+    fireEvent.keyDown(child, { key: "Escape" });
+    expect(toggle).toHaveFocus();
+    expect(toggle).toHaveAttribute("aria-expanded", "false");
+    expect(screen.queryByRole("link", { name: "Adapt test IndiGo" })).not.toBeInTheDocument();
+  });
+
+  it("preserves pointer access to the course submenu", () => {
+    renderWithRouter(<Header />);
+
+    const toggle = screen.getByRole("button", { name: "Courses submenu" });
+    const group = toggle.parentElement?.parentElement;
+    if (!group) throw new Error("Course navigation group missing");
+    fireEvent.mouseEnter(group);
+    expect(screen.getByRole("link", { name: "Adapt test Air India" })).toBeInTheDocument();
+    fireEvent.mouseLeave(group);
+    expect(toggle).toHaveAttribute("aria-expanded", "false");
+  });
+
   it("uses section-level headings for the footer groups", () => {
     const { container } = renderWithRouter(<Footer />);
 

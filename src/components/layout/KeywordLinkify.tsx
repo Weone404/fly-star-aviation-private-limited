@@ -75,7 +75,7 @@ export function KeywordLinkify({ children }: KeywordLinkifyProps) {
 
       if (usable) {
         elements.push(
-          <Link key={key} to={href} className="text-accent hover:underline">
+          <Link key={key} to={href} className="underline underline-offset-2">
             {matchedText}
           </Link>
         );

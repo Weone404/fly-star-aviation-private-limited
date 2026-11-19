@@ -1,5 +1,6 @@
  import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
+import { Breadcrumb } from "@/components/ui/breadcrumb-nav";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import {
@@ -155,6 +156,7 @@ const faqs = [
 export default function AirIndiaPilotInterviewPage() {
     return (
         <Layout>
+            <Breadcrumb items={[{ label: "Air India Pilot Interview" }]} />
 
             {/* Hero Section */}
             <section className="relative py-24 aviation-gradient text-primary-foreground">
@@ -173,8 +175,8 @@ export default function AirIndiaPilotInterviewPage() {
                         <p className="text-xl text-primary-foreground/80 mb-8">
                             At We One Aviation, we offer a structured and airline-focused training program designed to help pilots successfully clear the Air India recruitment process. Whether you are a CPL holder or a Type Rated pilot (A320/B737), our training prepares you for every stage of selection with precision and confidence.
                         </p>
-                        <div className="flex flex-col sm:flex-row gap-4">
-                            <Button variant="gold" size="lg" asChild>
+                        <div className="flex flex-col sm:flex-row flex-wrap gap-4">
+                            <Button variant="gold" size="lg" asChild className="max-w-full h-auto min-h-12 whitespace-normal py-3">
                                 <Link to="/contact">
                                     Join Preparation Program
                                     <ArrowRight className="h-4 w-4 ml-2" />
@@ -338,7 +340,7 @@ export default function AirIndiaPilotInterviewPage() {
                         viewport={{ once: true }}
                         className="text-center mt-10"
                     >
-                        <Button variant="gold" size="lg" asChild>
+                        <Button variant="gold" size="lg" asChild className="max-w-full h-auto min-h-12 whitespace-normal py-3">
                             <Link to="/contact">
                                 Enroll as Type Rated Pilot
                                 <ArrowRight className="h-4 w-4 ml-2" />
@@ -403,10 +405,10 @@ export default function AirIndiaPilotInterviewPage() {
 
                     <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                         <motion.div
-                            initial={{ opacity: 0, x: -30 }}
-                            whileInView={{ opacity: 1, x: 0 }}
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            className="p-8 rounded-2xl border border-border bg-card"
+                            className="min-w-0 p-8 rounded-2xl border border-border bg-card"
                         >
                             <h3 className="text-xl font-bold mb-6">Batch Details</h3>
                             <div className="space-y-4">
@@ -425,15 +427,15 @@ export default function AirIndiaPilotInterviewPage() {
                         </motion.div>
 
                         <motion.div
-                            initial={{ opacity: 0, x: 30 }}
-                            whileInView={{ opacity: 1, x: 0 }}
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            className="p-8 rounded-2xl bg-primary/5 border border-primary/20 flex flex-col justify-center"
+                            className="min-w-0 p-8 rounded-2xl bg-primary/5 border border-primary/20 flex flex-col justify-center"
                         >
                             <p className="text-muted-foreground mb-6">
                                 Seats are limited for each batch to ensure focused, personalized attention for every pilot. Don't miss your window to prepare with India's leading airline interview training team.
                             </p>
-                            <Button variant="gold" size="lg" asChild className="w-full">
+                            <Button variant="gold" size="lg" asChild className="w-full min-w-0 h-auto min-h-12 whitespace-normal px-4 py-3">
                                 <Link to="/contact">
                                     Reserve Your Seat
                                     <ArrowRight className="h-4 w-4 ml-2" />
@@ -622,8 +624,8 @@ export default function AirIndiaPilotInterviewPage() {
                         <p className="text-primary-foreground/80 text-lg mb-8">
                             Join We One Aviation's Air India Pilot Interview Preparation Program and give yourself the edge you need to succeed in one of India's most competitive airline selection processes.
                         </p>
-                        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                            <Button variant="gold" size="lg" asChild>
+                        <div className="flex flex-col sm:flex-row flex-wrap gap-4 justify-center">
+                            <Button variant="gold" size="lg" asChild className="max-w-full h-auto min-h-12 whitespace-normal py-3">
                                 <Link to="/contact">
                                     Join Preparation Program Now
                                     <ArrowRight className="h-4 w-4 ml-2" />
