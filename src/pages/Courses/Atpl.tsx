@@ -714,7 +714,7 @@ export default function ATPLCoursePage() {
                                     This investment leads to one of aviation's most financially rewarding careers — with starting salaries
                                     up to <strong className="text-foreground">₹1,50,000/month</strong> and growing rapidly with experience.
                                 </p>
-                                <Button variant="gold" size="lg" asChild className="w-full">
+                                <Button variant="gold" size="lg" asChild className="w-full whitespace-normal">
                                     <Link to="/contact">
                                         Get Detailed Fee Breakdown
                                         <ArrowRight className="h-4 w-4 ml-2" />
