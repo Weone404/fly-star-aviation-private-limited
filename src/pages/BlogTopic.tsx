@@ -2,7 +2,7 @@ import { useMemo } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
-import { getReadingMinutes } from '@/lib/blogData'
+import { getBlogDates, getReadingMinutes } from '@/lib/blogData'
 import { TOPICS, postsInTopic, topicBySlug } from '@/lib/blogTopics'
 import { BlogMasthead, formatDate } from '@/components/blog/EditorialKit'
 import type { BlogPost } from '@/types/blog'
@@ -132,38 +132,35 @@ export default function BlogTopic() {
         <section aria-labelledby="reading-order" className="mt-12">
           <h2 id="reading-order" className="text-2xl font-bold text-foreground">Read in this order</h2>
           <ol className="mt-6 space-y-4">
-            {posts.map((post: BlogPost, i) => (
-              <li key={post.slug}>
-                <Link
-                  to={`/blog/${post.slug}`}
-                  className="flex gap-4 rounded-xl border border-border bg-card p-5 transition-colors hover:border-primary/40"
-                >
-                  <span
-                    aria-hidden="true"
-                    className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-primary/10 text-sm font-bold text-primary"
+            {posts.map((post: BlogPost, i) => {
+              const { publishedAt, updatedAt } = getBlogDates(post)
+              return (
+                <li key={post.slug}>
+                  <Link
+                    to={`/blog/${post.slug}`}
+                    className="flex gap-4 rounded-xl border border-border bg-card p-5 transition-colors hover:border-primary/40"
                   >
-                    {i + 1}
-                  </span>
-                  <span className="min-w-0">
-                    <span className="block text-base font-bold leading-snug text-foreground">{post.title}</span>
-                    {post.excerpt && (
-                      <span className="mt-2 block text-sm leading-relaxed text-muted-foreground">{post.excerpt}</span>
-                    )}
-                    <span className="mt-2 block text-xs text-muted-foreground">
-                      {getReadingMinutes(post)} min read
-                      {(post.updatedAt || post.createdAt) && (
-                        <>
-                          {' · Last verified '}
-                          <time dateTime={post.updatedAt || post.createdAt}>
-                            {formatDate(post.updatedAt || post.createdAt)}
-                          </time>
-                        </>
-                      )}
+                    <span
+                      aria-hidden="true"
+                      className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-primary/10 text-sm font-bold text-primary"
+                    >
+                      {i + 1}
                     </span>
-                  </span>
-                </Link>
-              </li>
-            ))}
+                    <span className="min-w-0">
+                      <span className="block text-base font-bold leading-snug text-foreground">{post.title}</span>
+                      {post.excerpt && (
+                        <span className="mt-2 block text-sm leading-relaxed text-muted-foreground">{post.excerpt}</span>
+                      )}
+                      <span className="mt-2 block text-xs text-muted-foreground">
+                        {getReadingMinutes(post)} min read
+                        {publishedAt && <> · Published <time dateTime={publishedAt}>{formatDate(publishedAt)}</time></>}
+                        {updatedAt && <> · Updated <time dateTime={updatedAt}>{formatDate(updatedAt)}</time></>}
+                      </span>
+                    </span>
+                  </Link>
+                </li>
+              )
+            })}
           </ol>
         </section>
 

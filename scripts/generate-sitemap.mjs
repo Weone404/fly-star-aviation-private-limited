@@ -58,25 +58,31 @@ function aliasPaths() {
  */
 const MIN_SITEMAP_WORDS = 300;
 
-async function blogPaths() {
-  const mod = await import(pathToFileURL(path.join(ROOT, "src/lib/blogData.js")).href);
+export function blogPaths(posts, getWordCount) {
   const skipped = [];
   const paths = [];
 
-  for (const post of mod.BLOG_POSTS) {
+  for (const post of posts) {
+    if (post.status != null && post.status !== "published" && post.status !== "updated") continue;
     if (!post.slug) {
       skipped.push(`${post._id} (no slug — legacy /blogs/<id> only)`);
       continue;
     }
-    const words = mod.getWordCount(post);
+    const words = getWordCount(post);
     if (words < MIN_SITEMAP_WORDS) {
       skipped.push(`${post.slug} (${words} words)`);
       continue;
     }
-    if (!/^\d{4}-\d{2}-\d{2}$/.test(post.updatedAt)) {
-      throw new Error(`Invalid updatedAt date for blog post ${post.slug}`);
+    const value = post.updatedAt || post.dateModified || post.publishedAt || post.createdAt;
+    const iso = typeof value === "string" &&
+      /^\d{4}-\d{2}-\d{2}(?:T\d{2}:\d{2}:\d{2}(?:\.\d{1,3})?(?:Z|[+-]\d{2}:\d{2}))?$/.test(value);
+    const date = iso && new Date(value);
+    const calendarDate = iso && new Date(`${value.slice(0, 10)}T00:00:00Z`);
+    if (!date || Number.isNaN(date.getTime()) || Number.isNaN(calendarDate.getTime()) ||
+        calendarDate.toISOString().slice(0, 10) !== value.slice(0, 10)) {
+      throw new Error(`[sitemap] ${post.slug} has no valid publication or modification date`);
     }
-    paths.push({ path: `/blog/${post.slug}`, lastmod: post.updatedAt });
+    paths.push({ path: `/blog/${post.slug}`, lastmod: date.toISOString().slice(0, 10) });
   }
 
   for (const s of skipped) console.log(`[sitemap] blog post not advertised: ${s}`);
@@ -95,7 +101,8 @@ async function main() {
     paths.add(clean);
   }
   const blogLastmod = new Map();
-  for (const { path: blogPath, lastmod } of await blogPaths()) {
+  const mod = await import(pathToFileURL(path.join(ROOT, "src/lib/blogData.js")).href);
+  for (const { path: blogPath, lastmod } of blogPaths(mod.BLOG_POSTS, mod.getWordCount)) {
     paths.add(blogPath);
     blogLastmod.set(blogPath, lastmod);
   }
@@ -119,4 +126,6 @@ async function main() {
   console.log(`[sitemap] ${sorted.length} URLs written, all of them prerendered.`);
 }
 
-main();
+if (process.argv[1] && import.meta.url === pathToFileURL(path.resolve(process.argv[1])).href) {
+  main();
+}

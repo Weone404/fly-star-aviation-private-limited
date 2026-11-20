@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { APPROVED_POSTS, REFUSED_POSTS, isApproved } from "../lib/blogApproval";
-import { assess, partition, postHash, HASHED_FIELDS } from "../../scripts/blogGate.mjs";
+import { assess, normalise, partition, postHash } from "../../scripts/blogGate.mjs";
 
 const gate = { minWords: 300, denySlugs: [], denyIds: [], spamMarkers: [] };
 const body = (n: number) => `<p>${Array(n).fill("word").join(" ")}</p>`;
@@ -69,10 +69,18 @@ describe("blog approval list", () => {
     }
   });
 
-  it("hashes every field that renders", () => {
-    expect(new Set(HASHED_FIELDS)).toEqual(
-      new Set(["slug", "title", "excerpt", "content", "coverImage", "category"])
-    );
+  it("invalidates approval when any normalized publication field changes", () => {
+    const original = { _id: "1", slug: "clean-post", title: "Clean", content: body(900), intro: "Reviewed" };
+    const approvals = [{ slug: original.slug, sha256: postHash(original), approvedOn: "2026-09-04" }];
+    for (const field of Object.keys(normalise(original, original.slug))) {
+      expect(assess({ ...original, [field]: `changed-${field}` }, gate, approvals).ok, field).toBe(false);
+    }
+  });
+
+  it.each(["draft", "archived"])("holds back an approved %s post", (status) => {
+    const post = { slug: "clean-post", title: "Clean", content: body(900), status };
+    const approvals = [{ slug: post.slug, sha256: postHash(post), approvedOn: "2026-09-04" }];
+    expect(assess(post, gate, approvals).ok).toBe(false);
   });
 
   it("is not fooled by text moved across a field boundary", () => {

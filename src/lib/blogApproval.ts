@@ -25,17 +25,18 @@
  * commit. That failure is the feature: an edit you did not make cannot reach the
  * site quietly.
  *
+ * Hash migration: older six-field hashes require re-review and re-pinning.
+ * The expanded hashes also require re-review when _id, intro, or dateModified
+ * is populated; those values were not protected by the earlier hash.
+ *
  * Imported by the browser bundle as well as the build scripts, so held-back
  * posts stop rendering for visitors too — not just for crawlers.
  */
 export interface ApprovedPost {
   slug: string;
   /**
-   * sha256 over every field that renders — slug, title, excerpt, content,
-   * coverImage, category — at the moment of approval. See HASHED_FIELDS in
-   * scripts/blogGate.mjs. Pinning content alone was not enough: an
-   * unauthenticated PUT could swap the title, which is the H1 and the meta
-   * title, without changing the content hash.
+   * sha256 over publication-relevant fields at approval. See
+   * scripts/blogGate.mjs for the field list and migration handling.
    */
   sha256: string;
   approvedOn: string;

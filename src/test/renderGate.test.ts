@@ -61,6 +61,38 @@ function vercelRedirectSources(): Set<string> {
 }
 
 describe("render gate", () => {
+  it("uses verified article dates and excludes non-public posts", async () => {
+    const { blogPaths: sitemapBlogs } = await import("../../scripts/generate-sitemap.mjs");
+    const posts = [
+      { slug: "updated", updatedAt: "2026-03-04", createdAt: "2026-01-01" },
+      { slug: "published", publishedAt: "2026-02-01" },
+      { slug: "draft", status: "draft" },
+      { slug: "archived", status: "archived" },
+    ];
+    expect(sitemapBlogs(posts, () => 400)).toEqual([
+      { path: "/blog/updated", lastmod: "2026-03-04" },
+      { path: "/blog/published", lastmod: "2026-02-01" },
+    ]);
+    for (const date of ["", "2026-02-30", "not-a-date"]) {
+      expect(() => sitemapBlogs([{ slug: "bad", updatedAt: date }], () => 400)).toThrow();
+    }
+  });
+
+  it("preserves all 13 numeric blog redirects before filesystem handling", async () => {
+    const { BLOG_POSTS } = await import("../lib/blogData.js");
+    const config = JSON.parse(readFileSync(resolve(ROOT, "vercel.json"), "utf8"));
+    const filesystemIndex = config.routes.findIndex((route) => route.handle === "filesystem");
+    const legacy = BLOG_POSTS.filter((post) => post._id && post.slug);
+    expect(legacy).toHaveLength(13);
+    for (const post of legacy) {
+      const source = `/blogs/${post._id}`;
+      const index = config.routes.findIndex((route) => route.src === source);
+      expect(index, source).toBeGreaterThanOrEqual(0);
+      expect(index, source).toBeLessThan(filesystemIndex);
+      expect(config.routes[index]).toMatchObject({ status: 308, dest: `/blog/${post.slug}` });
+    }
+  });
+
   it("prerenders the reference pages and keeps the feed generated", async () => {
     const rendered = new Set([...routeMetaPaths(), ...(await blogPaths())]);
     for (const p of ["/faq", "/glossary", "/editorial-policy"]) {

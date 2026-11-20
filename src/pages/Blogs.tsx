@@ -2,7 +2,7 @@ import { useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
-import { BLOG_POSTS, sortBlogsByDate, getReadingMinutes } from '@/lib/blogData'
+import { BLOG_POSTS, sortBlogsByDate, getBlogDates, getReadingMinutes } from '@/lib/blogData'
 import { TOPICS, postsInTopic } from '@/lib/blogTopics'
 import { imagesFor, isGenericCover } from '@/lib/blogImages'
 import { BlogMasthead, IconArrow, formatDate } from '@/components/blog/EditorialKit'
@@ -11,16 +11,22 @@ import type { BlogPost } from '@/types/blog'
 const ALL = 'All'
 
 function Meta({ post }: { post: BlogPost }) {
-  const verified = post.updatedAt || post.createdAt
+  const { publishedAt, updatedAt } = getBlogDates(post)
   return (
     <p className="mt-3 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-muted-foreground">
       <span>{getReadingMinutes(post)} min read</span>
-      {verified && (
+      {publishedAt && (
         <>
           <span aria-hidden="true">·</span>
           <span>
-            Last verified <time dateTime={verified}>{formatDate(verified)}</time>
+            Published <time dateTime={publishedAt}>{formatDate(publishedAt)}</time>
           </span>
+        </>
+      )}
+      {updatedAt && (
+        <>
+          <span aria-hidden="true">·</span>
+          <span>Updated <time dateTime={updatedAt}>{formatDate(updatedAt)}</time></span>
         </>
       )}
     </p>
@@ -44,6 +50,8 @@ function Cover({ post, className }: { post: BlogPost; className?: string }) {
       <img
         src={diagram.file}
         alt={diagram.alt}
+        width={diagram.width || 1200}
+        height={diagram.height || 675}
         loading="lazy"
         decoding="async"
         className={`${fit} bg-background object-contain object-top`}
@@ -51,11 +59,12 @@ function Cover({ post, className }: { post: BlogPost; className?: string }) {
     )
   }
 
-  if (post.coverImage && !isGenericCover(post.coverImage)) {
+  const coverImage = post.featuredImage || post.coverImage
+  if (coverImage && !isGenericCover(coverImage)) {
     return (
       <img
-        src={post.coverImage}
-        alt={post.coverAlt || post.title}
+        src={coverImage}
+        alt={post.imageAlt || post.coverAlt || post.title}
         width={1200}
         height={800}
         loading="lazy"

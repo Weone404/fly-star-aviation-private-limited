@@ -2,12 +2,13 @@ import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { getRouteMeta } from "@/lib/routeMeta";
 import { GLOBAL_KEYWORDS } from "@/lib/seoKeywords";
+import { httpsImageUrl } from "@/lib/routes";
 
 export function useMeta() {
   const location = useLocation();
 
   useEffect(() => {
-    const { title, description, canonical, ogTitle, ogDescription, ogImage, twitterImage } = getRouteMeta(location.pathname);
+    const { title, description, canonical, ogTitle, ogDescription, ogImage, twitterImage, ogType } = getRouteMeta(location.pathname);
 
     const titleTags = Array.from(document.head.querySelectorAll("title"));
     const titleTag = titleTags.shift() ?? document.createElement("title");
@@ -39,12 +40,12 @@ export function useMeta() {
     setMeta('meta[property="og:title"]', "content", ogTitle || title);
     setMeta('meta[property="og:description"]', "content", ogDescription || description);
     setMeta('meta[property="og:url"]', "content", canonical);
-    setMeta('meta[property="og:type"]', "content", "website");
-    setMeta('meta[property="og:image"]', "content", ogImage || "/assets/hero-aircraft-1600w.jpg");
+    setMeta('meta[property="og:type"]', "content", ogType || "website");
+    setMeta('meta[property="og:image"]', "content", httpsImageUrl(ogImage));
     setMeta('meta[name="twitter:card"]', "content", "summary_large_image");
     setMeta('meta[name="twitter:title"]', "content", title);
     setMeta('meta[name="twitter:description"]', "content", description);
-    setMeta('meta[name="twitter:image"]', "content", twitterImage || ogImage || "/assets/hero-aircraft-1600w.jpg");
+    setMeta('meta[name="twitter:image"]', "content", httpsImageUrl(twitterImage || ogImage));
     setMeta('link[rel~="canonical"]', "href", canonical);
 
     const keywords = document.querySelector('meta[name="keywords"]');

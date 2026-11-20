@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { BLOG_POSTS, getBlogRoutes, getReadingMinutes, getWordCount, sortBlogsByDate } from "@/lib/blogData.js";
+import { BLOG_POSTS, filterPublicBlogPosts, getBlogDates, getBlogRoutes, getReadingMinutes, getWordCount, sortBlogsByDate } from "@/lib/blogData.js";
 import { buildGraph } from "@/lib/schema";
 import { getRouteMeta } from "@/lib/routeMeta";
 
@@ -43,21 +43,41 @@ describe("blog post structured data", () => {
       expect((article as Node).wordCount as number).toBeGreaterThan(0);
       expect((article as Node).timeRequired as string).toMatch(/^PT\d+M$/);
       expect(typeOf(nodes, "BreadcrumbList")).toBeTruthy();
+      const expected = `https://www.flystar.co.in/blog/${slug}`;
+      const meta = getRouteMeta(`/blog/${slug}`);
+      expect(meta.canonical).toBe(expected);
+      expect(meta.ogUrl).toBe(expected);
+      expect(meta.ogImage).toMatch(/^https:\/\//);
+      expect((article as Node).url).toBe(expected);
+      const images = (article as Node).image;
+      if (Array.isArray(images)) {
+        expect(images.length).toBeGreaterThan(0);
+        for (const image of images) {
+          expect(image.url).toMatch(/^https:\/\//);
+          expect(image.contentUrl).toMatch(/^https:\/\//);
+        }
+      } else {
+        expect(images).toMatch(/^https:\/\//);
+      }
       expect(JSON.parse(JSON.stringify(buildGraph(`/blog/${slug}`)))).toBeTruthy();
     }
   );
 
-  it("emits FAQPage for any post carrying faqs, in either field shape", () => {
+  it("does not emit FAQPage markup for blog FAQs", () => {
     const withFaqs = written.filter((p) => Array.isArray(p.faqs) && p.faqs.length);
     for (const post of withFaqs) {
       const faq = typeOf(nodesFor(`/blog/${post.slug}`), "FAQPage");
-      expect(faq, `FAQPage missing for ${post.slug}`).toBeTruthy();
-      expect((faq!.mainEntity as Node[]).length).toBe((post.faqs as unknown[]).length);
-      for (const entry of faq!.mainEntity as Node[]) {
-        expect(entry.name, "a FAQ question came through empty").toBeTruthy();
-        expect((entry.acceptedAnswer as Node).text, "a FAQ answer came through empty").toBeTruthy();
-      }
+      expect(faq, `FAQPage present for ${post.slug}`).toBeUndefined();
     }
+  });
+
+  it("excludes draft and archived posts and shows distinct update dates", () => {
+    const posts = [{ status: "draft" }, { status: "archived" }, { status: "published" }, {}];
+    expect(filterPublicBlogPosts(posts)).toEqual(posts.slice(2));
+    expect(getBlogDates({ createdAt: "2026-01-01", updatedAt: "2026-01-02" })).toEqual({
+      publishedAt: "2026-01-01", updatedAt: "2026-01-02",
+    });
+    expect(getBlogDates({ createdAt: "2026-01-01", updatedAt: "2026-01-01" }).updatedAt).toBeUndefined();
   });
 
   it("pins the legacy /blogs/<id> URL to the slug canonical, not itself", () => {

@@ -6,7 +6,7 @@
  * Injected by useSchema on every route so each prerendered page carries
  * correct schema instead of the old homepage graph.
  */
-import { SITE_ORIGIN, canonicalUrl } from "./routes";
+import { SITE_ORIGIN, canonicalUrl, httpsImageUrl } from "./routes";
 import { getRouteMeta } from "./routeMeta";
 import { getBlogPost, getWordCount, getReadingMinutes } from "./blogData.js";
 import { PILOT_TRAINING_TOPICS } from "./pilotTrainingTopics";
@@ -103,8 +103,9 @@ function breadcrumb(path: string): JsonLdNode {
     items.push({ "@type": "ListItem", position: 3, name: topic.name, item: canonicalUrl(path) });
     return { "@type": "BreadcrumbList", "@id": `${canonicalUrl(path)}#breadcrumb`, itemListElement: items };
   }
-  const segments = path.split("/").filter(Boolean);
   const post = blogPostFor(path);
+  const pagePath = post ? blogPath(path, post) : path;
+  const segments = pagePath.split("/").filter(Boolean);
   let acc = "";
   segments.forEach((seg, i) => {
     acc += `/${seg}`;
@@ -120,7 +121,7 @@ function breadcrumb(path: string): JsonLdNode {
   });
   return {
     "@type": "BreadcrumbList",
-    "@id": `${canonicalUrl(path)}#breadcrumb`,
+    "@id": `${canonicalUrl(pagePath)}#breadcrumb`,
     itemListElement: items,
   };
 }
@@ -170,7 +171,7 @@ function webPageNode(path: string): JsonLdNode {
       : descFor(path, "Flying Star Aviator — DGCA pilot training in Delhi."),
     isPartOf: { "@id": `${SITE_ORIGIN}/#website` },
     inLanguage: "en-IN",
-    ...(post ? { breadcrumb: { "@id": `${url}#breadcrumb` }, primaryImageOfPage: absolute(post.coverImage) } : {}),
+    ...(post ? { breadcrumb: { "@id": `${url}#breadcrumb` }, primaryImageOfPage: httpsImageUrl(post.featuredImage || post.coverImage) } : {}),
   };
 }
 
@@ -191,16 +192,21 @@ interface BlogPost {
   title: string;
   slug?: string;
   seoTitle?: string;
+  metaTitle?: string;
   metaDescription?: string;
   excerpt?: string;
   intro?: string;
   content?: string;
   category?: string;
   tags?: string[];
+  keywords?: string[];
   author?: string;
   authorRole?: string;
+  authorCredentials?: string;
   coverImage?: string;
+  featuredImage?: string;
   createdAt?: string;
+  publishedAt?: string;
   updatedAt?: string;
   dateModified?: string;
   // Two shapes are accepted: {q,a} (as written by this repo) and
@@ -229,11 +235,6 @@ function readingDuration(post: BlogPost): string {
   return `PT${getReadingMinutes(post)}M`;
 }
 
-function absolute(url?: string): string | undefined {
-  if (!url) return undefined;
-  return url.startsWith("http") ? url : `${SITE_ORIGIN}${url}`;
-}
-
 /**
  * BlogPosting for a blog post. Carries author, publisher, both dates, word
  * count and reading time — the fields Google and answer engines use to judge
@@ -252,34 +253,34 @@ function articleImages(post: BlogPost): unknown {
   const planned = imagesFor(post.slug).filter((img) => img.ready);
   const nodes = planned.map((img) => ({
     "@type": "ImageObject",
-    url: absolute(img.file),
-    contentUrl: absolute(img.file),
-    width: 1200,
-    height: 675,
+    url: httpsImageUrl(img.file),
+    contentUrl: httpsImageUrl(img.file),
+    width: img.width || 1200,
+    height: img.height || 675,
     caption: img.caption || img.alt,
     description: img.alt,
     representativeOfPage: img.slot === "cover" || undefined,
   }));
   if (nodes.length > 0) return nodes;
-  return absolute(post.coverImage);
+  return httpsImageUrl(post.featuredImage || post.coverImage);
 }
 
 function blogPostingNode(path: string, post: BlogPost): JsonLdNode {
   const url = canonicalUrl(blogPath(path, post));
-  const published = isoDate(post.createdAt);
+  const published = isoDate(post.publishedAt || post.createdAt);
   const modified = isoDate(post.updatedAt || post.dateModified) || published;
   return {
     "@type": "BlogPosting",
     "@id": `${url}#article`,
     headline: post.title,
-    alternativeHeadline: post.seoTitle,
+    alternativeHeadline: post.metaTitle || post.seoTitle,
     description: post.metaDescription || post.excerpt,
     abstract: post.excerpt,
     url,
     mainEntityOfPage: { "@type": "WebPage", "@id": `${url}#webpage` },
     image: articleImages(post),
     articleSection: post.category,
-    keywords: post.tags?.join(", "),
+    keywords: (post.keywords || post.tags)?.join(", "),
     wordCount: getWordCount(post),
     timeRequired: readingDuration(post),
     inLanguage: "en-IN",
@@ -291,7 +292,7 @@ function blogPostingNode(path: string, post: BlogPost): JsonLdNode {
           "@type": "Organization",
           name: post.author,
           url: `${SITE_ORIGIN}/about`,
-          ...(post.authorRole ? { description: post.authorRole } : {}),
+          ...(post.authorCredentials || post.authorRole ? { description: post.authorCredentials || post.authorRole } : {}),
         }
       : { "@id": ORG_ID },
     publisher: { "@id": ORG_ID },
@@ -299,25 +300,6 @@ function blogPostingNode(path: string, post: BlogPost): JsonLdNode {
       "@type": "Thing",
       name: "DGCA Flight Crew Theoretical Knowledge Examinations",
     },
-  };
-}
-
-/** FAQPage built from the post's `faqs` array — the AEO extraction surface. */
-function faqNode(path: string, post: BlogPost): JsonLdNode | null {
-  if (!post.faqs?.length) return null;
-  const url = canonicalUrl(blogPath(path, post));
-  const entries = post.faqs
-    .map((item) => ({ name: item.question ?? item.q, text: item.answer ?? item.a }))
-    .filter((item): item is { name: string; text: string } => Boolean(item.name && item.text));
-  if (!entries.length) return null;
-  return {
-    "@type": "FAQPage",
-    "@id": `${url}#faq`,
-    mainEntity: entries.map((item) => ({
-      "@type": "Question",
-      name: item.name,
-      acceptedAnswer: { "@type": "Answer", text: item.text },
-    })),
   };
 }
 
@@ -577,8 +559,6 @@ export function buildGraph(path: string): JsonLdNode | null {
       webPageNode(path),
       blogPostingNode(path, post),
     ];
-    const faq = faqNode(path, post);
-    if (faq) nodes.push(faq);
     return { "@context": "https://schema.org", "@graph": nodes };
   }
 

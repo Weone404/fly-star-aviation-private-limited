@@ -2472,8 +2472,17 @@ export const BLOG_POSTS = (() => {
   const remote = (REMOTE_BLOG_POSTS || []).filter(
     (p) => !staticSlugs.has(p.slug) && !staticIds.has(p._id)
   );
-  return [...STATIC_BLOG_POSTS, ...remote];
+  return filterPublicBlogPosts([...STATIC_BLOG_POSTS, ...remote]);
 })();
+
+/** Older committed posts have no status field and remain published by default. */
+export function isPublicBlogPost(post) {
+  return post?.status == null || post.status === "published" || post.status === "updated";
+}
+
+export function filterPublicBlogPosts(posts) {
+  return posts.filter(isPublicBlogPost);
+}
 
 export function getBlogPost(idOrSlug) {
   return BLOG_POSTS.find((post) => post._id === idOrSlug || post.slug === idOrSlug) || null;
@@ -2481,8 +2490,8 @@ export function getBlogPost(idOrSlug) {
 
 export function sortBlogsByDate(posts) {
   return [...posts].sort((a, b) => {
-    const dateA = new Date(a.createdAt || a.updatedAt || a.publishedAt || a.date || 0).getTime();
-    const dateB = new Date(b.createdAt || b.updatedAt || b.publishedAt || b.date || 0).getTime();
+    const dateA = new Date(a.publishedAt || a.createdAt || a.updatedAt || a.date || 0).getTime();
+    const dateB = new Date(b.publishedAt || b.createdAt || b.updatedAt || b.date || 0).getTime();
     const validA = Number.isNaN(dateA) ? 0 : dateA;
     const validB = Number.isNaN(dateB) ? 0 : dateB;
     return validB - validA;
@@ -2511,5 +2520,20 @@ export function getWordCount(post) {
  * "5 min read", which understated every long-form guide on the site.
  */
 export function getReadingMinutes(post) {
+  if (Number.isFinite(post?.readingTime) && post.readingTime > 0) {
+    return Math.max(1, Math.round(post.readingTime));
+  }
   return Math.max(1, Math.round(getWordCount(post) / 200));
+}
+
+function dateKey(value) {
+  const date = new Date(value);
+  return Number.isNaN(date.getTime()) ? value : date.toISOString().slice(0, 10);
+}
+
+export function getBlogDates(post) {
+  const publishedAt = post?.publishedAt || post?.createdAt;
+  const updatedAt = post?.updatedAt || post?.dateModified;
+  const hasDistinctUpdate = updatedAt && (!publishedAt || dateKey(updatedAt) !== dateKey(publishedAt));
+  return { publishedAt, updatedAt: hasDistinctUpdate ? updatedAt : undefined };
 }

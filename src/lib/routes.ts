@@ -5,6 +5,20 @@
  */
 export const SITE_ORIGIN = "https://www.flystar.co.in";
 
+export function httpsImageUrl(value?: string): string {
+  const fallback = `${SITE_ORIGIN}/assets/hero-aircraft-1600w.jpg`;
+  if (!value) return fallback;
+  try {
+    const url = new URL(value, SITE_ORIGIN);
+    if (url.protocol === "https:") return url.href;
+  } catch {
+    console.warn(`[metadata] Invalid image URL: ${value}`);
+    return fallback;
+  }
+  console.warn(`[metadata] Image URL must use HTTPS: ${value}`);
+  return fallback;
+}
+
 // Legacy keyword URLs are redirected at the edge. Keep this map for metadata
 // normalization and sitemap exclusion so those URLs cannot become new pages.
 export const ALIAS_CANONICAL: Record<string, string> = {

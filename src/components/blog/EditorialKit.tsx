@@ -6,6 +6,7 @@ import type { TocItem } from '@/lib/articleHtml'
 import type { BlogImage } from '@/types/blog'
 import { HOUSE_STYLE } from '@/lib/blogImages'
 import { FAQ_ANCHOR } from '@/lib/articleHtml'
+import { getBlogDates } from '@/lib/blogData'
 
 /**
  * The blog's editorial component library.
@@ -53,7 +54,7 @@ export function PostHero({
   authorName: string
   authorRole: string
 }) {
-  const verified = post.updatedAt || post.createdAt
+  const { publishedAt, updatedAt } = getBlogDates(post)
   return (
     <header className="border-b border-border bg-card">
       <div className="mx-auto w-full max-w-6xl px-4 pb-10 pt-10 sm:px-6 md:pt-14 xl:max-w-7xl">
@@ -77,12 +78,18 @@ export function PostHero({
           <span className="font-medium text-foreground">{authorName}</span>
           <span aria-hidden="true">·</span>
           <span>{readingMinutes} min read</span>
-          {verified && (
+          {publishedAt && (
             <>
               <span aria-hidden="true">·</span>
               <span>
-                Last verified <time dateTime={verified}>{formatDate(verified)}</time>
+                Published <time dateTime={publishedAt}>{formatDate(publishedAt)}</time>
               </span>
+            </>
+          )}
+          {updatedAt && (
+            <>
+              <span aria-hidden="true">·</span>
+              <span>Updated <time dateTime={updatedAt}>{formatDate(updatedAt)}</time></span>
             </>
           )}
         </div>
@@ -175,7 +182,7 @@ export function TableOfContents({ items, variant }: { items: TocItem[]; variant:
         <li key={i.id}>
           <a
             href={`#${i.id}`}
-            className="flex min-h-11 items-center rounded px-2 py-1 leading-snug text-muted-foreground hover:bg-muted hover:text-primary"
+            className={`flex min-h-11 items-center rounded py-1 leading-snug text-muted-foreground hover:bg-muted hover:text-primary ${i.level === 3 ? 'pl-6 pr-2' : 'px-2'}`}
           >
             {i.text}
           </a>
@@ -233,9 +240,14 @@ export function FaqAccordions({ faqs }: { faqs?: { q: string; a: string }[] }) {
 /* ── Related posts ───────────────────────────────────────────────────────── */
 
 export function relatedTo(post: BlogPost, all: BlogPost[], limit = 3): BlogPost[] {
+  const bySlug = new Map(all.filter((p) => p.slug).map((p) => [p.slug, p]))
+  const curated = (post.relatedArticles || [])
+    .map((slug) => bySlug.get(slug))
+    .filter((p): p is BlogPost => Boolean(p && p.slug !== post.slug))
+  const curatedSlugs = new Set(curated.map((p) => p.slug))
   const tags = new Set((post.tags || []).map((t) => t.toLowerCase()))
   const scored = all
-    .filter((p) => p.slug && p.slug !== post.slug)
+    .filter((p) => p.slug && p.slug !== post.slug && !curatedSlugs.has(p.slug))
     .map((p) => {
       const shared = (p.tags || []).filter((t) => tags.has(t.toLowerCase())).length
       const sameCategory = p.category && p.category === post.category ? 1 : 0
@@ -243,7 +255,7 @@ export function relatedTo(post: BlogPost, all: BlogPost[], limit = 3): BlogPost[
     })
     .filter((s) => s.score > 0)
     .sort((a, b) => b.score - a.score)
-  return scored.slice(0, limit).map((s) => s.post)
+  return [...curated, ...scored.map((s) => s.post)].slice(0, limit)
 }
 
 export function RelatedPosts({ posts }: { posts: BlogPost[] }) {
@@ -453,7 +465,7 @@ export function ArticleFigure({ image }: { image: BlogImage }) {
         <img
           src={image.file}
           alt={image.alt}
-          {...(isDiagram ? {} : { width: 1200, height: 675 })}
+          {...(isDiagram ? { width: image.width || 1200, height: image.height || 675 } : { width: 1200, height: 675 })}
           loading="lazy"
           decoding="async"
           sizes="(min-width: 1280px) 46rem, (min-width: 768px) 42rem, 100vw"

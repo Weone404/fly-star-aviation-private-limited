@@ -1,5 +1,5 @@
 import { getBlogPost } from "./blogData.js";
-import { resolvePath } from "./routes";
+import { httpsImageUrl, resolvePath } from "./routes";
 
 export interface RouteMeta {
   title: string;
@@ -10,6 +10,7 @@ export interface RouteMeta {
   ogUrl?: string;
   ogImage?: string;
   twitterImage?: string;
+  ogType?: "website" | "article";
 }
 
 const BASE_URL = "https://www.flystar.co.in";
@@ -372,16 +373,19 @@ function getBlogMeta(pathname: string): RouteMeta | null {
   // A post with a slug canonicalises to /blog/<slug> even when reached via the
   // legacy /blogs/<id> URL, so the two forms never compete in search.
   const canonicalPath = blog.slug ? `/blog/${blog.slug}` : normalized;
+  const canonical = `${BASE_URL}${canonicalPath}`;
+  const ogImage = httpsImageUrl(blog.featuredImage || blog.coverImage);
 
   return {
-    title: blog.seoTitle || `${blog.title} | Flying Star Aviator Blog`,
+    title: blog.metaTitle || blog.seoTitle || `${blog.title} | Flying Star Aviator Blog`,
     description: blog.metaDescription || blog.excerpt || "Expert pilot training guidance, DGCA updates, and aviation career advice from Flying Star Aviator.",
-    canonical: `${BASE_URL}${canonicalPath}`,
-    ogTitle: blog.seoTitle || blog.title,
+    canonical,
+    ogTitle: blog.metaTitle || blog.seoTitle || blog.title,
     ogDescription: blog.metaDescription || blog.excerpt || "Expert pilot training guidance, DGCA updates, and aviation career advice from Flying Star Aviator.",
-    ogUrl: `${BASE_URL}${normalized}`,
-    ogImage: blog.coverImage || "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1200&q=80",
-    twitterImage: blog.coverImage || "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1200&q=80",
+    ogUrl: canonical,
+    ogImage,
+    twitterImage: ogImage,
+    ogType: "article",
   };
 }
 

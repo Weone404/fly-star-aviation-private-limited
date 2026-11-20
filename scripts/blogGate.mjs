@@ -50,7 +50,15 @@ export const DEFAULT_GATE = {
  * PUT could swap an approved post's title and land attacker-chosen text on the
  * site without tripping the alarm.
  */
-export const HASHED_FIELDS = ["slug", "title", "excerpt", "content", "coverImage", "category"];
+export const HASHED_FIELDS = [
+  "slug", "title", "seoTitle", "metaTitle", "metaDescription", "excerpt",
+  "content", "coverImage", "featuredImage", "coverAlt", "imageAlt", "category",
+  "tags", "keywords", "author", "authorRole", "authorCredentials", "createdAt",
+  "publishedAt", "updatedAt", "canonicalUrl", "status", "readingTime",
+  "relatedArticles", "references", "faqs", "keyFacts", "correction", "featured",
+];
+
+const ADDITIONAL_HASHED_FIELDS = ["_id", "intro", "dateModified"];
 
 /**
  * sha256 over every rendered field, in a fixed order, length-prefixed.
@@ -61,8 +69,9 @@ export const HASHED_FIELDS = ["slug", "title", "excerpt", "content", "coverImage
  */
 export function postHash(post) {
   const h = createHash("sha256");
-  for (const field of HASHED_FIELDS) {
-    const value = String(post?.[field] ?? "");
+  for (const field of [...HASHED_FIELDS, ...ADDITIONAL_HASHED_FIELDS.filter((field) => post?.[field] != null && post[field] !== "")]) {
+    const raw = post?.[field];
+    const value = raw == null ? "" : typeof raw === "string" ? raw : JSON.stringify(raw);
     h.update(`${field}:${value.length}:`, "utf8");
     h.update(value, "utf8");
   }
@@ -108,6 +117,11 @@ export function assess(post, gateInput = {}, approvals = null) {
     }
   }
 
+  const status = post?.status;
+  if (status != null && status !== "published" && status !== "updated") {
+    return { ok: false, reason: `not publishable status "${status}"`, slug, words };
+  }
+
   if (gate.denySlugs.includes(rawSlug) || (slug && gate.denySlugs.includes(slug)))
     return { ok: false, reason: "denylisted by slug" };
   if (id && gate.denyIds.includes(id)) return { ok: false, reason: "denylisted by id" };
@@ -130,18 +144,34 @@ export function normalise(post, slug) {
     slug,
     title: post.title,
     seoTitle: post.seoTitle,
+    metaTitle: post.metaTitle,
     metaDescription: post.metaDescription,
     excerpt: post.excerpt,
     intro: post.intro,
     content: post.content,
     category: post.category,
     tags: post.tags,
+    keywords: post.keywords,
     author: post.author,
     authorRole: post.authorRole,
+    authorCredentials: post.authorCredentials,
     coverImage: post.coverImage,
+    featuredImage: post.featuredImage,
+    coverAlt: post.coverAlt,
+    imageAlt: post.imageAlt,
     createdAt: post.createdAt,
+    publishedAt: post.publishedAt,
     updatedAt: post.updatedAt,
+    dateModified: post.dateModified,
+    canonicalUrl: post.canonicalUrl,
+    status: post.status,
+    readingTime: post.readingTime,
+    relatedArticles: post.relatedArticles,
+    references: post.references,
     faqs: post.faqs,
+    keyFacts: post.keyFacts,
+    correction: post.correction,
+    featured: post.featured,
   };
 }
 

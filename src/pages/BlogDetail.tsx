@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
-import { BLOG_POSTS, STATIC_BLOG_POSTS, getBlogPost, getReadingMinutes } from '@/lib/blogData'
+import { BLOG_POSTS, STATIC_BLOG_POSTS, getBlogDates, getBlogPost, getReadingMinutes } from '@/lib/blogData'
 import { sanitizeHtml } from '@/lib/sanitizeHtml'
 import { prepareArticle } from '@/lib/articleHtml'
 import { neighboursInTopic, sourcesOf } from '@/lib/blogTopics'
@@ -84,8 +84,9 @@ export default function BlogDetail() {
   const isEditorial = Boolean(blog?.slug && staticSlugs.has(blog.slug))
 
   const readingMinutes = blog ? getReadingMinutes(blog) : 0
+  const { publishedAt, updatedAt } = getBlogDates(blog || {})
   const authorName = blog?.author || 'Flying Star Aviator Academics Team'
-  const authorRole = blog?.authorRole || 'DGCA CPL & ATPL ground instruction, Dwarka, New Delhi'
+  const authorRole = blog?.authorCredentials || blog?.authorRole || 'DGCA CPL & ATPL ground instruction, Dwarka, New Delhi'
   const cluster = useMemo(() => (blog ? neighboursInTopic(blog) : null), [blog])
   const sources = useMemo(() => (blog ? sourcesOf(blog) : []), [blog])
   const images = useMemo(() => imagesFor(blog?.slug), [blog?.slug])
@@ -93,7 +94,8 @@ export default function BlogDetail() {
   const cover = coverEntry?.ready ? coverEntry : undefined
   // A generic stand-in is worse than an honest placeholder: it is the same
   // photograph on ten posts, and it says nothing about this one.
-  const showCoverPlaceholder = Boolean(coverEntry && !coverEntry.ready && isGenericCover(blog?.coverImage))
+  const coverImage = blog?.featuredImage || blog?.coverImage
+  const showCoverPlaceholder = Boolean(coverEntry && !coverEntry.ready && isGenericCover(coverImage))
   const related = useMemo(
     () => (blog && isEditorial ? relatedTo(blog, BLOG_POSTS as BlogPost[]) : []),
     [blog, isEditorial],
@@ -156,7 +158,8 @@ export default function BlogDetail() {
             <h1 className="text-3xl font-bold leading-tight text-foreground">{blog.title}</h1>
             <p className="mt-3 text-sm text-muted-foreground">
               {blog.category} · {readingMinutes} min read
-              {blog.createdAt && <> · <time dateTime={blog.createdAt}>{formatDate(blog.createdAt)}</time></>}
+              {publishedAt && <> · Published <time dateTime={publishedAt}>{formatDate(publishedAt)}</time></>}
+              {updatedAt && <> · Updated <time dateTime={updatedAt}>{formatDate(updatedAt)}</time></>}
             </p>
           </div>
         </header>
@@ -174,14 +177,14 @@ export default function BlogDetail() {
 
           {showCoverPlaceholder && coverEntry && <ArticleFigure image={coverEntry} />}
 
-          {!showCoverPlaceholder && (cover || blog.coverImage) && (
+          {!showCoverPlaceholder && (cover || coverImage) && (
             <figure className="my-8">
               <img
-                src={cover?.file || blog.coverImage}
-                alt={cover?.alt || blog.coverAlt || blog.title}
-                width={1600}
-                height={900}
-                loading="lazy"
+                src={cover?.file || coverImage}
+                alt={cover?.alt || blog.imageAlt || blog.coverAlt || blog.title}
+                width={cover?.width || 1600}
+                height={cover?.height || 900}
+                loading="eager"
                 decoding="async"
                 className="w-full rounded-xl border border-border object-cover"
               />

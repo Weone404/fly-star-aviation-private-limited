@@ -1,8 +1,16 @@
 /** Shape of a post from src/lib/blogData.js or the /api/blogs endpoint. */
+export type BlogPublicationStatus = 'draft' | 'published' | 'updated' | 'archived'
+
+export interface BlogReference {
+    title: string
+    url?: string
+}
+
 export interface BlogPost {
     _id?: string
     slug?: string
     title: string
+    metaTitle?: string
     seoTitle?: string
     metaDescription?: string
     excerpt?: string
@@ -10,11 +18,22 @@ export interface BlogPost {
     content?: string
     category?: string
     tags?: string[]
+    keywords?: string[]
     author?: string
     authorRole?: string
+    authorCredentials?: string
     coverImage?: string
+    featuredImage?: string
+    imageAlt?: string
+    canonicalUrl?: string
+    status?: BlogPublicationStatus
+    publishedAt?: string
     createdAt?: string
     updatedAt?: string
+    dateModified?: string
+    readingTime?: number
+    relatedArticles?: string[]
+    references?: BlogReference[]
     faqs?: { q: string; a: string }[]
     /** Alt text for the cover image, when the title is not a good description. */
     coverAlt?: string
@@ -49,4 +68,6 @@ export interface BlogImage {
   after?: number
   /** True once the file exists at `file`. Until then it renders in dev only. */
   ready?: boolean
+  width?: number
+  height?: number
 }

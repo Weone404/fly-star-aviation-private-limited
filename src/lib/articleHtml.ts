@@ -15,8 +15,8 @@
  *     template can re-render it as <details> accordions from the post's `faqs`
  *     array. The array and the embedded HTML are already one source — the FAQ
  *     HTML in `content` was generated from the array — so rendering the array
- *     and dropping the generated copy shows the reader exactly what the
- *     FAQPage schema claims, with no duplication.
+ *     and dropping the generated copy keeps the visible accordion copy aligned
+ *     with article data, with no duplication.
  *
  *  3. Keep whatever follows the FAQ (a "Related" list, the reference footer)
  *     as a tail that renders after the accordions, in its original order.
@@ -27,7 +27,7 @@
  * plain headings, which is degraded but never duplicated.
  */
 
-export type TocItem = { id: string; text: string }
+export type TocItem = { id: string; text: string; level: 2 | 3 }
 
 export type ArticleParts = {
   /** Body up to (not including) the FAQ heading. */
@@ -135,14 +135,21 @@ export function prepareArticle(
         phase = 'faq'
         faqExtracted = true
         taken.add(FAQ_ANCHOR)
-        toc.push({ id: FAQ_ANCHOR, text: 'Frequently asked questions' })
+        toc.push({ id: FAQ_ANCHOR, text: 'Frequently asked questions', level: 2 })
         continue
       }
       if (phase === 'faq') phase = 'tail'
       const id = headingId(text, taken)
       el!.setAttribute('id', id)
-      if (text) toc.push({ id, text })
+      if (text) toc.push({ id, text, level: 2 })
       if (phase === 'body') sections.push({ heading: ++h2Count, nodes: [] })
+    }
+
+    if (tag === 'h3' && phase === 'body') {
+      const text = (el?.textContent || '').trim()
+      const id = headingId(text, taken)
+      el!.setAttribute('id', id)
+      if (text) toc.push({ id, text, level: 3 })
     }
 
     if (phase === 'faq') {

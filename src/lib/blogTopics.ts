@@ -145,8 +145,23 @@ export function neighboursInTopic(post: BlogPost, all: BlogPost[] = BLOG_POSTS a
 /** Every distinct source named across a post's key facts, in first-seen order. */
 export function sourcesOf(post: BlogPost): { source: string; href?: string }[] {
   const seen = new Map<string, { source: string; href?: string }>()
+  const safeHref = (href?: string) => {
+    if (!href) return undefined
+    if (href.startsWith('/') && !href.startsWith('//')) return href
+    try {
+      const url = new URL(href)
+      return url.protocol === 'https:' ? url.href : undefined
+    } catch {
+      return undefined
+    }
+  }
+  for (const reference of post.references || []) {
+    if (!seen.has(reference.title)) {
+      seen.set(reference.title, { source: reference.title, href: safeHref(reference.url) })
+    }
+  }
   for (const f of post.keyFacts || []) {
-    if (!seen.has(f.source)) seen.set(f.source, { source: f.source, href: f.href })
+    if (!seen.has(f.source)) seen.set(f.source, { source: f.source, href: safeHref(f.href) })
   }
   return Array.from(seen.values())
 }

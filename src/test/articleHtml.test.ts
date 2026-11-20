@@ -15,6 +15,15 @@ import { prepareArticle } from '@/lib/articleHtml'
  * the FAQ. Neither was visible in a passing build.
  */
 describe('article preparation', () => {
+  it('creates distinct anchors for h2 and h3 headings', () => {
+    const parts = prepareArticle('<h2>Topic</h2><h3>Detail</h3><h3>Detail</h3>')
+    expect(parts.toc).toEqual([
+      { id: 'topic', text: 'Topic', level: 2 },
+      { id: 'detail', text: 'Detail', level: 3 },
+      { id: 'detail-2', text: 'Detail', level: 3 },
+    ])
+    expect(parts.bodyHtml).toContain('id="detail-2"')
+  })
   const withFaqs = (STATIC_BLOG_POSTS as { slug?: string; content?: string; faqs?: { q: string; a: string }[] }[])
     .filter((p) => (p.faqs || []).length)
 
