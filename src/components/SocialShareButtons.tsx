@@ -56,10 +56,12 @@ export function SocialShareButtons({
     theme === "dark"
       ? "border-white/15 bg-white/5 text-white hover:bg-white/10"
       : "border-border bg-white text-foreground hover:bg-muted";
+  const labelClasses =
+    theme === "dark" ? "text-primary-foreground/80" : "text-muted-foreground";
 
   return (
     <div className={`flex flex-wrap items-center gap-3 ${className}`}>
-      <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+      <span className={`text-[10px] font-semibold uppercase tracking-[0.18em] ${labelClasses}`}>
         {label}
       </span>
       <div className="flex items-center gap-2">

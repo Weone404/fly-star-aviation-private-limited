@@ -106,7 +106,7 @@ function HeroImageSlider() {
                 <div
                     className="absolute bottom-0 left-0 right-0 px-5 pb-4 pt-10"
                     style={{
-                        background: "linear-gradient(to top, rgba(0,0,0,0.65), transparent)",
+                        background: "linear-gradient(to top, rgba(0,0,0,0.65), rgba(0,0,0,0.15))",
                     }}
                 >
                     <div className="flex items-center gap-2 text-white text-sm font-semibold">
