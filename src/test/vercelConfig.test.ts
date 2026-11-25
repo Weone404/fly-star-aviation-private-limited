@@ -267,16 +267,91 @@ describe("Vercel config", () => {
     expect(redirect?.dest).toBe("/blog/dgca-board-verification-certificate");
   });
 
-  it("permanently redirects the salary alias to the canonical page before filesystem handling", () => {
+  it("permanently redirects the 11 confirmed legacy URLs directly to canonical pages", () => {
+    const legacyRedirects: Record<string, string> = {
+      "/air-hostess-salary-india": "/blog/air-hostess-salary-in-india-2026",
+      "/airline-cadet-pilot-programme": "/cadet-pilot-programme",
+      "/airline-cadet-pilot-programme-fees": "/cadet-pilot-programme",
+      "/aviation-courses-india": "/pilot-training",
+      "/commercial-pilot-course": "/courses/cpl",
+      "/dgca-class-1-class-2-medical": "/dgca/medical",
+      "/dgca-exam-syllabus": "/blog/dgca-exam-subjects-by-licence",
+      "/indigo-pilot-salary": "/pilot-salary-india",
+      "/pilot-course-fees-india": "/courses/cpl/fees",
+      "/pilot-duty-time-fdtl-india": "/glossary",
+      "/top-pilot-training-institutes-india": "/dgca/fto-ranking",
+    };
+    const routes = loadRoutes();
+    const redirects = loadRedirects();
+    const hostRedirectIndex = redirects.findIndex(
+      (redirect) =>
+        redirect?.source === "/:path*" &&
+        redirect.has?.some(
+          (condition) => condition.type === "host" && condition.value === "flystar.co.in",
+        ),
+    );
+    const routeRedirectSources = new Set(
+      routes
+        .filter((route) => route && route.status >= 300 && route.status < 400)
+        .map((route) => route.src),
+    );
+    const configRedirectSources = new Set(redirects.map((redirect) => redirect?.source));
+
+    expect(Object.keys(legacyRedirects)).toHaveLength(11);
+    expect(hostRedirectIndex).toBeGreaterThanOrEqual(0);
+
+    for (const [source, destination] of Object.entries(legacyRedirects)) {
+      const sourceRules = redirects.filter((redirect) => redirect?.source === source);
+      expect(sourceRules, `${source} must have one exact rule`).toEqual([
+        {
+          source,
+          destination: `https://www.flystar.co.in${destination}`,
+          statusCode: 301,
+        },
+      ]);
+      expect(
+        redirects.indexOf(sourceRules[0]),
+        `${source} must run before host normalization`,
+      ).toBeLessThan(
+        hostRedirectIndex,
+      );
+      expect(ALIAS_CANONICAL[source], `${source} alias map`).toBe(destination);
+      expect(ALIAS_CANONICAL[destination], `${destination} must not be an alias`).toBeUndefined();
+      expect(routeRedirectSources.has(destination), `${source} must not create a route chain`).toBe(
+        false,
+      );
+      expect(configRedirectSources.has(destination), `${source} must not create a config chain`).toBe(
+        false,
+      );
+      expect(new URL(getRouteMeta(destination).canonical).pathname).toBe(destination);
+      expect(new URL(sourceRules[0].destination).origin).toBe("https://www.flystar.co.in");
+      expect(new URL(sourceRules[0].destination).pathname).toBe(destination);
+      expect(new URL(destination, "https://www.flystar.co.in").search).toBe("");
+      expect(redirects.some((redirect) => redirect?.source === `${source}-unrelated`)).toBe(false);
+    }
+
+    for (const workingPath of ["/", "/contact", "/courses/cpl", "/dgca/ground-classes", "/pilot-salary-india"]) {
+      expect(redirects.some((redirect) => redirect?.source === workingPath)).toBe(false);
+    }
+  });
+
+  it("permanently redirects the salary alias before host normalization", () => {
     const routes = loadRoutes();
     const redirectRules = loadRedirects();
     const aliasRedirects = redirectRules.filter(
       (redirect) => redirect && redirect.source === "/pilot-salary-in-india",
     );
     const [redirect] = aliasRedirects;
+    const hostRedirectIndex = redirectRules.findIndex(
+      (rule) =>
+        rule?.source === "/:path*" &&
+        rule.has?.some(
+          (condition) => condition.type === "host" && condition.value === "flystar.co.in",
+        ),
+    );
 
     expect(aliasRedirects).toHaveLength(1);
-    expect(redirectRules.indexOf(redirect)).toBe(0);
+    expect(redirectRules.indexOf(redirect)).toBeLessThan(hostRedirectIndex);
     expect(redirect?.permanent).toBe(true);
     expect(new URL(redirect?.destination).pathname).toBe("/pilot-salary-india");
     expect(new URL(redirect?.destination).origin).toBe("https://www.flystar.co.in");

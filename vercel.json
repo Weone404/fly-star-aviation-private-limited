@@ -3,6 +3,61 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/air-hostess-salary-india",
+      "destination": "https://www.flystar.co.in/blog/air-hostess-salary-in-india-2026",
+      "statusCode": 301
+    },
+    {
+      "source": "/airline-cadet-pilot-programme",
+      "destination": "https://www.flystar.co.in/cadet-pilot-programme",
+      "statusCode": 301
+    },
+    {
+      "source": "/airline-cadet-pilot-programme-fees",
+      "destination": "https://www.flystar.co.in/cadet-pilot-programme",
+      "statusCode": 301
+    },
+    {
+      "source": "/aviation-courses-india",
+      "destination": "https://www.flystar.co.in/pilot-training",
+      "statusCode": 301
+    },
+    {
+      "source": "/commercial-pilot-course",
+      "destination": "https://www.flystar.co.in/courses/cpl",
+      "statusCode": 301
+    },
+    {
+      "source": "/dgca-class-1-class-2-medical",
+      "destination": "https://www.flystar.co.in/dgca/medical",
+      "statusCode": 301
+    },
+    {
+      "source": "/dgca-exam-syllabus",
+      "destination": "https://www.flystar.co.in/blog/dgca-exam-subjects-by-licence",
+      "statusCode": 301
+    },
+    {
+      "source": "/indigo-pilot-salary",
+      "destination": "https://www.flystar.co.in/pilot-salary-india",
+      "statusCode": 301
+    },
+    {
+      "source": "/pilot-course-fees-india",
+      "destination": "https://www.flystar.co.in/courses/cpl/fees",
+      "statusCode": 301
+    },
+    {
+      "source": "/pilot-duty-time-fdtl-india",
+      "destination": "https://www.flystar.co.in/glossary",
+      "statusCode": 301
+    },
+    {
+      "source": "/top-pilot-training-institutes-india",
+      "destination": "https://www.flystar.co.in/dgca/fto-ranking",
+      "statusCode": 301
+    },
+    {
       "source": "/pilot-salary-in-india",
       "destination": "https://www.flystar.co.in/pilot-salary-india",
       "permanent": true

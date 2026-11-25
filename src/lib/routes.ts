@@ -23,6 +23,11 @@ export function httpsImageUrl(value?: string): string {
 // normalization and sitemap exclusion so those URLs cannot become new pages.
 export const ALIAS_CANONICAL: Record<string, string> = {
   "/contact-us": "/contact",
+  "/air-hostess-salary-india": "/blog/air-hostess-salary-in-india-2026",
+  "/airline-cadet-pilot-programme": "/cadet-pilot-programme",
+  "/airline-cadet-pilot-programme-fees": "/cadet-pilot-programme",
+  "/aviation-courses-india": "/pilot-training",
+  "/commercial-pilot-course": "/courses/cpl",
   "/air-transport-pilots-license-atpl": "/courses/atpl",
   "/best-atpl-classes-in-india": "/courses/atpl",
   "/commercial-pilot-training": "/courses/cpl",
@@ -42,7 +47,13 @@ export const ALIAS_CANONICAL: Record<string, string> = {
   "/how-to-become-a-pilot-in-india": "/become-a-pilot/become-pilot",
   "/how-to-become-a-pilot-in-india-after-12th": "/become-a-pilot/become-pilot",
   "/guide-on-how-to-become-a-pilot": "/become-a-pilot/become-pilot",
+  "/dgca-class-1-class-2-medical": "/dgca/medical",
+  "/dgca-exam-syllabus": "/blog/dgca-exam-subjects-by-licence",
+  "/indigo-pilot-salary": "/pilot-salary-india",
+  "/pilot-course-fees-india": "/courses/cpl/fees",
+  "/pilot-duty-time-fdtl-india": "/glossary",
   "/pilot-salary-in-india": "/pilot-salary-india",
+  "/top-pilot-training-institutes-india": "/dgca/fto-ranking",
 };
 
 /** Resolve a raw pathname to its canonical path (trailing slash + alias normalized). */
