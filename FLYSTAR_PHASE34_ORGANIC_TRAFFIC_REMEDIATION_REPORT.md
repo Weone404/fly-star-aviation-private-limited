@@ -1,0 +1,77 @@
+# Flystar Phase 34 Organic Traffic Remediation Report
+
+## Baseline and workspace
+
+- Repository: `Weone404/fly-star-aviation-private-limited`
+- Base branch: `origin/main`
+- Baseline commit: `d7d73ce9878ce36ffaa283aa1253ecf7d291d469`
+- Phase branch: `geo/phase34-organic-traffic-remediation-20261126`
+- Worktree: `D:\fly-star-aviation-private-limited-phase34-organic-traffic-remediation-20261126`
+- Candidate implementation commit: `1df15e8` (`[GEO] improve pilot and charter page SEO`)
+- `origin/main` remained at the baseline when checked before the candidate commit.
+
+## Implemented changes
+
+### `/pilot-training`
+
+- Updated the route description to reflect the existing page's CPL/PPL pathways, eligibility, theory subjects, and country comparisons.
+- Added contextual links to DGCA ground classes, Computer Number, and medical resources.
+- Existing page copy, claims, figures, and headings were otherwise left unchanged.
+
+### `/services/charter-services`
+
+- Added a stable `Charter Services` H1 and retained the changing aircraft name as an H2.
+- Replaced automatic-on carousel motion with explicit, user-controlled rotation.
+- Added accessible labels and state to carousel navigation, thumbnails, and rotation controls; added visible keyboard focus and reduced-motion handling.
+- Lazy-loaded inactive aircraft thumbnails and added related service/contact links.
+- Updated the description to match the aircraft information already shown on the page.
+- Did not edit aircraft data, specifications, or existing descriptive copy.
+
+### Regression coverage
+
+- Added focused checks for the new pilot-training links and charter headings, carousel controls, and related links.
+
+## Files changed
+
+- `src/lib/routeMeta.ts`
+- `src/pages/pilotTraining/PilotTraining.tsx`
+- `src/pages/services/charter-services.tsx`
+- `src/test/internalNavigation.test.tsx`
+
+The report is an additional Phase 34 deliverable. No route, sitemap, feed, blog content, generated blog data, or publishing workflow file was changed.
+
+## Blog preservation evidence
+
+- The candidate commit changes only the four files listed above; none contains blog article bodies or generated blog data.
+- The candidate diff does not modify blog article paragraphs, headings, facts, examples, quotations, or FAQs.
+- No blog fetch, generation, synchronization, or transformation command was run.
+- A production deployment was not started; production blog content therefore was not changed or verified in this phase.
+
+## Validation
+
+| Check | Result |
+|---|---|
+| Full tests (`npm test -- --run`) | Passed: 34 files, 267 tests |
+| Focused navigation tests after final edits | Passed: 9 tests |
+| TypeScript (`npx tsc --noEmit`) | Passed |
+| Lint (`npm run lint`) | Passed with 0 errors and 9 existing Fast Refresh warnings in unrelated files |
+| Production Vite bundle (`npm run build --ignore-scripts`) | Passed |
+| Built admin-client check (`node scripts/verify-admin-client.mjs`) | Passed across 54 JavaScript bundles |
+| Local production preview | HTTP 200 for `/`, `/pilot-training`, and `/services/charter-services` |
+| `git diff --check` | Passed |
+
+Dependencies were installed from the lockfile with lifecycle scripts disabled because `node_modules` was absent. The package manifest and lockfile were not changed.
+
+## Release limitation
+
+The standard `npm run build` lifecycle was intentionally not executed. Its `prebuild` runs `scripts/fetch-blogs.mjs`, which fetches blog posts from the configured API and writes generated blog data and a report; it then regenerates the sitemap and feed. This conflicts with the instruction not to run automated blog fetching, generation, synchronization, or content transformation. The Vite bundle was therefore built directly with `--ignore-scripts`; postbuild prerendering and live production checks were also not run.
+
+No branch push, merge, or deployment was performed. Consequently:
+
+- Production deployment commit: **None**
+- Production verification: **Not performed**
+- Candidate implementation commit: `1df15e8`
+
+## Recommended next step
+
+Confirm a release path that satisfies the blog-preservation restriction—either authorize the repository's existing quality-gated build-time blog fetch for this release, or provide an approved production build path that does not fetch or regenerate blog content. Then run the applicable production build, integrate the candidate safely, and verify the affected live pages and blog content.
