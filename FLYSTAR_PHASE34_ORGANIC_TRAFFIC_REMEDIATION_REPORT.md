@@ -62,16 +62,16 @@ The report is an additional Phase 34 deliverable. No route, sitemap, feed, blog 
 
 Dependencies were installed from the lockfile with lifecycle scripts disabled because `node_modules` was absent. The package manifest and lockfile were not changed.
 
-## Release limitation
+## Release status before production integration
 
-The standard `npm run build` lifecycle was intentionally not executed. Its `prebuild` runs `scripts/fetch-blogs.mjs`, which fetches blog posts from the configured API and writes generated blog data and a report; it then regenerates the sitemap and feed. This conflicts with the instruction not to run automated blog fetching, generation, synchronization, or content transformation. The Vite bundle was therefore built directly with `--ignore-scripts`; postbuild prerendering and live production checks were also not run.
+The user authorized the existing quality-gated build-time blog fetch for this release. A local `npm run prebuild` attempt could not proceed because the local build environment did not provide a valid HTTPS API origin; no fetch or generated-file write occurred. The configured production build remains the release validation gate.
 
-No branch push, merge, or deployment was performed. Consequently:
+Before production integration:
 
-- Production deployment commit: **None**
-- Production verification: **Not performed**
+- Production deployment commit: **Pending**
+- Production verification: **Pending**
 - Candidate implementation commit: `1df15e8`
 
 ## Recommended next step
 
-Confirm a release path that satisfies the blog-preservation restriction—either authorize the repository's existing quality-gated build-time blog fetch for this release, or provide an approved production build path that does not fetch or regenerate blog content. Then run the applicable production build, integrate the candidate safely, and verify the affected live pages and blog content.
+Integrate the candidate with a non-forced fast-forward through the normal production branch mechanism, then verify the affected live pages and confirm that the live blog article content fingerprints are unchanged.
