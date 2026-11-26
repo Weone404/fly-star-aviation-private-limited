@@ -192,7 +192,8 @@ describe("render gate", () => {
       "/contact-us": "/contact",
       "/best-atpl-classes-in-india": "/courses/atpl",
       "/commercial-pilot-training": "/courses/cpl",
-      "/pilot-course": "/courses/airline-preparation",
+      "/pilot-course": "/pilot-training",
+      "/top-aviation-courses-and-careers-after-12th": "/pilot-training",
       "/how-to-become-a-pilot": "/become-a-pilot/become-pilot",
       "/training-in-india": "/pilot-training/india",
     };

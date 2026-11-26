@@ -330,6 +330,36 @@ describe("Vercel config", () => {
     }
   });
 
+  it.each([
+    ["/pilot-course", "/pilot-training"],
+    ["/top-aviation-courses-and-careers-after-12th", "/pilot-training"],
+  ])("directs broad training alias %s to the pilot-training overview", (source, destination) => {
+    const routes = loadRoutes();
+    const redirectRules = loadRedirects();
+    const filesystemIndex = routes.findIndex((route) => route?.handle === "filesystem");
+    const notFoundIndex = routes.findIndex(
+      (route) => route?.src === "/(.*)" && route.status === 404,
+    );
+    const sourceRules = routes.filter((route) => route?.src === source);
+    const redirectIndex = routes.findIndex((route) => route?.src === source);
+    const redirect = routes[redirectIndex];
+
+    expect(filesystemIndex).toBeGreaterThanOrEqual(0);
+    expect(sourceRules).toHaveLength(1);
+    expect(redirectRules.some((rule) => rule?.source === source)).toBe(false);
+    expect(redirect).toMatchObject({ status: 308, dest: destination });
+    expect(redirectIndex).toBeGreaterThan(filesystemIndex);
+    expect(redirectIndex).toBeGreaterThanOrEqual(0);
+    expect(redirectIndex).toBeLessThan(notFoundIndex);
+    expect(ALIAS_CANONICAL[source]).toBe(destination);
+    expect(new URL(getRouteMeta(destination).canonical).pathname).toBe(destination);
+    expect(
+      routes.some(
+        (route) => route?.src === destination && route.status >= 300 && route.status < 400,
+      ),
+    ).toBe(false);
+  });
+
   it("permanently redirects the salary alias before host normalization", () => {
     const routes = loadRoutes();
     const redirectRules = loadRedirects();

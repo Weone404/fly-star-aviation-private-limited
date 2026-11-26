@@ -296,12 +296,12 @@
     {
       "src": "/pilot-course",
       "status": 308,
-      "dest": "/courses/airline-preparation"
+      "dest": "/pilot-training"
     },
     {
       "src": "/top-aviation-courses-and-careers-after-12th",
       "status": 308,
-      "dest": "/courses/airline-preparation"
+      "dest": "/pilot-training"
     },
     {
       "src": "/careers",

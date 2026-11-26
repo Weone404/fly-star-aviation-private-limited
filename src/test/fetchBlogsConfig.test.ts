@@ -61,6 +61,31 @@ describe("blog API origin validation", () => {
     expect(result.stderr).not.toContain(PRODUCTION_BACKEND_HOSTNAME);
   });
 
+  it("does not load Production env files for a Preview prebuild", () => {
+    const root = resolve(__dirname, "../..");
+    const result = spawnSync(
+      process.execPath,
+      [resolve(root, "scripts/fetch-blogs.mjs")],
+      {
+        cwd: root,
+        encoding: "utf8",
+        env: {
+          PATH: process.env.PATH || "",
+          SystemRoot: process.env.SystemRoot || "",
+          TEMP: process.env.TEMP || "",
+          TMP: process.env.TMP || "",
+          VERCEL_ENV: "preview",
+          npm_lifecycle_event: "prebuild",
+        },
+      },
+    );
+
+    expect(result.error).toBeUndefined();
+    expect(result.status).toBe(1);
+    expect(result.stderr).toContain("Preview builds require VITE_API_URL");
+    expect(result.stderr).not.toContain(PRODUCTION_BACKEND_HOSTNAME);
+  });
+
   it("requires an explicit API origin instead of defaulting to Production", () => {
     const root = resolve(__dirname, "../..");
     const result = spawnSync(

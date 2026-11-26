@@ -24,6 +24,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { loadEnv } from "vite";
 import { partition } from "./blogGate.mjs";
 import { readApprovals } from "./approvals.mjs";
 import { isIsolatedPreviewBlogApiOrigin, parseBlogApiOrigin } from "./blogApiOrigin.mjs";
@@ -36,7 +37,11 @@ const REPORT = path.join(ROOT, "blog-gate-report.json");
 const GATE = path.join(ROOT, "blog-gate.json");
 
 const PREVIEW_BUILD = process.env.VERCEL_ENV === "preview";
-const API = process.env.VITE_API_URL;
+// npm's prebuild runs before Vite loads its mode-specific environment files.
+const BUILD_HOOK = process.env.npm_lifecycle_event === "prebuild";
+const BUILD_MODE = PREVIEW_BUILD ? "preview" : "production";
+const BUILD_ENV = BUILD_HOOK ? loadEnv(BUILD_MODE, ROOT, "VITE_") : {};
+const API = process.env.VITE_API_URL ?? BUILD_ENV.VITE_API_URL;
 const API_ORIGIN = parseBlogApiOrigin(API);
 const TIMEOUT_MS = Number(process.env.BLOG_FETCH_TIMEOUT_MS || 45000);
 
