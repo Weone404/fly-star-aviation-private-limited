@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Layout } from "@/components/layout/Layout";
+import { Link } from "react-router-dom";
 
 const aircrafts = [
     {
@@ -136,41 +137,27 @@ const categoryColors: Record<string, string> = {
 
 export default function AircraftShowcase() {
     const [activeIndex, setActiveIndex] = useState(0);
+    const [autoplayEnabled, setAutoplayEnabled] = useState(false);
     const sliderRef = useRef<HTMLDivElement>(null);
-    const autoPlayRef = useRef<ReturnType<typeof setInterval> | null>(null);
-
-    // ✅ THE FIX: ref always holds the latest index so the interval never has a stale closure
-    const activeIndexRef = useRef(0);
-    activeIndexRef.current = activeIndex;
 
     const aircraft = aircrafts[activeIndex];
 
-    const startAutoplay = () => {
-        if (autoPlayRef.current) clearInterval(autoPlayRef.current);
-        autoPlayRef.current = setInterval(() => {
-            // Reads activeIndexRef.current — always the latest, never stale
-            setActiveIndex((activeIndexRef.current + 1) % aircrafts.length);
-        }, 7000);
-    };
-
-    // Mount once — interval always reads the latest index via ref
     useEffect(() => {
-        startAutoplay();
-        return () => {
-            if (autoPlayRef.current) clearInterval(autoPlayRef.current);
-        };
-    }, []);
+        if (!autoplayEnabled) return;
+        const interval = window.setInterval(() => {
+            setActiveIndex((current) => (current + 1) % aircrafts.length);
+        }, 7000);
+        return () => window.clearInterval(interval);
+    }, [autoplayEnabled]);
 
     const handleManualNav = (index: number) => {
         setActiveIndex(index);
-        startAutoplay(); // reset 7s countdown after manual click
     };
 
     return (
         <Layout>
-
-
             <div
+                className="charter-services-page"
                 style={{
                     fontFamily: "'Segoe UI Variable', 'Segoe UI', sans-serif",
                     width: "100%",
@@ -183,6 +170,10 @@ export default function AircraftShowcase() {
             >
                 {/* ── Main Showcase ── */}
                 <div
+                    className="charter-services-showcase"
+                    role="region"
+                    aria-label="Charter aircraft"
+                    aria-roledescription="carousel"
                     style={{
                         position: "relative",
                         width: "100%",
@@ -246,6 +237,18 @@ export default function AircraftShowcase() {
                             zIndex: 10,
                         }}
                     >
+                        <h1
+                            style={{
+                                color: "#fff",
+                                fontSize: "clamp(22px, 2.4vw, 30px)",
+                                fontWeight: 700,
+                                lineHeight: 1.2,
+                                marginBottom: "12px",
+                            }}
+                        >
+                            Charter Services
+                        </h1>
+
                         {/* Category badge */}
                         <div
                             style={{
@@ -270,7 +273,7 @@ export default function AircraftShowcase() {
                         </div>
 
                         {/* Name */}
-                        <h1
+                        <h2
                             style={{
                                 color: "#fff",
                                 fontSize: "clamp(28px, 4vw, 52px)",
@@ -284,7 +287,7 @@ export default function AircraftShowcase() {
                             }}
                         >
                             {aircraft.name}
-                        </h1>
+                        </h2>
 
                         {/* Divider */}
                         <div
@@ -372,30 +375,32 @@ export default function AircraftShowcase() {
                         </div>
                     </div>
 
-                    {/* Progress bar — key forces restart on every slide */}
-                    <div
-                        style={{
-                            position: "absolute",
-                            bottom: "90px",
-                            left: "5%",
-                            right: "5%",
-                            height: "2px",
-                            background: "rgba(255,255,255,0.1)",
-                            borderRadius: "2px",
-                            overflow: "hidden",
-                            zIndex: 10,
-                        }}
-                    >
+                    {autoplayEnabled && (
                         <div
-                            key={`progress-${activeIndex}`}
+                            aria-hidden="true"
                             style={{
-                                height: "100%",
-                                background: "linear-gradient(to right, hsl(145,70%,45%), hsl(45,100%,51%))",
-                                animation: "progress 7s linear forwards",
-                                width: "0%",
+                                position: "absolute",
+                                bottom: "90px",
+                                left: "5%",
+                                right: "5%",
+                                height: "2px",
+                                background: "rgba(255,255,255,0.1)",
+                                borderRadius: "2px",
+                                overflow: "hidden",
+                                zIndex: 10,
                             }}
-                        />
-                    </div>
+                        >
+                            <div
+                                key={`progress-${activeIndex}`}
+                                style={{
+                                    height: "100%",
+                                    background: "linear-gradient(to right, hsl(145,70%,45%), hsl(45,100%,51%))",
+                                    animation: "progress 7s linear forwards",
+                                    width: "0%",
+                                }}
+                            />
+                        </div>
+                    )}
 
                     {/* Slide counter */}
                     <div
@@ -416,6 +421,29 @@ export default function AircraftShowcase() {
                         / {String(aircrafts.length).padStart(2, "0")}
                     </div>
 
+                    <button
+                        type="button"
+                        aria-label={autoplayEnabled ? "Pause automatic rotation" : "Start automatic rotation"}
+                        aria-pressed={autoplayEnabled}
+                        onClick={() => setAutoplayEnabled((enabled) => !enabled)}
+                        style={{
+                            position: "absolute",
+                            bottom: "24px",
+                            right: "5%",
+                            minHeight: "40px",
+                            padding: "0 14px",
+                            borderRadius: "8px",
+                            border: "1px solid rgba(255,255,255,0.35)",
+                            background: "rgba(0,0,0,0.55)",
+                            color: "#fff",
+                            fontSize: "13px",
+                            cursor: "pointer",
+                            zIndex: 10,
+                        }}
+                    >
+                        {autoplayEnabled ? "Pause rotation" : "Play rotation"}
+                    </button>
+
                     {/* Prev / Next arrows */}
                     {[
                         {
@@ -423,18 +451,20 @@ export default function AircraftShowcase() {
                             symbol: "‹",
                             onClick: () =>
                                 handleManualNav(
-                                    (activeIndexRef.current - 1 + aircrafts.length) % aircrafts.length
+                                    (activeIndex - 1 + aircrafts.length) % aircrafts.length
                                 ),
                         },
                         {
                             dir: "next",
                             symbol: "›",
                             onClick: () =>
-                                handleManualNav((activeIndexRef.current + 1) % aircrafts.length),
+                                handleManualNav((activeIndex + 1) % aircrafts.length),
                         },
                     ].map(({ dir, symbol, onClick }) => (
                         <button
                             key={dir}
+                            type="button"
+                            aria-label={dir === "prev" ? "Previous aircraft" : "Next aircraft"}
                             onClick={onClick}
                             style={{
                                 position: "absolute",
@@ -473,13 +503,14 @@ export default function AircraftShowcase() {
                 {/* ── Thumbnail Strip ── */}
                 <div
                     ref={sliderRef}
+                    role="group"
+                    aria-label="Choose an aircraft"
                     style={{
                         background: "hsl(150,25%,8%)",
                         borderTop: "1px solid rgba(255,255,255,0.06)",
                         padding: "18px 20px",
                         overflowX: "auto",
                         flexShrink: 0,
-                        scrollbarWidth: "none",
                     }}
                 >
                     <div
@@ -493,6 +524,9 @@ export default function AircraftShowcase() {
                         {aircrafts.map((ac, i) => (
                             <button
                                 key={ac.name}
+                                type="button"
+                                aria-label={`Show ${ac.name}`}
+                                aria-pressed={i === activeIndex}
                                 onClick={() => handleManualNav(i)}
                                 style={{
                                     display: "flex",
@@ -529,6 +563,8 @@ export default function AircraftShowcase() {
                                     <img
                                         src={ac.image}
                                         alt={ac.name}
+                                        loading={i === activeIndex ? "eager" : "lazy"}
+                                        decoding="async"
                                         style={{
                                             width: "100%",
                                             height: "100%",
@@ -581,8 +617,69 @@ export default function AircraftShowcase() {
                     </div>
                 </div>
 
+                <section
+                    aria-labelledby="related-aviation-services"
+                    style={{
+                        background: "hsl(150,25%,8%)",
+                        borderTop: "1px solid rgba(255,255,255,0.08)",
+                        padding: "40px 5%",
+                    }}
+                >
+                    <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
+                        <h2
+                            id="related-aviation-services"
+                            style={{ color: "#fff", fontSize: "22px", margin: "0 0 18px" }}
+                        >
+                            Related aviation services
+                        </h2>
+                        <nav aria-label="Related aviation services">
+                            <ul
+                                style={{
+                                    display: "flex",
+                                    flexWrap: "wrap",
+                                    gap: "16px 28px",
+                                    listStyle: "none",
+                                    margin: 0,
+                                    padding: 0,
+                                }}
+                            >
+                                <li>
+                                    <Link style={{ color: "hsl(45,100%,70%)" }} to="/services/aircraft-management">
+                                        Aircraft management
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link style={{ color: "hsl(45,100%,70%)" }} to="/services/aircraft-sourcing-sale">
+                                        Aircraft sourcing and sale
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link style={{ color: "hsl(45,100%,70%)" }} to="/contact">
+                                        Contact about charter services
+                                    </Link>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </section>
+
                 {/* Keyframes */}
                 <style>{`
+        .charter-services-page button:focus-visible,
+        .charter-services-page a:focus-visible {
+          outline: 3px solid hsl(45,100%,70%);
+          outline-offset: 3px;
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .charter-services-page *,
+          .charter-services-page *::before,
+          .charter-services-page *::after {
+            animation-delay: 0ms !important;
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+          }
+        }
         @keyframes fadeUp {
           from { opacity: 0; transform: translateY(20px); }
           to   { opacity: 1; transform: translateY(0);    }
@@ -595,7 +692,6 @@ export default function AircraftShowcase() {
           from { width: 0%;   }
           to   { width: 100%; }
         }
-        ::-webkit-scrollbar { display: none; }
       `}</style>
             </div>
         </Layout>

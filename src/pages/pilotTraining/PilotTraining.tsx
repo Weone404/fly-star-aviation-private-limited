@@ -258,6 +258,31 @@ export default function PilotTrainingPage() {
         </div>
       </section>
 
+      <section className="py-12 bg-background" aria-labelledby="related-dgca-resources">
+        <div className="container">
+          <h2 id="related-dgca-resources" className="text-2xl md:text-3xl font-bold mb-6">
+            Related DGCA resources
+          </h2>
+          <ul className="flex flex-wrap gap-x-8 gap-y-3">
+            <li>
+              <Link className="underline hover:text-primary" to="/dgca/ground-classes">
+                DGCA ground classes
+              </Link>
+            </li>
+            <li>
+              <Link className="underline hover:text-primary" to="/dgca/computer-number">
+                DGCA Computer Number
+              </Link>
+            </li>
+            <li>
+              <Link className="underline hover:text-primary" to="/dgca/medical">
+                DGCA medical requirements
+              </Link>
+            </li>
+          </ul>
+        </div>
+      </section>
+
       {/* Syllabus */}
       <section className="py-20 bg-background">
         <div className="container">

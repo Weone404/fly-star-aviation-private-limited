@@ -38,7 +38,7 @@ const routeMeta: Record<string, RouteMeta> = {
   },
   "/services/charter-services": {
     title: "Charter Services | Flying Star Aviator",
-    description: "Premium aircraft charter services for business, personal, and special event travel.",
+    description: "Explore charter aircraft categories and compare the capacity, range, cruise speed and runway type listed for each aircraft.",
     canonical: `${BASE_URL}/services/charter-services`,
   },
   "/services/aircraft-management": {
@@ -129,7 +129,7 @@ const routeMeta: Record<string, RouteMeta> = {
   },
   "/pilot-training": {
     title: "Aviation Courses After 12th & Pilot Training | Flystar",
-    description: "Compare aviation courses after 12th and pilot-training pathways, including DGCA ground classes, cabin-crew training and separate FTO flight training.",
+    description: "Explore CPL and PPL pathways, eligibility criteria, aviation theory subjects and country comparisons for pilot training after Class 12.",
     canonical: `${BASE_URL}/pilot-training`,
   },
   "/pilot-training/india": {
