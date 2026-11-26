@@ -38,14 +38,14 @@
 - `src/pages/services/charter-services.tsx`
 - `src/test/internalNavigation.test.tsx`
 
-The report is an additional Phase 34 deliverable. No route, sitemap, feed, blog content, generated blog data, or publishing workflow file was changed.
+No route, sitemap, feed, blog content, generated blog data, or publishing workflow source file was changed in the candidate commits.
 
 ## Blog preservation evidence
 
 - The candidate commit changes only the four files listed above; none contains blog article bodies or generated blog data.
 - The candidate diff does not modify blog article paragraphs, headings, facts, examples, quotations, or FAQs.
-- No blog fetch, generation, synchronization, or transformation command was run.
-- A production deployment was not started; production blog content therefore was not changed or verified in this phase.
+- Before release, SHA-256 fingerprints were captured for normalized visible text inside each of the 25 canonical blog `<article>` elements.
+- After release, the same 25 live article fingerprints matched the pre-release values; no article text change was detected.
 
 ## Validation
 
@@ -62,16 +62,18 @@ The report is an additional Phase 34 deliverable. No route, sitemap, feed, blog 
 
 Dependencies were installed from the lockfile with lifecycle scripts disabled because `node_modules` was absent. The package manifest and lockfile were not changed.
 
-## Release status before production integration
+## Production release and verification
 
-The user authorized the existing quality-gated build-time blog fetch for this release. A local `npm run prebuild` attempt could not proceed because the local build environment did not provide a valid HTTPS API origin; no fetch or generated-file write occurred. The configured production build remains the release validation gate.
+The user authorized the existing quality-gated build-time blog fetch for this release. A local `npm run prebuild` attempt could not proceed because the local build environment did not provide a valid HTTPS API origin; no local fetch or generated-file write occurred. The candidate was then fast-forward pushed to `main` through the normal production branch mechanism.
 
-Before production integration:
+- Code deployment commit: `e8e410a0bc508e2527ac8bd72b4d66049d0810b8`
+- Production `/pilot-training`: HTTP 200; updated description and canonical verified; existing H1 intent preserved; new DGCA links present.
+- Production `/services/charter-services`: HTTP 200; updated description and canonical verified; stable `Charter Services` H1 and related links present.
+- Production blog preservation: all 25 canonical article text fingerprints matched the pre-release baseline.
+- Vercel settings, build logs, and environment values were not inspected.
 
-- Production deployment commit: **Pending**
-- Production verification: **Pending**
-- Candidate implementation commit: `1df15e8`
+The normal production deployment was verified from the live pages and their rendered metadata/content. Local full lifecycle build validation remains unavailable because the local build environment lacks the required API origin; the direct Vite build, isolated admin-client check, tests, TypeScript, lint, and local preview all passed as recorded above.
 
 ## Recommended next step
 
-Integrate the candidate with a non-forced fast-forward through the normal production branch mechanism, then verify the affected live pages and confirm that the live blog article content fingerprints are unchanged.
+Monitor organic performance for the updated pages using the site's existing analytics/search reporting. No traffic or ranking uplift is claimed without post-release measurement.
