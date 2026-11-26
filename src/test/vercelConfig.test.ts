@@ -283,55 +283,50 @@ describe("Vercel config", () => {
     };
     const routes = loadRoutes();
     const redirects = loadRedirects();
-    const hostRedirectIndex = redirects.findIndex(
-      (redirect) =>
-        redirect?.source === "/:path*" &&
-        redirect.has?.some(
-          (condition) => condition.type === "host" && condition.value === "flystar.co.in",
-        ),
+    const filesystemIndex = routes.findIndex((route) => route?.handle === "filesystem");
+    const notFoundIndex = routes.findIndex(
+      (route) => route?.src === "/(.*)" && route.status === 404,
     );
     const routeRedirectSources = new Set(
       routes
         .filter((route) => route && route.status >= 300 && route.status < 400)
         .map((route) => route.src),
     );
-    const configRedirectSources = new Set(redirects.map((redirect) => redirect?.source));
 
     expect(Object.keys(legacyRedirects)).toHaveLength(11);
-    expect(hostRedirectIndex).toBeGreaterThanOrEqual(0);
+    expect(filesystemIndex).toBeGreaterThanOrEqual(0);
+    expect(notFoundIndex).toBeGreaterThan(filesystemIndex);
 
     for (const [source, destination] of Object.entries(legacyRedirects)) {
-      const sourceRules = redirects.filter((redirect) => redirect?.source === source);
+      const sourceRules = routes.filter((route) => route?.src === source);
       expect(sourceRules, `${source} must have one exact rule`).toEqual([
         {
-          source,
-          destination: `https://www.flystar.co.in${destination}`,
-          statusCode: 301,
+          src: source,
+          status: 301,
+          dest: `https://www.flystar.co.in${destination}`,
         },
       ]);
-      expect(
-        redirects.indexOf(sourceRules[0]),
-        `${source} must run before host normalization`,
-      ).toBeLessThan(
-        hostRedirectIndex,
+      expect(routes.indexOf(sourceRules[0]), `${source} must run before filesystem`).toBeLessThan(
+        filesystemIndex,
+      );
+      expect(routes.indexOf(sourceRules[0]), `${source} must run before the terminal 404`).toBeLessThan(
+        notFoundIndex,
       );
       expect(ALIAS_CANONICAL[source], `${source} alias map`).toBe(destination);
       expect(ALIAS_CANONICAL[destination], `${destination} must not be an alias`).toBeUndefined();
       expect(routeRedirectSources.has(destination), `${source} must not create a route chain`).toBe(
         false,
       );
-      expect(configRedirectSources.has(destination), `${source} must not create a config chain`).toBe(
-        false,
-      );
+      expect(redirects.some((redirect) => redirect?.source === source)).toBe(false);
       expect(new URL(getRouteMeta(destination).canonical).pathname).toBe(destination);
-      expect(new URL(sourceRules[0].destination).origin).toBe("https://www.flystar.co.in");
-      expect(new URL(sourceRules[0].destination).pathname).toBe(destination);
+      expect(new URL(sourceRules[0].dest).origin).toBe("https://www.flystar.co.in");
+      expect(new URL(sourceRules[0].dest).pathname).toBe(destination);
       expect(new URL(destination, "https://www.flystar.co.in").search).toBe("");
-      expect(redirects.some((redirect) => redirect?.source === `${source}-unrelated`)).toBe(false);
+      expect(routes.some((route) => route?.src === `${source}-unrelated`)).toBe(false);
     }
 
     for (const workingPath of ["/", "/contact", "/courses/cpl", "/dgca/ground-classes", "/pilot-salary-india"]) {
-      expect(redirects.some((redirect) => redirect?.source === workingPath)).toBe(false);
+      expect(routes.some((route) => route?.src === workingPath)).toBe(false);
     }
   });
 
