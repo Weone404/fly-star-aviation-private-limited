@@ -2451,6 +2451,190 @@ export const STATIC_BLOG_POSTS = [
 <p>If you are planning the theory papers alongside the medical, see <a href="/dgca/ground-classes">DGCA ground classes in Dwarka</a> for how we teach them, and <a href="/courses/cpl">the CPL course page</a> for the full sequence.</p>
 <p class="ref-links">More: the <a href="/faq">FAQ</a> for short sourced answers, the <a href="/glossary">glossary</a> for the terms, and our <a href="/editorial-policy">editorial policy</a> for how these figures are checked.</p>`,
   },
+  {
+    _id: '25',
+    slug: 'how-to-become-a-pilot',
+    title: 'How to Become a Pilot in India: Complete Guide',
+    metaTitle: 'How to Become a Pilot in India: Complete Guide | FlyStar',
+    metaDescription: 'How to become a pilot in India: eligibility, DGCA exams, medicals, flight training and costs, with official sources and no unsourced ranges.',
+    keywords: [
+      'how to become a pilot',
+      'how to become a pilot in India',
+      'how to become a pilot after 12th',
+      'pilot eligibility in India',
+      'pilot training fees in India',
+      'commercial pilot training',
+      'DGCA pilot requirements',
+      'how to become a commercial pilot',
+    ],
+    tags: ['Pilot Training', 'Pilot Eligibility', 'DGCA Requirements', 'CPL India', 'Pilot Career'],
+    category: 'Pilot Careers',
+    author: 'Flying Star Aviator Academics Team',
+    authorRole: 'DGCA CPL & ATPL ground instruction, Dwarka, New Delhi',
+    createdAt: '2026-11-27',
+    updatedAt: '2026-11-27',
+    status: 'published',
+    featuredImage: '/blog/diagrams/how-to-become-a-pilot-career-path.svg',
+    imageAlt: 'Five stages in a pilot training pathway: eligibility, medical assessment, theory study, flight training and career progression.',
+    excerpt: 'A practical overview of the route from education and medical assessment to DGCA examinations, flight training and career planning, with current rules separated from provider-specific costs.',
+    intro: 'Becoming a commercial pilot involves separate academic, medical, examination and flight-training steps. This guide distinguishes Flight Crew exam registration from licence eligibility and explains what to confirm with DGCA and training providers before committing to a plan.',
+    relatedArticles: [
+      'cpl-eligibility-after-12th',
+      'cadet-pilot-programme-vs-self-sponsored-cpl',
+      'hidden-costs-of-pilot-training-india',
+    ],
+    references: [
+      { title: 'DGCA Pariksha Flight Crew FAQ', url: 'https://pariksha.dgca.gov.in/Form/PLT_FAQs' },
+      { title: 'DGCA Civil Aviation Requirements, Section 7 Series C Part I, Revision 7 (effective 15 November 2025)', url: 'https://www.dgca.gov.in/digigov-portal/Upload?flag=iframeAttachView&attachId=gIOV35y08VSQaJX1MbuHYg%3D%3D' },
+      { title: 'DGCA CAR Section 7, Series G, Part VI, Issue I (effective 1 December 2025): Radio Telephone Operator (Restricted) examination and licence', url: 'https://www.dgca.gov.in/digigov-portal/Upload?flag=iframeAttachView&attachId=Yjr2U69tgL30j4R9JgAkmg%3D%3D' },
+      { title: 'DGCA Flight Crew User Manual, Issue IV, Revision 0 (September 2026)', url: 'https://pariksha.dgca.gov.in/PDFViewer.jsp?pdf=95FB462516F636EF3FF3BAE7AA4DB33C' },
+      { title: 'DGCA website: Regulations section, Aircraft Rules, 1937, Schedule II', url: 'https://www.dgca.gov.in/' },
+      { title: 'DGCA approved Flying Training Organisations list', url: 'https://public-prd-dgca.s3.ap-south-1.amazonaws.com/InventoryList/personal/training/pilot/flrTrainOrgs/flyclub.pdf' },
+    ],
+    faqs: [
+      {
+        q: 'Can I become a commercial pilot in India without Physics and Mathematics in Class 12?',
+        a: 'DGCA Pariksha FAQ 7 says candidates outside the PPL category must have passed 10+2 with Physics and Mathematics to register for Flight Crew examinations. Licence issue is governed separately by Rule 47A and Schedule II. Confirm that the exact board record is accepted before enrolling.',
+      },
+      {
+        q: 'How many flying hours are required for a DGCA CPL?',
+        a: 'The applicable minimums and any PIC, cross-country, night or instrument components are set out in Schedule II of the Aircraft Rules for the licence and pathway. This guide does not state a total because the current Schedule II wording could not be verified in this review; confirm it with DGCA before buying hours.',
+      },
+      {
+        q: 'Should I take a Class 2 medical before a Class 1 medical?',
+        a: 'A Class 2 assessment may be useful as an early check, but DGCA CAR Section 7 Series C Part I, Revision 7, says it is not mandatory before an initial Class 1 medical. Confirm current centre instructions; see our DGCA medical guide.',
+      },
+      {
+        q: 'Does CPL training include a type rating?',
+        a: 'Whether type-rating training is included depends on the specific programme. Check the written agreement for the aircraft type, training, assessments and any separate charges.',
+      },
+      {
+        q: 'Are the fees and salary ranges in this guide verified quotes?',
+        a: 'No numerical fee or salary ranges are given because the supplied figures had no provider quotations or airline pay sources. Ask for current written, itemised terms; earnings are not guaranteed.',
+      },
+    ],
+    content: `<p>Becoming a commercial pilot in India is a sequence of academic, medical, examination and flight-training steps. The licensing process is regulated by the Directorate General of Civil Aviation (DGCA). A candidate typically needs to confirm the educational qualification, meet the applicable medical standard, obtain a DGCA Computer Number, clear the required theory examinations and complete flight training under the applicable rules.</p>
+<p><strong>Currency note:</strong> DGCA rules, examination notices and provider prices can change. The linked medical and RTR requirements are tied to the cited DGCA documents. Where current licensing minima could not be verified against the official text, this guide omits exact figures and directs candidates to the governing rules. Training costs and timelines vary by provider and candidate; no unsupported price, salary or duration ranges are presented.</p>
+
+<h2>The pilot-training pathway at a glance</h2>
+<ol>
+<li><strong>Check education and eligibility.</strong> Confirm your subjects, board records and the qualification required for the licence and exams you intend to pursue.</li>
+<li><strong>Check medical requirements early.</strong> Review current DGCA medical rules and centre instructions before committing substantial training funds.</li>
+<li><strong>Obtain a DGCA Computer Number.</strong> Apply through the Pariksha portal and make sure names and documents match.</li>
+<li><strong>Study for theory examinations.</strong> Prepare the relevant DGCA subjects and the separate RTR(A) requirement, checking current syllabi and notices.</li>
+<li><strong>Complete flight training and plan the next stage.</strong> Select an appropriately approved Flying Training Organisation (FTO), check applicable flight-time requirements, and understand what any later type rating or airline selection involves.</li>
+</ol>
+
+<h2>Pilot eligibility in India and education after Class 12</h2>
+<h3>How to become a pilot after 12th</h3>
+<p>Class 12 graduates can start by checking the academic and medical requirements, organising their records and learning how the DGCA examination process works. Ground-theory preparation can be planned separately from the decision to begin aircraft flight training. The order and timing should fit the candidate's documents, medical assessment, examination readiness and chosen FTO.</p>
+<p>For the published qualification position and its limits, read our <a href="/blog/cpl-eligibility-after-12th">CPL eligibility after 12th guide</a>. It distinguishes eligibility to sit theory papers from completing every requirement for a licence.</p>
+
+<h3>Physics, Mathematics and non-science backgrounds</h3>
+<p>The DGCA Pariksha Flight Crew FAQ says applicants outside the PPL category must have passed 10+2 with Physics and Mathematics from a recognised board or university, or an equivalent, to register as a Flight Crew candidate. This is the FAQ's examination-registration wording; the qualification for licence issue is governed separately by Rule 47A and Schedule II of the Aircraft Rules. Confirm the current rule and whether your exact board documents are accepted before enrolling or paying for additional subjects.</p>
+
+<table>
+<thead><tr><th>Topic</th><th>What the current official source establishes</th><th>What to verify for your case</th></tr></thead>
+<tbody>
+<tr><td>Flight Crew exam registration</td><td>Pariksha FAQ 7 gives the 10+2 Physics and Mathematics qualification for applicants outside the PPL category</td><td>Board equivalence, document verification and current portal requirements</td></tr>
+<tr><td>Licence-issue education</td><td>Rule 47A refers to the qualification in Aircraft Rules Schedule II</td><td>Current Schedule II criteria and acceptance of the candidate's documents</td></tr>
+<tr><td>Licence minimum age</td><td>Schedule II contains licence-specific requirements</td><td>Current age criterion for the specific licence; no numeric age is stated here</td></tr>
+<tr><td>Medical</td><td>The cited DGCA CAR specifies Class 1 medical assessment for CPL applicants; Class 2 is not a prerequisite before an initial Class 1 assessment</td><td>Current centre instructions and the assessment applicable to your circumstances</td></tr>
+<tr><td>Language</td><td>The cited RTR CAR says its written and practical examinations are conducted in English</td><td>Any separate language-proficiency requirement that applies to the licence or operation sought</td></tr>
+<tr><td>Identity and nationality</td><td>Pariksha has applicant-specific documentation instructions</td><td>Current manual, notices and security-clearance steps for your circumstances</td></tr>
+</tbody>
+</table>
+<p>Airline and cadet-programme selection criteria are set by the relevant employer or programme and can differ by intake. Check the current written requirements for the specific programme; do not treat them as DGCA licensing minima.</p>
+<p class="source-note">The <a href="https://pariksha.dgca.gov.in/Form/PLT_FAQs" target="_blank" rel="noopener noreferrer">DGCA Pariksha Flight Crew FAQ</a> is general guidance and says to read it with the <a href="https://pariksha.dgca.gov.in/PDFViewer.jsp?pdf=95FB462516F636EF3FF3BAE7AA4DB33C" target="_blank" rel="noopener noreferrer">latest Flight Crew User Manual</a>, notices and instructions. It also distinguishes examination registration from the Aircraft Rules governing licence issue. For current Schedule II wording, open the Regulations section of the <a href="https://www.dgca.gov.in/" target="_blank" rel="noopener noreferrer">DGCA website</a> and consult the Aircraft Rules, 1937.</p>
+
+<h2>DGCA medicals and the Computer Number</h2>
+<h3>Class 1 and Class 2 medical assessments</h3>
+<p>The supplied draft recommends starting with a Class 2 medical as an early check. DGCA's CAR requires Class 1 medical assessment for CPL applicants (paragraph 2.4.1) and says a Class 2 assessment is not mandatory before an initial Class 1 examination (paragraph 3.1.5). A Class 2 may still be useful, but it is not a universal prerequisite. Read the <a href="https://www.dgca.gov.in/digigov-portal/Upload?flag=iframeAttachView&amp;attachId=gIOV35y08VSQaJX1MbuHYg%3D%3D" target="_blank" rel="noopener noreferrer">DGCA medical CAR, Section 7 Series C Part I, Revision 7 (effective 15 November 2025)</a> and current centre instructions, and see our <a href="/dgca/medical">DGCA medical requirements guide</a> before booking.</p>
+<p>The investigations and appointment process depend on DGCA requirements and the instructions of the selected medical centre. Use the current CAR and ask the centre what applies to your case, how long to allow, and which charges are included rather than relying on a generic checklist.</p>
+
+<h3>Getting a DGCA Computer Number</h3>
+<p>A Computer Number identifies a candidate in DGCA Flight Crew examinations and licensing records. Applications are made through the Pariksha portal, with identity, education and board-verification requirements that can vary by applicant category; DigiLocker verification may be available where eligible. Review the portal's current document checklist, check that names match across records and use our <a href="/dgca/computer-number">DGCA Computer Number guide</a> for the process.</p>
+
+<h2>Theory exams, ground study and RTR(A)</h2>
+<p>Flight Crew theory papers and their syllabus are category-specific. The DGCA Pariksha FAQ directs candidates to the applicable CARs, current User Manual and notices, which should be checked before booking; this guide does not reproduce an unverified CPL paper list or pass mark.</p>
+<p>The DGCA's current CAR names the radio-telephony award as the Radio Telephone Operator (Restricted) Certificate and Licence, commonly referred to as RTR(A). CAR Section 7, Series G, Part VI, Issue I (dated 27 November 2025; effective 1 December 2025) requires written and practical examinations unless the applicant qualifies for an exemption. The written test has 50 multiple-choice questions, is conducted in English, requires 70% to pass and remains valid for three years from the pass date. The practical examination requires 50% to pass and allows up to three attempts. These figures apply to the RTR examination, not to CPL theory papers. Whether the certificate is required for a particular CPL licence-issue pathway should be confirmed against the current Schedule II and DGCA notices; the CAR cited here explains the RTR examination, not the full CPL licensing sequence. See the <a href="https://www.dgca.gov.in/digigov-portal/Upload?flag=iframeAttachView&amp;attachId=Yjr2U69tgL30j4R9JgAkmg%3D%3D" target="_blank" rel="noopener noreferrer">DGCA RTR CAR, paragraphs 3.1–3.3, 6.2–6.4 and 7.3–7.5</a> for the exam structure, exemptions and current procedure.</p>
+
+<h3>Ground school compared with flight training</h3>
+<table>
+<thead><tr><th>Stage</th><th>What it covers</th><th>What it does not replace</th></tr></thead>
+<tbody>
+<tr><td>Ground school</td><td>Theory preparation, such as navigation, meteorology, regulations and aircraft systems</td><td>Aircraft flight training or licence issue</td></tr>
+<tr><td>Flight training</td><td>Practical aircraft handling, procedures, navigation and other required exercises</td><td>DGCA theory examinations or any separate licence requirement</td></tr>
+</tbody>
+</table>
+<p>Flying Star Aviator provides DGCA CPL and ATPL ground classes in Dwarka; aircraft flight training is a separate stage arranged through an appropriately approved FTO. See the <a href="/dgca/ground-classes">DGCA ground classes page</a> and <a href="/courses/cpl">CPL course information</a> for the scope of ground instruction.</p>
+
+<h2>Flight hours, ratings and licence requirements</h2>
+<p>Flight-time minima are set by the applicable licence requirements in Schedule II of the Aircraft Rules. The required total and any specified PIC, cross-country, night or instrument components must be checked against the current text for the licence and pathway. Because this review could not verify the current Schedule II wording, no numeric total or breakdown is given here. Confirm the current requirements with DGCA and the chosen FTO before planning training or buying hours.</p>
+<p>Ask the FTO to show how each logged flight contributes to the applicable requirement, which aircraft and training exercises are included, and how any extra time or rating is charged. For an overview of the licensing stages, see the existing <a href="/become-a-pilot/become-pilot">pilot pathway guide</a> and the <a href="/become-a-pilot/commercial-pilot-licence">Commercial Pilot Licence page</a>.</p>
+
+<h2>Pilot training fees in India and timeline</h2>
+<p>Training costs depend on the FTO, aircraft, training pace, location and the services included in the contract. The supplied draft's numeric fee ranges had no named provider quotations or traceable source, so they have been removed rather than presented as market averages or budgets.</p>
+<table>
+<thead><tr><th>Cost component</th><th>What to confirm in writing</th></tr></thead>
+<tbody>
+<tr><td>Flight training</td><td>Aircraft and instructor charges, billing basis, fuel, landing or navigation fees, extra hours, taxes, refund terms and any other charges</td></tr>
+<tr><td>Ground classes and examinations</td><td>What instruction and materials are included; check current DGCA examination notices and any separate registration charges</td></tr>
+<tr><td>Medical assessments</td><td>Centre-specific fee, required investigations, travel and what the quoted amount covers</td></tr>
+<tr><td>Living and travel</td><td>Accommodation, transport and personal costs for the actual location and training schedule</td></tr>
+<tr><td>Type rating or cadet-programme stages</td><td>Whether the stage is included, which aircraft type it covers and what happens if programme terms or selection outcomes change</td></tr>
+</tbody>
+</table>
+<p class="source-note">For course-specific information, see <a href="/courses/cpl/fees">CPL ground-class fees and inclusions</a>. That page is not a quote for FTO flight training, medical assessments or type rating. Compare itemised quotations from the actual providers before budgeting.</p>
+
+<h3>How long training may take</h3>
+<p>The supplied draft's overall duration range had no supporting provider schedule or completion-time dataset, so no numeric timeline is given. Ask the chosen FTO for its current schedule and how weather, aircraft availability, maintenance, airspace, examination dates, training pace and document processing may affect your individual progress.</p>
+
+<h3>Training in India or abroad</h3>
+<p>The location of training can affect documentation, provider terms, travel, living and currency costs. If you train outside India and intend to hold an Indian licence, ask DGCA which training records, examinations and licensing steps apply to your case before enrolling. Compare an itemised plan from the provider and confirm whether and how any foreign training or licence will be recognised.</p>
+
+<h2>Choosing an FTO and comparing training routes</h2>
+<p>Before paying a deposit, check the provider against the <a href="https://public-prd-dgca.s3.ap-south-1.amazonaws.com/InventoryList/personal/training/pilot/flrTrainOrgs/flyclub.pdf" target="_blank" rel="noopener noreferrer">DGCA approved Flying Training Organisations list</a> and ask for written details on approval scope, fleet and maintenance arrangements, expected flying availability, billing basis, refund terms and extra charges. For a practical checklist, see <a href="/blog/how-to-choose-a-flying-school-in-india">how to choose a flying school in India</a>.</p>
+
+<h3>Conventional CPL and cadet pilot programmes</h3>
+<table>
+<thead><tr><th>Route</th><th>General structure</th><th>What to verify</th></tr></thead>
+<tbody>
+<tr><td>Conventional CPL</td><td>The candidate arranges theory study and flight training, then applies for roles as eligible</td><td>FTO contract, total budget, separate ratings and employer recruitment requirements</td></tr>
+<tr><td>Cadet programme</td><td>Airline selection is linked to a structured training pathway, according to the particular programme</td><td>Selection terms, partner school, fees, type rating, funding, exit terms and any employment conditions</td></tr>
+</tbody>
+</table>
+<p>Costs, selection terms and training structure vary by programme and intake; no generic price or employment outcome is stated here. Check the current airline agreement, partner school, type-rating terms, funding, exit conditions and selection requirements. Read our <a href="/blog/cadet-pilot-programme-vs-self-sponsored-cpl">cadet versus self-sponsored CPL comparison</a> before deciding.</p>
+
+<h2>Career options and salary figures</h2>
+<p>A CPL may be relevant to airline First Officer and Captain pathways, charter or non-scheduled operations, cargo, or flight-instruction roles, subject to the applicable licence, experience, ratings and employer requirements. A licence does not guarantee a job, salary or promotion; hiring depends on the employer, fleet, hours, seniority and opportunities available at the time.</p>
+<p>No current airline pay scale or traceable compensation source was supplied for this article, so it gives no salary ranges. Pay depends on the employer, role, experience, aircraft, roster and contract; an issued licence does not guarantee employment or a particular income. For more context, read the existing <a href="/pilot-salary-in-india">pilot salary guide</a>.</p>
+
+<h2>Common planning mistakes</h2>
+<ul>
+<li>Paying a large training advance before understanding the medical process and relevant cancellation terms.</li>
+<li>Comparing headline prices without checking extra flight hours, examinations, travel, accommodation, ratings and taxes.</li>
+<li>Assuming a CPL by itself guarantees an airline job, a type rating or a particular salary.</li>
+<li>Relying on an old checklist instead of the current DGCA CAR, Pariksha notices, FTO contract or airline recruitment page.</li>
+</ul>
+
+<h2>Frequently asked questions</h2>
+<h3>Can I become a commercial pilot in India without Physics and Mathematics in Class 12?</h3>
+<p>DGCA Pariksha FAQ 7 states a 10+2 Physics and Mathematics requirement for Flight Crew examination registration outside the PPL category. Licence issue is a separate question governed by Rule 47A and Schedule II; confirm that the exact qualification and documents are accepted before enrolling.</p>
+<h3>How many flying hours are required for a DGCA CPL?</h3>
+<p>The applicable flight-time minima are in Schedule II of the Aircraft Rules. This guide omits the unverified numeric total and breakdown; confirm the current rule for your licence and pathway with DGCA and the FTO before buying hours.</p>
+<h3>Should I take a Class 2 medical before Class 1?</h3>
+<p>A Class 2 can be useful as an early check, but the current DGCA CAR says it is not mandatory before an initial Class 1 medical. Review the current rule and centre instructions in our <a href="/dgca/medical">DGCA medical guide</a>.</p>
+<h3>Does CPL training include a type rating?</h3>
+<p>The supplied draft treats type rating as a separate cost unless a specific programme includes it. Check the written agreement for the exact aircraft type, inclusions and exclusions.</p>
+<h3>Are the fees and salary ranges in this guide verified?</h3>
+<p>No. Numeric estimates were removed because the supplied draft did not include provider quotations or airline pay sources. Costs and compensation depend on the provider, programme and employer; request current written terms.</p>
+
+<h2>Next steps</h2>
+<p>Before committing to training, verify your education documents, check the current medical and examination requirements, compare itemised provider terms and confirm flight-time requirements directly with DGCA. Regulatory requirements and provider prices can change.</p>
+<p class="ref-links">Related reading: <a href="/blog/cpl-eligibility-after-12th">CPL eligibility after 12th</a>, <a href="/dgca/computer-number">DGCA Computer Number</a>, <a href="/dgca/medical">DGCA medical requirements</a>, <a href="/dgca/ground-classes">ground classes</a> and <a href="/courses/cpl/fees">CPL ground-class fees</a>.</p>
+<p><a href="/contact">Contact Flying Star Aviator</a> to ask about DGCA CPL and ATPL ground classes in Dwarka, New Delhi.</p>`,
+  },
 ];
 
 /**
