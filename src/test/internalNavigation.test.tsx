@@ -47,7 +47,7 @@ describe("internal navigation", () => {
     );
     expect(screen.getByRole("link", { name: "Pilot Salary in India" })).toHaveAttribute(
       "href",
-      "/pilot-salary-india",
+      "/pilot-salary-in-india",
     );
   });
 

@@ -3,8 +3,8 @@
   "trailingSlash": false,
   "redirects": [
     {
-      "source": "/pilot-salary-in-india",
-      "destination": "https://www.flystar.co.in/pilot-salary-india",
+      "source": "/pilot-salary-india",
+      "destination": "https://www.flystar.co.in/pilot-salary-in-india",
       "permanent": true
     },
     {
@@ -74,7 +74,7 @@
     {
       "src": "/indigo-pilot-salary",
       "status": 301,
-      "dest": "https://www.flystar.co.in/pilot-salary-india"
+      "dest": "https://www.flystar.co.in/pilot-salary-in-india"
     },
     {
       "src": "/pilot-course-fees-india",
@@ -92,9 +92,9 @@
       "dest": "https://www.flystar.co.in/dgca/fto-ranking"
     },
     {
-      "src": "/pilot-salary-in-india",
+      "src": "/pilot-salary-india",
       "status": 308,
-      "dest": "/pilot-salary-india"
+      "dest": "/pilot-salary-in-india"
     },
     {
       "src": "/blogs/7",

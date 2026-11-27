@@ -313,10 +313,10 @@ const routeMeta: Record<string, RouteMeta> = {
     description: "Plain-English definitions of CPL, ATPL, PPL, RTR(A), duty time, OLODE and other Indian pilot-training terms; verify current rules with DGCA.",
     canonical: `${BASE_URL}/glossary`,
   },
-  "/pilot-salary-india": {
-    title: "Pilot Salary in India: Published Data vs Claims",
-    description: "Compare pilot salary claims in India, including commercial pilot salary and monthly gross/in-hand pay; assess airline roles and source quality.",
-    canonical: `${BASE_URL}/pilot-salary-india`,
+  "/pilot-salary-in-india": {
+    title: "Pilot Salary in India 2026 – Monthly Pay, Airlines & Career Growth | Flying Star Aviator",
+    description: "Explore pilot salary in India in 2026, including airline-wise pay, First Officer and Captain earnings, starting salary, career growth and pilot training costs.",
+    canonical: `${BASE_URL}/pilot-salary-in-india`,
   },
   "/cadet-pilot-programme": {
     title: "Cadet Pilot Programmes in India | Flying Star Aviator",

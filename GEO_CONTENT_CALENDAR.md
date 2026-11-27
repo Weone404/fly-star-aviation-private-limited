@@ -6,7 +6,7 @@ _New guide topics below are ideas, not approved for publication._
 |---|---|---|---|---|---|---|---|
 | 1 | Comparing pilot training quotes | pilot training cost, hidden costs | Existing guide | We One cost guide | Not assessed | `/courses/cpl/fees` | Existing |
 | 2 | Flight school admission checklist | FTO admission requirements, school comparison | Existing guide | We One prerequisites guide | Not assessed | `/blog/how-to-choose-a-flying-school-in-india` | Review |
-| 3 | Pilot salary claims | pilot salary, monthly pay, IndiGo pilot salary | Existing guide | We One salary guide | Not assessed | `/pilot-salary-india` | Existing |
+| 3 | Pilot salary claims | pilot salary, monthly pay, IndiGo pilot salary | Existing guide | We One salary guide | Not assessed | `/pilot-salary-in-india` | Existing; source review required |
 | 4 | Medical assessment process | DGCA Class 1, Class 2 | Existing guide | We One medical guide | Not assessed | `/dgca/medical` | Regulatory review |
 | 5 | DGCA examination subjects | DGCA syllabus, exam subjects | Existing guide | We One DGCA exam guide | Not assessed | `/blog/dgca-exam-subjects-by-licence` | Regulatory review |
 | 6 | Computer number application | DGCA computer number, DigiLocker | Existing guide | We One computer-number guides | Not assessed | `/dgca/computer-number` | Review |
@@ -24,13 +24,13 @@ Do not treat query variants as separate pages or infer search volume.
 
 | Keyword | Target | Status / caveat |
 |---|---|---|
-| Pilot Salary | `/pilot-salary-india` | Covered; no verified market-wide range |
-| Commercial Pilot Salary | `/pilot-salary-india` | Covered; pay varies |
-| Indigo Pilot Salary | `/pilot-salary-india` | Partial; current airline pay not verified |
-| What Is the Salary of a Pilot | `/pilot-salary-india` | Partial; no verified representative amount |
-| Pilot Salary per Month | `/pilot-salary-india` | Covered; gross and in-hand comparison |
-| Pilot Salary in India per Month | `/pilot-salary-india` | Covered; gross and in-hand comparison |
-| Airlines Pilot Salary | `/pilot-salary-india` | Covered using natural wording |
+| Pilot Salary | `/pilot-salary-in-india` | Covered; reported salary estimates need primary-source review |
+| Commercial Pilot Salary | `/pilot-salary-in-india` | Covered; pay estimates need source review |
+| Indigo Pilot Salary | `/pilot-salary-in-india` | Covered; reported airline pay needs source review |
+| What Is the Salary of a Pilot | `/pilot-salary-in-india` | Covered; estimates need source review |
+| Pilot Salary per Month | `/pilot-salary-in-india` | Covered; gross and in-hand comparisons need source review |
+| Pilot Salary in India per Month | `/pilot-salary-in-india` | Covered; gross and in-hand comparisons need source review |
+| Airlines Pilot Salary | `/pilot-salary-in-india` | Covered using natural wording; estimates need source review |
 | Air Hostess Salary | `/blog/air-hostess-salary-in-india-2026` | Partial; dated recruitment and pay claims need review |
 | How to Become a Pilot | `/become-a-pilot/become-pilot` | Existing; eligibility and cost claims need review |
 | Commercial Pilot | `/become-a-pilot/commercial-pilot-licence` | Existing licence guide |

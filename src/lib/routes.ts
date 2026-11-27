@@ -49,10 +49,10 @@ export const ALIAS_CANONICAL: Record<string, string> = {
   "/guide-on-how-to-become-a-pilot": "/become-a-pilot/become-pilot",
   "/dgca-class-1-class-2-medical": "/dgca/medical",
   "/dgca-exam-syllabus": "/blog/dgca-exam-subjects-by-licence",
-  "/indigo-pilot-salary": "/pilot-salary-india",
+  "/indigo-pilot-salary": "/pilot-salary-in-india",
   "/pilot-course-fees-india": "/courses/cpl/fees",
   "/pilot-duty-time-fdtl-india": "/glossary",
-  "/pilot-salary-in-india": "/pilot-salary-india",
+  "/pilot-salary-india": "/pilot-salary-in-india",
   "/top-pilot-training-institutes-india": "/dgca/fto-ranking",
 };
 

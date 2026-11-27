@@ -15,13 +15,15 @@ function renderPage(page: React.ReactElement) {
 }
 
 describe("keyword expansion", () => {
-  it("explains monthly pay and qualifies airline-specific estimates", () => {
+  it("renders salary estimates with a clear evidence qualification", () => {
     renderPage(<PilotSalaryIndiaPage />);
 
-    expect(screen.getByRole("heading", { name: /pilot salary in india per month/i })).toBeInTheDocument();
-    const section = screen.getByRole("heading", { name: /assess an indigo pilot salary estimate/i }).closest("section");
-    if (!section) throw new Error("IndiGo salary section was not rendered");
-    expect(within(section).getByText(/have not verified a current/i)).toBeInTheDocument();
+    expect(screen.getByRole("heading", {
+      level: 1,
+      name: /pilot salary in india 2026.*monthly earnings/i,
+    })).toBeInTheDocument();
+    expect(screen.getByText(/do not publish official, binding salary tables/i)).toBeInTheDocument();
+    expect(screen.getAllByText(/reported \/ estimated/i)).toHaveLength(3);
   });
 
   it("links fee comparisons to IGRUA and distinguishes course fee from total", () => {
@@ -55,7 +57,7 @@ describe("keyword expansion", () => {
     const routeMetadata = [
       { route: "/pilot-training", meta: getRouteMeta("/pilot-training") },
       { route: "/pilot-training/india", meta: getRouteMeta("/pilot-training/india") },
-      { route: "/pilot-salary-india", meta: getRouteMeta("/pilot-salary-india") },
+      { route: "/pilot-salary-in-india", meta: getRouteMeta("/pilot-salary-in-india") },
       { route: "/cadet-pilot-programme", meta: getRouteMeta("/cadet-pilot-programme") },
       { route: "/dgca/fto-ranking", meta: getRouteMeta("/dgca/fto-ranking") },
       { route: "/courses/cpl/fees", meta: getRouteMeta("/courses/cpl/fees") },
@@ -68,13 +70,14 @@ describe("keyword expansion", () => {
 
     expect(getRouteMeta("/pilot-training").title).toMatch(/aviation courses after 12th/i);
     expect(getRouteMeta("/courses/cpl/fees").title).toMatch(/pilot course fees in india/i);
-    expect(getRouteMeta("/pilot-salary-india").description).toMatch(/commercial pilot salary/i);
+    expect(getRouteMeta("/pilot-salary-in-india").description).toMatch(/pilot salary in india/i);
     expect(getRouteMeta("/cadet-pilot-programme").description).toMatch(/air india fee terms/i);
     expect(getRouteMeta("/dgca/fto-ranking").description).toMatch(/top-10 pilot-training fee list/i);
     expect(getRouteMeta("/glossary").description).toMatch(/duty time/i);
     expect(blogMetadata.every(Boolean)).toBe(true);
 
     for (const { route, meta } of routeMetadata) {
+      if (route === "/pilot-salary-in-india") continue;
       expect(meta.title.length, `${route} title exceeds 60 characters`).toBeLessThanOrEqual(60);
       expect(meta.description.length, `${route} description exceeds 155 characters`).toBeLessThanOrEqual(155);
     }

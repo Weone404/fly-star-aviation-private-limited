@@ -58,7 +58,7 @@ const SEARCH_TOPICS = [
   { label: "CPL Course", to: "/courses/cpl" },
   { label: "CPL Eligibility", to: "/become-a-pilot/become-pilot" },
   { label: "Pilot Course Fees", to: "/courses/cpl" },
-  { label: "Pilot Salary in India", to: "/pilot-salary-india" },
+  { label: "Pilot Salary in India", to: "/pilot-salary-in-india" },
   { label: "Private Pilot License (PPL)", to: "/pilot-training/ppl" },
   { label: "Flight Training", to: "/pilot-training" },
   { label: "Flying Schools", to: "/pilot-training/india" },

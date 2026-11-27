@@ -360,8 +360,8 @@ at runtime but has no static HTML, no meta tags and no sitemap entry.
 
 ### Canonical URL redirects
 
-`vercel.json` permanently redirects `/pilot-salary-in-india` to the canonical
-`https://www.flystar.co.in/pilot-salary-india` URL, redirects the apex host to
+`vercel.json` permanently redirects `/pilot-salary-india` to the canonical
+`https://www.flystar.co.in/pilot-salary-in-india` URL, redirects the apex host to
 HTTPS `www`, and upgrades HTTP requests on `www` to HTTPS. The host redirects
 preserve the requested path. Vercel project-level domain assignments or
 dashboard redirects can take precedence or add another redirect, so verify the

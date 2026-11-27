@@ -14,6 +14,7 @@ import { FAQ_HUB_QUESTIONS } from "./faqHub";
 import { GLOSSARY } from "./glossary";
 import { imagesFor } from "./blogImages.js";
 import { postsInTopic, topicBySlug, type Topic } from "./blogTopics";
+import { PILOT_SALARY_FAQS } from "./pilotSalaryFaqs";
 
 const ORG_ID = `${SITE_ORIGIN}/#organization`;
 
@@ -172,6 +173,27 @@ function webPageNode(path: string): JsonLdNode {
     isPartOf: { "@id": `${SITE_ORIGIN}/#website` },
     inLanguage: "en-IN",
     ...(post ? { breadcrumb: { "@id": `${url}#breadcrumb` }, primaryImageOfPage: httpsImageUrl(post.featuredImage || post.coverImage) } : {}),
+  };
+}
+
+function pilotSalaryArticleNode(path: string): JsonLdNode {
+  const url = canonicalUrl(path);
+  return {
+    "@type": "Article",
+    "@id": `${url}#article`,
+    headline: "Pilot Salary in India 2026 – Monthly Earnings, Airline-Wise Pay and Career Growth",
+    description: descFor(path, ""),
+    image: httpsImageUrl("/assets/hero-aircraft-1600w.jpg"),
+    author: {
+      "@type": "Organization",
+      name: "Flying Star Aviator Academics Team",
+      url: `${SITE_ORIGIN}/editorial-policy`,
+    },
+    publisher: { "@id": ORG_ID },
+    datePublished: "2026-11-27",
+    dateModified: "2026-11-27",
+    mainEntityOfPage: { "@id": `${url}#webpage` },
+    inLanguage: "en-IN",
   };
 }
 
@@ -507,6 +529,7 @@ export const PAGE_FAQS: Record<string, { q: string; a: string }[]> = {
 
 /** /pilot-training/<topic> FAQs come straight from the array the page renders. */
 function faqsFor(path: string): { q: string; a: string }[] | undefined {
+  if (path === "/pilot-salary-in-india") return PILOT_SALARY_FAQS;
   const direct = PAGE_FAQS[path];
   if (direct) return direct;
   if (path === "/faq") return FAQ_HUB_QUESTIONS;
@@ -581,6 +604,7 @@ export function buildGraph(path: string): JsonLdNode | null {
   }
 
   const nodes: JsonLdNode[] = [breadcrumb(path), pageNode(path)];
+  if (path === "/pilot-salary-in-india") nodes.push(pilotSalaryArticleNode(path));
   const pageFaq = pageFaqNode(path);
   if (pageFaq) nodes.push(pageFaq);
   const glossary = glossaryNode(path);

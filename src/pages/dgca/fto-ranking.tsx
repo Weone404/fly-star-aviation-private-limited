@@ -287,7 +287,7 @@ export default function DgcaFtoRankingPage() {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/pilot-salary-india" className="underline hover:text-primary">
+                  <Link to="/pilot-salary-in-india" className="underline hover:text-primary">
                     What pilots earn, and what is actually published
                   </Link>
                 </li>

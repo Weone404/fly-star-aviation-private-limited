@@ -45,10 +45,10 @@ function sitemapPaths(): string[] {
 }
 
 describe("llms.txt", () => {
-  it("lists the canonical salary URL and omits its alias", () => {
+  it("lists the canonical salary URL and omits its legacy path", () => {
     const paths = llmsPaths();
-    expect(paths).toContain("/pilot-salary-india");
-    expect(paths).not.toContain("/pilot-salary-in-india");
+    expect(paths).toContain("/pilot-salary-in-india");
+    expect(paths).not.toContain("/pilot-salary-india");
   });
 
   it("lists every route in routeMeta, or names it as a deliberate omission", () => {

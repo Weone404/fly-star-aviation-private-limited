@@ -276,7 +276,7 @@ describe("Vercel config", () => {
       "/commercial-pilot-course": "/courses/cpl",
       "/dgca-class-1-class-2-medical": "/dgca/medical",
       "/dgca-exam-syllabus": "/blog/dgca-exam-subjects-by-licence",
-      "/indigo-pilot-salary": "/pilot-salary-india",
+      "/indigo-pilot-salary": "/pilot-salary-in-india",
       "/pilot-course-fees-india": "/courses/cpl/fees",
       "/pilot-duty-time-fdtl-india": "/glossary",
       "/top-pilot-training-institutes-india": "/dgca/fto-ranking",
@@ -325,16 +325,16 @@ describe("Vercel config", () => {
       expect(routes.some((route) => route?.src === `${source}-unrelated`)).toBe(false);
     }
 
-    for (const workingPath of ["/", "/contact", "/courses/cpl", "/dgca/ground-classes", "/pilot-salary-india"]) {
+    for (const workingPath of ["/", "/contact", "/courses/cpl", "/dgca/ground-classes", "/pilot-salary-in-india"]) {
       expect(routes.some((route) => route?.src === workingPath)).toBe(false);
     }
   });
 
-  it("permanently redirects the salary alias before host normalization", () => {
+  it("permanently redirects the legacy salary URL before host normalization", () => {
     const routes = loadRoutes();
     const redirectRules = loadRedirects();
     const aliasRedirects = redirectRules.filter(
-      (redirect) => redirect && redirect.source === "/pilot-salary-in-india",
+      (redirect) => redirect && redirect.source === "/pilot-salary-india",
     );
     const [redirect] = aliasRedirects;
     const hostRedirectIndex = redirectRules.findIndex(
@@ -348,38 +348,38 @@ describe("Vercel config", () => {
     expect(aliasRedirects).toHaveLength(1);
     expect(redirectRules.indexOf(redirect)).toBeLessThan(hostRedirectIndex);
     expect(redirect?.permanent).toBe(true);
-    expect(new URL(redirect?.destination).pathname).toBe("/pilot-salary-india");
+    expect(new URL(redirect?.destination).pathname).toBe("/pilot-salary-in-india");
     expect(new URL(redirect?.destination).origin).toBe("https://www.flystar.co.in");
-    expect(new URL(getRouteMeta("/pilot-salary-india").canonical).pathname).toBe(
+    expect(new URL(getRouteMeta("/pilot-salary-in-india").canonical).pathname).toBe(
       new URL(redirect?.destination).pathname,
     );
-    expect(ALIAS_CANONICAL["/pilot-salary-in-india"]).toBe(
+    expect(ALIAS_CANONICAL["/pilot-salary-india"]).toBe(
       new URL(redirect?.destination).pathname,
     );
-    expect(getRouteMeta("/pilot-salary-in-india").canonical).toBe(
-      "https://www.flystar.co.in/pilot-salary-india",
+    expect(getRouteMeta("/pilot-salary-india").canonical).toBe(
+      "https://www.flystar.co.in/pilot-salary-in-india",
     );
-    expect(getRouteMeta("/pilot-salary-in-india").ogUrl).toBe(
-      "https://www.flystar.co.in/pilot-salary-india",
+    expect(getRouteMeta("/pilot-salary-india").ogUrl).toBe(
+      "https://www.flystar.co.in/pilot-salary-in-india",
     );
     expect(
       loadRedirects().some(
         (rule) =>
           rule &&
-          rule.source === "/pilot-salary-india" &&
+          rule.source === "/pilot-salary-in-india" &&
           new URL(rule.destination).pathname === new URL(redirect.destination).pathname,
       ),
     ).toBe(false);
-    expect(matchesSpa("/pilot-salary-in-india")).toBe(false);
+    expect(matchesSpa("/pilot-salary-india")).toBe(false);
 
     const routeMeta = readFileSync(resolve(__dirname, "../lib/routeMeta.ts"), "utf8");
     const sitemap = readFileSync(resolve(__dirname, "../../public/sitemap.xml"), "utf8");
     const llms = readFileSync(resolve(__dirname, "../../public/llms.txt"), "utf8");
-    expect(routeMeta).not.toMatch(/^\s*"\/pilot-salary-in-india":\s*\{/m);
-    expect(sitemap).not.toContain("https://www.flystar.co.in/pilot-salary-in-india");
-    expect(llms).not.toContain("https://www.flystar.co.in/pilot-salary-in-india");
-    expect(sitemap).toContain("https://www.flystar.co.in/pilot-salary-india");
-    expect(llms).toContain("https://www.flystar.co.in/pilot-salary-india");
+    expect(routeMeta).not.toMatch(/^\s*"\/pilot-salary-india":\s*\{/m);
+    expect(sitemap).not.toContain("https://www.flystar.co.in/pilot-salary-india");
+    expect(llms).not.toContain("https://www.flystar.co.in/pilot-salary-india");
+    expect(sitemap).toContain("https://www.flystar.co.in/pilot-salary-in-india");
+    expect(llms).toContain("https://www.flystar.co.in/pilot-salary-in-india");
     expect(routes.some((route) => route && route.src === "/(.*)" && route.status === 404)).toBe(
       true,
     );
