@@ -350,6 +350,11 @@ describe("Vercel config", () => {
     expect(redirect?.permanent).toBe(true);
     expect(new URL(redirect?.destination).pathname).toBe("/pilot-salary-in-india");
     expect(new URL(redirect?.destination).origin).toBe("https://www.flystar.co.in");
+    expect(routes.some((route) => route?.src === "/pilot-salary-india")).toBe(false);
+    expect(routes.some((route) => route?.src === "/pilot-salary-in-india")).toBe(false);
+    expect(
+      redirectRules.some((rule) => rule?.source === "/pilot-salary-in-india"),
+    ).toBe(false);
     expect(new URL(getRouteMeta("/pilot-salary-in-india").canonical).pathname).toBe(
       new URL(redirect?.destination).pathname,
     );
