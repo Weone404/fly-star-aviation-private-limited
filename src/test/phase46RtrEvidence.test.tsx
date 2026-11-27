@@ -41,6 +41,8 @@ describe("Phase 46 RTR(A) evidence remediation", () => {
     expect(text).toMatch(/three years/i);
     expect(text).toMatch(/valid until the holder attains 80 years of age/i);
     expect(text).toMatch(/not a verified or complete DGCA RTR\(A\) syllabus/i);
+    expect(text).toMatch(/Re-examination Timing/i);
+    expect(text).not.toMatch(/Limited Attempts|Panel checks confidence and clarity/i);
     expect(text).not.toMatch(/18 years old|10\+2 with Physics|6 times per year|Delhi, Mumbai, Chennai|Lifetime|30-45 Minutes|20-30 Minutes|WPC Wing|same attempt|cannot legally fly|globally recognized|cannot obtain CPL/i);
   });
 

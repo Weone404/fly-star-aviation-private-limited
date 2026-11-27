@@ -201,7 +201,7 @@ const examChallenges = [
         icon: AlertTriangle,
     },
     {
-        challenge: "Limited Attempts",
+        challenge: "Re-examination Timing",
         description: "A failed applicant must wait six weeks before re-examination",
         icon: Calendar,
     },
@@ -234,8 +234,8 @@ const examTips = [
         icon: GraduationCap,
     },
     {
-        tip: "Stay Calm in the Exam",
-        description: "Panel checks confidence and clarity, remain composed",
+        tip: "Communicate Clearly",
+        description: "Practise clear, accurate radio messages and confirm assessment criteria in the current DGCA notice",
         icon: Shield,
     },
 ];
