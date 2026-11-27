@@ -23,15 +23,11 @@ const NOTICE = "DGCA Public Notice F. No: DGCA-16017/10/2025-DFT, 30 September 2
 const NOTICE_URL =
   "https://www.dgca.gov.in/digigov-portal/Upload?flag=iframeAttachView&attachId=OXOBBPO50KNsVklXF1f0cQ%3D%3D&baseLocale=en_US";
 
-/** Press Information Bureau, Ministry of Civil Aviation, 24 April 2026. */
-const PIB = "Press Information Bureau, Ministry of Civil Aviation, 24 April 2026";
-const PIB_URL = "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2255276&reg=48&lang=2";
-
 const GRADES: string[][] = [
   ["A+", "85% and above", "No organisation reached this band in the first ranking."],
-  ["A", "70% to 84.99%", "None in the first ranking; one organisation in the second."],
-  ["B", "50% to 69.99%", "The largest band in both rankings so far."],
-  ["C", "Below 50%", "Receives an improvement notice from DGCA."],
+  ["A", "70% to less than 85%", "No organisation reached this band in the first ranking."],
+  ["B", "50% to less than 70%", "Thirteen organisations were in this band in the first ranking."],
+  ["C", "Below 50%", "Twenty-two organisations were in this band in the first ranking."],
 ];
 
 const PARAMETERS: string[][] = [
@@ -43,7 +39,7 @@ const PARAMETERS: string[][] = [
   [
     "FTO performance",
     "20%",
-    "Average time to complete 175 flying hours (10), aircraft utilisation over the last six months (5), trainee completion-to-enrolment ratio (5)",
+    "Average time to complete 175 flying hours (10; a ranking metric, not a CPL minimum), aircraft utilisation over the last six months (5), trainee completion-to-enrolment ratio (5)",
   ],
   ["Safety standards", "20%", "Accident count (18), incident count (2)"],
   ["Compliance standards", "10%", "Level-I safety observations (5), breath analyser violations (5)"],
@@ -57,19 +53,19 @@ const PARAMETERS: string[][] = [
 const HOW_TO_USE: { title: string; body: string }[] = [
   {
     title: "Read the parameter weights, not just the letter",
-    body: "Forty per cent of the score is ratios: students per aircraft, students per instructor, fleet per engineer. Those are the numbers that decide whether you fly this month or wait, and they are exactly what a prospectus does not print.",
+    body: "The DGCA notice assigns points to student-to-aircraft, student-to-instructor and fleet-to-engineer ratios. Ask an FTO for the current figures and the date and scope they describe.",
   },
   {
     title: "Ask about the ten per cent for time-to-175-hours",
-    body: "DGCA scores how long an organisation takes to get a trainee through 175 flying hours. Ask the school its own figure and compare the answer with its grade. A confident school will have the number.",
+    body: "The notice includes average time to complete 175 flying hours as a ranking metric; it does not state that figure here as a CPL minimum. Ask the school what current data it can provide and how it defines the measurement.",
   },
   {
     title: "Treat safety weighting as a floor, not a feature",
-    body: "Accidents carry eighteen of the twenty safety points. A clean record is the baseline the framework expects, not a distinguishing achievement.",
+    body: "The notice allocates 18 of 20 safety points to accident count and 2 to incident count. A ranking score is a snapshot of the stated metrics, not a guarantee of future safety.",
   },
   {
     title: "Notice what the grade does not measure",
-    body: "It says nothing about instructor quality, teaching, weather at the base, or whether you will enjoy the year. It measures capacity, throughput, safety and compliance.",
+    body: "The published groups score operational aspects, FTO performance, safety, compliance and student assistance. The notice does not provide a direct rating of teaching quality or an individual trainee's experience.",
   },
   {
     title: "Check the current list at the source",
@@ -116,15 +112,15 @@ export default function DgcaFtoRankingPage() {
 
         <CitableTable
           heading="What the score is made of"
-          intro="Five groups, weighted. The sub-weights in brackets are percentage points of the total, so student-to-aircraft ratio alone is worth twice as much as the entire fee-transparency, placement and financial-assistance provision combined."
+          intro="Five groups, weighted. The sub-weights in brackets are percentage points of the total. Student-to-aircraft ratio is worth 10 points; financial assistance, placement support and fee transparency total 6 points."
           columns={["Parameter group", "Weight", "What it scores"]}
           rows={PARAMETERS}
           note={
             <>
-              Read that first row again before choosing a school. The single largest
-              block in the framework is not safety or reputation; it is whether the
-              organisation has enough aircraft, instructors and engineers for the
-              number of students it has taken on.
+              Operational aspects carry the largest group weight at 40 per cent.
+              The notice lists student-to-aircraft and student-to-instructor ratios,
+              fleet-to-engineer ratio, fleet size, and ground-school and simulator
+              availability within that group.
             </>
           }
           sources={[{ label: NOTICE, url: NOTICE_URL }]}
@@ -145,27 +141,19 @@ export default function DgcaFtoRankingPage() {
                 framework began.
               </p>
               <p className="mt-4 text-muted-foreground leading-relaxed">
-                The second ranking was released on 24 April 2026 by the Ministry of
-                Civil Aviation and covered 35 organisations: one in band A, seventeen in
-                band B and seventeen in band C. Avyanna Aviation Pvt. Ltd is the first
-                and so far only organisation to reach band A. That is one A grade in a
-                sector of thirty-five, which is the single most useful thing this
-                framework has told prospective students.
-              </p>
-              <p className="mt-4 text-muted-foreground leading-relaxed">
-                The ministry stated alongside the release that Commercial Pilot Licence
-                issuance has grown more than 2.5 times over the last eight years, and
-                projected a requirement of roughly 30,000 additional pilots over the next
-                decade. The second figure is a projection rather than a measurement, and
-                is worth treating as such when anyone quotes it back to you as a reason
-                to enrol.
+                This page reports only results directly documented in the DGCA notice.
+                Later ranking results and pilot-demand figures previously associated
+                with this page were not independently verified against an accessible
+                official source in this review. Check DGCA's current ranking document
+                for later results.
               </p>
               <p className="mt-4 text-muted-foreground leading-relaxed">
                 Flying Star Aviator is a ground school and career-guidance organisation
                 and is not itself an FTO, so it does not appear in these rankings and
-                has no grade to quote. Flying training happens at partner FTOs, and this
-                framework is one of the few genuinely independent instruments available
-                for judging them.
+                has no grade to quote. Flying Star does not provide aircraft flying
+                training; confirm any separate FTO arrangements directly with the
+                provider. Consult DGCA's published notice and verify that it remains
+                current before relying on a ranking.
               </p>
             </section>
 
@@ -268,14 +256,6 @@ export default function DgcaFtoRankingPage() {
                   first ranking.{" "}
                   <a href={NOTICE_URL} rel="nofollow" className="underline hover:text-primary">
                     Read it at DGCA
-                  </a>
-                  .
-                </li>
-                <li>
-                  {PIB} - the second-phase ranking: 35 organisations, one in band A,
-                  seventeen in B, seventeen in C.{" "}
-                  <a href={PIB_URL} rel="nofollow" className="underline hover:text-primary">
-                    Read the release
                   </a>
                   .
                 </li>

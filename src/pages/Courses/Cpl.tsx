@@ -224,8 +224,8 @@ const trainingSteps = [
     },
     {
         step: 6,
-        title: "Train at an approved FTO",
-        description: "Arrange aircraft flying training separately with a Flying Training Organisation approved for your route.",
+        title: "Select and verify an FTO",
+        description: "Arrange aircraft training separately; verify the selected provider's current DGCA approval and scope before enrolment.",
     },
     {
         step: 7,
@@ -235,10 +235,9 @@ const trainingSteps = [
 ];
 
 const groundSubjects = [
-    { name: "Air Navigation", focus: "Position, route and flight planning; navigation instruments and aids; and the calculations used to plan a flight." },
-    { name: "Aviation Meteorology", focus: "Atmospheric conditions, weather systems, clouds, winds and aviation weather reports, and how weather affects flight decisions." },
-    { name: "Air Regulation", focus: "Aviation law, rules of the air, airspace, air traffic services and the procedures pilots must understand." },
-    { name: "Aircraft and Engine / Instruments", focus: "General, specific and performance knowledge of aircraft and engine systems, including the aircraft type relevant to training." },
+    { name: "Current DGCA subject list", focus: "Check current official DGCA requirements for applicable examination subjects and paper structure." },
+    { name: "Course syllabus", focus: "Contact the course team to confirm which subjects and teaching activities are currently included." },
+    { name: "Radio-telephony requirements", focus: "Verify the applicable qualification, authority and examination process against current official rules." },
 ];
 
 const careerOptions = [
@@ -315,7 +314,7 @@ export default function CPLCoursePage() {
 
             <CitableAnswer
                 heading="What Is a Commercial Pilot Licence (CPL)?"
-                answer="A Commercial Pilot Licence (CPL) is a professional pilot licence issued by the Directorate General of Civil Aviation (DGCA) to candidates who meet the current licensing requirements. The pathway includes regulatory, medical, examination and practical flight-training stages. Ground classes prepare candidates for the theory component; they do not provide aircraft flying hours or issue a licence."
+                answer="A Commercial Pilot Licence (CPL) is a professional pilot licence issued by the Directorate General of Civil Aviation (DGCA) to candidates who meet the current licensing requirements.                 The pathway includes regulatory, medical, examination and practical flight-training stages. Ground classes prepare candidates academically; they do not provide aircraft flying hours or issue a licence. Check current requirements with DGCA and verify any selected FTO's approval and scope."
                 sources={[
                     { label: "DGCA — Pilot licensing and approvals", url: "https://www.dgca.gov.in/" },
                     { label: "DGCA examination portal", url: "https://pariksha.dgca.gov.in/" },
@@ -440,7 +439,7 @@ export default function CPLCoursePage() {
                     >
                         <h2 className="text-3xl md:text-4xl font-bold mb-4">DGCA CPL Ground Training Subjects</h2>
                         <p className="text-muted-foreground max-w-2xl mx-auto">
-                            The CPL theory syllabus is organized into four papers. Subject names and exam requirements can change; confirm the current list in DGCA's published requirements before planning an attempt.
+                            Confirm the current CPL examination subjects and paper structure against DGCA's published requirements before planning an attempt. This page does not reproduce an independently verified subject list.
                         </p>
                     </motion.div>
 
@@ -463,14 +462,14 @@ export default function CPLCoursePage() {
                         </table>
                     </div>
                     <p className="max-w-4xl mx-auto mt-6 text-muted-foreground">
-                        For a licence-by-licence comparison of DGCA theory requirements, read the{" "}
+                        For a licence-by-licence overview, read the{" "}
                         <Link to="/blog/dgca-exam-subjects-by-licence" className="underline hover:text-primary">
                             DGCA theory subjects guide
                         </Link>
                         .
                     </p>
                     <p className="max-w-4xl mx-auto mt-6 text-muted-foreground">
-                        Radio Telephony Restricted (Aeronautical), or RTR(A), is a separate radio-telephony requirement, not one of these CPL theory papers. Its examining authority and registration process changed under the 2025 rules; older WPC-era guides may be outdated. Check current{" "}
+                        Radio-telephony certification and examination requirements are governed by current official rules and notices. This page does not assert the applicable authority or process; verify the current requirements before applying. Check{" "}
                         <a href="https://pariksha.dgca.gov.in/" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary">DGCA Pariksha notices</a>
                         {" "}and our{" "}
                         <Link to="/blog/rtr-a-exam-dgca-takeover-2026" className="underline hover:text-primary">updated RTR(A) guide</Link>
@@ -514,8 +513,11 @@ export default function CPLCoursePage() {
                     >
                         <h2 className="text-3xl md:text-4xl font-bold mb-4">Ground Training vs Flying Training</h2>
                         <p className="text-muted-foreground max-w-3xl mx-auto">
-                            These are separate parts of the CPL pathway. Flying Star Aviator provides ground training; aircraft flying hours are completed separately at an appropriately approved Flying Training Organisation (FTO).
+                            These are separate parts of the CPL pathway. Flying Star Aviator provides ground training; aircraft flying training is separate. Verify the selected FTO's current DGCA approval and scope before enrolment.
                         </p>
+                        <Link className="inline-block mt-4 underline underline-offset-4" to="/pilot-training/cpl">
+                            Read about the CPL pathway and flying-training stage
+                        </Link>
                     </motion.div>
 
                     <div className="max-w-5xl mx-auto overflow-x-auto rounded-2xl border border-border" role="region" aria-label="Ground and flying training comparison" tabIndex={0}>
@@ -531,12 +533,12 @@ export default function CPLCoursePage() {
                                 <tr className="border-t border-border">
                                     <th scope="row" className="px-6 py-4 text-left font-medium">Focus</th>
                                     <td className="px-6 py-4 text-muted-foreground">Aviation theory and preparation for applicable written examinations.</td>
-                                    <td className="px-6 py-4 text-muted-foreground">Practical aircraft handling and flight experience under the FTO's approved training.</td>
+                                    <td className="px-6 py-4 text-muted-foreground">Practical aircraft training under the selected provider's applicable scope; verify its current DGCA approval.</td>
                                 </tr>
                                 <tr className="border-t border-border">
                                     <th scope="row" className="px-6 py-4 text-left font-medium">Provider</th>
                                     <td className="px-6 py-4 text-muted-foreground">A ground-training institute, such as Flying Star Aviator.</td>
-                                    <td className="px-6 py-4 text-muted-foreground">An appropriately approved Flying Training Organisation (FTO).</td>
+                                    <td className="px-6 py-4 text-muted-foreground">A separately selected FTO; verify current approval and scope with DGCA.</td>
                                 </tr>
                                 <tr className="border-t border-border">
                                     <th scope="row" className="px-6 py-4 text-left font-medium">Outcome</th>

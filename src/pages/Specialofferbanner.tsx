@@ -4,24 +4,6 @@ import { X } from 'lucide-react'
 
 const DISMISS_KEY = 'fsa.offer.dismissed'
 
-/**
- * The standing CPL offer.
- *
- * Rewritten after it was found floating over the blog: it was `position: fixed`
- * with a hard 320px width, no close button and no breakpoints, so on a reading
- * page it sat on top of the table of contents and there was no way to move it.
- * A promotion the reader cannot dismiss is not a promotion, it is an obstacle.
- *
- * What changed:
- *  - a real close button, and the dismissal is remembered for the session;
- *  - on phones and tablets it is a slim bar along the bottom instead of a card
- *    over the content, because there is no free column at that width;
- *  - the card is capped to the viewport rather than a fixed pixel width;
- *  - it never renders on blog or admin routes (App.tsx decides that).
- *
- * The figures are the business's own published price, which is the one kind of
- * number this site can state without an external source.
- */
 export default function SpecialOfferBanner() {
   const [visible, setVisible] = useState(false)
   const [dismissed, setDismissed] = useState(true)
@@ -55,7 +37,7 @@ export default function SpecialOfferBanner() {
 
   return (
     <aside
-      aria-label="Special offer"
+      aria-label="CPL ground classes"
       className={[
         'mx-3 mt-4 max-w-[calc(100vw-1.5rem)] transition-all duration-300',
         visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4',
@@ -75,21 +57,21 @@ export default function SpecialOfferBanner() {
         <Link to="/contact" className="block focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-300">
           <div className="flex items-center gap-3 bg-gradient-to-r from-amber-400 to-amber-500 px-4 py-2.5 pr-12">
             <span className="shrink-0 rounded-md border-2 border-amber-400 bg-[#12210f] px-2 py-1 text-center text-[10px] font-black uppercase leading-tight tracking-wide text-amber-400">
-              Special
+              CPL
               <br />
-              Offer
+              Classes
             </span>
             <span className="text-[13px] font-black uppercase leading-tight tracking-tight text-[#12210f]">
-              Complete CPL training
+              CPL ground classes
             </span>
           </div>
 
           <div className="flex items-baseline justify-between gap-3 px-4 py-3 lg:block lg:text-center">
             <span className="block text-3xl font-black leading-none text-amber-400 lg:text-4xl">
-              ₹29–32 Lakhs
+              Ask about classes
             </span>
             <span className="block text-[11px] leading-snug text-white/60 lg:mt-2">
-              Complete CPL training
+              Ground classes only; aircraft flying training is separate.
             </span>
           </div>
         </Link>

@@ -57,7 +57,7 @@ const STEPS: { title: string; body: string }[] = [
   },
   {
     title: "Enrolment, only if it fits",
-    body: "Fees, schedule and batch are confirmed in writing before any payment. Flying Star Aviator runs ground classes and career guidance; flying training happens at partner FTOs, and those are separate arrangements you make with the FTO.",
+    body: "Fees, schedule and batch are confirmed in writing before any payment. Flying Star Aviator runs ground classes and career guidance; aircraft flying training is a separate stage and is not provided by Flying Star. Confirm any FTO arrangements directly with the provider.",
   },
 ];
 
@@ -174,7 +174,7 @@ export default function ApplyPage() {
 
         <CitableAnswer
           heading="What does applying to Flying Star Aviator actually involve?"
-          answer="Applying here is an enquiry, not a regulatory step. You send your details, the academics team calls to work out which DGCA papers you should sit first and in what order, and you get a written study plan before any fee is discussed. Flying Star Aviator is a DGCA ground school and career-guidance organisation in Dwarka, New Delhi; flying training happens at partner FTOs under separate arrangements. Nothing on this page registers you with DGCA."
+          answer="Applying here is an enquiry, not a regulatory step. You send your details, the academics team calls to work out which DGCA papers you should sit first and in what order, and you get a written study plan before any fee is discussed. Flying Star Aviator is a DGCA ground school and career-guidance organisation in Dwarka, New Delhi; aircraft flying training is a separate stage and is not provided by Flying Star. Confirm any FTO arrangements directly with the provider. Nothing on this page registers you with DGCA."
           lastUpdated={LAST_UPDATED}
         />
 

@@ -3,57 +3,34 @@ import { Layout } from "@/components/layout/Layout";
 import { CitableTable } from "@/components/CitableTable";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { Plane, Clock, IndianRupee, CheckCircle, ArrowRight, GraduationCap } from "lucide-react";
+import { Plane, ArrowRight, GraduationCap } from "lucide-react";
 
 const licenses = [
   {
     title: "Commercial Pilot License (CPL)",
-    description: "The CPL allows you to fly aircraft commercially and get paid for your services. It's the primary license for those aspiring to become airline pilots.",
-    duration: "18-24 months",
-    cost: "₹35-50 Lakhs",
-    hours: "200 flying hours",
+    description: "Flying Star Aviator provides ground classes for theory preparation; aircraft flying training is separate. Check the selected FTO's current DGCA approval and scope before enrolment.",
     href: "/courses/cpl",
-    features: [
-      "Fly commercial aircraft",
-      "Employment eligibility",
-      "Multi-engine rating included",
-      "Instrument rating training",
-    ],
-    popular: true,
   },
   {
     title: "Private Pilot License (PPL)",
-    description: "The PPL allows you to fly single-engine aircraft for personal use. It's often the first step for aspiring commercial pilots.",
-    duration: "6-12 months",
-    cost: "₹10-15 Lakhs",
-    hours: "40 flying hours",
+    description: "Aircraft flying training is separate from Flying Star Aviator's ground classes. Check current DGCA requirements and the selected FTO's approval and scope.",
     href: "/pilot-training/ppl",
-    features: [
-      "Fly for personal use",
-      "Foundation for CPL",
-      "Single-engine aircraft",
-      "Day VFR operations",
-    ],
-    popular: false,
   },
 ];
 
 const eligibility = [
-  { label: "Minimum Age", value: "17 years (PPL), 18 years (CPL)" },
-  { label: "Education", value: "10+2 with Physics & Mathematics" },
-  { label: "Medical", value: "Class 1/2 Medical Certificate" },
-  { label: "English", value: "ICAO Level 4 proficiency" },
-  { label: "Vision", value: "6/6 (correctable)" },
-  { label: "Height", value: "No specific requirement" },
+  { label: "Minimum Age", value: "Check current DGCA criteria for the licence sought." },
+  { label: "Education", value: "Verify current education and subject requirements with DGCA." },
+  { label: "Medical", value: "Confirm the applicable medical class and process with DGCA." },
+  { label: "English", value: "Check current language-proficiency requirements with DGCA." },
+  { label: "Vision", value: "Check current medical and vision standards with DGCA." },
+  { label: "Height", value: "Confirm applicable medical standards with an authorised examiner." },
 ];
 
 const syllabus = [
-  { subject: "Air Navigation", topics: "Maps, charts, flight planning, navigation systems" },
-  { subject: "Meteorology", topics: "Weather systems, forecasts, aviation weather" },
-  { subject: "Air Regulations", topics: "Aviation law, DGCA rules, airspace" },
-  { subject: "Technical General", topics: "Aerodynamics, aircraft systems, instruments" },
-  { subject: "Technical Specific", topics: "Aircraft type-specific knowledge" },
-  { subject: "Radio Telephony", topics: "Communication procedures, phraseology" },
+  { subject: "Theory preparation", topics: "Confirm the current DGCA examination subjects and requirements before planning." },
+  { subject: "Course syllabus", topics: "Ask the course team to confirm the subjects and teaching scope currently offered." },
+  { subject: "Radio-telephony requirements", topics: "Check the applicable current official rules and examination notices." },
 ];
 
 export default function PilotTrainingPage() {
@@ -75,49 +52,47 @@ export default function PilotTrainingPage() {
             className="max-w-3xl"
           >
             <span className="inline-block text-sm font-semibold bg-white/20 px-4 py-2 rounded-full mb-4">
-              Pilot Training Programs
+              Pilot Training Pathway
             </span>
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
               Become a Professional Pilot
             </h1>
             <p className="text-xl text-primary-foreground/80">
-              World-class training programs designed to launch your aviation career.
-              Train with experienced instructors on modern aircraft.
+              Flying Star Aviator provides ground classes for CPL theory. Aircraft flying training is completed separately at an appropriately approved Flying Training Organisation (FTO).
             </p>
+            <Link
+              className="inline-block mt-4 underline underline-offset-4"
+              to="/pilot-training/cpl"
+            >
+              Understand the CPL ground and flying stages
+            </Link>
           </motion.div>
         </div>
       </section>
 
       <CitableTable
-        heading="Pilot training: India vs USA vs South Africa (cost & duration)"
-        intro="Indian students often compare doing their Commercial Pilot Licence (CPL) in India against popular overseas options. The main trade-offs are cost, weather/flying-hour throughput, and whether a DGCA conversion is needed on return. The table below summarises indicative 2026 figures; all foreign licences require a DGCA conversion (exams + skill test) to fly commercially in India."
-        columns={["Country", "Licensing authority", "Typical duration", "Indicative total cost", "Key notes"]}
+        heading="Pilot training routes: India, USA and South Africa"
+        intro="The licensing authority differs by country. Verify current licensing and conversion requirements with the relevant authorities before choosing a training route."
+        columns={["Country", "Licensing authority"]}
         rows={[
-          ["India", "DGCA", "18 – 36 months", "₹35 – 50 lakh", "Train at home; no licence conversion; weather can slow flying hours"],
-          ["USA", "FAA", "12 – 18 months", "₹60 – 85 lakh", "Fast hour-building & fleet; DGCA conversion required on return"],
-          ["South Africa", "SACAA", "12 – 18 months", "₹25 – 40 lakh", "Lower cost & good weather; DGCA conversion required on return"],
+          ["India", "DGCA"],
+          ["USA", "FAA"],
+          ["South Africa", "SACAA"],
         ]}
         note={
           <>
-            Indicative market ranges for 2026 compiled from fee schedules published by flying schools in each
-            country, including flying training. They are estimates, not quotations, and no regulator publishes
-            them; totals move with the school, the aircraft and the exchange rate. The one figure DGCA does
-            publish is the examination fee of Rs 2,500 per paper, non-refundable &mdash; see{" "}
+            Training costs are not estimated here. For related guidance, see{" "}
             <a href="/blog/dgca-exam-fees" className="underline hover:text-primary">
-              what a DGCA paper actually costs
-            </a>
-            . Conversion requirements for a foreign licence are covered in{" "}
+              the DGCA exam-fee overview
+            </a>{" "}
+            and{" "}
             <a href="/blog/foreign-licence-conversion-checklist" className="underline hover:text-primary">
-              the conversion checklist
+              the foreign-licence conversion checklist
             </a>
             .
           </>
         }
-        /* No source line. DGCA, FAA and SACAA publish licensing rules, not
-           training prices — attributing cost ranges to them was a citation for
-           something none of them states. The authority column below is the part
-           they do evidence, and it stays. */
-        lastUpdated="2026-07-30"
+        lastUpdated="2026-11-26"
       />
 
       {/* License Cards */}
@@ -129,9 +104,9 @@ export default function PilotTrainingPage() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Training Programs</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Pilot Licence Pathways</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Choose the right program to kickstart your aviation career.
+              Explore the CPL and PPL pathways. Flying Star Aviator provides ground training; aircraft flying training is separate. Verify current DGCA requirements and any selected FTO's approval and scope.
             </p>
           </motion.div>
 
@@ -143,17 +118,8 @@ export default function PilotTrainingPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className={`relative rounded-2xl border-2 p-8 ${license.popular
-                  ? "border-primary bg-primary/5"
-                  : "border-border bg-card"
-                  }`}
+                className="relative rounded-2xl border-2 border-border bg-card p-8"
               >
-                {license.popular && (
-                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-accent text-accent-foreground text-sm font-bold px-4 py-1 rounded-full">
-                    Most Popular
-                  </div>
-                )}
-
                 <div className="flex items-start gap-4 mb-6">
                   <div className="w-14 h-14 rounded-xl bg-primary flex items-center justify-center flex-shrink-0">
                     <GraduationCap className="h-7 w-7 text-primary-foreground" />
@@ -165,35 +131,8 @@ export default function PilotTrainingPage() {
 
                 <p className="text-muted-foreground mb-6">{license.description}</p>
 
-                <div className="grid grid-cols-3 gap-4 mb-6">
-                  <div className="text-center p-3 rounded-lg bg-muted/50">
-                    <Clock className="h-5 w-5 mx-auto mb-1 text-primary" />
-                    <div className="text-xs text-muted-foreground">Duration</div>
-                    <div className="text-sm font-semibold">{license.duration}</div>
-                  </div>
-                  <div className="text-center p-3 rounded-lg bg-muted/50">
-                    <IndianRupee className="h-5 w-5 mx-auto mb-1 text-primary" />
-                    <div className="text-xs text-muted-foreground">Cost</div>
-                    <div className="text-sm font-semibold">{license.cost}</div>
-                  </div>
-                  <div className="text-center p-3 rounded-lg bg-muted/50">
-                    <Plane className="h-5 w-5 mx-auto mb-1 text-primary" />
-                    <div className="text-xs text-muted-foreground">Flying</div>
-                    <div className="text-sm font-semibold">{license.hours}</div>
-                  </div>
-                </div>
-
-                <ul className="space-y-3 mb-8">
-                  {license.features.map((feature) => (
-                    <li key={feature} className="flex items-center gap-2">
-                      <CheckCircle className="h-5 w-5 text-primary flex-shrink-0" />
-                      <span>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-
                 <Button
-                  variant={license.popular ? "aviation" : "outline"}
+                  variant="aviation"
                   className="w-full"
                   size="lg"
                   asChild
@@ -223,8 +162,7 @@ export default function PilotTrainingPage() {
               </span>
               <h2 className="text-3xl md:text-4xl font-bold mb-6">Eligibility Criteria</h2>
               <p className="text-muted-foreground mb-8">
-                Before starting your pilot training, ensure you meet the following requirements
-                set by DGCA for obtaining a pilot license in India.
+                These are eligibility areas to check against current DGCA requirements for the licence you seek.
               </p>
               <Button variant="aviation" asChild>
                 <Link to="/become-a-pilot/become-pilot">
@@ -294,7 +232,7 @@ export default function PilotTrainingPage() {
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Training Syllabus</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Comprehensive curriculum covering all aspects of aviation theory and practice.
+              Flying Star Aviator provides ground-based academic preparation. This page does not describe aircraft flight instruction; confirm the current course syllabus with the team.
             </p>
           </motion.div>
 
@@ -338,7 +276,7 @@ export default function PilotTrainingPage() {
               Ready to Start Flying?
             </h2>
             <p className="text-primary-foreground/80 text-lg mb-8">
-              Take the first step towards your aviation career. Our counselors are ready to guide you.
+              Contact the team to confirm current ground-class details and the separate flight-training stage.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button variant="gold" size="lg" asChild>

@@ -43,47 +43,47 @@ interface SkillCovered { skill: string; description: string; icon: LucideIcon }
 // ─── Static data (module scope — zero re-creation cost) ───────────────────────
 const quickOverview: OverviewRow[] = [
     { label: "Course Name", value: "DGCA Ground Classes for CPL" },
-    { label: "Purpose", value: "CPL Theory Exam Preparation" },
-    { label: "Training Mode", value: "Online / Offline / Hybrid" },
-    { label: "Subjects Covered", value: "6 DGCA Papers" },
+    { label: "Purpose", value: "Ground-based theory preparation" },
+    { label: "Training Mode", value: "Confirm current format with the course team" },
+    { label: "Subjects Covered", value: "Confirm current course scope and DGCA requirements" },
     { label: "Authority", value: "DGCA (Directorate General of Civil Aviation)" },
-    { label: "Fee Range", value: "₹1.5 - 3.5 Lakhs (Full Course)" },
-    { label: "Who Can Join", value: "10+2 Students, Flying Students, Professionals" },
+    { label: "Fee Range", value: "Request a current written quotation" },
+    { label: "Who Can Join", value: "Confirm current enrolment criteria with the course team" },
 ];
 
 const cplSubjects: Subject[] = [
-    { icon: Compass, name: "Air Navigation", description: "DGCA Air Navigation classes and flight-planning classes cover navigation principles, charts, flight planning, and dead reckoning techniques." },
-    { icon: Cloud, name: "Aviation Meteorology", description: "DGCA Meteorology preparation covers weather patterns, atmospheric conditions, and aviation weather." },
-    { icon: Shield, name: "Air Regulations", description: "DGCA Air Regulations classes cover aviation laws, licensing requirements, and topics in the current DGCA syllabus." },
-    { icon: Wrench, name: "Technical General", description: "Technical General DGCA classes cover aircraft systems, engines, instruments, and general aviation mechanics." },
-    { icon: Award, name: "Technical Specific", description: "Technical Specific DGCA classes cover aircraft-type systems and operational procedures where applicable." },
-    { icon: Radio, name: "Radio Telephony Restricted (RTR)", description: "Aviation communication procedures and radio telephony protocols" },
+    { icon: Compass, name: "Navigation and Flight Planning", description: "Ask the course team whether these topics are part of the current class syllabus." },
+    { icon: Cloud, name: "Meteorology", description: "Confirm current teaching scope with the course team and examination requirements with DGCA." },
+    { icon: Shield, name: "Aviation Rules", description: "Check current DGCA requirements and confirm the topics covered by the course." },
+    { icon: Wrench, name: "Aircraft and Engine Systems", description: "Ask which technical subjects and study materials are currently included." },
+    { icon: Award, name: "Aircraft-Type Topics", description: "Applicability depends on current licensing and training requirements; confirm before enrolment." },
+    { icon: Radio, name: "Radio-Telephony Requirements", description: "Check the applicable current official rules and examination notices." },
 ];
 
 const trainingBenefits: Benefit[] = [
-    { icon: TrendingUp, title: "Higher DGCA Exam Pass Rate", description: "Structured training leads to better exam performance and first-attempt success" },
-    { icon: Target, title: "Structured Study Plan", description: "Organized curriculum covering all topics systematically with proper revision" },
-    { icon: Users, title: "Experienced Instructors", description: "Learn from aviation professionals with flying and teaching experience" },
-    { icon: FileCheck, title: "Real DGCA Exam Practice", description: "Access to previous year questions and mock tests matching actual exam patterns" },
-    { icon: Clock, title: "Faster CPL Completion", description: "Efficient preparation reduces overall time to complete your Commercial Pilot License" },
-    { icon: DollarSign, title: "Cost Savings", description: "Clear exams on first attempt, avoiding re-exam fees and training delays" },
+    { icon: TrendingUp, title: "Exam Preparation", description: "Confirm the current syllabus and examination process using official DGCA guidance." },
+    { icon: Target, title: "Study Planning", description: "Ask the course team what schedule and academic support are currently available." },
+    { icon: Users, title: "Instructor Information", description: "Request current instructor details and relevant credentials before enrolment." },
+    { icon: FileCheck, title: "Practice Materials", description: "Confirm whether question banks, past papers or mock tests are included." },
+    { icon: Clock, title: "Course Schedule", description: "Ask for the current schedule; examination and flight-training timelines vary." },
+    { icon: DollarSign, title: "Fee Scope", description: "Request a written fee breakdown and confirm what is included or charged separately." },
 ];
 
 const onlineVsOffline: ComparisonRow[] = [
-    { aspect: "Learning Format", online: "Live & Recorded Lectures", offline: "Face-to-Face Classroom" },
-    { aspect: "Schedule", online: "Flexible Study Timing", offline: "Fixed Class Routine" },
-    { aspect: "Study Material", online: "Digital Resources & E-Books", offline: "Physical Books & Notes" },
-    { aspect: "Interaction", online: "Virtual Q&A Sessions", offline: "Direct Instructor Access" },
-    { aspect: "Location", online: "Learn from Anywhere", offline: "Institute Premises" },
-    { aspect: "Peer Learning", online: "Online Study Groups", offline: "Classroom Collaboration" },
-    { aspect: "Cost", online: "Generally Lower Fees", offline: "Higher Investment" },
+    { aspect: "Current availability", online: "Confirm with the course team", offline: "Confirm with the course team" },
+    { aspect: "Schedule", online: "Request current details", offline: "Request current details" },
+    { aspect: "Study materials", online: "Confirm what is included", offline: "Confirm what is included" },
+    { aspect: "Instructor access", online: "Confirm current arrangements", offline: "Confirm current arrangements" },
+    { aspect: "Location or access", online: "Confirm before enrolment", offline: "Confirm before enrolment" },
+    { aspect: "Assessment practice", online: "Ask which activities are offered", offline: "Ask which activities are offered" },
+    { aspect: "Fees", online: "Request a written quotation", offline: "Request a written quotation" },
 ];
 
 const whoShouldJoin: WhoShouldJoin[] = [
-    { category: "10+2 Students", description: "Students who have completed 10+2 with Physics and Mathematics, planning to pursue CPL", icon: GraduationCap },
-    { category: "Flying Students", description: "Current flight training students preparing for DGCA theory examinations", icon: Target },
-    { category: "Foreign License Holders", description: "Pilots with foreign licenses converting to DGCA Commercial Pilot License", icon: Globe },
-    { category: "Working Professionals", description: "Professionals pursuing pilot training while managing career commitments", icon: Users },
+    { category: "CPL Aspirants", description: "People considering CPL ground classes should confirm current enrolment criteria with the course team.", icon: GraduationCap },
+    { category: "Flying Trainees", description: "Candidates undertaking aircraft training separately can ask about current theory-preparation options.", icon: Target },
+    { category: "Licence Conversion Candidates", description: "Check current DGCA conversion requirements and confirm relevant course scope before enrolling.", icon: Globe },
+    { category: "Other Applicants", description: "Ask the course team whether the current class schedule and format fit your circumstances.", icon: Users },
 ];
 
 const selectionFactors: SelectionFactor[] = [
@@ -95,45 +95,45 @@ const selectionFactors: SelectionFactor[] = [
 ];
 
 const skillsCovered: SkillCovered[] = [
-    { skill: "Aviation Decision-Making", description: "Critical thinking and judgment skills for safe flight operations", icon: Brain },
-    { skill: "Weather Interpretation", description: "Analyzing meteorological data and making informed flight decisions", icon: Cloud },
-    { skill: "Flight Planning", description: "Route planning, fuel calculations, and operational planning skills", icon: Compass },
-    { skill: "Aircraft Systems Understanding", description: "Deep knowledge of aircraft mechanics and operational systems", icon: Wrench },
-    { skill: "Airline Interview Preparation", description: "Technical knowledge and confidence for airline selection processes", icon: Users },
+    { skill: "Theory Topics", description: "Confirm the current ground-class syllabus and examination subjects with the course team and DGCA.", icon: Brain },
+    { skill: "Course Materials", description: "Ask which books, notes or other study materials are currently provided.", icon: Cloud },
+    { skill: "Practice Activities", description: "Ask whether any question banks, mock tests or revision sessions are included.", icon: Compass },
+    { skill: "Teaching Scope", description: "Confirm which academic subjects and course activities are currently available.", icon: Wrench },
+    { skill: "Flight Training", description: "Aircraft flight training is separate; verify the FTO's current DGCA approval and scope.", icon: Users },
 ];
 
 const whyGroundTrainingMatters: string[] = [
-    "Quality ground training is essential because DGCA exams are concept-based and require strong fundamentals",
-    "Clear DGCA papers on first attempt with proper preparation",
-    "Reduce overall CPL duration and accelerate your pilot career",
-    "Save money on re-examination fees and additional training costs",
-    "Improve overall flying performance with solid theoretical knowledge",
-    "Build confidence for airline interviews and professional operations",
+    "Ground classes are academic preparation and do not replace aircraft flight training.",
+    "Check the current examination syllabus and eligibility directly with DGCA.",
+    "Confirm course subjects, schedule and availability before enrolling.",
+    "Request a written fee breakdown, including exclusions and refund terms.",
+    "Arrange practical flying separately and verify the FTO's current approval and scope.",
+    "Course attendance does not guarantee examination passes, employment or selection.",
 ];
 
 const preparationTips: string[] = [
-    "Start ground classes before or alongside flight training for best results",
-    "Attend all lectures and maintain regular study schedule",
-    "Practice with previous year DGCA exam papers extensively",
-    "Clear doubts immediately with instructors during classes",
-    "Form study groups with fellow students for collaborative learning",
-    "Take regular mock tests to assess your preparation level",
-    "Revise thoroughly before DGCA examinations",
-    "Stay updated with latest DGCA circulars and regulations",
+    "Check current DGCA examination requirements before planning your study.",
+    "Ask the course team for the current schedule and attendance expectations.",
+    "Confirm whether past papers or other practice materials are provided.",
+    "Ask who teaches the classes and what relevant credentials are available.",
+    "Confirm how questions are handled and whether academic support is included.",
+    "Ask whether mock tests or other assessment activities are currently offered.",
+    "Use current official DGCA material when revising regulatory requirements.",
+    "Check for updated DGCA notices before applying for examinations.",
 ];
 
 const onlineFeatures = [
-    "Live and recorded lectures",
-    "Flexible study schedule",
-    "Access to digital study material",
-    "Learn from anywhere in India",
+    "Ask whether online classes are currently offered",
+    "Confirm any live or recorded format",
+    "Check which materials are included",
+    "Request current schedule and fee details",
 ] as const;
 
 const offlineFeatures = [
-    "Face-to-face classroom interaction",
-    "Structured discipline and routine",
-    "Direct instructor guidance",
-    "Peer learning opportunities",
+    "Ask whether classroom classes are currently offered",
+    "Confirm the location and schedule",
+    "Check instructor access and academic support",
+    "Request current fee and refund details",
 ] as const;
 
 // ─── Shared animation variants (module scope — single allocation) ─────────────
@@ -269,10 +269,10 @@ export default function DGCAGroundClassesPage(): JSX.Element {
                         {/* Quick Stats */}
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12 pt-12 border-t border-white/20">
                             {[
-                                { val: "6", label: "DGCA Subjects" },
-                                { val: "100%", label: "Pass Rate" },
-                                { val: "Both", label: "Online & Offline" },
-                                { val: "DGCA", label: "Approved" },
+                                { val: "CPL", label: "Ground-class pathway" },
+                                { val: "Theory", label: "Academic preparation" },
+                                { val: "Current", label: "Course scope: confirm with team" },
+                                { val: "Separate", label: "Aircraft flight training" },
                             ].map(({ val, label }) => (
                                 <div key={label}>
                                     <div className="text-3xl md:text-4xl font-bold mb-1">{val}</div>
@@ -286,13 +286,13 @@ export default function DGCAGroundClassesPage(): JSX.Element {
 
             <CitableAnswer
                 heading="What subjects are covered in DGCA ground classes?"
-                answer="DGCA ground classes prepare pilots for the theory examinations required to obtain a Commercial Pilot Licence (CPL) or Airline Transport Pilot Licence (ATPL) in India. For the CPL, the DGCA examination consists of four written papers: Air Navigation, Aviation Meteorology, Air Regulations, and Technical General (with Technical Specific for the aircraft type). Candidates must also clear the RTR(A) radio-telephony examination conducted by the WPC Wing. The DGCA pass mark for each paper is 70%. Each subject can be attempted and cleared separately, and passes are valid for a defined period during which the remaining papers must be completed. Flying Star Aviator's DGCA ground classes in Dwarka, Delhi cover all four CPL subjects with structured lessons, question banks, and mock tests aligned to the current DGCA syllabus."
+                answer="DGCA ground classes are academic preparation for flight-crew theory examinations. The current CPL paper structure, subject names, pass requirements, validity periods and radio-telephony process must be checked against current official rules and notices; this page does not state unverified regulatory details. Flying Star Aviator provides ground classes in Dwarka, New Delhi. Confirm the current course syllabus, class format, materials and fees with the course team. Aircraft flying training is a separate stage."
                 faqs={[
-                    { q: "How many subjects are there in the DGCA CPL exam?", a: "Four written papers — Air Navigation, Aviation Meteorology, Air Regulations, and Technical General — plus the RTR(A) radio-telephony examination." },
-                    { q: "What is the passing mark for DGCA exams?", a: "The DGCA pass mark is 70% for each paper; subjects can be cleared individually." },
+                    { q: "How many subjects are there in the DGCA CPL exam?", a: "Check the current DGCA examination requirements for the applicable CPL paper structure and subject names." },
+                    { q: "What is the passing mark for DGCA exams?", a: "Check the current official DGCA examination instructions for pass requirements and subject validity." },
                 ]}
                 sources={[
-                    { label: "DGCA CAR Section 7, Series 'B', Part I \u2014 Examinations for Flight Crew Licences" },
+                    { label: "DGCA Pariksha — current flight-crew examination portal", url: "https://pariksha.dgca.gov.in/" },
                 ]}
                 lastUpdated="2026-07-30"
             />
@@ -345,7 +345,7 @@ export default function DGCAGroundClassesPage(): JSX.Element {
                     >
                         <h2 className="text-3xl md:text-4xl font-bold mb-6">What Are DGCA Ground Classes?</h2>
                         <p className="text-muted-foreground text-lg mb-8">
-                            DGCA ground classes are training sessions that are conducted to help students prepare and pass the DGCA CPL theory exams conducted by the Directorate General of Civil Aviation, India. These ground classes are conducted to provide students with a strong conceptual understanding and exam preparation, and they cover the basics of aviation. Professional CPL ground classes are conducted as per the latest DGCA syllabus and exam patterns.
+                            DGCA ground classes provide academic preparation for flight-crew theory examinations. Confirm the current DGCA syllabus and examination requirements using official notices, and ask the course team to confirm its current subjects, schedule and study materials. Ground classes do not include aircraft flight instruction.
                         </p>
                         <div className="p-8 rounded-2xl bg-primary/5 border border-primary/20">
                             <div className="flex items-start gap-4">
@@ -355,9 +355,7 @@ export default function DGCAGroundClassesPage(): JSX.Element {
                                 <div>
                                     <h3 className="text-xl font-bold mb-2">Structured Learning Approach</h3>
                                     <p className="text-muted-foreground">
-                                        Our ground classes combine theoretical knowledge with practical applications,
-                                        ensuring students not only pass exams but also become competent aviation
-                                        professionals ready for real-world flying scenarios.
+                                        Ground classes are academic preparation, not practical aircraft instruction. Confirm the current course syllabus, materials and any assessment activities with the course team before enrolment.
                                     </p>
                                 </div>
                             </div>
@@ -371,7 +369,7 @@ export default function DGCAGroundClassesPage(): JSX.Element {
                 <div className="container">
                     <SectionHeading
                         title="DGCA Ground Class Subjects (CPL)"
-                        subtitle="All ground classes for CPL cover mandatory DGCA subjects structured as per the latest DGCA syllabus and exam patterns"
+                        subtitle="The cards below are study-area labels, not a verified current DGCA examination list. Confirm both the current DGCA requirements and the course's teaching scope before enrolment."
                     />
                     <div className="max-w-5xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {cplSubjects.map((s, i) => (
@@ -431,7 +429,7 @@ export default function DGCAGroundClassesPage(): JSX.Element {
                 <div className="container">
                     <SectionHeading
                         title="Online vs Offline DGCA Ground Classes"
-                        subtitle="Choose the learning format that best suits your schedule and learning style"
+                        subtitle="Current delivery formats are not confirmed here. Ask the course team whether online or classroom classes are currently available."
                     />
 
                     <div className="max-w-4xl mx-auto mb-12">
@@ -518,7 +516,7 @@ export default function DGCAGroundClassesPage(): JSX.Element {
                 <div className="container">
                     <SectionHeading
                         title="DGCA Ground Classes Fees"
-                        subtitle="DGCA ground classes fees depend on location, faculty quality, and training format"
+                        subtitle="No current written course price is confirmed on this page. Request an itemised quotation from the course team."
                     />
                     <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-6">
                         <motion.div
@@ -529,22 +527,22 @@ export default function DGCAGroundClassesPage(): JSX.Element {
                             className="p-8 rounded-2xl border border-border bg-card"
                         >
                             <DollarSign className="h-12 w-12 text-primary mb-4" />
-                            <h3 className="text-xl font-bold mb-4">Approximate Fee Range</h3>
+                            <h3 className="text-xl font-bold mb-4">Request Current Fees</h3>
                             <ul className="space-y-3">
                                 <li className="flex items-start gap-3">
                                     <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
                                     <div>
-                                        <span className="font-semibold">Full CPL Ground Classes:</span>
-                                        <span className="text-muted-foreground"> ₹1.5 – 3.5 Lakhs</span>
+                                        <span className="font-semibold">Current course fee:</span>
+                                        <span className="text-muted-foreground"> request a written quotation</span>
                                     </div>
                                 </li>
                                 <li className="flex items-start gap-3">
                                     <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                                    <span className="text-muted-foreground">Subject-wise enrollment available</span>
+                                    <span className="text-muted-foreground">Confirm available enrolment options</span>
                                 </li>
                                 <li className="flex items-start gap-3">
                                     <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                                    <span className="text-muted-foreground">Online classes generally cost less</span>
+                                    <span className="text-muted-foreground">Confirm delivery format and any separate charges</span>
                                 </li>
                             </ul>
                         </motion.div>
@@ -564,8 +562,7 @@ export default function DGCAGroundClassesPage(): JSX.Element {
                                 me" when comparing options.
                             </p>
                             <p className="text-muted-foreground">
-                                Cities like Delhi are major hubs for offline DGCA ground training. Reputed institutes
-                                now offer hybrid models to support students across India.
+                                Ask whether classes are available at the Dwarka, New Delhi centre or in another format. Confirm current access, schedule and fees directly with the course team.
                             </p>
                         </motion.div>
                     </div>
@@ -608,8 +605,7 @@ export default function DGCAGroundClassesPage(): JSX.Element {
                             className="mt-8 p-6 rounded-xl bg-primary/5 border border-primary/20 text-center"
                         >
                             <p className="text-muted-foreground">
-                                This comprehensive approach makes aviation ground classes valuable even after clearing DGCA
-                                exams, preparing you for professional airline operations and career advancement.
+                                Course content, delivery and assessment activities should be confirmed with the course team. Ground classes do not guarantee examination or employment outcomes and do not replace practical flight training.
                             </p>
                         </motion.div>
                     </div>
@@ -645,9 +641,9 @@ export default function DGCAGroundClassesPage(): JSX.Element {
                             Start Your Pilot Journey with the Right Ground Classes
                         </h2>
                         <div className="space-y-4 text-primary-foreground/80 text-lg mb-8">
-                            <p>Having the right theoretical knowledge is the key to becoming a professional pilot. Taking the right DGCA ground classes is the key to acing the exam with confidence and moving ahead with your CPL.</p>
-                            <p>Whether you want to take the DGCA ground classes online or offline in Delhi, the right ground training is the smartest move you can make at the beginning of your pilot training.</p>
-                            <p>Join thousands of other pilots who cleared the DGCA exam on the first attempt and are flying with the top airlines around the world.</p>
+                            <p>DGCA ground classes are a separate academic stage in a pilot-licensing pathway. They do not include aircraft flight training or guarantee an examination result or employment.</p>
+                            <p>Before enrolling, confirm the current course syllabus, available delivery format, schedule, included materials, fees and refund terms with the course team.</p>
+                            <p>Check current eligibility, examination subjects and regulatory requirements against official DGCA guidance.</p>
                         </div>
                         <div className="flex flex-col lg:flex-row gap-4 justify-center">
                             <Button variant="gold" size="lg" asChild>
@@ -704,7 +700,7 @@ export default function DGCAGroundClassesPage(): JSX.Element {
                                     DGCA Computer Number: documents and process
                                 </span>
                                 <span className="block text-sm text-muted-foreground mt-1">
-                                    The registration step you must clear before you can apply for any theory paper.
+                                    Check current Pariksha instructions for registration requirements before applying.
                                 </span>
                             </Link>
                         </li>
@@ -714,7 +710,7 @@ export default function DGCAGroundClassesPage(): JSX.Element {
                                     DGCA Class 1 and Class 2 medical requirements
                                 </span>
                                 <span className="block text-sm text-muted-foreground mt-1">
-                                    The medical gate that runs in parallel with your theory preparation.
+                                    Read about medical assessment guidance and confirm current requirements with DGCA.
                                 </span>
                             </Link>
                         </li>

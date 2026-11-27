@@ -10,13 +10,11 @@ import {
     BookOpen,
     Users,
     Map,
-    Monitor,
     Briefcase,
     ClipboardList,
     ArrowRight,
     ChevronRight,
     CheckCircle,
-    Star,
 } from "lucide-react";
 import {
     Accordion,
@@ -28,57 +26,48 @@ import {
 const courseModules = [
     {
         icon: BookOpen,
-        title: "Theory & Practical Training",
+        title: "Aviation Theory & Procedures",
         description:
-            "Delve into aviation regulations, navigation procedures, and safety protocols with simulated flight scenarios for real-world application.",
+            "Ask the course team whether aviation regulations, navigation procedures or safety topics are currently included.",
         href: "/contact",
     },
     {
         icon: Plane,
         title: "Airline Operations & Procedures",
         description:
-            "Gain a deep understanding of airline operations, standard operating procedures, and how to navigate all phases of a commercial flight.",
+            "Confirm whether airline operations or standard operating procedures are part of the current syllabus.",
         href: "/contact",
     },
     {
         icon: Users,
         title: "Crew Resource Management",
         description:
-            "Develop essential teamwork and communication skills through CRM training for safe and efficient flight operations.",
+            "Ask whether the current course includes CRM material and what activities, if any, are offered.",
         href: "/contact",
     },
     {
         icon: Map,
         title: "Flight Planning & Navigation",
         description:
-            "Master route optimisation, aviation chart reading, weather interpretation, and informed decision-making during flight planning.",
-        href: "/contact",
-    },
-    {
-        icon: Monitor,
-        title: "Simulator Training",
-        description:
-            "Experience realistic flight scenarios in state-of-the-art simulators to hone skills, practise emergency procedures, and build confidence.",
+            "Confirm whether route planning, chart reading, weather interpretation or pre-flight decisions are included.",
         href: "/contact",
     },
     {
         icon: ClipboardList,
         title: "Interview & Assessment Prep",
         description:
-            "Receive structured guidance on airline interviews, aptitude tests, and simulator assessments to excel in the selection process.",
+            "Ask the course team which interview or assessment preparation formats, if any, are currently offered.",
         href: "/contact",
     },
 ];
 
 const courseHighlights = [
-    "Comprehensive airline operations training",
-    "State-of-the-art simulator sessions",
-    "CRM and cockpit communication skills",
-    "Expert-led interview preparation",
-    "Industry insights from aviation professionals",
-    "Flight planning and navigation mastery",
-    "Emergency procedures and safety training",
-    "DGCA-aligned curriculum standards",
+    "Ask whether airline operations and procedures are included",
+    "Confirm any aviation regulation or safety topics",
+    "Ask whether CRM or cockpit communication is covered",
+    "Confirm any flight-planning or navigation topics",
+    "Ask which interview preparation activities are offered",
+    "Confirm assessment format and any practice activities",
 ];
 
 const trainingComponents = [
@@ -86,58 +75,45 @@ const trainingComponents = [
         step: 1,
         title: "Theory & Ground Modules",
         description:
-            "Structured classroom sessions covering aviation regulations, navigation procedures, safety protocols, and airline standard operating procedures.",
+            "Ask the course team to confirm the current theory syllabus, if any, and its delivery format.",
     },
     {
         step: 2,
-        title: "CRM Workshop",
+        title: "Crew Resource Management",
         description:
-            "Interactive crew resource management sessions focused on effective communication, decision-making, and teamwork within a cockpit crew environment.",
+            "Confirm whether CRM content and related exercises are included in the current course.",
     },
     {
         step: 3,
-        title: "Flight Planning Lab",
+        title: "Flight Planning & Navigation",
         description:
-            "Hands-on exercises in route optimisation, reading aviation charts, interpreting meteorological data, and building sound pre-flight decisions.",
+            "Ask whether these topics are part of the current syllabus and whether they involve classroom, practical or other activities.",
     },
     {
         step: 4,
-        title: "Simulator Training",
+        title: "Interview & Assessment Preparation",
         description:
-            "Full-mission simulator sessions covering normal and emergency procedures in realistic airline scenarios to build confidence and competency.",
-    },
-    {
-        step: 5,
-        title: "Industry Insights Programme",
-        description:
-            "Guest lectures by experienced airline captains and aviation professionals sharing current industry trends, regulations, and best practices.",
-    },
-    {
-        step: 6,
-        title: "Interview & Assessment Readiness",
-        description:
-            "Dedicated modules on interview techniques, psychometric and aptitude tests, and simulator-based assessments used by major airlines.",
+            "Confirm whether interview or assessment preparation is currently offered and what formats are used.",
     },
 ];
 
 const courseOverview = [
     { label: "Course Name", value: "Airline Preparation Course" },
-    { label: "Course Type", value: "Professional Pilot Programme" },
-    { label: "Training Mode", value: "Theory + Simulator + Practical" },
-    { label: "Eligibility", value: "CPL Holders / Final-Year Trainees" },
-    { label: "Focus Areas", value: "CRM, Operations, Navigation, Interviews" },
-    { label: "Career Outcome", value: "Airline First Officer" },
+    { label: "Course Type", value: "Interview and assessment preparation" },
+    { label: "Course Topics", value: "Confirm the current syllabus with the course team" },
+    { label: "Intended Audience", value: "Confirm current eligibility with the course team" },
+    { label: "Focus Areas", value: "Ask which areas and activities are currently included" },
 ];
 
 const crmTopics = [
-    { name: "Effective Cockpit Communication", detail: "Core skill" },
-    { name: "Decision-Making Under Pressure", detail: "Core skill" },
-    { name: "Situational Awareness", detail: "Core skill" },
-    { name: "Leadership & Teamwork", detail: "Core skill" },
-    { name: "Threat & Error Management", detail: "Core skill" },
+    { name: "Effective Cockpit Communication", detail: "Confirm inclusion" },
+    { name: "Decision-Making Under Pressure", detail: "Confirm inclusion" },
+    { name: "Situational Awareness", detail: "Confirm inclusion" },
+    { name: "Leadership & Teamwork", detail: "Confirm inclusion" },
+    { name: "Threat & Error Management", detail: "Confirm inclusion" },
 ];
 
-const careerOutcomes = [
+const careerPaths = [
     { title: "Airline First Officer", icon: Plane },
     { title: "Regional Carrier Pilot", icon: Plane },
     { title: "Cargo Operations Pilot", icon: Briefcase },
@@ -148,18 +124,18 @@ const careerOutcomes = [
 
 const industryInsights = [
     {
-        stage: "Guest Lectures",
-        description: "Active airline captains share real-world operational experience",
-        icon: Star,
+        stage: "Airline Operations",
+        description: "Ask whether airline operations or procedures are included in the current syllabus.",
+        icon: Plane,
     },
     {
-        stage: "Regulatory Updates",
-        description: "Stay current with DGCA and international aviation regulations",
+        stage: "Aviation Regulations",
+        description: "Confirm any aviation regulation topics with the course team.",
         icon: ClipboardList,
     },
     {
-        stage: "Interview Simulations",
-        description: "Mock airline interviews with structured feedback sessions",
+        stage: "Interview Preparation",
+        description: "Ask whether interview or assessment preparation is currently offered and in what format.",
         icon: Users,
     },
 ];
@@ -168,27 +144,27 @@ const faqs = [
     {
         question: "What is the Airline Preparation Course?",
         answer:
-            "The Airline Preparation Course is a comprehensive programme designed to equip aspiring pilots with the knowledge, skills, and confidence required to excel in commercial aviation. It covers airline operations, crew resource management, flight planning, simulator training, industry insights, and interview preparation — giving graduates a competitive edge in airline recruitment.",
+            "This page does not independently verify the current syllabus or delivery. Ask the course team to confirm available modules, format, instructors, practice activities, simulator access and fees.",
     },
     {
         question: "Who is this course designed for?",
         answer:
-            "The course is tailored for CPL holders and final-year flying trainees who are preparing to enter the airline industry. It bridges the gap between completing pilot training and meeting the rigorous standards expected by commercial airlines during the selection process.",
+            "Current eligibility is not independently confirmed here. Contact the course team to confirm who may enrol and what prerequisites apply.",
     },
     {
         question: "What is Crew Resource Management (CRM) and why is it important?",
         answer:
-            "Crew Resource Management (CRM) training develops essential teamwork and communication skills critical to airline operations. It focuses on effective cockpit communication, collaborative decision-making, situational awareness, and threat and error management — all of which are essential competencies assessed during airline selection and throughout a pilot's career.",
+            "Crew Resource Management (CRM) concerns communication, teamwork, decision-making, situational awareness, and threat and error management in flight operations. Assessment criteria vary by airline.",
     },
     {
         question: "Does the course include simulator training?",
         answer:
-            "Yes. The Airline Preparation Course includes dedicated simulator sessions in state-of-the-art flight simulators. These sessions allow students to practise normal and emergency procedures in realistic airline scenarios, building confidence and technical proficiency in a safe, controlled environment.",
+            "Simulator training is not confirmed as part of this course. Contact the course team to check whether any simulator sessions are currently offered.",
     },
     {
         question: "How does the course prepare me for airline interviews?",
         answer:
-            "The course includes specific modules on interview techniques, aptitude and psychometric tests, and simulator-based assessments used by leading airlines. Students participate in mock interviews and receive structured feedback, ensuring they are thoroughly prepared for the selection process at domestic and international carriers.",
+            "Ask the course team whether interview or assessment preparation is currently offered and which practice formats are used.",
     },
 ];
 
@@ -206,13 +182,13 @@ export default function AirlinePreparationPage() {
                         className="max-w-3xl"
                     >
                         <span className="inline-block text-sm font-semibold bg-white/20 px-4 py-2 rounded-full mb-4">
-                            Airline Preparation Course — Bridge the Gap Between Training & Your First Airline Job
+                            Airline Preparation Course
                         </span>
                         <h1 className="text-4xl md:text-6xl font-bold mb-6">
-                            Airline Preparation Course — Launch Your Commercial Aviation Career
+                            Airline Preparation Course for Pilot Applicants
                         </h1>
                         <p className="text-xl text-primary-foreground/80 mb-8">
-                            Kickstart your commercial aviation career with our highly effective Airline Preparation Course. Our course has been carefully designed to provide aspiring pilots with the required knowledge, skills, and confidence to succeed in the ever-evolving world of commercial aviation.
+                            Ask the course team to confirm the current syllabus, delivery format, practice activities, instructors, simulator access and fees. Course completion does not guarantee selection, placement, or employment.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4">
                             <Button variant="gold" size="lg" asChild>
@@ -252,7 +228,7 @@ export default function AirlinePreparationPage() {
                             About the Airline Preparation Course
                         </h2>
                         <p className="text-muted-foreground max-w-3xl mx-auto text-lg">
-                            The Airline Preparation Course is designed in such a way that it meets the high standards set by the aviation industry. The course is comprehensive in its content, providing a holistic approach in the preparation of a pilot.
+                            This page does not independently verify current course contents or delivery. Contact the course team to confirm the syllabus, eligibility, schedule, instructors and fees.
                         </p>
                     </motion.div>
 
@@ -264,10 +240,10 @@ export default function AirlinePreparationPage() {
                             className="p-8 rounded-2xl border border-border bg-card"
                         >
                             <p className="text-muted-foreground mb-4">
-                                This course closes the gap between the successful completion of your commercial pilot training and the exacting standards required by airline recruiters. Every module in this course has been designed to get you ready for the airline world.
+                                Ask the course team to confirm whether airline operations, CRM, flight planning, interview or assessment preparation are currently included.
                             </p>
                             <p className="text-muted-foreground">
-                                You will benefit from curriculum design, aviation instructors, access to simulator facilities, and hands-on training that prepares you for the entire airline selection process.
+                                Ask the course team to confirm current instructors, practice formats, and any simulator access.
                             </p>
                         </motion.div>
 
@@ -307,11 +283,10 @@ export default function AirlinePreparationPage() {
                         className="text-center mb-16"
                     >
                         <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                            Why Choose Our Airline Preparation Course?
+                            Course Topics
                         </h2>
                         <p className="text-muted-foreground max-w-2xl mx-auto">
-                            Designed in consultation with airline industry professionals, our course covers every
-                            competency airlines assess — from technical knowledge to interpersonal readiness.
+                            Ask the course team which airline-related topics, if any, are currently included. Airline requirements vary; check current employer information.
                         </p>
                     </motion.div>
 
@@ -346,8 +321,7 @@ export default function AirlinePreparationPage() {
                             What the Course Covers
                         </h2>
                         <p className="text-muted-foreground max-w-2xl mx-auto">
-                            A wide range of topics delivered through theory, simulation, and practical sessions — providing
-                            a holistic approach to airline readiness.
+                            This page does not confirm the course syllabus or practical delivery. Ask the course team about current topics, session formats and any simulator access.
                         </p>
                     </motion.div>
 
@@ -385,8 +359,7 @@ export default function AirlinePreparationPage() {
                             Crew Resource Management (CRM) Training
                         </h2>
                         <p className="text-muted-foreground max-w-2xl mx-auto">
-                            Understand the importance of effective communication and collaboration in ensuring safe and
-                            efficient flight operations. CRM is a core competency assessed by every major airline.
+                            CRM is a subject area to ask about; this page does not confirm whether or how it is currently taught in this course.
                         </p>
                     </motion.div>
 
@@ -397,7 +370,7 @@ export default function AirlinePreparationPage() {
                             viewport={{ once: true }}
                             className="p-8 rounded-2xl border border-border bg-card"
                         >
-                            <h3 className="text-xl font-bold mb-6">CRM Training Includes</h3>
+                            <h3 className="text-xl font-bold mb-6">CRM Topics Listed</h3>
                             <ul className="space-y-4">
                                 {[
                                     "Effective cockpit communication",
@@ -412,10 +385,6 @@ export default function AirlinePreparationPage() {
                                     </li>
                                 ))}
                             </ul>
-                            <p className="text-sm text-muted-foreground mt-6">
-                                CRM skills are assessed at every stage of an airline career — from initial selection to
-                                recurrent training and command upgrade.
-                            </p>
                         </motion.div>
 
                         <motion.div
@@ -423,9 +392,9 @@ export default function AirlinePreparationPage() {
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                         >
-                            <h3 className="text-xl font-bold mb-6">Key CRM Competencies Covered</h3>
+                            <h3 className="text-xl font-bold mb-6">CRM Topic Areas</h3>
                             <p className="text-muted-foreground mb-6">
-                                Our CRM curriculum aligns with international aviation safety standards and airline assessment criteria.
+                                Topics include communication, decision-making, situational awareness, teamwork, and threat and error management.
                             </p>
                             <div className="rounded-2xl border border-border overflow-hidden">
                                 <table className="w-full">
@@ -451,7 +420,7 @@ export default function AirlinePreparationPage() {
                                 </table>
                             </div>
                             <p className="text-sm text-muted-foreground mt-4">
-                                Students practise CRM skills through group exercises, simulator scenarios, and facilitated debriefs.
+                                Ask the course team which CRM practice sessions, if any, are currently included.
                             </p>
                         </motion.div>
                     </div>
@@ -467,9 +436,9 @@ export default function AirlinePreparationPage() {
                         viewport={{ once: true }}
                         className="text-center mb-16"
                     >
-                        <h2 className="text-3xl md:text-4xl font-bold mb-4">Step-by-Step Training Path</h2>
+                        <h2 className="text-3xl md:text-4xl font-bold mb-4">Course Preparation Topics</h2>
                         <p className="text-muted-foreground max-w-2xl mx-auto">
-                            A structured progression that builds knowledge, practical skill, and airline-readiness at every stage.
+                            Confirm the current syllabus and delivery formats with the course team.
                         </p>
                     </motion.div>
 
@@ -503,10 +472,9 @@ export default function AirlinePreparationPage() {
                         viewport={{ once: true }}
                         className="text-center mb-12"
                     >
-                        <h2 className="text-3xl md:text-4xl font-bold mb-4">Industry Insights Programme</h2>
+                        <h2 className="text-3xl md:text-4xl font-bold mb-4">Airline and Assessment Topics</h2>
                         <p className="text-muted-foreground max-w-2xl mx-auto">
-                            Benefit from guest lectures and insider knowledge from experienced airline professionals.
-                            Stay updated on industry trends, regulations, and best practices to enhance your readiness.
+                            Ask the course team to confirm whether these topics are currently included.
                         </p>
                     </motion.div>
 
@@ -544,16 +512,15 @@ export default function AirlinePreparationPage() {
                         className="text-center mb-16"
                     >
                         <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                            Career Opportunities After Airline Preparation
+                            Possible Aviation Career Paths
                         </h2>
                         <p className="text-muted-foreground max-w-2xl mx-auto">
-                            Graduates of our Airline Preparation Course are equipped to pursue roles across the full
-                            spectrum of commercial aviation operations.
+                            These are possible career paths, not course outcomes. Eligibility depends on applicable qualifications and employer requirements.
                         </p>
                     </motion.div>
 
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-                        {careerOutcomes.map((career, index) => (
+                        {careerPaths.map((career, index) => (
                             <motion.div
                                 key={career.title}
                                 initial={{ opacity: 0, y: 30 }}
@@ -622,13 +589,13 @@ export default function AirlinePreparationPage() {
                         className="max-w-3xl mx-auto"
                     >
                         <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                            Why the Right Preparation Makes All the Difference
+                            What This Course Can and Cannot Do
                         </h2>
                         <p className="text-muted-foreground text-lg mb-4">
-                            The move from the completion of pilot training to the acquisition of an airline job is a competitive process, and airlines evaluate candidates in terms of knowledge, CRM skills, simulator, and communication skills at the same time.
+                            Airline selection methods vary. This course offers preparation, not a hiring decision.
                         </p>
                         <p className="text-muted-foreground text-lg">
-                            The Airline Preparation Course will guarantee that you enter every assessment and interview with the right level of preparation, skills, and self-confidence, thereby increasing the chances of getting the job.
+                            Completing the course does not guarantee an interview, selection, placement, or employment.
                         </p>
                     </motion.div>
                 </div>
@@ -645,7 +612,7 @@ export default function AirlinePreparationPage() {
                     >
                         <h2 className="text-3xl md:text-4xl font-bold mb-4">Frequently Asked Questions</h2>
                         <p className="text-muted-foreground max-w-2xl mx-auto">
-                            Common questions about our Airline Preparation Course and what to expect.
+                            Common questions about the Airline Preparation Course and the information available about it.
                         </p>
                     </motion.div>
 
@@ -685,13 +652,13 @@ export default function AirlinePreparationPage() {
                         className="max-w-3xl mx-auto text-center"
                     >
                         <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                            Take the Next Step Towards Your Airline Career
+                            Ask About Airline Preparation
                         </h2>
                         <p className="text-primary-foreground/80 text-lg mb-4">
-                            The Airline Preparation Course is not just training, but your competitive advantage in the airline selection process. From your proficiency in CRM, simulators, to your interview skills, every module of the course is designed to ensure your success.
+                            Contact the course team to confirm the current syllabus, course format, instructor details, practice activities, simulator access and fees.
                         </p>
                         <p className="text-primary-foreground/80 text-lg mb-8">
-                            If you are a holder of a CPL license or a trainee in your final year and are ready to take the next step towards your dream of flying for a commercial airline, then you are invited to join our Airline Preparation Course.
+                            Contact the course team to confirm current eligibility, course details, delivery format and fees.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <Button variant="gold" size="lg" asChild>

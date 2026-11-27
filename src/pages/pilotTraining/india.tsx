@@ -117,16 +117,16 @@ const trainingStages = [
         duration: "Varies by candidate and examination schedule",
         flyingHours: "Not applicable",
         highlights: [
-            "Check current DGCA and WPC requirements",
+            "Check the applicable current official radio-telephony rules and notices",
             "Plan examinations using the current official schedules",
         ],
     },
     {
-        stage: "Practical flight training at an approved FTO",
+        stage: "Practical flight training at a separately selected FTO",
         duration: "Set by the FTO and candidate progress",
         flyingHours: "Verify current DGCA requirements",
         highlights: [
-            "Confirm the FTO's current DGCA approval and scope",
+            "Verify the FTO's current DGCA approval and scope before enrolment",
             "Review its syllabus, aircraft availability and written quote",
             "Check current skill-test and licence-application requirements",
         ],
@@ -142,17 +142,17 @@ const stepByStepGuide = [
     {
         step: 2,
         title: "DGCA Theory Class",
-        description: "Attend DGCA-prescribed ground school covering Air Regulations, Navigation, Meteorology, Technical Subjects and Human Performance.",
+        description: "Confirm the current DGCA examination subjects and the provider's course syllabus before enrolling.",
     },
     {
         step: 3,
         title: "DGCA Theory Exam",
-        description: "Sit the DGCA written papers and clear the required theory exams to progress to practical training stages.",
+        description: "Check current DGCA examination formats, application instructions and progression requirements in official notices.",
     },
     {
         step: 4,
-        title: "RTR (Radio Telephony Restricted)",
-        description: "Complete the RTR/RT licence course and exam to obtain mandatory aviation radio telephony endorsement.",
+        title: "Radio-telephony requirements",
+        description: "Verify the applicable qualification, examining authority and process against current official rules and notices.",
     },
     {
         step: 5,
@@ -161,18 +161,18 @@ const stepByStepGuide = [
     },
     {
         step: 6,
-        title: "SPL (Student Pilot Licence)",
-        description: "Apply for and obtain your SPL after initial training and checks — this authorises you to commence supervised solo flying.",
+        title: "Initial flight-training requirements",
+        description: "Confirm the current licence, assessment and supervision requirements with DGCA and the selected FTO.",
     },
     {
         step: 7,
-        title: "FRTOL (Flight Radio Telephony Operator's Licence)",
-        description: "Obtain the FRTOL from WPC after passing the RTR exam. This licence authorises pilots to operate aircraft radio communication equipment during flight.",
+        title: "Confirm radio-telephony licensing",
+        description: "Check current government rules and regulator instructions for the applicable radio-telephony licence or certificate.",
     },
     {
         step: 8,
         title: "Flight Training",
-        description: "Complete structured practical training from PPL through hour-building to CPL (including IR/ME as required), with regular checks and final DGCA skill tests.",
+        description: "Confirm the required practical training, flight experience, tests and licence-application steps against current DGCA rules and the FTO's approved scope.",
     },
 ];
 
@@ -299,7 +299,7 @@ export default function PilotTrainingIndiaPage() {
                             Commercial Pilot Training in India
                         </h1>
                         <p className="text-xl text-primary-foreground/80 mb-8">
-                            A DGCA CPL pathway includes ground classes and theory exams, followed by practical flight training at a separately selected, DGCA-approved Flying Training Organisation (FTO). Flying Star provides ground classes in Dwarka, New Delhi; it does not operate an FTO.
+                            The CPL pathway includes academic and practical flight-training stages. Flying Star provides ground classes in Dwarka, New Delhi; aircraft flight training is separate. Verify current DGCA requirements and any selected FTO's approval and scope before enrolment.
                         </p>
                         <p className="text-primary-foreground/80 mb-8">
                             Explore our{" "}
@@ -441,7 +441,7 @@ export default function PilotTrainingIndiaPage() {
                             CPL Ground Classes and Flight Training: Separate Stages
                         </h2>
                         <p className="text-muted-foreground max-w-2xl mx-auto">
-                            CPL-MEIR describes a licensing and training pathway. Flying Star provides ground classes; practical flight training is completed separately through an appropriately approved FTO.
+                            Flying Star provides ground classes; practical flight training is arranged separately. Confirm current licensing requirements and verify the selected FTO's approval and scope with DGCA.
                         </p>
                     </motion.div>
 
@@ -533,8 +533,7 @@ export default function PilotTrainingIndiaPage() {
                         viewport={{ once: true }}
                         className="text-center text-muted-foreground mt-8"
                     >
-                        Flying Star Aviator provides CPL ground classes. Practical flight training is completed
-                        separately through an appropriately approved FTO.
+                        Flying Star Aviator provides CPL ground classes. Practical flight training is separate; verify the selected FTO's current DGCA approval and scope.
                     </motion.p>
                 </div>
             </section>
@@ -824,7 +823,7 @@ export default function PilotTrainingIndiaPage() {
                         </div>
                         <div className="p-8 rounded-2xl border border-border bg-card">
                             <p className="text-muted-foreground text-lg mb-4">
-                                DGCA sets the licensing requirements and issues licences. Ground schools prepare candidates for theory examinations; an approved Flying Training Organisation (FTO) delivers practical aircraft training.
+                                Check DGCA's current licensing requirements and licence-issue instructions. Ground schools provide academic preparation; verify the selected FTO's current approval and scope before arranging practical aircraft training.
                             </p>
                             <p className="text-muted-foreground text-lg mb-4">
                                 Flying Star Aviator provides CPL and ATPL ground classes from its Dwarka, New Delhi centre. It does not operate an FTO or provide aircraft flight training.

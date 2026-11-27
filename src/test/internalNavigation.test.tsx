@@ -1,4 +1,4 @@
-import { cleanup, fireEvent, render, screen } from "@testing-library/react";
+import { cleanup, fireEvent, render, screen, within } from "@testing-library/react";
 import type { ReactNode } from "react";
 import { MemoryRouter } from "react-router-dom";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
@@ -127,6 +127,19 @@ describe("internal navigation", () => {
     expect(
       screen.queryByRole("heading", { name: "Aircraft Management" }),
     ).not.toBeInTheDocument();
+    expect(
+      screen.getByText(
+        (_, element) =>
+          element?.tagName === "P" &&
+          element.textContent?.replace(/\s+/g, " ").trim() ===
+            "CPL and ATPL ground classes for DGCA theory preparation. Aircraft flying training is separate; verify current DGCA requirements and any selected FTO's approval and scope.",
+      ),
+    ).toBeInTheDocument();
+    expect(screen.queryByText(/success rate exceeds 95%/i)).not.toBeInTheDocument();
+    expect(screen.queryByText(/guaranteed job assistance|direct placement support/i)).not.toBeInTheDocument();
+    expect(screen.getByText(/Job placement or employment is not guaranteed/)).toBeInTheDocument();
+    expect(screen.queryByText(/24\/7 across India|medical evacuation|global inventory|complete documentation and legal support/i))
+      .not.toBeInTheDocument();
   });
 
   it("uses existing CPL, PPL, eligibility, and syllabus destinations on pilot training", () => {
@@ -155,6 +168,16 @@ describe("internal navigation", () => {
       "href",
       "/dgca/medical",
     );
+    expect(screen.getByRole("link", { name: "Understand the CPL ground and flying stages" })).toHaveAttribute(
+      "href",
+      "/pilot-training/cpl",
+    );
+    expect(screen.queryByText("Most Popular")).not.toBeInTheDocument();
+    const routeTable = screen.getByRole("region", {
+      name: "Pilot training routes: India, USA and South Africa",
+    });
+    expect(within(routeTable).getAllByRole("columnheader")).toHaveLength(2);
+    expect(within(routeTable).queryByText(/₹|months|Lower cost|hour-building/i)).not.toBeInTheDocument();
   });
 
   it("provides a stable charter heading and accessible, user-controlled carousel", () => {

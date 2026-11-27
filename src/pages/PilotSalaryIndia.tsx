@@ -20,15 +20,6 @@ const faqs = PAGE_FAQS["/pilot-salary-india"];
 
 const INDIGO_URL = "https://www.goindigo.in/how-to-become-a-pilot.html";
 
-/**
- * This page carries no salary figure, and that is the point.
- *
- * A search run on 10 September 2026 for "pilot salary in India" returned ten
- * organic results, every one of them a flight school, a ground school or a
- * content site, and not one of them citing an airline disclosure, a regulator
- * publication or a government statistic. This limited search does not establish
- * that no other primary-source salary data exists.
- */
 const WHAT_IS_PUBLISHED: string[][] = [
   [
     "Airline pay scales",
@@ -37,18 +28,18 @@ const WHAT_IS_PUBLISHED: string[][] = [
   ],
   [
     "Airline joining criteria",
-    "Published, by the airline",
-    "IndiGo states an age range of 18 to 32 and 10+2 with Physics and Mathematics for its cadet programme, and that a candidate gets a maximum of two attempts per stage.",
+    "Not verified in this review",
+    "The official airline page was unavailable; check current intake requirements directly with the airline.",
   ],
   [
     "Licensing requirements",
-    "Published, by DGCA",
-    "What a licence requires and permits is in the Aircraft Rules 1937 and the CARs. None of it concerns pay.",
+    "Separate from salary terms",
+    "Check current DGCA licensing material separately; this review did not use it to establish pilot pay.",
   ],
   [
     "Total employee cost",
-    "Published, in annual reports",
-    "Listed carriers disclose aggregate employee benefit expense. It covers every employee from cabin crew to engineering and cannot be divided into a pilot salary.",
+    "Not a verified pilot pay scale",
+    "An aggregate employment-cost figure would not, by itself, establish an individual pilot's pay; no such figure is used here.",
   ],
   [
     "Figures on training-provider websites",
@@ -59,24 +50,24 @@ const WHAT_IS_PUBLISHED: string[][] = [
 
 const WHAT_MOVES_IT: { title: string; body: string }[] = [
   {
-    title: "Which seat you are in",
-    body: "First officer and captain are different jobs on different pay. The gap between them is larger than the gap between airlines, and the timing of a command upgrade depends on fleet growth and seniority rather than on ability alone.",
+    title: "Which role the figure describes",
+    body: "Compare like roles and ranks. This page has not verified how a particular employer defines or compensates each role.",
   },
   {
     title: "Which employer",
-    body: "Scheduled carrier, charter operator, corporate flight department, flying school instructor and cargo operator are five different labour markets. Most published comparisons quietly assume the first.",
+    body: "Check the specific employer and role in the written terms. This review has not established representative pay across airline, charter, training or other operators.",
   },
   {
-    title: "Hours actually rostered",
-    body: "Where pay includes a flying-hour component, what you earn depends on what you are scheduled, which moves with fleet availability, season and network.",
+    title: "Fixed and variable pay",
+    body: "Check the written offer for fixed pay, variable components, allowances, deductions and any conditions. Do not treat an online estimate as a job offer.",
   },
   {
-    title: "Type rating and the debt behind it",
-    body: "A type rating is a real cost taken on before the first airline pay cheque. Any earnings figure that ignores what was borrowed to reach it describes income, not financial position.",
+    title: "Training costs and financing",
+    body: "Separate employment compensation from training or financing costs. This guide does not state that a specific rating, loan or payment is required for a particular role.",
   },
   {
     title: "Time to the first job",
-    body: "The months between licence issue and a first flying job earn nothing, and that interval varies with hiring cycles far more than with the licence itself.",
+    body: "A licence or course completion does not establish an employment offer or start date. Confirm any selection conditions and timeline with the employer in writing.",
   },
 ];
 
@@ -114,10 +105,9 @@ export default function PilotSalaryIndiaPage() {
           rows={WHAT_IS_PUBLISHED}
           note={
             <>
-              The IndiGo criteria in row two are quoted from the airline's own
-              careers information, retrieved 10 September 2026. That page publishes
-              eligibility and selection detail and does not state pay, bond, cost or
-              stipend.
+              Airline eligibility, selection and commercial terms are intake-specific.
+              They were not verified in this review; consult the current official
+              airline information rather than relying on a previously retrieved copy.
             </>
           }
           sources={[{ label: "IndiGo, How to become a pilot (airline careers page)", url: INDIGO_URL }]}
@@ -131,22 +121,20 @@ export default function PilotSalaryIndiaPage() {
                 Why this page gives you no number
               </h2>
               <p className="text-muted-foreground leading-relaxed">
-                On 10 September 2026 we searched for the phrase most aspiring pilots
-                type, and read the first ten organic results. Every one was a flight
-                school, a ground school or a content site. Not one cited an airline
-                disclosure, a regulator publication or a survey. This limited search
-                cannot establish whether a reliable source exists elsewhere.
+                No representative current airline pay scale or salary range was
+                verified from a suitable primary source in this review. This page
+                therefore does not present an estimate as official or representative
+                pay; the absence of a verified figure here does not establish that
+                reliable data does not exist elsewhere.
               </p>
               <p className="mt-4 text-muted-foreground leading-relaxed">
-                Publishing our own range would add an eleventh unsourced page and make
-                the problem marginally worse. It would also be the easiest page on this
-                site to write, which is usually a warning rather than an opportunity.
+                Publishing a range without a suitable source would imply precision
+                that the available evidence does not establish.
               </p>
               <p className="mt-4 text-muted-foreground leading-relaxed">
-                If you want a figure for planning, the honest way to get one is to ask
-                working pilots at the specific employer and fleet you are aiming at,
-                treat what they tell you as one data point rather than a market rate,
-                and remember that people discussing pay online are not a random sample.
+                For a specific role, ask the employer for current written terms and
+                compare the role, pay components, deductions and date. A single
+                personal account is not a representative market rate.
               </p>
               <h3 className="mt-6 text-xl font-semibold text-foreground">
                 Pilot salary in India per month: gross and in-hand
@@ -218,8 +206,8 @@ export default function PilotSalaryIndiaPage() {
                 <li>What date is on it, and what changed in hiring since then?</li>
               </ul>
               <p className="mt-6 text-muted-foreground leading-relaxed">
-                A claim that survives all six is worth something. Most do not survive
-                the first.
+                These checks help identify what a figure does and does not establish;
+                they do not turn an estimate into a verified market rate.
               </p>
             </section>
 
@@ -238,7 +226,7 @@ export default function PilotSalaryIndiaPage() {
                 <Link to="/courses/cpl/fees" className="underline hover:text-primary">
                   CPL cost breakdown
                 </Link>{" "}
-                lists every component you will pay for and who sets each one, and{" "}
+                provides a checklist of cost components to verify in written quotes, and{" "}
                 <Link to="/blog/air-hostess-salary-in-india-2026" className="underline hover:text-primary">
                   the same question asked about cabin crew pay
                 </Link>{" "}

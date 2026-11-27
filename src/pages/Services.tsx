@@ -8,40 +8,40 @@ const services = [
   {
     icon: GraduationCap,
     title: "Pilot Training",
-    description: "Comprehensive CPL & PPL training programs with experienced instructors, modern aircraft fleet, and world-class simulators. We offer both integrated and modular training paths.",
-    features: ["CPL & PPL Courses", "Type Rating", "Simulator Training", "Multi-Engine Rating"],
+    description: "CPL and ATPL ground classes for DGCA theory preparation. Aircraft flying training is separate; verify current DGCA requirements and any selected FTO's approval and scope.",
+    features: ["CPL Ground Classes", "ATPL Ground Classes", "DGCA Exam Preparation", "RTR(A)"],
     href: "/dgca/ground-classes",
     color: "from-primary to-aviation-green-light",
   },
   {
     icon: Shield,
     title: "DGCA Exams",
-    description: "Expert coaching for all DGCA examinations with proven study materials, mock tests, and personalized guidance. Our success rate exceeds 95%.",
+    description: "Preparation for DGCA theory examinations, with guidance on subject study and exam planning.",
     features: ["Air Navigation", "Air Regulations", "Meteorology", "Technical General"],
     href: "/dgca",
     color: "from-aviation-sky to-blue-400",
   },
   {
     icon: Briefcase,
-    title: "Aviation Placement",
-    description: "Guaranteed job assistance with leading airlines in India and abroad. We provide interview preparation, resume building, and direct placement support.",
-    features: ["Resume Building", "Interview Prep", "Airline Tie-ups", "Career Counseling"],
+    title: "Airline Preparation",
+    description: "Visit the Airline Preparation page for course information. Job placement or employment is not guaranteed.",
+    features: [],
     href: "/courses/airline-preparation",
     color: "from-accent to-yellow-400",
   },
   {
     icon: Plane,
     title: "Chartered Services",
-    description: "Premium charter flight services for corporate travel, special events, medical emergencies, and leisure trips. Available 24/7 across India.",
-    features: ["Corporate Charters", "Medical Evacuation", "VIP Travel", "Tourism Packages"],
+    description: "For charter enquiries, contact the team to confirm whether an option is available and verify its operating area, aircraft and service scope.",
+    features: [],
     href: "/services/charter-services",
     color: "from-primary to-aviation-green-light",
   },
   {
     icon: Building2,
     title: "Aircraft Sale & Purchase",
-    description: "Expert consultation for buying, selling, and leasing aircraft. Access to global inventory with complete documentation and legal support.",
-    features: ["Pre-Buy Inspection", "Documentation", "Market Analysis", "Lease Options"],
+    description: "For aircraft sale, purchase or lease enquiries, ask the team to confirm whether assistance is available and what representation, inspection or documentation support is included.",
+    features: [],
     href: "/services/aircraft-sourcing-sale",
     color: "from-aviation-runway to-gray-600",
   },
@@ -62,11 +62,10 @@ export default function ServicesPage() {
               Our Services
             </span>
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              Complete Aviation Solutions
+              Aviation Training and Services
             </h1>
             <p className="text-xl text-primary-foreground/80">
-              From pilot training to aircraft management, we provide comprehensive aviation
-              services to individuals and organizations across India.
+              Flying Star Aviator provides CPL and ATPL ground training alongside aviation services for individuals and organizations.
             </p>
           </motion.div>
         </div>
@@ -100,14 +99,16 @@ export default function ServicesPage() {
                   <h2 className="text-3xl font-bold mb-4">{service.title}</h2>
                   <p className="text-muted-foreground text-lg mb-6">{service.description}</p>
 
-                  <div className="grid grid-cols-2 gap-3 mb-8">
-                    {service.features.map((feature) => (
-                      <div key={feature} className="flex items-center gap-2">
-                        <div className="w-2 h-2 rounded-full bg-primary" />
-                        <span className="text-sm font-medium">{feature}</span>
-                      </div>
-                    ))}
-                  </div>
+                  {service.features.length > 0 && (
+                    <div className="grid grid-cols-2 gap-3 mb-8">
+                      {service.features.map((feature) => (
+                        <div key={feature} className="flex items-center gap-2">
+                          <div className="w-2 h-2 rounded-full bg-primary" />
+                          <span className="text-sm font-medium">{feature}</span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
 
                   <Button variant="aviation" asChild>
                     <Link to={service.href}>
@@ -135,11 +136,11 @@ export default function ServicesPage() {
               Ready to Get Started?
             </h2>
             <p className="text-muted-foreground text-lg mb-8">
-              Contact our team to discuss your requirements and find the perfect aviation solution for you.
+              Contact our team to discuss your requirements and confirm current service availability and scope.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button variant="aviation" size="lg" asChild>
-                <Link to="/contact">Get Free Consultation</Link>
+                <Link to="/contact">Discuss Your Requirements</Link>
               </Button>
               <Button variant="outline" size="lg" asChild>
                 <a href="tel:+919953536199">Call: +91 9953536199</a>

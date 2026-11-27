@@ -17,6 +17,7 @@ const LAST_UPDATED_LABEL = "November 18, 2026";
 
 /** Single source of truth: the same array feeds the FAQPage JSON-LD. */
 const faqs = PAGE_FAQS["/courses/cpl/fees"];
+const DGCA_FAQ_URL = "https://pariksha.dgca.gov.in/PDFViewer.jsp?pdf=01BA8FB2105DBF5FA48E2F8D89E1E054";
 
 /**
  * Deliberately no figures.
@@ -25,21 +26,21 @@ const faqs = PAGE_FAQS["/courses/cpl/fees"];
  * market range. This table identifies cost components and who sets them.
  */
 const COMPONENTS: string[][] = [
-  ["Ground classes", "The school you study with", "Each school publishes or quotes its own", "Charged per subject or as a full course; ask which"],
-  ["DGCA examination charges", "DGCA", "Published by DGCA", "Payable per paper, per attempt, direct to DGCA"],
-  ["Computer number application", "DGCA", "Published by DGCA", "One-time, before any paper can be booked"],
-  ["Class 1 medical", "DGCA-empanelled examiner", "Varies by centre", "Do this early; it can end the plan before you spend on anything else"],
-  ["Flying hours", "The FTO", "Published or quoted by the provider", "Check aircraft type, included hours and additional charges"],
-  ["Instructor and briefing time", "The FTO", "Sometimes inside the hourly rate, sometimes not", "Ask explicitly whether it is bundled"],
-  ["Simulator time", "The FTO", "Quoted", "Cheaper per hour than the aircraft, and not always interchangeable with it"],
-  ["Aircraft type used", "The FTO", "Quoted", "Single-engine and multi-engine hours are priced separately"],
-  ["Accommodation and living", "You", "Not applicable", "A real cost of any residential FTO, and easy to leave out of a comparison"],
-  ["Travel", "You", "Not applicable", "Matters most where the FTO is far from home and weather stretches the schedule"],
-  ["Equipment and documents", "You", "Not applicable", "Headset, charts, logbook, photographs, attestations"],
-  ["Retests and repeat attempts", "DGCA or the FTO", "Same rate as the first attempt", "Budget for at least the possibility"],
-  ["Delay", "Nobody, and everybody", "Never quoted", "Weather, aircraft availability and instructor availability all cost money in living expenses"],
-  ["Licence issue", "DGCA", "Published by DGCA", "The final step, and the smallest number on this list"],
-  ["Type rating", "The training organisation", "Quoted", "After the CPL, not part of it, and frequently confused with it"],
+  ["Ground classes", "The course provider", "Confirm current written fees", "Check subjects, schedule, inclusions and exclusions"],
+  ["DGCA examination charges", "DGCA", "The Pariksha FAQ lists charges per paper", "Confirm current fee and payment instructions on Pariksha"],
+  ["Computer Number application", "DGCA / Pariksha", "A charge was not verified in this review", "Check current official instructions; no amount is assumed here"],
+  ["Medical assessment", "Confirm with DGCA", "Required class and current fee were not verified here", "Check current requirements and authorised assessment process before paying"],
+  ["Aircraft training", "The selected FTO", "Request a current written quote", "Verify the provider's current DGCA approval, scope and inclusions"],
+  ["Instructor and briefing time", "The selected provider", "Confirm in the written quote", "Ask whether it is included or charged separately"],
+  ["Simulator time", "The selected provider", "Confirm in the written quote", "Ask what is included and whether any time counts toward applicable requirements"],
+  ["Aircraft type and training scope", "The selected FTO", "Confirm in the written quote", "Ask for charges by component; this page does not assume a particular aircraft or endorsement"],
+  ["Accommodation and living", "Confirm for your circumstances", "Not verified here", "Include only if relevant to the selected provider and location"],
+  ["Travel", "Confirm for your circumstances", "Not verified here", "Include only if relevant to the selected provider and location"],
+  ["Equipment and documents", "Confirm with the relevant provider or authority", "Not verified here", "Ask which items are required and which are included"],
+  ["Retests and repeat attempts", "Confirm with DGCA and the provider", "Rates were not verified here", "Ask which charges apply if a repeat attempt or sortie is needed"],
+  ["Delays or extensions", "Confirm with the provider", "Terms were not verified here", "Ask how schedule changes affect payment and accommodation terms"],
+  ["Licence issue", "DGCA", "A current charge was not verified in this review", "Check the current official fee schedule before budgeting"],
+  ["Type rating", "Confirm with the relevant provider or employer", "Applicability and charges vary; not verified here", "Ask whether any such costs are included in the written quote"],
 ];
 
 const QUESTIONS: string[] = [
@@ -86,21 +87,21 @@ export default function CplFeesPage() {
 
         <CitableTable
           heading="Pilot course fees in India: what you pay for and who sets it"
-          intro="Read this as a checklist against any quote you are given. A quote that covers only the first and fifth rows is not a wrong quote; it is an incomplete one, and the gap is what surprises people."
+          intro="Use this checklist to compare written quotes. Ask each provider to identify included items, exclusions and charges quoted separately."
           columns={["Component", "Who sets it", "Publicly published?", "What to check"]}
           rows={COMPONENTS}
           note={
             <>
-              No amounts appear in this table because the components and terms
-              vary by provider. For an example of a published school fee, see our{" "}
+              No market total is stated because the scope and terms vary. For an
+              example of an officially published school fee, see our{" "}
               <a href="/dgca/fto-ranking#igrua" className="underline hover:text-primary">
                 IGRUA comparison
-              </a>. Where DGCA publishes a charge, it is payable to DGCA directly
-              and is listed on the{" "}
-              <Link to="/dgca" className="underline hover:text-primary">
-                DGCA information pages
-              </Link>
-              .
+              </a>. The{" "}
+              <a href={DGCA_FAQ_URL} target="_blank" rel="noopener noreferrer" className="underline hover:text-primary">
+                DGCA Pariksha Flight Crew FAQ
+              </a>{" "}
+              lists exam charges per paper; confirm current fees, payment
+              instructions and refund conditions in official material.
             </>
           }
           lastUpdated={LAST_UPDATED}
@@ -113,11 +114,10 @@ export default function CplFeesPage() {
                 Why this page does not give you a total
               </h2>
               <p className="text-muted-foreground leading-relaxed">
-                A single total requires assuming a fleet, an aircraft type, a location, a
-                number of flying hours, a completion time and a level of bundling. Change
-                any one of those and the total moves. Sites that publish a headline range
-                have made all six assumptions and shown none of them, which is why two
-                sites quoting the same course disagree by a wide margin.
+                A total depends on the provider, training scope, location, schedule
+                and written inclusions. This page does not publish an unverified
+                market range. Compare itemised quotes for the same scope and ask
+                each provider to identify exclusions and separate charges.
               </p>
               <p className="mt-4 text-muted-foreground leading-relaxed">
                 The more useful thing to carry into a conversation with a flying school is
@@ -136,8 +136,8 @@ export default function CplFeesPage() {
                 ))}
               </ol>
               <p className="mt-6 text-muted-foreground leading-relaxed">
-                The last question is the one that most often changes a decision, and it is
-                the one least often asked.
+                The final question can surface charges outside a provider's quote;
+                compare the written responses before making a decision.
               </p>
             </section>
 
@@ -146,12 +146,11 @@ export default function CplFeesPage() {
                 The order that protects your money
               </h2>
               <p className="text-muted-foreground leading-relaxed">
-                Medical first, then the computer number, then the papers, then flying. A
-                Class 1 assessment is comparatively inexpensive and is the step most
-                capable of ending the plan; discovering a problem after paying an FTO
-                deposit is the expensive way to learn the same thing. The DGCA papers do
-                not require flying hours, so ground study can run before or alongside
-                anything else.
+                This page does not prescribe a sequence for medical assessments,
+                examinations or aircraft training. Confirm current eligibility and
+                licensing requirements with DGCA before making payments, and obtain
+                separate written terms for ground classes and aircraft training from
+                the relevant providers.
               </p>
               <p className="mt-4 text-muted-foreground leading-relaxed">
                 Flying Star Aviator is a ground school and career-guidance organisation in

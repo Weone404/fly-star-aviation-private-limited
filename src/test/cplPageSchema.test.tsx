@@ -75,7 +75,7 @@ describe("CPL course page", () => {
     expect(nodes?.some((node) => node["@type"] === "FAQPage")).toBe(false);
   });
 
-  it("uses the current four-paper grouping and links to updated exam guidance", () => {
+  it("does not publish an unverified CPL paper list and links to current exam guidance", () => {
     vi.stubGlobal("IntersectionObserver", class {
       observe() {}
       unobserve() {}
@@ -91,11 +91,14 @@ describe("CPL course page", () => {
 
     if (!section) throw new Error("CPL subject section was not rendered");
 
-    expect(within(section).getAllByRole("row")).toHaveLength(5);
-    expect(within(section).getByText("Aircraft and Engine / Instruments")).toBeInTheDocument();
+    expect(within(section).getAllByRole("row")).toHaveLength(4);
+    expect(within(section).getByText("Current DGCA subject list")).toBeInTheDocument();
     expect(within(section).queryByText("Technical Specific")).not.toBeInTheDocument();
+    expect(within(section).getByText(/does not reproduce an independently verified subject list/i)).toBeInTheDocument();
     expect(container.querySelector('a[href="/blog/dgca-exam-subjects-by-licence"]')).not.toBeNull();
     expect(container.querySelector('a[href="/blog/rtr-a-exam-dgca-takeover-2026"]')).not.toBeNull();
+    expect(screen.getByRole("link", { name: "Read about the CPL pathway and flying-training stage" }))
+      .toHaveAttribute("href", "/pilot-training/cpl");
   });
 
   it("does not describe RTR(A) as a WPC-administered CPL theory paper", () => {
@@ -103,9 +106,42 @@ describe("CPL course page", () => {
     const subjectsAnswer = faqs.find((faq) => faq.q === "What subjects are covered in CPL ground classes?")?.a;
     const rtrAnswer = faqs.find((faq) => faq.q === "What is RTR(A) and why is it required?")?.a;
 
-    expect(subjectsAnswer).toContain("RTR(A) is a separate radio-telephony requirement");
-    expect(rtrAnswer).toContain("changed under the 2025 rules");
+    expect(subjectsAnswer).toContain("current CPL examination subject list and paper structure");
+    expect(rtrAnswer).toContain("current official rules and notices");
     expect(subjectsAnswer).not.toContain("WPC Wing");
     expect(rtrAnswer).not.toContain("WPC Wing");
+    expect(rtrAnswer).not.toContain("changed under the 2025 rules");
+  });
+});
+
+describe("Airline Preparation page", () => {
+  it("avoids promising hiring outcomes or unverified simulator access", () => {
+    vi.stubGlobal("IntersectionObserver", class {
+      observe() {}
+      unobserve() {}
+      disconnect() {}
+    });
+
+    const { container } = render(
+      <MemoryRouter>
+        <AirlinePreparationPage />
+      </MemoryRouter>,
+    );
+    const pageText = container.textContent ?? "";
+    const overview = screen.getByRole("heading", { name: "Quick Course Overview" }).closest("section");
+
+    if (!overview) throw new Error("Course overview section was not rendered");
+
+    expect(screen.getByRole("heading", { name: "Airline Preparation Course for Pilot Applicants", level: 1 }))
+      .toBeInTheDocument();
+    expect(pageText).toMatch(/does not guarantee selection, placement, or employment/i);
+    expect(pageText).toMatch(/Simulator training is not confirmed as part of this course/i);
+    expect(pageText).toMatch(/does not independently verify the current syllabus or delivery/i);
+    expect(pageText).not.toMatch(/delivered through theory, simulation, and practical sessions/i);
+    expect(pageText).not.toMatch(/guarantee that you enter|ensure your success|competitive advantage|state-of-the-art|designed in consultation with airline/i);
+    expect(within(overview).queryByText("Airline First Officer")).not.toBeInTheDocument();
+    for (const applyLink of screen.getAllByRole("link", { name: "Apply Now" })) {
+      expect(applyLink).toHaveAttribute("href", "/apply");
+    }
   });
 });

@@ -18,37 +18,31 @@ const LAST_UPDATED_LABEL = "November 18, 2026";
 /** Single source of truth: the same array feeds the FAQPage JSON-LD. */
 const faqs = PAGE_FAQS["/cadet-pilot-programme"];
 
-const INDIGO_LABEL = "IndiGo, How to become a pilot (airline careers page), retrieved 10 September 2026";
+const INDIGO_LABEL = "IndiGo, official pilot careers information; check the current intake";
 const INDIGO_URL = "https://www.goindigo.in/how-to-become-a-pilot.html";
 
-/**
- * Every row below is quoted from the airline's own page or marked as not stated
- * there. Cadet programme costs, bonds and partner-school names circulate widely
- * and are not published by the airline, so they are named as unpublished rather
- * than repeated from a third party.
- */
-const PUBLISHED: string[][] = [
-  ["Age", "18 to 32", "Stated by the airline"],
-  ["Academic requirement", "10+2 with Physics and Mathematics as compulsory subjects", "Stated by the airline"],
-  ["Attempts", "A maximum of two attempts per stage", "Stated by the airline"],
-  ["Duration", "Zero flight time to commercial airbus pilot in 22 months", "Stated by the airline"],
-  ["Ground school", "A four-month ground school stage", "Stated by the airline"],
-  ["Student pilot licence", "15 days of training to obtain it", "Stated by the airline"],
-  ["Training partners", "Seven chosen training schools", "Named? No. The airline states the number, not the schools"],
-  ["Licence obtained", "Commercial Pilot Licence", "Stated by the airline"],
-  ["Programme cost", "Not stated", "Not found on the reviewed page"],
-  ["Bond or service commitment", "Not stated", "Not found on the reviewed page"],
-  ["Stipend or starting pay", "Not stated", "Not found on the reviewed page"],
-  ["Selection criteria in detail", "Not stated", "The airline describes stages, not scoring"],
+const PROGRAMME_CHECKLIST: string[][] = [
+  ["Age", "Not verified in this review", "Check the current airline intake"],
+  ["Academic requirement", "Not verified in this review", "Check the current airline intake"],
+  ["Attempts", "Not verified in this review", "Check the current airline intake"],
+  ["Duration", "Not verified in this review", "Confirm with the airline and training provider"],
+  ["Ground school", "Not verified in this review", "Confirm the current training stages"],
+  ["Student pilot licence", "Not verified in this review", "Confirm current sequence and terms"],
+  ["Training partners", "Current partner-school list not verified", "Confirm directly with the airline"],
+  ["Licence obtained", "Not verified in this review", "Confirm the current licence and training scope"],
+  ["Programme cost", "Not verified in this review", "Request complete written terms"],
+  ["Bond or service commitment", "Not verified in this review", "Request current written terms"],
+  ["Stipend or starting pay", "Not verified in this review", "Request current written terms"],
+  ["Selection criteria in detail", "Not verified in this review", "Confirm current stages and criteria"],
 ];
 
 const DIFFERENCES: string[][] = [
-  ["Who selects you", "The airline, before training begins", "You select the school; nobody selects you"],
-  ["Where you train", "A school the airline has chosen", "Any DGCA-approved FTO you choose"],
-  ["Sequence", "Selection, then training, then a defined route into the airline", "Training, then licence, then apply for jobs"],
-  ["Cost", "Not published by the airline", "Quoted to you by the school, component by component"],
-  ["Flexibility", "Fixed programme, fixed partners", "You choose, and can change your mind"],
-  ["If you are not selected", "You are not in the programme", "Not applicable; there is no gate to fail"],
+  ["Selection", "Confirm the current selection stages and conditions with the airline", "Check the provider's admission requirements"],
+  ["Training provider", "Confirm current partner(s), DGCA approval and scope with the airline", "Verify the chosen FTO's current DGCA approval and scope"],
+  ["Employment", "Confirm any written offer conditions; selection is not treated here as a job guarantee", "A licence or training completion is not a job guarantee"],
+  ["Cost", "Request itemised terms from the airline and training provider", "Request itemised terms from the selected provider"],
+  ["Flexibility", "Check current change, withdrawal and refund terms", "Check current change, withdrawal and refund terms"],
+  ["If not selected", "Ask the airline about current alternatives and any costs", "No airline cadet selection is involved; provider requirements still apply"],
 ];
 
 export default function CadetPilotProgrammePage() {
@@ -74,21 +68,21 @@ export default function CadetPilotProgrammePage() {
 
         <CitableAnswer
           heading="What is a cadet pilot programme, and what do airlines publish about it?"
-          answer="A cadet pilot programme selects candidates before training and routes them through schools chosen for the programme. Airlines set their own eligibility, selection and training terms. IndiGo's careers information was reviewed on 10 September 2026; check the current intake directly. Before committing, request the complete cost, bond and employment terms in writing."
+          answer="Cadet pilot programme terms are set by each airline and may be intake-specific. This review could not verify current eligibility, selection stages, training route, duration or commercial terms. Check the airline's current intake information and obtain complete written terms from the airline and any named training provider before applying."
           sources={[{ label: INDIGO_LABEL, url: INDIGO_URL }]}
           lastUpdated={LAST_UPDATED}
         />
 
         <CitableTable
-          heading="What one airline publishes, line by line"
-          intro="Taken from IndiGo's careers information reviewed on 10 September 2026. Rows marked not stated were not found on that page; check the airline's current intake information before applying."
-          columns={["Item", "What the airline states", "Note"]}
-          rows={PUBLISHED}
+          heading="What to verify before applying to a cadet programme"
+          intro="The official airline page was not accessible during this review. These rows identify information to confirm; they are not verified current programme terms."
+          columns={["Item", "Verification status", "What to confirm"]}
+          rows={PROGRAMME_CHECKLIST}
           note={
             <>
-              Four of the twelve rows were not stated on the reviewed page.
-              Ask the airline in writing about current costs, bond and employment
-              terms before treating any third-party figure as applicable.
+              Current airline intake details were not verified here. Confirm
+              eligibility, programme duration, partners, costs, bond terms and any
+              employment conditions in writing before relying on them.
             </>
           }
           sources={[{ label: INDIGO_LABEL, url: INDIGO_URL }]}
@@ -97,9 +91,10 @@ export default function CadetPilotProgrammePage() {
 
         <CitableTable
           heading="Cadet programme against self-sponsored training"
-          intro="Neither route is better in the abstract. They fail in different ways, and the right question is which failure you can absorb."
+          intro="The details of both routes depend on current provider and airline terms. Verify each item rather than assuming a particular selection, training or employment outcome."
           columns={["", "Cadet programme", "Self-sponsored"]}
           rows={DIFFERENCES}
+          note={<>Selection into a training programme does not by itself establish employment. Confirm any offer conditions in writing.</>}
           lastUpdated={LAST_UPDATED}
         />
 
@@ -140,8 +135,8 @@ export default function CadetPilotProgrammePage() {
                 <li>What did the last intake actually experience, in months from selection to line flying?</li>
               </ul>
               <p className="mt-6 text-muted-foreground leading-relaxed">
-                The first two are the ones that change a decision, and they are the two
-                the published pages do not answer.
+                Do not rely on details from a past intake. Ask for the current
+                written terms that apply to the programme you are considering.
               </p>
             </section>
 
@@ -150,16 +145,13 @@ export default function CadetPilotProgrammePage() {
                 One eligibility detail worth checking early
               </h2>
               <p className="text-muted-foreground leading-relaxed">
-                A cadet programme requiring 10+2 with Physics and Mathematics is stating
-                an airline requirement that matches the DGCA rule for the commercial
-                stream. If you passed 10+2 without those subjects there are routes to
-                correct it, and doing so before applying is far cheaper than
-                discovering the gap at selection.
+                Airline admission criteria and DGCA licensing requirements are
+                separate questions. Confirm the current criteria for the specific
+                airline intake and check applicable DGCA requirements independently.
               </p>
               <p className="mt-4 text-muted-foreground leading-relaxed">
-                A Class 1 medical is the other early gate. It is comparatively
-                inexpensive and it is the step most capable of ending the plan, which is
-                a reason to take it first rather than last. The{" "}
+                Check current medical requirements and the applicable assessment
+                process with DGCA before committing to training costs. The{" "}
                 <Link to="/dgca/medical" className="underline hover:text-primary">
                   medical requirements page
                 </Link>{" "}

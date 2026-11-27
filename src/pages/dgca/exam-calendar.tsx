@@ -18,8 +18,8 @@ const LAST_UPDATED_LABEL = "September 10, 2026";
 /** Single source of truth: the same array feeds the FAQPage JSON-LD. */
 const faqs = PAGE_FAQS["/dgca/exam-calendar"];
 
-const SOURCE = "DGCA Programme of Examinations 2026, DGCA examination portal, read 10 September 2026";
-const SOURCE_URL = "https://pariksha.dgca.gov.in/";
+const SOURCE = "DGCA Programme of Examinations 2026, read 10 September 2026";
+const SOURCE_URL = "https://pariksha.dgca.gov.in/PDFViewer.jsp?pdf=027F234C1243D44B5BF5C787082CDCC8";
 
 /**
  * Transcribed from the DGCA programme, not rewritten.
@@ -64,20 +64,20 @@ const FIR: string[][] = [
 
 const PLANNING: { title: string; body: string }[] = [
   {
-    title: "The computer number comes first, and it is not quick",
-    body: "You cannot book any paper without one, and for a new candidate it is allotted only after DGCA scrutinises the online application against a hard copy posted to Delhi. Start it well before the session you are aiming at, not in the month of it.",
+    title: "Use current Pariksha instructions for applications",
+    body: "This programme lists examination dates; it does not establish Computer Number application steps, required documents or processing times. Check the current Pariksha instructions before applying.",
   },
   {
-    title: "Regular and on-demand are the same exam on different schedules",
-    body: "Four Regular sessions of five days each, eight on-demand sessions of three days each. The eligibility and the rules do not change between them; only how long you wait does.",
+    title: "Do not assume Regular and OLOD rules are identical",
+    body: "The programme lists separate schedules for Regular and OLOD sessions. It does not establish whether eligibility, examination format, fees or pass rules are identical; check current DGCA notices.",
   },
   {
-    title: "Stagger papers against the validity window, not against convenience",
-    body: "A passed paper stays valid for a defined period. Sitting everything in one session and then stalling on the flying side can expire an early pass; spreading attempts across sessions costs nothing and protects the ones already banked.",
+    title: "Verify pass-validity and attempt rules separately",
+    body: "The 2026 programme does not state pass-validity periods or attempt limits. Check current DGCA rules and examination notices before planning a paper sequence.",
   },
   {
-    title: "FIR and AFIR sessions are not your exam",
-    body: "Twelve of the twenty-five sessions in the programme are Flight Instructor and Assistant Flight Instructor Rating examinations. If you are working towards a CPL or an ATPL, those twelve dates are noise.",
+    title: "Identify the examination category that applies to you",
+    body: "The programme lists FIR and AFIR sessions separately. Use current DGCA examination requirements to identify the papers relevant to the licence or rating you are pursuing.",
   },
   {
     title: "Treat every date as provisional until the portal confirms it",
@@ -115,7 +115,7 @@ export default function DgcaExamCalendarPage() {
 
         <CitableTable
           heading="Regular examination sessions, 2026"
-          intro="Four sessions, five days each. These are the sessions most CPL and ATPL candidates plan around."
+          intro="Four five-day Regular sessions listed in the DGCA 2026 programme."
           columns={["Session", "Dates"]}
           rows={REGULAR}
           note={<>Tentative, per DGCA's own note on the programme.</>}
@@ -125,7 +125,7 @@ export default function DgcaExamCalendarPage() {
 
         <CitableTable
           heading="Online On-Demand (OLOD) sessions, 2026"
-          intro="Eight sessions, three days each. Same papers and same rules as a Regular session; the difference is how often the window opens."
+          intro="Eight sessions, three days each. The programme lists dates and durations; consult current DGCA notices for applicable eligibility and examination rules."
           columns={["Session", "Dates"]}
           rows={OLOD}
           note={<>Tentative, per DGCA's own note on the programme.</>}
@@ -135,7 +135,7 @@ export default function DgcaExamCalendarPage() {
 
         <CitableTable
           heading="FIR and AFIR sessions, 2026"
-          intro="Flight Instructor Rating and Assistant Flight Instructor Rating examinations, roughly monthly. Listed for completeness; these are not the CPL or ATPL papers."
+          intro="The programme labels these as Flight Instructor Rating and Assistant Flight Instructor Rating sessions. Check current DGCA examination requirements to identify the sessions relevant to your licence or rating."
           columns={["Session", "Dates"]}
           rows={FIR}
           note={<>Tentative, per DGCA's own note on the programme. A FATA examination is also listed, for January 2026, without specific dates.</>}
@@ -169,17 +169,14 @@ export default function DgcaExamCalendarPage() {
                 What this page is not
               </h2>
               <p className="text-muted-foreground leading-relaxed">
-                It is not the application window. The programme sets examination dates;
-                the portal opens and closes applications separately, and those windows
-                are announced on the portal rather than in this document. It is also not
-                a substitute for the portal: a page on any website is a copy of a
-                document that DGCA can reissue at any time.
+                It is not an application window or a substitute for current DGCA
+                instructions. The programme lists examination dates; check the
+                Pariksha portal for current application information and notices.
               </p>
               <p className="mt-4 text-muted-foreground leading-relaxed">
-                Applications are made by the candidate, through the DGCA examination
-                portal, using a computer number. No ground school can apply on your
-                behalf, and any organisation offering to is describing something that
-                does not exist.
+                This page does not describe the application procedure or establish
+                whether an institute can assist with any part of it. Follow the
+                current official instructions for your application.
               </p>
             </section>
 

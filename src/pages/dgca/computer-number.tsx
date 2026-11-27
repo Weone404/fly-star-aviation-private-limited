@@ -14,24 +14,24 @@ const LAST_UPDATED = "2026-09-04";
 
 /** Single source of truth — the same array feeds the FAQPage JSON-LD. */
 const faqs = PAGE_FAQS["/dgca/computer-number"];
-const DGCA_FAQ_URL = "https://pariksha.dgca.gov.in/";
+const DGCA_FAQ_URL = "https://pariksha.dgca.gov.in/PDFViewer.jsp?pdf=01BA8FB2105DBF5FA48E2F8D89E1E054";
 
 const quickFacts: [string, string][] = [
   ["What it is", "Unique ID allotted after your application is approved by the CEO, DGCA"],
   ["Issued by", "Central Examination Organization (CEO), O/o DGCA, East Block-III, Level-III, R.K. Puram, New Delhi 110066"],
   ["Portal", "pariksha.dgca.gov.in"],
   ["Validity", "Lifetime"],
-  ["How many", "One per candidate — no exceptions"],
-  ["Covers", "All Flight Crew examinations (Pilot, FATA, FDEG, FE, FN)"],
+  ["How many", "One per candidate across Flight Crew examination categories"],
+  ["Covers", "Flight Crew examinations (Pilot, FATA, FDEG, FE, FN and SFE)"],
   ["Minimum qualification", "10+2 with Physics and Mathematics from a recognised board (PPL category excepted)"],
   ["Maximum age", "None"],
   ["Legal basis", "Rule 41A, Aircraft Rules 1937; educational qualification under Rule 47A / Schedule II"],
-  ["Hard copy", "Required for NEW candidates, by Speed Post or Registered Post"],
+  ["Hard copy", "Not required for Computer Number or profile-update applications"],
 ];
 
 const newVsOld: [string, string, string][] = [
   ["Definition", "No Flight Crew Computer Number from CEO to date", "Number allotted before the portal launched"],
-  ["Hard copy by post", "Required", "Not required"],
+  ["Hard copy by post", "Not required for Computer Number applications", "Not required for Computer Number applications"],
   ["Board Verification Certificate", "Mandatory", "Not required"],
   ["Profile updates", "Only after the number is allotted", "Via profile management after registering"],
 ];
@@ -46,13 +46,11 @@ const specs: [string, string, string][] = [
 
 const steps: { title: string; body: string }[] = [
   { title: "Register", body: "Sign up at pariksha.dgca.gov.in under the Flight Crew section as a new candidate." },
-  { title: "Activate the email link within 24 hours", body: "It expires after that, and an expired link means starting registration again from scratch." },
+  { title: "Activate the email link within 24 hours", body: "DGCA states that a candidate who does not activate the link within 24 hours needs to re-register." },
   { title: "Complete the application", body: "Enter personal, educational and address details. If your school board or institute is not in the dropdown, select \"OTHERS\" and continue." },
   { title: "Upload documents", body: "PDFs for documents, JPEG for photo and signature, within the size limits above." },
-  { title: "Final Submit", body: "Check everything first; nothing can be added afterwards." },
-  { title: "Print the PDF form", body: "The form is sent to your registered email. Affix the same passport-size photograph you uploaded and attach all supporting documents — self-attested or attested as applicable — in the same sequence as the printed list." },
-  { title: "Post it by Speed Post or Registered Post", body: "Send it to: Central Examination Organization (CEO), O/o Director General of Civil Aviation, East Block-III, Level-III, R.K. Puram, New Delhi 110066." },
-  { title: "Track the application", body: "Use Candidate Login with your temporary ID." },
+  { title: "Final Submit", body: "Review the application first; the FAQ states documents cannot be added after final submission." },
+  { title: "Track the application", body: "Use Candidate Login with your temporary ID and follow any instructions shown there." },
 ];
 
 const misconceptions: { claim: string; correction: string }[] = [
@@ -74,11 +72,11 @@ const misconceptions: { claim: string; correction: string }[] = [
   },
   {
     claim: "Submitting online is enough.",
-    correction: "For NEW candidates it is not. The number is allotted only after DGCA scrutinises the online application against the hard copy posted to the CEO.",
+    correction: "The DGCA FAQ says Computer Number applications are submitted online and do not require a hard copy. The number is allotted after the online application is scrutinised and approved.",
   },
   {
     claim: "Indian candidates need a passport.",
-    correction: "They do not. A passport is mandatory for foreign candidates, including those from Nepal and Bhutan.",
+    correction: "DGCA states that a passport is not mandatory for Indian citizens. Foreign candidates require a valid passport, including applicants from Nepal and Bhutan.",
   },
 ];
 
@@ -114,7 +112,7 @@ export default function DgcaComputerNumber() {
 
         <CitableAnswer
           heading="What is a DGCA Computer Number and how do you get one?"
-          answer="A DGCA Computer Number is the unique lifetime identifier allotted to a Flight Crew candidate by the Central Examination Organization, Office of the DGCA. You cannot apply for any DGCA pilot examination without one. A candidate may hold only one, it covers every Flight Crew examination category, and it is issued only after DGCA scrutinises both your online application and the hard copy you post to Delhi."
+          answer="A DGCA Computer Number identifies a Flight Crew candidate in the Pariksha system. The DGCA FAQ states that it remains valid for life, one number covers Flight Crew examination categories, and the number is allotted after the online application is scrutinised and approved. The FAQ also says no hard copy is required for Computer Number or profile-update applications."
           sources={[{ label: "DGCA Pariksha — Flight Crew FAQ", url: DGCA_FAQ_URL }]}
           lastUpdated={LAST_UPDATED}
         />
@@ -158,32 +156,32 @@ export default function DgcaComputerNumber() {
                 to register as a Flight Crew candidate.
               </p>
               <p className="mt-4 text-muted-foreground leading-relaxed">
-                Two situations need an extra certificate:
+                Two qualification routes have additional document requirements:
               </p>
               <ul className="mt-3 space-y-3 text-muted-foreground leading-relaxed list-disc pl-5">
                 <li>
                   <strong className="text-foreground">
                     Qualifications from outside the Indian board system.
                   </strong>{" "}
-                  Anyone whose 10th, 10+2 or equivalent came from an international
-                  school, board or university — whether located in India or abroad —
-                  needs an equivalency certificate from the Association of Indian
-                  Universities (AIU House, 16 Kotla Marg, New Delhi 110022).
+                  Applicants whose basic qualification was acquired outside the
+                  Council of Boards of Secondary Education or a State/Central
+                  Government education board need an equivalency certificate from
+                  the Association of Indian Universities.
                 </li>
                 <li>
-                  <strong className="text-foreground">Diploma holders.</strong> A
-                  10+2 equivalency certificate is required from the relevant state
-                  Directorate of Technical Education, or from a recognised
+                  <strong className="text-foreground">Diploma holders.</strong>{" "}
+                  A 10+2 equivalency certificate is required from the relevant
+                  State Directorate of Technical Education or a recognised
                   institution or university.
                 </li>
               </ul>
               <p className="mt-4 text-muted-foreground leading-relaxed">
-                Foreign nationals face three additional requirements: a valid
-                passport (the passport address becomes the permanent address on
-                record), an Indian mobile number before registering, and security
-                clearance — Annexure A, submitted in quintuplicate by post along
-                with the application. Candidates from Nepal and Bhutan also require
-                a valid passport. Indian candidates do not need a passport at all.
+                Foreign candidates need a valid passport before applying; the
+                passport address is used as the permanent address on record. An
+                Indian mobile number is required before registration. Foreign
+                nationals must complete security clearance by filling Annexure A
+                with the Computer Number application. Nepal and Bhutan candidates
+                also need a valid passport; Indian citizens do not.
               </p>
             </section>
 
@@ -245,7 +243,7 @@ export default function DgcaComputerNumber() {
                 do not need one.
               </p>
               <p className="mt-4 text-muted-foreground leading-relaxed">
-                Two format rules reject applications routinely:
+                The FAQ specifies two file-format rules:
               </p>
               <ul className="mt-3 space-y-2 text-muted-foreground leading-relaxed list-disc pl-5">
                 <li>
@@ -272,8 +270,8 @@ export default function DgcaComputerNumber() {
                 Photo and signature specifications
               </h2>
               <p className="text-muted-foreground leading-relaxed mb-4">
-                DGCA publishes exact specifications, and mismatches are a common
-                rejection reason.
+                The dimensions and file limits below are transcribed from the
+                DGCA Flight Crew FAQ.
               </p>
               <div className="overflow-x-auto">
                 <table className="w-full text-sm border border-border rounded-lg">
@@ -304,10 +302,10 @@ export default function DgcaComputerNumber() {
                 How to apply, step by step
               </h2>
               <p className="text-muted-foreground leading-relaxed mb-4">
-                You register on the Pariksha portal, activate the emailed link within
-                24 hours, complete the form, upload documents, submit, then post a
-                printed hard copy with attached documents to the CEO in New Delhi.
-                The number is allotted only after DGCA scrutinises both.
+                Submit the application and documents through the Pariksha portal.
+                DGCA says Computer Number applications do not require a hard copy;
+                the number is allotted after the online application is scrutinised
+                and approved.
               </p>
               <ol className="space-y-4 list-decimal pl-5">
                 {steps.map((s) => (
@@ -317,8 +315,9 @@ export default function DgcaComputerNumber() {
                 ))}
               </ol>
               <p className="mt-4 text-muted-foreground leading-relaxed">
-                Foreign nationals additionally enclose the security clearance form
-                (Annexure A) in quintuplicate with the same posted application.
+                Foreign applicants must complete the security-clearance form
+                (Annexure A) with the Computer Number application. The FAQ does not
+                state that this form must be sent in quintuplicate by post.
               </p>
             </section>
 
@@ -327,10 +326,9 @@ export default function DgcaComputerNumber() {
                 What happens after you submit?
               </h2>
               <p className="text-muted-foreground leading-relaxed">
-                DGCA scrutinises the online application against the posted hard copy.
-                The number is not generated automatically on submission. If approved,
-                the allotted Computer Number arrives by email at your registered
-                address.
+                DGCA scrutinises the online application. The FAQ states that the
+                Computer Number is allotted after approval and sent to the
+                registered email address.
               </p>
               <p className="mt-4 text-muted-foreground leading-relaxed">
                 Once allotted, your login ID becomes the number prefixed with "P-",
@@ -360,10 +358,12 @@ export default function DgcaComputerNumber() {
                 listed in the rejection email, and resubmit.
               </p>
               <p className="mt-4 text-muted-foreground leading-relaxed">
-                Worth planning around: DGCA states the examination fee is not
-                refundable under any circumstances, so it is worth being certain of
-                your eligibility and your documents before money is involved at the
-                examination stage.
+                Separately, for an examination-fee transaction, the DGCA FAQ
+                describes a refund request for a successful payment
+                transaction where the examination form was not submitted
+                successfully, following the procedure in the Flight Crew User Manual.
+                It does not support a blanket “no refunds under any circumstances”
+                statement. Check the current official instructions for other cases.
               </p>
             </section>
 
@@ -384,7 +384,7 @@ export default function DgcaComputerNumber() {
                 ))}
               </div>
               <p className="mt-5 text-sm text-muted-foreground">
-                Source for all six:{" "}
+                Source:{" "}
                 <a
                   href={DGCA_FAQ_URL}
                   target="_blank"

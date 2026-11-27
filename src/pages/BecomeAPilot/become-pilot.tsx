@@ -33,24 +33,24 @@ const careerPaths = [
         icon: Plane,
         title: "Civil Aviation Route",
         description:
-            "Self-sponsored training at DGCA-approved Flying Training Organisation. Complete pathway from SPL to CPL.",
-        cost: "₹35 - 65 Lakhs",
+            "Check current DGCA licensing requirements and compare separate ground-class and FTO flying-training arrangements.",
+        cost: "Request written quotes",
         href: "/contact",
     },
     {
         icon: Users,
         title: "Cadet Pilot Programs",
         description:
-            "Structured programs by airlines like IndiGo and Air India with training and employment letter of intent.",
-        cost: "Sponsored Training",
+            "Check current programme eligibility, fees, selection stages and any employment-related terms directly with the airline.",
+        cost: "Check with airline",
         href: "/contact",
     },
     {
         icon: Shield,
         title: "Indian Air Force Route",
         description:
-            "Join through NDA (after 12th) or AFCAT (after graduation). Government-funded training and prestigious career.",
-        cost: "Fully Funded",
+            "Entry routes, eligibility, selection and training terms are governed by current official recruitment notices.",
+        cost: "Check official notices",
         href: "/contact",
     },
 ];
@@ -59,33 +59,30 @@ const eligibilityChecklist = [
     {
         category: "Education",
         items: [
-            "Minimum 10+2 with Physics and Mathematics",
-            "Minimum 50% aggregate marks (recommended)",
-            "Arts/Commerce students can qualify through NIOS",
+            "Check current DGCA education and subject requirements for the licence sought",
+            "Verify accepted boards and equivalency routes using current official guidance",
+            "Confirm how your own academic documents are assessed before enrolling",
         ],
     },
     {
         category: "Age Requirements",
         items: [
-            "Student Pilot License (SPL): 16+ years",
-            "Private Pilot License (PPL): 17+ years",
-            "Commercial Pilot License (CPL): 18+ years",
+            "Check the current minimum age for each licence and training stage with DGCA",
+            "Confirm examination eligibility separately from course enrolment",
         ],
     },
     {
         category: "Medical Fitness",
         items: [
-            "Class 2 Medical: Initial screening requirement",
-            "Class 1 Medical: Mandatory for holding CPL",
-            "Must be conducted by DGCA-empanelled medical examiner",
+            "Confirm the current medical class, sequence and assessment process with DGCA",
+            "Use the current DGCA guidance to identify an authorised medical examiner",
         ],
     },
     {
         category: "Language Proficiency",
         items: [
-            "Proficiency in English (spoken and written)",
-            "ICAO Level 4 or higher required",
-            "Essential for aviation communication",
+            "Check current language-proficiency requirements for the licence and operation",
+            "Verify the applicable assessment and documentation requirements with DGCA",
         ],
     },
 ];
@@ -93,144 +90,140 @@ const eligibilityChecklist = [
 const trainingRoadmap = [
     {
         step: 1,
-        title: "Register with DGCA",
+        title: "Check current DGCA registration steps",
         description:
-            "Get a Computer Number through eGCA, which is a one-time requirement for all exams and is used to identify you as a trainee.",
-        duration: "1-2 weeks",
+            "Follow current DGCA and Pariksha instructions for registration and examination applications.",
+        duration: "Check current instructions",
     },
     {
         step: 2,
         title: "Ground School Training",
         description:
-            "Complete theoretical subjects like Air Navigation, Aviation Meteorology, Air Regulations, Technical General, and Technical Specific.",
-        duration: "3-6 months",
+            "Confirm the current theory subjects with DGCA and the course syllabus with the ground-school provider.",
+        duration: "Varies by provider",
     },
     {
         step: 3,
         title: "Clear DGCA Exams",
         description:
-            "Complete written and oral exams for all theoretical subjects.",
-        duration: "2-4 months",
+            "Check current examination formats, subjects and application requirements in official DGCA notices.",
+        duration: "Varies by candidate",
     },
     {
         step: 4,
-        title: "Radio Telephony (RTR) Exam",
+        title: "Check current radio-telephony requirements",
         description:
-            "Complete the RTR exam through the Wireless Planning and Coordination wing.",
-        duration: "1 month",
+            "Verify the applicable radio-telephony qualification, examining authority and process against current official rules.",
+        duration: "Check current rules",
     },
     {
         step: 5,
-        title: "Join DGCA-approved FTO",
+        title: "Verify and select an FTO",
         description:
-            "Enroll in a Flying Training Organisation, complete the requirements for a Student Pilot License.",
-        duration: "Ongoing",
+            "Check the current DGCA approval and scope of the Flying Training Organisation before arranging aircraft training.",
+        duration: "Provider and candidate dependent",
     },
     {
         step: 6,
-        title: "Accumulate Flight Hours",
+        title: "Confirm flight-experience requirements",
         description:
-            "Complete a minimum of 200 flight hours, including solo flights, cross-country flights, instrument flights, and night flights.",
-        duration: "12-18 months",
+            "Use current DGCA rules and the selected FTO's approved syllabus to confirm applicable flight experience and components.",
+        duration: "Varies",
     },
     {
         step: 7,
         title: "Obtain CPL License",
         description:
-            "Submit all documents to DGCA through eGCA.",
-        duration: "1-2 months",
+            "Confirm current skill-test, document and licence-application requirements with DGCA.",
+        duration: "Check current process",
     },
     {
         step: 8,
         title: "Type Rating & Employment",
         description:
-            "Get type ratings for aircraft types like A320 and B737.",
-        duration: "2-3 months",
+            "Any additional rating, employer selection or training depends on current rules and the hiring organisation.",
+        duration: "Depends on route",
     },
 ];
 
 const costBreakdown = [
-    { phase: "Ground School & Exams", cost: "₹2 - ₹5 Lakhs" },
-    { phase: "Flying Training (CPL)", cost: "₹40 - ₹65 Lakhs" },
-    { phase: "Type Rating", cost: "₹15 - ₹25 Lakhs" },
-    { phase: "Total Investment", cost: "₹57 - ₹95 Lakhs", highlight: true },
+    { phase: "Ground classes", cost: "Request a current written quote" },
+    { phase: "Aircraft flying training", cost: "Request a separate FTO quote" },
+    { phase: "Additional ratings or tests", cost: "Confirm whether applicable and separately priced" },
+    { phase: "Other charges", cost: "Check examinations, medicals, travel and accommodation" },
 ];
 
 const salaryProgression = [
     {
         role: "Junior First Officer",
-        salary: "₹1.5 - ₹3.5 Lakhs",
-        period: "Per Month",
+        salary: "No estimate published",
+        period: "Check current employer information",
         icon: Plane,
     },
     {
         role: "Senior First Officer",
-        salary: "₹4 - ₹6 Lakhs",
-        period: "Per Month",
+        salary: "No estimate published",
+        period: "Check current employer information",
         icon: Briefcase,
     },
     {
         role: "Airline Captain",
-        salary: "₹6 - ₹10+ Lakhs",
-        period: "Per Month",
+        salary: "No estimate published",
+        period: "Check current employer information",
         icon: Award,
     },
     {
         role: "Flight Instructor",
-        salary: "₹50,000 - ₹2 Lakhs",
-        period: "Per Month",
+        salary: "No estimate published",
+        period: "Check current employer information",
         icon: GraduationCap,
     },
 ];
 
 const topFlyingSchools = [
     {
-        name: "IGRUA (Amethi)",
-        description: 'Often called the "IIT of Aviation" - state-run and highly prestigious with excellent training standards.',
-        highlights: ["Government-operated", "Premier institute", "Excellent reputation"],
+        name: "Current DGCA approval",
+        description: "Check the regulator's current listing and the exact scope approved for the organisation.",
+        highlights: ["Verify current status", "Check approved scope", "Confirm directly with DGCA"],
     },
     {
-        name: "CAE Gondia (NFTI)",
-        description: "Premier private academy with international training standards and modern facilities for comprehensive pilot training.",
-        highlights: ["International standards", "Modern fleet", "Global recognition"],
+        name: "Training delivery",
+        description: "Ask the FTO about its current syllabus, aircraft and instructor availability.",
+        highlights: ["Request current syllabus", "Confirm aircraft availability", "Ask about scheduling"],
     },
     {
-        name: "Vision Flying Training Institute",
-        description: "Modern fleet with 365-day flying weather in Amreli, offering consistent training throughout the year.",
-        highlights: ["Year-round flying", "Modern aircraft", "Consistent training"],
+        name: "Written terms and costs",
+        description: "Compare itemised quotes and confirm what is included, excluded or charged separately.",
+        highlights: ["Compare written quotes", "Check refund terms", "Confirm extra charges"],
     },
 ];
 
 const dgcaExamSubjects = [
-    { name: "Air Navigation", description: "Route planning, navigation systems, and flight instruments" },
-    { name: "Aviation Meteorology", description: "Weather patterns, forecasting, and aviation climate" },
-    { name: "Air Regulations", description: "DGCA rules, international aviation laws, and regulations" },
-    { name: "Technical General", description: "Aircraft systems, engines, and general aviation technology" },
-    { name: "Technical Specific", description: "Specific aircraft systems and operational procedures" },
+    { name: "Current subject list", description: "Check the applicable DGCA examination requirements and paper structure before planning." },
+    { name: "Examination format", description: "Verify current written, oral or other assessment requirements in official notices." },
+    { name: "Course syllabus", description: "Confirm with the provider which subjects and teaching materials are currently included." },
 ];
 
 const flightHoursBreakdown = [
-    { type: "Solo Flying", hours: "50+ hours", description: "Independent flight practice" },
-    { type: "Cross-Country", hours: "30+ hours", description: "Long-distance navigation flights" },
-    { type: "Instrument Flying", hours: "25+ hours", description: "Flying using instruments only" },
-    { type: "Night Flying", hours: "5+ hours", description: "Night-time flight operations" },
-    { type: "Dual Instruction", hours: "90+ hours", description: "Training with instructor" },
+    { type: "Flight-experience minimums", hours: "Check current DGCA rules", description: "Verify applicable total and component requirements in the current regulations." },
+    { type: "Training components", hours: "Check approved syllabus", description: "Confirm the selected FTO's current approved training scope." },
+    { type: "Progress and scheduling", hours: "Varies", description: "Aircraft availability, weather, scheduling and candidate progress affect timing." },
 ];
 
 const proTips = [
     {
         title: "Early Medical Assessment",
-        description: "Get your Class 2 medical done before paying any fees to ensure you are medically fit for aviation.",
+        description: "Check the current DGCA medical requirements and assessment process before committing to training.",
         icon: Shield,
     },
     {
-        title: "Explore Scholarships",
-        description: "Organizations like AME CET offer scholarships for aviation courses. Research and apply early.",
+        title: "Review Written Fees",
+        description: "Compare itemised quotes and confirm inclusions, exclusions, payment terms and refunds.",
         icon: Award,
     },
     {
         title: "Use Flight Simulators",
-        description: "Practice with basic flight simulator apps to build spatial awareness and understanding before actual training.",
+        description: "Ask the selected FTO whether any simulator activity is included in its current approved training scope.",
         icon: Target,
     },
     {
@@ -244,32 +237,32 @@ const faqs = [
     {
         question: "What are the basic requirements to become a pilot in India?",
         answer:
-            "To become a pilot in India, you need 10+2 with Physics and Mathematics (minimum 50% recommended), age 18+ for CPL, medical fitness (Class 1 medical), and English language proficiency (ICAO Level 4 or higher). Students from Arts or Commerce can clear required subjects through NIOS.",
+            "Education, age, medical and language requirements depend on the licence sought and current DGCA rules. Check the current official requirements and accepted equivalencies directly with DGCA before enrolling.",
     },
     {
         question: "How long does it take to become a commercial pilot?",
         answer:
-            "The complete process from zero experience to obtaining your Commercial Pilot License typically takes 18 to 36 months. This includes ground school training (3-6 months), DGCA exams, and flight training to complete 200 flying hours (12-18 months).",
+            "There is no single timeline for every candidate. Examination schedules, medical and document processing, FTO scheduling, aircraft availability and candidate progress can affect completion time.",
     },
     {
         question: "What is the total cost of pilot training in India?",
         answer:
-            "The total cost ranges from ₹35 to ₹65 lakhs for CPL training at an FTO, plus ₹15-25 lakhs for type rating. This includes ground school (₹2-5 lakhs), flying training (₹40-65 lakhs), and type rating. Cadet programs and Air Force routes offer sponsored or fully-funded alternatives.",
+            "Costs depend on the provider, training scope and applicable additional charges. Request separate written, itemised quotes for ground classes and FTO flying training; confirm what is included and excluded.",
     },
     {
         question: "What is the salary of a pilot in India?",
         answer:
-            "Junior First Officers earn ₹1.5-3.5 lakhs per month, Senior First Officers earn ₹4-6 lakhs per month, and Airline Captains earn ₹6-10+ lakhs per month. Flight Instructors typically earn ₹50,000-2 lakhs per month. Salaries vary based on airline, experience, and aircraft type.",
+            "This page does not publish salary estimates. Compensation varies by employer, role, experience, aircraft and employment terms; consult current employer information and written offers.",
     },
     {
         question: "What are the different paths to becoming a pilot?",
         answer:
-            "There are three main paths: (1) Civil Aviation - Self-sponsored training at DGCA-approved FTO (₹35-65 lakhs), (2) Cadet Pilot Programs - Airline-sponsored training with employment letter of intent, (3) Indian Air Force - Join through NDA or AFCAT with fully government-funded training.",
+            "Possible routes include civil flight training, airline cadet programmes and military service. Eligibility, selection, costs and any employment terms differ; check current official notices and programme terms directly with each organisation.",
     },
     {
         question: "What is the difference between SPL, PPL, and CPL?",
         answer:
-            "Student Pilot License (SPL) is the initial license obtained at 16+ years for training purposes. Private Pilot License (PPL) is obtained at 17+ years for recreational flying without payment. Commercial Pilot License (CPL) is obtained at 18+ years and allows you to fly aircraft for commercial operations and earn as a professional pilot.",
+            "SPL, PPL and CPL are distinct licence categories. Check current DGCA rules for their privileges, eligibility, age limits and progression requirements; this page does not state unverified thresholds.",
     },
 ];
 
@@ -314,13 +307,13 @@ export default function BecomePilotPage() {
 
             <CitableAnswer
                 heading="How do you become a commercial pilot in India after 12th?"
-                answer="To become a commercial pilot in India after Class 12, you first need to have studied Physics and Mathematics at the 10+2 level and obtain a DGCA medical certificate (Class 2 to begin, then Class 1 before flying training). The standard pathway is to enrol at a DGCA-approved flying training organisation and progress through three licences: a Student Pilot Licence (SPL), a Private Pilot Licence (PPL), and finally a Commercial Pilot Licence (CPL). To earn a CPL you must log a minimum of 200 hours of flight time and pass DGCA theory examinations along with the RTR(A) radio-telephony licence. The complete journey usually takes 18 to 36 months and costs roughly ₹35–50 lakh, depending on the flying school and whether training is done in India or abroad. The minimum age to hold a CPL is 18."
+                answer="The requirements and steps for a commercial pilot pathway in India depend on current DGCA rules and the licence sought. Before committing to training, verify age, education, medical, language, examination, radio-telephony and flight-experience requirements in current official material. Flying Star Aviator provides ground classes; aircraft flight training is separate and should be arranged with an FTO whose current DGCA approval and scope you have checked. Fees and completion time vary by provider and candidate, and training does not guarantee employment."
                 faqs={[
-                    { q: "What is the minimum age to become a commercial pilot in India?", a: "You must be at least 18 years old to be issued a DGCA Commercial Pilot Licence, though you can begin ground school and training earlier." },
-                    { q: "How much does pilot training cost in India?", a: "Commercial pilot training typically costs around ₹35–50 lakh, varying with the flying school and country of flying training." },
+                    { q: "What is the minimum age to become a commercial pilot in India?", a: "Check current DGCA age requirements for the licence and training stage sought." },
+                    { q: "How much does pilot training cost in India?", a: "Costs vary by provider and scope. Request separate itemised written quotes for ground classes, aircraft flying training and any additional charges." },
                 ]}
                 sources={[
-                    { label: "DGCA CAR Section 7, Series 'B', Part I \u2014 Examinations for Flight Crew Licences" },
+                    { label: "DGCA Pariksha — current flight-crew examination portal", url: "https://pariksha.dgca.gov.in/" },
                 ]}
                 lastUpdated="2026-11-02"
             />
@@ -403,8 +396,7 @@ export default function BecomePilotPage() {
                             Mandatory Eligibility Requirements
                         </h2>
                         <p className="text-muted-foreground max-w-2xl mx-auto">
-                            Use this comprehensive checklist to assess your eligibility before investing in pilot training.
-                            All criteria must be met to pursue a career as a commercial pilot.
+                            Use official DGCA guidance to check the requirements that apply to your intended licence and training stage. The items below are prompts to verify, not a complete eligibility determination.
                         </p>
                     </motion.div>
 
@@ -438,8 +430,7 @@ export default function BecomePilotPage() {
                         className="mt-8 p-6 rounded-xl bg-primary/5 border border-primary/20 max-w-3xl mx-auto"
                     >
                         <p className="text-center text-muted-foreground">
-                            <strong className="text-primary">Pro Tip:</strong> Get your Class 2 medical examination done early
-                            to confirm medical fitness before making any financial commitments to training.
+                            <strong className="text-primary">Before committing:</strong> Confirm the current DGCA medical assessment process and authorised examiner using official guidance.
                         </p>
                     </motion.div>
                 </div>
@@ -455,11 +446,10 @@ export default function BecomePilotPage() {
                         className="text-center mb-16"
                     >
                         <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                            The Complete 8-Step Training Roadmap
+                            Pilot Training Planning Steps
                         </h2>
                         <p className="text-muted-foreground max-w-2xl mx-auto">
-                            From zero experience to professional cockpit - this comprehensive roadmap takes 18 to 36 months.
-                            Follow each stage systematically to achieve your Commercial Pilot License.
+                            Requirements and sequencing depend on current DGCA rules and the candidate's circumstances. Verify each step with the relevant regulator, examination authority and training provider.
                         </p>
                     </motion.div>
 
@@ -503,8 +493,7 @@ export default function BecomePilotPage() {
                             DGCA Theory Examination Subjects
                         </h2>
                         <p className="text-muted-foreground max-w-2xl mx-auto">
-                            Master these five core subjects through ground school training. You must pass both written and oral
-                            examinations for each subject to proceed to flight training.
+                            This page does not reproduce an independently verified current subject list or examination format. Check DGCA's published requirements and confirm the course syllabus with the provider.
                         </p>
                     </motion.div>
 
@@ -539,11 +528,10 @@ export default function BecomePilotPage() {
                         className="text-center mb-16"
                     >
                         <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                            200 Flying Hours Breakdown
+                            Flight Experience and Training Scope
                         </h2>
                         <p className="text-muted-foreground max-w-2xl mx-auto">
-                            Complete a minimum of 200 flying hours across different categories. Each type of flying develops
-                            specific skills essential for commercial pilot operations.
+                            Flight-experience minimums and any component requirements must be checked against current DGCA rules and the selected FTO's approved syllabus.
                         </p>
                     </motion.div>
 
@@ -579,11 +567,10 @@ export default function BecomePilotPage() {
                         className="text-center mb-12"
                     >
                         <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                            Complete Cost Breakdown (2025-2026)
+                            Pilot Training Cost Planning
                         </h2>
                         <p className="text-muted-foreground max-w-2xl mx-auto">
-                            Understand the financial investment required for pilot training. Costs vary based on flying school,
-                            aircraft type, and training location.
+                            No current complete cost estimate is verified here. Request separate written quotes and check the scope, exclusions, payment and refund terms for each provider.
                         </p>
                     </motion.div>
 
@@ -605,13 +592,7 @@ export default function BecomePilotPage() {
                                     {costBreakdown.map((item, index) => (
                                         <tr
                                             key={item.phase}
-                                            className={
-                                                item.highlight
-                                                    ? "bg-primary/10 font-bold"
-                                                    : index % 2 === 0
-                                                        ? "bg-card"
-                                                        : "bg-muted/30"
-                                            }
+                                            className={index % 2 === 0 ? "bg-card" : "bg-muted/30"}
                                         >
                                             <td className="px-6 py-4">{item.phase}</td>
                                             <td className="px-6 py-4 text-right font-semibold text-primary">
@@ -623,8 +604,7 @@ export default function BecomePilotPage() {
                             </table>
                         </div>
                         <p className="text-sm text-muted-foreground text-center mt-6">
-                            Note: Cadet programs offer sponsored training, while Air Force route is fully funded by the government.
-                            Scholarships available through organizations like AME CET.
+                            Do not assume that a cadet, military or scholarship route is sponsored or funded. Check current programme and official recruitment terms directly.
                         </p>
                     </motion.div>
                 </div>
@@ -640,11 +620,10 @@ export default function BecomePilotPage() {
                         className="text-center mb-16"
                     >
                         <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                            Pilot Salary in India (2025-2026)
+                            Pilot Salaries and Employment
                         </h2>
                         <p className="text-muted-foreground max-w-2xl mx-auto">
-                            Aviation offers excellent earning potential with rapid career progression. Salaries vary based on
-                            airline, experience, aircraft type, and rank.
+                            This page does not publish salary estimates. Compensation and progression depend on the employer, role, experience, aircraft and current employment terms.
                         </p>
                     </motion.div>
 
@@ -674,7 +653,7 @@ export default function BecomePilotPage() {
                         viewport={{ once: true }}
                         className="text-center text-muted-foreground mt-8"
                     >
-                        Airline Captains at major carriers can earn ₹10+ lakhs per month with additional benefits and allowances.
+                        Check current employer information and written employment terms for compensation details.
                     </motion.p>
                 </div>
             </section>
@@ -689,11 +668,10 @@ export default function BecomePilotPage() {
                         className="text-center mb-16"
                     >
                         <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                            Top Flying Schools in India
+                            How to Evaluate a Flying Training Organisation
                         </h2>
                         <p className="text-muted-foreground max-w-2xl mx-auto">
-                            Choose from India's premier DGCA-approved Flying Training Organisations. Each offers unique advantages
-                            in terms of location, fleet, weather, and training standards.
+                            Do not rely on an unverified list or ranking. Check each organisation's current DGCA approval and scope, and confirm its facilities, schedule and written terms directly.
                         </p>
                     </motion.div>
 
@@ -739,8 +717,7 @@ export default function BecomePilotPage() {
                             Expert Tips for Aspiring Pilots
                         </h2>
                         <p className="text-muted-foreground max-w-2xl mx-auto">
-                            Valuable advice to help you prepare better, save costs, and maximize your chances of success in
-                            your pilot training journey.
+                            Before committing, verify current requirements, course scope, fees and training arrangements with official sources and providers.
                         </p>
                     </motion.div>
 
@@ -823,10 +800,10 @@ export default function BecomePilotPage() {
                             Ready to Begin Your Pilot Journey?
                         </h2>
                         <p className="text-primary-foreground/80 text-lg mb-4">
-                            To become a pilot in India, it is a well-structured process of education and training. Whether you prefer to become a Civil Aviation pilot with self-sponsored training, an airline cadet program, or the elite Indian Air Force program, each of these options provides a unique opportunity for you.
+                            Possible routes include civil flight training, airline cadet programmes and military service. Eligibility, selection and terms differ; check current official notices and programme details directly with each organisation.
                         </p>
                         <p className="text-primary-foreground/80 text-lg mb-8">
-                            With the aviation industry in huge demand for pilots, this is an ideal time to start your aviation career. After completing your 10+2 with Physics and Mathematics, and becoming medically fit, you can start your aviation journey with DGCA. This journey to becoming a commercial pilot can take anywhere between 18-36 months. While the cost of becoming a commercial pilot in India ranges between ₹35-65 lakhs for Civil Aviation, with salaries of ₹1.5-3.5 lakhs per month and the opportunity to become a Captain with salaries of ₹10+ lakhs per month, aviation provides an incredible long-term return on your investment.
+                            Check current DGCA eligibility and licensing requirements before planning training. Flying Star Aviator provides ground classes; aircraft flight training is separate. Course and FTO fees, timelines and employment terms vary, so obtain current written information from the relevant providers and employers.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <Button variant="gold" size="lg" asChild>

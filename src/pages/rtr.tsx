@@ -28,59 +28,62 @@ import {
     AccordionItem,
     AccordionTrigger,
 } from "@/components/ui/accordion";
+import { PAGE_FAQS } from "@/lib/schema";
+
+const RTR_RULES_URL =
+    "https://civilaviation.gov.in/sites/default/files/2025-11/telephone-operator-restricted-certificate-and-licence-rules-2025.pdf";
 
 const rtrHighlights = [
     {
         icon: Award,
-        title: "Mandatory License",
-        description: "Essential certification for all commercial pilots and ATCs",
+        title: "Certificate and Licence",
+        description: "A single Certificate and Licence is required to operate specified radiotelephone services",
     },
     {
         icon: Shield,
-        title: "Aviation Safety",
-        description: "Ensures effective emergency and routine communications",
+        title: "Written and Practical Exams",
+        description: "The 2025 rules specify both stages and require the written exam to be passed first",
     },
     {
         icon: Globe,
-        title: "Global Recognition",
-        description: "ICAO-approved phraseology and international standards",
+        title: "Official Process",
+        description: "Applications and examinations follow directions of the Director General of Civil Aviation",
     },
     {
         icon: Target,
-        title: "Career Essential",
-        description: "Required for CPL and airline pilot positions",
+        title: "Defined Scope",
+        description: "The rules limit its operational scope and require a valid licence",
     },
 ];
 
 const rtrImportance = [
-    "Mandatory for Pilots – Essential for Commercial Pilot License (CPL)",
-    "Ensures Safety – Handle emergency communications efficiently",
-    "International Recognition – ICAO-approved phraseology validation",
-    "Eligibility for CPL – Required before obtaining Commercial Pilot License",
-    "Professional Requirement – Must-have for ATCs and pilots",
-    "Legal Compliance – Cannot operate aircraft in controlled airspace without RTR",
+    "Rule 3 requires a valid Certificate and Licence for specified aircraft-station or aeronautical mobile/satellite radio services",
+    "Rule 6 sets minimum age at 16 and Class X or equivalent education for exam eligibility",
+    "Rule 8 requires both written and practical examinations",
+    "Rule 10 requires the holder to meet the issue requirements and Rule 11 sets licence validity",
+    "The rules do not establish an airline employment, selection or salary outcome",
 ];
 
 const eligibilityRequirements = [
     {
         icon: Calendar,
         title: "Minimum Age",
-        description: "Must be at least 18 years old to appear for RTR examination",
+        description: "Rule 6 requires the applicant to have attained 16 years of age",
     },
     {
         icon: BookOpen,
         title: "Education",
-        description: "10+2 with Physics and Mathematics (same as CPL eligibility)",
+        description: "Rule 6 requires Class X or equivalent from a recognised Board",
     },
     {
         icon: Languages,
-        title: "Language Proficiency",
-        description: "Good command of English (ICAO Level 4 or higher recommended)",
+        title: "Application",
+        description: "Applications are made to the Director General in the form specified by DGCA",
     },
     {
         icon: Shield,
-        title: "Medical Certificate",
-        description: "Must hold a Class 2/1 Medical Certificate approved by DGCA",
+        title: "Foreign Applicants",
+        description: "Rule 6 requires Government of India security clearance for non-citizen applicants",
     },
 ];
 
@@ -90,10 +93,10 @@ const rtrTypes = [
         subtitle: "Radio Telephony Restricted (Aeronautical)",
         icon: Radio,
         highlights: [
-            "Required by pilots and air traffic controllers",
-            "Allows communication between aircraft and ground stations",
-            "Focuses on aviation phraseology and emergency procedures",
-            "Mandatory for all commercial aviation operations",
+            "Used for radiotelephone operation in the scope defined by the 2025 rules",
+            "Rule 12 recognises aircraft-station and aeronautical mobile radiotelephone services",
+            "The rules require the certificate for specified aircraft radio operations",
+            "Current CPL implications should be checked against DGCA licensing requirements",
         ],
     },
     {
@@ -101,40 +104,37 @@ const rtrTypes = [
         subtitle: "For Maritime Industry Professionals",
         icon: Radio,
         highlights: [
-            "Required for ship captains and marine officers",
-            "Ensures communication between ships and port authorities",
-            "Radio operators in maritime industry must hold this",
-            "Communication between vessels and coastal stations",
+            "Rule 12 also allows the Certificate and Licence to support radio services in defined maritime mobile scopes",
+            "The rule text limits operation through technical and frequency conditions",
+            "This page does not set a separate maritime eligibility or examination claim",
+            "Check the current competent-authority notice for the service you intend to operate",
         ],
     },
 ];
 
 const examStructure = [
     {
-        part: "Part 1: Practical Test",
-        subtitle: "Transmission & Reception",
-        duration: "30-45 Minutes",
+        part: "Written Examination",
+        subtitle: "Rules and Radio Procedures",
+        duration: "Format set by DGCA",
         icon: Radio,
         details: [
-            "Radio telephony procedures testing",
-            "Aviation phraseology usage",
-            "Emergency handling and distress calls",
-            "Communication techniques evaluation",
-            "Conducted in simulated environment",
+            "Rule 8 requires a practical examination",
+            "The practical test uses an on-phone simulated environment",
+            "It covers radio working procedures and associated communications",
+            "Passing is subject to the rule's written-examination requirement",
         ],
     },
     {
-        part: "Part 2: Viva Voice",
-        subtitle: "Oral Examination",
-        duration: "20-30 Minutes",
+        part: "Practical Examination",
+        subtitle: "Radio Telephony Working",
+        duration: "Current details must be confirmed",
         icon: Users,
         details: [
-            "Panel includes DGCA and WPC representatives",
-            "Radio communication rules & regulations",
-            "ICAO communication standards",
-            "Meteorology & navigation terms",
-            "Aviation safety procedures",
-            "Emergency scenario handling",
+            "The 2025 rules establish written and practical examinations",
+            "The 2025 rules do not publish fixed duration or a separate oral structure",
+            "A listed practical syllabus is subject to the syllabus specified by DGCA",
+            "Check the current DGCA examination notice before relying on any format",
         ],
     },
 ];
@@ -169,45 +169,45 @@ const syllabusCoverage = [
 const careerBenefits = [
     {
         icon: Award,
-        title: "Mandatory Step for Pilots",
-        description: "Cannot obtain CPL without RTR license clearance",
+        title: "Current Licence for Radio Operation",
+        description: "The rules require a valid certificate for defined aircraft-station and aeronautical mobile radio services",
     },
     {
         icon: TrendingUp,
-        title: "Better Job Opportunities",
-        description: "Airlines prefer candidates with RTR already completed",
+        title: "Written and Practical Preparation",
+        description: "The rule framework requires preparation for written and practical examination stages",
     },
     {
         icon: Globe,
-        title: "International Career",
-        description: "Globally recognized for working abroad as pilot or ATC",
+        title: "Foreign Recognition Not Established",
+        description: "The 2025 rules do not state a foreign licence-recognition or conversion outcome",
     },
     {
         icon: CheckCircle,
-        title: "Professional Credibility",
-        description: "Demonstrates strong communication and regulatory knowledge",
+        title: "No Employment Guarantee",
+        description: "Holding or preparing for the Certificate and Licence does not guarantee selection or employment",
     },
 ];
 
 const examChallenges = [
     {
-        challenge: "High Competition",
-        description: "Limited seats available per exam session",
+        challenge: "Seat Availability",
+        description: "Current seat availability and competition are not specified in the 2025 rules",
         icon: Users,
     },
     {
-        challenge: "Oral Exam Pressure",
-        description: "Many candidates fail in viva voice examination",
+        challenge: "Exam Format",
+        description: "The official rule identifies written and practical stages; current format details are set in DGCA directions",
         icon: AlertTriangle,
     },
     {
         challenge: "Limited Attempts",
-        description: "Exam conducted only a few times yearly",
+        description: "A failed applicant must wait six weeks before re-examination",
         icon: Calendar,
     },
     {
-        challenge: "Aviation English",
-        description: "Requirement of fluent aviation English proficiency",
+        challenge: "Language or Medical Claim",
+        description: "The 2025 rules do not state an additional medical certificate or ICAO English level",
         icon: Languages,
     },
 ];
@@ -234,17 +234,17 @@ const examTips = [
         icon: GraduationCap,
     },
     {
-        tip: "Stay Calm in Viva",
+        tip: "Stay Calm in the Exam",
         description: "Panel checks confidence and clarity, remain composed",
         icon: Shield,
     },
 ];
 
 const examDetails = {
-    conductedBy: "WPC Wing, Ministry of Communications",
-    frequency: "6 times per year",
-    locations: "Delhi, Mumbai, Chennai, Kolkata",
-    validity: "Lifetime (unless suspended or canceled)",
+    conductedBy: "DGCA examination process under Central Government rules",
+    frequency: "Set by DGCA",
+    locations: "Set by DGCA",
+    validity: "Until age 80 unless suspended or cancelled",
 };
 
 const otherRTRMeanings = [
@@ -270,48 +270,7 @@ const otherRTRMeanings = [
     },
 ];
 
-const faqs = [
-    {
-        question: "What is the full form of RTR in aviation?",
-        answer: "RTR stands for Radio Telephony Restricted. It is a professional license that certifies an individual's ability to operate radio communication equipment in the aviation sector, issued by the Wireless Planning and Coordination (WPC) Wing of the Ministry of Communications, Government of India.",
-    },
-    {
-        question: "Is RTR mandatory for becoming a commercial pilot?",
-        answer: "Yes, RTR is absolutely mandatory for obtaining a Commercial Pilot License (CPL) in India. Without clearing the RTR exam, you cannot legally operate an aircraft in controlled airspace as communication is a crucial part of aviation safety.",
-    },
-    {
-        question: "What is the minimum age requirement for RTR exam?",
-        answer: "The minimum age to appear for the RTR (Aero) examination is 18 years. You must also have completed 10+2 with Physics and Mathematics and hold a valid DGCA medical certificate.",
-    },
-    {
-        question: "How many times is the RTR exam conducted in a year?",
-        answer: "The RTR exam is generally conducted six times a year by the WPC Wing of the Ministry of Communications. The exam is held in major cities including Delhi, Mumbai, Chennai, and Kolkata.",
-    },
-    {
-        question: "What are the two parts of the RTR exam?",
-        answer: "The RTR exam consists of two parts: Part 1 - Practical Test (Transmission & Reception) where candidates are tested on radio telephony procedures, and Part 2 - Viva Voice (Oral Examination) conducted by a panel including DGCA and WPC representatives. Both parts must be cleared in the same attempt.",
-    },
-    {
-        question: "How long is the RTR license valid?",
-        answer: "RTR (Aero) is valid for life, unless suspended or canceled by authorities. Unlike medical certificates and CPL renewals, RTR does not require periodic re-validation.",
-    },
-    {
-        question: "What is the difference between RTR (Aero) and RTR (Maritime)?",
-        answer: "RTR (Aero) is for pilots and air traffic controllers, focusing on aircraft-to-ground communication and aviation phraseology. RTR (Maritime) is for ship captains, marine officers, and radio operators, ensuring communication between ships and port authorities or other vessels.",
-    },
-    {
-        question: "Is RTR recognized internationally?",
-        answer: "Yes, RTR is recognized globally as it validates that the candidate is capable of using standardized aviation English and ICAO-approved phraseology. This helps pilots work internationally in aviation careers.",
-    },
-    {
-        question: "What happens if I fail one part of the RTR exam?",
-        answer: "If a candidate passes only one part (either Part 1 or Part 2), they get a chance to clear the remaining part in the next attempt. However, for complete certification, both parts must be successfully cleared.",
-    },
-    {
-        question: "How can I prepare for the RTR viva voice examination?",
-        answer: "To prepare for the viva, practice radio calls daily with ATC recordings, focus on standard ICAO phraseology, study communication rules from DGCA-approved books, join an RTR training institute for mock tests, and maintain confidence during the oral examination.",
-    },
-];
+const faqs = PAGE_FAQS["/rtr"];
 
 export default function RTRPage() {
     return (
@@ -332,7 +291,7 @@ export default function RTRPage() {
                             RTR Full Form – Radio Telephony Restricted
                         </h1>
                         <p className="text-xl text-primary-foreground/80 mb-8">
-                            A comprehensive guide that covers all aspects of RTR, including its importance, types, eligibility, exam pattern, difficulties, and preparation tips, which are relevant for the year 2026. This is a vital license that is required by commercial pilots and air traffic controllers, which is granted by the WPC wing of the Ministry of Communications.
+                            A rule-based guide to the RTR(A) Certificate and Licence under the Radio Telephone Operator (Restricted) Certificate and Licence Rules, 2025. It explains the provisions directly supported by the official notification and identifies current details that must be confirmed with DGCA.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4">
                             <Button variant="gold" size="lg" asChild>
@@ -371,7 +330,7 @@ export default function RTRPage() {
                                 </p>
                             </div>
                             <p className="text-muted-foreground text-lg mb-4">
-                                RTR license holds significant importance, as it is issued by the Wireless Planning and Coordination (WPC) Wing of the Ministry of Communications, Government of India, under the Department of Telecommunications.
+                                The 2025 rules state that the Central Government may grant or extend the Certificate and Licence and that the Director General of Civil Aviation administers specified application, examination and direction processes.
                             </p>
                         </div>
                     </motion.div>
@@ -395,14 +354,14 @@ export default function RTRPage() {
                         </div>
                         <div className="p-8 rounded-2xl border border-border bg-card">
                             <p className="text-muted-foreground text-lg mb-4">
-                                <strong>RTR stands for Radio Telephony Restricted.</strong>" This license verifies and authorizes an individual to use radio communication equipment in aviation and maritime industries.
+                                <strong>RTR(A) is commonly used for Radio Telephone Operator (Restricted), Aeronautical.</strong> The official rules call the instrument a Radio Telephone Operator (Restricted) Certificate and Licence.
                             </p>
                             <p className="text-muted-foreground text-lg mb-4">
-                                In aviation, an RTR license verifies whether pilots and ATCs can communicate with each other using radio telephony. This is an essential method of communication for sharing critical information regarding flight operations and safety.
+                                In aviation, the rules recognise operation of specified aircraft-station and aeronautical mobile radiotelephone services. They do not establish every CPL or employer requirement.
                             </p>
                             <div className="p-6 rounded-xl bg-primary/10 border-l-4 border-primary">
                                 <p className="text-lg font-semibold">
-                                    ⚠️ Without an RTR license, a pilot cannot legally fly an aircraft in controlled airspace. Communication is an essential aspect of aviation safety.
+                                    Rule 3: operate or attempt to operate specified aircraft-station or aeronautical mobile/satellite radiotelephone services only with a valid Certificate and Licence issued or recognised under these rules.
                                 </p>
                             </div>
                         </div>
@@ -477,17 +436,17 @@ export default function RTRPage() {
                         className="max-w-4xl mx-auto"
                     >
                         <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center">
-                            History and Background of RTR
+                            Official 2025 RTR Rules
                         </h2>
                         <div className="p-8 rounded-2xl border border-border bg-card">
                             <p className="text-muted-foreground text-lg mb-4">
                                 With the advent of World War I and II, radio communication became an essential aspect of the war, and aircraft and ships needed to have effective communication systems. After the emergence of civil aviation, countries began to control radio frequencies and issue radio operator licenses.
                             </p>
                             <p className="text-muted-foreground text-lg mb-4">
-                                In India, the <strong>Wireless Planning and Coordination (WPC) Wing</strong> of the Ministry of Communications was responsible for monitoring and issuing radio licenses, including the RTR license.
+                                The official 2025 notification is issued by the Ministry of Civil Aviation under the Bharatiya Vayuyan Adhiniyam, 2024 and names the Central Government and Director General of Civil Aviation in the licensing framework.
                             </p>
                             <p className="text-muted-foreground text-lg">
-                                The RTR license was transformed into an international requirement in accordance with ICAO standards.</p>
+                                The rules refer to Radio Regulations adopted by the World Radiocommunication Conference. They do not themselves state that an Indian licence is automatically recognised in another country.</p>
                         </div>
                     </motion.div>
                 </div>
@@ -506,7 +465,7 @@ export default function RTRPage() {
                             Types of RTR Licenses
                         </h2>
                         <p className="text-muted-foreground max-w-2xl mx-auto">
-                            In India, there are two main categories of RTR licenses
+                            The 2025 rules recognise defined aeronautical and maritime mobile radiotelephone scopes
                         </p>
                     </motion.div>
 
@@ -604,8 +563,8 @@ export default function RTRPage() {
                             RTR (Aero) Examination Process
                         </h2>
                         <p className="text-muted-foreground max-w-3xl mx-auto text-lg">
-                            The RTR exam is conducted by the WPC Wing of the Ministry of Communications.
-                            Exam is held six times a year in Delhi, Mumbai, Chennai, and Kolkata.
+                            Rule 8 provides written and practical examinations. The Director General sets the form,
+                            centres, invigilators and procedure; the 2025 rules do not publish a fixed annual frequency or city list.
                         </p>
                     </motion.div>
 
@@ -652,13 +611,13 @@ export default function RTRPage() {
                                 <div className="flex items-start gap-3">
                                     <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
                                     <span className="text-muted-foreground">
-                                        Candidates must clear <strong>both Part 1 and Part 2 in the same attempt</strong>
+                                        Candidates must pass the <strong>written examination before appearing for the practical examination</strong>
                                     </span>
                                 </div>
                                 <div className="flex items-start gap-3">
                                     <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
                                     <span className="text-muted-foreground">
-                                        If a candidate passes only one part, they get a chance to clear the remaining part in the next attempt
+                                        Rule 8 provides for practical attempts within three years of passing the written examination and additional written requirements after repeated practical failure
                                     </span>
                                 </div>
                             </div>
@@ -701,10 +660,10 @@ export default function RTRPage() {
                         className="text-center mb-16"
                     >
                         <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                            Syllabus for RTR (Aero)
+                            Topics to Confirm Against the DGCA Syllabus
                         </h2>
                         <p className="text-muted-foreground max-w-2xl mx-auto">
-                            Comprehensive coverage of all essential topics for RTR examination
+                            These examples are not a verified or complete DGCA RTR(A) syllabus. Use them only as questions for the course provider, and confirm the current official syllabus and examination notice before relying on any topic.
                         </p>
                     </motion.div>
 
@@ -738,7 +697,7 @@ export default function RTRPage() {
                             How to prepare for the RTR(A) examination
                         </h3>
                         <p className="text-muted-foreground leading-relaxed mb-4">
-                            RTR(A) exam preparation should follow the latest examination notice from the WPC Wing.
+                            RTR(A) exam preparation should follow the latest examination notice and the syllabus specified by the Director General.
                             When comparing an RTR(A) course or classes, ask which examination components, study
                             materials and practice sessions are included; schedules and requirements can change.
                         </p>
@@ -746,6 +705,13 @@ export default function RTRPage() {
                             Radio communication practice for pilots can include clear message structure, standard
                             aviation phraseology and routine or urgent exchanges. Confirm the current syllabus and
                             assessment format with the relevant authority before relying on older preparation material.
+                        </p>
+                        <p className="mt-4 text-muted-foreground leading-relaxed">
+                            Official source:{" "}
+                            <a href={RTR_RULES_URL} target="_blank" rel="noopener noreferrer" className="underline hover:text-primary">
+                                Radio Telephone Operator (Restricted) Certificate and Licence Rules, 2025
+                            </a>
+                            , Ministry of Civil Aviation/Gazette notification dated 25 June 2025.
                         </p>
                     </div>
                 </div>
@@ -761,10 +727,10 @@ export default function RTRPage() {
                         className="text-center mb-16"
                     >
                         <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                            Career Benefits of RTR
+                            Regulatory and Career Context
                         </h2>
                         <p className="text-muted-foreground max-w-2xl mx-auto">
-                            How RTR certification enhances your aviation career prospects
+                            The rules establish the licence framework; they do not guarantee employment outcomes
                         </p>
                     </motion.div>
 
@@ -802,8 +768,7 @@ export default function RTRPage() {
                             RTR in Other Fields
                         </h2>
                         <p className="text-muted-foreground max-w-3xl mx-auto">
-                            Though in aviation RTR stands for Radio Telephony Restricted, the abbreviation has different
-                            full forms in other sectors too
+                            In aviation, the official term is Radio Telephone Operator (Restricted), and the abbreviation also has unrelated meanings outside aviation
                         </p>
                     </motion.div>
 
@@ -892,7 +857,7 @@ export default function RTRPage() {
                             Tips to Crack RTR Exam
                         </h2>
                         <p className="text-muted-foreground max-w-2xl mx-auto">
-                            Expert strategies to excel in both practical and viva voice examinations
+                            Prepare for the written and practical stages using the current DGCA syllabus and notice
                         </p>
                     </motion.div>
 
@@ -941,15 +906,15 @@ export default function RTRPage() {
                         <Accordion type="single" collapsible className="space-y-4">
                             {faqs.map((faq, index) => (
                                 <AccordionItem
-                                    key={index}
+                                    key={faq.q}
                                     value={`faq-${index}`}
                                     className="bg-card rounded-xl border border-border px-6"
                                 >
                                     <AccordionTrigger className="text-left font-semibold hover:no-underline">
-                                        {faq.question}
+                                        {faq.q}
                                     </AccordionTrigger>
                                     <AccordionContent className="text-muted-foreground">
-                                        {faq.answer}
+                                        {faq.a}
                                     </AccordionContent>
                                 </AccordionItem>
                             ))}
@@ -968,21 +933,21 @@ export default function RTRPage() {
                         className="max-w-4xl mx-auto"
                     >
                         <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center">
-                            Conclusion
+                            Summary
                         </h2>
                         <div className="p-8 rounded-2xl border border-border bg-card space-y-4">
                             <p className="text-muted-foreground text-lg">
-                                The full form of <strong>RTR is Radio Telephony Restricted</strong>, It is an important license for aviation
-                                and maritime professionals. In aviation, RTR license is mandatory for pilots and ATCs to lawfully use the communication equipment installed on the aircraft.
+                                The 2025 rules define a <strong>Radio Telephone Operator (Restricted) Certificate and Licence</strong>.
+                                The instrument is required for specified aircraft-station and aeronautical mobile/satellite radiotelephone operation.
                             </p>
                             <p className="text-muted-foreground text-lg">
-                                Conducted by the Ministry of Communications, the RTR examination, conducted by the WPC wing, ensures that the candidates are qualified to use the radio communication equipment, emergency procedures, and aviation phraseology.
+                                The Central Government is the licensing authority. The Director General of Civil Aviation sets application, examination, syllabus and direction details under the rules.
                             </p>
                             <p className="text-muted-foreground text-lg">
-                                In the context of finance, technology, and business, RTR has different meanings, but when compared to the importance of RTR in aviation, no other meaning can compete.
+                                The abbreviation RTR also has meanings outside aviation. This page discusses the radiotelephone Certificate and Licence only.
                             </p>
                             <p className="text-muted-foreground text-lg">
-                                For any aspiring commercial pilot, the RTR examination is one of the most significant achievements that can take the candidate closer to the dream of flying an aircraft. With proper guidance, one can successfully clear the RTR examination.
+                                Completing ground preparation does not itself guarantee examination success, licence issue, selection or employment.
                             </p>
                         </div>
                     </motion.div>
@@ -999,11 +964,11 @@ export default function RTRPage() {
                         className="max-w-3xl mx-auto text-center"
                     >
                         <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                            Ready to Start Your Pilot Journey?
+                            Check Current RTR(A) Guidance
                         </h2>
                         <p className="text-primary-foreground/80 text-lg mb-8">
-                            Get expert guidance on RTR preparation and complete pilot training. Our experienced counselors
-                            will help you navigate the entire process from eligibility to license acquisition.
+                            Flying Star provides RTR(A) ground-preparation guidance. Confirm current eligibility, examination format,
+                            fees and operational requirements in the official notification and DGCA directions.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <Button variant="gold" size="lg" asChild>
