@@ -72,6 +72,11 @@
       "dest": "https://www.flystar.co.in/blog/dgca-exam-subjects-by-licence"
     },
     {
+      "src": "/pilot-salary-india",
+      "status": 308,
+      "dest": "/pilot-salary-in-india"
+    },
+    {
       "src": "/indigo-pilot-salary",
       "status": 301,
       "dest": "https://www.flystar.co.in/pilot-salary-in-india"

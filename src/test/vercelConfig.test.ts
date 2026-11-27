@@ -350,7 +350,14 @@ describe("Vercel config", () => {
     expect(redirect?.permanent).toBe(true);
     expect(new URL(redirect?.destination).pathname).toBe("/pilot-salary-in-india");
     expect(new URL(redirect?.destination).origin).toBe("https://www.flystar.co.in");
-    expect(routes.some((route) => route?.src === "/pilot-salary-india")).toBe(false);
+    const legacyRoute = routes.find((route) => route?.src === "/pilot-salary-india");
+    const filesystemIndex = routes.findIndex((route) => route?.handle === "filesystem");
+    expect(legacyRoute).toEqual({
+      src: "/pilot-salary-india",
+      status: 308,
+      dest: "/pilot-salary-in-india",
+    });
+    expect(routes.indexOf(legacyRoute)).toBeLessThan(filesystemIndex);
     expect(routes.some((route) => route?.src === "/pilot-salary-in-india")).toBe(false);
     expect(
       redirectRules.some((rule) => rule?.source === "/pilot-salary-in-india"),
