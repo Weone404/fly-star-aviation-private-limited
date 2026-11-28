@@ -162,6 +162,16 @@
       "dest": "/blog/jobs-after-cpl-india"
     },
     {
+      "src": "/blog/how-to-become-a-pilot",
+      "status": 308,
+      "dest": "/blogs/how-to-become-a-pilot-after-12th-in-india"
+    },
+    {
+      "src": "/blogs/25",
+      "status": 308,
+      "dest": "/blogs/how-to-become-a-pilot-after-12th-in-india"
+    },
+    {
       "src": "/backend-api/(.*)",
       "dest": "/api/backend-api/$1"
     },

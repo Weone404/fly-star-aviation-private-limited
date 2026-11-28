@@ -8,7 +8,7 @@ export function useMeta() {
   const location = useLocation();
 
   useEffect(() => {
-    const { title, description, canonical, ogTitle, ogDescription, ogImage, twitterImage, ogType } = getRouteMeta(location.pathname);
+    const { title, description, canonical, ogTitle, ogDescription, ogImage, twitterImage, ogType, robots } = getRouteMeta(location.pathname);
 
     const titleTags = Array.from(document.head.querySelectorAll("title"));
     const titleTag = titleTags.shift() ?? document.createElement("title");
@@ -37,6 +37,7 @@ export function useMeta() {
     };
 
     setMeta('meta[name="description"]', "content", description);
+    if (robots) setMeta('meta[name="robots"]', "content", robots);
     setMeta('meta[property="og:title"]', "content", ogTitle || title);
     setMeta('meta[property="og:description"]', "content", ogDescription || description);
     setMeta('meta[property="og:url"]', "content", canonical);

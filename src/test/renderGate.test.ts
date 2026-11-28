@@ -78,7 +78,7 @@ describe("render gate", () => {
     }
   });
 
-  it("preserves all 13 numeric blog redirects before filesystem handling", async () => {
+  it("preserves all public numeric blog redirects before filesystem handling", async () => {
     const { BLOG_POSTS } = await import("../lib/blogData.js");
     const config = JSON.parse(readFileSync(resolve(ROOT, "vercel.json"), "utf8"));
     const filesystemIndex = config.routes.findIndex((route) => route.handle === "filesystem");
@@ -172,6 +172,27 @@ describe("render gate", () => {
     for (const [source, destination] of Object.entries(expected)) {
       expect(redirects.get(source), `${source} must redirect permanently`).toBe(destination);
     }
+  });
+
+  it("redirects the superseded pilot guide URLs to the single canonical page", () => {
+    const config = JSON.parse(readFileSync(resolve(ROOT, "vercel.json"), "utf8"));
+    const filesystemIndex = config.routes.findIndex((route) => route.handle === "filesystem");
+    const redirects = new Map(
+      config.routes
+        .filter((r: { src?: string; dest?: string; status?: number }) => r.status === 308)
+        .map((r: { src: string; dest: string }) => [r.src, r.dest]),
+    );
+    const destination = "/blogs/how-to-become-a-pilot-after-12th-in-india";
+    const sources = ["/blog/how-to-become-a-pilot", "/blogs/25"];
+
+    for (const source of sources) {
+      expect(redirects.get(source)).toBe(destination);
+      const redirectIndex = config.routes.findIndex((route) => route.src === source);
+      expect(redirectIndex, `${source} must redirect before filesystem handling`).toBeLessThan(filesystemIndex);
+    }
+    expect(sitemapPaths()).toContain(destination);
+    expect(sitemapPaths()).not.toContain("/blog/how-to-become-a-pilot");
+    expect(sitemapPaths()).not.toContain("/blogs/25");
   });
 
   it("keeps every canonical inside routeMeta pointing at its own path", () => {

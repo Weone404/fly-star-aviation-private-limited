@@ -15,6 +15,12 @@ import { GLOSSARY } from "./glossary";
 import { imagesFor } from "./blogImages.js";
 import { postsInTopic, topicBySlug, type Topic } from "./blogTopics";
 import { PILOT_SALARY_FAQS } from "./pilotSalaryFaqs";
+import {
+  PILOT_AFTER_12TH_FAQS,
+  PILOT_AFTER_12TH_LAST_MODIFIED,
+  PILOT_AFTER_12TH_PUBLISHED,
+  PILOT_AFTER_12TH_PATH,
+} from "./pilotAfter12thContent";
 
 const ORG_ID = `${SITE_ORIGIN}/#organization`;
 
@@ -194,6 +200,31 @@ function pilotSalaryArticleNode(path: string): JsonLdNode {
     dateModified: "2026-11-27",
     mainEntityOfPage: { "@id": `${url}#webpage` },
     inLanguage: "en-IN",
+  };
+}
+
+function pilotAfter12thArticleNode(path: string): JsonLdNode {
+  const url = canonicalUrl(path);
+  return {
+    "@type": "BlogPosting",
+    "@id": `${url}#article`,
+    headline: "How to Become a Pilot After 12th in India",
+    description: descFor(path, ""),
+    url,
+    image: httpsImageUrl("/assets/hero-aircraft-1600w.jpg"),
+    articleSection: "Pilot career guide",
+    inLanguage: "en-IN",
+    isAccessibleForFree: true,
+    author: {
+      "@type": "Organization",
+      name: "Flying Star Aviator Academics Team",
+      url: `${SITE_ORIGIN}/editorial-policy`,
+      description: "DGCA CPL & ATPL ground instruction, Dwarka, New Delhi",
+    },
+    publisher: { "@id": ORG_ID },
+    datePublished: PILOT_AFTER_12TH_PUBLISHED,
+    dateModified: PILOT_AFTER_12TH_LAST_MODIFIED,
+    mainEntityOfPage: { "@type": "WebPage", "@id": `${url}#webpage` },
   };
 }
 
@@ -398,6 +429,7 @@ function pageNode(path: string): JsonLdNode {
  * src/pages/dgca/computer-number.tsx.
  */
 export const PAGE_FAQS: Record<string, { q: string; a: string }[]> = {
+  [PILOT_AFTER_12TH_PATH]: PILOT_AFTER_12TH_FAQS,
   "/rtr": [
     { q: "What is the full form of RTR in aviation?", a: "RTR(A) commonly means Radio Telephone Operator (Restricted), Aeronautical. The 2025 rules define the Radio Telephone Operator (Restricted) Certificate and Licence and state that the Central Government may grant or extend it." },
     { q: "Is RTR mandatory for becoming a commercial pilot?", a: "The 2025 rules require a valid Certificate and Licence for specified aircraft-station and aeronautical mobile radiotelephone operation. They do not, by themselves, state every CPL licensing implication. Confirm current DGCA pilot-licensing requirements separately." },
@@ -604,6 +636,7 @@ export function buildGraph(path: string): JsonLdNode | null {
   }
 
   const nodes: JsonLdNode[] = [breadcrumb(path), pageNode(path)];
+  if (path === PILOT_AFTER_12TH_PATH) nodes.push(pilotAfter12thArticleNode(path));
   if (path === "/pilot-salary-in-india") nodes.push(pilotSalaryArticleNode(path));
   const pageFaq = pageFaqNode(path);
   if (pageFaq) nodes.push(pageFaq);

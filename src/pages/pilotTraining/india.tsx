@@ -314,6 +314,10 @@ export default function PilotTrainingIndiaPage() {
                             <Link to="/become-a-pilot/become-pilot" className="underline underline-offset-4">
                                 pilot eligibility and licensing steps
                             </Link>
+                            . For a focused guide after Class 12, see{" "}
+                            <Link to="/blogs/how-to-become-a-pilot-after-12th-in-india" className="underline underline-offset-4">
+                                the pilot pathway guide
+                            </Link>
                             .
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4">

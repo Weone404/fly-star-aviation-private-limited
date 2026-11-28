@@ -317,6 +317,13 @@ export default function BecomePilotPage() {
                 ]}
                 lastUpdated="2026-11-02"
             />
+            <p className="container mx-auto mt-4 max-w-3xl px-4 text-sm text-muted-foreground">
+                For a focused guide to the pathway after Class 12, read our{" "}
+                <Link to="/blogs/how-to-become-a-pilot-after-12th-in-india" className="underline underline-offset-4">
+                    pilot guide for students after 12th
+                </Link>
+                .
+            </p>
 
             {/* Career Paths Overview */}
             <section className="py-20 bg-background">

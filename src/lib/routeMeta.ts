@@ -162,6 +162,19 @@ const routeMeta: Record<string, RouteMeta> = {
     description: "Step-by-step guide to becoming a commercial pilot in India after 12th. Eligibility, fees & process.",
     canonical: `${BASE_URL}/become-a-pilot/become-pilot`,
   },
+  "/blogs/how-to-become-a-pilot-after-12th-in-india": {
+    title: "How to Become a Pilot After 12th in India | Flystar",
+    description:
+      "Understand the DGCA pilot-training pathway after Class 12, including eligibility, exams, medicals, flying training, costs to verify and career options.",
+    canonical: `${BASE_URL}/blogs/how-to-become-a-pilot-after-12th-in-india`,
+    ogTitle: "How to Become a Pilot After 12th in India",
+    ogDescription:
+      "A practical guide to the DGCA licensing pathway after Class 12, with eligibility checks, training stages, costs to verify and career options.",
+    ogImage: "/assets/hero-aircraft-1600w.jpg",
+    twitterImage: "/assets/hero-aircraft-1600w.jpg",
+    ogType: "article",
+    robots: "index,follow",
+  },
   "/locations": {
     title: "Our Locations | Flying Star Aviator",
     description: "Flying Star Aviator's ground-training centre is in Dwarka, New Delhi. The page explains ground classes and the separate FTO flying-training stage.",

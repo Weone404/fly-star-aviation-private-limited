@@ -2473,7 +2473,7 @@ export const STATIC_BLOG_POSTS = [
     authorRole: 'DGCA CPL & ATPL ground instruction, Dwarka, New Delhi',
     createdAt: '2026-11-27',
     updatedAt: '2026-11-27',
-    status: 'published',
+    status: 'archived',
     featuredImage: '/blog/diagrams/how-to-become-a-pilot-career-path.svg',
     imageAlt: 'Five stages in a pilot training pathway: eligibility, medical assessment, theory study, flight training and career progression.',
     excerpt: 'A practical overview of the route from education and medical assessment to DGCA examinations, flight training and career planning, with current rules separated from provider-specific costs.',

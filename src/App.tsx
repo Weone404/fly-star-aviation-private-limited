@@ -74,6 +74,7 @@ const Commercialpilotlicence = lazy(() => import("./pages/BecomeAPilot/commercia
 const Becomepilot = lazy(() => import("./pages/BecomeAPilot/become-pilot"));
 
 const Blogs = lazy(() => import("./pages/Blogs"));
+const PilotAfter12th = lazy(() => import("./pages/PilotAfter12th"));
 const BlogDetail = lazy(() => import("./pages/BlogDetail"));
 const BlogTopic = lazy(() => import("./pages/BlogTopic"));
 const AdminBlog = lazy(() => import("./pages/AdminBlog"));
@@ -209,8 +210,20 @@ function AppInner() {
 
         {/* BLOGS */}
         <Route path="/blogs" element={<Blogs />} />
+        <Route
+          path="/blogs/how-to-become-a-pilot-after-12th-in-india"
+          element={<PilotAfter12th />}
+        />
+        <Route
+          path="/blogs/25"
+          element={<Navigate to="/blogs/how-to-become-a-pilot-after-12th-in-india" replace />}
+        />
         <Route path="/blogs/:id" element={<BlogDetail />} />
         <Route path="/blog/topic/:topic" element={<BlogTopic />} />
+        <Route
+          path="/blog/how-to-become-a-pilot"
+          element={<Navigate to="/blogs/how-to-become-a-pilot-after-12th-in-india" replace />}
+        />
         <Route path="/blog/:slug" element={<BlogDetail />} />
 
         {/* ADMIN */}
